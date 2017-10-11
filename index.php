@@ -674,6 +674,7 @@
 									</a>
 									<a href="#"><small style="display: block; margin-top: 3px;"><strong>Like us</strong><br>on Facebook</small></a>
 								</div>
+
 								<div class="col-md-2 clearfix bottommargin-sm">
 									<a href="#" class="social-icon si-dark si-colored si-youtube nobottommargin" style="margin-right: 10px;">
 										<i class="icon-youtube"></i>
