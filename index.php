@@ -648,7 +648,7 @@
 								<div class="col-md-6 bottommargin-sm text-center">
 									<div class="footer-big-contacts">
 										<span>Call Us:</span>
-										(91) 22 55412474
+										+(31) 6 12345678
 									</div>
 								</div>
 
