@@ -1,7 +1,7 @@
 <?php
 include 'scripts/db_connection.php';
 
-if(isset($_POST['Submit'])) {
+if(isset($_POST['signup_submit'])) {
     //Sender
 
     $userName       = $_POST['signup_username'];
@@ -120,7 +120,7 @@ if(isset($_POST['Submit'])) {
                                 </div>
                                 <div class="col_half">
                                     <label for="login-form-username">تاريخ الميلاد:</label>
-                                    <input type="text" value="" id="signup_birthday" name="signup_birthday" class="sm-form-control past-enabled" placeholder="MM/DD/YYYY">
+                                    <input type="text" value="" id="signup_birthday" name="signup_birthday" class="sm-form-control past-enabled" placeholder="DD/MM/YYYY">
                                 </div>
                                 <div class="col_half col_last">
                                     <label for="login-form-username">المدينة:</label>
