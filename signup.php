@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html dir="ltr" lang="en-US">
+<html dir="rtl" lang="en-US">
 <head>
 
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
@@ -15,13 +15,16 @@
     <link rel="stylesheet" href="css/animate.css" type="text/css" />
     <link rel="stylesheet" href="css/magnific-popup.css" type="text/css" />
     <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/droid-arabic-kufi" type="text/css"/>
-
+    <!-- Date & Time Picker CSS -->
+    <link rel="stylesheet" href="demos/travel/css/datepicker.css" type="text/css" />
+    <link rel="stylesheet" href="css/components/timepicker.css" type="text/css" />
+    <link rel="stylesheet" href="css/components/daterangepicker.css" type="text/css" />
     <link rel="stylesheet" href="css/responsive.css" type="text/css" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- Document Title
     ============================================= -->
-    <title>Al Rawi Theorie | Log In</title>
+    <title>Al Rawi Theorie | Sign Up</title>
 
 </head>
 
@@ -49,24 +52,38 @@
                     <div class="panel panel-default divcenter noradius noborder" style="max-width: 400px;">
                         <div class="panel-body" style="padding: 40px;">
                             <form id="login-form" name="login-form" class="nobottommargin" action="#" method="post">
-                                <h3 class="text-center">قم بتسجيل الدخول لحسابك</h3>
+                                <h3 class="text-center">قم بإنشاء حساب جديد</h3>
 
                                 <div class="col_full">
-                                    <label for="login-form-username">البريد الإلكتروني:</label>
+                                    <label for="login-form-username">البريد الإلكتروني (اسم المستخدم):</label>
                                     <input type="email" id="login-form-username" name="login-form-username" value="" class="form-control not-dark" />
                                 </div>
 
-                                <div class="col_full">
-                                    <label for="login-form-password">كلمة المرور:</label>
+                                <div class="col_half">
+                                    <label for="login-form-password">كلمة مرور جديدة:</label>
                                     <input type="password" id="login-form-password" name="login-form-password" value="" class="form-control not-dark" />
+                                </div>
+
+                                <div class="col_half col_last">
+                                    <label for="login-form-password">إعادة كلمة المرور:</label>
+                                    <input type="password" id="login-form-password" name="login-form-password" value="" class="form-control not-dark" />
+                                </div>
+
+                                <div class="col_full">
+                                    <label for="login-form-username">رقم الهاتف:</label>
+                                    <input type="text" id="login-form-username" name="login-form-username" value="" class="form-control not-dark" />
+                                </div>
+                                <div class="col_half">
+                                    <label for="login-form-username">تاريخ الميلاد:</label>
+                                    <input type="text" value="" class="sm-form-control past-enabled" placeholder="MM/DD/YYYY">
+                                </div>
+                                <div class="col_half col_last">
+                                    <label for="login-form-username">المدينة:</label>
+                                    <input type="text" id="login-form-username" name="login-form-username" value="" class="form-control not-dark" />
                                 </div>
 
                                 <div class="col_full nobottommargin">
                                     <button class="button button-3d button-black nomargin" style="width: 100%" id="login-form-submit" name="login-form-submit" value="login">تسجيل الدخول</button>
-                                </div>
-                                <div class="col_full topmargin-sm nobottommargin">
-                                    <a href="#" class="fright text-center" style="width: 100%">نسيت كلمة المرور؟</a>
-                                    <a href="#" class="fright text-center" style="width: 100%">قم بتسجيل حساب جديد</a>
                                 </div>
                             </form>
                         </div>
@@ -92,10 +109,23 @@
 ============================================= -->
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/plugins.js"></script>
-
+<!-- Date & Time Picker JS -->
+<script type="text/javascript" src="js/components/moment.js"></script>
+<script type="text/javascript" src="demos/travel/js/datepicker.js"></script>
+<script type="text/javascript" src="js/components/timepicker.js"></script>
+<!-- Include Date Range Picker -->
+<script type="text/javascript" src="js/components/daterangepicker.js"></script>
 <!-- Footer Scripts
 ============================================= -->
 <script type="text/javascript" src="js/functions.js"></script>
 
+
+<script type="text/javascript">
+    $(function() {
+        $('.travel-date-group .past-enabled').datepicker({
+            autoclose: true
+        });
+    });
+</script>
 </body>
 </html>

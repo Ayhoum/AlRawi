@@ -110,7 +110,7 @@
 							<li><a href="#" class="button-red" style="color:#fff;">حسابي</a>
 								<ul>
 								<li><a href="login.php" dir="rtl">تسجيل الدخول <i class="icon-line2-login"></i></a></li>
-									<li><a href="#" dir="rtl">حساب جديد! <i class="icon-line2-pencil"></i></a></li>
+									<li><a href="signup.php" dir="rtl">حساب جديد! <i class="icon-line2-pencil"></i></a></li>
 								</ul>
 							</li>
 							<li><a href="" data-scrollto="#booking-appointment-form" data-offset="100" data-easing="easeInOutExpo" data-speed="1200" class="bgcolor" style="color:#fff;">احجز امتحانك</a></li>
