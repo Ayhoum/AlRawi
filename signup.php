@@ -1,3 +1,48 @@
+<?php
+include 'scripts/db_connection.php';
+
+if(isset($_POST['Submit'])) {
+    //Sender
+
+    $userName       = $_POST['signup_username'];
+    $userName       = mysqli_real_escape_string($mysqli,$userName);
+
+    $password   = $_POST['signup_password'];
+    $password   = mysqli_real_escape_string($mysqli,$password);
+
+    $phone         = $_POST['signup_phone'];
+    $phone         = mysqli_real_escape_string($mysqli,$phone);
+
+    $birthday         = $_POST['signup_birthday'];
+    $birthday         = mysqli_real_escape_string($mysqli,$birthday);
+
+    $city        = $_POST['signup_city'];
+    $city         = mysqli_real_escape_string($mysqli,$city);
+
+    $encCode = ['cost' => 11];
+    $encPassword = password_hash($password, PASSWORD_BCRYPT, $encCode);
+
+
+    if(!empty($userName) && !empty($password) && !empty($phone) && !empty($birthday) && !empty($city)){
+        $query = "INSERT INTO Users(EMAIL,
+                                PASSWORD,
+                                PHONE,
+                                CITY,
+                                BD) ";
+        $query .= "VALUES('{$userName}',
+                    '{$encPassword}',
+                    '{$phone}',
+                    '{$city}',
+                    '{$birthday}') ";
+        $insertUser =  mysqli_query($mysqli, $query);
+        if (!$insertUser) {
+            die("Failed!" . mysqli_error($mysqli));
+        }else{
+            header("Location: https://www.google.com");
+        }
+    }
+}
+?>
 <!DOCTYPE html>
 <html dir="rtl" lang="en-US">
 <head>
@@ -50,40 +95,40 @@
                     </div>
 
                     <div class="panel panel-default divcenter noradius noborder" style="max-width: 400px;">
-                        <div class="panel-body" style="padding: 40px;">
-                            <form id="login-form" name="login-form" class="nobottommargin" action="#" method="post">
+                        <div class="panel-body travel-date-group" style="padding: 40px;">
+                            <form id="signup-form" name="signup-form" class="nobottommargin" action="#" method="post">
                                 <h3 class="text-center">قم بإنشاء حساب جديد</h3>
 
                                 <div class="col_full">
                                     <label for="login-form-username">البريد الإلكتروني (اسم المستخدم):</label>
-                                    <input type="email" id="login-form-username" name="login-form-username" value="" class="form-control not-dark" />
+                                    <input type="email" id="signup_username" name="signup_username" value="" class="form-control not-dark" />
                                 </div>
 
                                 <div class="col_half">
                                     <label for="login-form-password">كلمة مرور جديدة:</label>
-                                    <input type="password" id="login-form-password" name="login-form-password" value="" class="form-control not-dark" />
+                                    <input type="password" id="signup_password" name="signup_password" value="" class="form-control not-dark" />
                                 </div>
 
                                 <div class="col_half col_last">
                                     <label for="login-form-password">إعادة كلمة المرور:</label>
-                                    <input type="password" id="login-form-password" name="login-form-password" value="" class="form-control not-dark" />
+                                    <input type="password" id="signup_password_re" name="signup_password_re" value="" class="form-control not-dark" />
                                 </div>
 
                                 <div class="col_full">
                                     <label for="login-form-username">رقم الهاتف:</label>
-                                    <input type="text" id="login-form-username" name="login-form-username" value="" class="form-control not-dark" />
+                                    <input type="text" id="signup_phone" name="signup_phone" value="" class="form-control not-dark" />
                                 </div>
                                 <div class="col_half">
                                     <label for="login-form-username">تاريخ الميلاد:</label>
-                                    <input type="text" value="" class="sm-form-control past-enabled" placeholder="MM/DD/YYYY">
+                                    <input type="text" value="" id="signup_birthday" name="signup_birthday" class="sm-form-control past-enabled" placeholder="MM/DD/YYYY">
                                 </div>
                                 <div class="col_half col_last">
                                     <label for="login-form-username">المدينة:</label>
-                                    <input type="text" id="login-form-username" name="login-form-username" value="" class="form-control not-dark" />
+                                    <input type="text" id="signup_city" name="signup_city" value="" class="form-control not-dark" />
                                 </div>
 
                                 <div class="col_full nobottommargin">
-                                    <button class="button button-3d button-black nomargin" style="width: 100%" id="login-form-submit" name="login-form-submit" value="login">تسجيل الدخول</button>
+                                    <button class="button button-3d button-black nomargin" style="width: 100%" id="signup_submit" name="signup_submit" value="signup">إنشاء الحساب</button>
                                 </div>
                             </form>
                         </div>
