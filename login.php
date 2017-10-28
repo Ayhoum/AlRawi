@@ -1,3 +1,33 @@
+<?php
+include 'scripts/db_connection.php';
+if(isset($_POST['login_submit'])) {
+
+    $email = $_POST['login_username'];
+    $email = mysqli_real_escape_string($mysqli, $email);
+    $pass = $_POST['login_password'];
+    $pass = mysqli_real_escape_string($mysqli, $pass);
+
+
+    $query = "SELECT * From Users WHERE EMAIL = '{$email}' ";
+    $getHashAgent = mysqli_query($mysqli, $query);
+    if (mysqli_num_rows($getHashAgent) == 1) {
+        while ($row = mysqli_fetch_assoc($getHashAgent)) {
+            $hash = $row['PASSWORD'];
+            if ((password_verify($pass, $hash))) {
+                $role = "user";
+                $_SESSION['email'] = $email;
+                $_SESSION['role'] = $role;
+                echo 'Welcome Agent';
+                header("Location: https://www.google.com");
+            } else {
+                echo "Enter a Valid Data !! ";
+            }
+        }
+    }
+}
+?>
+
+
 <!DOCTYPE html>
 <html dir="ltr" lang="en-US">
 <head>
@@ -48,21 +78,21 @@
 
                     <div class="panel panel-default divcenter noradius noborder" style="max-width: 400px;">
                         <div class="panel-body" style="padding: 40px;">
-                            <form id="login-form" name="login-form" class="nobottommargin" action="#" method="post">
+                            <form id="login_form" name="login_form" class="nobottommargin" action="#" method="post">
                                 <h3 class="text-center">قم بتسجيل الدخول لحسابك</h3>
 
                                 <div class="col_full">
                                     <label for="login-form-username">البريد الإلكتروني:</label>
-                                    <input type="email" id="login-form-username" name="login-form-username" value="" class="form-control not-dark" />
+                                    <input type="email" id="login_username" name="login_username" value="" class="form-control not-dark" />
                                 </div>
 
                                 <div class="col_full">
                                     <label for="login-form-password">كلمة المرور:</label>
-                                    <input type="password" id="login-form-password" name="login-form-password" value="" class="form-control not-dark" />
+                                    <input type="password" id="login_password" name="login_password" value="" class="form-control not-dark" />
                                 </div>
 
                                 <div class="col_full nobottommargin">
-                                    <button class="button button-3d button-black nomargin" style="width: 100%" id="login-form-submit" name="login-form-submit" value="login">تسجيل الدخول</button>
+                                    <button class="button button-3d button-black nomargin" style="width: 100%" id="login_submit" name="login_submit" value="login">تسجيل الدخول</button>
                                 </div>
                                 <div class="col_full topmargin-sm nobottommargin">
                                     <a href="#" class="fright text-center" style="width: 100%">نسيت كلمة المرور؟</a>
