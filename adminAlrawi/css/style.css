@@ -2276,6 +2276,8 @@
       position: relative;
       bottom: 7px;
       left: 5px; }
+.demo-choose-skin .indigo {
+  background-color: #3F51B5; }
   .demo-choose-skin .red {
     background-color: #F44336; }
   .demo-choose-skin .pink {
@@ -2284,8 +2286,6 @@
     background-color: #9C27B0; }
   .demo-choose-skin .deep-purple {
     background-color: #673AB7; }
-  .demo-choose-skin .indigo {
-    background-color: #3F51B5; }
   .demo-choose-skin .blue {
     background-color: #2196F3; }
   .demo-choose-skin .light-blue {

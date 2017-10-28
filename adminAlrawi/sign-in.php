@@ -4,7 +4,7 @@ ob_start();
 include '../scripts/db_connection.php';
 
 
-if(isset($_POST['signin'])) {
+if(isset($_POST['signIn'])) {
 
     $username = $_POST['username'];
     $username = mysqli_real_escape_string($mysqli, $username);
@@ -20,12 +20,14 @@ if(isset($_POST['signin'])) {
             $name = $row['NAME'];
             $role = $row['ROLE'];
             if ((password_verify($pass, $hash))) {
-                $_SESSION['username'] = $username;
+                $_SESSION['username'] = $name;
                 $_SESSION['role'] = $role;
                 echo 'Welcome ADMIN';
                 header("Location: dashboard.php");
             } else {
                 echo "Enter a Valid Data !! ";
+                header("Location: https://www.google.com");
+
             }
         }
     }
@@ -69,7 +71,7 @@ if(isset($_POST['signin'])) {
         </div>
         <div class="card">
             <div class="body">
-                <form name="sign_in" id="sign_in" method="post" action="#" >
+                <form name="sign_in" id="sign_in" method="post" action="sign-in.php" >
                     <div class="msg">Sign in to your Dashboard</div>
                     <div class="input-group">
                         <span class="input-group-addon">
@@ -89,7 +91,7 @@ if(isset($_POST['signin'])) {
                     </div>
                     <div class="row">
                         <div class="col-xs-12">
-                            <button class="btn btn-block bg-pink waves-effect" name="signin" id="signin" type="submit">SIGN IN</button>
+                            <button class="btn btn-block bg-pink waves-effect" name="signIn" id="signIn" type="submit">SIGN IN</button>
                         </div>
                     </div>
                 </form>
