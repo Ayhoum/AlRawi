@@ -37,6 +37,7 @@ ob_start();
 	<!-- Document Title
 	============================================= -->
 	<title>Al Rawi Theorie | Home</title>
+    <link rel="icon" href="images/1.png" type="image/x-icon">
 
 	<style>
 		.form-control.error { border: 2px solid red; }

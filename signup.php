@@ -3,6 +3,7 @@ include 'scripts/db_connection.php';
 
 if(isset($_POST['signup_submit'])) {
     //Sender
+    $situation = "NEW";
 
     $userName       = $_POST['signup_username'];
     $userName       = mysqli_real_escape_string($mysqli,$userName);
@@ -21,6 +22,7 @@ if(isset($_POST['signup_submit'])) {
 
     $city        = $_POST['signup_city'];
     $city         = mysqli_real_escape_string($mysqli,$city);
+    $date = date('Y-m-d');
 
     $encCode = ['cost' => 11];
     $encPassword = password_hash($password, PASSWORD_BCRYPT, $encCode);
@@ -32,13 +34,18 @@ if(isset($_POST['signup_submit'])) {
                                 NAME,
                                 PHONE,
                                 CITY,
-                                BD) ";
+                                BD,
+                                SITUATION,
+                                REG_DATE) ";
         $query .= "VALUES('{$userName}',
                     '{$encPassword}',
                     '{$fullName}',
                     '{$phone}',
                     '{$city}',
-                    '{$birthday}') ";
+                    '{$birthday}',
+                    '{$situation}',
+                    '{$date}') ";
+
         $insertUser =  mysqli_query($mysqli, $query);
         if (!$insertUser) {
             die("Failed!" . mysqli_error($mysqli));
@@ -103,7 +110,6 @@ if(isset($_POST['signup_submit'])) {
                         <div class="panel-body travel-date-group" style="padding: 40px;">
                             <form id="signup-form" name="signup-form" class="nobottommargin" action="#" method="post">
                                 <h3 class="text-center">قم بإنشاء حساب جديد</h3>
-
                                 <div class="col_full">
                                     <label for="login-form-username">البريد الإلكتروني (اسم المستخدم):</label>
                                     <input type="email" id="signup_username" name="signup_username" value="" class="form-control not-dark" />
