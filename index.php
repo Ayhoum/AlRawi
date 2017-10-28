@@ -112,7 +112,7 @@ ob_start();
 									<!--<li><a href="#"><img src="images/icons/flags/german.png" alt="German"> DE</a></li>-->
 								<!--</ul>-->
 							<!--</li>-->
-                            <?php if(!isset($_SESSION['username'])) { ?>
+                            <?php if(!isset($_SESSION['role'])) { ?>
 							<li><a href="#" class="button-red" style="color:#fff;">حسابي</a>
 								<ul>
 								<li><a href="login.php" dir="rtl">تسجيل الدخول <i class="icon-line2-login"></i></a></li>
@@ -123,7 +123,11 @@ ob_start();
                             else { ?>
                                 <li><a href="#" class="button-red" style="color:#fff;"><?php echo $_SESSION['username']; ?></a>
                                     <ul>
+                                        <?php if($_SESSION['role'] == "MainAdmin"){?>
+                                        <li><a href="adminAlrawi/dashboard.php" dir="rtl">لوحة التحكم <i class="icon-wrench"></i></a></li>
+                                        <?php } else { ?>
                                         <li><a href="profile.php" dir="rtl">الملف الشخصي <i class="icon-user"></i></a></li>
+                                        <?php } ?>
                                         <li><a href="logout.php" dir="rtl">تسجيل الخروج <i class="icon-line2-logout"></i></a></li>
                                     </ul>
                                 </li>
