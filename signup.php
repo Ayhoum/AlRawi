@@ -10,6 +10,9 @@ if(isset($_POST['signup_submit'])) {
     $password   = $_POST['signup_password'];
     $password   = mysqli_real_escape_string($mysqli,$password);
 
+    $fullName   = $_POST['signup_fullname'];
+    $fullName   = mysqli_real_escape_string($mysqli,$fullName);
+
     $phone         = $_POST['signup_phone'];
     $phone         = mysqli_real_escape_string($mysqli,$phone);
 
@@ -26,11 +29,13 @@ if(isset($_POST['signup_submit'])) {
     if(!empty($userName) && !empty($password) && !empty($phone) && !empty($birthday) && !empty($city)){
         $query = "INSERT INTO Users(EMAIL,
                                 PASSWORD,
+                                NAME,
                                 PHONE,
                                 CITY,
                                 BD) ";
         $query .= "VALUES('{$userName}',
                     '{$encPassword}',
+                    '{$fullName}',
                     '{$phone}',
                     '{$city}',
                     '{$birthday}') ";
@@ -38,7 +43,7 @@ if(isset($_POST['signup_submit'])) {
         if (!$insertUser) {
             die("Failed!" . mysqli_error($mysqli));
         }else{
-            header("Location: https://www.google.com");
+            header("Location: index.php");
         }
     }
 }
@@ -113,11 +118,15 @@ if(isset($_POST['signup_submit'])) {
                                     <label for="login-form-password">إعادة كلمة المرور:</label>
                                     <input type="password" id="signup_password_re" name="signup_password_re" value="" class="form-control not-dark" />
                                 </div>
-
-                                <div class="col_full">
+                                <div class="col_half">
+                                    <label for="login-form-username">الاسم الكامل:</label>
+                                    <input type="text" id="signup_fullname" name="signup_fullname" value="" class="form-control not-dark" />
+                                </div>
+                                <div class="col_half col_last">
                                     <label for="login-form-username">رقم الهاتف:</label>
                                     <input type="text" id="signup_phone" name="signup_phone" value="" class="form-control not-dark" />
                                 </div>
+
                                 <div class="col_half">
                                     <label for="login-form-username">تاريخ الميلاد:</label>
                                     <input type="text" value="" id="signup_birthday" name="signup_birthday" class="sm-form-control past-enabled" placeholder="DD/MM/YYYY">

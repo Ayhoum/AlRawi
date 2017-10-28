@@ -1,4 +1,6 @@
 <?php
+session_start();
+ob_start();
 include 'scripts/db_connection.php';
 if(isset($_POST['login_submit'])) {
 
@@ -13,12 +15,14 @@ if(isset($_POST['login_submit'])) {
     if (mysqli_num_rows($getHashAgent) == 1) {
         while ($row = mysqli_fetch_assoc($getHashAgent)) {
             $hash = $row['PASSWORD'];
+            $name = $row['NAME'];
             if ((password_verify($pass, $hash))) {
                 $role = "user";
                 $_SESSION['email'] = $email;
+                $_SESSION['username'] = $name;
                 $_SESSION['role'] = $role;
                 echo 'Welcome Agent';
-                header("Location: https://www.google.com");
+                header("Location: index.php");
             } else {
                 echo "Enter a Valid Data !! ";
             }
