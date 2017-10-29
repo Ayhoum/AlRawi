@@ -4,6 +4,8 @@ include 'scripts/db_connection.php';
 if(isset($_POST['signup_submit'])) {
     //Sender
     $situation = "NEW";
+    $free_exam_id = 1;
+    $spent = 0;
 
     $userName       = $_POST['signup_username'];
     $userName       = mysqli_real_escape_string($mysqli,$userName);
@@ -27,7 +29,6 @@ if(isset($_POST['signup_submit'])) {
     $encCode = ['cost' => 11];
     $encPassword = password_hash($password, PASSWORD_BCRYPT, $encCode);
 
-
     if(!empty($userName) && !empty($password) && !empty($phone) && !empty($birthday) && !empty($city)){
         $query = "INSERT INTO Users(EMAIL,
                                 PASSWORD,
@@ -35,16 +36,20 @@ if(isset($_POST['signup_submit'])) {
                                 PHONE,
                                 CITY,
                                 BD,
+                                SPENT,
                                 SITUATION,
-                                REG_DATE) ";
+                                REG_DATE,
+                                Free_Exam_ID) ";
         $query .= "VALUES('{$userName}',
                     '{$encPassword}',
                     '{$fullName}',
                     '{$phone}',
                     '{$city}',
                     '{$birthday}',
+                    '{$spent}',
                     '{$situation}',
-                    '{$date}') ";
+                    '{$date}',
+                    '{$free_exam_id}') ";
 
         $insertUser =  mysqli_query($mysqli, $query);
         if (!$insertUser) {
