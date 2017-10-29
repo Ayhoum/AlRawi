@@ -313,32 +313,33 @@ if($_SESSION['role'] != "MainAdmin"){
                             <form id="wizard_with_validation" method="POST">
                                 <h3>Edit Free Exam (Response Questions)  - 25 Q</h3>
                                 <fieldset>
+<!--###############################################################################################################################################-->
                                     <h3>Question 1.</h3>
                                     <div class="form-group form-float">
                                         <div class="form-line">
-                                            <input type="text" class="form-control" name="question" required>
+                                            <input type="text" class="form-control" name="question-1" required>
                                             <label class="form-label">Question*</label>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <input type="radio" name="action" id="break" value="Break" class="with-gap">
+                                        <input type="radio" name="action-1" id="break" value="Break" class="with-gap">
                                         <label for="break">Break</label>
 
-                                        <input type="radio" name="action" id="release" value="Release" class="with-gap">
+                                        <input type="radio" name="action-1" id="release" value="Release" class="with-gap">
                                         <label for="release" class="m-l-20">Release Gas!</label>
 
-                                        <input type="radio" name="action" id="nothing" value="Nothing" class="with-gap">
+                                        <input type="radio" name="action-1" id="nothing" value="Nothing" class="with-gap">
                                         <label for="nothing" class="m-l-20">Nothing</label>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="image">Question Image</label>
-                                        <input type="file" name="image">
+                                        <input type="file" name="image-1">
                                     </div>
 
                                     <div class="form-group">
-                                        <select name="type" class="form-control show-tick">
+                                        <select name="type-1" class="form-control show-tick">
                                             <option value="">-- Please select --</option>
                                             <option value="choose">Choose</option>
                                             <option value="int">Entery</option>
@@ -346,32 +347,33 @@ if($_SESSION['role'] != "MainAdmin"){
                                         </select>
                                     </div>
                                     <hr class="bg-indigo" style="height: 2px;"/>
+<!--###############################################################################################################################################-->
                                     <h3>Question 2.</h3>
                                     <div class="form-group form-float">
                                         <div class="form-line">
-                                            <input type="text" class="form-control" name="question" required>
+                                            <input type="text" class="form-control" name="question-2" required>
                                             <label class="form-label">Question*</label>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <input type="radio" name="action" id="break" value="Break" class="with-gap">
+                                        <input type="radio" name="action-2" id="break" value="Break" class="with-gap">
                                         <label for="break">Break</label>
 
-                                        <input type="radio" name="action" id="release" value="Release" class="with-gap">
+                                        <input type="radio" name="action-2" id="release" value="Release" class="with-gap">
                                         <label for="release" class="m-l-20">Release Gas!</label>
 
-                                        <input type="radio" name="action" id="nothing" value="Nothing" class="with-gap">
+                                        <input type="radio" name="action-2" id="nothing" value="Nothing" class="with-gap">
                                         <label for="nothing" class="m-l-20">Nothing</label>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="image">Question Image</label>
-                                        <input type="file" name="image">
+                                        <input type="file" name="image-2">
                                     </div>
 
                                     <div class="form-group">
-                                        <select name="type" class="form-control show-tick">
+                                        <select name="type-2" class="form-control show-tick">
                                             <option value="">-- Please select --</option>
                                             <option value="choose">Choose</option>
                                             <option value="int">Entery</option>
@@ -379,32 +381,33 @@ if($_SESSION['role'] != "MainAdmin"){
                                         </select>
                                     </div>
                                     <hr class="bg-indigo" style="height: 2px;"/>
+<!--###############################################################################################################################################-->
                                     <h3>Question 3.</h3>
                                     <div class="form-group form-float">
                                         <div class="form-line">
-                                            <input type="text" class="form-control" name="question" required>
+                                            <input type="text" class="form-control" name="question-3" required>
                                             <label class="form-label">Question*</label>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <input type="radio" name="action" id="break" value="Break" class="with-gap">
+                                        <input type="radio" name="action-3" id="break" value="Break" class="with-gap">
                                         <label for="break">Break</label>
 
-                                        <input type="radio" name="action" id="release" value="Release" class="with-gap">
+                                        <input type="radio" name="action-3" id="release" value="Release" class="with-gap">
                                         <label for="release" class="m-l-20">Release Gas!</label>
 
-                                        <input type="radio" name="action" id="nothing" value="Nothing" class="with-gap">
+                                        <input type="radio" name="action-3" id="nothing" value="Nothing" class="with-gap">
                                         <label for="nothing" class="m-l-20">Nothing</label>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="image">Question Image</label>
-                                        <input type="file" name="image">
+                                        <input type="file" name="image-3">
                                     </div>
 
                                     <div class="form-group">
-                                        <select name="type" class="form-control show-tick">
+                                        <select name="type-3" class="form-control show-tick">
                                             <option value="">-- Please select --</option>
                                             <option value="choose">Choose</option>
                                             <option value="int">Entery</option>
@@ -412,32 +415,33 @@ if($_SESSION['role'] != "MainAdmin"){
                                         </select>
                                     </div>
                                     <hr class="bg-indigo" style="height: 2px;"/>
+<!--###############################################################################################################################################-->
                                     <h3>Question 4.</h3>
                                     <div class="form-group form-float">
                                         <div class="form-line">
-                                            <input type="text" class="form-control" name="question" required>
+                                            <input type="text" class="form-control" name="question-4" required>
                                             <label class="form-label">Question*</label>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <input type="radio" name="action" id="break" value="Break" class="with-gap">
+                                        <input type="radio" name="action-4" id="break" value="Break" class="with-gap">
                                         <label for="break">Break</label>
 
-                                        <input type="radio" name="action" id="release" value="Release" class="with-gap">
+                                        <input type="radio" name="action-4" id="release" value="Release" class="with-gap">
                                         <label for="release" class="m-l-20">Release Gas!</label>
 
-                                        <input type="radio" name="action" id="nothing" value="Nothing" class="with-gap">
+                                        <input type="radio" name="action-4" id="nothing" value="Nothing" class="with-gap">
                                         <label for="nothing" class="m-l-20">Nothing</label>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="image">Question Image</label>
-                                        <input type="file" name="image">
+                                        <input type="file" name="image-4">
                                     </div>
 
                                     <div class="form-group">
-                                        <select name="type" class="form-control show-tick">
+                                        <select name="type-4" class="form-control show-tick">
                                             <option value="">-- Please select --</option>
                                             <option value="choose">Choose</option>
                                             <option value="int">Entery</option>
@@ -445,32 +449,33 @@ if($_SESSION['role'] != "MainAdmin"){
                                         </select>
                                     </div>
                                     <hr class="bg-indigo" style="height: 2px;"/>
+<!--###############################################################################################################################################-->
                                     <h3>Question 5.</h3>
                                     <div class="form-group form-float">
                                         <div class="form-line">
-                                            <input type="text" class="form-control" name="question" required>
+                                            <input type="text" class="form-control" name="question-5" required>
                                             <label class="form-label">Question*</label>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <input type="radio" name="action" id="break" value="Break" class="with-gap">
+                                        <input type="radio" name="action-5" id="break" value="Break" class="with-gap">
                                         <label for="break">Break</label>
 
-                                        <input type="radio" name="action" id="release" value="Release" class="with-gap">
+                                        <input type="radio" name="action-5" id="release" value="Release" class="with-gap">
                                         <label for="release" class="m-l-20">Release Gas!</label>
 
-                                        <input type="radio" name="action" id="nothing" value="Nothing" class="with-gap">
+                                        <input type="radio" name="action-5" id="nothing" value="Nothing" class="with-gap">
                                         <label for="nothing" class="m-l-20">Nothing</label>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="image">Question Image</label>
-                                        <input type="file" name="image">
+                                        <input type="file" name="image-5">
                                     </div>
 
                                     <div class="form-group">
-                                        <select name="type" class="form-control show-tick">
+                                        <select name="type-5" class="form-control show-tick">
                                             <option value="">-- Please select --</option>
                                             <option value="choose">Choose</option>
                                             <option value="int">Entery</option>
@@ -478,32 +483,33 @@ if($_SESSION['role'] != "MainAdmin"){
                                         </select>
                                     </div>
                                     <hr class="bg-indigo" style="height: 2px;"/>
+<!--###############################################################################################################################################-->
                                     <h3>Question 6.</h3>
                                     <div class="form-group form-float">
                                         <div class="form-line">
-                                            <input type="text" class="form-control" name="question" required>
+                                            <input type="text" class="form-control" name="question-6" required>
                                             <label class="form-label">Question*</label>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <input type="radio" name="action" id="break" value="Break" class="with-gap">
+                                        <input type="radio" name="action-6" id="break" value="Break" class="with-gap">
                                         <label for="break">Break</label>
 
-                                        <input type="radio" name="action" id="release" value="Release" class="with-gap">
+                                        <input type="radio" name="action-6" id="release" value="Release" class="with-gap">
                                         <label for="release" class="m-l-20">Release Gas!</label>
 
-                                        <input type="radio" name="action" id="nothing" value="Nothing" class="with-gap">
+                                        <input type="radio" name="action-6" id="nothing" value="Nothing" class="with-gap">
                                         <label for="nothing" class="m-l-20">Nothing</label>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="image">Question Image</label>
-                                        <input type="file" name="image">
+                                        <input type="file" name="image-6">
                                     </div>
 
                                     <div class="form-group">
-                                        <select name="type" class="form-control show-tick">
+                                        <select name="type-6" class="form-control show-tick">
                                             <option value="">-- Please select --</option>
                                             <option value="choose">Choose</option>
                                             <option value="int">Entery</option>
@@ -511,32 +517,33 @@ if($_SESSION['role'] != "MainAdmin"){
                                         </select>
                                     </div>
                                     <hr class="bg-indigo" style="height: 2px;"/>
+<!--###############################################################################################################################################-->
                                     <h3>Question 7.</h3>
                                     <div class="form-group form-float">
                                         <div class="form-line">
-                                            <input type="text" class="form-control" name="question" required>
+                                            <input type="text" class="form-control" name="question-7" required>
                                             <label class="form-label">Question*</label>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <input type="radio" name="action" id="break" value="Break" class="with-gap">
+                                        <input type="radio" name="action-7" id="break" value="Break" class="with-gap">
                                         <label for="break">Break</label>
 
-                                        <input type="radio" name="action" id="release" value="Release" class="with-gap">
+                                        <input type="radio" name="action-7" id="release" value="Release" class="with-gap">
                                         <label for="release" class="m-l-20">Release Gas!</label>
 
-                                        <input type="radio" name="action" id="nothing" value="Nothing" class="with-gap">
+                                        <input type="radio" name="action-7" id="nothing" value="Nothing" class="with-gap">
                                         <label for="nothing" class="m-l-20">Nothing</label>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="image">Question Image</label>
-                                        <input type="file" name="image">
+                                        <input type="file" name="image-7">
                                     </div>
 
                                     <div class="form-group">
-                                        <select name="type" class="form-control show-tick">
+                                        <select name="type-7" class="form-control show-tick">
                                             <option value="">-- Please select --</option>
                                             <option value="choose">Choose</option>
                                             <option value="int">Entery</option>
@@ -544,32 +551,33 @@ if($_SESSION['role'] != "MainAdmin"){
                                         </select>
                                     </div>
                                     <hr class="bg-indigo" style="height: 2px;"/>
+<!--###############################################################################################################################################-->
                                     <h3>Question 8.</h3>
                                     <div class="form-group form-float">
                                         <div class="form-line">
-                                            <input type="text" class="form-control" name="question" required>
+                                            <input type="text" class="form-control" name="question-8" required>
                                             <label class="form-label">Question*</label>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <input type="radio" name="action" id="break" value="Break" class="with-gap">
+                                        <input type="radio" name="action-8" id="break" value="Break" class="with-gap">
                                         <label for="break">Break</label>
 
-                                        <input type="radio" name="action" id="release" value="Release" class="with-gap">
+                                        <input type="radio" name="action-8" id="release" value="Release" class="with-gap">
                                         <label for="release" class="m-l-20">Release Gas!</label>
 
-                                        <input type="radio" name="action" id="nothing" value="Nothing" class="with-gap">
+                                        <input type="radio" name="action-8" id="nothing" value="Nothing" class="with-gap">
                                         <label for="nothing" class="m-l-20">Nothing</label>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="image">Question Image</label>
-                                        <input type="file" name="image">
+                                        <input type="file" name="image-8">
                                     </div>
 
                                     <div class="form-group">
-                                        <select name="type" class="form-control show-tick">
+                                        <select name="type-8" class="form-control show-tick">
                                             <option value="">-- Please select --</option>
                                             <option value="choose">Choose</option>
                                             <option value="int">Entery</option>
@@ -577,32 +585,33 @@ if($_SESSION['role'] != "MainAdmin"){
                                         </select>
                                     </div>
                                     <hr class="bg-indigo" style="height: 2px;"/>
+<!--###############################################################################################################################################-->
                                     <h3>Question 9.</h3>
                                     <div class="form-group form-float">
                                         <div class="form-line">
-                                            <input type="text" class="form-control" name="question" required>
+                                            <input type="text" class="form-control" name="question-9" required>
                                             <label class="form-label">Question*</label>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <input type="radio" name="action" id="break" value="Break" class="with-gap">
+                                        <input type="radio" name="action-9" id="break" value="Break" class="with-gap">
                                         <label for="break">Break</label>
 
-                                        <input type="radio" name="action" id="release" value="Release" class="with-gap">
+                                        <input type="radio" name="action-9" id="release" value="Release" class="with-gap">
                                         <label for="release" class="m-l-20">Release Gas!</label>
 
-                                        <input type="radio" name="action" id="nothing" value="Nothing" class="with-gap">
+                                        <input type="radio" name="action-9" id="nothing" value="Nothing" class="with-gap">
                                         <label for="nothing" class="m-l-20">Nothing</label>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="image">Question Image</label>
-                                        <input type="file" name="image">
+                                        <input type="file" name="image-9">
                                     </div>
 
                                     <div class="form-group">
-                                        <select name="type" class="form-control show-tick">
+                                        <select name="type-9" class="form-control show-tick">
                                             <option value="">-- Please select --</option>
                                             <option value="choose">Choose</option>
                                             <option value="int">Entery</option>
@@ -610,32 +619,33 @@ if($_SESSION['role'] != "MainAdmin"){
                                         </select>
                                     </div>
                                     <hr class="bg-indigo" style="height: 2px;"/>
+<!--###############################################################################################################################################-->
                                     <h3>Question 10.</h3>
                                     <div class="form-group form-float">
                                         <div class="form-line">
-                                            <input type="text" class="form-control" name="question" required>
+                                            <input type="text" class="form-control" name="question-10" required>
                                             <label class="form-label">Question*</label>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <input type="radio" name="action" id="break" value="Break" class="with-gap">
+                                        <input type="radio" name="action-10" id="break" value="Break" class="with-gap">
                                         <label for="break">Break</label>
 
-                                        <input type="radio" name="action" id="release" value="Release" class="with-gap">
+                                        <input type="radio" name="action-10" id="release" value="Release" class="with-gap">
                                         <label for="release" class="m-l-20">Release Gas!</label>
 
-                                        <input type="radio" name="action" id="nothing" value="Nothing" class="with-gap">
+                                        <input type="radio" name="action-10" id="nothing" value="Nothing" class="with-gap">
                                         <label for="nothing" class="m-l-20">Nothing</label>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="image">Question Image</label>
-                                        <input type="file" name="image">
+                                        <input type="file" name="image-10">
                                     </div>
 
                                     <div class="form-group">
-                                        <select name="type" class="form-control show-tick">
+                                        <select name="type-10" class="form-control show-tick">
                                             <option value="">-- Please select --</option>
                                             <option value="choose">Choose</option>
                                             <option value="int">Entery</option>
@@ -643,32 +653,33 @@ if($_SESSION['role'] != "MainAdmin"){
                                         </select>
                                     </div>
                                     <hr class="bg-indigo" style="height: 2px;"/>
+<!--###############################################################################################################################################-->
                                     <h3>Question 11.</h3>
                                     <div class="form-group form-float">
                                         <div class="form-line">
-                                            <input type="text" class="form-control" name="question" required>
+                                            <input type="text" class="form-control" name="question-11" required>
                                             <label class="form-label">Question*</label>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <input type="radio" name="action" id="break" value="Break" class="with-gap">
+                                        <input type="radio" name="action-11" id="break" value="Break" class="with-gap">
                                         <label for="break">Break</label>
 
-                                        <input type="radio" name="action" id="release" value="Release" class="with-gap">
+                                        <input type="radio" name="action-11" id="release" value="Release" class="with-gap">
                                         <label for="release" class="m-l-20">Release Gas!</label>
 
-                                        <input type="radio" name="action" id="nothing" value="Nothing" class="with-gap">
+                                        <input type="radio" name="action-11" id="nothing" value="Nothing" class="with-gap">
                                         <label for="nothing" class="m-l-20">Nothing</label>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="image">Question Image</label>
-                                        <input type="file" name="image">
+                                        <input type="file" name="image-11">
                                     </div>
 
                                     <div class="form-group">
-                                        <select name="type" class="form-control show-tick">
+                                        <select name="type-11" class="form-control show-tick">
                                             <option value="">-- Please select --</option>
                                             <option value="choose">Choose</option>
                                             <option value="int">Entery</option>
@@ -676,32 +687,33 @@ if($_SESSION['role'] != "MainAdmin"){
                                         </select>
                                     </div>
                                     <hr class="bg-indigo" style="height: 2px;"/>
+<!--###############################################################################################################################################-->
                                     <h3>Question 12.</h3>
                                     <div class="form-group form-float">
                                         <div class="form-line">
-                                            <input type="text" class="form-control" name="question" required>
+                                            <input type="text" class="form-control" name="question-12" required>
                                             <label class="form-label">Question*</label>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <input type="radio" name="action" id="break" value="Break" class="with-gap">
+                                        <input type="radio" name="action-12" id="break" value="Break" class="with-gap">
                                         <label for="break">Break</label>
 
-                                        <input type="radio" name="action" id="release" value="Release" class="with-gap">
+                                        <input type="radio" name="action-12" id="release" value="Release" class="with-gap">
                                         <label for="release" class="m-l-20">Release Gas!</label>
 
-                                        <input type="radio" name="action" id="nothing" value="Nothing" class="with-gap">
+                                        <input type="radio" name="action-12" id="nothing" value="Nothing" class="with-gap">
                                         <label for="nothing" class="m-l-20">Nothing</label>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="image">Question Image</label>
-                                        <input type="file" name="image">
+                                        <input type="file" name="image-12">
                                     </div>
 
                                     <div class="form-group">
-                                        <select name="type" class="form-control show-tick">
+                                        <select name="type-12" class="form-control show-tick">
                                             <option value="">-- Please select --</option>
                                             <option value="choose">Choose</option>
                                             <option value="int">Entery</option>
@@ -709,32 +721,33 @@ if($_SESSION['role'] != "MainAdmin"){
                                         </select>
                                     </div>
                                     <hr class="bg-indigo" style="height: 2px;"/>
+<!--###############################################################################################################################################-->
                                     <h3>Question 13.</h3>
                                     <div class="form-group form-float">
                                         <div class="form-line">
-                                            <input type="text" class="form-control" name="question" required>
+                                            <input type="text" class="form-control" name="question-13" required>
                                             <label class="form-label">Question*</label>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <input type="radio" name="action" id="break" value="Break" class="with-gap">
+                                        <input type="radio" name="action-13" id="break" value="Break" class="with-gap">
                                         <label for="break">Break</label>
 
-                                        <input type="radio" name="action" id="release" value="Release" class="with-gap">
+                                        <input type="radio" name="action-13" id="release" value="Release" class="with-gap">
                                         <label for="release" class="m-l-20">Release Gas!</label>
 
-                                        <input type="radio" name="action" id="nothing" value="Nothing" class="with-gap">
+                                        <input type="radio" name="action-13" id="nothing" value="Nothing" class="with-gap">
                                         <label for="nothing" class="m-l-20">Nothing</label>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="image">Question Image</label>
-                                        <input type="file" name="image">
+                                        <input type="file" name="image-13">
                                     </div>
 
                                     <div class="form-group">
-                                        <select name="type" class="form-control show-tick">
+                                        <select name="type-13" class="form-control show-tick">
                                             <option value="">-- Please select --</option>
                                             <option value="choose">Choose</option>
                                             <option value="int">Entery</option>
@@ -742,32 +755,33 @@ if($_SESSION['role'] != "MainAdmin"){
                                         </select>
                                     </div>
                                     <hr class="bg-indigo" style="height: 2px;"/>
+<!--###############################################################################################################################################-->
                                     <h3>Question 14.</h3>
                                     <div class="form-group form-float">
                                         <div class="form-line">
-                                            <input type="text" class="form-control" name="question" required>
+                                            <input type="text" class="form-control" name="question-14" required>
                                             <label class="form-label">Question*</label>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <input type="radio" name="action" id="break" value="Break" class="with-gap">
+                                        <input type="radio" name="action-14" id="break" value="Break" class="with-gap">
                                         <label for="break">Break</label>
 
-                                        <input type="radio" name="action" id="release" value="Release" class="with-gap">
+                                        <input type="radio" name="action-14" id="release" value="Release" class="with-gap">
                                         <label for="release" class="m-l-20">Release Gas!</label>
 
-                                        <input type="radio" name="action" id="nothing" value="Nothing" class="with-gap">
+                                        <input type="radio" name="action-14" id="nothing" value="Nothing" class="with-gap">
                                         <label for="nothing" class="m-l-20">Nothing</label>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="image">Question Image</label>
-                                        <input type="file" name="image">
+                                        <input type="file" name="image-14">
                                     </div>
 
                                     <div class="form-group">
-                                        <select name="type" class="form-control show-tick">
+                                        <select name="type-14" class="form-control show-tick">
                                             <option value="">-- Please select --</option>
                                             <option value="choose">Choose</option>
                                             <option value="int">Entery</option>
@@ -775,32 +789,33 @@ if($_SESSION['role'] != "MainAdmin"){
                                         </select>
                                     </div>
                                     <hr class="bg-indigo" style="height: 2px;"/>
+<!--###############################################################################################################################################-->
                                     <h3>Question 15.</h3>
                                     <div class="form-group form-float">
                                         <div class="form-line">
-                                            <input type="text" class="form-control" name="question" required>
+                                            <input type="text" class="form-control" name="question-15" required>
                                             <label class="form-label">Question*</label>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <input type="radio" name="action" id="break" value="Break" class="with-gap">
+                                        <input type="radio" name="action-15" id="break" value="Break" class="with-gap">
                                         <label for="break">Break</label>
 
-                                        <input type="radio" name="action" id="release" value="Release" class="with-gap">
+                                        <input type="radio" name="action-15" id="release" value="Release" class="with-gap">
                                         <label for="release" class="m-l-20">Release Gas!</label>
 
-                                        <input type="radio" name="action" id="nothing" value="Nothing" class="with-gap">
+                                        <input type="radio" name="action-15" id="nothing" value="Nothing" class="with-gap">
                                         <label for="nothing" class="m-l-20">Nothing</label>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="image">Question Image</label>
-                                        <input type="file" name="image">
+                                        <input type="file" name="image-15">
                                     </div>
 
                                     <div class="form-group">
-                                        <select name="type" class="form-control show-tick">
+                                        <select name="type-15" class="form-control show-tick">
                                             <option value="">-- Please select --</option>
                                             <option value="choose">Choose</option>
                                             <option value="int">Entery</option>
@@ -808,32 +823,33 @@ if($_SESSION['role'] != "MainAdmin"){
                                         </select>
                                     </div>
                                     <hr class="bg-indigo" style="height: 2px;"/>
+<!--###############################################################################################################################################-->
                                     <h3>Question 16.</h3>
                                     <div class="form-group form-float">
                                         <div class="form-line">
-                                            <input type="text" class="form-control" name="question" required>
+                                            <input type="text" class="form-control" name="question-16" required>
                                             <label class="form-label">Question*</label>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <input type="radio" name="action" id="break" value="Break" class="with-gap">
+                                        <input type="radio" name="action-16" id="break" value="Break" class="with-gap">
                                         <label for="break">Break</label>
 
-                                        <input type="radio" name="action" id="release" value="Release" class="with-gap">
+                                        <input type="radio" name="action-16" id="release" value="Release" class="with-gap">
                                         <label for="release" class="m-l-20">Release Gas!</label>
 
-                                        <input type="radio" name="action" id="nothing" value="Nothing" class="with-gap">
+                                        <input type="radio" name="action-16" id="nothing" value="Nothing" class="with-gap">
                                         <label for="nothing" class="m-l-20">Nothing</label>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="image">Question Image</label>
-                                        <input type="file" name="image">
+                                        <input type="file" name="image-16">
                                     </div>
 
                                     <div class="form-group">
-                                        <select name="type" class="form-control show-tick">
+                                        <select name="type-16" class="form-control show-tick">
                                             <option value="">-- Please select --</option>
                                             <option value="choose">Choose</option>
                                             <option value="int">Entery</option>
@@ -841,32 +857,33 @@ if($_SESSION['role'] != "MainAdmin"){
                                         </select>
                                     </div>
                                     <hr class="bg-indigo" style="height: 2px;"/>
+<!--###############################################################################################################################################-->
                                     <h3>Question 17.</h3>
                                     <div class="form-group form-float">
                                         <div class="form-line">
-                                            <input type="text" class="form-control" name="question" required>
+                                            <input type="text" class="form-control" name="question-17" required>
                                             <label class="form-label">Question*</label>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <input type="radio" name="action" id="break" value="Break" class="with-gap">
+                                        <input type="radio" name="action-17" id="break" value="Break" class="with-gap">
                                         <label for="break">Break</label>
 
-                                        <input type="radio" name="action" id="release" value="Release" class="with-gap">
+                                        <input type="radio" name="action-17" id="release" value="Release" class="with-gap">
                                         <label for="release" class="m-l-20">Release Gas!</label>
 
-                                        <input type="radio" name="action" id="nothing" value="Nothing" class="with-gap">
+                                        <input type="radio" name="action-17" id="nothing" value="Nothing" class="with-gap">
                                         <label for="nothing" class="m-l-20">Nothing</label>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="image">Question Image</label>
-                                        <input type="file" name="image">
+                                        <input type="file" name="image-17">
                                     </div>
 
                                     <div class="form-group">
-                                        <select name="type" class="form-control show-tick">
+                                        <select name="type-17" class="form-control show-tick">
                                             <option value="">-- Please select --</option>
                                             <option value="choose">Choose</option>
                                             <option value="int">Entery</option>
@@ -874,32 +891,33 @@ if($_SESSION['role'] != "MainAdmin"){
                                         </select>
                                     </div>
                                     <hr class="bg-indigo" style="height: 2px;"/>
+<!--###############################################################################################################################################-->
                                     <h3>Question 18.</h3>
                                     <div class="form-group form-float">
                                         <div class="form-line">
-                                            <input type="text" class="form-control" name="question" required>
+                                            <input type="text" class="form-control" name="question-18" required>
                                             <label class="form-label">Question*</label>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <input type="radio" name="action" id="break" value="Break" class="with-gap">
+                                        <input type="radio" name="action-18" id="break" value="Break" class="with-gap">
                                         <label for="break">Break</label>
 
-                                        <input type="radio" name="action" id="release" value="Release" class="with-gap">
+                                        <input type="radio" name="action-18" id="release" value="Release" class="with-gap">
                                         <label for="release" class="m-l-20">Release Gas!</label>
 
-                                        <input type="radio" name="action" id="nothing" value="Nothing" class="with-gap">
+                                        <input type="radio" name="action-18" id="nothing" value="Nothing" class="with-gap">
                                         <label for="nothing" class="m-l-20">Nothing</label>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="image">Question Image</label>
-                                        <input type="file" name="image">
+                                        <input type="file" name="image-18">
                                     </div>
 
                                     <div class="form-group">
-                                        <select name="type" class="form-control show-tick">
+                                        <select name="type-18" class="form-control show-tick">
                                             <option value="">-- Please select --</option>
                                             <option value="choose">Choose</option>
                                             <option value="int">Entery</option>
@@ -907,32 +925,33 @@ if($_SESSION['role'] != "MainAdmin"){
                                         </select>
                                     </div>
                                     <hr class="bg-indigo" style="height: 2px;"/>
+<!--###############################################################################################################################################-->
                                     <h3>Question 19.</h3>
                                     <div class="form-group form-float">
                                         <div class="form-line">
-                                            <input type="text" class="form-control" name="question" required>
+                                            <input type="text" class="form-control" name="question-19" required>
                                             <label class="form-label">Question*</label>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <input type="radio" name="action" id="break" value="Break" class="with-gap">
+                                        <input type="radio" name="action-19" id="break" value="Break" class="with-gap">
                                         <label for="break">Break</label>
 
-                                        <input type="radio" name="action" id="release" value="Release" class="with-gap">
+                                        <input type="radio" name="action-19" id="release" value="Release" class="with-gap">
                                         <label for="release" class="m-l-20">Release Gas!</label>
 
-                                        <input type="radio" name="action" id="nothing" value="Nothing" class="with-gap">
+                                        <input type="radio" name="action-19" id="nothing" value="Nothing" class="with-gap">
                                         <label for="nothing" class="m-l-20">Nothing</label>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="image">Question Image</label>
-                                        <input type="file" name="image">
+                                        <input type="file" name="image-19">
                                     </div>
 
                                     <div class="form-group">
-                                        <select name="type" class="form-control show-tick">
+                                        <select name="type-19" class="form-control show-tick">
                                             <option value="">-- Please select --</option>
                                             <option value="choose">Choose</option>
                                             <option value="int">Entery</option>
@@ -940,32 +959,33 @@ if($_SESSION['role'] != "MainAdmin"){
                                         </select>
                                     </div>
                                     <hr class="bg-indigo" style="height: 2px;"/>
+<!--###############################################################################################################################################-->
                                     <h3>Question 20.</h3>
                                     <div class="form-group form-float">
                                         <div class="form-line">
-                                            <input type="text" class="form-control" name="question" required>
+                                            <input type="text" class="form-control" name="question-20" required>
                                             <label class="form-label">Question*</label>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <input type="radio" name="action" id="break" value="Break" class="with-gap">
+                                        <input type="radio" name="action-20" id="break" value="Break" class="with-gap">
                                         <label for="break">Break</label>
 
-                                        <input type="radio" name="action" id="release" value="Release" class="with-gap">
+                                        <input type="radio" name="action-20" id="release" value="Release" class="with-gap">
                                         <label for="release" class="m-l-20">Release Gas!</label>
 
-                                        <input type="radio" name="action" id="nothing" value="Nothing" class="with-gap">
+                                        <input type="radio" name="action-20" id="nothing" value="Nothing" class="with-gap">
                                         <label for="nothing" class="m-l-20">Nothing</label>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="image">Question Image</label>
-                                        <input type="file" name="image">
+                                        <input type="file" name="image-20">
                                     </div>
 
                                     <div class="form-group">
-                                        <select name="type" class="form-control show-tick">
+                                        <select name="type-20" class="form-control show-tick">
                                             <option value="">-- Please select --</option>
                                             <option value="choose">Choose</option>
                                             <option value="int">Entery</option>
@@ -973,32 +993,33 @@ if($_SESSION['role'] != "MainAdmin"){
                                         </select>
                                     </div>
                                     <hr class="bg-indigo" style="height: 2px;"/>
+<!--###############################################################################################################################################-->
                                     <h3>Question 21.</h3>
                                     <div class="form-group form-float">
                                         <div class="form-line">
-                                            <input type="text" class="form-control" name="question" required>
+                                            <input type="text" class="form-control" name="question-21" required>
                                             <label class="form-label">Question*</label>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <input type="radio" name="action" id="break" value="Break" class="with-gap">
+                                        <input type="radio" name="action-21" id="break" value="Break" class="with-gap">
                                         <label for="break">Break</label>
 
-                                        <input type="radio" name="action" id="release" value="Release" class="with-gap">
+                                        <input type="radio" name="action-21" id="release" value="Release" class="with-gap">
                                         <label for="release" class="m-l-20">Release Gas!</label>
 
-                                        <input type="radio" name="action" id="nothing" value="Nothing" class="with-gap">
+                                        <input type="radio" name="action-21" id="nothing" value="Nothing" class="with-gap">
                                         <label for="nothing" class="m-l-20">Nothing</label>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="image">Question Image</label>
-                                        <input type="file" name="image">
+                                        <input type="file" name="image-21">
                                     </div>
 
                                     <div class="form-group">
-                                        <select name="type" class="form-control show-tick">
+                                        <select name="type-21" class="form-control show-tick">
                                             <option value="">-- Please select --</option>
                                             <option value="choose">Choose</option>
                                             <option value="int">Entery</option>
@@ -1006,32 +1027,33 @@ if($_SESSION['role'] != "MainAdmin"){
                                         </select>
                                     </div>
                                     <hr class="bg-indigo" style="height: 2px;"/>
+<!--###############################################################################################################################################-->
                                     <h3>Question 22.</h3>
                                     <div class="form-group form-float">
                                         <div class="form-line">
-                                            <input type="text" class="form-control" name="question" required>
+                                            <input type="text" class="form-control" name="question-22" required>
                                             <label class="form-label">Question*</label>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <input type="radio" name="action" id="break" value="Break" class="with-gap">
+                                        <input type="radio" name="action-22" id="break" value="Break" class="with-gap">
                                         <label for="break">Break</label>
 
-                                        <input type="radio" name="action" id="release" value="Release" class="with-gap">
+                                        <input type="radio" name="action-22" id="release" value="Release" class="with-gap">
                                         <label for="release" class="m-l-20">Release Gas!</label>
 
-                                        <input type="radio" name="action" id="nothing" value="Nothing" class="with-gap">
+                                        <input type="radio" name="action-22" id="nothing" value="Nothing" class="with-gap">
                                         <label for="nothing" class="m-l-20">Nothing</label>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="image">Question Image</label>
-                                        <input type="file" name="image">
+                                        <input type="file" name="image-22">
                                     </div>
 
                                     <div class="form-group">
-                                        <select name="type" class="form-control show-tick">
+                                        <select name="type-22" class="form-control show-tick">
                                             <option value="">-- Please select --</option>
                                             <option value="choose">Choose</option>
                                             <option value="int">Entery</option>
@@ -1039,32 +1061,33 @@ if($_SESSION['role'] != "MainAdmin"){
                                         </select>
                                     </div>
                                     <hr class="bg-indigo" style="height: 2px;"/>
+<!--###############################################################################################################################################-->
                                     <h3>Question 23.</h3>
                                     <div class="form-group form-float">
                                         <div class="form-line">
-                                            <input type="text" class="form-control" name="question" required>
+                                            <input type="text" class="form-control" name="question-23" required>
                                             <label class="form-label">Question*</label>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <input type="radio" name="action" id="break" value="Break" class="with-gap">
+                                        <input type="radio" name="action-23" id="break" value="Break" class="with-gap">
                                         <label for="break">Break</label>
 
-                                        <input type="radio" name="action" id="release" value="Release" class="with-gap">
+                                        <input type="radio" name="action-23" id="release" value="Release" class="with-gap">
                                         <label for="release" class="m-l-20">Release Gas!</label>
 
-                                        <input type="radio" name="action" id="nothing" value="Nothing" class="with-gap">
+                                        <input type="radio" name="action-23" id="nothing" value="Nothing" class="with-gap">
                                         <label for="nothing" class="m-l-20">Nothing</label>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="image">Question Image</label>
-                                        <input type="file" name="image">
+                                        <input type="file" name="image-23">
                                     </div>
 
                                     <div class="form-group">
-                                        <select name="type" class="form-control show-tick">
+                                        <select name="type-23" class="form-control show-tick">
                                             <option value="">-- Please select --</option>
                                             <option value="choose">Choose</option>
                                             <option value="int">Entery</option>
@@ -1072,32 +1095,33 @@ if($_SESSION['role'] != "MainAdmin"){
                                         </select>
                                     </div>
                                     <hr class="bg-indigo" style="height: 2px;"/>
+<!--###############################################################################################################################################-->
                                     <h3>Question 24.</h3>
                                     <div class="form-group form-float">
                                         <div class="form-line">
-                                            <input type="text" class="form-control" name="question" required>
+                                            <input type="text" class="form-control" name="question-24" required>
                                             <label class="form-label">Question*</label>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <input type="radio" name="action" id="break" value="Break" class="with-gap">
+                                        <input type="radio" name="action-24" id="break" value="Break" class="with-gap">
                                         <label for="break">Break</label>
 
-                                        <input type="radio" name="action" id="release" value="Release" class="with-gap">
+                                        <input type="radio" name="action-24" id="release" value="Release" class="with-gap">
                                         <label for="release" class="m-l-20">Release Gas!</label>
 
-                                        <input type="radio" name="action" id="nothing" value="Nothing" class="with-gap">
+                                        <input type="radio" name="action-24" id="nothing" value="Nothing" class="with-gap">
                                         <label for="nothing" class="m-l-20">Nothing</label>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="image">Question Image</label>
-                                        <input type="file" name="image">
+                                        <input type="file" name="image-24">
                                     </div>
 
                                     <div class="form-group">
-                                        <select name="type" class="form-control show-tick">
+                                        <select name="type-24" class="form-control show-tick">
                                             <option value="">-- Please select --</option>
                                             <option value="choose">Choose</option>
                                             <option value="int">Entery</option>
@@ -1105,32 +1129,33 @@ if($_SESSION['role'] != "MainAdmin"){
                                         </select>
                                     </div>
                                     <hr class="bg-indigo" style="height: 2px;"/>
+<!--###############################################################################################################################################-->
                                     <h3>Question 25.</h3>
                                     <div class="form-group form-float">
                                         <div class="form-line">
-                                            <input type="text" class="form-control" name="question" required>
+                                            <input type="text" class="form-control" name="question-25" required>
                                             <label class="form-label">Question*</label>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <input type="radio" name="action" id="break" value="Break" class="with-gap">
+                                        <input type="radio" name="action-25" id="break" value="Break" class="with-gap">
                                         <label for="break">Break</label>
 
-                                        <input type="radio" name="action" id="release" value="Release" class="with-gap">
+                                        <input type="radio" name="action-25" id="release" value="Release" class="with-gap">
                                         <label for="release" class="m-l-20">Release Gas!</label>
 
-                                        <input type="radio" name="action" id="nothing" value="Nothing" class="with-gap">
+                                        <input type="radio" name="action-25" id="nothing" value="Nothing" class="with-gap">
                                         <label for="nothing" class="m-l-20">Nothing</label>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="image">Question Image</label>
-                                        <input type="file" name="image">
+                                        <input type="file" name="image-25">
                                     </div>
 
                                     <div class="form-group">
-                                        <select name="type" class="form-control show-tick">
+                                        <select name="type-25" class="form-control show-tick">
                                             <option value="">-- Please select --</option>
                                             <option value="choose">Choose</option>
                                             <option value="int">Entery</option>
@@ -1139,6 +1164,11 @@ if($_SESSION['role'] != "MainAdmin"){
                                     </div>
 
                                 </fieldset>
+
+<!--###############################################################################################################################################-->
+<!--###############################################################################################################################################-->
+<!--###############################################################################################################################################-->
+<!--###############################################################################################################################################-->
 
                                 <h3>Edit Free Exam (First Part Questions)  - 20 Q</h3>
                                 <fieldset>
@@ -1174,6 +1204,11 @@ if($_SESSION['role'] != "MainAdmin"){
                                         <div class="help-info">The warning step will show up if age is less than 18</div>
                                     </div>
                                 </fieldset>
+
+<!--###############################################################################################################################################-->
+<!--###############################################################################################################################################-->
+<!--###############################################################################################################################################-->
+<!--###############################################################################################################################################-->
 
                                 <h3>Edit Free Exam (Second Part Questions) - 20 Q</h3>
                                 <fieldset>
