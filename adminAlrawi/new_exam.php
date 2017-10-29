@@ -1138,9 +1138,6 @@ if($_SESSION['role'] != "MainAdmin"){
                                         </select>
                                     </div>
 
-
-
-
                                 </fieldset>
 
                                 <h3>Edit Free Exam (First Part Questions)  - 20 Q</h3>
