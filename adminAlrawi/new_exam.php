@@ -302,11 +302,7 @@ if($_SESSION['role'] != "MainAdmin"){
 
 <section class="content">
     <div class="container-fluid">
-        <div class="block-header">
-            <h2>Edit Free Exam (Response Questions)  - 25 Q</h2>
-        </div>
-
-            <!-- Advanced Form Example With Validation -->
+        <!-- Advanced Form Example With Validation -->
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
@@ -315,7 +311,7 @@ if($_SESSION['role'] != "MainAdmin"){
 <!--                        </div>-->
                         <div class="body">
                             <form id="wizard_with_validation" method="POST">
-                                <h3>Account Information</h3>
+                                <h3>Edit Free Exam (Response Questions)  - 25 Q</h3>
                                 <fieldset>
                                     <h3>Question 1.</h3>
                                     <div class="form-group form-float">
@@ -1147,7 +1143,7 @@ if($_SESSION['role'] != "MainAdmin"){
 
                                 </fieldset>
 
-                                <h3>Profile Information</h3>
+                                <h3>Edit Free Exam (First Part Questions)  - 20 Q</h3>
                                 <fieldset>
                                     <div class="form-group form-float">
                                         <div class="form-line">
@@ -1182,7 +1178,7 @@ if($_SESSION['role'] != "MainAdmin"){
                                     </div>
                                 </fieldset>
 
-                                <h3>Terms & Conditions - Finish</h3>
+                                <h3>Edit Free Exam (Second Part Questions) - 20 Q</h3>
                                 <fieldset>
                                     <input id="acceptTerms-2" name="acceptTerms" type="checkbox" required>
                                     <label for="acceptTerms-2">I agree with the Terms and Conditions.</label>
