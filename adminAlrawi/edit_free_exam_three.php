@@ -291,9 +291,9 @@ if($_SESSION['role'] != "MainAdmin"){
 
 <section class="content">
     <div class="container-fluid">
-<!--        <div class="block-header">-->
-<!--           <h2>Free Exams</h2>-->
-<!--        </div>-->
+        <div class="block-header">
+            <h2>Edit Free Exam (Second Part Questions) - 20 Q</h2>
+        </div>
 
         <div class="row clearfix">
 
@@ -301,29 +301,27 @@ if($_SESSION['role'] != "MainAdmin"){
 
 
 
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <div class="info-box">
-                <a href="edit_free_exam_one.php">
-                <div class="icon bg-indigo">
-                    <i class="material-icons">looks_one</i>
-                </div>
-                </a>
-                <a href="edit_free_exam_two.php">
-                <div class="icon bg-blue">
-                    <i class="material-icons">looks_two</i>
-                </div>
-                </a>
-                <a href="edit_free_exam_three.php">
-                    <div class="icon bg-cyan">
-                        <i class="material-icons">looks_3</i>
+
+
+            <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="body">
+                            3
+                        </div>
                     </div>
-                </a>
-                <div class="content">
-                    <div class="text">Free Exam</div>
-                    <div class="number count-to" data-from="0" data-to="125" data-speed="1000" data-fresh-interval="20">No. 1</div>
                 </div>
             </div>
-            </div>
+
+
+
+
+
+
+
+
+
+        </div>
 
     </div>
 </section>

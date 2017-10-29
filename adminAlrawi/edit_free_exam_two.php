@@ -292,10 +292,32 @@ if($_SESSION['role'] != "MainAdmin"){
 <section class="content">
     <div class="container-fluid">
         <div class="block-header">
-            <h2>Free Exams</h2>
+            <h2>Edit Free Exam (First Part Questions)  - 20 Q</h2>
         </div>
 
         <div class="row clearfix">
+
+
+
+
+
+
+
+            <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="body">
+                            2
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
 
 
 
