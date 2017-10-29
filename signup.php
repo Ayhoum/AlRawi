@@ -4,7 +4,6 @@ include 'scripts/db_connection.php';
 if(isset($_POST['signup_submit'])) {
     //Sender
     $situation = "NEW";
-    $free_exam_id = 1;
     $spent = 0;
 
     $userName       = $_POST['signup_username'];
@@ -38,8 +37,7 @@ if(isset($_POST['signup_submit'])) {
                                 BD,
                                 SPENT,
                                 SITUATION,
-                                REG_DATE,
-                                Free_Exam_ID) ";
+                                REG_DATE) ";
         $query .= "VALUES('{$userName}',
                     '{$encPassword}',
                     '{$fullName}',
@@ -48,8 +46,7 @@ if(isset($_POST['signup_submit'])) {
                     '{$birthday}',
                     '{$spent}',
                     '{$situation}',
-                    '{$date}',
-                    '{$free_exam_id}') ";
+                    '{$date}') ";
 
         $insertUser =  mysqli_query($mysqli, $query);
         if (!$insertUser) {
