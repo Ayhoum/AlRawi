@@ -110,7 +110,7 @@ if($_SESSION['role'] != "MainAdmin"){
                     </a>
                 </li>
                 <li class="header">USERS ISSUES</li>
-                <li class="active">
+                <li>
                     <a href="users.php">
                         <i class="material-icons">person</i>
                         <span>Users</span>
@@ -122,9 +122,7 @@ if($_SESSION['role'] != "MainAdmin"){
                         <i class="material-icons">create_new_folder</i>
                         <span>New Exam</span>
                     </a>
-                </li>
-                <li>
-                    <a href="exams.php">
+                    <a href="exams.php" class="active">
                         <i class="material-icons">library_books</i>
                         <span>Manage Exams</span>
                     </a>
@@ -293,19 +291,6 @@ if($_SESSION['role'] != "MainAdmin"){
 
         <div class="row clearfix">
 
-            <?php
-
-            if(isset($_GET['source'])){
-                $source = $_GET['source'];
-            }else{
-                $source = '';
-            }
-            switch($source){
-                default:
-                    include "view_users.php";
-                    break;
-            }
-            ?>
 
         </div>
 

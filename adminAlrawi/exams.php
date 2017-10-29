@@ -2,7 +2,7 @@
 session_start();
 ob_start();
 include '../scripts/db_connection.php';
-$date = date('Y-m-d');
+//$date = date('Y-m-d');
 if($_SESSION['role'] != "MainAdmin"){
     header("Location: ../index.php");
 }
@@ -30,9 +30,6 @@ if($_SESSION['role'] != "MainAdmin"){
 
     <!-- Animation Css -->
     <link href="plugins/animate-css/animate.css" rel="stylesheet" />
-
-    <!-- JQuery DataTable Css -->
-    <link href="plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
 
     <!-- Custom Css -->
     <link href="css/style.css" rel="stylesheet">
@@ -110,7 +107,7 @@ if($_SESSION['role'] != "MainAdmin"){
                     </a>
                 </li>
                 <li class="header">USERS ISSUES</li>
-                <li class="active">
+                <li>
                     <a href="users.php">
                         <i class="material-icons">person</i>
                         <span>Users</span>
@@ -123,7 +120,7 @@ if($_SESSION['role'] != "MainAdmin"){
                         <span>New Exam</span>
                     </a>
                 </li>
-                <li>
+                <li class="active">
                     <a href="exams.php">
                         <i class="material-icons">library_books</i>
                         <span>Manage Exams</span>
@@ -293,19 +290,7 @@ if($_SESSION['role'] != "MainAdmin"){
 
         <div class="row clearfix">
 
-            <?php
 
-            if(isset($_GET['source'])){
-                $source = $_GET['source'];
-            }else{
-                $source = '';
-            }
-            switch($source){
-                default:
-                    include "view_users.php";
-                    break;
-            }
-            ?>
 
         </div>
 
@@ -338,16 +323,5 @@ if($_SESSION['role'] != "MainAdmin"){
 <!-- Demo Js -->
 <script src="js/demo.js"></script>
 
-<!-- Jquery DataTable Plugin Js -->
-<script src="plugins/jquery-datatable/jquery.dataTables.js"></script>
-<script src="plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
-<script src="plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js"></script>
-<script src="plugins/jquery-datatable/extensions/export/buttons.flash.min.js"></script>
-<script src="plugins/jquery-datatable/extensions/export/jszip.min.js"></script>
-<script src="plugins/jquery-datatable/extensions/export/pdfmake.min.js"></script>
-<script src="plugins/jquery-datatable/extensions/export/vfs_fonts.js"></script>
-<script src="plugins/jquery-datatable/extensions/export/buttons.html5.min.js"></script>
-<script src="plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script>
-</body>
 
 </html>
