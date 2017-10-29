@@ -151,7 +151,7 @@ while($row = mysqli_fetch_assoc($select_users)){
                     </li>
                     <li class="header">EXAMS ISSUES</li>
                     <li>
-                        <a href="users.php">
+                        <a href="new_exam.php">
                             <i class="material-icons">create_new_folder</i>
                             <span>New Exam</span>
                         </a>
