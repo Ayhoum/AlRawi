@@ -1,7 +1,7 @@
 <?php
 session_start();
 ob_start();
-require_once 'test.php';
+//require_once 'test.php';
 //$date = date('Y-m-d');
 if($_SESSION['role'] != "MainAdmin"){
     header("Location: ../index.php");
@@ -309,7 +309,7 @@ if($_SESSION['role'] != "MainAdmin"){
 <!--                            <h2>ADVANCED FORM EXAMPLE WITH VALIDATION</h2>-->
 <!--                        </div>-->
                         <div class="body">
-                            <form id="wizard_with_validation" method="POST" action="new_exam.php">
+                            <form id="wizard_with_validation" method="POST" action="test.php">
                                 <h3>Edit Free Exam (Response Questions)  - 25 Q</h3>
                                 <fieldset>
 <!--###############################################################################################################################################-->
@@ -333,7 +333,7 @@ if($_SESSION['role'] != "MainAdmin"){
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="image">Question Image</label>
+                                        <label for="image-1">Question Image</label>
                                         <input type="file" name="image-1">
                                     </div>
                                     <hr class="bg-indigo" style="height: 2px;"/>
@@ -358,7 +358,7 @@ if($_SESSION['role'] != "MainAdmin"){
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="image">Question Image</label>
+                                        <label for="image-2">Question Image</label>
                                         <input type="file" name="image-2">
                                     </div>
                                     <hr class="bg-indigo" style="height: 2px;"/>
@@ -383,7 +383,7 @@ if($_SESSION['role'] != "MainAdmin"){
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="image">Question Image</label>
+                                        <label for="image-3">Question Image</label>
                                         <input type="file" name="image-3">
                                     </div>
                                     <hr class="bg-indigo" style="height: 2px;"/>
@@ -408,7 +408,7 @@ if($_SESSION['role'] != "MainAdmin"){
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="image">Question Image</label>
+                                        <label for="image-4">Question Image</label>
                                         <input type="file" name="image-4">
                                     </div>
                                     <hr class="bg-indigo" style="height: 2px;"/>
@@ -433,7 +433,7 @@ if($_SESSION['role'] != "MainAdmin"){
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="image">Question Image</label>
+                                        <label for="image-5">Question Image</label>
                                         <input type="file" name="image-5">
                                     </div>
                                     <hr class="bg-indigo" style="height: 2px;"/>
@@ -458,7 +458,7 @@ if($_SESSION['role'] != "MainAdmin"){
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="image">Question Image</label>
+                                        <label for="image-6">Question Image</label>
                                         <input type="file" name="image-6">
                                     </div>
                                     <hr class="bg-indigo" style="height: 2px;"/>
@@ -483,7 +483,7 @@ if($_SESSION['role'] != "MainAdmin"){
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="image">Question Image</label>
+                                        <label for="image-7">Question Image</label>
                                         <input type="file" name="image-7">
                                     </div>
                                     <hr class="bg-indigo" style="height: 2px;"/>
@@ -508,7 +508,7 @@ if($_SESSION['role'] != "MainAdmin"){
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="image">Question Image</label>
+                                        <label for="image-8">Question Image</label>
                                         <input type="file" name="image-8">
                                     </div>
                                     <hr class="bg-indigo" style="height: 2px;"/>
@@ -533,7 +533,7 @@ if($_SESSION['role'] != "MainAdmin"){
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="image">Question Image</label>
+                                        <label for="image-9">Question Image</label>
                                         <input type="file" name="image-9">
                                     </div>
                                     <hr class="bg-indigo" style="height: 2px;"/>
@@ -558,7 +558,7 @@ if($_SESSION['role'] != "MainAdmin"){
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="image">Question Image</label>
+                                        <label for="image-10">Question Image</label>
                                         <input type="file" name="image-10">
                                     </div>
                                     <hr class="bg-indigo" style="height: 2px;"/>
@@ -583,7 +583,7 @@ if($_SESSION['role'] != "MainAdmin"){
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="image">Question Image</label>
+                                        <label for="image-11">Question Image</label>
                                         <input type="file" name="image-11">
                                     </div>
                                     <hr class="bg-indigo" style="height: 2px;"/>
@@ -608,7 +608,7 @@ if($_SESSION['role'] != "MainAdmin"){
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="image">Question Image</label>
+                                        <label for="image-12">Question Image</label>
                                         <input type="file" name="image-12">
                                     </div>
                                     <hr class="bg-indigo" style="height: 2px;"/>
@@ -633,7 +633,7 @@ if($_SESSION['role'] != "MainAdmin"){
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="image">Question Image</label>
+                                        <label for="image-13">Question Image</label>
                                         <input type="file" name="image-13">
                                     </div>
                                     <hr class="bg-indigo" style="height: 2px;"/>
@@ -658,7 +658,7 @@ if($_SESSION['role'] != "MainAdmin"){
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="image">Question Image</label>
+                                        <label for="image-14">Question Image</label>
                                         <input type="file" name="image-14">
                                     </div>
                                     <hr class="bg-indigo" style="height: 2px;"/>
@@ -683,7 +683,7 @@ if($_SESSION['role'] != "MainAdmin"){
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="image">Question Image</label>
+                                        <label for="image-15">Question Image</label>
                                         <input type="file" name="image-15">
                                     </div>
                                     <hr class="bg-indigo" style="height: 2px;"/>
@@ -708,7 +708,7 @@ if($_SESSION['role'] != "MainAdmin"){
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="image">Question Image</label>
+                                        <label for="image-16">Question Image</label>
                                         <input type="file" name="image-16">
                                     </div>
                                     <hr class="bg-indigo" style="height: 2px;"/>
@@ -733,7 +733,7 @@ if($_SESSION['role'] != "MainAdmin"){
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="image">Question Image</label>
+                                        <label for="image-17">Question Image</label>
                                         <input type="file" name="image-17">
                                     </div
                                     <hr class="bg-indigo" style="height: 2px;"/>
@@ -758,7 +758,7 @@ if($_SESSION['role'] != "MainAdmin"){
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="image">Question Image</label>
+                                        <label for="image-18">Question Image</label>
                                         <input type="file" name="image-18">
                                     </div>
                                     <hr class="bg-indigo" style="height: 2px;"/>
@@ -783,7 +783,7 @@ if($_SESSION['role'] != "MainAdmin"){
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="image">Question Image</label>
+                                        <label for="image-19">Question Image</label>
                                         <input type="file" name="image-19">
                                     </div>
                                     <hr class="bg-indigo" style="height: 2px;"/>
@@ -808,7 +808,7 @@ if($_SESSION['role'] != "MainAdmin"){
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="image">Question Image</label>
+                                        <label for="image-20">Question Image</label>
                                         <input type="file" name="image-20">
                                     </div>
                                     <hr class="bg-indigo" style="height: 2px;"/>
@@ -833,7 +833,7 @@ if($_SESSION['role'] != "MainAdmin"){
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="image">Question Image</label>
+                                        <label for="image-21">Question Image</label>
                                         <input type="file" name="image-21">
                                     </div>
                                     <hr class="bg-indigo" style="height: 2px;"/>
@@ -858,7 +858,7 @@ if($_SESSION['role'] != "MainAdmin"){
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="image">Question Image</label>
+                                        <label for="image-22">Question Image</label>
                                         <input type="file" name="image-22">
                                     </div>
                                     <hr class="bg-indigo" style="height: 2px;"/>
@@ -883,7 +883,7 @@ if($_SESSION['role'] != "MainAdmin"){
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="image">Question Image</label>
+                                        <label for="image-23">Question Image</label>
                                         <input type="file" name="image-23">
                                     </div>
                                     <hr class="bg-indigo" style="height: 2px;"/>
@@ -908,7 +908,7 @@ if($_SESSION['role'] != "MainAdmin"){
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="image">Question Image</label>
+                                        <label for="image-24">Question Image</label>
                                         <input type="file" name="image-24">
                                     </div>
                                     <hr class="bg-indigo" style="height: 2px;"/>
@@ -933,7 +933,7 @@ if($_SESSION['role'] != "MainAdmin"){
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="image">Question Image</label>
+                                        <label for="image-25">Question Image</label>
                                         <input type="file" name="image-25">
                                     </div>
                                 </fieldset>
