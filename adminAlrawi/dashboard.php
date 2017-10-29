@@ -501,7 +501,7 @@ while($row = mysqli_fetch_assoc($select_users)){
                 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-12">
                     <div class="card">
                         <div class="header">
-                            <h2>BROWSER USAGE</h2>
+                            <h2>Users Stats</h2>
                         </div>
                         <div class="body">
                             <div id="donut_students" class="dashboard-donut-chart"></div>
