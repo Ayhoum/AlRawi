@@ -1,7 +1,7 @@
 <?php
 session_start();
 ob_start();
-include '../scripts/db_connection.php';
+include 'test.php';
 //$date = date('Y-m-d');
 if($_SESSION['role'] != "MainAdmin"){
     header("Location: ../index.php");
