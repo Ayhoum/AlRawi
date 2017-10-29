@@ -1,7 +1,7 @@
 <?php
 session_start();
 ob_start();
-include 'test.php';
+require_once 'test.php';
 //$date = date('Y-m-d');
 if($_SESSION['role'] != "MainAdmin"){
     header("Location: ../index.php");
@@ -309,7 +309,7 @@ if($_SESSION['role'] != "MainAdmin"){
 <!--                            <h2>ADVANCED FORM EXAMPLE WITH VALIDATION</h2>-->
 <!--                        </div>-->
                         <div class="body">
-                            <form id="wizard_with_validation" method="POST">
+                            <form id="wizard_with_validation" method="POST" action="new_exam.php">
                                 <h3>Edit Free Exam (Response Questions)  - 25 Q</h3>
                                 <fieldset>
 <!--###############################################################################################################################################-->
@@ -987,6 +987,7 @@ if($_SESSION['role'] != "MainAdmin"){
                                 <fieldset>
                                     <input id="acceptTerms-2" name="acceptTerms" type="checkbox">
                                     <label for="acceptTerms-2">I agree with the Terms and Conditions.</label>
+                                    <input type="submit" name="submit" value="submit">
                                 </fieldset>
                             </form>
                         </div>
