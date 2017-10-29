@@ -2,7 +2,7 @@
 session_start();
 ob_start();
 include '../scripts/db_connection.php';
-$date = date('Y-m-d');
+//$date = date('Y-m-d');
 if($_SESSION['role'] != "MainAdmin"){
     header("Location: ../index.php");
 }
@@ -30,9 +30,6 @@ if($_SESSION['role'] != "MainAdmin"){
 
     <!-- Animation Css -->
     <link href="plugins/animate-css/animate.css" rel="stylesheet" />
-
-    <!-- JQuery DataTable Css -->
-    <link href="plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
 
     <!-- Custom Css -->
     <link href="css/style.css" rel="stylesheet">
@@ -117,7 +114,7 @@ if($_SESSION['role'] != "MainAdmin"){
                     </a>
                 </li>
                 <li class="header">FREE EXAMS ISSUES</li>
-                <li>
+                <li class="active">
                     <a href="free_exams.php">
                         <i class="material-icons">library_books</i>
                         <span>Manage Free Exams</span>
@@ -130,7 +127,7 @@ if($_SESSION['role'] != "MainAdmin"){
                         <span>New Exam</span>
                     </a>
                 </li>
-                <li class="active">
+                <li>
                     <a href="exams.php">
                         <i class="material-icons">library_books</i>
                         <span>Manage Exams</span>
@@ -294,12 +291,27 @@ if($_SESSION['role'] != "MainAdmin"){
 
 <section class="content">
     <div class="container-fluid">
-        <div class="block-header">
-            <h2>USERS</h2>
-        </div>
+<!--        <div class="block-header">-->
+<!--           <h2>Free Exams</h2>-->
+<!--        </div>-->
 
         <div class="row clearfix">
 
+            <div class="row">
+                <a href="edit_free_exam.php">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="info-box-4 hover-zoom-effect">
+                        <div class="icon">
+                            <i class="material-icons col-indigo">flag</i>
+                        </div>
+                        <div class="content">
+                            <div class="text">ID</div>
+                            <div class="number">Free Exam 1</div>
+                        </div>
+                    </div>
+                </div>
+                </a>
+            </div>
 
         </div>
 
@@ -332,16 +344,5 @@ if($_SESSION['role'] != "MainAdmin"){
 <!-- Demo Js -->
 <script src="js/demo.js"></script>
 
-<!-- Jquery DataTable Plugin Js -->
-<script src="plugins/jquery-datatable/jquery.dataTables.js"></script>
-<script src="plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
-<script src="plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js"></script>
-<script src="plugins/jquery-datatable/extensions/export/buttons.flash.min.js"></script>
-<script src="plugins/jquery-datatable/extensions/export/jszip.min.js"></script>
-<script src="plugins/jquery-datatable/extensions/export/pdfmake.min.js"></script>
-<script src="plugins/jquery-datatable/extensions/export/vfs_fonts.js"></script>
-<script src="plugins/jquery-datatable/extensions/export/buttons.html5.min.js"></script>
-<script src="plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script>
-</body>
 
 </html>

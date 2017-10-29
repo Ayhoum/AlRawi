@@ -136,11 +136,24 @@ while($row = mysqli_fetch_assoc($select_users)){
                         <span>Users</span>
                     </a>
                 </li>
+                <li class="header">FREE EXAMS ISSUES</li>
+                <li>
+                    <a href="free_exams.php">
+                        <i class="material-icons">library_books</i>
+                        <span>Manage Free Exams</span>
+                    </a>
+                </li>
                 <li class="header">EXAMS ISSUES</li>
                 <li>
                     <a href="users.php">
                         <i class="material-icons">create_new_folder</i>
                         <span>New Exam</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="exams.php">
+                        <i class="material-icons">library_books</i>
+                        <span>Manage Exams</span>
                     </a>
                 </li>
             </ul>

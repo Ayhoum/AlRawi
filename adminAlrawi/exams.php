@@ -113,6 +113,13 @@ if($_SESSION['role'] != "MainAdmin"){
                         <span>Users</span>
                     </a>
                 </li>
+                <li class="header">FREE EXAMS ISSUES</li>
+                <li>
+                    <a href="free_exams.php">
+                        <i class="material-icons">library_books</i>
+                        <span>Manage Free Exams</span>
+                    </a>
+                </li>
                 <li class="header">EXAMS ISSUES</li>
                 <li>
                     <a href="users.php">
