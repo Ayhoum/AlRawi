@@ -27,10 +27,11 @@ while($row = mysqli_fetch_assoc($select_users)){
         $todayUsers++;
     }
     $totalUsers = $countNew + $countSucceeded + $countTraining ;
-
+if($totalUsers != 0){
     $newPer = ($countNew / $totalUsers) * 100;
     $trainingPer = ($countTraining / $totalUsers) * 100;
     $succeededPer = ($countSucceeded / $totalUsers) * 100;
+}
 }
 ?>
 <!DOCTYPE html>
