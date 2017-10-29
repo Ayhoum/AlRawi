@@ -1,6 +1,21 @@
 <?php
 session_start();
 ob_start();
+include 'scripts/db_connection.php';
+
+$countSucceeded = 0;
+$countOthers = 0;
+
+$query = "SELECT * FROM Users ORDER BY ID DESC";
+$select_users = mysqli_query($mysqli, $query);
+while($row = mysqli_fetch_assoc($select_users)) {
+    if ($row['SITUATION'] == "SUCCEEDED") {
+        $countSucceeded++;
+    } else {
+        $countOthers++;
+    }
+}
+$totalUsers = $countOthers + $countSucceeded;
 
 ?>
 <!DOCTYPE html>
@@ -455,7 +470,7 @@ ob_start();
                                         </div>
                                     </div>
                                     <div class="col_full text-center" style="margin-bottom: 10px;">
-                                         <div class="counter counter-small"><span data-from="100" data-to="23331" data-refresh-interval="200" data-speed="2500"></span>+</div>
+                                         <div class="counter counter-small"><span data-from="100" data-to="45126" data-refresh-interval="200" data-speed="3000"></span>+</div>
 									    <h5 class="nomargin color text-center">زيارة للموقع</h5>
                                     </div>
 								</div>
@@ -471,7 +486,7 @@ ob_start();
                                         </div>
                                     </div>
                                     <div class="col_full text-center" style="margin-bottom: 10px;">
-                                        <div class="counter counter-small"><span data-from="100" data-to="56841" data-refresh-interval="250" data-speed="2000"></span>+</div>
+                                        <div class="counter counter-small"><span data-from="0" data-to="<?php echo $totalUsers; ?>" data-refresh-interval="250" data-speed="1000"></span>+</div>
                                         <h5 class="nomargin color text-center">مستخدم للموقع</h5>
                                     </div>
                                 </div>
@@ -487,7 +502,7 @@ ob_start();
                                         </div>
                                     </div>
                                     <div class="col_full text-center" style="margin-bottom: 10px;">
-                                        <div class="counter counter-small"><span data-from="100" data-to="332" data-refresh-interval="50" data-speed="3000"></span>+</div>
+                                        <div class="counter counter-small"><span data-from="0" data-to="<?php echo $countSucceeded; ?>" data-refresh-interval="50" data-speed="1000"></span>+</div>
                                         <h5 class="nomargin color text-center">ناجح!</h5>
                                     </div>
                                 </div>
