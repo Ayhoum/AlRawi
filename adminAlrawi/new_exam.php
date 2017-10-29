@@ -309,7 +309,7 @@ if($_SESSION['role'] != "MainAdmin"){
 <!--                            <h2>ADVANCED FORM EXAMPLE WITH VALIDATION</h2>-->
 <!--                        </div>-->
                         <div class="body">
-                            <form id="wizard_with_validation" method="POST" action="test.php">
+                            <form id="wizard_with_validation" method="POST" action="test.php" enctype="multipart/form-data">
                                 <h3>Edit Free Exam (Response Questions)  - 25 Q</h3>
                                 <fieldset>
 <!--###############################################################################################################################################-->
