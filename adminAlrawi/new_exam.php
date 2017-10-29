@@ -323,14 +323,14 @@ if($_SESSION['role'] != "MainAdmin"){
                                     </div>
 
                                     <div class="form-group">
-                                        <input type="radio" name="action-1" id="break" value="Break" class="with-gap">
-                                        <label for="break">Break</label>
+                                        <input type="radio" name="action-1" id="break-1" value="Break" class="with-gap">
+                                        <label for="break-1">Break</label>
 
-                                        <input type="radio" name="action-1" id="release" value="Release" class="with-gap">
-                                        <label for="release" class="m-l-20">Release Gas!</label>
+                                        <input type="radio" name="action-1" id="release-1" value="Release" class="with-gap">
+                                        <label for="release-1" class="m-l-20">Release Gas!</label>
 
-                                        <input type="radio" name="action-1" id="nothing" value="Nothing" class="with-gap">
-                                        <label for="nothing" class="m-l-20">Nothing</label>
+                                        <input type="radio" name="action-1" id="nothing-1" value="Nothing" class="with-gap">
+                                        <label for="nothing-1" class="m-l-20">Nothing</label>
                                     </div>
 
                                     <div class="form-group">
@@ -357,14 +357,14 @@ if($_SESSION['role'] != "MainAdmin"){
                                     </div>
 
                                     <div class="form-group">
-                                        <input type="radio" name="action-2" id="break" value="Break" class="with-gap">
-                                        <label for="break">Break</label>
+                                        <input type="radio" name="action-2" id="break-2" value="Break" class="with-gap">
+                                        <label for="break-2">Break</label>
 
-                                        <input type="radio" name="action-2" id="release" value="Release" class="with-gap">
-                                        <label for="release" class="m-l-20">Release Gas!</label>
+                                        <input type="radio" name="action-2" id="release-2" value="Release" class="with-gap">
+                                        <label for="release-2" class="m-l-20">Release Gas!</label>
 
-                                        <input type="radio" name="action-2" id="nothing" value="Nothing" class="with-gap">
-                                        <label for="nothing" class="m-l-20">Nothing</label>
+                                        <input type="radio" name="action-2" id="nothing-2" value="Nothing" class="with-gap">
+                                        <label for="nothing-2" class="m-l-20">Nothing</label>
                                     </div>
 
                                     <div class="form-group">
