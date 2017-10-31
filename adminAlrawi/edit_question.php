@@ -2,8 +2,9 @@
 session_start();
 ob_start();
 include '../scripts/db_connection.php';
-if (isset($_GET['id'])) {
+if (isset($_GET['id']) && isset($_GET['qset'])) {
     $setId = $_GET['id'];
+    $qSet = $_GET['qset'];
 }
 $changed = 0;
 //require_once 'test.php';
@@ -18,17 +19,18 @@ if (isset($_POST['update'])) {
     $newQuestion = $_POST['question'];
     $newRight = $_POST['action'];
     $newPicture = $_FILES['image']['name'];
+    $newPicture = date('Ymd') . date('Hms') . ".jpg";
     $newPicture_tmp = $_FILES['image']['tmp_name'];
     move_uploaded_file($newPicture_tmp, "exam_images/exams/".$newPicture);
-
     if (!empty($newPicture)) {
         $query = "SELECT * FROM EXAM_QUESTION WHERE NUMBER = $setId";
         $select_ques = mysqli_query($mysqli, $query);
         while ($row = mysqli_fetch_assoc($select_ques)) {
             $oldPicture = $row['PICTURE'];
         }
-        if(file_exists("exam_images/exams".$oldPicture)){
+        if(file_exists("exam_images/exams/$oldPicture")){
             unlink("exam_images/exams/$oldPicture");
+            echo "<script>alert('Done');</script>";
         }
     }elseif (empty($newPicture)) {
         $query = "SELECT * FROM EXAM_QUESTION WHERE NUMBER = $setId";
@@ -37,9 +39,7 @@ if (isset($_POST['update'])) {
             $newPicture = $row['PICTURE'];
         }
     }
-
     $newType = $_POST['type'];
-
     if ($newRight == "Break") {
         $new2 = "Release";
         $new3 = "Nothing";
@@ -50,7 +50,6 @@ if (isset($_POST['update'])) {
         $new2 = "Break";
         $new3 = "Release";
     }
-
     $updateQuery = "UPDATE EXAM_QUESTION SET QUESTION = '{$newQuestion}', RIGHT_ANWSER = '{$newRight}', ANSWER_2 = '{$new2}', ANSWER_3 = '{$new3}', PICTURE = '{$newPicture}', TYPE = '{$newType}' WHERE NUMBER = '{$id}'";
     $update = mysqli_query($mysqli, $updateQuery);
     if (!$update) {
@@ -59,6 +58,71 @@ if (isset($_POST['update'])) {
         echo "Exam created";
     }
 }
+
+
+
+
+if (isset($_POST['submit'])) {
+    $id = $setId;
+    $question = $_POST['question'];
+    $right = $_POST['action'];
+    $picture = $_FILES['image']['name'];
+    $picture = date('Ymd') . date('Hms') . ".jpg";
+    $picture_tmp = $_FILES['image']['tmp_name'];
+    if (!empty($picture)) {
+        move_uploaded_file($picture_tmp, "exam_images/exams/".$picture);
+    }else{
+        $picture = "Empty";
+    }
+    $type = $_POST['type'];
+    if ($right == "Break") {
+        $new2 = "Release";
+        $new3 = "Nothing";
+        $new4 = " ";
+    } elseif ($right == "Release") {
+        $new2 = "Break";
+        $new3 = "Nothing";
+        $new4 = " ";
+    } else {
+        $new2 = "Break";
+        $new3 = "Release";
+        $new4 = " ";
+    }
+
+    $query = "INSERT INTO EXAM_QUESTION(NUMBER,
+                                QUESTION,
+                                RIGHT_ANWSER,
+                                ANSWER_2,
+                                ANSWER_3,
+                                ANSWER_4,
+                                PICTURE,
+                                TYPE,
+                                QUESTION_SET_ID) ";
+    $query .= "VALUES('{$setId}',
+                    '{$question}',
+                    '{$right}',
+                    '{$new2}',
+                    '{$new3}',
+                    '{$new4}',
+                    '{$picture}',
+                    '{$type}',
+                    '{$qSet}') ";
+
+    $insertQuestion =  mysqli_query($mysqli, $query);
+    if (!$insertQuestion) {
+        die("Failed to create a new exam" . mysqli_error($mysqli));
+    }
+    else {
+        header("Location: manage_one_exam.php?id=$qSet");
+    }
+}
+
+
+
+
+
+
+
 
 
 ?>
@@ -463,14 +527,6 @@ if (isset($_POST['update'])) {
                                             </div>
 
                                             <div class="form-group">
-                                                <!--                                                <div class="fileUpload btn btn-primary">-->
-                                                <!--                                                    <span>Upload</span><br/>-->
-                                                <!--                                                    <input type="file" name="image" id="image" class="upload"-->
-                                                <!--                                                           onchange="document.getElementById('view-image').src = window.URL.createObjectURL(this.files[0]);-->
-                                                <!--"/>-->
-                                                <!--                                                </div>-->
-                                                <!---->
-                                                <!--                                                <img src="#" id="view-image" alt="" width="250" height="250"/>-->
                                                 <div class="fileUpload btn btn-primary">
                                                     <span>Upload</span><br/>
                                                     <input type="file" name="image" id="imgInp" class="upload"/>
@@ -513,9 +569,9 @@ if (isset($_POST['update'])) {
 
 
                     <form id="form_validation" method="POST" novalidate="novalidate"
-                          action="edit_question.php?id=<?php echo $setId ?>"
+                          action="edit_question.php?id=<?php echo $setId ?>&qset=<?php echo $qSet ?>"
                           enctype="multipart/form-data">
-                        <h3>Insert Question</h3>
+                        <h3>Update Question</h3>
                         <fieldset>
                             <!--###############################################################################################################################################-->
                             <div class="row clearfix">
@@ -524,47 +580,55 @@ if (isset($_POST['update'])) {
                                         <h3>Question <?php echo $setId; ?></h3>
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" name="question-1" required>
+                                                <input type="text" class="form-control" name="question" required>
                                                 <label class="form-label">Question*</label>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <input type="radio" name="action-1" id="break-1" value="Break"
-                                                   class="with-gap">
-                                            <label for="break-1">Break</label>
+                                            <input type="radio" name="action" id="break" value="Break" class="with-gap">
+                                            <label for="break">Break</label>
 
-                                            <input type="radio" name="action-1" id="release-1" value="Release"
-                                                   class="with-gap">
-                                            <label for="release-1" class="m-l-20">Release Gas!</label>
+                                            <input type="radio" name="action" id="release" value="Release" class="with-gap">
+                                            <label for="release" class="m-l-20">Release Gas!</label>
 
-                                            <input type="radio" name="action-1" id="nothing-1" value="Nothing"
-                                                   class="with-gap">
-                                            <label for="nothing-1" class="m-l-20">Nothing</label>
+                                            <input type="radio" name="action" id="nothing" value="Nothing" class="with-gap">
+                                            <label for="nothing" class="m-l-20">Nothing</label>
                                         </div>
-                                        <!--                                        <label for="image-1">Question Image</label>-->
-                                        <!--                                        <input type="file" id="image-1" name="image-1">-->
-                                        <!--                                        <img id="preview-image-1" alt="your image" width="100" height="100" />-->
+
+                                        <div class="form-group">
+                                            <p>
+                                                <b>Question Type</b>
+                                            </p>
+                                            <select name="type" class="form-control show-tick">
+                                                <option disabled>---Select Type---</option>
+                                                <option value="response">Response</option>
+                                                <option value="choices">Choices</option>
+                                                <option value="advantage">Advantage</option>
+                                                <option value="number">Number</option>
+                                            </select>
+                                        </div>
+
                                         <div class="form-group">
                                             <div class="fileUpload btn btn-primary">
                                                 <span>Upload</span><br/>
-                                                <input type="file" name="image-1" id="image-1" class="upload"
-                                                       onchange="document.getElementById('preview-image-1').src = window.URL.createObjectURL(this.files[0])"/>
-                                                <img id="preview-image-1" alt=" " width="250" height="250"/>
+                                                <input type="file" name="image" id="imgInp" class="upload"/>
                                             </div>
-                                            <div onclick="$('#image-1').val('');document.getElementById('preview-image-1').src = null;"
-                                                 class="fileUpload btn btn-danger">
-                                                <a href="javascript:void(0);" style="text-decoration: none;color: #fff">
-                                                    <span>Clear</span>
-                                                </a>
+                                            <div class="align-center">
+                                                <span>The New Image</span><br/>
+                                                <img id="blah" width="250" height="250" src="#" alt="#"/>
+                                                <br/>
+                                                <br/>
+                                                <br/>
                                             </div>
                                         </div>
+                                        <input type="submit" class="btn btn-block btn-lg btn-success waves-effect"
+                                               name="submit" value="Submit Changes"/>
                                     </div>
-
                                 </div>
                             </div>
+
                         </fieldset>
-                        <input type="submit" class="btn btn-block btn-lg btn-success waves-effect"
-                               name="submit" value="Submit Changes"/>
+
                     </form>
 
                     <?php
