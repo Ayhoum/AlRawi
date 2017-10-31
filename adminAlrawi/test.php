@@ -3,25 +3,33 @@ include '../scripts/db_connection.php';
 ?>
 
 <?php
+if(isset($_GET['id'])){
+    $setId = $_GET['id'];
+}
+
 // insert questions into DB.
 $counter = 1;
-
-$last_id = "SELECT * FROM QUESTION_SET";
-$resultId = mysqli_query($mysqli, $last_id);
-$idRecorded = mysqli_num_rows($resultId);
-
+if (isset($_POST['submit'])) {
 
 while ($counter >= 1 && $counter <= 25) {
-    if (isset($_POST['submit'])) {
 
 //this one should be uploaded as an image directory
-if(isset($_FILES['image-'.$counter])){
-    $user_image = $_FILES['image-'.$counter]['name'];
-    $user_image_temp = $_FILES['image-'.$counter]['tmp_name'];
-    move_uploaded_file($user_image_temp, "exam_images/exams/$user_image");
-}else{
-    $user_image = " ";
-}
+
+    if (!isset($_FILES['image-1'])){
+        $user_image = " ";
+        echo "Hi";
+    }else{
+        echo  "'image-'.$counter";
+        $user_image = $_FILES['image-1']['name'];
+        $user_image_temp = $_FILES['image-1']['tmp_name'];
+        while (file_exists('exam_images/exams/'.$user_image)) {
+            $user_image = date('Ymd'). date('his') . ".jpg";
+        }
+        move_uploaded_file($user_image_temp, "exam_images/exams/$user_image");
+    }
+
+
+
 
 
         $question = $_POST['question-'. $counter];
@@ -50,14 +58,14 @@ if(isset($_FILES['image-'.$counter])){
                         '{$answer_4}',
                         '{$user_image}',
                         '{$type}',
-                        '{$idRecorded}') ";
+                        '{$setId}') ";
         $result = mysqli_query($mysqli, $query);
-        if (!$result) {
-            die("Failed to create a new exam". mysqli_error($mysqli));
-        } else {
-            echo "Exam created";
-        }
         $counter++;
     }
+}
+if (!$result) {
+    die("Failed to create a new exam". mysqli_error($mysqli));
+} else {
+    echo "Exam created";
 }
 ?>

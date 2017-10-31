@@ -122,7 +122,7 @@ if($_SESSION['role'] != "MainAdmin"){
                 </li>
                 <li class="header">EXAMS ISSUES</li>
                 <li>
-                    <a href="new_exam.php">
+                    <a href="edit_question.php">
                         <i class="material-icons">create_new_folder</i>
                         <span>New Exam</span>
                     </a>
@@ -297,10 +297,6 @@ if($_SESSION['role'] != "MainAdmin"){
 
         <div class="row clearfix">
 
-
-
-
-
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="info-box">
                 <a href="edit_free_exam_one.php">
@@ -324,7 +320,7 @@ if($_SESSION['role'] != "MainAdmin"){
                 </div>
             </div>
             </div>
-
+        </div>
     </div>
 </section>
 

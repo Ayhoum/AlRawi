@@ -3,9 +3,11 @@ session_start();
 ob_start();
 include '../scripts/db_connection.php';
 //$date = date('Y-m-d');
-if($_SESSION['role'] != "MainAdmin"){
+if ($_SESSION['role'] != "MainAdmin") {
     header("Location: ../index.php");
 }
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -19,23 +21,24 @@ if($_SESSION['role'] != "MainAdmin"){
     <link rel="icon" href="../images/1.png" type="image/x-icon">
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet"
+          type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
 
     <!-- Bootstrap Core Css -->
     <link href="plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
 
     <!-- Waves Effect Css -->
-    <link href="plugins/node-waves/waves.css" rel="stylesheet" />
+    <link href="plugins/node-waves/waves.css" rel="stylesheet"/>
 
     <!-- Animation Css -->
-    <link href="plugins/animate-css/animate.css" rel="stylesheet" />
+    <link href="plugins/animate-css/animate.css" rel="stylesheet"/>
 
     <!-- Custom Css -->
     <link href="css/style.css" rel="stylesheet">
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
-    <link href="css/themes/all-themes.css" rel="stylesheet" />
+    <link href="css/themes/all-themes.css" rel="stylesheet"/>
 </head>
 
 <body class="theme-indigo">
@@ -63,13 +66,15 @@ if($_SESSION['role'] != "MainAdmin"){
 <nav class="navbar">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
+            <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse"
+               data-target="#navbar-collapse" aria-expanded="false"></a>
             <a href="javascript:void(0);" class="bars"></a>
             <a class="navbar-brand" href="dashboard.php">Alrawi Theorie - Admin Dashboard</a>
         </div>
         <div class="collapse navbar-collapse" id="navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li class="pull-right"><a href="javascript:void(0);" class="js-right-sidebar" data-close="true"><i class="material-icons">more_vert</i></a></li>
+                <li class="pull-right"><a href="javascript:void(0);" class="js-right-sidebar" data-close="true"><i
+                                class="material-icons">more_vert</i></a></li>
             </ul>
         </div>
     </div>
@@ -81,10 +86,11 @@ if($_SESSION['role'] != "MainAdmin"){
         <!-- User Info -->
         <div class="user-info">
             <div class="image">
-                <img src="images/user.png" width="48" height="48" alt="User" />
+                <img src="images/user.png" width="48" height="48" alt="User"/>
             </div>
             <div class="info-container">
-                <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b><?php echo $_SESSION['username'] ?></b></div>
+                <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <b><?php echo $_SESSION['username'] ?></b></div>
                 <div class="btn-group user-helper-dropdown">
                     <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
                     <ul class="dropdown-menu pull-right">
@@ -122,7 +128,7 @@ if($_SESSION['role'] != "MainAdmin"){
                 </li>
                 <li class="header">EXAMS ISSUES</li>
                 <li>
-                    <a href="new_exam.php">
+                    <a href="edit_question.php">
                         <i class="material-icons">create_new_folder</i>
                         <span>New Exam</span>
                     </a>
@@ -291,16 +297,40 @@ if($_SESSION['role'] != "MainAdmin"){
 
 <section class="content">
     <div class="container-fluid">
-        <div class="block-header">
-            <h2>USERS</h2>
-        </div>
-
         <div class="row clearfix">
+            <?php
+            $query = "SELECT * FROM QUESTION_SET";
+            $select_exams = mysqli_query($mysqli, $query);
+
+            while ($row = mysqli_fetch_assoc($select_exams)) {
+                $id = $row['ID'];
+                $name = $row['EXAM_NAME'];
+                $begin = $row['BEGIN_ID'];
+                $beginValue  = (($begin -1));
+               ?>
 
 
+                <div class="row clearfix">
+
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="info-box">
+                            <a href="manage_one_exam.php?id=<?php echo $id; ?>">
+                                <div class="icon bg-indigo">
+                                    <i class="material-icons">create</i>
+                                </div>
+                            </a>
+                            <div class="content">
+                                <div class="text">No. <?php echo $id; ?></div>
+                                <div class="number count-to" data-from="0" data-to="125" data-speed="1000" data-fresh-interval="20"><?php echo $name; ?></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php
+            }
+            ?>
 
         </div>
-
     </div>
 </section>
 

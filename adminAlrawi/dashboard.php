@@ -152,7 +152,7 @@ if($totalUsers != 0){
                     </li>
                     <li class="header">EXAMS ISSUES</li>
                     <li>
-                        <a href="new_exam.php">
+                        <a href="new_question_set.php">
                             <i class="material-icons">create_new_folder</i>
                             <span>New Exam</span>
                         </a>

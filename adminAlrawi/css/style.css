@@ -3058,7 +3058,7 @@ section.content {
 /* Infobox ===================================== */
 .info-box {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-  height: 80px;
+  /*height: 80px;*/
   display: flex;
   cursor: default;
   background-color: #fff;
@@ -6040,7 +6040,7 @@ fieldset[disabled] .form-control {
     color: #fff; }
 
 .wizard > .content {
-  border: 1px solid #ddd;
+  /*border: 1px solid #ddd;*/
   display: block;
   margin: 0.5em;
   min-height: 35em;

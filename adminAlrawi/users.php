@@ -125,7 +125,7 @@ if($_SESSION['role'] != "MainAdmin"){
                 </li>
                 <li class="header">EXAMS ISSUES</li>
                 <li>
-                    <a href="new_exam.php">
+                    <a href="edit_question.php">
                         <i class="material-icons">create_new_folder</i>
                         <span>New Exam</span>
                     </a>

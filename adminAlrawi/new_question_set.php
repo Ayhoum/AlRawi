@@ -2,11 +2,26 @@
 session_start();
 ob_start();
 include '../scripts/db_connection.php';
-//$date = date('Y-m-d');
-if($_SESSION['role'] != "MainAdmin"){
-    header("Location: ../index.php");
+if(isset($_POST['submit'])){
+    $examName = $_POST['exam_name'];
+    $query = "INSERT INTO QUESTION_SET(EXAM_NAME)";
+    $query .= "VALUES(  '{$examName}') ";
+    $result = mysqli_query($mysqli, $query);
+
+    $lastId = mysqli_insert_id($mysqli);
+    $beginValue  = (($lastId -1) * 65) + 1;
+    $query  = "UPDATE QUESTION_SET SET BEGIN_ID = $beginValue WHERE id= $lastId";
+    $result = mysqli_query($mysqli, $query);
+
+    if (!$result) {
+        die("Failed to create a new exam". mysqli_error($mysqli));
+    } else {
+        header("Location: edit_question.php?id=$lastId");
+    }
 }
+
 ?>
+
 <!DOCTYPE html>
 <html>
 
@@ -291,39 +306,37 @@ if($_SESSION['role'] != "MainAdmin"){
 
 <section class="content">
     <div class="container-fluid">
-        <div class="block-header">
-            <h2>Edit Free Exam (Second Part Questions) - 20 Q</h2>
-        </div>
-
+        <!--        <div class="block-header">-->
+        <!--           <h2>Free Exams</h2>-->
+        <!--        </div>-->
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="row clearfix">
 
 
 
 
-
-
-
             <div class="row clearfix">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="card">
-                        <div class="body">
-                            3
-                        </div>
+                <div class="card">
+                    <div class="body">
+
+                        <form method="POST" action="new_question_set.php" enctype="multipart/form-data">
+                            <h3>Creat New Exam</h3>
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input type="text" class="form-control" name="exam_name" required>
+                                    <label class="form-label">Name*</label>
+                                </div>
+                            </div>
+                            <div class="form-group form-float">
+                                <input type="submit" style="width: 100%;" class="btn btn-success" name="submit" value="Create" >
+                            </div>
+                        </form>
+
                     </div>
                 </div>
             </div>
-
-
-
-
-
-
-
-
-
         </div>
-
-    </div>
+        </div>
 </section>
 
 <!-- Jquery Core Js -->
