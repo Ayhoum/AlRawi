@@ -129,15 +129,21 @@ if(isset($_POST['submit'])){
                     </a>
                 </li>
                 <li class="header">FREE EXAMS ISSUES</li>
-                <li class="active">
+                <li>
+                    <a href="new_question_set_free.php">
+                        <i class="material-icons">create_new_folder</i>
+                        <span>New Exam</span>
+                    </a>
+                </li>
+                <li>
                     <a href="free_exams.php">
                         <i class="material-icons">library_books</i>
                         <span>Manage Free Exams</span>
                     </a>
                 </li>
                 <li class="header">EXAMS ISSUES</li>
-                <li>
-                    <a href="edit_question.php">
+                <li class="active">
+                    <a href="new_question_set.php">
                         <i class="material-icons">create_new_folder</i>
                         <span>New Exam</span>
                     </a>

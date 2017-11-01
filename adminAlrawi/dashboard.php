@@ -145,6 +145,12 @@ if($totalUsers != 0){
                     </li>
                     <li class="header">FREE EXAMS ISSUES</li>
                     <li>
+                        <a href="new_question_set_free.php">
+                            <i class="material-icons">create_new_folder</i>
+                            <span>New Exam</span>
+                        </a>
+                    </li>
+                    <li>
                         <a href="free_exams.php">
                             <i class="material-icons">library_books</i>
                             <span>Manage Free Exams</span>

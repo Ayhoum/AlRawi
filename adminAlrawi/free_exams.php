@@ -114,6 +114,12 @@ if($_SESSION['role'] != "MainAdmin"){
                     </a>
                 </li>
                 <li class="header">FREE EXAMS ISSUES</li>
+                <li>
+                    <a href="new_question_set_free.php">
+                        <i class="material-icons">create_new_folder</i>
+                        <span>New Exam</span>
+                    </a>
+                </li>
                 <li class="active">
                     <a href="free_exams.php">
                         <i class="material-icons">library_books</i>
@@ -122,7 +128,7 @@ if($_SESSION['role'] != "MainAdmin"){
                 </li>
                 <li class="header">EXAMS ISSUES</li>
                 <li>
-                    <a href="edit_question.php">
+                    <a href="new_question_set.php">
                         <i class="material-icons">create_new_folder</i>
                         <span>New Exam</span>
                     </a>
