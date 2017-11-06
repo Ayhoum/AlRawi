@@ -453,12 +453,10 @@ if (isset($_POST['submit'])) {
             <div class="row clearfix">
 
                 <?php
-                $query = "SELECT 1 FROM EXAM_QUESTION WHERE NUMBER = $setId LIMIT 1";
+                $query = "SELECT * FROM EXAM_QUESTION WHERE NUMBER = $setId";
                 $check_ques = mysqli_query($mysqli, $query);
-                if (mysqli_fetch_row($check_ques)) {
-                    $query = "SELECT * FROM EXAM_QUESTION WHERE NUMBER = $setId";
-                    $select_ques = mysqli_query($mysqli, $query);
-                    while ($row = mysqli_fetch_assoc($select_ques)) {
+                if (mysqli_num_rows($check_ques) == 1) {
+                    while ($row = mysqli_fetch_assoc($check_ques)) {
                         $question = $row['QUESTION'];
                         $right = $row['RIGHT_ANWSER'];
                         $ans2 = $row['ANSWER_2'];
