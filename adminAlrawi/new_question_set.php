@@ -16,7 +16,7 @@ if(isset($_POST['submit'])){
     if (!$result) {
         die("Failed to create a new exam". mysqli_error($mysqli));
     } else {
-        header("Location: edit_question.php?id=$lastId");
+        header("Location: manage_paid_exams.php?id=$lastId");
     }
 }
 

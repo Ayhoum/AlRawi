@@ -7,31 +7,30 @@ include '../scripts/db_connection.php';
 if(isset($_POST['signIn'])) {
 
     $username = $_POST['username'];
-    $username = mysqli_real_escape_string($mysqli, $username);
+//    $username = mysqli_real_escape_string($mysqli, $username);
     $pass = $_POST['password'];
-    $pass = mysqli_real_escape_string($mysqli, $pass);
+//    $pass = mysqli_real_escape_string($mysqli, $pass);
 
 
     $query = "SELECT * From Admin WHERE USERNAME = '{$username}' ";
-    $getHashAdmin = mysqli_query($mysqli, $query);
-    if (mysqli_num_rows($getHashAdmin) == 1) {
-        while ($row = mysqli_fetch_assoc($getHashAdmin)) {
+    $result = mysqli_query($mysqli, $query);
+    if (mysqli_num_rows($result) == 1) {
+        while ($row = mysqli_fetch_assoc($result)) {
             $hash = $row['PASSWORD'];
             $name = $row['NAME'];
             $role = $row['ROLE'];
-            if ((password_verify($pass, $hash))) {
-                $_SESSION['username'] = $name;
-                $_SESSION['role'] = $role;
-                echo 'Welcome ADMIN';
-                header("Location: dashboard.php");
-            } else {
-                echo "Enter a Valid Data !! ";
-                header("Location: https://www.google.com");
-
-            }
+//            if ((password_verify($pass, $hash))) {
+            $_SESSION['username'] = $name;
+            $_SESSION['role'] = $role;
+            echo 'Welcome ADMIN';
+            header("Location: dashboard.php");
         }
+    }  else {
+        echo "Enter a Valid Data !! ";
+        header("Location: https://www.google.com");
     }
-}
+
+    }
 ?>
 
 <!DOCTYPE html>

@@ -185,21 +185,21 @@ if (isset($_POST['submit'])) {
 
 <body class="theme-indigo">
 <!-- Page Loader -->
-<div class="page-loader-wrapper">
-    <div class="loader">
-        <div class="preloader">
-            <div class="spinner-layer pl-red">
-                <div class="circle-clipper left">
-                    <div class="circle"></div>
-                </div>
-                <div class="circle-clipper right">
-                    <div class="circle"></div>
-                </div>
-            </div>
-        </div>
-        <p>Please wait...</p>
-    </div>
-</div>
+<!--<div class="page-loader-wrapper">-->
+<!--    <div class="loader">-->
+<!--        <div class="preloader">-->
+<!--            <div class="spinner-layer pl-red">-->
+<!--                <div class="circle-clipper left">-->
+<!--                    <div class="circle"></div>-->
+<!--                </div>-->
+<!--                <div class="circle-clipper right">-->
+<!--                    <div class="circle"></div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <p>Please wait...</p>-->
+<!--    </div>-->
+<!--</div>-->
 <!-- #END# Page Loader -->
 <!-- Overlay For Sidebars -->
 <div class="overlay"></div>
@@ -453,9 +453,9 @@ if (isset($_POST['submit'])) {
             <div class="row clearfix">
 
                 <?php
-                $query = "SELECT * FROM EXAM_QUESTION WHERE NUMBER = $setId";
+                $query = "SELECT * FROM EXAM_QUESTION WHERE NUMBER = $setId  && Question_Set_ID = $qSet LIMIT 0 , 65";
                 $check_ques = mysqli_query($mysqli, $query);
-                if (mysqli_num_rows($check_ques) == 1) {
+                if (mysqli_num_rows($check_ques) > 0) {
                     while ($row = mysqli_fetch_assoc($check_ques)) {
                         $question = $row['QUESTION'];
                         $right = $row['RIGHT_ANWSER'];
@@ -465,7 +465,6 @@ if (isset($_POST['submit'])) {
                         $picture = $row['PICTURE'];
                         $type = $row['TYPE'];
                         ?>
-
 
                         <form id="form_validation" method="POST" novalidate="novalidate"
                               action="edit_question.php?id=<?php echo $setId ?>"
@@ -569,71 +568,72 @@ if (isset($_POST['submit'])) {
 
                     }
                 } else {
+                    echo " no questions founded";
                     ?>
 
 
-                    <form id="form_validation" method="POST" novalidate="novalidate"
-                          action="edit_question.php?id=<?php echo $setId ?>&qset=<?php echo $qSet ?>"
-                          enctype="multipart/form-data">
-                        <h3>Update Question</h3>
-                        <fieldset>
-                            <!--###############################################################################################################################################-->
-                            <div class="row clearfix">
-                                <div class="card">
-                                    <div class="body">
-                                        <h3>Question <?php echo $setId; ?></h3>
-                                        <div class="form-group form-float">
-                                            <div class="form-line">
-                                                <input type="text" class="form-control" name="question" required>
-                                                <label class="form-label">Question*</label>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="radio" name="action" id="break" value="Break" class="with-gap">
-                                            <label for="break">Break</label>
-
-                                            <input type="radio" name="action" id="release" value="Release" class="with-gap">
-                                            <label for="release" class="m-l-20">Release Gas!</label>
-
-                                            <input type="radio" name="action" id="nothing" value="Nothing" class="with-gap">
-                                            <label for="nothing" class="m-l-20">Nothing</label>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <p>
-                                                <b>Question Type</b>
-                                            </p>
-                                            <select name="type" class="form-control show-tick">
-                                                <option disabled>---Select Type---</option>
-                                                <option value="response">Response</option>
-                                                <option value="choices">Choices</option>
-                                                <option value="advantage">Advantage</option>
-                                                <option value="number">Number</option>
-                                            </select>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <div class="fileUpload btn btn-primary">
-                                                <span>Upload</span><br/>
-                                                <input type="file" name="image" id="imgInp" class="upload"/>
-                                            </div>
-                                            <div class="align-center">
-                                                <span>The New Image</span><br/>
-                                                <img id="blah" width="250" height="250" src="#" alt="#"/>
-                                                <br/>
-                                                <br/>
-                                                <br/>
-                                            </div>
-                                        </div>
-                                        <input type="submit" class="btn btn-block btn-lg btn-success waves-effect"
-                                               name="submit" value="Submit Changes"/>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </fieldset>
-
-                    </form>
+<!--                    <form id="form_validation" method="POST" novalidate="novalidate"-->
+<!--                          action="edit_question.php?id=--><?php //echo $setId ?><!--&qset=--><?php //echo $qSet ?><!--"-->
+<!--                          enctype="multipart/form-data">-->
+<!--                        <h3>Update Question</h3>-->
+<!--                        <fieldset>-->
+<!--                            <!--###############################################################################################################################################-->-->
+<!--                            <div class="row clearfix">-->
+<!--                                <div class="card">-->
+<!--                                    <div class="body">-->
+<!--                                        <h3>Question --><?php //echo $setId; ?><!--</h3>-->
+<!--                                        <div class="form-group form-float">-->
+<!--                                            <div class="form-line">-->
+<!--                                                <input type="text" class="form-control" name="question" required>-->
+<!--                                                <label class="form-label">Question*</label>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                        <div class="form-group">-->
+<!--                                            <input type="radio" name="action" id="break" value="Break" class="with-gap">-->
+<!--                                            <label for="break">Break</label>-->
+<!---->
+<!--                                            <input type="radio" name="action" id="release" value="Release" class="with-gap">-->
+<!--                                            <label for="release" class="m-l-20">Release Gas!</label>-->
+<!---->
+<!--                                            <input type="radio" name="action" id="nothing" value="Nothing" class="with-gap">-->
+<!--                                            <label for="nothing" class="m-l-20">Nothing</label>-->
+<!--                                        </div>-->
+<!---->
+<!--                                        <div class="form-group">-->
+<!--                                            <p>-->
+<!--                                                <b>Question Type</b>-->
+<!--                                            </p>-->
+<!--                                            <select name="type" class="form-control show-tick">-->
+<!--                                                <option disabled>---Select Type---</option>-->
+<!--                                                <option value="response">Response</option>-->
+<!--                                                <option value="choices">Choices</option>-->
+<!--                                                <option value="advantage">Advantage</option>-->
+<!--                                                <option value="number">Number</option>-->
+<!--                                            </select>-->
+<!--                                        </div>-->
+<!---->
+<!--                                        <div class="form-group">-->
+<!--                                            <div class="fileUpload btn btn-primary">-->
+<!--                                                <span>Upload</span><br/>-->
+<!--                                                <input type="file" name="image" id="imgInp" class="upload"/>-->
+<!--                                            </div>-->
+<!--                                            <div class="align-center">-->
+<!--                                                <span>The New Image</span><br/>-->
+<!--                                                <img id="blah" width="250" height="250" src="#" alt="#"/>-->
+<!--                                                <br/>-->
+<!--                                                <br/>-->
+<!--                                                <br/>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                        <input type="submit" class="btn btn-block btn-lg btn-success waves-effect"-->
+<!--                                               name="submit" value="Submit Changes"/>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!---->
+<!--                        </fieldset>-->
+<!---->
+<!--                    </form>-->
 
                     <?php
 
