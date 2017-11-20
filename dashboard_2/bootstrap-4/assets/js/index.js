@@ -11,7 +11,6 @@ $(function(){
         "progressBar": true
     };
   
-        // toastr.info('Info - This is a custom info notification');
 
   setTimeout(function(){
    toastr.success('Welcome again, sir Hussam!');
@@ -22,14 +21,15 @@ $(function(){
   //   setTimeout(function(){
   //     toastr.error('Error - This is a error notification');
   //  }, 3000);
-    
-      
-  
-   
-    
-   
-	
-	  $('.scrollerchat').slimScroll({
+    // toastr.info('Info - This is a custom info notification');
+
+
+
+
+
+
+
+    $('.scrollerchat').slimScroll({
         height: '393px'
     });
 	var chart = c3.generate({
