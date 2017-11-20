@@ -4,7 +4,7 @@ ob_start();
 include '../../scripts/db_connection.php';
 $date = date('Y-m-d');
 if($_SESSION['role'] != "MainAdmin"){
-    header("Location: ../index.php");
+    header("Location: ../../index.php");
 }
 $countNew = 0;
 $countSucceeded = 0;
@@ -191,11 +191,11 @@ while($row = mysqli_fetch_assoc($select_users)){
                         <div class="row">
 
                             <div class="col-md-6 col-lg-3">
-                                <div class="card orange white-text clearfix">
+                                <div class="card white-text clearfix" style="background-color: #E91E63 !important;">
 
                                     <div class="card-content clearfix">
                                         <i class="icon-user background-icon"></i>
-                                        <p class="card-stats-title right card-title  wdt-lable">All Users</p>
+                                        <p class="card-stats-title right card-title  wdt-lable">TOTAL USERS NO.</p>
                                         <h4 class="right panel-middle margin-b-0 wdt-lable"><?php echo $totalUsers; ?></h4>
 
                                         <div class="clearfix"></div>
@@ -205,11 +205,39 @@ while($row = mysqli_fetch_assoc($select_users)){
                             </div>
 
                             <div class="col-md-6 col-lg-3">
-                                <div class="card green white-text clearfix">
+                                <div class="card white-text clearfix" style="background-color: #FF9800 !important;">
 
                                     <div class="card-content clearfix">
                                         <i class="icon-graph background-icon"></i>
-                                        <p class="card-stats-title right card-title  wdt-lable">New Users</p>
+                                        <p class="card-stats-title right card-title  wdt-lable">NEW USERS NO.</p>
+                                        <h4 class="right panel-middle margin-b-0 wdt-lable"><?php echo $todayUsers ?></h4>
+
+                                        <div class="clearfix"></div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-lg-3">
+                                <div class="card white-text clearfix" style="background-color: #8BC34A !important;">
+
+                                    <div class="card-content clearfix">
+                                        <i class="icon-graph background-icon"></i>
+                                        <p class="card-stats-title right card-title  wdt-lable">TOTAL EXAMS NO.</p>
+                                        <h4 class="right panel-middle margin-b-0 wdt-lable"><?php echo $todayUsers ?></h4>
+
+                                        <div class="clearfix"></div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-lg-3">
+                                <div class="card white-text clearfix" style="background-color: #00BCD4 !important;">
+
+                                    <div class="card-content clearfix">
+                                        <i class="icon-graph background-icon"></i>
+                                        <p class="card-stats-title right card-title  wdt-lable">PURCHASES NO.</p>
                                         <h4 class="right panel-middle margin-b-0 wdt-lable"><?php echo $todayUsers ?></h4>
 
                                         <div class="clearfix"></div>
@@ -221,6 +249,169 @@ while($row = mysqli_fetch_assoc($select_users)){
                         </div>
 
                         <div class="row">
+                            <div class="col-md-6">
+
+
+                                <div class="panel cyan white-text panel-card recent-activites">
+                                    <!-- Start .panel -->
+                                    <div class="panel-heading cyan">
+                                        Latest Users
+                                    </div>
+                                    <div class="panel-body  p-xl-3">
+
+                                        <div class="margin-t-10">
+
+                                            <?php
+                                            $query = "SELECT * FROM Users ORDER BY ID DESC LIMIT 6";
+                                            $select_users = mysqli_query($mysqli, $query);
+                                            while($row = mysqli_fetch_assoc($select_users)) {
+                                                echo "<div class='black-text message-content'>";
+                                                echo "<div>";
+                                                echo "<small class='right white-text'><i class='fa fa-check'></i></small>";
+                                                echo "<strong>" . $row['NAME'] . "</strong>";
+                                                echo "</div>";
+                                                echo "</div>";
+                                            }
+                                            ?>
+                                        </div>
+
+                                    </div>
+                                </div><!-- End .panel -->
+                            </div>
+                                <div class="col-md-6">
+
+
+                                    <div class="panel white-text panel-card recent-activites" style="background-color: #009688 !important;">
+                                        <!-- Start .panel -->
+                                        <div class="panel-heading" style="background-color: #009688 !important;">
+                                            NUMBER OF USERS EACH MONTH
+                                        </div>
+                                        <div class="panel-body  p-xl-3">
+
+                                            <div class="margin-t-10">
+
+                                                <div class='black-text message-content'>
+                                                    <div>
+
+                                                        <?php
+                                                        $date = date("Y-m-d", strtotime('last day of this month'));
+                                                        $dateMin = date("Y-m-d", strtotime('first day of this month'));
+                                                        $usersNoThis = 0;
+                                                        $query = "SELECT * FROM Users";
+                                                        $select_users = mysqli_query($mysqli, $query);
+                                                        while($row = mysqli_fetch_assoc($select_users)) {
+                                                            if ($row['REG_DATE'] > $dateMin && $row['REG_DATE'] < $date) {
+                                                                $usersNoThis++;
+                                                            }
+                                                        }
+                                                        ?>
+                                                        <strong>THIS MONTH</strong>
+                                                        <small class="float-right"><b style="font-size:  20px;"><?php echo $usersNoThis; ?></b> <small><?php if($usersNoThis == 1){echo "User";}else{echo "Users";} ?></small></small>
+                                                    </div>
+                                                </div>
+
+                                                <div class='black-text message-content'>
+                                                    <div>
+
+                                                        <?php
+                                                        $date = date("Y-m-d", strtotime('last day of last month'));
+                                                        $dateMin = date("Y-m-d", strtotime('first day of last month'));
+                                                        $usersNoLast = 0;
+                                                        $query = "SELECT * FROM Users";
+                                                        $select_users = mysqli_query($mysqli, $query);
+                                                        while($row = mysqli_fetch_assoc($select_users)) {
+                                                            if ($row['REG_DATE'] > $dateMin && $row['REG_DATE'] < $date) {
+                                                                $usersNoLast++;
+                                                            }
+                                                        }
+                                                        ?>
+                                                        <strong>LAST MONTH</strong>
+                                                        <small class="float-right"><b style="font-size:  20px;"><?php echo $usersNoLast; ?></b> <small><?php if($usersNoLast == 1){echo "User";}else{echo "Users";} ?></small></small>
+                                                    </div>
+                                                </div>
+
+                                                <div class='black-text message-content'>
+                                                    <div>
+
+                                                        <?php
+                                                        $date = date("Y-m-d", strtotime('last day of -2 month'));
+                                                        $dateMin = date("Y-m-d", strtotime('first day of -2 month'));
+                                                        $usersNo2 = 0;
+                                                        $query = "SELECT * FROM Users";
+                                                        $select_users = mysqli_query($mysqli, $query);
+                                                        while($row = mysqli_fetch_assoc($select_users)) {
+                                                            if ($row['REG_DATE'] > $dateMin && $row['REG_DATE'] < $date) {
+                                                                $usersNo2++;
+                                                            }
+                                                        }
+                                                        ?>
+                                                        <strong>2 MONTHS AGO</strong>
+                                                        <small class="float-right"><b style="font-size:  20px;"><?php echo $usersNo2; ?></b> <small><?php if($usersNo2 == 1){echo "User";}else{echo "Users";} ?></small></small>
+                                                    </div>
+                                                </div>
+
+                                                <div class='black-text message-content'>
+                                                    <div>
+                                                        <?php
+                                                        $date = date("Y-m-d", strtotime('last day of -3 month'));
+                                                        $dateMin = date("Y-m-d", strtotime('first day of -3 month'));
+                                                        $usersNo3 = 0;
+                                                        $query = "SELECT * FROM Users";
+                                                        $select_users = mysqli_query($mysqli, $query);
+                                                        while($row = mysqli_fetch_assoc($select_users)) {
+                                                            if ($row['REG_DATE'] > $dateMin && $row['REG_DATE'] < $date) {
+                                                                $usersNo3++;
+                                                            }
+                                                        }
+                                                        ?>
+                                                        <strong>3 MONTHS AGO</strong>
+                                                        <small class="float-right"><b style="font-size:  20px;"><?php echo $usersNo3; ?></b> <small><?php if($usersNo3 == 1){echo "User";}else{echo "Users";} ?></small></small>
+                                                    </div>
+                                                </div>
+
+
+
+                                                <div class='black-text message-content'>
+                                                    <div>
+                                                        <?php
+                                                        $date = date("Y-m-d", strtotime('last day of -4 month'));
+                                                        $dateMin = date("Y-m-d", strtotime('first day of -4 month'));
+                                                        $usersNo4 = 0;
+                                                        $query = "SELECT * FROM Users";
+                                                        $select_users = mysqli_query($mysqli, $query);
+                                                        while($row = mysqli_fetch_assoc($select_users)) {
+                                                            if ($row['REG_DATE'] > $dateMin && $row['REG_DATE'] < $date) {
+                                                                $usersNo4++;
+                                                            }
+                                                        }
+                                                        ?>
+                                                        <strong>4 MONTHS AGO</strong>
+                                                        <small class="float-right"><b style="font-size:  20px;"><?php echo $usersNo4; ?></b> <small><?php if($usersNo4 == 1){echo "User";}else{echo "Users";} ?></small></small>
+                                                    </div>
+                                                </div>
+
+                                                <div class='black-text message-content'>
+                                                    <div>
+                                                        <?php
+                                                        $allUsers = $usersNoThis + $usersNoLast + $usersNo2 + $usersNo3 + $usersNo4;
+                                                        ?>
+                                                        <strong>ALL</strong>
+                                                        <small class="float-right"><b style="font-size:  20px;"><?php echo $allUsers; ?></b> <small><?php if($allUsers == 1){echo "User";}else{echo "Users";} ?></small></small>
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+
+                                        </div>
+                                    </div><!-- End .panel -->
+
+
+                                </div>
+                        </div>
+
+
+                        <div class="row">
                             <div class="col-md-12">
 
                                 <div class="card panel-card recent-activites">
@@ -230,212 +421,13 @@ while($row = mysqli_fetch_assoc($select_users)){
                                     </div>
                                     <div class="card-block">
                                         <div class="margin-t-10">
-                                            <div id="spline"></div>
+                                            <div id="students"></div>
                                         </div>
                                     </div>
                                 </div><!-- End .panel --> 
 
                             </div>
                         </div>
-                        <div class="row">
-
-                        </div>
-
-                        <div class="row">
-
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-8">
-                                <div class="card panel-card recent-activites">
-                                    <!-- Start .panel -->
-                                    <div class="card-header">
-                                        Calendar
-                                        <div class="float-right">
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-info btn-rounded btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Action <span class="caret"></span></button>
-                                                <ul class="dropdown-menu panel-dropdown" role="menu">
-                                                    <li><a href="#">Action</a></li>
-                                                    <li><a href="#">Another action</a></li>
-                                                    <li><a href="#">Something else here</a></li>
-                                                    <li class="dropdown-dropdown-divider"></li>
-                                                    <li><a href="#">Separated link</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-block text-xs-center">
-
-                                        <div id="cw-body"></div>
-
-
-                                    </div>
-                                </div><!-- End .panel -->
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="card panel-card recent-activites">
-                                    <!-- Start .panel -->
-                                    <div class="card-header">
-                                        Chat
-                                        <div class="float-right">
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-info btn-rounded btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Action <span class="caret"></span></button>
-                                                <ul class="dropdown-menu panel-dropdown" role="menu">
-                                                    <li><a href="#">Action</a></li>
-                                                    <li><a href="#">Another action</a></li>
-                                                    <li><a href="#">Something else here</a></li>
-                                                    <li class="dropdown-dropdown-divider"></li>
-                                                    <li><a href="#">Separated link</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-block text-xs-center">
-
-
-
-                                        <!--Widget body-->
-                                        <div id="demo-chat-body" class="in ">
-                                            <div class="scrollerchat h600">
-                                                <div class="pad-all">
-                                                    <ul class="list-unstyled media-block">
-                                                        <li class="mar-btm">
-                                                            <div class="media-left">
-                                                                <img src="assets/images/avatar1.png" class="rounded-circle img-sm" alt="Profile Picture">
-                                                            </div>
-                                                            <div class="media-body pad-hor">
-                                                                <div class="speech">                                                               
-                                                                    <p>Hello Lucy, how can I help you today ?</p>
-                                                                    <p class="speech-time">
-                                                                        <i class="fa fa-clock-o fa-fw"></i>09:23AM
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="mar-btm">
-                                                            <div class="media-right">
-                                                                <img src="assets/images/avatar2.png" class="rounded-circle img-sm" alt="Profile Picture">
-                                                            </div>
-                                                            <div class="media-body pad-hor speech-right">
-                                                                <div class="speech">                                                              
-                                                                    <p>Hi, I want to buy a new shoes.</p>
-                                                                    <p class="speech-time">
-                                                                        <i class="fa fa-clock-o fa-fw"></i> 09:23AM
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="mar-btm">
-                                                            <div class="media-left">
-                                                                <img src="assets/images/avatar1.png" class="rounded-circle img-sm" alt="Profile Picture">
-                                                            </div>
-                                                            <div class="media-body pad-hor">
-                                                                <div class="speech">
-
-                                                                    <p>Shipment is free. You\'ll get your shoes tomorrow!</p>
-                                                                    <p class="speech-time">
-                                                                        <i class="fa fa-clock-o fa-fw"></i> 09:25
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="mar-btm">
-                                                            <div class="media-right">
-                                                                <img src="assets/images/avatar2.png" class="rounded-circle img-sm" alt="Profile Picture">
-                                                            </div>
-                                                            <div class="media-body pad-hor speech-right">
-                                                                <div class="speech">
-
-                                                                    <p>Wow, that\'s great!</p>
-                                                                    <p class="speech-time">
-                                                                        <i class="fa fa-clock-o fa-fw"></i> 09:27
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="mar-btm">
-                                                            <div class="media-right">
-                                                                <img src="assets/images/avatar2.png" class="rounded-circle img-sm" alt="Profile Picture">
-                                                            </div>
-                                                            <div class="media-body pad-hor speech-right">
-                                                                <div class="speech">
-
-                                                                    <p>Ok. Thanks for the answer. Appreciated.</p>
-                                                                    <p class="speech-time">
-                                                                        <i class="fa fa-clock-o fa-fw"></i> 09:28
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="mar-btm">
-                                                            <div class="media-left">
-                                                                <img src="assets/images/avatar1.png" class="rounded-circle img-sm" alt="Profile Picture">
-                                                            </div>
-                                                            <div class="media-body pad-hor">
-                                                                <div class="speech">
-
-                                                                    <p>You are welcome! <br> Is there anything else I can do for you today?</p>
-                                                                    <p class="speech-time">
-                                                                        <i class="fa fa-clock-o fa-fw"></i> 09:30
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="mar-btm">
-                                                            <div class="media-right">
-                                                                <img src="assets/images/avatar2.png" class="rounded-circle img-sm" alt="Profile Picture">
-                                                            </div>
-                                                            <div class="media-body pad-hor speech-right">
-                                                                <div class="speech">
-
-                                                                    <p>Nope, That\'s it.</p>
-                                                                    <p class="speech-time">
-                                                                        <i class="fa fa-clock-o fa-fw"></i> 09:31
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="mar-btm">
-                                                            <div class="media-left">
-                                                                <img src="assets/images/avatar1.png" class="rounded-circle img-sm" alt="Profile Picture">
-                                                            </div>
-                                                            <div class="media-body pad-hor">
-                                                                <div class="speech">
-
-                                                                    <p>Thank you for contacting us today</p>
-                                                                    <p class="speech-time">
-                                                                        <i class="fa fa-clock-o fa-fw"></i> 09:32
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-
-
-                                            </div>
-
-                                            <!--Widget footer-->
-                                            <div class="card-footer">
-                                                <div class="row">
-                                                    <div class="col-xs-8">
-                                                        <input type="text" placeholder="Enter your text" class="form-control chat-input">
-                                                    </div>
-                                                    <div class="col-xs-4">
-                                                        <button class="btn btn-primary btn-block" type="submit">Send</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                    </div>
-                                </div><!-- End .panel -->
-                            </div>
-                        </div>
-
-
-
-
 
                     </div> 
                     <div class="clearfix"></div>
@@ -492,5 +484,35 @@ while($row = mysqli_fetch_assoc($select_users)){
         <script type="text/javascript" src="assets/js/custom.js"></script>
             <script src="assets/plugins/toastr/toastr.min.js"></script>
         <script type="text/javascript" src="assets/js/index.js"></script>
+
+
+       <script>
+           var newUsers = <?php echo round($newPer, 1); ?>;
+           var trainingUsers = <?php echo round($trainingPer, 1); ?>;
+           var succeededUsers = <?php echo round($succeededPer, 1); ?>;
+           var chart = c3.generate({
+               bindto: '#students',
+               data: {
+                   columns: [
+                       ['Succeeded', succeededUsers],
+                       ['Training', trainingUsers],
+                       ['New', newUsers]
+                   ],
+                   type : 'donut',
+                   colors: {
+                       Succeeded: '#ff9800',
+                       Training: '#e91e63',
+                       New: '#f44242'
+
+                   },
+                   onclick: function (d, i) { console.log("onclick", d, i); },
+                   onmouseover: function (d, i) { console.log("onmouseover", d, i); },
+                   onmouseout: function (d, i) { console.log("onmouseout", d, i); }
+               },
+               donut: {
+                   title: "Iris Petal Width"
+               }
+           });
+       </script>
     </body>
 </html>

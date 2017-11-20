@@ -11,17 +11,17 @@ $(function(){
         "progressBar": true
     };
   
-        toastr.info('Info - This is a custom info notification');
-  
-  setTimeout(function(){ 
-   toastr.success('Success - This is a success notification');
+        // toastr.info('Info - This is a custom info notification');
+
+  setTimeout(function(){
+   toastr.success('Welcome again, sir Hussam!');
    }, 1000);
-        setTimeout(function(){ 
-    toastr.warning('Warning - This is a warning notification');
-   }, 2000);
-    setTimeout(function(){ 
-      toastr.error('Error - This is a error notification');
-   }, 3000);
+  //       setTimeout(function(){
+  //   toastr.warning('Warning - This is a warning notification');
+  //  }, 2000);
+  //   setTimeout(function(){
+  //     toastr.error('Error - This is a error notification');
+  //  }, 3000);
     
       
   
