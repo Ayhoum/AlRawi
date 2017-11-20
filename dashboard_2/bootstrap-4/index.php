@@ -154,7 +154,7 @@ while($row = mysqli_fetch_assoc($select_users)){
                                 <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Paid Exams</span><span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level collapse">
                                     <li><a href="add_paid_exam.php">New Exam</a></li>
-                                    <li><a href="manage_free_exam.php"> Manage PAID Exams</a></li>
+                                    <li><a href="manage_paid_exams.php"> Manage PAID Exams</a></li>
                                 </ul>
                             </li>
                             <li>
