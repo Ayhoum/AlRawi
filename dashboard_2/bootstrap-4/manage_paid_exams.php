@@ -3,12 +3,9 @@ session_start();
 ob_start();
 include '../../scripts/db_connection.php';
 
-if (isset($_GET['id']) && isset($_GET['qset'])) {
+if (isset($_GET['id'])) {
 $setId = $_GET['id'];
 //$qSet = $_GET['qset'];
-} else {
-    $setId = 1;
-
 }
 $changed = 0;
 //require_once 'test.php';
@@ -411,14 +408,14 @@ if ($_SESSION['role'] != "MainAdmin") {
                         <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Free Exams</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse">
                             <li><a href="add_free_exam.php">New Exam</a></li>
-                            <li><a href="manage_free_exams.php"> Manage FREE Exams</a></li>
+                            <li><a href="free_exams.php"> Manage FREE Exams</a></li>
                         </ul>
                     </li>
                     <li>
                         <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Paid Exams</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse">
                             <li><a href="add_paid_exam.php">New Exam</a></li>
-                            <li><a href="manage_free_exam.php"> Manage PAID Exams</a></li>
+                            <li><a href="paid_exams.php"> Manage PAID Exams</a></li>
                         </ul>
                     </li>
                     <li>
@@ -464,27 +461,224 @@ if ($_SESSION['role'] != "MainAdmin") {
                     $beginValue = (($begin - 1));
                 }
                 ?>
-
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="info-box">
-                        <div class="content">
-                            <div class="text text-center"><?php echo $setId;?></div>
-                            <div class="number text-center count-to" data-from="0" data-to="125" data-speed="1000"
-                                 data-fresh-interval="20"><?php echo $name;?>
-                            </div>
-                            <div class="button-demo" style="margin-top: 15px;">
+                <div class="panel panel-card margin-b-30">
+                    <!-- Start .panel -->
+                    <div class="panel-heading">
+                        EXAM NAME : <?php echo $name;?>
+                    </div>
+                        <div class="panel-body  p-xl-3">
                                 <div class="col-md-12">
-                                    <div class="col-md-1">
-                                        <a href="edit_question.php?id=<?php echo $beginValue + 1; ?>&qset=<?php echo "$setId";?>"><button type="button" class="btn bg-indigo btn-block waves-effect"><?php $check = "SELECT 1 FROM EXAM_QUESTION WHERE NUMBER = ('$beginValue' + 1) LIMIT 1";$checkQuery = mysqli_query($mysqli,$check);if (mysqli_fetch_row($checkQuery)) {echo "<i class='material-icons'>done</i>";} ?>1</button></a>
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                            <a href="edit_question.php?id=<?php echo $beginValue + 1; ?>&qset=<?php echo "$setId";?>"> <button style="width: 100%" type="button" class="btn btn-primary"><?php $check = "SELECT 1 FROM EXAM_QUESTION WHERE NUMBER = ('$beginValue' + 1) LIMIT 1";$checkQuery = mysqli_query($mysqli,$check);if (mysqli_fetch_row($checkQuery)) {echo "<i class='fa fa-check' aria-hidden='true'></i>";} ?>1</button></a>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <a href="edit_question.php?id=<?php echo $beginValue + 2; ?>&qset=<?php echo "$setId";?>"> <button style="width: 100%" type="button" class="btn btn-primary"><?php $check = "SELECT 1 FROM EXAM_QUESTION WHERE NUMBER = ('$beginValue' + 2) LIMIT 1";$checkQuery = mysqli_query($mysqli,$check);if (mysqli_fetch_row($checkQuery)) {echo "<i class='fa fa-check' aria-hidden='true'></i>";} ?>2</button></a>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <a href="edit_question.php?id=<?php echo $beginValue + 3; ?>&qset=<?php echo "$setId";?>"> <button style="width: 100%" type="button" class="btn btn-primary"><?php $check = "SELECT 1 FROM EXAM_QUESTION WHERE NUMBER = ('$beginValue' + 3) LIMIT 1";$checkQuery = mysqli_query($mysqli,$check);if (mysqli_fetch_row($checkQuery)) {echo "<i class='fa fa-check' aria-hidden='true'></i>";} ?>3</button></a>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <a href="edit_question.php?id=<?php echo $beginValue + 4; ?>&qset=<?php echo "$setId";?>"> <button style="width: 100%" type="button" class="btn btn-primary"><?php $check = "SELECT 1 FROM EXAM_QUESTION WHERE NUMBER = ('$beginValue' + 4) LIMIT 1";$checkQuery = mysqli_query($mysqli,$check);if (mysqli_fetch_row($checkQuery)) {echo "<i class='fa fa-check' aria-hidden='true'></i>";} ?>4</button></a>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <a href="edit_question.php?id=<?php echo $beginValue + 5; ?>&qset=<?php echo "$setId";?>"> <button style="width: 100%" type="button" class="btn btn-primary"><?php $check = "SELECT 1 FROM EXAM_QUESTION WHERE NUMBER = ('$beginValue' + 5) LIMIT 1";$checkQuery = mysqli_query($mysqli,$check);if (mysqli_fetch_row($checkQuery)) {echo "<i class='fa fa-check' aria-hidden='true'></i>";} ?>5</button></a>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <a href="edit_question.php?id=<?php echo $beginValue + 6; ?>&qset=<?php echo "$setId";?>"> <button style="width: 100%" type="button" class="btn btn-primary"><?php $check = "SELECT 1 FROM EXAM_QUESTION WHERE NUMBER = ('$beginValue' + 6) LIMIT 1";$checkQuery = mysqli_query($mysqli,$check);if (mysqli_fetch_row($checkQuery)) {echo "<i class='fa fa-check' aria-hidden='true'></i>";} ?>6</button></a>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <a href="edit_question.php?id=<?php echo $beginValue + 7; ?>&qset=<?php echo "$setId";?>"> <button style="width: 100%" type="button" class="btn btn-primary"><?php $check = "SELECT 1 FROM EXAM_QUESTION WHERE NUMBER = ('$beginValue' + 7) LIMIT 1";$checkQuery = mysqli_query($mysqli,$check);if (mysqli_fetch_row($checkQuery)) {echo "<i class='fa fa-check' aria-hidden='true'></i>";} ?>7</button></a>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <a href="edit_question.php?id=<?php echo $beginValue + 8; ?>&qset=<?php echo "$setId";?>"> <button style="width: 100%" type="button" class="btn btn-primary"><?php $check = "SELECT 1 FROM EXAM_QUESTION WHERE NUMBER = ('$beginValue' + 8) LIMIT 1";$checkQuery = mysqli_query($mysqli,$check);if (mysqli_fetch_row($checkQuery)) {echo "<i class='fa fa-check' aria-hidden='true'></i>";} ?>8</button></a>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <a href="edit_question.php?id=<?php echo $beginValue + 9; ?>&qset=<?php echo "$setId";?>"> <button style="width: 100%" type="button" class="btn btn-primary"><?php $check = "SELECT 1 FROM EXAM_QUESTION WHERE NUMBER = ('$beginValue' + 9) LIMIT 1";$checkQuery = mysqli_query($mysqli,$check);if (mysqli_fetch_row($checkQuery)) {echo "<i class='fa fa-check' aria-hidden='true'></i>";} ?>9</button></a>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <a href="edit_question.php?id=<?php echo $beginValue + 10; ?>&qset=<?php echo "$setId";?>"> <button style="width: 100%" type="button" class="btn btn-primary"><?php $check = "SELECT 1 FROM EXAM_QUESTION WHERE NUMBER = ('$beginValue' + 10) LIMIT 1";$checkQuery = mysqli_query($mysqli,$check);if (mysqli_fetch_row($checkQuery)) {echo "<i class='fa fa-check' aria-hidden='true'></i>";} ?>10</button></a>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <a href="edit_question.php?id=<?php echo $beginValue + 11; ?>&qset=<?php echo "$setId";?>"> <button style="width: 100%" type="button" class="btn btn-primary"><?php $check = "SELECT 1 FROM EXAM_QUESTION WHERE NUMBER = ('$beginValue' + 11) LIMIT 1";$checkQuery = mysqli_query($mysqli,$check);if (mysqli_fetch_row($checkQuery)) {echo "<i class='fa fa-check' aria-hidden='true'></i>";} ?>11</button></a>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <a href="edit_question.php?id=<?php echo $beginValue + 12; ?>&qset=<?php echo "$setId";?>"> <button style="width: 100%" type="button" class="btn btn-primary"><?php $check = "SELECT 1 FROM EXAM_QUESTION WHERE NUMBER = ('$beginValue' + 12) LIMIT 1";$checkQuery = mysqli_query($mysqli,$check);if (mysqli_fetch_row($checkQuery)) {echo "<i class='fa fa-check' aria-hidden='true'></i>";} ?>12</button></a>
+                                        </div>
                                     </div>
-                                    <div class="col-md-1">
-                                        <a href="edit_question.php?id=<?php echo $beginValue + 2; ?>&qset=<?php echo "$setId";?>"><button type="button" class="btn bg-indigo btn-block waves-effect"><?php $check = "SELECT 1 FROM EXAM_QUESTION WHERE NUMBER = ('$beginValue' + 2) LIMIT 1";$checkQuery = mysqli_query($mysqli,$check);if (mysqli_fetch_row($checkQuery)) {echo "<i class='material-icons'>done</i>";} ?>2</button></a>
+                                    <div class="row" style="margin-top:15px ;">
+                                        <div class="col-md-1">
+                                            <a href="edit_question.php?id=<?php echo $beginValue + 13; ?>&qset=<?php echo "$setId";?>"> <button style="width: 100%" type="button" class="btn btn-primary"><?php $check = "SELECT 1 FROM EXAM_QUESTION WHERE NUMBER = ('$beginValue' + 13) LIMIT 1";$checkQuery = mysqli_query($mysqli,$check);if (mysqli_fetch_row($checkQuery)) {echo "<i class='fa fa-check' aria-hidden='true'></i>";} ?>13</button></a>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <a href="edit_question.php?id=<?php echo $beginValue + 14; ?>&qset=<?php echo "$setId";?>"> <button style="width: 100%" type="button" class="btn btn-primary"><?php $check = "SELECT 1 FROM EXAM_QUESTION WHERE NUMBER = ('$beginValue' + 14) LIMIT 1";$checkQuery = mysqli_query($mysqli,$check);if (mysqli_fetch_row($checkQuery)) {echo "<i class='fa fa-check' aria-hidden='true'></i>";} ?>14</button></a>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <a href="edit_question.php?id=<?php echo $beginValue + 15; ?>&qset=<?php echo "$setId";?>"> <button style="width: 100%" type="button" class="btn btn-primary"><?php $check = "SELECT 1 FROM EXAM_QUESTION WHERE NUMBER = ('$beginValue' + 15) LIMIT 1";$checkQuery = mysqli_query($mysqli,$check);if (mysqli_fetch_row($checkQuery)) {echo "<i class='fa fa-check' aria-hidden='true'></i>";} ?>15</button></a>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <a href="edit_question.php?id=<?php echo $beginValue + 16; ?>&qset=<?php echo "$setId";?>"> <button style="width: 100%" type="button" class="btn btn-primary"><?php $check = "SELECT 1 FROM EXAM_QUESTION WHERE NUMBER = ('$beginValue' + 16) LIMIT 1";$checkQuery = mysqli_query($mysqli,$check);if (mysqli_fetch_row($checkQuery)) {echo "<i class='fa fa-check' aria-hidden='true'></i>";} ?>16</button></a>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <a href="edit_question.php?id=<?php echo $beginValue + 17; ?>&qset=<?php echo "$setId";?>"> <button style="width: 100%" type="button" class="btn btn-primary"><?php $check = "SELECT 1 FROM EXAM_QUESTION WHERE NUMBER = ('$beginValue' + 17) LIMIT 1";$checkQuery = mysqli_query($mysqli,$check);if (mysqli_fetch_row($checkQuery)) {echo "<i class='fa fa-check' aria-hidden='true'></i>";} ?>17</button></a>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <a href="edit_question.php?id=<?php echo $beginValue + 18; ?>&qset=<?php echo "$setId";?>"> <button style="width: 100%" type="button" class="btn btn-primary"><?php $check = "SELECT 1 FROM EXAM_QUESTION WHERE NUMBER = ('$beginValue' + 18) LIMIT 1";$checkQuery = mysqli_query($mysqli,$check);if (mysqli_fetch_row($checkQuery)) {echo "<i class='fa fa-check' aria-hidden='true'></i>";} ?>18</button></a>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <a href="edit_question.php?id=<?php echo $beginValue + 19; ?>&qset=<?php echo "$setId";?>"> <button style="width: 100%" type="button" class="btn btn-primary"><?php $check = "SELECT 1 FROM EXAM_QUESTION WHERE NUMBER = ('$beginValue' + 19) LIMIT 1";$checkQuery = mysqli_query($mysqli,$check);if (mysqli_fetch_row($checkQuery)) {echo "<i class='fa fa-check' aria-hidden='true'></i>";} ?>19</button></a>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <a href="edit_question.php?id=<?php echo $beginValue + 20; ?>&qset=<?php echo "$setId";?>"> <button style="width: 100%" type="button" class="btn btn-primary"><?php $check = "SELECT 1 FROM EXAM_QUESTION WHERE NUMBER = ('$beginValue' + 20) LIMIT 1";$checkQuery = mysqli_query($mysqli,$check);if (mysqli_fetch_row($checkQuery)) {echo "<i class='fa fa-check' aria-hidden='true'></i>";} ?>20</button></a>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <a href="edit_question.php?id=<?php echo $beginValue + 21; ?>&qset=<?php echo "$setId";?>"> <button style="width: 100%" type="button" class="btn btn-primary"><?php $check = "SELECT 1 FROM EXAM_QUESTION WHERE NUMBER = ('$beginValue' + 21) LIMIT 1";$checkQuery = mysqli_query($mysqli,$check);if (mysqli_fetch_row($checkQuery)) {echo "<i class='fa fa-check' aria-hidden='true'></i>";} ?>21</button></a>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <a href="edit_question.php?id=<?php echo $beginValue + 22; ?>&qset=<?php echo "$setId";?>"> <button style="width: 100%" type="button" class="btn btn-primary"><?php $check = "SELECT 1 FROM EXAM_QUESTION WHERE NUMBER = ('$beginValue' + 22) LIMIT 1";$checkQuery = mysqli_query($mysqli,$check);if (mysqli_fetch_row($checkQuery)) {echo "<i class='fa fa-check' aria-hidden='true'></i>";} ?>22</button></a>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <a href="edit_question.php?id=<?php echo $beginValue + 23; ?>&qset=<?php echo "$setId";?>"> <button style="width: 100%" type="button" class="btn btn-primary"><?php $check = "SELECT 1 FROM EXAM_QUESTION WHERE NUMBER = ('$beginValue' + 23) LIMIT 1";$checkQuery = mysqli_query($mysqli,$check);if (mysqli_fetch_row($checkQuery)) {echo "<i class='fa fa-check' aria-hidden='true'></i>";} ?>23</button></a>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <a href="edit_question.php?id=<?php echo $beginValue + 24; ?>&qset=<?php echo "$setId";?>"> <button style="width: 100%" type="button" class="btn btn-primary"><?php $check = "SELECT 1 FROM EXAM_QUESTION WHERE NUMBER = ('$beginValue' + 24) LIMIT 1";$checkQuery = mysqli_query($mysqli,$check);if (mysqli_fetch_row($checkQuery)) {echo "<i class='fa fa-check' aria-hidden='true'></i>";} ?>24</button></a>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="margin-top:15px ;">
+                                        <div class="col-md-1">
+                                            <a href="edit_question.php?id=<?php echo $beginValue + 25; ?>&qset=<?php echo "$setId";?>"> <button style="width: 100%" type="button" class="btn btn-primary"><?php $check = "SELECT 1 FROM EXAM_QUESTION WHERE NUMBER = ('$beginValue' + 25) LIMIT 1";$checkQuery = mysqli_query($mysqli,$check);if (mysqli_fetch_row($checkQuery)) {echo "<i class='fa fa-check' aria-hidden='true'></i>";} ?>25</button></a>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <a href="edit_question.php?id=<?php echo $beginValue + 26; ?>&qset=<?php echo "$setId";?>"> <button style="width: 100%" type="button" class="btn btn-primary"><?php $check = "SELECT 1 FROM EXAM_QUESTION WHERE NUMBER = ('$beginValue' + 26) LIMIT 1";$checkQuery = mysqli_query($mysqli,$check);if (mysqli_fetch_row($checkQuery)) {echo "<i class='fa fa-check' aria-hidden='true'></i>";} ?>26</button></a>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <a href="edit_question.php?id=<?php echo $beginValue + 27; ?>&qset=<?php echo "$setId";?>"> <button style="width: 100%" type="button" class="btn btn-primary"><?php $check = "SELECT 1 FROM EXAM_QUESTION WHERE NUMBER = ('$beginValue' + 27) LIMIT 1";$checkQuery = mysqli_query($mysqli,$check);if (mysqli_fetch_row($checkQuery)) {echo "<i class='fa fa-check' aria-hidden='true'></i>";} ?>27</button></a>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <a href="edit_question.php?id=<?php echo $beginValue + 28; ?>&qset=<?php echo "$setId";?>"> <button style="width: 100%" type="button" class="btn btn-primary"><?php $check = "SELECT 1 FROM EXAM_QUESTION WHERE NUMBER = ('$beginValue' + 28) LIMIT 1";$checkQuery = mysqli_query($mysqli,$check);if (mysqli_fetch_row($checkQuery)) {echo "<i class='fa fa-check' aria-hidden='true'></i>";} ?>28</button></a>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <a href="edit_question.php?id=<?php echo $beginValue + 29; ?>&qset=<?php echo "$setId";?>"> <button style="width: 100%" type="button" class="btn btn-primary"><?php $check = "SELECT 1 FROM EXAM_QUESTION WHERE NUMBER = ('$beginValue' + 29) LIMIT 1";$checkQuery = mysqli_query($mysqli,$check);if (mysqli_fetch_row($checkQuery)) {echo "<i class='fa fa-check' aria-hidden='true'></i>";} ?>29</button></a>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <a href="edit_question.php?id=<?php echo $beginValue + 30; ?>&qset=<?php echo "$setId";?>"> <button style="width: 100%" type="button" class="btn btn-primary"><?php $check = "SELECT 1 FROM EXAM_QUESTION WHERE NUMBER = ('$beginValue' + 30) LIMIT 1";$checkQuery = mysqli_query($mysqli,$check);if (mysqli_fetch_row($checkQuery)) {echo "<i class='fa fa-check' aria-hidden='true'></i>";} ?>30</button></a>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <a href="edit_question.php?id=<?php echo $beginValue + 31; ?>&qset=<?php echo "$setId";?>"> <button style="width: 100%" type="button" class="btn btn-primary"><?php $check = "SELECT 1 FROM EXAM_QUESTION WHERE NUMBER = ('$beginValue' + 31) LIMIT 1";$checkQuery = mysqli_query($mysqli,$check);if (mysqli_fetch_row($checkQuery)) {echo "<i class='fa fa-check' aria-hidden='true'></i>";} ?>31</button></a>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <a href="edit_question.php?id=<?php echo $beginValue + 32; ?>&qset=<?php echo "$setId";?>"> <button style="width: 100%" type="button" class="btn btn-primary"><?php $check = "SELECT 1 FROM EXAM_QUESTION WHERE NUMBER = ('$beginValue' + 32) LIMIT 1";$checkQuery = mysqli_query($mysqli,$check);if (mysqli_fetch_row($checkQuery)) {echo "<i class='fa fa-check' aria-hidden='true'></i>";} ?>32</button></a>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <a href="edit_question.php?id=<?php echo $beginValue + 33; ?>&qset=<?php echo "$setId";?>"> <button style="width: 100%" type="button" class="btn btn-primary"><?php $check = "SELECT 1 FROM EXAM_QUESTION WHERE NUMBER = ('$beginValue' + 33) LIMIT 1";$checkQuery = mysqli_query($mysqli,$check);if (mysqli_fetch_row($checkQuery)) {echo "<i class='fa fa-check' aria-hidden='true'></i>";} ?>33</button></a>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <a href="edit_question.php?id=<?php echo $beginValue + 34; ?>&qset=<?php echo "$setId";?>"> <button style="width: 100%" type="button" class="btn btn-primary"><?php $check = "SELECT 1 FROM EXAM_QUESTION WHERE NUMBER = ('$beginValue' + 34) LIMIT 1";$checkQuery = mysqli_query($mysqli,$check);if (mysqli_fetch_row($checkQuery)) {echo "<i class='fa fa-check' aria-hidden='true'></i>";} ?>34</button></a>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <a href="edit_question.php?id=<?php echo $beginValue + 35; ?>&qset=<?php echo "$setId";?>"> <button style="width: 100%" type="button" class="btn btn-primary"><?php $check = "SELECT 1 FROM EXAM_QUESTION WHERE NUMBER = ('$beginValue' + 35) LIMIT 1";$checkQuery = mysqli_query($mysqli,$check);if (mysqli_fetch_row($checkQuery)) {echo "<i class='fa fa-check' aria-hidden='true'></i>";} ?>35</button></a>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <a href="edit_question.php?id=<?php echo $beginValue + 36; ?>&qset=<?php echo "$setId";?>"> <button style="width: 100%" type="button" class="btn btn-primary"><?php $check = "SELECT 1 FROM EXAM_QUESTION WHERE NUMBER = ('$beginValue' + 36) LIMIT 1";$checkQuery = mysqli_query($mysqli,$check);if (mysqli_fetch_row($checkQuery)) {echo "<i class='fa fa-check' aria-hidden='true'></i>";} ?>36</button></a>
+                                        </div>
+                                    </div >
+                                    <div class="row" style="margin-top:15px ;">
+                                        <div class="col-md-1">
+                                            <a href="edit_question.php?id=<?php echo $beginValue + 37; ?>&qset=<?php echo "$setId";?>"> <button style="width: 100%" type="button" class="btn btn-primary"><?php $check = "SELECT 1 FROM EXAM_QUESTION WHERE NUMBER = ('$beginValue' + 37) LIMIT 1";$checkQuery = mysqli_query($mysqli,$check);if (mysqli_fetch_row($checkQuery)) {echo "<i class='fa fa-check' aria-hidden='true'></i>";} ?>37</button></a>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <a href="edit_question.php?id=<?php echo $beginValue + 38; ?>&qset=<?php echo "$setId";?>"> <button style="width: 100%" type="button" class="btn btn-primary"><?php $check = "SELECT 1 FROM EXAM_QUESTION WHERE NUMBER = ('$beginValue' + 38) LIMIT 1";$checkQuery = mysqli_query($mysqli,$check);if (mysqli_fetch_row($checkQuery)) {echo "<i class='fa fa-check' aria-hidden='true'></i>";} ?>38</button></a>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <a href="edit_question.php?id=<?php echo $beginValue + 39; ?>&qset=<?php echo "$setId";?>"> <button style="width: 100%" type="button" class="btn btn-primary"><?php $check = "SELECT 1 FROM EXAM_QUESTION WHERE NUMBER = ('$beginValue' + 39) LIMIT 1";$checkQuery = mysqli_query($mysqli,$check);if (mysqli_fetch_row($checkQuery)) {echo "<i class='fa fa-check' aria-hidden='true'></i>";} ?>39</button></a>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <a href="edit_question.php?id=<?php echo $beginValue + 40; ?>&qset=<?php echo "$setId";?>"> <button style="width: 100%" type="button" class="btn btn-primary"><?php $check = "SELECT 1 FROM EXAM_QUESTION WHERE NUMBER = ('$beginValue' + 40) LIMIT 1";$checkQuery = mysqli_query($mysqli,$check);if (mysqli_fetch_row($checkQuery)) {echo "<i class='fa fa-check' aria-hidden='true'></i>";} ?>40</button></a>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <a href="edit_question.php?id=<?php echo $beginValue + 41; ?>&qset=<?php echo "$setId";?>"> <button style="width: 100%" type="button" class="btn btn-primary"><?php $check = "SELECT 1 FROM EXAM_QUESTION WHERE NUMBER = ('$beginValue' + 41) LIMIT 1";$checkQuery = mysqli_query($mysqli,$check);if (mysqli_fetch_row($checkQuery)) {echo "<i class='fa fa-check' aria-hidden='true'></i>";} ?>41</button></a>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <a href="edit_question.php?id=<?php echo $beginValue + 42; ?>&qset=<?php echo "$setId";?>"> <button style="width: 100%" type="button" class="btn btn-primary"><?php $check = "SELECT 1 FROM EXAM_QUESTION WHERE NUMBER = ('$beginValue' + 42) LIMIT 1";$checkQuery = mysqli_query($mysqli,$check);if (mysqli_fetch_row($checkQuery)) {echo "<i class='fa fa-check' aria-hidden='true'></i>";} ?>42</button></a>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <a href="edit_question.php?id=<?php echo $beginValue + 43; ?>&qset=<?php echo "$setId";?>"> <button style="width: 100%" type="button" class="btn btn-primary"><?php $check = "SELECT 1 FROM EXAM_QUESTION WHERE NUMBER = ('$beginValue' + 43) LIMIT 1";$checkQuery = mysqli_query($mysqli,$check);if (mysqli_fetch_row($checkQuery)) {echo "<i class='fa fa-check' aria-hidden='true'></i>";} ?>43</button></a>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <a href="edit_question.php?id=<?php echo $beginValue + 44; ?>&qset=<?php echo "$setId";?>"> <button style="width: 100%" type="button" class="btn btn-primary"><?php $check = "SELECT 1 FROM EXAM_QUESTION WHERE NUMBER = ('$beginValue' + 44) LIMIT 1";$checkQuery = mysqli_query($mysqli,$check);if (mysqli_fetch_row($checkQuery)) {echo "<i class='fa fa-check' aria-hidden='true'></i>";} ?>44</button></a>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <a href="edit_question.php?id=<?php echo $beginValue + 45; ?>&qset=<?php echo "$setId";?>"> <button style="width: 100%" type="button" class="btn btn-primary"><?php $check = "SELECT 1 FROM EXAM_QUESTION WHERE NUMBER = ('$beginValue' + 45) LIMIT 1";$checkQuery = mysqli_query($mysqli,$check);if (mysqli_fetch_row($checkQuery)) {echo "<i class='fa fa-check' aria-hidden='true'></i>";} ?>45</button></a>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <a href="edit_question.php?id=<?php echo $beginValue + 46; ?>&qset=<?php echo "$setId";?>"> <button style="width: 100%" type="button" class="btn btn-primary"><?php $check = "SELECT 1 FROM EXAM_QUESTION WHERE NUMBER = ('$beginValue' + 46) LIMIT 1";$checkQuery = mysqli_query($mysqli,$check);if (mysqli_fetch_row($checkQuery)) {echo "<i class='fa fa-check' aria-hidden='true'></i>";} ?>46</button></a>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <a href="edit_question.php?id=<?php echo $beginValue + 47; ?>&qset=<?php echo "$setId";?>"> <button style="width: 100%" type="button" class="btn btn-primary"><?php $check = "SELECT 1 FROM EXAM_QUESTION WHERE NUMBER = ('$beginValue' + 47) LIMIT 1";$checkQuery = mysqli_query($mysqli,$check);if (mysqli_fetch_row($checkQuery)) {echo "<i class='fa fa-check' aria-hidden='true'></i>";} ?>47</button></a>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <a href="edit_question.php?id=<?php echo $beginValue + 48; ?>&qset=<?php echo "$setId";?>"> <button style="width: 100%" type="button" class="btn btn-primary"><?php $check = "SELECT 1 FROM EXAM_QUESTION WHERE NUMBER = ('$beginValue' + 48) LIMIT 1";$checkQuery = mysqli_query($mysqli,$check);if (mysqli_fetch_row($checkQuery)) {echo "<i class='fa fa-check' aria-hidden='true'></i>";} ?>48</button></a>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="margin-top:15px ;">
+                                        <div class="col-md-1">
+                                            <a href="edit_question.php?id=<?php echo $beginValue + 49; ?>&qset=<?php echo "$setId";?>"> <button style="width: 100%" type="button" class="btn btn-primary"><?php $check = "SELECT 1 FROM EXAM_QUESTION WHERE NUMBER = ('$beginValue' + 49) LIMIT 1";$checkQuery = mysqli_query($mysqli,$check);if (mysqli_fetch_row($checkQuery)) {echo "<i class='fa fa-check' aria-hidden='true'></i>";} ?>49</button></a>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <a href="edit_question.php?id=<?php echo $beginValue + 50; ?>&qset=<?php echo "$setId";?>"> <button style="width: 100%" type="button" class="btn btn-primary"><?php $check = "SELECT 1 FROM EXAM_QUESTION WHERE NUMBER = ('$beginValue' + 50) LIMIT 1";$checkQuery = mysqli_query($mysqli,$check);if (mysqli_fetch_row($checkQuery)) {echo "<i class='fa fa-check' aria-hidden='true'></i>";} ?>50</button></a>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <a href="edit_question.php?id=<?php echo $beginValue + 51; ?>&qset=<?php echo "$setId";?>"> <button style="width: 100%" type="button" class="btn btn-primary"><?php $check = "SELECT 1 FROM EXAM_QUESTION WHERE NUMBER = ('$beginValue' + 51) LIMIT 1";$checkQuery = mysqli_query($mysqli,$check);if (mysqli_fetch_row($checkQuery)) {echo "<i class='fa fa-check' aria-hidden='true'></i>";} ?>51</button></a>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <a href="edit_question.php?id=<?php echo $beginValue + 52; ?>&qset=<?php echo "$setId";?>"> <button style="width: 100%" type="button" class="btn btn-primary"><?php $check = "SELECT 1 FROM EXAM_QUESTION WHERE NUMBER = ('$beginValue' + 52) LIMIT 1";$checkQuery = mysqli_query($mysqli,$check);if (mysqli_fetch_row($checkQuery)) {echo "<i class='fa fa-check' aria-hidden='true'></i>";} ?>52</button></a>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <a href="edit_question.php?id=<?php echo $beginValue + 53; ?>&qset=<?php echo "$setId";?>"> <button style="width: 100%" type="button" class="btn btn-primary"><?php $check = "SELECT 1 FROM EXAM_QUESTION WHERE NUMBER = ('$beginValue' + 53) LIMIT 1";$checkQuery = mysqli_query($mysqli,$check);if (mysqli_fetch_row($checkQuery)) {echo "<i class='fa fa-check' aria-hidden='true'></i>";} ?>53</button></a>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <a href="edit_question.php?id=<?php echo $beginValue + 54; ?>&qset=<?php echo "$setId";?>"> <button style="width: 100%" type="button" class="btn btn-primary"><?php $check = "SELECT 1 FROM EXAM_QUESTION WHERE NUMBER = ('$beginValue' + 54) LIMIT 1";$checkQuery = mysqli_query($mysqli,$check);if (mysqli_fetch_row($checkQuery)) {echo "<i class='fa fa-check' aria-hidden='true'></i>";} ?>54</button></a>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <a href="edit_question.php?id=<?php echo $beginValue + 55; ?>&qset=<?php echo "$setId";?>"> <button style="width: 100%" type="button" class="btn btn-primary"><?php $check = "SELECT 1 FROM EXAM_QUESTION WHERE NUMBER = ('$beginValue' + 55) LIMIT 1";$checkQuery = mysqli_query($mysqli,$check);if (mysqli_fetch_row($checkQuery)) {echo "<i class='fa fa-check' aria-hidden='true'></i>";} ?>55</button></a>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <a href="edit_question.php?id=<?php echo $beginValue + 56; ?>&qset=<?php echo "$setId";?>"> <button style="width: 100%" type="button" class="btn btn-primary"><?php $check = "SELECT 1 FROM EXAM_QUESTION WHERE NUMBER = ('$beginValue' + 56) LIMIT 1";$checkQuery = mysqli_query($mysqli,$check);if (mysqli_fetch_row($checkQuery)) {echo "<i class='fa fa-check' aria-hidden='true'></i>";} ?>56</button></a>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <a href="edit_question.php?id=<?php echo $beginValue + 57; ?>&qset=<?php echo "$setId";?>"> <button style="width: 100%" type="button" class="btn btn-primary"><?php $check = "SELECT 1 FROM EXAM_QUESTION WHERE NUMBER = ('$beginValue' + 57) LIMIT 1";$checkQuery = mysqli_query($mysqli,$check);if (mysqli_fetch_row($checkQuery)) {echo "<i class='fa fa-check' aria-hidden='true'></i>";} ?>57</button></a>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <a href="edit_question.php?id=<?php echo $beginValue + 58; ?>&qset=<?php echo "$setId";?>"> <button style="width: 100%" type="button" class="btn btn-primary"><?php $check = "SELECT 1 FROM EXAM_QUESTION WHERE NUMBER = ('$beginValue' + 58) LIMIT 1";$checkQuery = mysqli_query($mysqli,$check);if (mysqli_fetch_row($checkQuery)) {echo "<i class='fa fa-check' aria-hidden='true'></i>";} ?>58</button></a>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <a href="edit_question.php?id=<?php echo $beginValue + 59; ?>&qset=<?php echo "$setId";?>"> <button style="width: 100%" type="button" class="btn btn-primary"><?php $check = "SELECT 1 FROM EXAM_QUESTION WHERE NUMBER = ('$beginValue' + 59) LIMIT 1";$checkQuery = mysqli_query($mysqli,$check);if (mysqli_fetch_row($checkQuery)) {echo "<i class='fa fa-check' aria-hidden='true'></i>";} ?>59</button></a>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <a href="edit_question.php?id=<?php echo $beginValue + 60; ?>&qset=<?php echo "$setId";?>"> <button style="width: 100%" type="button" class="btn btn-primary"><?php $check = "SELECT 1 FROM EXAM_QUESTION WHERE NUMBER = ('$beginValue' + 60) LIMIT 1";$checkQuery = mysqli_query($mysqli,$check);if (mysqli_fetch_row($checkQuery)) {echo "<i class='fa fa-check' aria-hidden='true'></i>";} ?>60</button></a>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="margin-top:15px ;">
+                                        <div class="col-md-1">
+                                            <a href="edit_question.php?id=<?php echo $beginValue + 61; ?>&qset=<?php echo "$setId";?>"> <button style="width: 100%" type="button" class="btn btn-primary"><?php $check = "SELECT 1 FROM EXAM_QUESTION WHERE NUMBER = ('$beginValue' + 61) LIMIT 1";$checkQuery = mysqli_query($mysqli,$check);if (mysqli_fetch_row($checkQuery)) {echo "<i class='fa fa-check' aria-hidden='true'></i>";} ?>61</button></a>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <a href="edit_question.php?id=<?php echo $beginValue + 62; ?>&qset=<?php echo "$setId";?>"> <button style="width: 100%" type="button" class="btn btn-primary"><?php $check = "SELECT 1 FROM EXAM_QUESTION WHERE NUMBER = ('$beginValue' + 62) LIMIT 1";$checkQuery = mysqli_query($mysqli,$check);if (mysqli_fetch_row($checkQuery)) {echo "<i class='fa fa-check' aria-hidden='true'></i>";} ?>62</button></a>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <a href="edit_question.php?id=<?php echo $beginValue + 63; ?>&qset=<?php echo "$setId";?>"> <button style="width: 100%" type="button" class="btn btn-primary"><?php $check = "SELECT 1 FROM EXAM_QUESTION WHERE NUMBER = ('$beginValue' + 63) LIMIT 1";$checkQuery = mysqli_query($mysqli,$check);if (mysqli_fetch_row($checkQuery)) {echo "<i class='fa fa-check' aria-hidden='true'></i>";} ?>63</button></a>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <a href="edit_question.php?id=<?php echo $beginValue + 64; ?>&qset=<?php echo "$setId";?>"> <button style="width: 100%" type="button" class="btn btn-primary"><?php $check = "SELECT 1 FROM EXAM_QUESTION WHERE NUMBER = ('$beginValue' + 64) LIMIT 1";$checkQuery = mysqli_query($mysqli,$check);if (mysqli_fetch_row($checkQuery)) {echo "<i class='fa fa-check' aria-hidden='true'></i>";} ?>64</button></a>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <a href="edit_question.php?id=<?php echo $beginValue + 65; ?>&qset=<?php echo "$setId";?>"> <button style="width: 100%" type="button" class="btn btn-primary"><?php $check = "SELECT 1 FROM EXAM_QUESTION WHERE NUMBER = ('$beginValue' + 65) LIMIT 1";$checkQuery = mysqli_query($mysqli,$check);if (mysqli_fetch_row($checkQuery)) {echo "<i class='fa fa-check' aria-hidden='true'></i>";} ?>65</button></a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
                         </div>
-                    </div>
                 </div>
+
 
                                 <div class="clearfix"></div>
                                 <div class="footer">
