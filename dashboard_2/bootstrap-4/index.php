@@ -510,7 +510,7 @@ while($row = mysqli_fetch_assoc($select_users)){
                    onmouseout: function (d, i) { console.log("onmouseout", d, i); }
                },
                donut: {
-                   title: "Iris Petal Width"
+                   title: "Students situation"
                }
            });
        </script>
