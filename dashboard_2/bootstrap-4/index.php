@@ -33,6 +33,14 @@ while($row = mysqli_fetch_assoc($select_users)){
         $succeededPer = ($countSucceeded / $totalUsers) * 100;
     }
 }
+
+$paidQuery = "SELECT * FROM PAID_EXAM";
+$paid_num_rows = mysqli_query($mysqli, $paidQuery);
+$paidRows = mysqli_num_rows($paid_num_rows);
+
+$examsQuery = "SELECT * FROM QUESTION_SET";
+$exams_num_rows = mysqli_query($mysqli, $examsQuery);
+$examsRows = mysqli_num_rows($exams_num_rows);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -143,6 +151,7 @@ while($row = mysqli_fetch_assoc($select_users)){
                                     <li><a href="index.php">Home</a></li>
                                 </ul>
                             </li>
+                            <li class="nav-heading"><span>FREE EXAMS</span></li>
                             <li>
                                 <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Free Exams</span><span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level collapse">
@@ -150,6 +159,7 @@ while($row = mysqli_fetch_assoc($select_users)){
                                     <li><a href="manage_free_exams.php"> Manage FREE Exams</a></li>
                                 </ul>
                             </li>
+                            <li class="nav-heading"><span>PAID EXAMS</span></li>
                             <li>
                                 <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Paid Exams</span><span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level collapse">
@@ -157,6 +167,7 @@ while($row = mysqli_fetch_assoc($select_users)){
                                     <li><a href="manage_paid_exams.php"> Manage PAID Exams</a></li>
                                 </ul>
                             </li>
+                            <li class="nav-heading"><span>USERS</span></li>
                             <li>
                                 <a href="#"><i class="fa fa-users"></i> <span class="nav-label">Users</span><span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level collapse">
@@ -208,7 +219,7 @@ while($row = mysqli_fetch_assoc($select_users)){
                                 <div class="card white-text clearfix" style="background-color: #FF9800 !important;">
 
                                     <div class="card-content clearfix">
-                                        <i class="icon-graph background-icon"></i>
+                                        <i class="fa fa-user-plus background-icon"></i>
                                         <p class="card-stats-title right card-title  wdt-lable">NEW USERS NO.</p>
                                         <h4 class="right panel-middle margin-b-0 wdt-lable"><?php echo $todayUsers ?></h4>
 
@@ -222,9 +233,9 @@ while($row = mysqli_fetch_assoc($select_users)){
                                 <div class="card white-text clearfix" style="background-color: #8BC34A !important;">
 
                                     <div class="card-content clearfix">
-                                        <i class="icon-graph background-icon"></i>
+                                        <i class="fa fa-file-text-o background-icon"></i>
                                         <p class="card-stats-title right card-title  wdt-lable">TOTAL EXAMS NO.</p>
-                                        <h4 class="right panel-middle margin-b-0 wdt-lable"><?php echo $todayUsers ?></h4>
+                                        <h4 class="right panel-middle margin-b-0 wdt-lable"><?php echo $examsRows ?></h4>
 
                                         <div class="clearfix"></div>
                                     </div>
@@ -236,9 +247,9 @@ while($row = mysqli_fetch_assoc($select_users)){
                                 <div class="card white-text clearfix" style="background-color: #00BCD4 !important;">
 
                                     <div class="card-content clearfix">
-                                        <i class="icon-graph background-icon"></i>
+                                        <i class="fa fa-shopping-cart background-icon"></i>
                                         <p class="card-stats-title right card-title  wdt-lable">PURCHASES NO.</p>
-                                        <h4 class="right panel-middle margin-b-0 wdt-lable"><?php echo $todayUsers ?></h4>
+                                        <h4 class="right panel-middle margin-b-0 wdt-lable"><?php echo $paidRows ?></h4>
 
                                         <div class="clearfix"></div>
                                     </div>
@@ -258,7 +269,7 @@ while($row = mysqli_fetch_assoc($select_users)){
                                         Latest Users
                                     </div>
                                     <div class="panel-body  p-xl-3">
-
+                                        <div class="card-block">
                                         <div class="margin-t-10">
 
                                             <?php
@@ -274,7 +285,7 @@ while($row = mysqli_fetch_assoc($select_users)){
                                             }
                                             ?>
                                         </div>
-
+                                        </div>
                                     </div>
                                 </div><!-- End .panel -->
                             </div>
@@ -289,6 +300,7 @@ while($row = mysqli_fetch_assoc($select_users)){
                                         <div class="panel-body  p-xl-3">
 
                                             <div class="margin-t-10">
+                                                <div class="card-block">
 
                                                 <div class='black-text message-content'>
                                                     <div>
@@ -401,6 +413,7 @@ while($row = mysqli_fetch_assoc($select_users)){
                                                 </div>
 
 
+                                            </div>
                                             </div>
 
                                         </div>
