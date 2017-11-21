@@ -5,6 +5,8 @@
  * Date: 20-11-2017
  * Time: 22:00
  */
+include '../../scripts/db_connection.php';
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -434,46 +436,21 @@
                     </div>
                 </div><!-- end .page title-->
 
-
-
                 <div class="row">
-                    <div class="panel panel-card margin-b-30">
                         <!-- Start .panel -->
-                        <div class="panel-heading">
-                            Question No. : <?php echo $number;?>
-                        </div>
                     <?php
-                    $query = "SELECT * FROM EXAM_QUESTION WHERE ID = $setId";
-                    $select_question = mysqli_query($mysqli, $query);
-                    if (mysqli_num_rows($select_question)> 0) {
-                        while ($row = mysqli_fetch_assoc($select_question)) {
-                            $number = $row['NUMBER'];
-                            $question = $row['QUESTION'];
-                            $right_ans = $row['RIGHT_ANSWER'];
-                            $ans_2 = $row['ANSWER_2'];
-                            $ans_3 = $row['ANSWER_3'];
-                            $ans_4 = $row['ANSWER_4'];
-                            $pic = $row['PICTURE'];
-                            $type = $row['TYPE'];
-                            ?>
-
-                        <div class="panel-body  p-xl-3">
-                            <div class="col-md-12">
-
-                            </div>
-                        </div>
-
-                            <?php
+                    if (isset($_GET['id']) ) {
+                        $setId = $_GET['id'];
+                        $GLOBALS = $setId ;
+                        $query = "SELECT * FROM EXAM_QUESTION WHERE NUMBER = $setId";
+                        $select_question = mysqli_query($mysqli, $query);
+                        if (mysqli_num_rows($select_question) ==1) {
+                            include 'edit_paid_question.php';
+                        } else {
+                            include 'add_new_paid_question.php';
                         }
-                        ?>
-                        <?php
                     }
                     ?>
-                </div>
-
-
-
-
 
             </div>
             <div class="clearfix"></div>
