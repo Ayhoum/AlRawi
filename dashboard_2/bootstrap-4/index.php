@@ -151,6 +151,14 @@ $examsRows = mysqli_num_rows($exams_num_rows);
                                     <li><a href="index.php">Home</a></li>
                                 </ul>
                             </li>
+                            <li class="nav-heading"><span>USERS ISSUES</span></li>
+                            <li>
+                                <a href="#"><i class="fa fa-users"></i> <span class="nav-label">Users</span><span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level collapse">
+                                    <!--                                    <li><a href="user_profile.html">profile</a></li>-->
+                                    <li><a href="user_list.php">Users list</a></li>
+                                </ul>
+                            </li>
                             <li class="nav-heading"><span>FREE EXAMS</span></li>
                             <li>
                                 <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Free Exams</span><span class="fa arrow"></span></a>
@@ -167,14 +175,7 @@ $examsRows = mysqli_num_rows($exams_num_rows);
                                     <li><a href="manage_paid_exams.php"> Manage PAID Exams</a></li>
                                 </ul>
                             </li>
-                            <li class="nav-heading"><span>USERS</span></li>
-                            <li>
-                                <a href="#"><i class="fa fa-users"></i> <span class="nav-label">Users</span><span class="fa arrow"></span></a>
-                                <ul class="nav nav-second-level collapse">
-<!--                                    <li><a href="user_profile.html">profile</a></li>-->
-                                    <li><a href="user_list.php">User list</a></li>
-                                </ul>
-                            </li>
+
                         </ul>
                         <!-- END SIDEBAR MENU -->
                         <!-- END SIDEBAR MENU -->
