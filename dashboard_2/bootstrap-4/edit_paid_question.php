@@ -59,7 +59,7 @@ $select_question = mysqli_query($mysqli, $query);
             <div class="panel panel-card margin-b-30">
                 <div class="panel-body  p-xl-3">
 
-                    <form   method="post" action="edit_paid_question.php" data-toggle="validator">
+                    <form   method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" data-toggle="validator">
                         <div class="form-group row"><label>Question:</label>
                             <input type="text" name="question" placeholder="<?php echo $question ?>" class="form-control" required>
                         </div>

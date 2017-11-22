@@ -441,17 +441,15 @@ include '../../scripts/db_connection.php';
                     <?php
                     if (isset($_GET['id']) ) {
                         $setId = $_GET['id'];
-                        $GLOBALS = $setId ;
                         $query = "SELECT * FROM EXAM_QUESTION WHERE NUMBER = $setId";
                         $select_question = mysqli_query($mysqli, $query);
                         if (mysqli_num_rows($select_question) ==1) {
-                            include 'edit_paid_question.php';
+                            header("location: edit_paid_question.php?id=$setId");
                         } else {
-                            include 'add_new_paid_question.php';
+                            header("location: add_new_paid_question.php?id=$setId");
                         }
                     }
                     ?>
-
             </div>
             <div class="clearfix"></div>
             <div class="footer">

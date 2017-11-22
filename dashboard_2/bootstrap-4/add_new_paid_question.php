@@ -1,6 +1,6 @@
 <?php
-include '../../scripts/db_connection.php';
-if (isset($_GET['id'])) {
+//include '../../scripts/db_connection.php';
+//if (isset($_GET['id'])) {
     $setId = $_GET['id'];
 
     if (isset($_POST['submit'])) {
@@ -16,7 +16,14 @@ if (isset($_GET['id'])) {
         $type = $_POST['type'];
 
         $query = "INSERT INTO `EXAM_QUESTION`(`NUMBER`, `QUESTION`, `RIGHT_ANWSER`, `ANSWER_2`, `ANSWER_3`, `ANSWER_4`, `PICTURE`, `TYPE`, `QUESTION_SET_ID`)";
-        $query .= "VALUES ()";
+        $query .= "VALUES ( '{$setId}',
+                            '{$question}',
+                            '{$right_ans}',
+                            '{$answer_2}',
+                            '{$answer_3}',
+                            '{$answer_4}',
+                            '{$pic}',
+                            '{$type}')";
         $result = mysqli_query($mysqli, $query);
         if (mysqli_num_rows($result) > 0) {
             echo 'Question added successfully';
@@ -24,13 +31,13 @@ if (isset($_GET['id'])) {
             echo 'error !!';
         }
     }
-}
+//}
 ?>
 <div class="col-md-12">
     <div class="panel panel-card margin-b-30">
         <div class="panel-body  p-xl-3">
 
-        <form  method="post" action="add_new_paid_question.php" data-toggle="validator">
+        <form  method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" data-toggle="validator">
             <div class="form-group row"><label>Question:</label>
                 <input type="text" name="question" placeholder="Enter the question" class="form-control" required>
             </div>
