@@ -23,7 +23,8 @@
                             '{$answer_3}',
                             '{$answer_4}',
                             '{$pic}',
-                            '{$type}')";
+                            '{$type}',
+                            '{$question_set_id}')";
         $result = mysqli_query($mysqli, $query);
         if (mysqli_num_rows($result) > 0) {
             echo 'Question added successfully';
