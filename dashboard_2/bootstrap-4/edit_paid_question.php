@@ -10,8 +10,9 @@ include '../../scripts/db_connection.php';
 <?php
 
     if (isset($_POST['submit'])) {
-        $question_set_id = "SELECT QUESTION_SET_ID from EXAM_QUESTION WHERE NUMBER = '{$setId}'";
-        $number = $setId;
+
+        $question_set_id = 1;
+        $number = 4;
 
         $question1 = $_POST['question'];
         $right_ans1 = $_POST['right_answer'];

@@ -1,11 +1,11 @@
 <?php
-//include '../../scripts/db_connection.php';
+include '../../scripts/db_connection.php';
 //if (isset($_GET['id'])) {
-    $setId = $_GET['id'];
+//    $setId = $_GET['id'];
 
     if (isset($_POST['submit'])) {
-        $question_set_id = "SELECT QUESTION_SET_ID from EXAM_QUESTION WHERE NUMBER = '{$setId}' ";
-        $number = $setId;
+        $question_set_id = 1 ;
+        $number = 1;
 
         $question = $_POST['question'];
         $right_ans = $_POST['right_answer'];
@@ -16,7 +16,7 @@
         $type = $_POST['type'];
 
         $query = "INSERT INTO `EXAM_QUESTION`(`NUMBER`, `QUESTION`, `RIGHT_ANWSER`, `ANSWER_2`, `ANSWER_3`, `ANSWER_4`, `PICTURE`, `TYPE`, `QUESTION_SET_ID`)";
-        $query .= "VALUES ( '{$setId}',
+        $query .= "VALUES ( '{$number}',
                             '{$question}',
                             '{$right_ans}',
                             '{$answer_2}',
