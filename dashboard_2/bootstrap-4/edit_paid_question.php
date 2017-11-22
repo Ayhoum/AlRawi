@@ -29,7 +29,8 @@ include '../../scripts/db_connection.php';
         $query .= "`ANSWER_3`='{$answer_3}',";
         $query .= "`ANSWER_4`='{$answer_4}',";
         $query .= "`PICTURE`='{$picture}',";
-        $query .= "`TYPE`='{$type_1}'";
+        $query .= "`TYPE`='{$type_1}',";
+        $query .= "`QUESTION_SET_ID`='{$question_set_id}',";
 
         $query.= "WHERE NUMBER = '{$setId}'";
 
@@ -106,7 +107,6 @@ $select_question = mysqli_query($mysqli, $query);
                 </div>
             </div>
         </div>
-
 
         <?php
 }
