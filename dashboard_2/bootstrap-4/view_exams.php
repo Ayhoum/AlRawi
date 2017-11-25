@@ -11,7 +11,7 @@ include '../../scripts/db_connection.php';
 <div class="panel panel-card recent-activites">
     <!-- Start .panel -->
     <div class="panel-heading">
-        The Users
+        The Exams
     </div>
     <div class="panel-body  p-xl-3">
         <div class="table-responsive">
