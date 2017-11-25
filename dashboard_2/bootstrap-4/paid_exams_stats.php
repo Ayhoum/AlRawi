@@ -308,7 +308,7 @@ if ($_SESSION['role'] != "MainAdmin") {
             onmouseout: function (d, i) { console.log("onmouseout", d, i); }
         },
         donut: {
-            title: "Students situation"
+            title: "Exams situations"
         }
     });
 </script>
