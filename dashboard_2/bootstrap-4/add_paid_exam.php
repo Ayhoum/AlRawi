@@ -22,7 +22,7 @@ if(isset($_POST['create'])){
     if (!$result) {
         die("Failed to create a new exam". mysqli_error($mysqli));
     } else {
-        header("Location: manage_paid_exam.php?id=$lastId");
+        header("Location: manage_paid_exams.php?id=$lastId");
     }
 }
 
