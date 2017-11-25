@@ -1,12 +1,11 @@
 <?php
 include '../../scripts/db_connection.php';
-//if (isset($_GET['id'])) {
-//    $setId = $_GET['id'];
 
+if (isset($_GET['id']) && ($_GET['qset'])) {
+    $qset = $_GET['qset'];
+    $setId = $_GET['id'];
+}
     if (isset($_POST['submit'])) {
-        $question_set_id = 1 ;
-        $number = 1;
-
         $question = $_POST['question'];
         $right_ans = $_POST['right_answer'];
         $answer_2 = $_POST['2nd_answer'];
@@ -15,8 +14,8 @@ include '../../scripts/db_connection.php';
         $pic = $_POST['picture'];
         $type = $_POST['type'];
 
-        $query = "INSERT INTO `EXAM_QUESTION`(`NUMBER`, `QUESTION`, `RIGHT_ANWSER`, `ANSWER_2`, `ANSWER_3`, `ANSWER_4`, `PICTURE`, `TYPE`, `QUESTION_SET_ID`)";
-        $query .= "VALUES ( '{$number}',
+        $query = "INSERT INTO `EXAM_QUESTION`(`NUMBER`, `QUESTION`, `RIGHT_ANSWER`, `ANSWER_2`, `ANSWER_3`, `ANSWER_4`, `PICTURE`, `TYPE`, `QUESTION_SET_ID`)";
+        $query .= "VALUES ( '{$setId}',
                             '{$question}',
                             '{$right_ans}',
                             '{$answer_2}',
@@ -24,12 +23,12 @@ include '../../scripts/db_connection.php';
                             '{$answer_4}',
                             '{$pic}',
                             '{$type}',
-                            '{$question_set_id}')";
+                            '{$qset}')";
         $result = mysqli_query($mysqli, $query);
-        if (mysqli_num_rows($result) > 0) {
-            echo 'Question added successfully';
+        if (!$result) {
+            echo "ERROR!!" . mysqli_error($mysqli);
         } else {
-            echo 'error !!';
+            header("Location: manage_paid_exams.php?id=$qset");
         }
     }
 //}
@@ -39,7 +38,7 @@ include '../../scripts/db_connection.php';
     <div class="panel panel-card margin-b-30">
         <div class="panel-body  p-xl-3">
 
-        <form  method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" data-toggle="validator">
+        <form  method="post" action="add_new_paid_question.php?qset=<?php echo $qset;?>&id=<?php echo $setId;?>" data-toggle="validator">
             <div class="form-group row"><label>Question:</label>
                 <input type="text" name="question" placeholder="Enter the question" class="form-control" required>
             </div>

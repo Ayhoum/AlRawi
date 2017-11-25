@@ -468,7 +468,11 @@ if ($_SESSION['role'] != "MainAdmin") {
                                 <div class="col-md-12">
                                     <div class="row">
                                         <div class="col-md-1">
-                                            <a href="edit_paid_question.php?id=<?php echo $beginValue + 1; ?>&qset=<?php echo "$setId";?>"> <button style="width: 100%" type="button" class="btn btn-primary"><?php $check = "SELECT 1 FROM EXAM_QUESTION WHERE NUMBER = ('$beginValue' + 1) LIMIT 1";$checkQuery = mysqli_query($mysqli,$check);if (mysqli_fetch_row($checkQuery)) {echo "<i class='fa fa-check' aria-hidden='true'></i>";} ?>1</button></a>
+                                            <?php $check = "SELECT 1 FROM EXAM_QUESTION WHERE NUMBER = ('$beginValue' + 1) LIMIT 1";$checkQuery = mysqli_query($mysqli,$check);if (mysqli_fetch_row($checkQuery)) {?>
+                                            <a href="paid_question.php?source=edit&id=<?php echo $beginValue + 1; ?>&qset=<?php echo "$setId";?>"> <button style="width: 100%" type="button" class="btn btn-primary"><i class='fa fa-check' aria-hidden='true'></i>1</button></a>
+                                            <?php }else{ ?>
+                                            <a href="paid_question.php?source=add&id=<?php echo $beginValue + 1; ?>&qset=<?php echo "$setId";?>"> <button style="width: 100%" type="button" class="btn btn-primary">1</button></a>
+                                            <?php } ?>
                                         </div>
                                         <div class="col-md-1">
                                             <a href="edit_paid_question.php?id=<?php echo $beginValue + 2; ?>&qset=<?php echo "$setId";?>"> <button style="width: 100%" type="button" class="btn btn-primary"><?php $check = "SELECT 1 FROM EXAM_QUESTION WHERE NUMBER = ('$beginValue' + 2) LIMIT 1";$checkQuery = mysqli_query($mysqli,$check);if (mysqli_fetch_row($checkQuery)) {echo "<i class='fa fa-check' aria-hidden='true'></i>";} ?>2</button></a>
