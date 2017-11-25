@@ -78,15 +78,6 @@ while($row = mysqli_fetch_assoc($select_users)){
                 <a href="javascript:;" class="navbar-minimalize minimalize-styl-2  float-left "><i class="fa fa-bars"></i></a>
             </div>
 
-            <div class="search-bar">
-                <form class="sidebar-search  " action="page_general_search_3.html" method="POST">
-
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search...">
-
-                    </div>
-                </form>
-            </div>
             <!-- END LOGO -->
 
             <!-- BEGIN TOP NAVIGATION MENU -->
@@ -95,28 +86,16 @@ while($row = mysqli_fetch_assoc($select_users)){
                     <!-- BEGIN USER LOGIN DROPDOWN -->
                     <li class="dropdown dropdown-user">
                         <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true" aria-expanded="false">
-                            <img alt="" class="rounded-circle" src="assets/images/avtar-1.jpg">
-
+                            <img alt="" class="rounded-circle" src="assets/images/avtar-3.jpg">
                         </a>
                         <div class="dropdown-menu dropdown-menu-default">
-                            <a class="dropdown-item" href="#"><i class="icon-user"></i> My Profile </a>
-                            <a class="dropdown-item" href="#"><i class="icon-calendar"></i> My Calendar </a>
-                            <a class="dropdown-item" href="#"><i class="icon-envelope-open"></i> My Inbox
-                                <span class="badge badge-danger"> 3 </span>
-                            </a>
-                            <a class="dropdown-item" href="#"><i class="icon-rocket"></i> My Tasks
-                                <span class="badge badge-success"> 7 </span>
-                            </a>
-                            <a class="dropdown-item" href="#">
-                                <i class="icon-lock"></i> Lock Screen </a>
-                            <a class="dropdown-item" href="#">
+                            <a class="dropdown-item" href="../../logout.php">
                                 <i class="icon-key"></i> Log Out </a>
                         </div>
                     </li>
                     <!-- END USER LOGIN DROPDOWN -->
                 </ul>
-            </div>
-            <!-- END TOP NAVIGATION MENU -->
+            </div>            <!-- END TOP NAVIGATION MENU -->
         </div>
         <!-- END HEADER INNER -->
     </div>
@@ -175,17 +154,7 @@ while($row = mysqli_fetch_assoc($select_users)){
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="page-title">
-
-
                             <h4 class="float-left">Data Tables  </h4>
-
-
-                            <ol class="breadcrumb float-left float-md-right">
-                                <li class="breadcrumb-item"><a href="javascript: void(0);"><i class="fa fa-home"></i></a></li>
-                                <li class="breadcrumb-item">Data Tables  </li>
-                            </ol>
-
-
                         </div>
                     </div>
                 </div><!-- end .page title-->
