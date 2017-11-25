@@ -44,6 +44,7 @@ include '../../scripts/db_connection.php';
         }
     }
 ?>
+
 <?php
 $query = "SELECT * FROM EXAM_QUESTION WHERE NUMBER = $setId";
 $select_question = mysqli_query($mysqli, $query);

@@ -33,6 +33,7 @@ include '../../scripts/db_connection.php';
         }
     }
 //}
+
 ?>
 <div class="col-md-12">
     <div class="panel panel-card margin-b-30">

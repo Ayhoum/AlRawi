@@ -139,6 +139,7 @@ $examsRows = mysqli_num_rows($exams_num_rows);
             <div class="clearfix"> </div>
             <!-- END HEADER & CONTENT dropdown-divider -->
 
+
             <!-- BEGIN CONTAINER -->
             <div class="page-container">
 
