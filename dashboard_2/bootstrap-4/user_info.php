@@ -130,14 +130,14 @@ while($row = mysqli_fetch_assoc($select_users)){
         <aside class="sidebar">
             <nav class="sidebar-nav">
                 <ul class="metismenu" id="menu">
-                    <li class="active">
+                    <li>
                         <a href="index.php"><i class="icon-grid"></i> <span class="nav-label">Dashboard</span><span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level collapse in">
+                        <ul class="nav nav-second-level collapse">
                             <li><a href="index.php">Home</a></li>
                         </ul>
                     </li>
                     <li class="nav-heading"><span>USERS ISSUES</span></li>
-                    <li>
+                    <li class="active">
                         <a href="#"><i class="fa fa-users"></i> <span class="nav-label">Users</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse">
                             <!--                                    <li><a href="user_profile.html">profile</a></li>-->

@@ -395,9 +395,9 @@ if ($_SESSION['role'] != "MainAdmin") {
         <aside class="sidebar">
             <nav class="sidebar-nav">
                 <ul class="metismenu" id="menu">
-                    <li class="active">
+                    <li>
                         <a href="index.php"><i class="icon-grid"></i> <span class="nav-label">Dashboard</span><span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level collapse in">
+                        <ul class="nav nav-second-level collapse">
                             <li><a href="index.php">Home</a></li>
                         </ul>
                     </li>
@@ -410,7 +410,7 @@ if ($_SESSION['role'] != "MainAdmin") {
                         </ul>
                     </li>
                     <li class="nav-heading"><span>FREE EXAMS</span></li>
-                    <li>
+                    <li class="active">
                         <a href="#"><i class="fa fa-file-text-o"></i> <span class="nav-label">Free Exams</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse">
                             <li><a href="add_free_exam.php">New Exam</a></li>
