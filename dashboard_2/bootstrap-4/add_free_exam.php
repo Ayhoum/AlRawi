@@ -10,19 +10,19 @@ ob_start();
 include '../../scripts/db_connection.php';
 if(isset($_POST['create'])){
     $examName = $_POST['exam_name'];
-    $query = "INSERT INTO QUESTION_SET(EXAM_NAME)";
+    $query = "INSERT INTO FREE_QUESTION_SET(EXAM_NAME)";
     $query .= "VALUES(  '{$examName}') ";
     $result = mysqli_query($mysqli, $query);
 
     $lastId = mysqli_insert_id($mysqli);
     $beginValue  = (($lastId -1) * 65) + 1;
-    $query  = "UPDATE QUESTION_SET SET BEGIN_ID = $beginValue WHERE id= $lastId";
+    $query  = "UPDATE FREE_QUESTION_SET SET BEGIN_ID = $beginValue WHERE ID= $lastId";
     $result = mysqli_query($mysqli, $query);
 
     if (!$result) {
         die("Failed to create a new exam". mysqli_error($mysqli));
     } else {
-        header("Location: manage_paid_exam.php?id=$lastId");
+        header("Location: manage_free_exam.php?id=$lastId");
     }
 }
 
@@ -188,7 +188,7 @@ if(isset($_POST['create'])){
                                 Create New Exam
                             </div>
                             <div class="panel-body  p-xl-3">
-                                <form method="post" action="add_paid_exam.php" class="form-horizontal" data-toggle="validator">
+                                <form method="post" action="add_free_exam.php" class="form-horizontal" data-toggle="validator">
                                     <div class="form-group row"><label class="col-sm-4 form-control-label">Exam's Name</label>
                                         <div class="col-sm-10"><input name="exam_name" type="text" class="form-control" required></div>
                                     </div>
@@ -205,7 +205,7 @@ if(isset($_POST['create'])){
                 </div>
 
 
-        </div>
+            </div>
             <div class="clearfix"></div>
             <div class="footer">
                 <div>
