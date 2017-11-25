@@ -92,15 +92,6 @@ $examsRows = mysqli_num_rows($exams_num_rows);
                         <a href="javascript:;" class="navbar-minimalize minimalize-styl-2  float-left "><i class="fa fa-bars"></i></a>
                     </div>
 
-                    <div class="search-bar">
-                        <form class="sidebar-search  " action="page_general_search_3.html" method="POST">
-
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search...">
-
-                            </div>
-                        </form>
-                    </div>
                     <!-- END LOGO -->
 
                     <!-- BEGIN TOP NAVIGATION MENU -->
@@ -109,21 +100,10 @@ $examsRows = mysqli_num_rows($exams_num_rows);
                             <!-- BEGIN USER LOGIN DROPDOWN -->
                             <li class="dropdown dropdown-user">
                                 <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true" aria-expanded="false">
-                                    <img alt="" class="rounded-circle" src="assets/images/avtar-1.jpg">
-
+                                    <img alt="" class="rounded-circle" src="assets/images/avtar-3.jpg">
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-default">
-                                    <a class="dropdown-item" href="#"><i class="icon-user"></i> My Profile </a>
-                                     <a class="dropdown-item" href="#"><i class="icon-calendar"></i> My Calendar </a>
-                                  <a class="dropdown-item" href="#"><i class="icon-envelope-open"></i> My Inbox
-                                            <span class="badge badge-danger"> 3 </span>
-                                        </a>
-                                    <a class="dropdown-item" href="#"><i class="icon-rocket"></i> My Tasks
-                                            <span class="badge badge-success"> 7 </span>
-                                        </a>
-                                   <a class="dropdown-item" href="#">
-                                            <i class="icon-lock"></i> Lock Screen </a>
-                                    <a class="dropdown-item" href="#">
+                                    <a class="dropdown-item" href="../../logout.php">
                                             <i class="icon-key"></i> Log Out </a>
                                    </div>
                             </li>
@@ -162,18 +142,19 @@ $examsRows = mysqli_num_rows($exams_num_rows);
                             </li>
                             <li class="nav-heading"><span>FREE EXAMS</span></li>
                             <li>
-                                <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Free Exams</span><span class="fa arrow"></span></a>
+                                <a href="#"><i class="fa fa-file-text-o"></i> <span class="nav-label">Free Exams</span><span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level collapse">
                                     <li><a href="add_free_exam.php">New Exam</a></li>
-                                    <li><a href="free_exams.php"> Manage FREE Exams</a></li>
+                                    <li><a href="free_exams.php"> Manage Free Exams</a></li>
                                 </ul>
                             </li>
                             <li class="nav-heading"><span>PAID EXAMS</span></li>
                             <li>
-                                <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Paid Exams</span><span class="fa arrow"></span></a>
+                                <a href="#"><i class="fa fa-dollar"></i> <span class="nav-label">Paid Exams</span><span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level collapse">
                                     <li><a href="add_paid_exam.php">New Exam</a></li>
-                                    <li><a href="paid_exams.php"> Manage PAID Exams</a></li>
+                                    <li><a href="paid_exams.php"> Manage Paid Exams</a></li>
+                                    <li><a href="paid_exams_stats.php"> Paid Exams Stats</a></li>
                                 </ul>
                             </li>
 
@@ -190,14 +171,7 @@ $examsRows = mysqli_num_rows($exams_num_rows);
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="page-title">
-                                   
                                             <h4 class="float-left">Dashboard</h4>
-
-                                            <ol class="breadcrumb float-left float-md-right">
-                                                <li class="breadcrumb-item"><a href="javascript: void(0);"><i class="fa fa-home"></i></a></li>
-                                                <li class="breadcrumb-item">Dashboard</li>
-                                            </ol>
-                                        
                                 </div>
                             </div>
                         </div><!-- end .page title-->
