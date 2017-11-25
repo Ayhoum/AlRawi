@@ -404,27 +404,32 @@ if ($_SESSION['role'] != "MainAdmin") {
                             <li><a href="index.php">Home</a></li>
                         </ul>
                     </li>
-                    <li>
-                        <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Free Exams</span><span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level collapse">
-                            <li><a href="add_free_exam.php">New Exam</a></li>
-                            <li><a href="manage_free_exams.php"> Manage FREE Exams</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Paid Exams</span><span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level collapse">
-                            <li><a href="add_paid_exam.php">New Exam</a></li>
-                            <li><a href="manage_paid_exams.php"> Manage PAID Exams</a></li>
-                        </ul>
-                    </li>
+                    <li class="nav-heading"><span>USERS ISSUES</span></li>
                     <li>
                         <a href="#"><i class="fa fa-users"></i> <span class="nav-label">Users</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse">
                             <!--                                    <li><a href="user_profile.html">profile</a></li>-->
-                            <li><a href="user_list.php">User list</a></li>
+                            <li><a href="user_list.php">Users list</a></li>
                         </ul>
                     </li>
+                    <li class="nav-heading"><span>FREE EXAMS</span></li>
+                    <li>
+                        <a href="#"><i class="fa fa-file-text-o"></i> <span class="nav-label">Free Exams</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a href="add_free_exam.php">New Exam</a></li>
+                            <li><a href="free_exams.php"> Manage Free Exams</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-heading"><span>PAID EXAMS</span></li>
+                    <li>
+                        <a href="#"><i class="fa fa-dollar"></i> <span class="nav-label">Paid Exams</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a href="add_paid_exam.php">New Exam</a></li>
+                            <li><a href="paid_exams.php"> Manage Paid Exams</a></li>
+                            <li><a href="paid_exams_stats.php"> Paid Exams Stats</a></li>
+                        </ul>
+                    </li>
+
                 </ul>
                 <!-- END SIDEBAR MENU -->
                 <!-- END SIDEBAR MENU -->
