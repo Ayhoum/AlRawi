@@ -3,12 +3,8 @@ session_start();
 ob_start();
 include '../../scripts/db_connection.php';
 
-if (isset($_GET['id']) && isset($_GET['qset'])) {
+if (isset($_GET['id'])) {
     $setId = $_GET['id'];
-//$qSet = $_GET['qset'];
-} else {
-    $setId = 1;
-
 }
 $changed = 0;
 //require_once 'test.php';
