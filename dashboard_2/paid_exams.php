@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Alaa
- * Date: 20-11-2017
- * Time: 21:27
- */
 session_start();
 ob_start();
 include '../scripts/db_connection.php';
@@ -163,6 +157,9 @@ if ($_SESSION['role'] != "MainAdmin") {
                                 <td class="text-center">
                                     <a href="">Status</a>
                                 </td>
+                                <td class="text-center">
+                                    <a href="">Number of Question</a>
+                                </td>
                                 <td class="text-center">Action</td>
                             </tr>
                             </thead>
@@ -182,6 +179,12 @@ if ($_SESSION['role'] != "MainAdmin") {
                                 <td class="text-center"><?php echo $id;?></td>
                                 <td class="text-center"><?php echo $name;?></td>
                                 <td class="text-center"><?php echo $status;?></td>
+                                <?php
+                                $query = "SELECT * FROM EXAM_QUESTION WHERE	QUESTION_SET_ID = $id";
+                                $select_ques = mysqli_query($mysqli, $query);
+                                $numRow = mysqli_num_rows($select_ques);
+                                ?>
+                                <td class="text-center"><?php echo $numRow; ?></td>
                                 <td class="text-center">
                                     <?php if($status == "VISIBLE"){?>
                                         <a href="paid_exams.php?change_to_invisible=<?php echo $id ?>" data-toggle="tooltip" title="" class="btn btn-secondary" data-original-title="View"><i class="fa fa-eye-slash"></i></a>
@@ -190,7 +193,7 @@ if ($_SESSION['role'] != "MainAdmin") {
                                         <a href="paid_exams.php?change_to_visible=<?php echo $id ?>" data-toggle="tooltip" title="" class="btn btn-success" data-original-title="View"><i class="fa fa-eye"></i></a>
 
                                     <?php } ?>
-                                    <a href="#"  data-toggle="tooltip" title="" class="btn btn-warning" data-original-title="Delete"><i class="fa fa-cog fa-spin"></i></a>
+                                    <a href="edit_paid_exam_info.php?id=<?php echo $id;?>"  data-toggle="tooltip" title="" class="btn btn-warning" data-original-title="Delete"><i class="fa fa-cog fa-spin"></i></a>
 
                                     <a href="manage_paid_exams.php?id=<?php echo $id; ?>" data-toggle="tooltip" title="" class="btn btn-primary" data-original-title="Edit"><i class="fa fa-pencil"></i></a>
                                 </td>
@@ -229,8 +232,15 @@ if ($_SESSION['role'] != "MainAdmin") {
 
                 <div class="clearfix"></div>
                 <div class="footer">
+                    <?php
+                    $query = "SELECT * FROM Website";
+                    $getWeb = mysqli_query($mysqli,$query);
+                    while ($row = mysqli_fetch_assoc($getWeb)){
+                        $website = $row['DevWeb'];
+                    }
+                    ?>
                     <div>
-                        <strong>Copyright</strong> El-Semicolon; © 2017
+                        <strong>Copyright</strong> <a target="_blank" href="<?php echo $website;?>">El-Semicolon;</a> © <?php echo date('Y') ;?>
                     </div>
                 </div>
             </div>

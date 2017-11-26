@@ -2,21 +2,19 @@
 session_start();
 ob_start();
 include '../scripts/db_connection.php';
-if(isset($_POST['create'])){
+
+if (isset($_GET['id'])) {
+    $setId = $_GET['id'];
+}
+
+if(isset($_POST['update'])){
     $examName = $_POST['exam_name'];
-    $query = "INSERT INTO QUESTION_SET(EXAM_NAME)";
-    $query .= "VALUES(  '{$examName}') ";
+    $query  = "UPDATE FREE_QUESTION_SET SET EXAM_NAME = '{$examName}' WHERE ID = $setId";
     $result = mysqli_query($mysqli, $query);
-
-    $lastId = mysqli_insert_id($mysqli);
-    $beginValue  = (($lastId -1) * 65) + 1;
-    $query  = "UPDATE QUESTION_SET SET BEGIN_ID = $beginValue WHERE id= $lastId";
-    $result = mysqli_query($mysqli, $query);
-
     if (!$result) {
-        die("Failed to create a new exam". mysqli_error($mysqli));
+        die("Failed to update a new exam". mysqli_error($mysqli));
     } else {
-        header("Location: manage_paid_exams.php?id=$lastId");
+        header("Location: free_exams.php");
     }
 }
 
@@ -151,26 +149,36 @@ if(isset($_POST['create'])){
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="page-title">
-                            <h4 class="float-left">Add New Paid Exam</h4>
+                            <h4 class="float-left">Edit Free Exam</h4>
                         </div>
                     </div>
                 </div><!-- end .page title-->
+
+                <?php
+                $query = "SELECT * FROM FREE_QUESTION_SET WHERE ID = $setId";
+                $getName = mysqli_query($mysqli,$query);
+                while ($row = mysqli_fetch_assoc($getName)){
+                    $name = $row['EXAM_NAME'];
+                }
+                ?>
+
                 <div class="row">
                     <div class="col-md-12">
                         <div class="panel panel-card margin-b-30">
                             <!-- Start .panel -->
                             <div class="panel-heading">
-                                Create New Exam
+                                Update Exam Name
                             </div>
                             <div class="panel-body  p-xl-3">
-                                <form method="post" action="add_paid_exam.php" class="form-horizontal" data-toggle="validator">
+                                <form method="post" action="edit_free_exam_info.php?id=<?php echo $setId;?>" class="form-horizontal" data-toggle="validator">
                                     <div class="form-group row"><label class="col-sm-4 form-control-label">Exam's Name</label>
-                                        <div class="col-sm-10"><input name="exam_name" type="text" class="form-control" required></div>
+                                        <div class="col-sm-10">
+                                            <input name="exam_name" value="<?php echo $name;?>" type="text" class="form-control" required></div>
                                     </div>
                                     <div class="hr-line-dashed"></div>
                                     <div class="form-group row">
                                         <div class="col-sm-8 col-sm-offset-0">
-                                            <input name= "create" class="btn btn-primary" type="submit" value="Create">
+                                            <input name= "update" class="btn btn-primary" type="submit" value="Update">
                                         </div>
                                     </div>
                                 </form>
@@ -180,7 +188,7 @@ if(isset($_POST['create'])){
                 </div>
 
 
-        </div>
+            </div>
             <div class="clearfix"></div>
             <div class="footer">
                 <?php

@@ -91,5 +91,17 @@ if(isset($_POST['signIn'])) {
         <script type="text/javascript" src="assets/plugins/jquery/jquery.min.js"></script>
          <script type="text/javascript" src="assets/plugins/bootstrap/js/tether.min.js"></script>
   <script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+        <div class="footer">
+            <?php
+            $query = "SELECT * FROM Website";
+            $getWeb = mysqli_query($mysqli,$query);
+            while ($row = mysqli_fetch_assoc($getWeb)){
+                $website = $row['DevWeb'];
+            }
+            ?>
+            <div>
+                <strong>Copyright</strong> <a target="_blank" href="<?php echo $website;?>">El-Semicolon;</a> © <?php echo date('Y') ;?>
+            </div>
+        </div>
     </body>
 </html>

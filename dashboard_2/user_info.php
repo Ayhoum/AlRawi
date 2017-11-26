@@ -265,11 +265,15 @@ while($row = mysqli_fetch_assoc($select_users)){
             </div>
             <div class="clearfix"></div>
             <div class="footer">
-                <div class="float-right">
-                    10GB of <strong>250GB</strong> Free.
-                </div>
+                <?php
+                $query = "SELECT * FROM Website";
+                $getWeb = mysqli_query($mysqli,$query);
+                while ($row = mysqli_fetch_assoc($getWeb)){
+                    $website = $row['DevWeb'];
+                }
+                ?>
                 <div>
-                    <strong>Copyright</strong> Example Company © 2017
+                    <strong>Copyright</strong> <a target="_blank" href="<?php echo $website;?>">El-Semicolon;</a> © <?php echo date('Y') ;?>
                 </div>
             </div>
         </div>

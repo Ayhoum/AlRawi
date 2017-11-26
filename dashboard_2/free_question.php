@@ -179,8 +179,15 @@ if (isset($_GET['id']) && ($_GET['qset'])) {
                 </div>
                 <div class="clearfix"></div>
                 <div class="footer">
+                    <?php
+                    $query = "SELECT * FROM Website";
+                    $getWeb = mysqli_query($mysqli,$query);
+                    while ($row = mysqli_fetch_assoc($getWeb)){
+                        $website = $row['DevWeb'];
+                    }
+                    ?>
                     <div>
-                        <strong>Copyright</strong> El-Semicolon; © 2017
+                        <strong>Copyright</strong> <a target="_blank" href="<?php echo $website;?>">El-Semicolon;</a> © <?php echo date('Y') ;?>
                     </div>
                 </div>
             </div>

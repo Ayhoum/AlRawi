@@ -256,11 +256,18 @@ if ($_SESSION['role'] != "MainAdmin") {
 
 
                                 <div class="clearfix"></div>
-                                <div class="footer">
-                                    <div>
-                                        <strong>Copyright</strong> El-Semicolon; © 2017
-                                    </div>
-                                </div>
+                <div class="footer">
+                    <?php
+                    $query = "SELECT * FROM Website";
+                    $getWeb = mysqli_query($mysqli,$query);
+                    while ($row = mysqli_fetch_assoc($getWeb)){
+                        $website = $row['DevWeb'];
+                    }
+                    ?>
+                    <div>
+                        <strong>Copyright</strong> <a target="_blank" href="<?php echo $website;?>">El-Semicolon;</a> © <?php echo date('Y') ;?>
+                    </div>
+                </div>
                             </div>
                             <!-- END CONTENT BODY -->
     </div>
