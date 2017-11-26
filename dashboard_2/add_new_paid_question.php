@@ -1,27 +1,43 @@
 <?php
+ob_start();
 include '../scripts/db_connection.php';
+if($_SESSION['role'] != "MainAdmin"){
+    header("Location: ../index.php");
+}
 
 if (isset($_GET['id']) && ($_GET['qset'])) {
     $qset = $_GET['qset'];
     $setId = $_GET['id'];
 }
     if (isset($_POST['submit'])) {
+
+
         $question = $_POST['question'];
         $right_ans = $_POST['right_answer'];
         $answer_2 = $_POST['2nd_answer'];
         $answer_3 = $_POST['3rd_answer'];
         $answer_4 = $_POST['4th_answer'];
-        $pic = $_POST['picture'];
+        $reason = $_POST['reason'];
         $type = $_POST['type'];
 
-        $query = "INSERT INTO `EXAM_QUESTION`(`NUMBER`, `QUESTION`, `RIGHT_ANSWER`, `ANSWER_2`, `ANSWER_3`, `ANSWER_4`, `PICTURE`, `TYPE`, `QUESTION_SET_ID`)";
+        $newPicture = $_FILES['image']['name'];
+        $newPicture = date('Ymd') . date('Hms') . ".jpg";
+        $newPicture_tmp = $_FILES['image']['tmp_name'];
+        if (!empty($newPicture_tmp)) {
+            move_uploaded_file($newPicture_tmp, "examsImages/paid/$newPicture");
+        }else{
+            $newPicture = "Empty";
+        }
+
+        $query = "INSERT INTO `EXAM_QUESTION`(`NUMBER`, `QUESTION`, `RIGHT_ANSWER`, `ANSWER_2`, `ANSWER_3`, `ANSWER_4`, `REASON`, `PICTURE`, `TYPE`, `QUESTION_SET_ID`)";
         $query .= "VALUES ( '{$setId}',
                             '{$question}',
                             '{$right_ans}',
                             '{$answer_2}',
                             '{$answer_3}',
                             '{$answer_4}',
-                            '{$pic}',
+                            '{$reason}',
+                            '{$newPicture}',
                             '{$type}',
                             '{$qset}')";
         $result = mysqli_query($mysqli, $query);
@@ -37,8 +53,7 @@ if (isset($_GET['id']) && ($_GET['qset'])) {
 <div class="col-md-12">
     <div class="panel panel-card margin-b-30">
         <div class="panel-body  p-xl-3">
-
-        <form method="post" action="add_new_paid_question.php?qset=<?php echo $qset;?>&id=<?php echo $setId;?>" data-toggle="validator">
+        <form method="post" action="add_new_paid_question.php?qset=<?php echo $qset;?>&id=<?php echo $setId;?>" data-toggle="validator" enctype="multipart/form-data">
             <div class="form-group row"><label>Question:</label>
                 <input type="text" name="question" placeholder="Enter the question" class="form-control" required>
             </div>
@@ -57,11 +72,16 @@ if (isset($_GET['id']) && ($_GET['qset'])) {
             <div class="form-group row"><label>4TH Answer: </label>
                 <input type="text" name="4th_answer" placeholder="Type the 4th answer" class="form-control" required>
             </div>
+            <div class="hr-line-dashed"></div>
 
+            <div class="form-group row"><label>Reason: </label>
+                <input type="text" name="reason" placeholder="Type the Reason" class="form-control" required>
+            </div>
             <div class="hr-line-dashed"></div>
 
             <div class="form-group row"><label>Picture: </label>
-                <input type="text" name="picture" placeholder="" class="form-control" required>
+                <input type="file" id="imgInp" name="image" class="form-control">
+                <img id="image" />
             </div>
 
             <div class="hr-line-dashed"></div>
@@ -87,3 +107,17 @@ if (isset($_GET['id']) && ($_GET['qset'])) {
     </div>
     </div>
 </div>
+<script>
+    document.getElementById("imgInp").onchange = function () {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            // get loaded data and render thumbnail.
+            document.getElementById("image").src = e.target.result;
+            document.getElementById("image").style = "height: 200px; width: 200px;";
+        };
+
+        // read the image file as a data URL.
+        reader.readAsDataURL(this.files[0]);
+    };
+</script>

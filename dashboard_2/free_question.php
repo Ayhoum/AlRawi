@@ -1,11 +1,10 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Alaa
- * Date: 20-11-2017
- * Time: 22:00
- */
+session_start();
+ob_start();
 include '../scripts/db_connection.php';
+if($_SESSION['role'] != "MainAdmin"){
+    header("Location: ../index.php");
+}
 if (isset($_GET['id']) && ($_GET['qset'])) {
     $qset = $_GET['qset'];
     $setId = $_GET['id'];

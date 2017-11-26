@@ -1,11 +1,9 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Alaa
- * Date: 21-11-2017
- * Time: 18:37
- */
+ob_start();
 include '../scripts/db_connection.php';
+if ($_SESSION['role'] != "MainAdmin") {
+    header("Location: ../index.php");
+}
 if (isset($_GET['id']) && ($_GET['qset'])) {
     $qset = $_GET['qset'];
     $setId = $_GET['id'];
@@ -15,17 +13,35 @@ if (isset($_GET['id']) && ($_GET['qset'])) {
 
 if (isset($_POST['submit'])) {
 
-//        $question_set_id = 1;
-//        $number = 4;
-
     $question1 = $_POST['question'];
     $right_ans1 = $_POST['right_answer'];
     $answer_2 = $_POST['2nd_answer'];
     $answer_3 = $_POST['3rd_answer'];
     $answer_4 = $_POST['4th_answer'];
-    $picture = $_POST['picture'];
+    $reason_1 = $_POST['reason'];
     $type_1 = $_POST['type'];
 
+    $newPicture = $_FILES['image']['name'];
+    $newPicture = date('Ymd') . date('Hms') . ".jpg";
+    $newPicture_tmp = $_FILES['image']['tmp_name'];
+    move_uploaded_file($newPicture_tmp, "examsImages/free/" . $newPicture);
+    if (!empty($newPicture_tmp)) {
+        $query = "SELECT * FROM FREE_EXAM_QUESTION WHERE NUMBER = $setId";
+        $select_ques = mysqli_query($mysqli, $query);
+        while ($row = mysqli_fetch_assoc($select_ques)) {
+            $oldPicture = $row['PICTURE'];
+        }
+        if (file_exists("examsImages/free/$oldPicture")) {
+            unlink("examsImages/free/$oldPicture");
+            echo "<script>alert('Done');</script>";
+        }
+    } elseif (empty($newPicture_tmp)) {
+        $query = "SELECT * FROM FREE_EXAM_QUESTION WHERE NUMBER = $setId";
+        $select_ques = mysqli_query($mysqli, $query);
+        while ($row = mysqli_fetch_assoc($select_ques)) {
+            $newPicture = $row['PICTURE'];
+        }
+    }
 
     $query = "UPDATE `FREE_EXAM_QUESTION` SET ";
     $query .= "`QUESTION`='{$question1}',";
@@ -33,7 +49,8 @@ if (isset($_POST['submit'])) {
     $query .= "`ANSWER_2`='{$answer_2}',";
     $query .= "`ANSWER_3`='{$answer_3}',";
     $query .= "`ANSWER_4`='{$answer_4}',";
-    $query .= "`PICTURE`='{$picture}',";
+    $query .= "`REASON`='{$reason_1}',";
+    $query .= "`PICTURE`='{$newPicture}',";
     $query .= "`TYPE`='{$type_1}',";
     $query .= "`FREE_QUESTION_SET_ID`='{$qset}' ";
 
@@ -59,6 +76,7 @@ while ($row = mysqli_fetch_assoc($select_question)) {
     $ans_2      =    $row['ANSWER_2'];
     $ans_3      =    $row['ANSWER_3'];
     $ans_4      =    $row['ANSWER_4'];
+    $reason     =    $row['REASON'];
     $pic        =    $row['PICTURE'];
     $type       =    $row['TYPE'];
     ?>
@@ -66,7 +84,7 @@ while ($row = mysqli_fetch_assoc($select_question)) {
         <div class="panel panel-card margin-b-30">
             <div class="panel-body  p-xl-3">
 
-                <form method="post" action="edit_free_question.php?qset=<?php echo $qset;?>&id=<?php echo $setId;?>" data-toggle="validator">
+                <form method="post" action="edit_free_question.php?qset=<?php echo $qset;?>&id=<?php echo $setId;?>" data-toggle="validator" enctype="multipart/form-data">
                     <div class="form-group row"><label>Question:</label>
                         <input type="text" name="question" value="<?php echo $question ?>" class="form-control" required>
                     </div>
@@ -85,11 +103,35 @@ while ($row = mysqli_fetch_assoc($select_question)) {
                     <div class="form-group row"><label>4TH Answer: </label>
                         <input type="text" name="4th_answer" value="<?php echo $ans_4 ?>" class="form-control" required>
                     </div>
+                    <div class="hr-line-dashed"></div>
 
+                    <div class="form-group row"><label>Reason: </label>
+                        <input type="text" name="reason" value="<?php echo $reason ?>" class="form-control" required>
+                    </div>
                     <div class="hr-line-dashed"></div>
 
                     <div class="form-group row"><label>Picture: </label>
-                        <input type="text" name="picture" value="<?php echo $pic ?>" class="form-control" required>
+                        <input type="file" id="imgInp" name="image" class="form-control">
+                        <div class="col-md-12">
+                            <div class="row" style="margin-top: 10px;">
+                                <div class="col-md-6">
+                                    <h5 class="text-center">Old:  </h5>
+                                    <?php
+                                    if($pic != "Empty") {
+                                        ?>
+                                        <center><img src="examsImages/free/<?php echo $pic; ?>"
+                                                     style="width: 200px;height: 200px;"/></center>
+                                        <?php
+                                    }else{
+                                        echo "<h5 class='text-center'>No old picture!</h5>";
+                                    }
+                                    ?>
+                                </div>
+                                <div class="col-md-6">
+                                    <h5 class="text-center">New:  </h5><center><img id="image"/></center>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="hr-line-dashed"></div>
@@ -120,3 +162,17 @@ while ($row = mysqli_fetch_assoc($select_question)) {
     <?php
 }
 ?>
+<script>
+    document.getElementById("imgInp").onchange = function () {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            // get loaded data and render thumbnail.
+            document.getElementById("image").src = e.target.result;
+            document.getElementById("image").style = "height: 200px; width: 200px;";
+        };
+
+        // read the image file as a data URL.
+        reader.readAsDataURL(this.files[0]);
+    };
+</script>

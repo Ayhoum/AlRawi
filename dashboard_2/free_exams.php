@@ -149,30 +149,82 @@ if ($_SESSION['role'] != "MainAdmin") {
                     </div>
                 </div><!-- end .page title-->
                 <div class="panel panel-card margin-b-30">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                            <tr>
+                                <td class="text-center">
+                                    <a href="" class="desc">ID</a>
+                                </td>
+                                <td class="text-center">
+                                    <a href="">Exam Name</a>
+                                </td>
+                                <td class="text-center">
+                                    <a href="">Status</a>
+                                </td>
+                                <td class="text-center">Action</td>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <?php
+                            $query = "SELECT * FROM FREE_QUESTION_SET";
+                            $select_exams = mysqli_query($mysqli, $query);
 
-                <?php
-                $query = "SELECT * FROM FREE_QUESTION_SET";
-                $select_exams = mysqli_query($mysqli, $query);
+                            while ($row = mysqli_fetch_assoc($select_exams)) {
+                                $id = $row['ID'];
+                                $name = $row['EXAM_NAME'];
+                                $begin = $row['BEGIN_ID'];
+                                $status = $row['STATUS'];
+                                $beginValue = (($begin - 1));
+                                ?>
+                                <tr>
+                                    <td class="text-center"><?php echo $id;?></td>
+                                    <td class="text-center"><?php echo $name;?></td>
+                                    <td class="text-center"><?php echo $status;?></td>
+                                    <td class="text-center">
+                                        <?php if($status == "VISIBLE"){?>
+                                            <a href="free_exams.php?change_to_invisible=<?php echo $id ?>" data-toggle="tooltip" title="" class="btn btn-secondary" data-original-title="View"><i class="fa fa-eye-slash"></i></a>
 
-                while ($row = mysqli_fetch_assoc($select_exams)) {
-                $id = $row['ID'];
-                $name = $row['EXAM_NAME'];
-                $begin = $row['BEGIN_ID'];
-                $beginValue = (($begin - 1));
-                ?>
+                                        <?php }else{ ?>
+                                            <a href="free_exams.php?change_to_visible=<?php echo $id ?>" data-toggle="tooltip" title="" class="btn btn-success" data-original-title="View"><i class="fa fa-eye"></i></a>
 
-                        <!-- Start .panel -->
-                <div class="panel-body  p-xl-3">
-                    <div class="col-md-12">
-                        <a href="manage_free_exams.php?id=<?php echo $id; ?>"><button style="width: 100%" type="button" class="btn btn-primary"><?php echo $name?> </button></a>
+                                        <?php } ?>
+                                        <a href=""  data-toggle="tooltip" title="" class="btn btn-warning" data-original-title="Delete"><i class="fa fa-cog fa-spin"></i></a>
+
+                                        <a href="manage_free_exams.php?id=<?php echo $id; ?>" data-toggle="tooltip" title="" class="btn btn-primary" data-original-title="Edit"><i class="fa fa-pencil"></i></a>
+                                    </td>
+                                </tr>
+                                <?php
+                            }
+                            ?>
+                            </tbody>
+                        </table>
                     </div>
-                </div>
-            <?php
-            }
-            ?>
         </div>
 
+                <?php
 
+                if(isset($_GET['change_to_visible'])){
+
+                    $the_exam_id = $_GET['change_to_visible'];
+                    $query = "UPDATE FREE_QUESTION_SET SET STATUS = 'VISIBLE' WHERE ID = {$the_exam_id}";
+                    $exam_query = mysqli_query($mysqli, $query);
+                    if(!$exam_query){
+                        die("Failed!" . mysqli_error($mysqli));
+                    }
+                    header("Location: free_exams.php");
+                }
+
+                if(isset($_GET['change_to_invisible'])){
+                    $the_exam_id = $_GET['change_to_invisible'];
+                    $query = "UPDATE FREE_QUESTION_SET SET STATUS = 'INVISIBLE' WHERE ID = {$the_exam_id}";
+                    $exam_query = mysqli_query($mysqli, $query);
+                    if(!$exam_query){
+                        die("Failed!" . mysqli_error($mysqli));
+                    }
+                    header("Location: free_exams.php");
+                }
+                ?>
                 <div class="clearfix"></div>
                 <div class="footer">
                     <div>
