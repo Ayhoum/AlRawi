@@ -71,7 +71,7 @@ if (isset($_POST['submit'])) {
                     <input type="text" name="3rd_answer" placeholder="Type the 3rd answer" class="form-control" required>
                 </div>
                 <div class="form-group row"><label>4TH Answer: </label>
-                    <input type="text" name="4th_answer" placeholder="Type the 4th answer" class="form-control" required>
+                    <input type="text" name="4th_answer" placeholder="Type the 4th answer" class="form-control">
                 </div>
                 <div class="hr-line-dashed"></div>
 
@@ -89,10 +89,11 @@ if (isset($_POST['submit'])) {
 
                 <div class="form-group row"><label>Question Type : </label>
                     <select class="form-control m-b" name="type" required>
-                        <option value="">Select a question type</option>
-                        <option value="1">option 1</option>
-                        <option value="2">option 2</option>
-                        <option value="3">option 3</option>
+                        <option value="" disabled selected>Select a question type</option>
+                        <option value="yesNo">نعم / لا</option>
+                        <option value="numInp">إدخال رقم</option>
+                        <option value="multiChoice">اختيار من متعدد</option>
+                        <option value="advantage">أفضلية</option>
                     </select>
                 </div>
 

@@ -101,7 +101,7 @@ while ($row = mysqli_fetch_assoc($select_question)) {
                         <input type="text" name="3rd_answer" value="<?php echo $ans_3 ?>" class="form-control" required>
                     </div>
                     <div class="form-group row"><label>4TH Answer: </label>
-                        <input type="text" name="4th_answer" value="<?php echo $ans_4 ?>" class="form-control" required>
+                        <input type="text" name="4th_answer" value="<?php echo $ans_4 ?>" class="form-control">
                     </div>
                     <div class="hr-line-dashed"></div>
 
@@ -138,10 +138,10 @@ while ($row = mysqli_fetch_assoc($select_question)) {
 
                     <div class="form-group row"><label>Question Type : </label>
                         <select class="form-control m-b" name="type" required>
-                            <option value=""></option>
-                            <option value="1" <?php if ($type == 1 ){echo "selected"; }?>>option 1</option>
-                            <option value="2" <?php if ($type == 2 ){echo "selected"; }?>>option 2</option>
-                            <option value="3" <?php if ($type == 3 ){echo "selected"; }?>>option 3</option>
+                            <option value="yesNo" <?php if ($type == "yesNo" ){echo "selected"; }?>>نعم / لا</option>
+                            <option value="numInp" <?php if ($type == "numInp" ){echo "selected"; }?>>إدخال رقم</option>
+                            <option value="multiChoice" <?php if ($type == "multiChoice" ){echo "selected"; }?>>اختيار من متعدد</option>
+                            <option value="advantage" <?php if ($type == "advantage" ){echo "selected"; }?>>أفضلية</option>
                         </select>
                     </div>
 
