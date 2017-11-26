@@ -2,38 +2,24 @@
 /**
  * Created by PhpStorm.
  * User: Alaa
- * Date: 8-11-2017
- * Time: 20:51
+ * Date: 20-11-2017
+ * Time: 21:27
  */
 session_start();
 ob_start();
-include '../../scripts/db_connection.php';
-if(isset($_POST['create'])){
-    $examName = $_POST['exam_name'];
-    $query = "INSERT INTO QUESTION_SET(EXAM_NAME)";
-    $query .= "VALUES(  '{$examName}') ";
-    $result = mysqli_query($mysqli, $query);
-
-    $lastId = mysqli_insert_id($mysqli);
-    $beginValue  = (($lastId -1) * 65) + 1;
-    $query  = "UPDATE QUESTION_SET SET BEGIN_ID = $beginValue WHERE id= $lastId";
-    $result = mysqli_query($mysqli, $query);
-
-    if (!$result) {
-        die("Failed to create a new exam". mysqli_error($mysqli));
-    } else {
-        header("Location: manage_paid_exams.php?id=$lastId");
-    }
+include '../scripts/db_connection.php';
+//$date = date('Y-m-d');
+if ($_SESSION['role'] != "MainAdmin") {
+    header("Location: ../index.php");
 }
 
+
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>Al-Rawi Admin Dashboard</title>
+    <title>Absolute Admin</title>
     <meta name="keywords" content="HTML5,CSS3,Admin Template" />
     <meta name="description" content="" />
     <meta name="Author" content="Psd2allconversion [www.psd2allconversion.com]" />
@@ -55,7 +41,7 @@ if(isset($_POST['create'])){
     <link href="assets/plugins/widget/widget.css" rel="stylesheet">
     <link href="assets/plugins/calendar/fullcalendar.min.css" rel="stylesheet">
     <link href="assets/plugins/ui/jquery-ui.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/plugins/toastr/toastr.min.css"/>
+
     <!-- THEME CSS -->
     <link href="assets/css/style.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/theme/dark.css" rel="stylesheet" type="text/css" />
@@ -65,6 +51,7 @@ if(isset($_POST['create'])){
 </head>
 <body>
 
+<!-- wrapper -->
 <div id="wrapper">
     <!-- BEGIN HEADER -->
     <div class="page-header navbar fixed-top">
@@ -72,12 +59,13 @@ if(isset($_POST['create'])){
         <div class="page-header-inner ">
             <!-- BEGIN LOGO -->
             <div class="page-logo">
-                <a href="index.php">
+                <a href="../index.php">
                     <img src="assets/images/logo.png" alt="absolute admin" class="img-fluid logo-default"/> </a>
 
             </div><div class="menu-toggler sidebar-toggler">
-                <a href="javascript:;" class="navbar-minimalize minimalize-styl-2  float-left "><i class="fa fa-bars"></i></a>
+                <a href="javascript:" class="navbar-minimalize minimalize-styl-2  float-left "><i class="fa fa-bars"></i></a>
             </div>
+
 
             <!-- END LOGO -->
 
@@ -86,18 +74,17 @@ if(isset($_POST['create'])){
                 <ul class="nav navbar-nav float-right">
                     <!-- BEGIN USER LOGIN DROPDOWN -->
                     <li class="dropdown dropdown-user">
-                        <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true" aria-expanded="false">
+                        <a href="javascript:" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true" aria-expanded="false">
                             <img alt="" class="rounded-circle" src="assets/images/avtar-3.jpg">
                         </a>
                         <div class="dropdown-menu dropdown-menu-default">
-                            <a class="dropdown-item" href="../../logout.php">
+                            <a class="dropdown-item" href="../logout.php">
                                 <i class="icon-key"></i> Log Out </a>
                         </div>
                     </li>
                     <!-- END USER LOGIN DROPDOWN -->
                 </ul>
-            </div>
-            <!-- END TOP NAVIGATION MENU -->
+            </div>            <!-- END TOP NAVIGATION MENU -->
         </div>
         <!-- END HEADER INNER -->
     </div>
@@ -108,7 +95,6 @@ if(isset($_POST['create'])){
 
     <!-- BEGIN CONTAINER -->
     <div class="page-container">
-
         <aside class="sidebar">
             <nav class="sidebar-nav">
                 <ul class="metismenu" id="menu">
@@ -151,95 +137,91 @@ if(isset($_POST['create'])){
             <!-- END SIDEBAR -->
         </aside>
 
+
         <!-- BEGIN CONTENT BODY -->
         <div class="page-content-wrapper">
             <div class="content-wrapper container">
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="page-title">
-                            <h4 class="float-left">Add New paid Exam</h4>
+                            <h4 class="float-left">Paid Exams</h4>
                         </div>
                     </div>
                 </div><!-- end .page title-->
-                <div class="row">
+                <div class="panel panel-card margin-b-30">
+
+                <?php
+                $query = "SELECT * FROM QUESTION_SET";
+                $select_exams = mysqli_query($mysqli, $query);
+
+                while ($row = mysqli_fetch_assoc($select_exams)) {
+                $id = $row['ID'];
+                $name = $row['EXAM_NAME'];
+                $begin = $row['BEGIN_ID'];
+                $beginValue = (($begin - 1));
+                ?>
+
+                        <!-- Start .panel -->
+                <div class="panel-body  p-xl-3">
                     <div class="col-md-12">
-                        <div class="panel panel-card margin-b-30">
-                            <!-- Start .panel -->
-                            <div class="panel-heading">
-                                Create New Exam
-                            </div>
-                            <div class="panel-body  p-xl-3">
-                                <form method="post" action="add_paid_exam.php" class="form-horizontal" data-toggle="validator">
-                                    <div class="form-group row"><label class="col-sm-4 form-control-label">Exam's Name</label>
-                                        <div class="col-sm-10"><input name="exam_name" type="text" class="form-control" required></div>
-                                    </div>
-                                    <div class="hr-line-dashed"></div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-8 col-sm-offset-0">
-                                            <input name= "create" class="btn btn-primary" type="submit" value="Create">
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
+                        <a href="manage_paid_exams.php?id=<?php echo $id; ?>"><button style="width: 100%" type="button" class="btn btn-primary"><?php echo $name?> </button></a>
                     </div>
                 </div>
-
-
+            <?php
+            }
+            ?>
         </div>
-            <div class="clearfix"></div>
-            <div class="footer">
-                <div>
-                    <strong>Copyright</strong> El-Semicolon; © 2017
+
+
+                <div class="clearfix"></div>
+                <div class="footer">
+                    <div>
+                        <strong>Copyright</strong> El-Semicolon; © 2017
+                    </div>
                 </div>
             </div>
+            <!-- END CONTENT BODY -->
         </div>
-        <!-- END CONTENT BODY -->
+        <!-- END CONTAINER -->
     </div>
-    <!-- END CONTAINER -->
-</div>
-<!-- /wrapper -->
+    <!-- /wrapper -->
 
 
-<!-- SCROLL TO TOP -->
-<a href="#" id="toTop"></a>
+    <!-- SCROLL TO TOP -->
+    <a href="#" id="toTop"></a>
 
 
-<!-- PRELOADER -->
-<div id="preloader">
-    <div class="inner">
-        <span class="loader"></span>
-    </div>
-</div><!-- /PRELOADER -->
+    <!-- PRELOADER -->
+    <div id="preloader">
+        <div class="inner">
+            <span class="loader"></span>
+        </div>
+    </div><!-- /PRELOADER -->
 
 
-<!-- JAVASCRIPT FILES -->
+    <!-- JAVASCRIPT FILES -->
 
-<script type="text/javascript" src="assets/plugins/jquery/jquery.min.js"></script>
-<script type="text/javascript" src="assets/plugins/metis-menu/metisMenu.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/metis-menu/metisMenu.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/bootstrap/js/tether.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/slim-scroll/jquery.slimscroll.min.js"></script>
+    <script src="assets/plugins/c3/d3.v3.min.js" charset="utf-8"></script>
+    <script src="assets/plugins/c3/c3.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="assets/plugins/calendar/moment.min.js"></script>
+    <script src="assets/plugins/calendar/fullcalendar.min.js"></script>
+    <script src="assets/plugins/ui/jquery-ui.js"></script>
 
-<script type="text/javascript" src="assets/plugins/bootstrap/js/tether.min.js"></script>
-<script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="assets/plugins/slim-scroll/jquery.slimscroll.min.js"></script>
-<script src="assets/plugins/c3/d3.v3.min.js" charset="utf-8"></script>
-<script src="assets/plugins/c3/c3.min.js"></script>
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script src="assets/plugins/calendar/moment.min.js"></script>
-<script src="assets/plugins/calendar/fullcalendar.min.js"></script>
-<script src="assets/plugins/ui/jquery-ui.js"></script>
-<script src="assets/plugins/map/jquery-jvectormap-1.2.2.min.js"></script>
-<script src="assets/plugins/map/jquery-jvectormap-world-mill-en.js"></script>
-<script src="assets/plugins/morris_chart/morris.js"></script>
-<script src="assets/plugins/morris_chart/raphael-2.1.0.min.js"></script>
-<!-- PAGE LEVEL FILES -->
-<script src="assets/plugins/data-tables/jquery.dataTables.js"></script>
-<script src="assets/plugins/data-tables/dataTables.tableTools.js"></script>
-<script src="assets/plugins/data-tables/dataTables.bootstrap4.min.js"></script>
-<script src="assets/plugins/data-tables/dataTables.responsive.js"></script>
-<script src="assets/plugins/data-tables/tables-data.js"></script>
-<!-- Custom FILES -->
-<script type="text/javascript" src="assets/js/custom.js"></script>
-<script src="assets/plugins/toastr/toastr.min.js"></script>
-<script type="text/javascript" src="assets/js/index.js"></script>
+
+    <!-- PAGE LEVEL FILES -->
+    <script src="assets/plugins/data-tables/jquery.dataTables.js"></script>
+    <script src="assets/plugins/data-tables/dataTables.tableTools.js"></script>
+    <script src="assets/plugins/data-tables/dataTables.bootstrap.js"></script>
+    <script src="assets/plugins/data-tables/dataTables.responsive.js"></script>
+    <script src="assets/plugins/data-tables/tables-data.js"></script>
+    <!-- Custom FILES -->
+    <script type="text/javascript" src="assets/js/custom.js"></script>
+
 </body>
 </html>

@@ -1,5 +1,5 @@
 <?php
-include '../../scripts/db_connection.php';
+include '../scripts/db_connection.php';
 
 if (isset($_GET['id']) && ($_GET['qset'])) {
     $qset = $_GET['qset'];
@@ -38,7 +38,7 @@ if (isset($_POST['submit'])) {
     <div class="panel panel-card margin-b-30">
         <div class="panel-body  p-xl-3">
 
-            <form  method="post" action="add_new_free_question.php?qset=<?php echo $qset;?>&id=<?php echo $setId;?>" data-toggle="validator">
+            <form method="post" action="add_new_free_question.php?qset=<?php echo $qset;?>&id=<?php echo $setId;?>" data-toggle="validator">
                 <div class="form-group row"><label>Question:</label>
                     <input type="text" name="question" placeholder="Enter the question" class="form-control" required>
                 </div>
@@ -78,9 +78,12 @@ if (isset($_POST['submit'])) {
                 <div class="hr-line-dashed"></div>
 
                 <div class="form-group row">
-                    <button class="btn btn-sm btn-primary float-right m-t-n-xs" type="submit" name="submit"><strong>Add Question</strong></button>
+                    <button class="btn btn-primary float-right m-t-n-xs" type="submit" name="submit"><strong>Add Question</strong></button>
                 </div>
             </form>
+            <div class="form-group row">
+                <a href="manage_free_exams.php?id=<?php echo $qset; ?>"><button class="btn btn-danger float-right m-t-n-xs"><strong>Back to manage exam</strong></button></a>
+            </div>
         </div>
     </div>
 </div>

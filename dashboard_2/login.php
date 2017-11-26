@@ -1,7 +1,7 @@
 <?php
 session_start();
 ob_start();
-include '../../scripts/db_connection.php';
+include '../scripts/db_connection.php';
 
 
 if(isset($_POST['signIn'])) {

@@ -5,7 +5,7 @@
  * Date: 8-11-2017
  * Time: 17:22
  */
-include '../../scripts/db_connection.php';
+include '../scripts/db_connection.php';
 ?>
 
 <div class="panel panel-card recent-activites">

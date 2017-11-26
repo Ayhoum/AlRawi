@@ -5,7 +5,7 @@
  * Date: 20-11-2017
  * Time: 22:00
  */
-include '../../scripts/db_connection.php';
+include '../scripts/db_connection.php';
 if (isset($_GET['id']) && ($_GET['qset'])) {
     $qset = $_GET['qset'];
     $setId = $_GET['id'];
@@ -58,12 +58,12 @@ if (isset($_GET['id']) && ($_GET['qset'])) {
         <div class="page-header-inner ">
             <!-- BEGIN LOGO -->
             <div class="page-logo">
-                <a href="index.html">
+                <a href="../index.php">
                     <img src="assets/images/logo.png" alt="absolute admin" class="img-fluid logo-default"/> </a>
 
             </div>
             <div class="menu-toggler sidebar-toggler">
-                <a href="javascript:;" class="navbar-minimalize minimalize-styl-2  float-left "><i
+                <a href="javascript:" class="navbar-minimalize minimalize-styl-2  float-left "><i
                             class="fa fa-bars"></i></a>
             </div>
 
@@ -75,11 +75,11 @@ if (isset($_GET['id']) && ($_GET['qset'])) {
                 <ul class="nav navbar-nav float-right">
                     <!-- BEGIN USER LOGIN DROPDOWN -->
                     <li class="dropdown dropdown-user">
-                        <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true" aria-expanded="false">
+                        <a href="javascript:" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true" aria-expanded="false">
                             <img alt="" class="rounded-circle" src="assets/images/avtar-3.jpg">
                         </a>
                         <div class="dropdown-menu dropdown-menu-default">
-                            <a class="dropdown-item" href="../../logout.php">
+                            <a class="dropdown-item" href="../logout.php">
                                 <i class="icon-key"></i> Log Out </a>
                         </div>
                     </li>

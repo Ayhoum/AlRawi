@@ -1,7 +1,7 @@
 <?php
 session_start();
 ob_start();
-include '../../scripts/db_connection.php';
+include '../scripts/db_connection.php';
 $date = date('Y-m-d');
 if($_SESSION['role'] != "MainAdmin" || !isset($_GET['id'])){
     header("Location: ../index.php");
@@ -71,11 +71,11 @@ while($row = mysqli_fetch_assoc($select_users)){
         <div class="page-header-inner ">
             <!-- BEGIN LOGO -->
             <div class="page-logo">
-                <a href="index.html">
+                <a href="../index.php">
                     <img src="assets/images/logo.png" alt="absolute admin" class="img-fluid logo-default"/> </a>
 
             </div><div class="menu-toggler sidebar-toggler">
-                <a href="javascript:;" class="navbar-minimalize minimalize-styl-2  float-left "><i class="fa fa-bars"></i></a>
+                <a href="javascript:" class="navbar-minimalize minimalize-styl-2  float-left "><i class="fa fa-bars"></i></a>
             </div>
 
             <!-- END LOGO -->
@@ -85,11 +85,11 @@ while($row = mysqli_fetch_assoc($select_users)){
                 <ul class="nav navbar-nav float-right">
                     <!-- BEGIN USER LOGIN DROPDOWN -->
                     <li class="dropdown dropdown-user">
-                        <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true" aria-expanded="false">
+                        <a href="javascript:" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true" aria-expanded="false">
                             <img alt="" class="rounded-circle" src="assets/images/avtar-3.jpg">
                         </a>
                         <div class="dropdown-menu dropdown-menu-default">
-                            <a class="dropdown-item" href="../../logout.php">
+                            <a class="dropdown-item" href="../logout.php">
                                 <i class="icon-key"></i> Log Out </a>
                         </div>
                     </li>

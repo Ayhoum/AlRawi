@@ -7,22 +7,22 @@
  */
 session_start();
 ob_start();
-include '../../scripts/db_connection.php';
+include '../scripts/db_connection.php';
 if(isset($_POST['create'])){
     $examName = $_POST['exam_name'];
-    $query = "INSERT INTO FREE_QUESTION_SET(EXAM_NAME)";
+    $query = "INSERT INTO QUESTION_SET(EXAM_NAME)";
     $query .= "VALUES(  '{$examName}') ";
     $result = mysqli_query($mysqli, $query);
 
     $lastId = mysqli_insert_id($mysqli);
     $beginValue  = (($lastId -1) * 65) + 1;
-    $query  = "UPDATE FREE_QUESTION_SET SET BEGIN_ID = $beginValue WHERE ID= $lastId";
+    $query  = "UPDATE QUESTION_SET SET BEGIN_ID = $beginValue WHERE id= $lastId";
     $result = mysqli_query($mysqli, $query);
 
     if (!$result) {
         die("Failed to create a new exam". mysqli_error($mysqli));
     } else {
-        header("Location: manage_free_exams.php?id=$lastId");
+        header("Location: manage_paid_exams.php?id=$lastId");
     }
 }
 
@@ -76,7 +76,7 @@ if(isset($_POST['create'])){
                     <img src="assets/images/logo.png" alt="absolute admin" class="img-fluid logo-default"/> </a>
 
             </div><div class="menu-toggler sidebar-toggler">
-                <a href="javascript:;" class="navbar-minimalize minimalize-styl-2  float-left "><i class="fa fa-bars"></i></a>
+                <a href="javascript:" class="navbar-minimalize minimalize-styl-2  float-left "><i class="fa fa-bars"></i></a>
             </div>
 
             <!-- END LOGO -->
@@ -86,11 +86,11 @@ if(isset($_POST['create'])){
                 <ul class="nav navbar-nav float-right">
                     <!-- BEGIN USER LOGIN DROPDOWN -->
                     <li class="dropdown dropdown-user">
-                        <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true" aria-expanded="false">
+                        <a href="javascript:" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true" aria-expanded="false">
                             <img alt="" class="rounded-circle" src="assets/images/avtar-3.jpg">
                         </a>
                         <div class="dropdown-menu dropdown-menu-default">
-                            <a class="dropdown-item" href="../../logout.php">
+                            <a class="dropdown-item" href="../logout.php">
                                 <i class="icon-key"></i> Log Out </a>
                         </div>
                     </li>
@@ -127,7 +127,7 @@ if(isset($_POST['create'])){
                         </ul>
                     </li>
                     <li class="nav-heading"><span>FREE EXAMS</span></li>
-                    <li class="active">
+                    <li>
                         <a href="#"><i class="fa fa-file-text-o"></i> <span class="nav-label">Free Exams</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse">
                             <li><a href="add_free_exam.php">New Exam</a></li>
@@ -135,7 +135,7 @@ if(isset($_POST['create'])){
                         </ul>
                     </li>
                     <li class="nav-heading"><span>PAID EXAMS</span></li>
-                    <li>
+                    <li class="active">
                         <a href="#"><i class="fa fa-dollar"></i> <span class="nav-label">Paid Exams</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse">
                             <li><a href="add_paid_exam.php">New Exam</a></li>
@@ -157,7 +157,7 @@ if(isset($_POST['create'])){
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="page-title">
-                            <h4 class="float-left">Add New paid Exam</h4>
+                            <h4 class="float-left">Add New Paid Exam</h4>
                         </div>
                     </div>
                 </div><!-- end .page title-->
@@ -169,7 +169,7 @@ if(isset($_POST['create'])){
                                 Create New Exam
                             </div>
                             <div class="panel-body  p-xl-3">
-                                <form method="post" action="add_free_exam.php" class="form-horizontal" data-toggle="validator">
+                                <form method="post" action="add_paid_exam.php" class="form-horizontal" data-toggle="validator">
                                     <div class="form-group row"><label class="col-sm-4 form-control-label">Exam's Name</label>
                                         <div class="col-sm-10"><input name="exam_name" type="text" class="form-control" required></div>
                                     </div>
@@ -186,7 +186,7 @@ if(isset($_POST['create'])){
                 </div>
 
 
-            </div>
+        </div>
             <div class="clearfix"></div>
             <div class="footer">
                 <div>
