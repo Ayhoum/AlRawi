@@ -22,7 +22,7 @@ if(isset($_POST['login_submit'])) {
                 $_SESSION['username'] = $name;
                 $_SESSION['role'] = $role;
                 echo 'Welcome Agent';
-                header("Location: index.php");
+                header("Location: profile.php");
             } else {
                 echo "Enter a Valid Data !! ";
             }
@@ -100,7 +100,7 @@ if(isset($_POST['login_submit'])) {
                                 </div>
                                 <div class="col_full topmargin-sm nobottommargin">
                                     <a href="#" class="fright text-center" style="width: 100%">نسيت كلمة المرور؟</a>
-                                    <a href="#" class="fright text-center" style="width: 100%">قم بتسجيل حساب جديد</a>
+                                    <a href="signup.php" class="fright text-center" style="width: 100%">قم بتسجيل حساب جديد</a>
                                 </div>
                             </form>
                         </div>
