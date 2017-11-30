@@ -210,6 +210,7 @@ $totalUsers = $countOthers + $countSucceeded;
                 $result = mysqli_query($mysqli,$query);
                 if (mysqli_num_rows($result) > 0 ){
                     while ($row = mysqli_fetch_assoc($result)){
+                        $id = $row['ID'];
                         $name = $row['EXAM_NAME'];
                         $begin = $row['BEGIN_ID'];
                         $beginValue = (($begin - 1));
@@ -221,7 +222,7 @@ $totalUsers = $countOthers + $countSucceeded;
                             </div>
                             <div class="team-desc team-desc-bg">
                                 <div class="team-title"><h4><?php echo $name; ?></h4><span> PAID </span></div>
-                                <a href="#" class="button button-xlarge button-dark button-rounded tright">اشتري الان <i class="icon-circle-arrow-right"></i></a>
+                                <a href="buy_exam.php?exam_id=<?php echo $id ?>" class="button button-xlarge button-dark button-rounded tright">اشتري الان <i class="icon-circle-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>

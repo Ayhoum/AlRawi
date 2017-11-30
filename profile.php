@@ -209,7 +209,7 @@ include 'scripts/db_connection.php';
                                     <ul class="tab-nav clearfix">
                                         <li><a href="#tab-feeds"><i class="icon-rss2"></i> الدروس الخاصة</a></li>
                                         <li><a href="#tab-posts"><i class="icon-pencil2"></i> الامتحانات المسجلة</a></li>
-                                        <li><a href="#tab-replies"><i class="icon-reply"></i> الامتحانات المجانية</a></li>
+                                        <li><a href="#tab-connections"><i class="icon-reply"></i> الامتحانات المجانية</a></li>
                                     </ul>
 
                                     <div class="tab-container">
@@ -269,7 +269,69 @@ include 'scripts/db_connection.php';
                                         </div>
                                         <div class="tab-content clearfix" id="tab-posts">
 
+
+
                                             <div class="row topmargin-sm clearfix">
+
+                                                <?php
+                                                if (isset($_SESSION['username'])) {
+                                                    $name = $_SESSION['username'];
+
+                                                    $query1 = "SELECT * FROM Users WHERE  Name ='{$name}' ";
+                                                    $result1 = mysqli_query($mysqli, $query1);
+
+                                                    if (mysqli_num_rows($result1) > 0) {
+                                                        while ($row = mysqli_fetch_assoc($result1)) {
+                                                            $user_id = $row['ID'];
+
+                                                            $query2  = "SELECT * FROM PAID_EXAM WHERE Users_ID = $user_id";
+                                                            $result2 = mysqli_query($mysqli, $query2);
+
+                                                            if (mysqli_num_rows($result2) > 0) {
+                                                                while ($row = mysqli_fetch_assoc($result2)) {
+                                                                    $question_set_id = $row['QUESTION_SET_ID'];
+
+                                                                    $query3  = "SELECT * FROM QUESTION_SET WHERE ID = '{$question_set_id}'";
+                                                                    $result3 = mysqli_query($mysqli,$query3);
+                                                                    if (mysqli_num_rows($result3) > 0 ){
+                                                                        while ($row = mysqli_fetch_assoc($result3)){
+                                                                            $id = $row['ID'];
+                                                                            $name = $row['EXAM_NAME'];
+                                                                            $begin = $row['BEGIN_ID'];
+                                                                            $beginValue = (($begin - 1));
+                                                                            ?>
+                                                                            <div class="col-md-3 col-sm-6 bottommargin">
+                                                                                <div class="team">
+                                                                                    <div class="team-image">
+                                                                                        <img src="images/1.png" alt="Exam">
+                                                                                    </div>
+                                                                                    <div class="team-desc team-desc-bg">
+                                                                                        <div class="team-title"><h4><?php echo $name; ?></h4><span> PAID </span></div>
+                                                                                        <a href="buy_exam.php?exam_id=<?php echo $id ?>" class="button button-xlarge button-dark button-rounded tright">ابدء الأمتحان <i class="icon-circle-arrow-right"></i></a>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <?php
+                                                                        }
+                                                                    }
+
+
+
+                                                                }
+
+                                                            }
+
+
+                                                        }
+
+
+                                                    }
+
+
+                                                }
+
+                                                ?>
 
 
                                             </div>
@@ -279,6 +341,35 @@ include 'scripts/db_connection.php';
 
 
                                             <div class="row topmargin-sm">
+
+                                                <?php
+
+                                                $query4 = "SELECT * FROM FREE_QUESTION_SET WHERE STATUS = 'VISIBLE'";
+                                                $result4 = mysqli_query($mysqli,$query4);
+                                                if (mysqli_num_rows($result4) > 0 ){
+                                                    while ($row = mysqli_fetch_assoc($result4)){
+                                                        $id = $row['ID'];
+                                                        $name = $row['EXAM_NAME'];
+                                                        $begin = $row['BEGIN_ID'];
+                                                        $beginValue = (($begin - 1));
+                                                        ?>
+                                                        <div class="col-md-3 col-sm-6 bottommargin">
+                                                            <div class="team">
+                                                                <div class="team-image">
+                                                                    <img src="images/1.png" alt="Exam">
+                                                                </div>
+                                                                <div class="team-desc team-desc-bg">
+                                                                    <div class="team-title"><h4><?php echo $name; ?></h4><span> FREE </span></div>
+                                                                    <a href="buy_exam.php?exam_id=<?php echo $id ?>" class="button button-xlarge button-dark button-rounded tright">ابدء الامتحان<i class="icon-circle-arrow-right"></i></a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <?php
+                                                    }
+                                                }
+
+                                                ?>
 
                                             </div>
 
