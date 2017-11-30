@@ -206,7 +206,7 @@ $totalUsers = $countOthers + $countSucceeded;
             <div class="container clearfix">
 
                 <?php
-                $query  = "SELECT * FROM QUESTION_SET";
+                $query  = "SELECT * FROM QUESTION_SET WHERE STATUS = 'VISIBLE'";
                 $result = mysqli_query($mysqli,$query);
                 if (mysqli_num_rows($result) > 0 ){
                     while ($row = mysqli_fetch_assoc($result)){

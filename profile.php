@@ -221,8 +221,9 @@ include 'scripts/db_connection.php';
                                             <div class="table-responsive">
                                                 <table class="table table-bordered table-striped">
                                                     <colgroup>
-                                                        <col class="col-xs-1">
-                                                        <col class="col-xs-7">
+                                                        <col class="col-xs-3">
+                                                        <col class="col-xs-3">
+                                                        <col class="col-xs-3">
                                                     </colgroup>
                                                     <thead>
                                                     <tr>
@@ -231,40 +232,48 @@ include 'scripts/db_connection.php';
                                                         <th>عنوان الجلسة</th>
                                                     </tr>
                                                     </thead>
+
                                                     <tbody>
+
+                                                    <?php
+
+                                                    if (isset($_SESSION['username'])) {
+                                                        $name = $_SESSION['username'];
+
+                                                        $query1 = "SELECT * FROM Users WHERE  Name ='{$name}' ";
+                                                        $result1 = mysqli_query($mysqli, $query1);
+
+                                                        if (mysqli_num_rows($result1) > 0) {
+                                                            while ($row = mysqli_fetch_assoc($result1)) {
+                                                                $user_id = $row['ID'];
+
+                                                                $query = "SELECT * FROM BOOKED_SESSION WHERE Users_ID ='{$user_id}' && STATUS = 'APPROVED' ORDER BY `DATE` DESC ";
+                                                                $result = mysqli_query($mysqli,$query);
+                                                                While ($row = mysqli_fetch_assoc($result)){
+                                                                    $date    = $row['DATE'];
+                                                                    $time    = $row['TIME'];
+                                                                    $Subject = $row['SUBJECT'];
+
+
+                                                    ?>
                                                     <tr>
                                                         <td>
-                                                            <code>5/23/2016</code>
+                                                            <code><?php echo $date?> </code>
                                                         </td>
-                                                        <td>Payment for VPS2 completed</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <code>5/23/2016</code>
-                                                        </td>
-                                                        <td>Logged in to the Account at 16:33:01</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <code>5/22/2016</code>
-                                                        </td>
-                                                        <td>Logged in to the Account at 09:41:58</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <code>5/21/2016</code>
-                                                        </td>
-                                                        <td>Logged in to the Account at 17:16:32</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <code>5/18/2016</code>
-                                                        </td>
-                                                        <td>Logged in to the Account at 22:53:41</td>
+                                                        <td><?php echo $time ?> </td>
+                                                        <td><?php echo $Subject ?> </td>
                                                     </tr>
                                                     </tbody>
                                                 </table>
                                             </div>
+                                            <?php
+
+                                            }
+
+                                            }
+                                            }
+                                            }
+                                            ?>
 
                                         </div>
                                         <div class="tab-content clearfix" id="tab-posts">
@@ -291,7 +300,7 @@ include 'scripts/db_connection.php';
                                                                 while ($row = mysqli_fetch_assoc($result2)) {
                                                                     $question_set_id = $row['QUESTION_SET_ID'];
 
-                                                                    $query3  = "SELECT * FROM QUESTION_SET WHERE ID = '{$question_set_id}'";
+                                                                    $query3  = "SELECT * FROM QUESTION_SET WHERE ID = '{$question_set_id}' && STATUS = 'VISIBLE'";
                                                                     $result3 = mysqli_query($mysqli,$query3);
                                                                     if (mysqli_num_rows($result3) > 0 ){
                                                                         while ($row = mysqli_fetch_assoc($result3)){
