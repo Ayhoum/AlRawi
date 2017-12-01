@@ -24,7 +24,7 @@ if (mysqli_num_rows($result) > 0 ){
 
                 $number     =    $row1['NUMBER'];
                 $question   =    $row1['QUESTION'];
-                $right_ans  =    $row1['RIGHT_ANWSER'];
+                $right_ans  =    $row1['RIGHT_ANSWER'];
                 $ans_2      =    $row1['ANSWER_2'];
                 $ans_3      =    $row1['ANSWER_3'];
                 $ans_4      =    $row1['ANSWER_4'];
