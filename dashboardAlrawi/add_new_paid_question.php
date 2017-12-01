@@ -115,7 +115,7 @@ if (isset($_GET['id']) && ($_GET['qset'])) {
         reader.onload = function (e) {
             // get loaded data and render thumbnail.
             document.getElementById("image").src = e.target.result;
-            document.getElementById("image").style = "height: 200px; width: 200px;";
+            document.getElementById("image").style = "height: 600px; width: 600px;";
         };
 
         // read the image file as a data URL.
