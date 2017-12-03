@@ -7,7 +7,7 @@
  */
 session_start();
 ob_start();
-
+require_once('phpmailer/class.phpmailer.php');
 include 'scripts/db_connection.php';
 
 ?>
@@ -29,13 +29,25 @@ if (isset($_SESSION['username'])){
             if (isset($_POST['submit'])) {
                 $time = $_POST['time'];
                 $date = $_POST['date'];
+                $date2 = date('Y-m-d', strtotime($date));
+                echo "date 2 ".$date2;
+
+                echo $time. "<br>";
+
+                echo $date. "<br>";
+
+               date_default_timezone_get('Europe/Amsterdam');
+
 
                 $query2 = "INSERT INTO BOOKED_SESSION (DATE, TIME, Users_ID)";
                 $query2 .= " VALUES ('{$time}',
-                                     '{$date}',
+                                     '{$date2}',
                                      '{$user_id}')";
                 $result2 = mysqli_query($mysqli, $query2);
 
+
+            } else {
+                echo  ' ' ;
             }
 
         }
@@ -45,6 +57,41 @@ if (isset($_SESSION['username'])){
 }
 
 ?>
+<?php
+if(isset($_POST['submit'])){
+
+
+    $mail             = new PHPMailer(); // defaults to using php "mail()"
+
+    $body             = "A new session has been applied form a student login to your dashboard to check it !";
+
+
+    $address1= "semsemea.a@hotmail.com";
+
+    $address3="aylosa@outlook.com";
+
+    $mail->AddAddress($address1);
+
+    $mail->AddbCC($address3);
+
+    $mail->Subject    = "New Session";
+
+    $mail->MsgHTML($body);
+//    $pdf= "{$senderf}{$receiverf}{$mtrn1}{$mtrn5}{$mtrn10}{$agentid}{$accountid}.pdf";
+//    $mail->AddAttachment("transaction_pdf/$pdf");      // attachment
+//$mail->AddAttachment("images/phpmailer_mini.gif"); // attachment
+
+    if(!$mail->Send()) {
+        echo "Mailer Error: " . $mail->ErrorInfo;
+    } else {
+        header("Location: profile.php");
+    }
+
+
+}
+
+?>
+
 
 <!DOCTYPE html>
 <html dir="ltr" lang="en-US">
