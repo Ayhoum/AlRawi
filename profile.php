@@ -1,7 +1,9 @@
 <?php
 session_start();
 ob_start();
+
 include 'scripts/db_connection.php';
+
 ?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en-US">
@@ -275,6 +277,13 @@ include 'scripts/db_connection.php';
                                             ?>
                                                     </tbody>
                                                 </table>
+
+                                                <div class="divider"><i class="icon-circle"></i></div>
+
+                                                <div class="center">
+                                                    <a href="private_session.php" class="button button-rounded button-reveal button-large button-border "><i class="icon-note"></i><span>احجز جلستك الخاصة الان</span></a>
+                                                </div>
+
                                             </div>
 
                                         </div>
@@ -343,7 +352,11 @@ include 'scripts/db_connection.php';
                                                 }
 
                                                 ?>
+                                                <div class="divider"><i class="icon-circle"></i></div>
 
+                                                <div class="center">
+                                                    <a href="#" class="button button-rounded button-reveal button-large button-border "><i class="icon-shopping-cart"></i><span>اشتري مزيدا من الفحوص</span></a>
+                                                </div>
 
                                             </div>
 
@@ -383,6 +396,8 @@ include 'scripts/db_connection.php';
                                                 ?>
 
                                             </div>
+                                            <div class="divider"><i class="icon-circle"></i></div>
+
 
                                         </div>
 
