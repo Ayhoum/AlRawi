@@ -28,20 +28,24 @@ if (isset($_SESSION['username'])){
 
             if (isset($_POST['submit'])) {
                 $time = $_POST['time'];
+
                 $date = $_POST['date'];
-                $date2 = date('Y-m-d', strtotime($date));
+
+                $date3 =  date('Y-m-d',$date2);
                 echo "date 2 ".$date2;
 
-                echo $time. "<br>";
+                echo "date 3: ".$date3;
+
+                echo $time2. "<br>";
 
                 echo $date. "<br>";
 
-               date_default_timezone_get('Europe/Amsterdam');
+//               date_default_timezone_get('Europe/Amsterdam');
 
 
                 $query2 = "INSERT INTO BOOKED_SESSION (DATE, TIME, Users_ID)";
-                $query2 .= " VALUES ('{$time}',
-                                     '{$date2}',
+                $query2 .= " VALUES ('{$date3}',
+                                     '{$time}',
                                      '{$user_id}')";
                 $result2 = mysqli_query($mysqli, $query2);
 
@@ -97,15 +101,36 @@ if(isset($_POST['submit'])){
 <html dir="ltr" lang="en-US">
 <head>
 
+    <!-- ... -->
+    <script type="text/javascript" src="/bower_components/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/bower_components/moment/min/moment.min.js"></script>
+    <script type="text/javascript" src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" />
+
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="author" content="SemiColonWeb" />
 
     <!-- Stylesheets
     ============================================= -->
-    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Montserrat:400,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />
+    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
     <link rel="stylesheet" href="style.css" type="text/css" />
-    <link rel="stylesheet" href="css/swiper.css" type="text/css" />
+    <link rel="stylesheet" href="css/dark.css" type="text/css" />
+    <link rel="stylesheet" href="css/font-icons.css" type="text/css" />
+    <link rel="stylesheet" href="css/animate.css" type="text/css" />
+    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css" />
+
+    <!-- Date & Time Picker CSS -->
+    <link rel="stylesheet" href="demos/travel/css/datepicker.css" type="text/css" />
+    <link rel="stylesheet" href="css/components/timepicker.css" type="text/css" />
+    <link rel="stylesheet" href="css/components/daterangepicker.css" type="text/css" />
+
+    <link rel="stylesheet" href="css/responsive.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+
 
     <!-- Medical Demo Specific Stylesheet -->
     <link rel="stylesheet" href="demos/medical/medical.css" type="text/css" />
@@ -275,25 +300,17 @@ if(isset($_POST['submit'])){
         ============================================= -->
     <section id="content">
 
+        <form method="post" action="private_session.php">
+            <input type="time" name="time">
+            <input type="date" name="date">
+            <input type="submit" name="submit">
+        </form>
 
-        <div class="content-wrap" style="padding-bottom: 0 ">
-
-            <div class="container clearfix">
-
-                <form method="post" action="private_session.php">
-                        <input type="date" placeholder="yyyy-dd-mm" name="date"> <br>
-                        <input type="time" name="time"> <br>
-                        <input type="submit" name="submit">
-                </form>
-
-            </div>
-
-        </div>
 
     </section><!-- #content end -->
 
-<!-- Footer
-============================================= -->
+    <!-- Footer
+    ============================================= -->
 <footer id="footer" style="background-color: #F5F5F5;border-top: 2px solid rgba(0,0,0,0.06);">
 
     <div class="container" style="border-bottom: 1px solid rgba(0,0,0,0.06);">
@@ -473,6 +490,17 @@ if(isset($_POST['submit'])){
 ============================================= -->
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/plugins.js"></script>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/plugins.js"></script>
+
+
+<!-- Date & Time Picker JS -->
+<script type="text/javascript" src="js/components/moment.js"></script>
+<script type="text/javascript" src="demos/travel/js/datepicker.js"></script>
+<script type="text/javascript" src="js/components/timepicker.js"></script>
+
+<!-- Include Date Range Picker -->
+<script type="text/javascript" src="js/components/daterangepicker.js"></script>
 
 <!-- Footer Scripts
 ============================================= -->

@@ -1,8 +1,93 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: Alaa
+ * Date: 30-11-2017
+ * Time: 19:50
+ */
 session_start();
 ob_start();
+require_once('phpmailer/class.phpmailer.php');
 include 'scripts/db_connection.php';
+
 ?>
+
+<?php
+if (isset($_SESSION['username'])){
+
+    $username = $_SESSION['username'];
+    $query1  = "SELECT * FROM Users WHERE NAME = '{$username}'";
+    $result1 = mysqli_query($mysqli, $query1);
+    if (mysqli_num_rows($result1) > 0 ) {
+
+        while ($row = mysqli_fetch_assoc($result1)) {
+
+            $user_id = $row['ID'];
+
+
+            if (isset($_POST['submit'])) {
+                $time = $_POST['time'];
+                $date = $_POST['date'];
+
+                $date2 =  date('Y-m-d', strtotime($date));
+
+
+//               date_default_timezone_get('Europe/Amsterdam');
+
+
+                $query2 = "INSERT INTO BOOKED_SESSION (DATE, TIME, Users_ID)";
+                $query2 .= " VALUES ('{$date2}',
+                                     '{$time}',
+                                     '{$user_id}')";
+                $result2 = mysqli_query($mysqli, $query2);
+
+
+            }
+
+
+        }
+
+    }
+
+}
+
+?>
+<?php
+if(isset($_POST['submit'])){
+
+
+    $mail             = new PHPMailer(); // defaults to using php "mail()"
+
+    $body             = "A new session has been applied form a student login to your dashboard to check it !";
+
+
+    $address1= "semsemea.a@hotmail.com";
+
+    $address3="aylosa@outlook.com";
+
+    $mail->AddAddress($address1);
+
+    $mail->AddbCC($address3);
+
+    $mail->Subject    = "New Session";
+
+    $mail->MsgHTML($body);
+//    $pdf= "{$senderf}{$receiverf}{$mtrn1}{$mtrn5}{$mtrn10}{$agentid}{$accountid}.pdf";
+//    $mail->AddAttachment("transaction_pdf/$pdf");      // attachment
+//$mail->AddAttachment("images/phpmailer_mini.gif"); // attachment
+
+    if(!$mail->Send()) {
+        echo "Mailer Error: " . $mail->ErrorInfo;
+    } else {
+        header("Location: profile.php");
+    }
+
+
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html dir="ltr" lang="en-US">
 <head>
@@ -12,10 +97,22 @@ include 'scripts/db_connection.php';
 
     <!-- Stylesheets
     ============================================= -->
-    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Montserrat:400,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />
+    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
     <link rel="stylesheet" href="style.css" type="text/css" />
-    <link rel="stylesheet" href="css/swiper.css" type="text/css" />
+    <link rel="stylesheet" href="css/dark.css" type="text/css" />
+    <link rel="stylesheet" href="css/font-icons.css" type="text/css" />
+    <link rel="stylesheet" href="css/animate.css" type="text/css" />
+    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css" />
+
+    <!-- Date & Time Picker CSS -->
+    <link rel="stylesheet" href="demos/travel/css/datepicker.css" type="text/css" />
+    <link rel="stylesheet" href="css/components/timepicker.css" type="text/css" />
+    <link rel="stylesheet" href="css/components/daterangepicker.css" type="text/css" />
+
+    <link rel="stylesheet" href="css/responsive.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
 
     <!-- Medical Demo Specific Stylesheet -->
     <link rel="stylesheet" href="demos/medical/medical.css" type="text/css" />
@@ -36,8 +133,9 @@ include 'scripts/db_connection.php';
 
     <!-- Document Title
     ============================================= -->
-    <title>Al Rawi Theorie | Home</title>
+    <title>Al Rawi Theorie | Private Session</title>
     <link rel="icon" href="images/1.png" type="image/x-icon">
+
 
     <style>
         .form-control.error { border: 2px solid red; }
@@ -68,10 +166,7 @@ include 'scripts/db_connection.php';
 
 
 
-
 </head>
-
-<!--<body class="stretched" data-loader-html="<div id='css3-spinner-svg-pulse-wrapper'><svg id='css3-spinner-svg-pulse' version='1.2' height='210' width='550' xmlns='http://www.w3.org/2000/svg' viewport='0 0 60 60' xmlns:xlink='http://www.w3.org/1999/xlink'><path id='css3-spinner-pulse' stroke='#DE6262' fill='none' stroke-width='2' stroke-linejoin='round' d='M0,90L250,90Q257,60 262,87T267,95 270,88 273,92t6,35 7,-60T290,127 297,107s2,-11 10,-10 1,1 8,-10T319,95c6,4 8,-6 10,-17s2,10 9,11h210' /></svg></div>">-->
 <body style="background: #fde7e7">
 <div class="se-pre-con"><div class="pre-pre"></div></div>
 
@@ -148,6 +243,8 @@ include 'scripts/db_connection.php';
 
     <!-- Header
     ============================================= -->
+    <!-- Header
+		============================================= -->
     <header id="header">
 
         <div id="header-wrap">
@@ -182,237 +279,54 @@ include 'scripts/db_connection.php';
 
     </header><!-- #header end -->
 
-
-    <section id="content" style="width: 100%">
+    <!-- Content
+    ============================================= -->
+    <section id="content style="width: 100%">
 
         <div class="content-wrap">
 
-            <div class="container clearfix">
+            <div class="container clearfix text-center" style="width: 100%;">
 
-                <div class="row clearfix">
+                <form action="#" method="post" class="nobottommargin">
+                    <div class="input-daterange travel-date-group bottommargin-sm">
+                        <div class="row">
+                            <h2 class="text-center">اختر تاريخ وموعد الجلسة مع الاستاذ حسام الراوي</h2>
+                            <div class="clear"></div>
+                            <div class="col-sm-3"></div>
 
-                    <div class="col-sm-9">
-
-                        <img src="images/icons/avatar.jpg" class="alignleft img-circle img-thumbnail notopmargin nobottommargin" alt="Avatar" style="max-width: 84px;">
-
-                        <div class="heading-block noborder">
-                            <h3></h3>
-                            <span><?php echo $_SESSION['username']; ?></span>
-                        </div>
-
-                        <div class="clear"></div>
-
-                        <div class="row clearfix">
-
-                            <div class="col-md-12 ">
-
-                                <div class="tabs tabs-alt clearfix" id="tabs-profile">
-
-                                    <ul class="tab-nav clearfix">
-                                        <li><a href="#tab-feeds"><i class="icon-rss2"></i> الدروس الخاصة</a></li>
-                                        <li><a href="#tab-posts"><i class="icon-pencil2"></i> الامتحانات المسجلة</a></li>
-                                        <li><a href="#tab-connections"><i class="icon-reply"></i> الامتحانات المجانية</a></li>
-                                    </ul>
-
-                                    <div class="tab-container">
-
-                                        <div class="tab-content clearfix" id="tab-feeds">
-
-                                            <p style="margin-left: 40%" class="">يمكنك ايجاد جميع الدروس الخاصة في الجدول التالي مزودة بالتاريخ والوقت </p>
-
-                                            <div class="table-responsive">
-                                                <table class="table table-bordered table-striped">
-                                                    <colgroup>
-                                                        <col class="col-xs-3">
-                                                        <col class="col-xs-3">
-                                                    </colgroup>
-                                                    <thead>
-                                                    <tr>
-                                                        <th>التاريخ</th>
-                                                        <th>الوقت</th>
-                                                        <th>عنوان الجلسة</th>
-                                                    </tr>
-                                                    </thead>
-
-                                                    <tbody>
-
-                                                    <?php
-
-                                                    if (isset($_SESSION['username'])) {
-                                                        $name = $_SESSION['username'];
-
-                                                        $query1 = "SELECT * FROM Users WHERE  Name ='{$name}' ";
-                                                        $result1 = mysqli_query($mysqli, $query1);
-
-                                                        if (mysqli_num_rows($result1) > 0) {
-                                                            while ($row = mysqli_fetch_assoc($result1)) {
-                                                                $user_id = $row['ID'];
-
-                                                                $query = "SELECT * FROM BOOKED_SESSION WHERE Users_ID ='{$user_id}' && STATUS = 'APPROVED' ORDER BY `DATE` DESC ";
-                                                                $result = mysqli_query($mysqli,$query);
-                                                                While ($row = mysqli_fetch_assoc($result)){
-                                                                    $date    = $row['DATE'];
-                                                                    $time    = $row['TIME'];
-                                                                    $Subject = $row['SUBJECT'];
-
-
-                                                    ?>
-                                                    <tr>
-                                                        <td>
-                                                            <code><?php echo $date?> </code>
-                                                        </td>
-                                                        <td><?php echo $time ?> </td>
-                                                        <td><?php echo $Subject ?> </td>
-                                                    </tr>
-
-                                            <?php
-
-                                            }
-
-                                            }
-                                            }
-                                            }
-                                            ?>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-
-                                        </div>
-                                        <div class="tab-content clearfix" id="tab-posts">
-
-
-
-                                            <div class="row topmargin-sm clearfix">
-
-                                                <?php
-                                                if (isset($_SESSION['username'])) {
-                                                    $name = $_SESSION['username'];
-
-                                                    $query1 = "SELECT * FROM Users WHERE  Name ='{$name}' ";
-                                                    $result1 = mysqli_query($mysqli, $query1);
-
-                                                    if (mysqli_num_rows($result1) > 0) {
-                                                        while ($row = mysqli_fetch_assoc($result1)) {
-                                                            $user_id = $row['ID'];
-
-                                                            $query2  = "SELECT * FROM PAID_EXAM WHERE Users_ID = $user_id";
-                                                            $result2 = mysqli_query($mysqli, $query2);
-
-                                                            if (mysqli_num_rows($result2) > 0) {
-                                                                while ($row = mysqli_fetch_assoc($result2)) {
-                                                                    $question_set_id = $row['QUESTION_SET_ID'];
-
-                                                                    $query3  = "SELECT * FROM QUESTION_SET WHERE ID = '{$question_set_id}' && STATUS = 'VISIBLE'";
-                                                                    $result3 = mysqli_query($mysqli,$query3);
-                                                                    if (mysqli_num_rows($result3) > 0 ){
-                                                                        while ($row = mysqli_fetch_assoc($result3)){
-                                                                            $id = $row['ID'];
-                                                                            $name = $row['EXAM_NAME'];
-                                                                            $begin = $row['BEGIN_ID'];
-                                                                            $beginValue = (($begin - 1));
-                                                                            ?>
-                                                                            <div class="col-md-3 col-sm-6 bottommargin">
-                                                                                <div class="team">
-                                                                                    <div class="team-image">
-                                                                                        <img src="images/1.png" alt="Exam">
-                                                                                    </div>
-                                                                                    <div class="team-desc team-desc-bg">
-                                                                                        <div class="team-title"><h4><?php echo $name; ?></h4><span> PAID </span></div>
-                                                                                        <a href="buy_exam.php?exam_id=<?php echo $id ?>" class="button button-xlarge button-dark button-rounded tright">ابدء الأمتحان <i class="icon-circle-arrow-right"></i></a>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-
-                                                                            <?php
-                                                                        }
-                                                                    }
-
-
-
-                                                                }
-
-                                                            }
-
-
-                                                        }
-
-
-                                                    }
-
-
-                                                }
-
-                                                ?>
-
-
-                                            </div>
-
-                                        </div>
-                                        <div class="tab-content clearfix" id="tab-connections">
-
-
-                                            <div class="row topmargin-sm">
-
-                                                <?php
-
-                                                $query4 = "SELECT * FROM FREE_QUESTION_SET WHERE STATUS = 'VISIBLE'";
-                                                $result4 = mysqli_query($mysqli,$query4);
-                                                if (mysqli_num_rows($result4) > 0 ){
-                                                    while ($row = mysqli_fetch_assoc($result4)){
-                                                        $id = $row['ID'];
-                                                        $name = $row['EXAM_NAME'];
-                                                        $begin = $row['BEGIN_ID'];
-                                                        $beginValue = (($begin - 1));
-                                                        ?>
-                                                        <div class="col-md-3 col-sm-6 bottommargin">
-                                                            <div class="team">
-                                                                <div class="team-image">
-                                                                    <img src="images/1.png" alt="Exam">
-                                                                </div>
-                                                                <div class="team-desc team-desc-bg">
-                                                                    <div class="team-title"><h4><?php echo $name; ?></h4><span> FREE </span></div>
-                                                                    <a href="buy_exam.php?exam_id=<?php echo $id ?>" class="button button-xlarge button-dark button-rounded tright">ابدء الامتحان<i class="icon-circle-arrow-right"></i></a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <?php
-                                                    }
-                                                }
-
-                                                ?>
-
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-
+                            <div class="col-sm-6 bottommargin-sm">
+                                <div class="input-group">
+                                    <input type="text" name= "date" value="" class="sm-form-control tleft default" placeholder="MM/DD/YYYY">
+                                    <span class="input-group-addon"  style="padding: 9px 12px;">
+											<i class="icon-calendar2"></i>
+                                    </span>
                                 </div>
 
+                                    <div class="input-group date">
+                                        <input type="text" name="time" class="tleft sm-form-control datetimepicker1"  placeholder="00:00"/>
+                                        <span class="input-group-addon" >
+											<span class="icon-clock"></span>
+                                    </span>
+                                    </div>
+
+
                             </div>
+                            <div class="col-sm-3"></div>
 
                         </div>
+                        <div class="row">
+                            <div class="clear"></div>
+                            <input type="submit" name="submit" class="button button-rounded button-reveal button-large button-red tright" value="ارسال" >
 
-                    </div>
-
-
-                    <div class="col-sm-3 clearfix">
-
-                        <div class="list-group">
-                            <a href="profile.php" class="list-group-item clearfix">الصفحة الشخصية <i class="icon-user pull-right"></i></a>
-                            <a href="#" class="list-group-item clearfix">المشتريات <i class="icon-credit-cards pull-right"></i></a>
-                            <a href="logout.php" class="list-group-item clearfix">تسجيل الخروج <i class="icon-line2-logout pull-right"></i></a>
                         </div>
                     </div>
-
-                </div>
-
+                </form>
             </div>
 
         </div>
 
     </section><!-- #content end -->
+
     <!-- Footer
             ============================================= -->
     <footer id="footer" style="background-color: #F5F5F5;border-top: 2px solid rgba(0,0,0,0.06);">
@@ -595,8 +509,11 @@ include 'scripts/db_connection.php';
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/plugins.js"></script>
 
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/plugins.js"></script>
+
 <!-- Footer Scripts
-============================================= -->
+	============================================= -->
 <script type="text/javascript" src="js/functions.js"></script>
 
 <script type="text/javascript">
@@ -635,6 +552,159 @@ include 'scripts/db_connection.php';
 // Animate loader off screen
         $(".pre-pre").fadeOut("slow");
     });
+</script>
+
+
+<!-- Date & Time Picker JS -->
+<script type="text/javascript" src="js/components/moment.js"></script>
+<script type="text/javascript" src="demos/travel/js/datepicker.js"></script>
+<script type="text/javascript" src="js/components/timepicker.js"></script>
+
+<!-- Include Date Range Picker -->
+<script type="text/javascript" src="js/components/daterangepicker.js"></script>
+
+<!-- Footer Scripts
+============================================= -->
+<script type="text/javascript" src="js/functions.js"></script>
+
+<script type="text/javascript">
+    $(function() {
+        $('.travel-date-group .default').datepicker({
+            autoclose: true,
+            startDate: "today",
+        });
+
+        $('.travel-date-group .today').datepicker({
+            autoclose: true,
+            startDate: "today",
+            todayHighlight: true
+        });
+
+        $('.travel-date-group .past-enabled').datepicker({
+            autoclose: true,
+        });
+        $('.travel-date-group .format').datepicker({
+            autoclose: true,
+            format: "dd-mm-yyyy",
+        });
+
+        $('.travel-date-group .autoclose').datepicker();
+
+        $('.travel-date-group .disabled-week').datepicker({
+            autoclose: true,
+            daysOfWeekDisabled: "0"
+        });
+
+        $('.travel-date-group .highlighted-week').datepicker({
+            autoclose: true,
+            daysOfWeekHighlighted: "0"
+        });
+
+        $('.travel-date-group .mnth').datepicker({
+            autoclose: true,
+            minViewMode: 1,
+            format: "mm/yy"
+        });
+
+        $('.travel-date-group .multidate').datepicker({
+            multidate: true,
+            multidateSeparator: " , "
+        });
+
+        $('.travel-date-group .input-daterange').datepicker({
+            autoclose: true
+        });
+
+        $('.travel-date-group .inline-calendar').datepicker();
+
+        $('.datetimepicker').datetimepicker({
+            showClose: true
+        });
+
+        $('.datetimepicker1').datetimepicker({
+            format: 'HH:mm',
+            showClose: false
+        });
+
+        $('.datetimepicker2').datetimepicker({
+            inline: true,
+            sideBySide: true
+        });
+
+    });
+
+    $(function() {
+        // .daterange1
+        $(".daterange1").daterangepicker({
+            "buttonClasses": "button button-rounded button-mini nomargin",
+            "applyClass": "button-color",
+            "cancelClass": "button-light"
+        });
+
+        // .daterange2
+        $(".daterange2").daterangepicker({
+            "opens": "center",
+            timePicker: true,
+            timePickerIncrement: 30,
+            locale: {
+                format: 'MM/DD/YYYY h:mm A'
+            },
+            "buttonClasses": "button button-rounded button-mini nomargin",
+            "applyClass": "button-color",
+            "cancelClass": "button-light"
+        });
+
+        // .daterange3
+        $(".daterange3").daterangepicker({
+                singleDatePicker: true,
+                showDropdowns: true
+            },
+            function(start, end, label) {
+                var years = moment().diff(start, 'years');
+                alert("You are " + years + " years old.");
+            });
+
+        // reportrange
+        function cb(start, end) {
+            $(".reportrange span").html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+        }
+        cb(moment().subtract(29, 'days'), moment());
+
+        $(".reportrange").daterangepicker({
+            "buttonClasses": "button button-rounded button-mini nomargin",
+            "applyClass": "button-color",
+            "cancelClass": "button-light",
+            ranges: {
+                'Today': [moment(), moment()],
+                'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                'This Month': [moment().startOf('month'), moment().endOf('month')],
+                'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+            }
+        }, cb);
+
+        // .daterange4
+        $(".daterange4").daterangepicker({
+            autoUpdateInput: false,
+            locale: {
+                cancelLabel: 'Clear'
+            },
+            "buttonClasses": "button button-rounded button-mini nomargin",
+            "applyClass": "button-color",
+            "cancelClass": "button-light"
+        });
+
+        $(".daterange4").on('apply.daterangepicker', function(ev, picker) {
+            $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
+        });
+
+        $(".daterange4").on('cancel.daterangepicker', function(ev, picker) {
+            $(this).val('');
+        });
+
+    });
+
 </script>
 
 </body>
