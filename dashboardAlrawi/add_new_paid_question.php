@@ -19,7 +19,15 @@ if (isset($_GET['id']) && ($_GET['qset'])) {
         $answer_4 = $_POST['4th_answer'];
         $reason = $_POST['reason'];
         $type = $_POST['type'];
-
+        if(empty($answer_4)){
+            $answer_4 = "0";
+        }
+        if(empty($answer_3)){
+            $answer_3 = "0";
+        }
+        if(empty($answer_2)){
+            $answer_2 = "0";
+        }
         $newPicture = $_FILES['image']['name'];
         $newPicture = date('Ymd') . date('Hms') . ".jpg";
         $newPicture_tmp = $_FILES['image']['tmp_name'];
@@ -55,27 +63,27 @@ if (isset($_GET['id']) && ($_GET['qset'])) {
         <div class="panel-body  p-xl-3">
         <form method="post" action="add_new_paid_question.php?qset=<?php echo $qset;?>&id=<?php echo $setId;?>" data-toggle="validator" enctype="multipart/form-data">
             <div class="form-group row"><label>Question:</label>
-                <input type="text" name="question" placeholder="Enter the question" class="form-control" required>
+                <input type="text" name="question" style="direction: rtl;" placeholder="Enter the question" class="form-control" required>
             </div>
 
             <div class="hr-line-dashed"></div>
 
             <div class="form-group row"><label>Right Answer: </label>
-                <input type="text" name="right_answer" placeholder="Type the right answer" class="form-control" required>
+                <input type="text" name="right_answer" style="direction: rtl;" placeholder="Type the right answer" class="form-control" required>
             </div>
             <div class="form-group row"><label>2ND Answer: </label>
-                <input type="text" name="2nd_answer" placeholder="Type the 2nd answer" class="form-control" required>
+                <input type="text" name="2nd_answer" style="direction: rtl;" placeholder="Type the 2nd answer" class="form-control">
             </div>
             <div class="form-group row"><label>3RD Answer: </label>
-                <input type="text" name="3rd_answer" placeholder="Type the 3rd answer" class="form-control" required>
+                <input type="text" name="3rd_answer" style="direction: rtl;" placeholder="Type the 3rd answer" class="form-control">
             </div>
             <div class="form-group row"><label>4TH Answer: </label>
-                <input type="text" name="4th_answer" placeholder="Type the 4th answer" class="form-control" required>
+                <input type="text" name="4th_answer" style="direction: rtl;" placeholder="Type the 4th answer" class="form-control">
             </div>
             <div class="hr-line-dashed"></div>
 
             <div class="form-group row"><label>Reason: </label>
-                <input type="text" name="reason" placeholder="Type the Reason" class="form-control" required>
+                <input type="text" name="reason" style="direction: rtl;" placeholder="Type the Reason" class="form-control" required>
             </div>
             <div class="hr-line-dashed"></div>
 
@@ -87,8 +95,9 @@ if (isset($_GET['id']) && ($_GET['qset'])) {
             <div class="hr-line-dashed"></div>
 
             <div class="form-group row"><label>Question Type : </label>
-                <select class="form-control m-b" name="type" required>
+                <select class="form-control m-b" style="direction: rtl;" name="type" required>
                     <option value="" disabled selected>Select a question type</option>
+                    <option value="response">إستجابة</option>
                     <option value="yesNo">نعم / لا</option>
                     <option value="numInp">إدخال رقم</option>
                     <option value="multiChoice">اختيار من متعدد</option>

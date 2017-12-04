@@ -1,3 +1,8 @@
+<?php
+session_start();
+ob_start();
+include 'scripts/db_connection.php';
+?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en-US">
 <head>
@@ -306,22 +311,103 @@
                 </div>
 
                 <?php
+                $setId = 1;
+                $query = "SELECT * FROM FREE_EXAM_QUESTION WHERE FREE_QUESTION_SET_ID = $setId";
+                $selectQuestions = mysqli_query($mysqli,$query);
                 $i = 1;
-                while ($i < 66) {
+                while ($row = mysqli_fetch_assoc($selectQuestions)){
+                    $question = $row['QUESTION'];
+                    $right = $row['RIGHT_ANSWER'];
+                    $second = $row['ANSWER_2'];
+                    $third = $row['ANSWER_3'];
+                    $fourth = $row['ANSWER_4'];
+                    $reason = $row['REASON'];
+                    $picture = $row['PICTURE'];
+                    $type = $row['TYPE'];
 
-                    echo "<div id='s$i' class='slide'>";
-                    echo "<h2 style='direction: rtl;' class='text-center topmargin-sm'>السؤال رقم $i:</h2>";
-                    echo "<img class='quesImg center-block' src='http://contact25.com/uploads/7_206332.jpg'/>";
-                    echo "
-            <fieldset id='group1'>
-                <input type='radio' class='selector$i' name='selector$i' value='male' required> $i<br>
-                <input type='radio' class='selector$i' name='selector$i' value='female' required> Female<br>
-                <input type='radio' class='selector$i' name='selector$i' value='other' required> Other
-            </fieldset>
-        ";
-                    echo "</div>";
-                    $i++;
+                    if($type == "response"){
+                        echo "<div id='s$i' class='slide'>";
+//                        echo "<h2 style='direction: rtl;' class='text-center topmargin-sm'>السؤال رقم $i:</h2>";
+                        echo "<h2 style='direction:rtl;' class='text-center'>$question</h2>";
+                        echo "<img class='quesImg center-block' src='dashboardAlrawi/examsImages/free/$picture'/>";
+                        echo "
+                        <fieldset id='group$i'>
+                            <input type='radio' class='selector$i' name='selector$i' value='فرامل' required> فرامل<br>
+                            <input type='radio' class='selector$i' name='selector$i' value='رفع قدم عن الوقود' required> رفع قدم عن الوقود<br>
+                            <input type='radio' class='selector$i' name='selector$i' value='لا شئ' required> لا شئ
+                        </fieldset>";
+                        echo "</div>";
+                        $i++;
+                    }else if($type == "yesNo"){
+                        echo "<div id='s$i' class='slide'>";
+//                        echo "<h2 style='direction: rtl;' class='text-center topmargin-sm'>السؤال رقم $i:</h2>";
+                        echo "<h2 style='direction: rtl;' class='text-center'>$question</h2>";
+                        echo "<img class='quesImg center-block' src='dashboardAlrawi/examsImages/free/$picture'/>";
+                        echo "
+                        <fieldset id='group$i'>
+                            <input type='radio' class='selector$i' name='selector$i' value='نعم' required> نعم<br>
+                            <input type='radio' class='selector$i' name='selector$i' value='لا' required> لا
+                        </fieldset>";
+                        echo "</div>";
+                        $i++;
+                    }else if($type == "numInp"){
+                        echo "<div id='s$i' class='slide'>";
+//                        echo "<h2 style='direction: rtl;' class='text-center topmargin-sm'>السؤال رقم $i:</h2>";
+                        echo "<h2 style='direction: rtl;' class='text-center'>$question</h2>";
+                        echo "<img class='quesImg center-block' src='dashboardAlrawi/examsImages/free/$picture'/>";
+                        echo "
+                        <fieldset id='group$i'>
+                            <input type='text' class='selector$i' name='selector$i' placeholder='أدخل القيمة'><br>
+                        </fieldset>";
+                        echo "</div>";
+                        $i++;
+                    }else if($type == "multiChoice"){
+                        echo "<div id='s$i' class='slide'>";
+//                        echo "<h2 style='direction: rtl;' class='text-center topmargin-sm'>السؤال رقم $i:</h2>";
+                        echo "<h2 style='direction: rtl;' class='text-center'>$question</h2>";
+                        echo "<img class='quesImg center-block' src='dashboardAlrawi/examsImages/free/$picture'/>";
+                        echo "
+                        <fieldset id='group$i'>";
+                        $answers = array($right,$second,$third,$fourth);
+                        while(true){
+                            $num = rand(0,3);
+                            if($answers[$num] != "0"){
+                                echo "<input type='radio' class='selector$i' name='selector$i' value='$answers[$num]' required> $answers[$num]<br>";
+                                $answers[$num] = "0";
+                            }
+                            $toggle = 0;
+                            for($j = 0 ; $j < 4 ; $j++){
+                                if($answers[$j] == "0"){
+                                    $toggle++;
+                                }
+                            }
+                            if($toggle == 4){
+                                break;
+                            }
+                        }
+                        echo "</fieldset>";
+                        echo "</div>";
+                        $i++;
+                    }
                 }
+
+
+
+
+//                while ($i < 66) {
+//
+//                    echo "<div id='s$i' class='slide'>";
+//                    echo "<h2 style='direction: rtl;' class='text-center topmargin-sm'>السؤال رقم $i:</h2>";
+//                    echo "<img class='quesImg center-block' src='http://contact25.com/uploads/7_206332.jpg'/>";
+//                    echo "
+//            <fieldset id='group1'>
+//                <input type='radio' class='selector$i' name='selector$i' value='male' required> $i<br>
+//                <input type='radio' class='selector$i' name='selector$i' value='female' required> Female<br>
+//                <input type='radio' class='selector$i' name='selector$i' value='other' required> Other
+//            </fieldset>";
+//                    echo "</div>";
+//                    $i++;
+//                }
                 ?>
                 <button name="submit" style="position: fixed;bottom: 40px;left:0;width:100%;"
                         id="submitBut" class="btn-lg btn btn-success" value="Submit" type="submit">Submit
@@ -365,6 +451,7 @@
     var continueExam = function() {
         $(".slideBetween ").hide();
         jQuery('.navBut').show();
+        jQuery('#nxtBut').show();
         $("#s26").show();
         jQuery('.selector26').change(function () {jQuery('#but26').attr('class', 'btn btn-success');counter++;});
         setTimeout(function () {$("#s26  ").hide();$("#s27  ").show();tar = 27 ;jQuery('.selector' + tar).change(function () {jQuery('#but' + tar).attr('class', 'btn btn-success');counter++;});}, 40000   );
@@ -415,6 +502,7 @@
         jQuery('.slideBetween').hide();
         jQuery('.slideFinish').hide();
         jQuery('#submitBut').hide();
+        jQuery('#nxtBut').hide();
 
 
         var countdown = 30 * 60 * 1000;

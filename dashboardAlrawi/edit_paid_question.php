@@ -23,7 +23,15 @@ if (isset($_POST['submit'])) {
     $answer_4 = $_POST['4th_answer'];
     $reason_1 = $_POST['reason'];
     $type_1 = $_POST['type'];
-
+    if(empty($answer_4)){
+        $answer_4 = "0";
+    }
+    if(empty($answer_3)){
+        $answer_3 = "0";
+    }
+    if(empty($answer_2)){
+        $answer_2 = "0";
+    }
     $newPicture = $_FILES['image']['name'];
     $newPicture = date('Ymd') . date('Hms') . ".jpg";
     $newPicture_tmp = $_FILES['image']['tmp_name'];
@@ -92,29 +100,29 @@ while ($row = mysqli_fetch_assoc($select_question)) {
                 <form method="post" action="edit_paid_question.php?qset=<?php echo $qset; ?>&id=<?php echo $setId; ?>"
                       data-toggle="validator" enctype="multipart/form-data">
                     <div class="form-group row"><label>Question:</label>
-                        <input type="text" name="question" value="<?php echo $question ?>" class="form-control"
+                        <input type="text" name="question" style="direction: rtl;" value="<?php echo $question ?>" class="form-control"
                                required>
                     </div>
 
                     <div class="hr-line-dashed"></div>
 
                     <div class="form-group row"><label>Right Answer: </label>
-                        <input type="text" name="right_answer" value="<?php echo $right_ans ?>" class="form-control"
+                        <input type="text" name="right_answer" style="direction: rtl;" value="<?php echo $right_ans ?>" class="form-control"
                                required>
                     </div>
                     <div class="form-group row"><label>2ND Answer: </label>
-                        <input type="text" name="2nd_answer" value="<?php echo $ans_2 ?>" class="form-control" required>
+                        <input type="text" name="2nd_answer" style="direction: rtl;" value="<?php echo $ans_2 ?>" class="form-control">
                     </div>
                     <div class="form-group row"><label>3RD Answer: </label>
-                        <input type="text" name="3rd_answer" value="<?php echo $ans_3 ?>" class="form-control" required>
+                        <input type="text" name="3rd_answer" style="direction: rtl;" value="<?php echo $ans_3 ?>" class="form-control">
                     </div>
                     <div class="form-group row"><label>4TH Answer: </label>
-                        <input type="text" name="4th_answer" value="<?php echo $ans_4 ?>" class="form-control" required>
+                        <input type="text" name="4th_answer" style="direction: rtl;" value="<?php echo $ans_4 ?>" class="form-control">
                     </div>
                     <div class="hr-line-dashed"></div>
 
                     <div class="form-group row"><label>Reason: </label>
-                        <input type="text" name="reason" value="<?php echo $reason ?>" class="form-control" required>
+                        <input type="text" name="reason" style="direction: rtl;" value="<?php echo $reason ?>" class="form-control" required>
                     </div>
                     <div class="hr-line-dashed"></div>
 
@@ -145,7 +153,8 @@ while ($row = mysqli_fetch_assoc($select_question)) {
                     <div class="hr-line-dashed"></div>
 
                     <div class="form-group row"><label>Question Type : </label>
-                        <select class="form-control m-b" name="type" required>
+                        <select class="form-control m-b" style="direction: rtl;" name="type" required>
+                            <option value="response" <?php if ($type == "response" ){echo "selected"; }?>>إستجابة</option>
                             <option value="yesNo" <?php if ($type == "yesNo" ){echo "selected"; }?>>نعم / لا</option>
                             <option value="numInp" <?php if ($type == "numInp" ){echo "selected"; }?>>إدخال رقم</option>
                             <option value="multiChoice" <?php if ($type == "multiChoice" ){echo "selected"; }?>>اختيار من متعدد</option>
