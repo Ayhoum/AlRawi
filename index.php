@@ -49,8 +49,17 @@ $totalUsers = $countOthers + $countSucceeded;
 
 	<link rel="stylesheet" href="css/colors.php?color=DE6262" type="text/css" />
 
-	<!-- Document Title
-	============================================= -->
+
+    <!--  Pricing Tables Style  -->
+    <link rel="stylesheet" href="css/components/pricing-table.css" type="text/css" />
+
+    <link rel="stylesheet" href="css/responsive.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+
+
+    <!-- Document Title
+    ============================================= -->
 	<title>Al Rawi Theorie | Home</title>
     <link rel="icon" href="images/1.png" type="image/x-icon">
 
@@ -285,41 +294,49 @@ $totalUsers = $countOthers + $countSucceeded;
                         </div>
                     </div>
 
-					<div class="clear"></div>
-
-					<!--<div class="col_one_third">-->
-						<!--<div class="feature-box fbox-plain">-->
-							<!--<div class="fbox-icon" data-animate="bounceIn">-->
-								<!--<a href="#"><i class="icon-medical-i-dental"></i></a>-->
-							<!--</div>-->
-							<!--<h3>Dental Sciences</h3>-->
-							<!--<p>Powerful Layout with Responsive functionality that can be adapted to any screen size. Resize browser to view.</p>-->
-						<!--</div>-->
-					<!--</div>-->
-
-					<!--<div class="col_one_third">-->
-						<!--<div class="feature-box fbox-plain">-->
-							<!--<div class="fbox-icon" data-animate="bounceIn" data-delay="200">-->
-								<!--<a href="#"><i class="icon-medical-i-imaging-root-category"></i></a>-->
-							<!--</div>-->
-							<!--<h3>X-Ray Services</h3>-->
-							<!--<p>Looks beautiful &amp; ultra-sharp on Retina Screen Displays. Retina Icons, Fonts &amp; all others graphics are optimized.</p>-->
-						<!--</div>-->
-					<!--</div>-->
-
-					<!--<div class="col_one_third col_last">-->
-						<!--<div class="feature-box fbox-plain">-->
-							<!--<div class="fbox-icon" data-animate="bounceIn" data-delay="400">-->
-								<!--<a href="#"><i class="icon-medical-i-ambulance"></i></a>-->
-							<!--</div>-->
-							<!--<h3>24x7 Emergency</h3>-->
-							<!--<p>Canvas includes tons of optimized code that are completely customizable and deliver unmatched fast performance.</p>-->
-						<!--</div>-->
-					<!--</div>-->
+                    <div class="clear"></div>
 
 				</div>
 
-				<div class="section nopadding common-height dark topmargin-sm" style="margin-bottom:0;">
+                <section class="section pricing-section nomargin dark" style="background-color: white;">
+                    <div class="container clearfix">
+                        <h2 class="pricing-section--title center" style="color: #0f0e0f">أســعارنا</h2>
+                        <div class="pricing pricing--karma">
+                            <div class="pricing--item">
+                                <h3 class="pricing--title text-center">البــاقة  الابتدائيــة</h3>
+                                <div class="pricing--price"><span class="pricing--currency">€</span>10<span class="pricing--period" style="direction: rtl"> أسبــوع </span></div>
+                                <ul class="pricing--feature-list">
+                                    <li class="pricing--feature">صلاحية الدخول لجميع الامتحانات </li>
+                                    <li class="pricing--feature">صالحة لمدة <b>اسبوع</b></li>
+
+                                </ul>
+                                <a class="pricing--link" href="buy_exam.php"> <button class="pricing--action ">اخــتر البــاقة</button></a>
+                            </div>
+                            <div class="pricing--item pricing--item--featured">
+                                <h3 class="pricing--title text-center">البـاقة الأسـاسيــة</h3>
+                                <div class="pricing--price"><span class="pricing--currency">€</span>15<span class="pricing--period" style="direction: rtl"> أسبـــوعان  </span></div>
+                                <ul class="pricing--feature-list">
+                                    <li class="pricing--feature">صلاحية الدخول لجميع الامتحانات</li>
+                                    <li class="pricing--feature">صالحة لمدة <b>أسبوعين</b> </li>
+                                </ul>
+                                <a class="pricing--link" href="buy_exam.php"> <button class="pricing--action ">اخــتر البــاقة</button></a>
+                            </div>
+
+                            <div class="pricing--item">
+                                <h3 class="pricing--title text-center">البــاقة المتقدمــة</h3>
+                                <div class="pricing--price"><span class="pricing--currency">€</span>25<span class="pricing--period"style="direction: rtl"> 4 أسـابيـع </span></div>
+                                <ul class="pricing--feature-list">
+                                    <li class="pricing--feature">صلاحية الدخول لجميع الامتحانات</li>
+                                    <li class="pricing--feature">صالحة لمدة <b>4 أسابيـع</b> </li>
+                                </ul>
+                                <a class="pricing--link" href="buy_exam.php"> <button class="pricing--action ">اخــتر البــاقة</button></a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
+                <div class="section nopadding common-height dark topmargin-sm" style="margin-bottom:0;">
 					<div class="col-md-5" data-height-lg="597" data-height-md="614" data-height-sm="400" data-height-xs="300" data-height-xxs="200" style="background: url('demos/medical/images/section-bg.jpg'); background-size: cover;">
 						<div>&nbsp;</div>
 					</div>
@@ -599,8 +616,12 @@ $totalUsers = $countOthers + $countSucceeded;
 
 		</section><!-- #content end -->
 
-		<!-- Footer
-		============================================= -->
+
+
+
+
+        <!-- Footer
+        ============================================= -->
 		<footer id="footer" style="background-color: #F5F5F5;border-top: 2px solid rgba(0,0,0,0.06);">
 
 			<div class="container" style="border-bottom: 1px solid rgba(0,0,0,0.06);">
