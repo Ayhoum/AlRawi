@@ -13,7 +13,6 @@ include 'scripts/db_connection.php';
 ?>
 
 <?php
-
 if (isset($_SESSION['username'])){
 
     $username = $_SESSION['username'];
@@ -29,26 +28,22 @@ if (isset($_SESSION['username'])){
             if (isset($_POST['submit'])) {
                 $time = $_POST['time'];
                 $date = $_POST['date'];
-                $date2 = date('Y-m-d', strtotime($date));
-                echo "date 2 ".$date2;
 
-                echo $time. "<br>";
+                $date2 =  date('Y-m-d', strtotime($date));
 
-                echo $date. "<br>";
 
-               date_default_timezone_get('Europe/Amsterdam');
+//               date_default_timezone_get('Europe/Amsterdam');
 
 
                 $query2 = "INSERT INTO BOOKED_SESSION (DATE, TIME, Users_ID)";
-                $query2 .= " VALUES ('{$time}',
-                                     '{$date2}',
+                $query2 .= " VALUES ('{$date2}',
+                                     '{$time}',
                                      '{$user_id}')";
                 $result2 = mysqli_query($mysqli, $query2);
 
 
-            } else {
-                echo  ' ' ;
             }
+
 
         }
 
@@ -102,10 +97,22 @@ if(isset($_POST['submit'])){
 
     <!-- Stylesheets
     ============================================= -->
-    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Montserrat:400,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />
+    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
     <link rel="stylesheet" href="style.css" type="text/css" />
-    <link rel="stylesheet" href="css/swiper.css" type="text/css" />
+    <link rel="stylesheet" href="css/dark.css" type="text/css" />
+    <link rel="stylesheet" href="css/font-icons.css" type="text/css" />
+    <link rel="stylesheet" href="css/animate.css" type="text/css" />
+    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css" />
+
+    <!-- Date & Time Picker CSS -->
+    <link rel="stylesheet" href="demos/travel/css/datepicker.css" type="text/css" />
+    <link rel="stylesheet" href="css/components/timepicker.css" type="text/css" />
+    <link rel="stylesheet" href="css/components/daterangepicker.css" type="text/css" />
+
+    <link rel="stylesheet" href="css/responsive.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
 
     <!-- Medical Demo Specific Stylesheet -->
     <link rel="stylesheet" href="demos/medical/medical.css" type="text/css" />
@@ -128,6 +135,7 @@ if(isset($_POST['submit'])){
     ============================================= -->
     <title>Al Rawi Theorie | Private Session</title>
     <link rel="icon" href="images/1.png" type="image/x-icon">
+
 
     <style>
         .form-control.error { border: 2px solid red; }
@@ -158,10 +166,7 @@ if(isset($_POST['submit'])){
 
 
 
-
 </head>
-
-<!--<body class="stretched" data-loader-html="<div id='css3-spinner-svg-pulse-wrapper'><svg id='css3-spinner-svg-pulse' version='1.2' height='210' width='550' xmlns='http://www.w3.org/2000/svg' viewport='0 0 60 60' xmlns:xlink='http://www.w3.org/1999/xlink'><path id='css3-spinner-pulse' stroke='#DE6262' fill='none' stroke-width='2' stroke-linejoin='round' d='M0,90L250,90Q257,60 262,87T267,95 270,88 273,92t6,35 7,-60T290,127 297,107s2,-11 10,-10 1,1 8,-10T319,95c6,4 8,-6 10,-17s2,10 9,11h210' /></svg></div>">-->
 <body style="background: #fde7e7">
 <div class="se-pre-con"><div class="pre-pre"></div></div>
 
@@ -238,6 +243,8 @@ if(isset($_POST['submit'])){
 
     <!-- Header
     ============================================= -->
+    <!-- Header
+		============================================= -->
     <header id="header">
 
         <div id="header-wrap">
@@ -271,197 +278,225 @@ if(isset($_POST['submit'])){
         </div>
 
     </header><!-- #header end -->
+
     <!-- Content
-        ============================================= -->
-    <section id="content">
+    ============================================= -->
+    <section id="content style="width: 100%">
+
+        <div class="content-wrap">
+
+            <div class="container clearfix text-center" style="width: 100%;">
+
+                <form action="#" method="post" class="nobottommargin">
+                    <div class="input-daterange travel-date-group bottommargin-sm">
+                        <div class="row">
+                            <h2 class="text-center">اختر تاريخ وموعد الجلسة مع الاستاذ حسام الراوي</h2>
+                            <div class="clear"></div>
+                            <div class="col-sm-3"></div>
+
+                            <div class="col-sm-6 bottommargin-sm">
+                                <div class="input-group">
+                                    <input type="text" name= "date" value="" class="sm-form-control tleft default" placeholder="MM/DD/YYYY">
+                                    <span class="input-group-addon"  style="padding: 9px 12px;">
+											<i class="icon-calendar2"></i>
+                                    </span>
+                                </div>
+
+                                    <div class="input-group date">
+                                        <input type="text" name="time" class="tleft sm-form-control datetimepicker1"  placeholder="00:00"/>
+                                        <span class="input-group-addon" >
+											<span class="icon-clock"></span>
+                                    </span>
+                                    </div>
 
 
-        <div class="content-wrap" style="padding-bottom: 0 ">
+                            </div>
+                            <div class="col-sm-3"></div>
 
-            <div class="container clearfix">
+                        </div>
+                        <div class="row">
+                            <div class="clear"></div>
+                            <input type="submit" name="submit" class="button button-rounded button-reveal button-large button-red tright" value="ارسال" >
 
-                <form method="post" action="private_session.php">
-                        <input type="date" placeholder="yyyy-dd-mm" name="date"> <br>
-                        <input type="time" name="time"> <br>
-                        <input type="submit" name="submit">
+                        </div>
+                    </div>
                 </form>
-
             </div>
 
         </div>
 
     </section><!-- #content end -->
 
-<!-- Footer
-============================================= -->
-<footer id="footer" style="background-color: #F5F5F5;border-top: 2px solid rgba(0,0,0,0.06);">
+    <!-- Footer
+            ============================================= -->
+    <footer id="footer" style="background-color: #F5F5F5;border-top: 2px solid rgba(0,0,0,0.06);">
 
-    <div class="container" style="border-bottom: 1px solid rgba(0,0,0,0.06);">
+        <div class="container" style="border-bottom: 1px solid rgba(0,0,0,0.06);">
 
-        <!-- Footer Widgets
-        ============================================= -->
-        <div class="footer-widgets-wrap clearfix">
+            <!-- Footer Widgets
+            ============================================= -->
+            <div class="footer-widgets-wrap clearfix">
 
-            <div class="col_full">
+                <div class="col_full">
 
-                <div class="widget clearfix">
+                    <div class="widget clearfix">
 
-                    <div class="widget-subscribe-form-result"></div>
-                    <form id="widget-subscribe-form" action="include/subscribe.php" role="form" method="post" class="nobottommargin row clearfix">
-                        <div class="col-md-9">
-                            <input type="email" id="widget-subscribe-form-email" name="widget-subscribe-form-email" class="sm-form-control required email" placeholder="أدخل بريدك الإلكتروني ليصلك كل جديد حول موقعنا">
+                        <div class="widget-subscribe-form-result"></div>
+                        <form id="widget-subscribe-form" action="include/subscribe.php" role="form" method="post" class="nobottommargin row clearfix">
+                            <div class="col-md-9">
+                                <input type="email" id="widget-subscribe-form-email" name="widget-subscribe-form-email" class="sm-form-control required email" placeholder="أدخل بريدك الإلكتروني ليصلك كل جديد حول موقعنا">
+                            </div>
+                            <div class="col-md-3">
+                                <button class="button button-rounded nomargin center btn-block" type="submit">اشترك معنا</button>
+                            </div>
+                        </form>
+
+                        <div class="line line-sm"></div>
+
+                        <div class="row">
+                            <!--								<div class="clear-bottommargin-sm clearfix">-->
+                            <!---->
+                            <!--									<div class="col-md-3 col-xs-6 bottommargin-sm widget_links">-->
+                            <!--										<ul>-->
+                            <!--											<li><a href="#">Home</a></li>-->
+                            <!--											<li><a href="#">About</a></li>-->
+                            <!--											<li><a href="#">FAQs</a></li>-->
+                            <!--											<li><a href="#">Support</a></li>-->
+                            <!--											<li><a href="#">Contact</a></li>-->
+                            <!--										</ul>-->
+                            <!--									</div>-->
+                            <!---->
+                            <!--									<div class="col-md-3 col-xs-6 bottommargin-sm widget_links">-->
+                            <!--										<ul>-->
+                            <!--											<li><a href="#">Shop</a></li>-->
+                            <!--											<li><a href="#">Portfolio</a></li>-->
+                            <!--											<li><a href="#">Blog</a></li>-->
+                            <!--											<li><a href="#">Events</a></li>-->
+                            <!--											<li><a href="#">Forums</a></li>-->
+                            <!--										</ul>-->
+                            <!--									</div>-->
+                            <!---->
+                            <!--									<div class="col-md-3 col-xs-6 bottommargin-sm widget_links">-->
+                            <!--										<ul>-->
+                            <!--											<li><a href="#">Corporate</a></li>-->
+                            <!--											<li><a href="#">Agency</a></li>-->
+                            <!--											<li><a href="#">eCommerce</a></li>-->
+                            <!--											<li><a href="#">Personal</a></li>-->
+                            <!--											<li><a href="#">One Page</a></li>-->
+                            <!--										</ul>-->
+                            <!--									</div>-->
+                            <!---->
+                            <!--									<div class="col-md-3 col-xs-6 bottommargin-sm widget_links">-->
+                            <!--										<ul>-->
+                            <!--											<li><a href="#">Restaurant</a></li>-->
+                            <!--											<li><a href="#">Wedding</a></li>-->
+                            <!--											<li><a href="#">App Showcase</a></li>-->
+                            <!--											<li><a href="#">Magazine</a></li>-->
+                            <!--											<li><a href="#">Landing Page</a></li>-->
+                            <!--										</ul>-->
+                            <!--									</div>-->
+                            <!---->
+                            <!--								</div>-->
                         </div>
-                        <div class="col-md-3">
-                            <button class="button button-rounded nomargin center btn-block" type="submit">اشترك معنا</button>
-                        </div>
-                    </form>
 
-                    <div class="line line-sm"></div>
-
-                    <div class="row">
-                        <!--								<div class="clear-bottommargin-sm clearfix">-->
-                        <!---->
-                        <!--									<div class="col-md-3 col-xs-6 bottommargin-sm widget_links">-->
-                        <!--										<ul>-->
-                        <!--											<li><a href="#">Home</a></li>-->
-                        <!--											<li><a href="#">About</a></li>-->
-                        <!--											<li><a href="#">FAQs</a></li>-->
-                        <!--											<li><a href="#">Support</a></li>-->
-                        <!--											<li><a href="#">Contact</a></li>-->
-                        <!--										</ul>-->
-                        <!--									</div>-->
-                        <!---->
-                        <!--									<div class="col-md-3 col-xs-6 bottommargin-sm widget_links">-->
-                        <!--										<ul>-->
-                        <!--											<li><a href="#">Shop</a></li>-->
-                        <!--											<li><a href="#">Portfolio</a></li>-->
-                        <!--											<li><a href="#">Blog</a></li>-->
-                        <!--											<li><a href="#">Events</a></li>-->
-                        <!--											<li><a href="#">Forums</a></li>-->
-                        <!--										</ul>-->
-                        <!--									</div>-->
-                        <!---->
-                        <!--									<div class="col-md-3 col-xs-6 bottommargin-sm widget_links">-->
-                        <!--										<ul>-->
-                        <!--											<li><a href="#">Corporate</a></li>-->
-                        <!--											<li><a href="#">Agency</a></li>-->
-                        <!--											<li><a href="#">eCommerce</a></li>-->
-                        <!--											<li><a href="#">Personal</a></li>-->
-                        <!--											<li><a href="#">One Page</a></li>-->
-                        <!--										</ul>-->
-                        <!--									</div>-->
-                        <!---->
-                        <!--									<div class="col-md-3 col-xs-6 bottommargin-sm widget_links">-->
-                        <!--										<ul>-->
-                        <!--											<li><a href="#">Restaurant</a></li>-->
-                        <!--											<li><a href="#">Wedding</a></li>-->
-                        <!--											<li><a href="#">App Showcase</a></li>-->
-                        <!--											<li><a href="#">Magazine</a></li>-->
-                        <!--											<li><a href="#">Landing Page</a></li>-->
-                        <!--										</ul>-->
-                        <!--									</div>-->
-                        <!---->
-                        <!--								</div>-->
                     </div>
 
                 </div>
 
-            </div>
+                <div class="col_full col_last">
 
-            <div class="col_full col_last">
+                    <div class="widget clear-bottommargin-sm clearfix">
 
-                <div class="widget clear-bottommargin-sm clearfix">
+                        <div class="row">
 
-                    <div class="row">
+                            <div class="col-md-6 bottommargin-sm text-center">
+                                <div class="footer-big-contacts">
+                                    <span>Call Us:</span>
+                                    +(31) 6 12345678
+                                </div>
+                            </div>
 
-                        <div class="col-md-6 bottommargin-sm text-center">
-                            <div class="footer-big-contacts">
-                                <span>Call Us:</span>
-                                +(31) 6 12345678
+                            <div class="col-md-6 bottommargin-sm text-center">
+                                <div class="footer-big-contacts">
+                                    <span>Send an Email:</span>
+                                    info@alrawitheorie.nl
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="widget subscribe-widget clearfix">
+                        <div class="row">
+
+                            <div class="col-md-2 clearfix bottommargin-sm">
+                                <a href="#" class="social-icon si-dark si-colored si-facebook nobottommargin" style="margin-right: 10px;">
+                                    <i class="icon-facebook"></i>
+                                    <i class="icon-facebook"></i>
+                                </a>
+                                <a href="#"><small style="display: block; margin-top: 3px;"><strong>Like us</strong><br>on Facebook</small></a>
+                            </div>
+
+                            <div class="col-md-2 clearfix bottommargin-sm">
+                                <a href="#" class="social-icon si-dark si-colored si-youtube nobottommargin" style="margin-right: 10px;">
+                                    <i class="icon-youtube"></i>
+                                    <i class="icon-youtube"></i>
+                                </a>
+                                <a href="#"><small style="display: block; margin-top: 3px;"><strong>Subscribe</strong><br>on YouTube</small></a>
+                            </div>
+                            <div class="col-md-2 clearfix bottommargin-sm">
+                                <a href="#" class="social-icon si-dark si-colored si-twitter nobottommargin" style="margin-right: 10px;">
+                                    <i class="icon-twitter"></i>
+                                    <i class="icon-twitter"></i>
+                                </a>
+                                <a href="#"><small style="display: block; margin-top: 3px;"><strong>Follow us</strong><br>on Twitter</small></a>
+                            </div>
+                            <div class="col-md-2 clearfix bottommargin-sm">
+                                <a href="#" class="social-icon si-dark si-colored si-instagram nobottommargin" style="margin-right: 10px;">
+                                    <i class="icon-instagram"></i>
+                                    <i class="icon-instagram"></i>
+                                </a>
+                                <a href="#"><small style="display: block; margin-top: 3px;"><strong>Follow us</strong><br>on Instagram</small></a>
+                            </div>
+                            <div class="col-md-4 clearfix bottommargin-sm">
+                                <a href="#" class="social-icon si-dark si-colored si-instagram nobottommargin" style="margin-right: 10px;">
+
+                                </a>
+                                <a href="#"><small style="display: block; margin-top: 3px;"><strong>Secured</strong><br></small></a>
                             </div>
                         </div>
-
-                        <div class="col-md-6 bottommargin-sm text-center">
-                            <div class="footer-big-contacts">
-                                <span>Send an Email:</span>
-                                info@alrawitheorie.nl
-                            </div>
-                        </div>
-
                     </div>
 
                 </div>
 
-
-                <div class="widget subscribe-widget clearfix">
-                    <div class="row">
-
-                        <div class="col-md-2 clearfix bottommargin-sm">
-                            <a href="#" class="social-icon si-dark si-colored si-facebook nobottommargin" style="margin-right: 10px;">
-                                <i class="icon-facebook"></i>
-                                <i class="icon-facebook"></i>
-                            </a>
-                            <a href="#"><small style="display: block; margin-top: 3px;"><strong>Like us</strong><br>on Facebook</small></a>
-                        </div>
-
-                        <div class="col-md-2 clearfix bottommargin-sm">
-                            <a href="#" class="social-icon si-dark si-colored si-youtube nobottommargin" style="margin-right: 10px;">
-                                <i class="icon-youtube"></i>
-                                <i class="icon-youtube"></i>
-                            </a>
-                            <a href="#"><small style="display: block; margin-top: 3px;"><strong>Subscribe</strong><br>on YouTube</small></a>
-                        </div>
-                        <div class="col-md-2 clearfix bottommargin-sm">
-                            <a href="#" class="social-icon si-dark si-colored si-twitter nobottommargin" style="margin-right: 10px;">
-                                <i class="icon-twitter"></i>
-                                <i class="icon-twitter"></i>
-                            </a>
-                            <a href="#"><small style="display: block; margin-top: 3px;"><strong>Follow us</strong><br>on Twitter</small></a>
-                        </div>
-                        <div class="col-md-2 clearfix bottommargin-sm">
-                            <a href="#" class="social-icon si-dark si-colored si-instagram nobottommargin" style="margin-right: 10px;">
-                                <i class="icon-instagram"></i>
-                                <i class="icon-instagram"></i>
-                            </a>
-                            <a href="#"><small style="display: block; margin-top: 3px;"><strong>Follow us</strong><br>on Instagram</small></a>
-                        </div>
-                        <div class="col-md-4 clearfix bottommargin-sm">
-                            <a href="#" class="social-icon si-dark si-colored si-instagram nobottommargin" style="margin-right: 10px;">
-
-                            </a>
-                            <a href="#"><small style="display: block; margin-top: 3px;"><strong>Secured</strong><br></small></a>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-        </div><!-- .footer-widgets-wrap end -->
-
-    </div>
-
-    <!-- Copyrights
-    ============================================= -->
-    <div id="copyrights" class="nobg">
-
-        <div class="container clearfix">
-
-            <div class="col_half">
-                Copyrights &copy; 2017 All Rights Reserved by Al Rawi Theorie.<br>
-                <div class="copyright-links"><a href="#">شروط الإستخدام</a> / <a href="#">سياسات الخصوصية</a></div>
-            </div>
-
-            <div class="col_half col_last tright">
-                <div class="copyrights-menu copyright-links clearfix" style="direction: rtl">
-                    <a href="#">الصفحة الرئيسية</a>  -<a href="#">من نحن؟</a>-<a href="#">الأسئلة الأكثر شيوعاً</a>-  <a href="#">تواصل معنا</a>
-                </div>
-            </div>
+            </div><!-- .footer-widgets-wrap end -->
 
         </div>
 
-    </div><!-- #copyrights end -->
+        <!-- Copyrights
+        ============================================= -->
+        <div id="copyrights" class="nobg">
 
-</footer><!-- #footer end -->
+            <div class="container clearfix">
+
+                <div class="col_half">
+                    Copyrights &copy; 2017 All Rights Reserved by Al Rawi Theorie.<br>
+                    <div class="copyright-links"><a href="#">شروط الإستخدام</a> / <a href="#">سياسات الخصوصية</a></div>
+                </div>
+
+                <div class="col_half col_last tright">
+                    <div class="copyrights-menu copyright-links clearfix" style="direction: rtl">
+                        <a href="#">الصفحة الرئيسية</a>  -<a href="#">من نحن؟</a>-<a href="#">الأسئلة الأكثر شيوعاً</a>-  <a href="#">تواصل معنا</a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div><!-- #copyrights end -->
+
+    </footer><!-- #footer end -->
 
 </div><!-- #wrapper end -->
 
@@ -474,10 +509,36 @@ if(isset($_POST['submit'])){
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/plugins.js"></script>
 
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/plugins.js"></script>
+
 <!-- Footer Scripts
-============================================= -->
+	============================================= -->
 <script type="text/javascript" src="js/functions.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+    $("#template-medical-form").validate({
+        submitHandler: function(form) {
+            var formButton = $(form).find('button'),
+                formButtonText = formButton.html();
+
+            formButton.prop('disabled', true).html('<i class="icon-line-loader icon-spin norightmargin"></i>');
+            $(form).ajaxSubmit({
+                target: '#medical-form-result',
+                success: function() {
+                    formButton.prop('disabled', false).html(formButtonText);
+                    $(form).find('.form-control').val('');
+                    $('#medical-form-result').attr('data-notify-msg', $('#medical-form-result').html()).html('');
+                    SEMICOLON.widget.notifications($('#medical-form-result'));
+                }
+            });
+        }
+    });
+
+</script>
+
+<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>-->
 <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
 <script>
     //paste this code under the head tag or in a separate js file.
@@ -492,6 +553,18 @@ if(isset($_POST['submit'])){
         $(".pre-pre").fadeOut("slow");
     });
 </script>
+
+
+<!-- Date & Time Picker JS -->
+<script type="text/javascript" src="js/components/moment.js"></script>
+<script type="text/javascript" src="demos/travel/js/datepicker.js"></script>
+<script type="text/javascript" src="js/components/timepicker.js"></script>
+
+<!-- Include Date Range Picker -->
+<script type="text/javascript" src="js/components/daterangepicker.js"></script>
+
+<!-- Footer Scripts
+============================================= -->
 <script type="text/javascript" src="js/functions.js"></script>
 
 <script type="text/javascript">
@@ -549,8 +622,8 @@ if(isset($_POST['submit'])){
         });
 
         $('.datetimepicker1').datetimepicker({
-            format: 'LT',
-            showClose: true
+            format: 'HH:mm',
+            showClose: false
         });
 
         $('.datetimepicker2').datetimepicker({

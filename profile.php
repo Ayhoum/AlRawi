@@ -1,7 +1,9 @@
 <?php
 session_start();
 ob_start();
+
 include 'scripts/db_connection.php';
+
 ?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en-US">
@@ -181,7 +183,9 @@ include 'scripts/db_connection.php';
         </div>
 
     </header><!-- #header end -->
-    <section id="content">
+
+
+    <section id="content" style="width: 100%">
 
         <div class="content-wrap">
 
@@ -202,7 +206,7 @@ include 'scripts/db_connection.php';
 
                         <div class="row clearfix">
 
-                            <div class="col-md-12">
+                            <div class="col-md-12 ">
 
                                 <div class="tabs tabs-alt clearfix" id="tabs-profile">
 
@@ -221,7 +225,6 @@ include 'scripts/db_connection.php';
                                             <div class="table-responsive">
                                                 <table class="table table-bordered table-striped">
                                                     <colgroup>
-                                                        <col class="col-xs-3">
                                                         <col class="col-xs-3">
                                                         <col class="col-xs-3">
                                                     </colgroup>
@@ -263,9 +266,7 @@ include 'scripts/db_connection.php';
                                                         <td><?php echo $time ?> </td>
                                                         <td><?php echo $Subject ?> </td>
                                                     </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
+
                                             <?php
 
                                             }
@@ -274,6 +275,16 @@ include 'scripts/db_connection.php';
                                             }
                                             }
                                             ?>
+                                                    </tbody>
+                                                </table>
+
+                                                <div class="divider"><i class="icon-circle"></i></div>
+
+                                                <div class="center">
+                                                    <a href="private_session.php" class="button button-rounded button-reveal button-large button-border "><i class="icon-note"></i><span>احجز جلستك الخاصة الان</span></a>
+                                                </div>
+
+                                            </div>
 
                                         </div>
                                         <div class="tab-content clearfix" id="tab-posts">
@@ -341,7 +352,11 @@ include 'scripts/db_connection.php';
                                                 }
 
                                                 ?>
+                                                <div class="divider"><i class="icon-circle"></i></div>
 
+                                                <div class="center">
+                                                    <a href="#" class="button button-rounded button-reveal button-large button-border "><i class="icon-shopping-cart"></i><span>اشتري مزيدا من الفحوص</span></a>
+                                                </div>
 
                                             </div>
 
@@ -381,6 +396,8 @@ include 'scripts/db_connection.php';
                                                 ?>
 
                                             </div>
+                                            <div class="divider"><i class="icon-circle"></i></div>
+
 
                                         </div>
 
@@ -394,7 +411,6 @@ include 'scripts/db_connection.php';
 
                     </div>
 
-                    <div class="line visible-xs-block"></div>
 
                     <div class="col-sm-3 clearfix">
 
