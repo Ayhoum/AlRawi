@@ -1,21 +1,8 @@
 <?php
 session_start();
 ob_start();
+
 include 'scripts/db_connection.php';
-
-$countSucceeded = 0;
-$countOthers = 0;
-
-$query = "SELECT * FROM Users ORDER BY ID DESC";
-$select_users = mysqli_query($mysqli, $query);
-while($row = mysqli_fetch_assoc($select_users)) {
-    if ($row['SITUATION'] == "SUCCEEDED") {
-        $countSucceeded++;
-    } else {
-        $countOthers++;
-    }
-}
-$totalUsers = $countOthers + $countSucceeded;
 
 ?>
 <!DOCTYPE html>
@@ -183,9 +170,9 @@ $totalUsers = $countOthers + $countSucceeded;
                 <nav id="primary-menu" class="style-3">
 
                     <ul>
-                        <li class="current"><a href="#"><div>الصفحة الرئيسية</div></a></li>
-                        <li><a href="#"><div>خدماتنا</div></a></li>
-                        <li><a href="#"><div>من نحن؟</div></a></li>
+                        <li class="current"><a href="index.php"><div>الصفحة الرئيسية</div></a></li>
+                        <li><a href="index.php"><div>خدماتنا</div></a></li>
+                        <li><a href="index.php"><div>من نحن؟</div></a></li>
                         <!--<li><a href="#"><div>تسجيل الدخول</div></a></li>-->
                     </ul>
 
@@ -197,48 +184,125 @@ $totalUsers = $countOthers + $countSucceeded;
 
     </header><!-- #header end -->
 
-    <!-- Content
-    ============================================= -->
-    <section id="content">
 
-        <div class="content-wrap" style="padding-bottom: 0 ">
+    <section id="content" style="width: 100%">
+
+        <div class="content-wrap">
 
             <div class="container clearfix">
 
-                <?php
-                $query  = "SELECT * FROM QUESTION_SET WHERE STATUS = 'VISIBLE'";
-                $result = mysqli_query($mysqli,$query);
-                if (mysqli_num_rows($result) > 0 ){
-                    while ($row = mysqli_fetch_assoc($result)){
-                        $id = $row['ID'];
-                        $name = $row['EXAM_NAME'];
-                        $begin = $row['BEGIN_ID'];
-                        $beginValue = (($begin - 1));
-                 ?>
-                    <div class="col-md-3 col-sm-6 bottommargin">
-                        <div class="team">
-                            <div class="team-image">
-                                <img src="images/1.png" alt="Exam">
-                            </div>
-                            <div class="team-desc team-desc-bg">
-                                <div class="team-title"><h4><?php echo $name; ?></h4><span> PAID </span></div>
-                                <a href="buy_exam_week.php?exam_id=<?php echo $id ?>" class="button button-xlarge button-dark button-rounded tright">اشتري الان <i class="icon-circle-arrow-right"></i></a>
+                <div class="row clearfix">
+
+                    <div class="col-sm-9">
+
+                        <img src="images/icons/avatar.jpg" class="alignleft img-circle img-thumbnail notopmargin nobottommargin" alt="Avatar" style="max-width: 84px;">
+
+                        <div class="heading-block noborder">
+                            <h3></h3>
+                            <span><?php echo $_SESSION['username']; ?></span>
+                        </div>
+
+                        <div class="clear"></div>
+
+                        <div class="row clearfix">
+
+                            <div class="col-md-12 clearfix">
+
+                                <div class="tabs tabs-alt clearfix" id="tabs-profile">
+
+                                    <ul class="tab-nav clearfix">
+                                        <li><a href="#tab-feeds"><i class="icon-credit-cards"></i> المشتريـــات السابقة</a></li>
+                                    </ul>
+
+                                    <div class="tab-container">
+
+                                        <div class="tab-content clearfix" id="tab-feeds">
+
+                                            <p style="margin-left: 40%" class="">يمكنك ايجاد المشتريات السابقة في الجدول الظاهر في الاسفل </p>
+
+                                            <div class="table-responsive">
+                                                <table class="table table-bordered table-striped">
+                                                    <colgroup>
+                                                        <col class="col-xs-3">
+                                                        <col class="col-xs-3">
+                                                    </colgroup>
+                                                    <thead>
+                                                    <tr>
+                                                        <th>الرقم التسلسلي </th>
+                                                        <th>تــاريخ الشراء</th>
+                                                        <th>تــاريخ الانتهاء</th>
+
+                                                    </tr>
+                                                    </thead>
+
+                                                    <tbody>
+
+                                                    <?php
+
+                                                    if (isset($_SESSION['username'])) {
+                                                        $name = $_SESSION['username'];
+
+                                                        $query1 = "SELECT * FROM Users WHERE  Name ='{$name}' ";
+                                                        $result1 = mysqli_query($mysqli, $query1);
+
+                                                        if (mysqli_num_rows($result1) > 0) {
+                                                            while ($row = mysqli_fetch_assoc($result1)) {
+                                                                $user_id = $row['ID'];
+
+                                                                $query = "SELECT * FROM PAID_EXAM WHERE Users_ID ='{$user_id}'  ORDER BY `PAYMENT_ID` DESC ";
+                                                                $result = mysqli_query($mysqli,$query);
+                                                                While ($row = mysqli_fetch_assoc($result)){
+                                                                    $id           = $row['PAYMENT_ID'];
+                                                                    $payment_date = $row['PAYMENT_DATE'];
+                                                                    $end_date     = $row['END_DATE'];
+
+
+                                                                    ?>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <code><?php echo $id?> </code>
+                                                                        </td>
+                                                                        <td><?php echo $payment_date ?> </td>
+                                                                        <td><?php echo $end_date ?> </td>
+                                                                    </tr>
+
+                                                                    <?php
+
+                                                                }
+
+                                                            }
+                                                        }
+                                                    }
+                                                    ?>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <?php
-                    }
-                }
 
-                ?>
-            </div>
+                            <div class="col-sm-3 clearfix">
 
-        </div>
+                                <div class="list-group">
+                                    <a href="profile.php" class="list-group-item clearfix">الصفحة الشخصية <i class="icon-user pull-right"></i></a>
+                                    <a href="payment_history.php" class="list-group-item clearfix">المشتريات <i class="icon-credit-cards pull-right"></i></a>
+                                    <a href="logout.php" class="list-group-item clearfix">تسجيل الخروج <i class="icon-line2-logout pull-right"></i></a>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
     </section><!-- #content end -->
-
     <!-- Footer
-    ============================================= -->
+            ============================================= -->
     <footer id="footer" style="background-color: #F5F5F5;border-top: 2px solid rgba(0,0,0,0.06);">
 
         <div class="container" style="border-bottom: 1px solid rgba(0,0,0,0.06);">
@@ -463,3 +527,4 @@ $totalUsers = $countOthers + $countSucceeded;
 
 </body>
 </html>
+

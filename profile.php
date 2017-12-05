@@ -170,9 +170,9 @@ include 'scripts/db_connection.php';
                 <nav id="primary-menu" class="style-3">
 
                     <ul>
-                        <li class="current"><a href="#"><div>الصفحة الرئيسية</div></a></li>
-                        <li><a href="#"><div>خدماتنا</div></a></li>
-                        <li><a href="#"><div>من نحن؟</div></a></li>
+                        <li class="current"><a href="index.php"><div>الصفحة الرئيسية</div></a></li>
+                        <li><a href="index.php"><div>خدماتنا</div></a></li>
+                        <li><a href="index.php"><div>من نحن؟</div></a></li>
                         <!--<li><a href="#"><div>تسجيل الدخول</div></a></li>-->
                     </ul>
 
@@ -295,70 +295,73 @@ include 'scripts/db_connection.php';
 
                                                 <?php
                                                 if (isset($_SESSION['username'])) {
-                                                    $name = $_SESSION['username'];
+                                                $name = $_SESSION['username'];
+                                                $query1 = "SELECT * FROM Users WHERE  Name ='{$name}' ";
+                                                $result1 = mysqli_query($mysqli, $query1);
+                                                if (mysqli_num_rows($result1) > 0) {
+                                                while ($row = mysqli_fetch_assoc($result1)) {
+                                                $user_id = $row['ID'];
 
-                                                    $query1 = "SELECT * FROM Users WHERE  Name ='{$name}' ";
-                                                    $result1 = mysqli_query($mysqli, $query1);
+                                                $query2 = "SELECT * FROM  `PAID_EXAM` WHERE Users_ID = '{$user_id}' ORDER BY  `PAYMENT_ID` DESC LIMIT 1";
+                                                $result2 = mysqli_query($mysqli, $query2);
 
-                                                    if (mysqli_num_rows($result1) > 0) {
-                                                        while ($row = mysqli_fetch_assoc($result1)) {
-                                                            $user_id = $row['ID'];
+                                                if (mysqli_num_rows($result2) > 0) {
+                                                while ($row = mysqli_fetch_assoc($result2)) {
+                                                $payment_id = $row ['PAYMENT_ID'];
+                                                $user_id = $row['Users_ID'];
+                                                $status = $row['STATUS'];
+                                                $end_date = $row['END_DATE'];
 
-                                                            $query2  = "SELECT * FROM PAID_EXAM WHERE Users_ID = $user_id";
-                                                            $result2 = mysqli_query($mysqli, $query2);
+                                                $today_date = date_default_timezone_set('Europe/Amsterdam');
+                                                $today_date = date('Y-m-d H:i:s ', time());
 
-                                                            if (mysqli_num_rows($result2) > 0) {
-                                                                while ($row = mysqli_fetch_assoc($result2)) {
-                                                                    $question_set_id = $row['QUESTION_SET_ID'];
-
-                                                                    $query3  = "SELECT * FROM QUESTION_SET WHERE ID = '{$question_set_id}' && STATUS = 'VISIBLE'";
-                                                                    $result3 = mysqli_query($mysqli,$query3);
-                                                                    if (mysqli_num_rows($result3) > 0 ){
-                                                                        while ($row = mysqli_fetch_assoc($result3)){
-                                                                            $id = $row['ID'];
-                                                                            $name = $row['EXAM_NAME'];
-                                                                            $begin = $row['BEGIN_ID'];
-                                                                            $beginValue = (($begin - 1));
-                                                                            ?>
-                                                                            <div class="col-md-3 col-sm-6 bottommargin">
-                                                                                <div class="team">
-                                                                                    <div class="team-image">
-                                                                                        <img src="images/1.png" alt="Exam">
-                                                                                    </div>
-                                                                                    <div class="team-desc team-desc-bg">
-                                                                                        <div class="team-title"><h4><?php echo $name; ?></h4><span> PAID </span></div>
-                                                                                        <a href="buy_exam.php?exam_id=<?php echo $id ?>" class="button button-xlarge button-dark button-rounded tright">ابدء الأمتحان <i class="icon-circle-arrow-right"></i></a>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-
-                                                                            <?php
-                                                                        }
-                                                                    }
-
-
-
-                                                                }
-
-                                                            }
-
-
-                                                        }
-
-
-                                                    }
-
-
-                                                }
-
+                                                if ($end_date >= $today_date) {
                                                 ?>
-                                                <div class="divider"><i class="icon-circle"></i></div>
+                                                <div class="fancy-title title-border-color ">
+                                                    <h1>الباقة الحالية متاحة لغاية <span><?php echo $end_date; ?></span></h1>
+                                                </div>
 
+                                                <div class="divider"><i class="icon-circle"></i></div>
                                                 <div class="center">
-                                                    <a href="#" class="button button-rounded button-reveal button-large button-border "><i class="icon-shopping-cart"></i><span>اشتري مزيدا من الفحوص</span></a>
+                                                    <a href="exams.php"
+                                                       class="button button-rounded button-reveal button-large button-border ">
+                                                        <i class="icon-pen"></i><span>انتقل الى صفحة الامتحانات</span></a>
                                                 </div>
 
                                             </div>
+
+                                            <?php
+                                            }else {
+                                            $update_query = "UPDATE `PAID_EXAM` SET `STATUS` = 'NOT ACTIVE' WHERE `PAYMENT_ID` = '{$payment_id}'";
+                                            $result_update = mysqli_query($mysqli, $update_query);
+
+                                            ?>
+                                            <div class="fancy-title title-border-color">
+                                                <h1>ليس هناك أية باقة مشتراة حاليا <span>اشتري باقة جديدة</span></h1>
+                                            </div>
+
+                                            <div class="divider"><i class="icon-circle"></i></div>
+
+                                            <div class="center">
+                                                <a href="#"
+                                                   class="button button-rounded button-reveal button-large button-border "><i
+                                                            class="icon-shopping-cart"></i><span>اشتري مزيدا من الفحوص</span></a>
+                                            </div>
+
+                                        </div>
+                                        <?php
+                                                }
+
+                                                }
+
+                                                }
+
+                                                }
+
+                                                }
+
+                                                }
+                                        ?>
 
                                         </div>
                                         <div class="tab-content clearfix" id="tab-connections">
@@ -384,7 +387,7 @@ include 'scripts/db_connection.php';
                                                                 </div>
                                                                 <div class="team-desc team-desc-bg">
                                                                     <div class="team-title"><h4><?php echo $name; ?></h4><span> FREE </span></div>
-                                                                    <a href="buy_exam.php?exam_id=<?php echo $id ?>" class="button button-xlarge button-dark button-rounded tright">ابدء الامتحان<i class="icon-circle-arrow-right"></i></a>
+                                                                    <a href="buy_exam_week.php?exam_id=<?php echo $id ?>" class="button button-xlarge button-dark button-rounded tright">ابدء الامتحان<i class="icon-circle-arrow-right"></i></a>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -416,7 +419,7 @@ include 'scripts/db_connection.php';
 
                         <div class="list-group">
                             <a href="profile.php" class="list-group-item clearfix">الصفحة الشخصية <i class="icon-user pull-right"></i></a>
-                            <a href="#" class="list-group-item clearfix">المشتريات <i class="icon-credit-cards pull-right"></i></a>
+                            <a href="payment_history.php" class="list-group-item clearfix">المشتريات <i class="icon-credit-cards pull-right"></i></a>
                             <a href="logout.php" class="list-group-item clearfix">تسجيل الخروج <i class="icon-line2-logout pull-right"></i></a>
                         </div>
                     </div>
