@@ -129,7 +129,7 @@ if ($_SESSION['role'] != "MainAdmin") {
                     </li>
                     <li class="nav-heading"><span>PRIVATE SESSIONS</span></li>
                     <li>
-                        <a href="#"><i class="fa fa-dollar"></i> <span class="nav-label">Paid Exams</span><span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-dollar"></i> <span class="nav-label">Private Sessions</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse">
                             <li><a href="manage_private_session.php">Manage Private Sessions</a></li>
                         </ul>
