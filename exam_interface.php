@@ -317,7 +317,7 @@ if (isset($_GET['exam_id'])){
 
                 <?php
 //                $setId = 1;
-                $query = "SELECT * FROM FREE_EXAM_QUESTION WHERE FREE_QUESTION_SET_ID = $setId";
+                $query = "SELECT * FROM EXAM_QUESTION WHERE QUESTION_SET_ID = $setId";
                 $selectQuestions = mysqli_query($mysqli,$query);
                 $i = 1;
                 while ($row = mysqli_fetch_assoc($selectQuestions)){
