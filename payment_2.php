@@ -33,7 +33,7 @@ try
     $payment = $mollie->payments->create(array(
         "amount"       => 15.29,
         "description"  => "إشتراك بالباقة الأساسية لموقع AlrawiTheorie (لمدة أسبوعين)",
-        "redirectUrl"  => "{$protocol}://{$hostname}{$path}/buy_exam_2weeks?order_id={$order_id}",
+        "redirectUrl"  => "{$protocol}://{$hostname}{$path}/buy_exam_2weeks.php?order_id={$order_id}",
         "webhookUrl"   => "{$protocol}://{$hostname}{$path}/webhook-verification.php",
         "metadata"     => array(
             "order_id" => $order_id,

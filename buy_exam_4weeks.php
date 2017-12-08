@@ -11,7 +11,7 @@ include 'scripts/db_connection.php';
 
 function database_read ($order_id){
     $order_id = intval($order_id);
-    $database = dirname(__FILE__) . "/orders/order-{$order_id}.txt";
+    $database = "orders/order-{$order_id}.txt";
 
     $status  = @file_get_contents($database);
 
@@ -19,7 +19,7 @@ function database_read ($order_id){
 }
 $status = database_read($_GET["order_id"]);
 
-if($status == "Completed"){
+if($status == "paid"){
 ?>
 <?php
 if (isset($_SESSION['username'])){
@@ -35,10 +35,8 @@ if (isset($_SESSION['username'])){
 
             date_default_timezone_set('Europe/Amsterdam');
             $start_date = date('Y-m-d H:i:s ', time());
-            echo $start_date;
 
             $end_date = date("Y-m-d H:i:s ", strtotime('+4 weeks'));
-            echo  $end_date;
 
             $query1 = "INSERT INTO PAID_EXAM (Users_ID, PAYMENT_DATE, END_DATE )";
             $query1 .= "VALUES ('{$id}',
@@ -46,20 +44,18 @@ if (isset($_SESSION['username'])){
                              '{$end_date}')";
 
             $result1 = mysqli_query($mysqli,$query1);
-            if (mysqli_num_rows($result) > 0 ){
-                echo 'DONE';
-            } else
-                echo "FUCK";
 
 
         }
+
+        header("Location: profile.php");
 
 
     }
 
 
 } else {
-    header('Location:login.php');
+    header("Location:login.php");
 }
 }else{
     header("Location: payment_failure.php");
