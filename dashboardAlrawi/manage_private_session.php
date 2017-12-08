@@ -178,7 +178,7 @@ if ($_SESSION['role'] != "MainAdmin") {
                                 $time = $row['TIME'];
                                 $subject = $row['SUBJECT'];
                                 $status = $row['STATUS'];
-                                $user = $row['User_ID'];
+                                $user = $row['Users_ID'];
                                 $queryUser = "SELECT * FROM Users WHERE	ID = $user";
                                 $select_user = mysqli_query($mysqli, $queryUser);
                                 while ($row = mysqli_fetch_assoc($select_user)) {
@@ -209,25 +209,25 @@ if ($_SESSION['role'] != "MainAdmin") {
 
                 <?php
 
-                if(isset($_GET['change_to_visible'])){
+                if(isset($_GET['change_to_approved'])){
 
-                    $the_exam_id = $_GET['change_to_visible'];
-                    $query = "UPDATE FREE_QUESTION_SET SET STATUS = 'VISIBLE' WHERE ID = {$the_exam_id}";
-                    $exam_query = mysqli_query($mysqli, $query);
-                    if(!$exam_query){
+                    $the_session_id = $_GET['change_to_approved'];
+                    $query = "UPDATE BOOKED_SESSION SET STATUS = 'APPROVED' WHERE ID = {$the_session_id}";
+                    $session_query = mysqli_query($mysqli, $query);
+                    if(!$session_query){
                         die("Failed!" . mysqli_error($mysqli));
                     }
-                    header("Location: free_exams.php");
+                    header("Location: manage_private_session.php");
                 }
 
-                if(isset($_GET['change_to_invisible'])){
-                    $the_exam_id = $_GET['change_to_invisible'];
-                    $query = "UPDATE FREE_QUESTION_SET SET STATUS = 'INVISIBLE' WHERE ID = {$the_exam_id}";
-                    $exam_query = mysqli_query($mysqli, $query);
-                    if(!$exam_query){
+                if(isset($_GET['change_to_unapproved'])){
+                    $the_session_id = $_GET['change_to_unapproved'];
+                    $query = "UPDATE BOOKED_SESSION SET STATUS = 'UNAPPROVED' WHERE ID = {$the_session_id}";
+                    $session_query = mysqli_query($mysqli, $query);
+                    if(!$session_query){
                         die("Failed!" . mysqli_error($mysqli));
                     }
-                    header("Location: free_exams.php");
+                    header("Location: manage_private_session.php");
                 }
                 ?>
                 <div class="clearfix"></div>
