@@ -208,9 +208,9 @@ include 'scripts/db_connection.php';
 
                             <div class="col-md-12 ">
 
-                                <div class="tabs tabs-alt clearfix" id="tabs-profile">
+                                <div class="tabs tabs-alt clearfix" style="text-align: center;margin-top:10px;" id="tabs-profile">
 
-                                    <ul class="tab-nav clearfix">
+                                    <ul class="tab-nav clearfix" style="display:inline-block;">
                                         <li><a href="#tab-feeds"><i class="icon-rss2"></i> الدروس الخاصة</a></li>
                                         <li><a href="#tab-posts"><i class="icon-pencil2"></i> الامتحانات المسجلة</a></li>
                                         <li><a href="#tab-connections"><i class="icon-reply"></i> الامتحانات المجانية</a></li>
@@ -220,7 +220,7 @@ include 'scripts/db_connection.php';
 
                                         <div class="tab-content clearfix" id="tab-feeds">
 
-                                            <p style="margin-left: 40%" class="">يمكنك ايجاد جميع الدروس الخاصة في الجدول التالي مزودة بالتاريخ والوقت </p>
+                                            <p class="text-center ">يمكنك ايجاد جميع الدروس الخاصة في الجدول التالي مزودة بالتاريخ والوقت </p>
 
                                             <div class="table-responsive">
                                                 <table class="table table-bordered table-striped">

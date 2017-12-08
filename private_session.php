@@ -29,17 +29,18 @@ if (isset($_SESSION['username'])){
                 $time    = $_POST['time'];
                 $date    = $_POST['date'];
                 $subject = $_POST['subject'];
-
+                $status = "UNAPPROVED";
                 $date2 =  date('Y-m-d', strtotime($date));
 
 
 //               date_default_timezone_get('Europe/Amsterdam');
 
 
-                $query2 = "INSERT INTO `BOOKED_SESSION` (`DATE`, `TIME`, `SUBJECT`,  `Users_ID`)";
+                $query2 = "INSERT INTO `BOOKED_SESSION` (`DATE`, `TIME`, `SUBJECT`, `STATUS`,  `Users_ID`)";
                 $query2 .= " VALUES ('{$date2}',
                                      '{$time}',
                                      '{$subject}',
+                                     '{$status}',
                                      '{$user_id}')";
                 $result2 = mysqli_query($mysqli, $query2);
 
@@ -282,8 +283,15 @@ if(isset($_POST['submit'])){
                             <div class="col-sm-3"></div>
 
                             <div class="col-sm-6 bottommargin-sm">
+
+
+                                <div class="form-group">
+                                    <input type="text" name="subject" class="form-control" style="width: 100%;"  placeholder="املأ موضوع للجلسة"/>
+                                </div>
+                                <div class="clear"></div>
+
                                 <div class="input-group">
-                                    <input type="text" name= "date" value="" class="sm-form-control tleft default" placeholder="MM/DD/YYYY">
+                                    <input type="text" name= "date" value="" class="sm-form-control tleft default" placeholder="التاريخ">
                                     <span class="input-group-addon"  style="padding: 9px 12px;">
 											<i class="icon-calendar2"></i>
                                     </span>
@@ -292,17 +300,12 @@ if(isset($_POST['submit'])){
                                 <div class="clear"></div>
 
                                     <div class="input-group date">
-                                        <input type="text" name="time" class="tleft sm-form-control datetimepicker1"  placeholder="00:00"/>
+                                        <input type="text" name="time" class="tleft sm-form-control datetimepicker1"  placeholder="الساعة"/>
                                         <span class="input-group-addon" >
 											<span class="icon-clock"></span>
                                     </span>
                                     </div>
 
-                                <div class="clear"></div>
-
-                                <div class="input-group">
-                                    <input type="text" name="subject"  placeholder="املأ عنوان للجلسة"/>
-                                </div>
 
 
                             </div>
