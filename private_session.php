@@ -26,8 +26,9 @@ if (isset($_SESSION['username'])){
 
 
             if (isset($_POST['submit'])) {
-                $time = $_POST['time'];
-                $date = $_POST['date'];
+                $time    = $_POST['time'];
+                $date    = $_POST['date'];
+                $subject = $_POST['subject'];
 
                 $date2 =  date('Y-m-d', strtotime($date));
 
@@ -35,9 +36,10 @@ if (isset($_SESSION['username'])){
 //               date_default_timezone_get('Europe/Amsterdam');
 
 
-                $query2 = "INSERT INTO BOOKED_SESSION (DATE, TIME, Users_ID)";
+                $query2 = "INSERT INTO `BOOKED_SESSION` (`DATE`, `TIME`, `SUBJECT`,  `Users_ID`)";
                 $query2 .= " VALUES ('{$date2}',
                                      '{$time}',
+                                     '{$subject}',
                                      '{$user_id}')";
                 $result2 = mysqli_query($mysqli, $query2);
 
@@ -72,9 +74,6 @@ if(isset($_POST['submit'])){
     $mail->Subject    = "New Session";
 
     $mail->MsgHTML($body);
-//    $pdf= "{$senderf}{$receiverf}{$mtrn1}{$mtrn5}{$mtrn10}{$agentid}{$accountid}.pdf";
-//    $mail->AddAttachment("transaction_pdf/$pdf");      // attachment
-//$mail->AddAttachment("images/phpmailer_mini.gif"); // attachment
 
     if(!$mail->Send()) {
         echo "Mailer Error: " . $mail->ErrorInfo;
@@ -196,13 +195,6 @@ if(isset($_POST['submit'])){
                 ============================================= -->
                 <div class="top-links">
                     <ul>
-                        <!--<li><a href="#">EN</a>-->
-                        <!--<ul>-->
-                        <!--<li><a href="#"><img src="images/icons/flags/french.png" alt="French"> FR</a></li>-->
-                        <!--<li><a href="#"><img src="images/icons/flags/italian.png" alt="Italian"> IT</a></li>-->
-                        <!--<li><a href="#"><img src="images/icons/flags/german.png" alt="German"> DE</a></li>-->
-                        <!--</ul>-->
-                        <!--</li>-->
                         <?php if(!isset($_SESSION['role'])) { ?>
                             <li><a href="#" class="button-red" style="color:#fff;">حسابي</a>
                                 <ul>
@@ -282,7 +274,7 @@ if(isset($_POST['submit'])){
 
             <div class="container clearfix text-center" style="width: 100%;">
 
-                <form action="#" method="post" class="nobottommargin">
+                <form action="private_session.php" method="post" class="nobottommargin">
                     <div class="input-daterange travel-date-group bottommargin-sm">
                         <div class="row">
                             <h2 class="text-center">اختر تاريخ وموعد الجلسة مع الاستاذ حسام الراوي</h2>
@@ -297,12 +289,20 @@ if(isset($_POST['submit'])){
                                     </span>
                                 </div>
 
+                                <div class="clear"></div>
+
                                     <div class="input-group date">
                                         <input type="text" name="time" class="tleft sm-form-control datetimepicker1"  placeholder="00:00"/>
                                         <span class="input-group-addon" >
 											<span class="icon-clock"></span>
                                     </span>
                                     </div>
+
+                                <div class="clear"></div>
+
+                                <div class="input-group">
+                                    <input type="text" name="subject"  placeholder="املأ عنوان للجلسة"/>
+                                </div>
 
 
                             </div>
@@ -349,49 +349,6 @@ if(isset($_POST['submit'])){
                         <div class="line line-sm"></div>
 
                         <div class="row">
-                            <!--								<div class="clear-bottommargin-sm clearfix">-->
-                            <!---->
-                            <!--									<div class="col-md-3 col-xs-6 bottommargin-sm widget_links">-->
-                            <!--										<ul>-->
-                            <!--											<li><a href="#">Home</a></li>-->
-                            <!--											<li><a href="#">About</a></li>-->
-                            <!--											<li><a href="#">FAQs</a></li>-->
-                            <!--											<li><a href="#">Support</a></li>-->
-                            <!--											<li><a href="#">Contact</a></li>-->
-                            <!--										</ul>-->
-                            <!--									</div>-->
-                            <!---->
-                            <!--									<div class="col-md-3 col-xs-6 bottommargin-sm widget_links">-->
-                            <!--										<ul>-->
-                            <!--											<li><a href="#">Shop</a></li>-->
-                            <!--											<li><a href="#">Portfolio</a></li>-->
-                            <!--											<li><a href="#">Blog</a></li>-->
-                            <!--											<li><a href="#">Events</a></li>-->
-                            <!--											<li><a href="#">Forums</a></li>-->
-                            <!--										</ul>-->
-                            <!--									</div>-->
-                            <!---->
-                            <!--									<div class="col-md-3 col-xs-6 bottommargin-sm widget_links">-->
-                            <!--										<ul>-->
-                            <!--											<li><a href="#">Corporate</a></li>-->
-                            <!--											<li><a href="#">Agency</a></li>-->
-                            <!--											<li><a href="#">eCommerce</a></li>-->
-                            <!--											<li><a href="#">Personal</a></li>-->
-                            <!--											<li><a href="#">One Page</a></li>-->
-                            <!--										</ul>-->
-                            <!--									</div>-->
-                            <!---->
-                            <!--									<div class="col-md-3 col-xs-6 bottommargin-sm widget_links">-->
-                            <!--										<ul>-->
-                            <!--											<li><a href="#">Restaurant</a></li>-->
-                            <!--											<li><a href="#">Wedding</a></li>-->
-                            <!--											<li><a href="#">App Showcase</a></li>-->
-                            <!--											<li><a href="#">Magazine</a></li>-->
-                            <!--											<li><a href="#">Landing Page</a></li>-->
-                            <!--										</ul>-->
-                            <!--									</div>-->
-                            <!---->
-                            <!--								</div>-->
                         </div>
 
                     </div>

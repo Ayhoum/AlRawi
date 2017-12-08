@@ -328,8 +328,6 @@ include 'scripts/db_connection.php';
                                                         <i class="icon-pen"></i><span>انتقل الى صفحة الامتحانات</span></a>
                                                 </div>
 
-                                            </div>
-
                                             <?php
                                             }else {
                                             $update_query = "UPDATE `PAID_EXAM` SET `STATUS` = 'NOT ACTIVE' WHERE `PAYMENT_ID` = '{$payment_id}'";
@@ -352,6 +350,22 @@ include 'scripts/db_connection.php';
 
                                                 }
 
+                                                } else {
+                                                    ?>
+
+                                                    <div class="fancy-title title-border-color">
+                                                        <h1>ليس هناك أية باقة مشتراة حاليا <span>اشتري باقة جديدة</span></h1>
+                                                    </div>
+
+                                                    <div class="divider"><i class="icon-circle"></i></div>
+
+                                                    <div class="center">
+                                                        <a href="pricing_table.php" class="button button-rounded button-reveal button-large button-border ">
+                                                            <i class="icon-shopping-cart"></i><span>اشتري مزيدا من الفحوص</span></a>
+                                                    </div>
+
+                                                <?php
+
                                                 }
 
                                                 }
@@ -361,8 +375,10 @@ include 'scripts/db_connection.php';
                                                 }
                                         ?>
                                         </div>
-
                                         </div>
+                                        </div>
+
+
                                         <div class="tab-content clearfix" id="tab-connections">
 
 
@@ -411,18 +427,21 @@ include 'scripts/db_connection.php';
 
                         </div>
 
+                    <div class="line visible-xs-block"></div>
 
+
+
+                    <div class="col-sm-3 clearfix">
+
+                        <div class="list-group">
+                            <a href="profile.php" class="list-group-item clearfix">الصفحة الشخصية <i class="icon-user pull-right"></i></a>
+                            <a href="payment_history.php" class="list-group-item clearfix">المشتريات <i class="icon-credit-cards pull-right"></i></a>
+                            <a href="logout.php" class="list-group-item clearfix">تسجيل الخروج <i class="icon-line2-logout pull-right"></i></a>
+                        </div>
+                    </div>
 
                     </div>
 
-                <div class="col-sm-3 clearfix">
-
-                    <div class="list-group">
-                        <a href="profile.php" class="list-group-item clearfix">الصفحة الشخصية <i class="icon-user pull-right"></i></a>
-                        <a href="payment_history.php" class="list-group-item clearfix">المشتريات <i class="icon-credit-cards pull-right"></i></a>
-                        <a href="logout.php" class="list-group-item clearfix">تسجيل الخروج <i class="icon-line2-logout pull-right"></i></a>
-                    </div>
-                </div>
 
                 </div>
 
