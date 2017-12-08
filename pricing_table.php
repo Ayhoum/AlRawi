@@ -210,15 +210,17 @@ $totalUsers = $countOthers + $countSucceeded;
     <!-- Content
 		============================================= -->
 
-    <section id="content" style="width: 100%;">
+<!--    <section id="content" style="width: 100%;">-->
 
-        <div class="content-wrap" style="padding-bottom: 0;">
+<!--            <div class="container clearfix ">-->
 
-            <div class="container clearfix ">
 
-                <section class="section pricing-section nomargin dark" style="background-color: white;">
+
+<!--    <div class="divider"><i class="icon-circle"></i></div>-->
+
+                <section class="content section pricing-section nomargin dark" style="background-color: white;width: 100%;">
                     <div class="container clearfix">
-                        <h2 class="pricing-section--title center" style="color: #0f0e0f">أســعارنا</h2>
+                        <h2 class="pricing-section--title center" style="color: #0f0e0f">إشتر إحدى الباقات التالية</h2>
                         <div class="pricing pricing--karma">
                             <div class="pricing--item">
                                 <h3 class="pricing--title text-center">البــاقة  الابتدائيــة</h3>
@@ -228,7 +230,7 @@ $totalUsers = $countOthers + $countSucceeded;
                                     <li class="pricing--feature">صالحة لمدة <b>اسبوع</b></li>
 
                                 </ul>
-                                <a class="pricing--link" href="buy_exam_week.php"> <button class="pricing--action ">اخــتر البــاقة</button></a>
+                                <a class="pricing--link" href="payment_1.php"> <button class="pricing--action ">اخــتر البــاقة</button></a>
                             </div>
                             <div class="pricing--item pricing--item--featured">
                                 <h3 class="pricing--title text-center">البـاقة الأسـاسيــة</h3>
@@ -237,7 +239,7 @@ $totalUsers = $countOthers + $countSucceeded;
                                     <li class="pricing--feature">صلاحية الدخول لجميع الامتحانات</li>
                                     <li class="pricing--feature">صالحة لمدة <b>أسبوعين</b> </li>
                                 </ul>
-                                <a class="pricing--link" href="buy_exam_week.php"> <button class="pricing--action ">اخــتر البــاقة</button></a>
+                                <a class="pricing--link" href="payment_2.php"> <button class="pricing--action ">اخــتر البــاقة</button></a>
                             </div>
 
                             <div class="pricing--item">
@@ -247,21 +249,19 @@ $totalUsers = $countOthers + $countSucceeded;
                                     <li class="pricing--feature">صلاحية الدخول لجميع الامتحانات</li>
                                     <li class="pricing--feature">صالحة لمدة <b>4 أسابيـع</b> </li>
                                 </ul>
-                                <a class="pricing--link" href="buy_exam_week.php"> <button class="pricing--action ">اخــتر البــاقة</button></a>
+                                <a class="pricing--link" href="payment_4.php"> <button class="pricing--action ">اخــتر البــاقة</button></a>
                             </div>
+
                         </div>
+
                     </div>
+
                 </section>
 
+    <div class="center">
+        <a href="profile.php" class="button button-rounded button-reveal button-large button-border "><i class="icon-user"></i><span>العودة إلى الصفحة الشخصية</span></a>
+    </div>
 
-
-            </div>
-
-
-        </div>
-
-
-    </section>
 
 
 

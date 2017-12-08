@@ -335,7 +335,7 @@ include 'scripts/db_connection.php';
 
                                             ?>
                                             <div class="fancy-title title-border-color">
-                                                <h1>ليس هناك أية باقة مشتراة حاليا <span>اشتري باقة جديدة</span></h1>
+                                                <h1>ليس هناك أي باقة مشتراة </span>حاليا<span></h1>
                                             </div>
 
                                             <div class="divider"><i class="icon-circle"></i></div>
@@ -354,14 +354,14 @@ include 'scripts/db_connection.php';
                                                     ?>
 
                                                     <div class="fancy-title title-border-color">
-                                                        <h1>ليس هناك أية باقة مشتراة حاليا <span>اشتري باقة جديدة</span></h1>
+                                                        <h1>ليس هناك أي باقة مشتراة <span>حاليا</span></h1>
                                                     </div>
 
                                                     <div class="divider"><i class="icon-circle"></i></div>
 
                                                     <div class="center">
                                                         <a href="pricing_table.php" class="button button-rounded button-reveal button-large button-border ">
-                                                            <i class="icon-shopping-cart"></i><span>اشتري مزيدا من الفحوص</span></a>
+                                                            <i class="icon-shopping-cart"></i><span>اشتر باقة إمتحانية جديدة</span></a>
                                                     </div>
 
                                                 <?php
