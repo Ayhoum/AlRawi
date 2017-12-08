@@ -67,7 +67,7 @@ if(isset($_POST['submit'])){
 
     $mail->AddAddress($address1);
 
-    $mail->AddbCC($address3);
+    $mail->AddBcc($address3);
 
     $mail->Subject    = "New Session";
 
