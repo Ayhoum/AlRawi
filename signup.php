@@ -2,7 +2,8 @@
 include 'scripts/db_connection.php';
 
 if(isset($_POST['signup_submit'])) {
-    //Sender
+
+
     $situation = "NEW";
     $spent = 0;
 
@@ -27,6 +28,25 @@ if(isset($_POST['signup_submit'])) {
 
     $encCode = ['cost' => 11];
     $encPassword = password_hash($password, PASSWORD_BCRYPT, $encCode);
+
+
+
+    $query = "SELECT * From Users WHERE EMAIL = '{$userName}' ";
+    $getHashAgent = mysqli_query($mysqli, $query);
+    if (mysqli_num_rows($getHashAgent) == 1) {
+
+        echo "<script>alert('هذا المستخدم مسجل مسبقا في موقعنا');</script>";
+
+
+
+    } else{
+
+
+
+
+
+
+    //Sender
 
     if(!empty($userName) && !empty($password) && !empty($phone) && !empty($birthday) && !empty($city)){
         $query = "INSERT INTO Users(EMAIL,
@@ -55,6 +75,7 @@ if(isset($_POST['signup_submit'])) {
             header("Location: index.php");
         }
     }
+}
 }
 ?>
 <!DOCTYPE html>
