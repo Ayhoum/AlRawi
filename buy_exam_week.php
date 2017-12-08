@@ -9,6 +9,17 @@ ob_start();
  */
 include 'scripts/db_connection.php';
 
+function database_read ($order_id){
+    $order_id = intval($order_id);
+    $database = dirname(__FILE__) . "/orders/order-{$order_id}.txt";
+
+    $status  = @file_get_contents($database);
+
+    return $status ? $status : "unknown order";
+}
+$status = database_read($_GET["order_id"]);
+
+if($status == "Completed"){
 ?>
 <?php
 if (isset($_SESSION['username'])){
@@ -50,5 +61,7 @@ if (isset($_SESSION['username'])){
 } else {
     header('Location:login.php');
 }
-
+}else{
+    header("Location: payment_failure.php");
+}
 ?>
