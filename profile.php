@@ -347,7 +347,6 @@ include 'scripts/db_connection.php';
                                                     <i class="icon-shopping-cart"></i><span>اشتري مزيدا من الفحوص</span></a>
                                             </div>
 
-                                        </div>
                                         <?php
                                                 }
 
@@ -361,6 +360,7 @@ include 'scripts/db_connection.php';
 
                                                 }
                                         ?>
+                                        </div>
 
                                         </div>
                                         <div class="tab-content clearfix" id="tab-connections">
@@ -411,17 +411,18 @@ include 'scripts/db_connection.php';
 
                         </div>
 
+
+
                     </div>
 
+                <div class="col-sm-3 clearfix">
 
-                    <div class="col-sm-3 clearfix">
-
-                        <div class="list-group">
-                            <a href="profile.php" class="list-group-item clearfix">الصفحة الشخصية <i class="icon-user pull-right"></i></a>
-                            <a href="payment_history.php" class="list-group-item clearfix">المشتريات <i class="icon-credit-cards pull-right"></i></a>
-                            <a href="logout.php" class="list-group-item clearfix">تسجيل الخروج <i class="icon-line2-logout pull-right"></i></a>
-                        </div>
+                    <div class="list-group">
+                        <a href="profile.php" class="list-group-item clearfix">الصفحة الشخصية <i class="icon-user pull-right"></i></a>
+                        <a href="payment_history.php" class="list-group-item clearfix">المشتريات <i class="icon-credit-cards pull-right"></i></a>
+                        <a href="logout.php" class="list-group-item clearfix">تسجيل الخروج <i class="icon-line2-logout pull-right"></i></a>
                     </div>
+                </div>
 
                 </div>
 
