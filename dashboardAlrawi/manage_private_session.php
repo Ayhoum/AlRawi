@@ -2,30 +2,18 @@
 session_start();
 ob_start();
 include '../scripts/db_connection.php';
-
-if (isset($_GET['id'])) {
-    $setId = $_GET['id'];
+//$date = date('Y-m-d');
+if ($_SESSION['role'] != "MainAdmin") {
+    header("Location: ../index.php");
 }
 
-if(isset($_POST['update'])){
-    $examName = $_POST['exam_name'];
-    $query  = "UPDATE FREE_QUESTION_SET SET EXAM_NAME = '{$examName}' WHERE ID = $setId";
-    $result = mysqli_query($mysqli, $query);
-    if (!$result) {
-        die("Failed to update a new exam". mysqli_error($mysqli));
-    } else {
-        header("Location: free_exams.php");
-    }
-}
 
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>Al-Rawi Admin Dashboard</title>
+    <title>Absolute Admin</title>
     <meta name="keywords" content="HTML5,CSS3,Admin Template" />
     <meta name="description" content="" />
     <meta name="Author" content="Psd2allconversion [www.psd2allconversion.com]" />
@@ -47,7 +35,7 @@ if(isset($_POST['update'])){
     <link href="assets/plugins/widget/widget.css" rel="stylesheet">
     <link href="assets/plugins/calendar/fullcalendar.min.css" rel="stylesheet">
     <link href="assets/plugins/ui/jquery-ui.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/plugins/toastr/toastr.min.css"/>
+
     <!-- THEME CSS -->
     <link href="assets/css/style.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/theme/dark.css" rel="stylesheet" type="text/css" />
@@ -57,6 +45,7 @@ if(isset($_POST['update'])){
 </head>
 <body>
 
+<!-- wrapper -->
 <div id="wrapper">
     <!-- BEGIN HEADER -->
     <div class="page-header navbar fixed-top">
@@ -100,7 +89,6 @@ if(isset($_POST['update'])){
 
     <!-- BEGIN CONTAINER -->
     <div class="page-container">
-
         <aside class="sidebar">
             <nav class="sidebar-nav">
                 <ul class="metismenu" id="menu">
@@ -148,112 +136,156 @@ if(isset($_POST['update'])){
             </nav>
             <!-- END SIDEBAR -->
         </aside>
+
         <!-- BEGIN CONTENT BODY -->
         <div class="page-content-wrapper">
             <div class="content-wrapper container">
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="page-title">
-                            <h4 class="float-left">Edit Free Exam</h4>
+                            <h4 class="float-left">Free Exams</h4>
                         </div>
                     </div>
                 </div><!-- end .page title-->
+                <div class="panel panel-card margin-b-30">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                            <tr>
+                                <td class="text-center">
+                                    <a href="" class="desc">User Name</a>
+                                </td>
+                                <td class="text-center">
+                                    <a href="">Date</a>
+                                </td>
+                                <td class="text-center">
+                                    <a href="">Time</a>
+                                </td>
+                                <td class="text-center">
+                                    <a href="">Status</a>
+                                </td>
+                                <td class="text-center">Actions</td>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <?php
+                            $query = "SELECT * FROM BOOKED_SESSION";
+                            $select_sessions = mysqli_query($mysqli, $query);
 
-                <?php
-                $query = "SELECT * FROM FREE_QUESTION_SET WHERE ID = $setId";
-                $getName = mysqli_query($mysqli,$query);
-                while ($row = mysqli_fetch_assoc($getName)){
-                    $name = $row['EXAM_NAME'];
-                }
-                ?>
+                            while ($row = mysqli_fetch_assoc($select_sessions)) {
+                                $id = $row['ID'];
+                                $date = $row['DATE'];
+                                $time = $row['TIME'];
+                                $subject = $row['SUBJECT'];
+                                $status = $row['STATUS'];
+                                $user = $row['User_ID'];
+                                $queryUser = "SELECT * FROM Users WHERE	ID = $user";
+                                $select_user = mysqli_query($mysqli, $queryUser);
+                                while ($row = mysqli_fetch_assoc($select_user)) {
+                                    $userName = $row['NAME'];
 
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="panel panel-card margin-b-30">
-                            <!-- Start .panel -->
-                            <div class="panel-heading">
-                                Update Exam Name
-                            </div>
-                            <div class="panel-body  p-xl-3">
-                                <form method="post" action="edit_free_exam_info.php?id=<?php echo $setId;?>" class="form-horizontal" data-toggle="validator">
-                                    <div class="form-group row"><label class="col-sm-4 form-control-label">Exam's Name</label>
-                                        <div class="col-sm-10">
-                                            <input name="exam_name" value="<?php echo $name;?>" type="text" class="form-control" required></div>
-                                    </div>
-                                    <div class="hr-line-dashed"></div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-8 col-sm-offset-0">
-                                            <input name= "update" class="btn btn-primary" type="submit" value="Update">
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
+                            ?>
+                            <tr>
+                            <td class="text-center"><?php echo $userName;?></td>
+                            <td class="text-center"><?php echo $date;?></td>
+                            <td class="text-center"><?php echo $time;?></td>
+                            <td class="text-center"><?php echo $status;?></td>
+                            <td class="text-center">
+                                <a href="manage_private_session.php?change_to_approved=<?php echo $id ?>" data-toggle="tooltip" title="" class="btn btn-success" data-original-title="View"><i class="fa fa-check"></i></a>
+
+                                <a href="manage_private_session.php?change_to_unapproved=<?php echo $id ?>" data-toggle="tooltip" title="" class="btn btn-danger" data-original-title="View"><i class="fa fa-times"></i></a>
+                            </td>
+                            </tr>
+                            <?php
+                                }
+
+                            }
+
+                                ?>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
 
-
-            </div>
-            <div class="clearfix"></div>
-            <div class="footer">
                 <?php
-                $query = "SELECT * FROM Website";
-                $getWeb = mysqli_query($mysqli,$query);
-                while ($row = mysqli_fetch_assoc($getWeb)){
-                    $website = $row['DevWeb'];
+
+                if(isset($_GET['change_to_visible'])){
+
+                    $the_exam_id = $_GET['change_to_visible'];
+                    $query = "UPDATE FREE_QUESTION_SET SET STATUS = 'VISIBLE' WHERE ID = {$the_exam_id}";
+                    $exam_query = mysqli_query($mysqli, $query);
+                    if(!$exam_query){
+                        die("Failed!" . mysqli_error($mysqli));
+                    }
+                    header("Location: free_exams.php");
+                }
+
+                if(isset($_GET['change_to_invisible'])){
+                    $the_exam_id = $_GET['change_to_invisible'];
+                    $query = "UPDATE FREE_QUESTION_SET SET STATUS = 'INVISIBLE' WHERE ID = {$the_exam_id}";
+                    $exam_query = mysqli_query($mysqli, $query);
+                    if(!$exam_query){
+                        die("Failed!" . mysqli_error($mysqli));
+                    }
+                    header("Location: free_exams.php");
                 }
                 ?>
-                <div>
-                    <strong>Copyright</strong> <a target="_blank" href="<?php echo $website;?>">El-Semicolon;</a> © <?php echo date('Y') ;?>
+                <div class="clearfix"></div>
+                <div class="footer">
+                    <?php
+                    $query = "SELECT * FROM Website";
+                    $getWeb = mysqli_query($mysqli,$query);
+                    while ($row = mysqli_fetch_assoc($getWeb)){
+                        $website = $row['DevWeb'];
+                    }
+                    ?>
+                    <div>
+                        <strong>Copyright</strong> <a target="_blank" href="<?php echo $website;?>">El-Semicolon;</a> © <?php echo date('Y') ;?>
+                    </div>
                 </div>
             </div>
+            <!-- END CONTENT BODY -->
         </div>
-        <!-- END CONTENT BODY -->
+        <!-- END CONTAINER -->
     </div>
-    <!-- END CONTAINER -->
-</div>
-<!-- /wrapper -->
+    <!-- /wrapper -->
 
 
-<!-- SCROLL TO TOP -->
-<a href="#" id="toTop"></a>
+    <!-- SCROLL TO TOP -->
+    <a href="#" id="toTop"></a>
 
 
-<!-- PRELOADER -->
-<div id="preloader">
-    <div class="inner">
-        <span class="loader"></span>
-    </div>
-</div><!-- /PRELOADER -->
+    <!-- PRELOADER -->
+    <div id="preloader">
+        <div class="inner">
+            <span class="loader"></span>
+        </div>
+    </div><!-- /PRELOADER -->
 
 
-<!-- JAVASCRIPT FILES -->
+    <!-- JAVASCRIPT FILES -->
 
-<script type="text/javascript" src="assets/plugins/jquery/jquery.min.js"></script>
-<script type="text/javascript" src="assets/plugins/metis-menu/metisMenu.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/metis-menu/metisMenu.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/bootstrap/js/tether.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/slim-scroll/jquery.slimscroll.min.js"></script>
+    <script src="assets/plugins/c3/d3.v3.min.js" charset="utf-8"></script>
+    <script src="assets/plugins/c3/c3.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="assets/plugins/calendar/moment.min.js"></script>
+    <script src="assets/plugins/calendar/fullcalendar.min.js"></script>
+    <script src="assets/plugins/ui/jquery-ui.js"></script>
 
-<script type="text/javascript" src="assets/plugins/bootstrap/js/tether.min.js"></script>
-<script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="assets/plugins/slim-scroll/jquery.slimscroll.min.js"></script>
-<script src="assets/plugins/c3/d3.v3.min.js" charset="utf-8"></script>
-<script src="assets/plugins/c3/c3.min.js"></script>
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script src="assets/plugins/calendar/moment.min.js"></script>
-<script src="assets/plugins/calendar/fullcalendar.min.js"></script>
-<script src="assets/plugins/ui/jquery-ui.js"></script>
-<script src="assets/plugins/map/jquery-jvectormap-1.2.2.min.js"></script>
-<script src="assets/plugins/map/jquery-jvectormap-world-mill-en.js"></script>
-<script src="assets/plugins/morris_chart/morris.js"></script>
-<script src="assets/plugins/morris_chart/raphael-2.1.0.min.js"></script>
-<!-- PAGE LEVEL FILES -->
-<script src="assets/plugins/data-tables/jquery.dataTables.js"></script>
-<script src="assets/plugins/data-tables/dataTables.tableTools.js"></script>
-<script src="assets/plugins/data-tables/dataTables.bootstrap4.min.js"></script>
-<script src="assets/plugins/data-tables/dataTables.responsive.js"></script>
-<script src="assets/plugins/data-tables/tables-data.js"></script>
-<!-- Custom FILES -->
-<script type="text/javascript" src="assets/js/custom.js"></script>
-<script src="assets/plugins/toastr/toastr.min.js"></script>
-<script type="text/javascript" src="assets/js/index.js"></script>
+
+    <!-- PAGE LEVEL FILES -->
+    <script src="assets/plugins/data-tables/jquery.dataTables.js"></script>
+    <script src="assets/plugins/data-tables/dataTables.tableTools.js"></script>
+    <script src="assets/plugins/data-tables/dataTables.bootstrap.js"></script>
+    <script src="assets/plugins/data-tables/dataTables.responsive.js"></script>
+    <script src="assets/plugins/data-tables/tables-data.js"></script>
+    <!-- Custom FILES -->
+    <script type="text/javascript" src="assets/js/custom.js"></script>
+
 </body>
 </html>
