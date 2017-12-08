@@ -2,47 +2,43 @@
 session_start();
 ob_start();
 include '../scripts/db_connection.php';
-if($_SESSION['role'] != "MainAdmin"){
+//$date = date('Y-m-d');
+if ($_SESSION['role'] != "MainAdmin") {
     header("Location: ../index.php");
 }
-if (isset($_GET['id']) && ($_GET['qset'])) {
-    $qset = $_GET['qset'];
-    $setId = $_GET['id'];
-}
-?>
 
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8"/>
-    <title>Free Exam Question</title>
-    <meta name="keywords" content="HTML5,CSS3,Admin Template"/>
-    <meta name="description" content=""/>
-    <meta name="Author" content="Psd2allconversion [www.psd2allconversion.com]"/>
+    <meta charset="utf-8" />
+    <title>Absolute Admin</title>
+    <meta name="keywords" content="HTML5,CSS3,Admin Template" />
+    <meta name="description" content="" />
+    <meta name="Author" content="Psd2allconversion [www.psd2allconversion.com]" />
 
     <!-- mobile settings -->
-    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0"/>
-    <!--[if IE]>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
+    <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
 
     <!-- WEB FONTS : use %7C instead of | (pipe) -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400%7CRaleway:300,400,500,600,700%7CLato:300,400,400italic,600,700"
-          rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400%7CRaleway:300,400,500,600,700%7CLato:300,400,400italic,600,700" rel="stylesheet" type="text/css" />
 
     <!-- CORE CSS -->
-    <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-    <link href="assets/plugins/metis-menu/metisMenu.min.css" rel="stylesheet" type="text/css"/>
-    <link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-    <link href="assets/plugins/simple-line-icons-master/css/simple-line-icons.css" rel="stylesheet" type="text/css"/>
-    <link href="assets/plugins/animate/animate.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/plugins/metis-menu/metisMenu.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/plugins/simple-line-icons-master/css/simple-line-icons.css" rel="stylesheet" type="text/css" />
+    <link href="assets/plugins/animate/animate.css" rel="stylesheet" type="text/css" />
     <link href="assets/plugins/c3/c3.min.css" rel="stylesheet">
     <link href="assets/plugins/widget/widget.css" rel="stylesheet">
     <link href="assets/plugins/calendar/fullcalendar.min.css" rel="stylesheet">
     <link href="assets/plugins/ui/jquery-ui.css" rel="stylesheet">
 
     <!-- THEME CSS -->
-    <link href="assets/css/style.css" rel="stylesheet" type="text/css"/>
-    <link href="assets/css/theme/dark.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/theme/dark.css" rel="stylesheet" type="text/css" />
 
     <!-- PAGE LEVEL SCRIPTS -->
 
@@ -60,10 +56,8 @@ if (isset($_GET['id']) && ($_GET['qset'])) {
                 <a href="index.php">
                     <img src="assets/images/logo.png" alt="absolute admin" class="img-fluid logo-default"/> </a>
 
-            </div>
-            <div class="menu-toggler sidebar-toggler">
-                <a href="javascript:" class="navbar-minimalize minimalize-styl-2  float-left "><i
-                        class="fa fa-bars"></i></a>
+            </div><div class="menu-toggler sidebar-toggler">
+                <a href="javascript:" class="navbar-minimalize minimalize-styl-2  float-left "><i class="fa fa-bars"></i></a>
             </div>
 
             <!-- END LOGO -->
@@ -90,7 +84,7 @@ if (isset($_GET['id']) && ($_GET['qset'])) {
     </div>
     <!-- END HEADER -->
     <!-- BEGIN HEADER & CONTENT dropdown-divider -->
-    <div class="clearfix"></div>
+    <div class="clearfix"> </div>
     <!-- END HEADER & CONTENT dropdown-divider -->
 
     <!-- BEGIN CONTAINER -->
@@ -142,46 +136,100 @@ if (isset($_GET['id']) && ($_GET['qset'])) {
             </nav>
             <!-- END SIDEBAR -->
         </aside>
+
         <!-- BEGIN CONTENT BODY -->
         <div class="page-content-wrapper">
             <div class="content-wrapper container">
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="page-title">
-                            <h4 class="float-left">Question <?php echo $setId . ' - Exam ' . $qset; ?></h4>
+                            <h4 class="float-left">Free Exams</h4>
                         </div>
                     </div>
                 </div><!-- end .page title-->
+                <div class="panel panel-card margin-b-30">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                            <tr>
+                                <td class="text-center">
+                                    <a href="" class="desc">User Name</a>
+                                </td>
+                                <td class="text-center">
+                                    <a href="">Date</a>
+                                </td>
+                                <td class="text-center">
+                                    <a href="">Time</a>
+                                </td>
+                                <td class="text-center">
+                                    <a href="">Status</a>
+                                </td>
+                                <td class="text-center">Actions</td>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <?php
+                            $query = "SELECT * FROM BOOKED_SESSION";
+                            $select_sessions = mysqli_query($mysqli, $query);
 
-                <div class="row">
-                    <!-- Start .panel -->
+                            while ($row = mysqli_fetch_assoc($select_sessions)) {
+                                $id = $row['ID'];
+                                $date = $row['DATE'];
+                                $time = $row['TIME'];
+                                $subject = $row['SUBJECT'];
+                                $status = $row['STATUS'];
+                                $user = $row['Users_ID'];
+                                $queryUser = "SELECT * FROM Users WHERE	ID = $user";
+                                $select_user = mysqli_query($mysqli, $queryUser);
+                                while ($row = mysqli_fetch_assoc($select_user)) {
+                                    $userName = $row['NAME'];
 
+                            ?>
+                            <tr>
+                            <td class="text-center"><?php echo $userName;?></td>
+                            <td class="text-center"><?php echo $date;?></td>
+                            <td class="text-center"><?php echo $time;?></td>
+                            <td class="text-center"><?php echo $status;?></td>
+                            <td class="text-center">
+                                <a href="manage_private_session.php?change_to_approved=<?php echo $id ?>" data-toggle="tooltip" title="" class="btn btn-success" data-original-title="View"><i class="fa fa-check"></i></a>
 
-                    <?php
-                    if(isset($_GET['source'])){
-                        $source = $_GET['source'];
-                    }else{
-                        $source = '';
-                    }
-                    switch($source){
-                        case 'add':
-                            include "add_new_free_question.php";
-                            break;
-                        case 'edit':
-                            include "edit_free_question.php";
-                            break;
-                        case 'hidden':
-                            echo "It is our code! ;;;";
-                            break;
-                        default:
-                            include "manage_free_exams.php";
-                            break;
-                    }
+                                <a href="manage_private_session.php?change_to_unapproved=<?php echo $id ?>" data-toggle="tooltip" title="" class="btn btn-danger" data-original-title="View"><i class="fa fa-times"></i></a>
+                            </td>
+                            </tr>
+                            <?php
+                                }
 
-                    ?>
+                            }
 
-
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
+
+                <?php
+
+                if(isset($_GET['change_to_approved'])){
+
+                    $the_session_id = $_GET['change_to_approved'];
+                    $query = "UPDATE BOOKED_SESSION SET STATUS = 'APPROVED' WHERE ID = {$the_session_id}";
+                    $session_query = mysqli_query($mysqli, $query);
+                    if(!$session_query){
+                        die("Failed!" . mysqli_error($mysqli));
+                    }
+                    header("Location: manage_private_session.php");
+                }
+
+                if(isset($_GET['change_to_unapproved'])){
+                    $the_session_id = $_GET['change_to_unapproved'];
+                    $query = "UPDATE BOOKED_SESSION SET STATUS = 'UNAPPROVED' WHERE ID = {$the_session_id}";
+                    $session_query = mysqli_query($mysqli, $query);
+                    if(!$session_query){
+                        die("Failed!" . mysqli_error($mysqli));
+                    }
+                    header("Location: manage_private_session.php");
+                }
+                ?>
                 <div class="clearfix"></div>
                 <div class="footer">
                     <?php

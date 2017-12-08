@@ -112,9 +112,9 @@ if(isset($_POST['create'])){
         <aside class="sidebar">
             <nav class="sidebar-nav">
                 <ul class="metismenu" id="menu">
-                    <li>
+                    <li class="active">
                         <a href="index.php"><i class="icon-grid"></i> <span class="nav-label">Dashboard</span><span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level collapse">
+                        <ul class="nav nav-second-level collapse in">
                             <li><a href="index.php">Home</a></li>
                         </ul>
                     </li>
@@ -127,7 +127,7 @@ if(isset($_POST['create'])){
                         </ul>
                     </li>
                     <li class="nav-heading"><span>FREE EXAMS</span></li>
-                    <li class="active">
+                    <li>
                         <a href="#"><i class="fa fa-file-text-o"></i> <span class="nav-label">Free Exams</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse">
                             <li><a href="add_free_exam.php">New Exam</a></li>
@@ -143,14 +143,19 @@ if(isset($_POST['create'])){
                             <li><a href="paid_exams_stats.php"> Paid Exams Stats</a></li>
                         </ul>
                     </li>
+                    <li class="nav-heading"><span>PRIVATE SESSIONS</span></li>
+                    <li>
+                        <a href="#"><i class="fa fa-dollar"></i> <span class="nav-label">Private Sessions</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a href="manage_private_session.php">Manage Private Sessions</a></li>
+                        </ul>
+                    </li>
 
                 </ul>
-                <!-- END SIDEBAR MENU -->
                 <!-- END SIDEBAR MENU -->
             </nav>
             <!-- END SIDEBAR -->
         </aside>
-
         <!-- BEGIN CONTENT BODY -->
         <div class="page-content-wrapper">
             <div class="content-wrapper container">
