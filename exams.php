@@ -279,8 +279,7 @@ if (mysqli_num_rows($result1) > 0) {
                                                             <span> PAID </span>
                                                         </div>
                                                         <a href="exam_interface.php?exam_id=<?php echo $id ?>"
-                                                           class="button button-xlarge button-dark button-rounded tright">اشتري
-                                                            الان
+                                                           class="button button-xlarge button-dark button-rounded tright">إبدأ الامتحان
                                                             <i class="icon-circle-arrow-right"></i></a>
                                                     </div>
                                                 </div>
