@@ -2,7 +2,9 @@
 session_start();
 ob_start();
 include 'scripts/db_connection.php';
-
+if (!isset($_SESSION['username'])){
+    header("Location: login.php");
+}
 if (isset($_GET['exam_id'])){
     $setId = $_GET['exam_id'];
 

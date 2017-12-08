@@ -1,4 +1,7 @@
 <?php
+if (!isset($_SESSION['username'])){
+    header("Location: login.php");
+}
 /*
  * Example 1 - How to prepare a new payment with the Mollie API.
  */

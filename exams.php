@@ -2,7 +2,9 @@
 session_start();
 ob_start();
 include 'scripts/db_connection.php';
-
+if (!isset($_SESSION['username'])){
+    header("Location: login.php");
+}
 $countSucceeded = 0;
 $countOthers = 0;
 

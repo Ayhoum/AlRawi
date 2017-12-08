@@ -1,7 +1,9 @@
 <?php
 session_start();
 ob_start();
-
+if (!isset($_SESSION['username'])){
+    header("Location: login.php");
+}
 include 'scripts/db_connection.php';
 
 ?>

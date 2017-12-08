@@ -3,6 +3,11 @@
  * Example 2 - How to verify Mollie API Payments in a webhook.
  */
 
+if (!isset($_SESSION['username'])){
+    header("Location: login.php");
+
+}
+
 try
 {
 	/*

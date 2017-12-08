@@ -9,7 +9,9 @@ session_start();
 ob_start();
 require_once('phpmailer/class.phpmailer.php');
 include 'scripts/db_connection.php';
-
+if (!isset($_SESSION['username'])){
+    header("Location: login.php");
+}
 ?>
 
 <?php
