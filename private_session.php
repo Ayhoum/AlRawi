@@ -281,7 +281,7 @@ if(isset($_POST['submit'])){
 
     <!-- Content
     ============================================= -->
-    <section id="content style="width: 100%">
+    <section id="content" style="width: 100%">
 
         <div class="content-wrap">
 
