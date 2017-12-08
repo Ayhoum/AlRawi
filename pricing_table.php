@@ -1,8 +1,22 @@
 <?php
+
 session_start();
 ob_start();
-
 include 'scripts/db_connection.php';
+
+$countSucceeded = 0;
+$countOthers = 0;
+
+$query = "SELECT * FROM Users ORDER BY ID DESC";
+$select_users = mysqli_query($mysqli, $query);
+while($row = mysqli_fetch_assoc($select_users)) {
+    if ($row['SITUATION'] == "SUCCEEDED") {
+        $countSucceeded++;
+    } else {
+        $countOthers++;
+    }
+}
+$totalUsers = $countOthers + $countSucceeded;
 
 ?>
 <!DOCTYPE html>
@@ -35,6 +49,15 @@ include 'scripts/db_connection.php';
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <link rel="stylesheet" href="css/colors.php?color=DE6262" type="text/css" />
+
+
+    <!--  Pricing Tables Style  -->
+    <link rel="stylesheet" href="css/components/pricing-table.css" type="text/css" />
+
+    <link rel="stylesheet" href="css/responsive.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+
 
     <!-- Document Title
     ============================================= -->
@@ -170,9 +193,9 @@ include 'scripts/db_connection.php';
                 <nav id="primary-menu" class="style-3">
 
                     <ul>
-                        <li class="current"><a href="index.php"><div>الصفحة الرئيسية</div></a></li>
-                        <li><a href="index.php"><div>خدماتنا</div></a></li>
-                        <li><a href="index.php"><div>من نحن؟</div></a></li>
+                        <li class="current"><a href="#"><div>الصفحة الرئيسية</div></a></li>
+                        <li><a href="#"><div>خدماتنا</div></a></li>
+                        <li><a href="#"><div>من نحن؟</div></a></li>
                         <!--<li><a href="#"><div>تسجيل الدخول</div></a></li>-->
                     </ul>
 
@@ -184,254 +207,66 @@ include 'scripts/db_connection.php';
 
     </header><!-- #header end -->
 
-
-    <section id="content" style="width: 100%">
-
-        <div class="content-wrap">
-
-            <div class="container clearfix">
-
-                <div class="row clearfix">
-
-                    <div class="col-sm-9">
-
-                        <img src="images/icons/avatar.jpg" class="alignleft img-circle img-thumbnail notopmargin nobottommargin" alt="Avatar" style="max-width: 84px;">
-
-                        <div class="heading-block noborder">
-                            <h3></h3>
-                            <span><?php echo $_SESSION['username']; ?></span>
-                        </div>
-
-                        <div class="clear"></div>
-
-                        <div class="row clearfix">
-
-                            <div class="col-md-12 ">
-
-                                <div class="tabs tabs-alt clearfix" id="tabs-profile">
-
-                                    <ul class="tab-nav clearfix">
-                                        <li><a href="#tab-feeds"><i class="icon-rss2"></i> الدروس الخاصة</a></li>
-                                        <li><a href="#tab-posts"><i class="icon-pencil2"></i> الامتحانات المسجلة</a></li>
-                                        <li><a href="#tab-connections"><i class="icon-reply"></i> الامتحانات المجانية</a></li>
-                                    </ul>
-
-                                    <div class="tab-container">
-
-                                        <div class="tab-content clearfix" id="tab-feeds">
-
-                                            <p style="margin-left: 40%" class="">يمكنك ايجاد جميع الدروس الخاصة في الجدول التالي مزودة بالتاريخ والوقت </p>
-
-                                            <div class="table-responsive">
-                                                <table class="table table-bordered table-striped">
-                                                    <colgroup>
-                                                        <col class="col-xs-3">
-                                                        <col class="col-xs-3">
-                                                    </colgroup>
-                                                    <thead>
-                                                    <tr>
-                                                        <th>التاريخ</th>
-                                                        <th>الوقت</th>
-                                                        <th>عنوان الجلسة</th>
-                                                    </tr>
-                                                    </thead>
-
-                                                    <tbody>
-
-                                                    <?php
-
-                                                    if (isset($_SESSION['username'])) {
-                                                        $name = $_SESSION['username'];
-
-                                                        $query1 = "SELECT * FROM Users WHERE  Name ='{$name}' ";
-                                                        $result1 = mysqli_query($mysqli, $query1);
-
-                                                        if (mysqli_num_rows($result1) > 0) {
-                                                            while ($row = mysqli_fetch_assoc($result1)) {
-                                                                $user_id = $row['ID'];
-
-                                                                $query = "SELECT * FROM BOOKED_SESSION WHERE Users_ID ='{$user_id}' && STATUS = 'APPROVED' ORDER BY `DATE` DESC ";
-                                                                $result = mysqli_query($mysqli,$query);
-                                                                While ($row = mysqli_fetch_assoc($result)){
-                                                                    $date    = $row['DATE'];
-                                                                    $time    = $row['TIME'];
-                                                                    $Subject = $row['SUBJECT'];
-
-
-                                                    ?>
-                                                    <tr>
-                                                        <td>
-                                                            <code><?php echo $date?> </code>
-                                                        </td>
-                                                        <td><?php echo $time ?> </td>
-                                                        <td><?php echo $Subject ?> </td>
-                                                    </tr>
-
-                                            <?php
-
-                                            }
-
-                                            }
-                                            }
-                                            }
-                                            ?>
-                                                    </tbody>
-                                                </table>
-
-                                                <div class="divider"><i class="icon-circle"></i></div>
-
-                                                <div class="center">
-                                                    <a href="private_session.php" class="button button-rounded button-reveal button-large button-border "><i class="icon-note"></i><span>احجز جلستك الخاصة الان</span></a>
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-                                        <div class="tab-content clearfix" id="tab-posts">
-
-
-
-                                            <div class="row topmargin-sm clearfix">
-
-                                                <?php
-                                                if (isset($_SESSION['username'])) {
-                                                $name = $_SESSION['username'];
-                                                $query1 = "SELECT * FROM Users WHERE  Name ='{$name}' ";
-                                                $result1 = mysqli_query($mysqli, $query1);
-                                                if (mysqli_num_rows($result1) > 0) {
-                                                while ($row = mysqli_fetch_assoc($result1)) {
-                                                $user_id = $row['ID'];
-
-                                                $query2 = "SELECT * FROM  `PAID_EXAM` WHERE Users_ID = '{$user_id}' ORDER BY  `PAYMENT_ID` DESC LIMIT 1";
-                                                $result2 = mysqli_query($mysqli, $query2);
-
-                                                if (mysqli_num_rows($result2) > 0) {
-                                                while ($row = mysqli_fetch_assoc($result2)) {
-                                                $payment_id = $row ['PAYMENT_ID'];
-                                                $user_id = $row['Users_ID'];
-                                                $status = $row['STATUS'];
-                                                $end_date = $row['END_DATE'];
-
-                                                $today_date = date_default_timezone_set('Europe/Amsterdam');
-                                                $today_date = date('Y-m-d H:i:s ', time());
-
-                                                if ($end_date >= $today_date) {
-                                                ?>
-                                                <div class="fancy-title title-border-color ">
-                                                    <h1>الباقة الحالية متاحة لغاية <span><?php echo $end_date; ?></span></h1>
-                                                </div>
-
-                                                <div class="divider"><i class="icon-circle"></i></div>
-                                                <div class="center">
-                                                    <a href="exams.php"
-                                                       class="button button-rounded button-reveal button-large button-border ">
-                                                        <i class="icon-pen"></i><span>انتقل الى صفحة الامتحانات</span></a>
-                                                </div>
-
-                                            </div>
-
-                                            <?php
-                                            }else {
-                                            $update_query = "UPDATE `PAID_EXAM` SET `STATUS` = 'NOT ACTIVE' WHERE `PAYMENT_ID` = '{$payment_id}'";
-                                            $result_update = mysqli_query($mysqli, $update_query);
-
-                                            ?>
-                                            <div class="fancy-title title-border-color">
-                                                <h1>ليس هناك أية باقة مشتراة حاليا <span>اشتري باقة جديدة</span></h1>
-                                            </div>
-
-                                            <div class="divider"><i class="icon-circle"></i></div>
-
-                                            <div class="center">
-                                                <a href="pricing_table.php" class="button button-rounded button-reveal button-large button-border ">
-                                                    <i class="icon-shopping-cart"></i><span>اشتري مزيدا من الفحوص</span></a>
-                                            </div>
-
-                                        </div>
-                                        <?php
-                                                }
-
-                                                }
-
-                                                }
-
-                                                }
-
-                                                }
-
-                                                }
-                                        ?>
-
-                                        </div>
-                                        <div class="tab-content clearfix" id="tab-connections">
-
-
-                                            <div class="row topmargin-sm">
-
-                                                <?php
-
-                                                $query4 = "SELECT * FROM FREE_QUESTION_SET WHERE STATUS = 'VISIBLE'";
-                                                $result4 = mysqli_query($mysqli,$query4);
-                                                if (mysqli_num_rows($result4) > 0 ){
-                                                    while ($row = mysqli_fetch_assoc($result4)){
-                                                        $id = $row['ID'];
-                                                        $name = $row['EXAM_NAME'];
-                                                        $begin = $row['BEGIN_ID'];
-                                                        $beginValue = (($begin - 1));
-                                                        ?>
-                                                        <div class="col-md-3 col-sm-6 bottommargin">
-                                                            <div class="team">
-                                                                <div class="team-image">
-                                                                    <img src="images/1.png" alt="Exam">
-                                                                </div>
-                                                                <div class="team-desc team-desc-bg">
-                                                                    <div class="team-title"><h4><?php echo $name; ?></h4><span> FREE </span></div>
-                                                                    <a href="buy_exam_week.php?exam_id=<?php echo $id ?>" class="button button-xlarge button-dark button-rounded tright">ابدء الامتحان<i class="icon-circle-arrow-right"></i></a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <?php
-                                                    }
-                                                }
-
-                                                ?>
-
-                                            </div>
-                                            <div class="divider"><i class="icon-circle"></i></div>
-
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
+    <!-- Content
+		============================================= -->
+
+    <section id="content" style="width: 100%;">
+
+        <div class="content-wrap" style="padding-bottom: 0;">
+
+            <div class="container clearfix ">
+
+                <section class="section pricing-section nomargin dark" style="background-color: white;">
+                    <div class="container clearfix">
+                        <h2 class="pricing-section--title center" style="color: #0f0e0f">أســعارنا</h2>
+                        <div class="pricing pricing--karma">
+                            <div class="pricing--item">
+                                <h3 class="pricing--title text-center">البــاقة  الابتدائيــة</h3>
+                                <div class="pricing--price"><span class="pricing--currency">€</span>10<span class="pricing--period" style="direction: rtl"> أسبــوع </span></div>
+                                <ul class="pricing--feature-list">
+                                    <li class="pricing--feature">صلاحية الدخول لجميع الامتحانات </li>
+                                    <li class="pricing--feature">صالحة لمدة <b>اسبوع</b></li>
+
+                                </ul>
+                                <a class="pricing--link" href="buy_exam_week.php"> <button class="pricing--action ">اخــتر البــاقة</button></a>
+                            </div>
+                            <div class="pricing--item pricing--item--featured">
+                                <h3 class="pricing--title text-center">البـاقة الأسـاسيــة</h3>
+                                <div class="pricing--price"><span class="pricing--currency">€</span>15<span class="pricing--period" style="direction: rtl"> أسبـــوعان  </span></div>
+                                <ul class="pricing--feature-list">
+                                    <li class="pricing--feature">صلاحية الدخول لجميع الامتحانات</li>
+                                    <li class="pricing--feature">صالحة لمدة <b>أسبوعين</b> </li>
+                                </ul>
+                                <a class="pricing--link" href="buy_exam_week.php"> <button class="pricing--action ">اخــتر البــاقة</button></a>
                             </div>
 
-                        </div>
-
-                    </div>
-
-
-                    <div class="col-sm-3 clearfix">
-
-                        <div class="list-group">
-                            <a href="profile.php" class="list-group-item clearfix">الصفحة الشخصية <i class="icon-user pull-right"></i></a>
-                            <a href="payment_history.php" class="list-group-item clearfix">المشتريات <i class="icon-credit-cards pull-right"></i></a>
-                            <a href="logout.php" class="list-group-item clearfix">تسجيل الخروج <i class="icon-line2-logout pull-right"></i></a>
+                            <div class="pricing--item">
+                                <h3 class="pricing--title text-center">البــاقة المتقدمــة</h3>
+                                <div class="pricing--price"><span class="pricing--currency">€</span>25<span class="pricing--period"style="direction: rtl"> 4 أسـابيـع </span></div>
+                                <ul class="pricing--feature-list">
+                                    <li class="pricing--feature">صلاحية الدخول لجميع الامتحانات</li>
+                                    <li class="pricing--feature">صالحة لمدة <b>4 أسابيـع</b> </li>
+                                </ul>
+                                <a class="pricing--link" href="buy_exam_week.php"> <button class="pricing--action ">اخــتر البــاقة</button></a>
+                            </div>
                         </div>
                     </div>
+                </section>
 
-                </div>
+
 
             </div>
 
+
         </div>
 
-    </section><!-- #content end -->
+
+    </section>
+
+
+
     <!-- Footer
-            ============================================= -->
+    ============================================= -->
     <footer id="footer" style="background-color: #F5F5F5;border-top: 2px solid rgba(0,0,0,0.06);">
 
         <div class="container" style="border-bottom: 1px solid rgba(0,0,0,0.06);">

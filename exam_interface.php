@@ -2,6 +2,11 @@
 session_start();
 ob_start();
 include 'scripts/db_connection.php';
+
+if (isset($_GET['exam_id'])){
+    $setId = $_GET['exam_id'];
+
+
 ?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en-US">
@@ -30,7 +35,7 @@ include 'scripts/db_connection.php';
 
     <!-- Document Title
     ============================================= -->
-    <title>Header - Light Style | Canvas</title>
+    <title><?php echo $setId ?> | صفحة الامتحانات</title>
 
     <style>
         body, html {
@@ -311,7 +316,7 @@ include 'scripts/db_connection.php';
                 </div>
 
                 <?php
-                $setId = 1;
+//                $setId = 1;
                 $query = "SELECT * FROM FREE_EXAM_QUESTION WHERE FREE_QUESTION_SET_ID = $setId";
                 $selectQuestions = mysqli_query($mysqli,$query);
                 $i = 1;
@@ -572,3 +577,10 @@ include 'scripts/db_connection.php';
 
 </body>
 </html>
+
+<?php
+} else {
+    header('Location: profile.php');
+}
+
+    ?>
