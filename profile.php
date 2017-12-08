@@ -404,7 +404,7 @@ include 'scripts/db_connection.php';
                                                                 </div>
                                                                 <div class="team-desc team-desc-bg">
                                                                     <div class="team-title"><h4><?php echo $name; ?></h4><span> مجاني </span></div>
-                                                                    <a href="buy_exam_week.php?exam_id=<?php echo $id ?>" class="button button-xlarge button-dark button-rounded tright">إبدأ الإمتحان<i class="icon-circle-arrow-right"></i></a>
+                                                                    <a href="free_exam_interface.php?exam_id=<?php echo $id ?>" class="button button-xlarge button-dark button-rounded tright">إبدأ الإمتحان<i class="icon-circle-arrow-right"></i></a>
                                                                 </div>
                                                             </div>
                                                         </div>
