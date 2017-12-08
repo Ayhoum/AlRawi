@@ -100,17 +100,13 @@ if(isset($_POST['submit'])){
     <link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
     <link rel="stylesheet" href="style.css" type="text/css" />
-    <link rel="stylesheet" href="css/dark.css" type="text/css" />
-    <link rel="stylesheet" href="css/font-icons.css" type="text/css" />
-    <link rel="stylesheet" href="css/animate.css" type="text/css" />
-    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css" />
+
 
     <!-- Date & Time Picker CSS -->
     <link rel="stylesheet" href="demos/travel/css/datepicker.css" type="text/css" />
     <link rel="stylesheet" href="css/components/timepicker.css" type="text/css" />
     <link rel="stylesheet" href="css/components/daterangepicker.css" type="text/css" />
 
-    <link rel="stylesheet" href="css/responsive.css" type="text/css" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 
@@ -127,7 +123,6 @@ if(isset($_POST['submit'])){
     <link rel="stylesheet" href="demos/medical/fonts.css" type="text/css" />
 
     <link rel="stylesheet" href="css/responsive.css" type="text/css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <link rel="stylesheet" href="css/colors.php?color=DE6262" type="text/css" />
 
@@ -565,14 +560,13 @@ if(isset($_POST['submit'])){
 
 <!-- Footer Scripts
 ============================================= -->
-<script type="text/javascript" src="js/functions.js"></script>
 
 <script type="text/javascript">
     $(function() {
         $('.travel-date-group .default').datepicker({
             autoclose: true,
             startDate: "today",
-        });
+        });111111111
 
         $('.travel-date-group .today').datepicker({
             autoclose: true,
