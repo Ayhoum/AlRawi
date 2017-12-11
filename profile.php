@@ -212,7 +212,7 @@ include 'scripts/db_connection.php';
                                     <ul class="tab-nav clearfix" style="display:inline-block;">
                                         <li><a href="#tab-feeds"><i class="icon-calendar"></i> الدروس الخاصة</a></li>
                                         <li><a href="#tab-posts"><i class="icon-pencil2"></i> الامتحانات المسجلة</a></li>
-                                        <li><a href="#tab-connections"><i class="icon-note"></i> الامتحانات المجانية</a></li>
+                                        <li><a href="#tab-connections"><i class="icon-note*"></i> الامتحانات المجانية</a></li>
                                     </ul>
 
                                     <div class="tab-container">
