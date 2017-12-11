@@ -173,9 +173,6 @@ include 'scripts/db_connection.php';
 
                     <ul>
                         <li class="current"><a href="index.php"><div>الصفحة الرئيسية</div></a></li>
-                        <li><a href="index.php"><div>خدماتنا</div></a></li>
-                        <li><a href="index.php"><div>من نحن؟</div></a></li>
-                        <!--<li><a href="#"><div>تسجيل الدخول</div></a></li>-->
                     </ul>
 
                 </nav><!-- #primary-menu end -->
@@ -438,6 +435,7 @@ include 'scripts/db_connection.php';
                         <div class="list-group">
                             <a href="profile.php" class="list-group-item clearfix">الصفحة الشخصية <i class="icon-user pull-right"></i></a>
                             <a href="payment_history.php" class="list-group-item clearfix">المشتريات <i class="icon-credit-cards pull-right"></i></a>
+                            <a href="succseed.php" class="list-group-item clearfix" style="color: green">لقـد نجحـت بالامتحان النظري <i class="icon-pen pull-right"></i></a>
                             <a href="logout.php" class="list-group-item clearfix">تسجيل الخروج <i class="icon-line2-logout pull-right"></i></a>
                         </div>
                     </div>

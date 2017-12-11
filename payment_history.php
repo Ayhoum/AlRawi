@@ -173,9 +173,6 @@ include 'scripts/db_connection.php';
 
                     <ul>
                         <li class="current"><a href="index.php"><div>الصفحة الرئيسية</div></a></li>
-                        <li><a href="index.php"><div>خدماتنا</div></a></li>
-                        <li><a href="index.php"><div>من نحن؟</div></a></li>
-                        <!--<li><a href="#"><div>تسجيل الدخول</div></a></li>-->
                     </ul>
 
                 </nav><!-- #primary-menu end -->
