@@ -227,9 +227,9 @@ include 'scripts/db_connection.php';
                                                     </colgroup>
                                                     <thead>
                                                     <tr>
-                                                        <th>الرقم التسلسلي </th>
-                                                        <th>تــاريخ الشراء</th>
-                                                        <th>تــاريخ الانتهاء</th>
+                                                        <th class="text-center">الرقم التسلسلي </th>
+                                                        <th class="text-center">تــاريخ الشراء</th>
+                                                        <th class="text-center">تــاريخ الانتهاء</th>
 
                                                     </tr>
                                                     </thead>
@@ -314,7 +314,7 @@ include 'scripts/db_connection.php';
                     <div class="widget clearfix">
 
                         <div class="widget-subscribe-form-result"></div>
-                        <form id="widget-subscribe-form" action="include/subscribe.php" role="form" method="post" class="nobottommargin row clearfix">
+                        <form id="widget-subscribe-form" action="#" role="form" method="post" class="nobottommargin row clearfix">
                             <div class="col-md-9">
                                 <input type="email" id="widget-subscribe-form-email" name="widget-subscribe-form-email" class="sm-form-control required email" placeholder="أدخل بريدك الإلكتروني ليصلك كل جديد حول موقعنا">
                             </div>
@@ -326,49 +326,6 @@ include 'scripts/db_connection.php';
                         <div class="line line-sm"></div>
 
                         <div class="row">
-                            <!--								<div class="clear-bottommargin-sm clearfix">-->
-                            <!---->
-                            <!--									<div class="col-md-3 col-xs-6 bottommargin-sm widget_links">-->
-                            <!--										<ul>-->
-                            <!--											<li><a href="#">Home</a></li>-->
-                            <!--											<li><a href="#">About</a></li>-->
-                            <!--											<li><a href="#">FAQs</a></li>-->
-                            <!--											<li><a href="#">Support</a></li>-->
-                            <!--											<li><a href="#">Contact</a></li>-->
-                            <!--										</ul>-->
-                            <!--									</div>-->
-                            <!---->
-                            <!--									<div class="col-md-3 col-xs-6 bottommargin-sm widget_links">-->
-                            <!--										<ul>-->
-                            <!--											<li><a href="#">Shop</a></li>-->
-                            <!--											<li><a href="#">Portfolio</a></li>-->
-                            <!--											<li><a href="#">Blog</a></li>-->
-                            <!--											<li><a href="#">Events</a></li>-->
-                            <!--											<li><a href="#">Forums</a></li>-->
-                            <!--										</ul>-->
-                            <!--									</div>-->
-                            <!---->
-                            <!--									<div class="col-md-3 col-xs-6 bottommargin-sm widget_links">-->
-                            <!--										<ul>-->
-                            <!--											<li><a href="#">Corporate</a></li>-->
-                            <!--											<li><a href="#">Agency</a></li>-->
-                            <!--											<li><a href="#">eCommerce</a></li>-->
-                            <!--											<li><a href="#">Personal</a></li>-->
-                            <!--											<li><a href="#">One Page</a></li>-->
-                            <!--										</ul>-->
-                            <!--									</div>-->
-                            <!---->
-                            <!--									<div class="col-md-3 col-xs-6 bottommargin-sm widget_links">-->
-                            <!--										<ul>-->
-                            <!--											<li><a href="#">Restaurant</a></li>-->
-                            <!--											<li><a href="#">Wedding</a></li>-->
-                            <!--											<li><a href="#">App Showcase</a></li>-->
-                            <!--											<li><a href="#">Magazine</a></li>-->
-                            <!--											<li><a href="#">Landing Page</a></li>-->
-                            <!--										</ul>-->
-                            <!--									</div>-->
-                            <!---->
-                            <!--								</div>-->
                         </div>
 
                     </div>
@@ -404,19 +361,19 @@ include 'scripts/db_connection.php';
                         <div class="row">
 
                             <div class="col-md-2 clearfix bottommargin-sm">
-                                <a href="#" class="social-icon si-dark si-colored si-facebook nobottommargin" style="margin-right: 10px;">
+                                <a href="https://ar-ar.facebook.com/Alrawi1rijbewijs/" class="social-icon si-dark si-colored si-facebook nobottommargin" style="margin-right: 10px;">
                                     <i class="icon-facebook"></i>
                                     <i class="icon-facebook"></i>
                                 </a>
-                                <a href="#"><small style="display: block; margin-top: 3px;"><strong>Like us</strong><br>on Facebook</small></a>
+                                <a href="https://ar-ar.facebook.com/Alrawi1rijbewijs/"><small style="display: block; margin-top: 3px;"><strong>Like us</strong><br>on Facebook</small></a>
                             </div>
 
                             <div class="col-md-2 clearfix bottommargin-sm">
-                                <a href="#" class="social-icon si-dark si-colored si-youtube nobottommargin" style="margin-right: 10px;">
+                                <a href="https://www.youtube.com/channel/UCCofuIotSiIzzARX3nz4KSw" class="social-icon si-dark si-colored si-youtube nobottommargin" style="margin-right: 10px;">
                                     <i class="icon-youtube"></i>
                                     <i class="icon-youtube"></i>
                                 </a>
-                                <a href="#"><small style="display: block; margin-top: 3px;"><strong>Subscribe</strong><br>on YouTube</small></a>
+                                <a href="https://www.youtube.com/channel/UCCofuIotSiIzzARX3nz4KSw"><small style="display: block; margin-top: 3px;"><strong>Subscribe</strong><br>on YouTube</small></a>
                             </div>
                             <div class="col-md-2 clearfix bottommargin-sm">
                                 <a href="#" class="social-icon si-dark si-colored si-twitter nobottommargin" style="margin-right: 10px;">
@@ -448,25 +405,25 @@ include 'scripts/db_connection.php';
         </div>
 
         <!-- Copyrights
-        ============================================= -->
+    ============================================= -->
         <div id="copyrights" class="nobg">
 
             <div class="container clearfix">
 
-                <div class="col_half">
-                    Copyrights &copy; 2017 All Rights Reserved by Al Rawi Theorie.<br>
+                <div class="text-center">
+                    Copyrights &copy; 2018 All Rights Reserved by Al Rawi Theorie.<br>
                     <div class="copyright-links"><a href="#">شروط الإستخدام</a> / <a href="#">سياسات الخصوصية</a></div>
                 </div>
 
-                <div class="col_half col_last tright">
-                    <div class="copyrights-menu copyright-links clearfix" style="direction: rtl">
-                        <a href="#">الصفحة الرئيسية</a>  -<a href="#">من نحن؟</a>-<a href="#">الأسئلة الأكثر شيوعاً</a>-  <a href="#">تواصل معنا</a>
-                    </div>
+                <div class="text-center topmargin-sm">
+                    Developed & Designed by <a href="www.el-semicolon.nl"> El-SemiColon; </a>
                 </div>
 
             </div>
 
         </div><!-- #copyrights end -->
+
+
 
     </footer><!-- #footer end -->
 

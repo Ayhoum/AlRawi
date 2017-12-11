@@ -14,7 +14,7 @@ include 'scripts/db_connection.php';
 ?>
 
 <!DOCTYPE html >
-<html dir="rtl" lang="en-US">
+<html lang="en-US">
 <head>
 
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
@@ -89,6 +89,7 @@ include 'scripts/db_connection.php';
 <!-- Document Title
 ============================================= -->
     <title>الامتـحــان | مراجعــة الاجابـات</title>
+    <link rel="icon" href="images/1.png" type="image/x-icon">
 
 </head>
 <body>
@@ -160,37 +161,27 @@ include 'scripts/db_connection.php';
     ?>
 
 
-
             <div class="tabs side-tabs tabs-bordered clearfix" id="tab-5">
 
                 <ul class="tab-nav clearfix">
                     <li><a href="#tabs-17">  <?php echo "السؤال رقم: " .$number ;?></a></li>
                 </ul>
-                <?php
-                    if ($type){
-
-
-                    }
-                ?>
 
                 <div class="tab-container">
-
-
-
 
                     <div class="tab-content clearfix" style="direction: rtl" id="tabs-17">
 
                         <div class="fancy-title title-bottom-border">
                             <h3>السؤال:  <span><?php    echo $question ; ?> </span> </h3>
-
                         </div>
-                        <div class="row" >
 
-                            <div class="col-sm-8">
-                                <img src="<?php echo $picture ?>">
+                        <div class="row" >
+                            <div class="col-sm-7">
+                                <img src="<?php echo $picture ?>" class="img-fluid img-thumbnail" >
+
                             </div>
 
-                            <div class="col-sm-4">
+                            <div class="col-sm-5">
                             <h4> الاجابات : </h4>
                             <?php
                                 if ($type == "response"){
@@ -230,16 +221,15 @@ include 'scripts/db_connection.php';
     
                             ?>
                             </div>
-
                         </div>
 
-
                     </div>
+
                 </div>
 
             </div>
-        <div class="line"></div>
 
+        <div class="line"></div>
 
 
         <?php
@@ -252,10 +242,82 @@ include 'scripts/db_connection.php';
             ?>
 
 
+            <div class="center">
+                <a href="profile.php" class="button button-rounded button-reveal button-large button-border "><i class="icon-user"></i><span>اذهب الى الصفحة الشخصية</span></a>
+            </div>
 
         </div>
     </div>
 </section>
+
+
+
+<footer id="footer" style="background-color: #F5F5F5;border-top: 2px solid rgba(0,0,0,0.06);">
+
+    <div class="container" style="border-bottom: 1px solid rgba(0,0,0,0.06);">
+
+        <!-- Footer Widgets
+        ============================================= -->
+        <div class="footer-widgets-wrap clearfix">
+
+            <div class="col_full ">
+
+                <div class="widget clear-bottommargin-sm clearfix">
+
+                    <div class="row">
+
+                        <div class="col-md-6 bottommargin-sm text-center">
+                            <div class="footer-big-contacts">
+                                <span>Call Us:</span>
+                                +(31) 6 12345678
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 bottommargin-sm text-center">
+                            <div class="footer-big-contacts">
+                                <span>Send an Email:</span>
+                                info@alrawitheorie.nl
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div><!-- .footer-widgets-wrap end -->
+
+    </div>
+
+    <!-- Copyrights
+    ============================================= -->
+    <div id="copyrights" class="nobg">
+
+        <div class="container clearfix">
+
+            <div class="text-center">
+                Copyrights &copy; 2018 All Rights Reserved by Al Rawi Theorie.<br>
+                <div class="copyright-links"><a href="#">شروط الإستخدام</a> / <a href="#">سياسات الخصوصية</a></div>
+            </div>
+
+            <div class="text-center topmargin-sm">
+                Developed & Designed by <a href="www.el-semicolon.nl"> El-SemiColon; </a>
+            </div>
+
+        </div>
+
+    </div><!-- #copyrights end -->
+
+
+
+</footer><!-- #footer end -->
+
+
+
+<!-- Go To Top
+============================================= -->
+<div id="gotoTop" class="icon-angle-up"></div>
 
 <!-- External JavaScripts
 	============================================= -->
@@ -265,6 +327,7 @@ include 'scripts/db_connection.php';
 <!-- Footer Scripts
 ============================================= -->
 <script type="text/javascript" src="js/functions.js"></script>
+
 
 
 </body>

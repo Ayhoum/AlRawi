@@ -164,6 +164,9 @@ if ($_SESSION['role'] != "MainAdmin") {
                                 <td class="text-center">
                                     <a href="">Status</a>
                                 </td>
+                                <td class="text-center">
+                                    <a href=""> Payment Status</a>
+                                </td>
                                 <td class="text-center">Actions</td>
                             </tr>
                             </thead>
@@ -178,6 +181,7 @@ if ($_SESSION['role'] != "MainAdmin") {
                                 $time = $row['TIME'];
                                 $subject = $row['SUBJECT'];
                                 $status = $row['STATUS'];
+                                $payment_status = $row['PAYMENT_STATUS'];
                                 $user = $row['Users_ID'];
                                 $queryUser = "SELECT * FROM Users WHERE	ID = $user";
                                 $select_user = mysqli_query($mysqli, $queryUser);
@@ -190,11 +194,14 @@ if ($_SESSION['role'] != "MainAdmin") {
                             <td class="text-center"><?php echo $date;?></td>
                             <td class="text-center"><?php echo $time;?></td>
                             <td class="text-center"><?php echo $status;?></td>
-                            <td class="text-center">
+                                <td class="text-center"><?php echo $payment_status;?></td>
+                                <td class="text-center">
                                 <a href="manage_private_session.php?change_to_approved=<?php echo $id ?>" data-toggle="tooltip" title="" class="btn btn-success" data-original-title="View"><i class="fa fa-check"></i></a>
 
                                 <a href="manage_private_session.php?change_to_unapproved=<?php echo $id ?>" data-toggle="tooltip" title="" class="btn btn-danger" data-original-title="View"><i class="fa fa-times"></i></a>
                             </td>
+
+
                             </tr>
                             <?php
                                 }

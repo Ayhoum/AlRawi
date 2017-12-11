@@ -278,6 +278,9 @@ if(isset($_POST['submit'])){
                     <div class="input-daterange travel-date-group bottommargin-sm">
                         <div class="row">
                             <h2 class="text-center">اختر تاريخ وموعد الجلسة مع الاستاذ حسام الراوي</h2>
+                            <h3 class="text-center" style="direction: rtl; color: red"> تكلفة الجلسة لمدة ساعة 5.00 € </h3>
+                            <h5 class="text-center" >بعد الانتهاء من حجز الموعد سوف يتم الرد عليك من قبل الاستاذ حسام بقبول او عدم قبول موعد الجلسة , في حال قبول الموعد سوف يتم ارسال طلب الدفع اليك ويمكنك الدفع من خلال تسجيل الدخول الى صفحتك الشخصية</h5>
+
                             <div class="clear"></div>
                             <div class="col-sm-3"></div>
 
@@ -339,7 +342,7 @@ if(isset($_POST['submit'])){
                     <div class="widget clearfix">
 
                         <div class="widget-subscribe-form-result"></div>
-                        <form id="widget-subscribe-form" action="include/subscribe.php" role="form" method="post" class="nobottommargin row clearfix">
+                        <form id="widget-subscribe-form" action="#" role="form" method="post" class="nobottommargin row clearfix">
                             <div class="col-md-9">
                                 <input type="email" id="widget-subscribe-form-email" name="widget-subscribe-form-email" class="sm-form-control required email" placeholder="أدخل بريدك الإلكتروني ليصلك كل جديد حول موقعنا">
                             </div>
@@ -386,19 +389,19 @@ if(isset($_POST['submit'])){
                         <div class="row">
 
                             <div class="col-md-2 clearfix bottommargin-sm">
-                                <a href="#" class="social-icon si-dark si-colored si-facebook nobottommargin" style="margin-right: 10px;">
+                                <a href="https://ar-ar.facebook.com/Alrawi1rijbewijs/" class="social-icon si-dark si-colored si-facebook nobottommargin" style="margin-right: 10px;">
                                     <i class="icon-facebook"></i>
                                     <i class="icon-facebook"></i>
                                 </a>
-                                <a href="#"><small style="display: block; margin-top: 3px;"><strong>Like us</strong><br>on Facebook</small></a>
+                                <a href="https://ar-ar.facebook.com/Alrawi1rijbewijs/"><small style="display: block; margin-top: 3px;"><strong>Like us</strong><br>on Facebook</small></a>
                             </div>
 
                             <div class="col-md-2 clearfix bottommargin-sm">
-                                <a href="#" class="social-icon si-dark si-colored si-youtube nobottommargin" style="margin-right: 10px;">
+                                <a href="https://www.youtube.com/channel/UCCofuIotSiIzzARX3nz4KSw" class="social-icon si-dark si-colored si-youtube nobottommargin" style="margin-right: 10px;">
                                     <i class="icon-youtube"></i>
                                     <i class="icon-youtube"></i>
                                 </a>
-                                <a href="#"><small style="display: block; margin-top: 3px;"><strong>Subscribe</strong><br>on YouTube</small></a>
+                                <a href="https://www.youtube.com/channel/UCCofuIotSiIzzARX3nz4KSw"><small style="display: block; margin-top: 3px;"><strong>Subscribe</strong><br>on YouTube</small></a>
                             </div>
                             <div class="col-md-2 clearfix bottommargin-sm">
                                 <a href="#" class="social-icon si-dark si-colored si-twitter nobottommargin" style="margin-right: 10px;">
@@ -430,25 +433,24 @@ if(isset($_POST['submit'])){
         </div>
 
         <!-- Copyrights
-        ============================================= -->
+           ============================================= -->
         <div id="copyrights" class="nobg">
 
             <div class="container clearfix">
 
-                <div class="col_half">
-                    Copyrights &copy; 2017 All Rights Reserved by Al Rawi Theorie.<br>
+                <div class="text-center">
+                    Copyrights &copy; 2018 All Rights Reserved by Al Rawi Theorie.<br>
                     <div class="copyright-links"><a href="#">شروط الإستخدام</a> / <a href="#">سياسات الخصوصية</a></div>
                 </div>
 
-                <div class="col_half col_last tright">
-                    <div class="copyrights-menu copyright-links clearfix" style="direction: rtl">
-                        <a href="#">الصفحة الرئيسية</a>  -<a href="#">من نحن؟</a>-<a href="#">الأسئلة الأكثر شيوعاً</a>-  <a href="#">تواصل معنا</a>
-                    </div>
+                <div class="text-center topmargin-sm">
+                    Developed & Designed by <a href="www.el-semicolon.nl"> El-SemiColon; </a>
                 </div>
 
             </div>
 
         </div><!-- #copyrights end -->
+
 
     </footer><!-- #footer end -->
 
