@@ -223,6 +223,8 @@ include 'scripts/db_connection.php';
                                                         <th class="text-center">التاريخ</th>
                                                         <th class="text-center">الوقت</th>
                                                         <th class="text-center">عنوان الجلسة</th>
+                                                        <th class="text-center">حالة الجلسة</th>
+
                                                     </tr>
                                                     </thead>
 
@@ -240,12 +242,13 @@ include 'scripts/db_connection.php';
                                                             while ($row = mysqli_fetch_assoc($result1)) {
                                                                 $user_id = $row['ID'];
 
-                                                                $query = "SELECT * FROM BOOKED_SESSION WHERE Users_ID ='{$user_id}' && STATUS = 'APPROVED' ORDER BY `DATE` DESC ";
+                                                                $query = "SELECT * FROM BOOKED_SESSION WHERE Users_ID ='{$user_id}' && STATUS = 'APPROVED' ORDER BY `ID` DESC ";
                                                                 $result = mysqli_query($mysqli,$query);
                                                                 While ($row = mysqli_fetch_assoc($result)){
                                                                     $date    = $row['DATE'];
                                                                     $time    = $row['TIME'];
                                                                     $Subject = $row['SUBJECT'];
+                                                                    $payment_status = $row['PAYMENT_STATUS'];
 
 
                                                     ?>
@@ -255,6 +258,16 @@ include 'scripts/db_connection.php';
                                                         </td>
                                                         <td><?php echo $time ?> </td>
                                                         <td><?php echo $Subject ?> </td>
+                                                        <td>
+                                                            <?php if ( $payment_status == "NOT PAID"){
+                                                                ?>
+                                                                <div class="center">
+                                                                    <a href="payment_session.php" class="button button-rounded button-reveal button-large button-border "><i class="icon-cart"></i><span>ادفع الان</span></a>
+                                                                </div>
+
+                                                            <?php
+                                                            }?>
+                                                        </td>
                                                     </tr>
 
                                             <?php

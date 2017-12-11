@@ -278,6 +278,9 @@ if(isset($_POST['submit'])){
                     <div class="input-daterange travel-date-group bottommargin-sm">
                         <div class="row">
                             <h2 class="text-center">اختر تاريخ وموعد الجلسة مع الاستاذ حسام الراوي</h2>
+                            <h3 class="text-center" style="direction: rtl; color: red"> تكلفة الجلسة لمدة ساعة 5.00 € </h3>
+                            <h5 class="text-center" >بعد الانتهاء من حجز الموعد سوف يتم الرد عليك من قبل الاستاذ حسام بقبول او عدم قبول موعد الجلسة , في حال قبول الموعد سوف يتم ارسال طلب الدفع اليك ويمكنك الدفع من خلال تسجيل الدخول الى صفحتك الشخصية</h5>
+
                             <div class="clear"></div>
                             <div class="col-sm-3"></div>
 
