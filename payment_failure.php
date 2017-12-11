@@ -180,7 +180,7 @@ ob_start();
                 <nav id="primary-menu" class="style-3">
 
                     <ul>
-                        <li class="current"><a href="#"><div>الصفحة الرئيسية</div></a></li>
+                        <li class="current"><a href="index.php"><div>الصفحة الرئيسية</div></a></li>
                     </ul>
 
                 </nav><!-- #primary-menu end -->
