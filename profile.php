@@ -138,8 +138,6 @@ include 'scripts/db_connection.php';
                             </li>
                         <?php } ?>
 
-                        <li><a href="" data-scrollto="#booking-appointment-form" data-offset="100" data-easing="easeInOutExpo" data-speed="1200" class="bgcolor" style="color:#fff;">احجز امتحانك</a></li>
-
                     </ul>
                 </div>
                 <!-- .top-links end -->

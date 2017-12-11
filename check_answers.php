@@ -13,8 +13,8 @@ if (!isset($_SESSION['username'])){
 include 'scripts/db_connection.php';
 ?>
 
-<!DOCTYPE html>
-<html dir="ltr" lang="en-US">
+<!DOCTYPE html >
+<html dir="rtl" lang="en-US">
 <head>
 
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
@@ -32,14 +32,101 @@ include 'scripts/db_connection.php';
 
     <link rel="stylesheet" href="css/responsive.css" type="text/css" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="SemiColonWeb" />
 
-    <!-- Document Title
-    ============================================= -->
+
+    <link rel="stylesheet" href="css/swiper.css" type="text/css" />
+
+    <!-- Medical Demo Specific Stylesheet -->
+    <link rel="stylesheet" href="demos/medical/medical.css" type="text/css" />
+    <!-- / -->
+    <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/droid-arabic-kufi" type="text/css"/>
+    <link rel="stylesheet" href="css/dark.css" type="text/css" />
+    <link rel="stylesheet" href="css/font-icons.css" type="text/css" />
+    <link rel="stylesheet" href="demos/medical/css/medical-icons.css" type="text/css" />
+    <link rel="stylesheet" href="css/animate.css" type="text/css" />
+    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css" />
+
+    <link rel="stylesheet" href="demos/medical/fonts.css" type="text/css" />
+
+    <link rel="stylesheet" href="css/responsive.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="css/colors.php?color=DE6262" type="text/css" />
+
+
+    <style>
+        .form-control.error { border: 2px solid red; }
+
+
+        .no-js #loader { display: none;  }
+        .js #loader { display: block; position: absolute; left: 100px; top: 0; }
+        .se-pre-con {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background: url(images/2.png) center no-repeat #fff2f2;
+        }
+
+        .pre-pre {
+            position: fixed;
+            left: 0;
+            top: 150px;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background: url(images/preloader@2x.gif) center no-repeat;
+        }
+    </style>
+
+
+
+
+<!-- Document Title
+============================================= -->
     <title>الامتـحــان | مراجعــة الاجابـات</title>
 
 </head>
 <body>
-<section id="content" >
+<!-- Header
+   ============================================= -->
+<header id="header">
+
+    <div id="header-wrap">
+
+        <div class="container clearfix">
+
+            <div id="primary-menu-trigger"><i class="icon-reorder"></i></div>
+
+            <!-- Logo
+            ============================================= -->
+            <div id="logo">
+                <a href="index.php" class="standard-logo"><img src="images/1.png" alt="Canvas Logo"></a>
+                <a href="index.php" class="retina-logo"><img src="images/2.png" alt="Canvas Logo"></a>
+            </div><!-- #logo end -->
+
+            <!-- Primary Navigation
+            ============================================= -->
+            <nav id="primary-menu" class="style-3">
+
+                <ul>
+                    <li class="current"><a href="index.php"><div>الصفحة الرئيسية</div></a></li>
+                </ul>
+
+            </nav><!-- #primary-menu end -->
+
+        </div>
+
+    </div>
+
+</header><!-- #header end -->
+
+
+<section id="content" style="width: 100%" >
     <div class="content-wrap">
 
         <div class="container clearfix " style="direction: rtl">
@@ -77,7 +164,7 @@ include 'scripts/db_connection.php';
             <div class="tabs side-tabs tabs-bordered clearfix" id="tab-5">
 
                 <ul class="tab-nav clearfix">
-                    <li><a href="#tabs-17"><i class="icon-home2"></i>  <?php echo "السؤال رقم :" .$number ;?></a></li>
+                    <li><a href="#tabs-17">  <?php echo "السؤال رقم: " .$number ;?></a></li>
                 </ul>
                 <?php
                     if ($type){
@@ -152,6 +239,8 @@ include 'scripts/db_connection.php';
 
             </div>
         <div class="line"></div>
+
+
 
         <?php
             }
