@@ -210,9 +210,9 @@ include 'scripts/db_connection.php';
                                 <div class="tabs tabs-alt clearfix" style="text-align: center;margin-top:10px;" id="tabs-profile">
 
                                     <ul class="tab-nav clearfix" style="display:inline-block;">
-                                        <li><a href="#tab-feeds"><i class="icon-rss2"></i> الدروس الخاصة</a></li>
+                                        <li><a href="#tab-feeds"><i class="icon-calendar"></i> الدروس الخاصة</a></li>
                                         <li><a href="#tab-posts"><i class="icon-pencil2"></i> الامتحانات المسجلة</a></li>
-                                        <li><a href="#tab-connections"><i class="icon-reply"></i> الامتحانات المجانية</a></li>
+                                        <li><a href="#tab-connections"><i class="icon-note"></i> الامتحانات المجانية</a></li>
                                     </ul>
 
                                     <div class="tab-container">
@@ -280,7 +280,7 @@ include 'scripts/db_connection.php';
                                                 <div class="divider"><i class="icon-circle"></i></div>
 
                                                 <div class="center">
-                                                    <a href="private_session.php" class="button button-rounded button-reveal button-large button-border "><i class="icon-note"></i><span>احجز جلستك الخاصة الان</span></a>
+                                                    <a href="private_session.php" class="button button-rounded button-reveal button-large button-border "><i class="icon-calendar"></i><span>احجز جلستك الخاصة الان</span></a>
                                                 </div>
 
                                             </div>
@@ -435,8 +435,8 @@ include 'scripts/db_connection.php';
                         <div class="list-group">
                             <a href="profile.php" class="list-group-item clearfix">الصفحة الشخصية <i class="icon-user pull-right"></i></a>
                             <a href="payment_history.php" class="list-group-item clearfix">المشتريات <i class="icon-credit-cards pull-right"></i></a>
-                            <a href="succseed.php" class="list-group-item clearfix" style="color: green">لقـد نجحـت بالامتحان النظري <i class="icon-pen pull-right"></i></a>
-                            <a href="logout.php" class="list-group-item clearfix">تسجيل الخروج <i class="icon-line2-logout pull-right"></i></a>
+                            <a href="succseed.php" class="list-group-item clearfix" style="color: green">لقـد نجحـت بالامتحان النظري <i class="icon-line-square-check pull-right"></i></a>
+                            <a href="logout.php" class="list-group-item clearfix  " style="color: red">تسجيل الخروج <i class="icon-line2-logout pull-right"></i></a>
                         </div>
                     </div>
 

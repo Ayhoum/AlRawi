@@ -288,8 +288,7 @@ include 'scripts/db_connection.php';
 
                                 <div class="list-group">
                                     <a href="profile.php" class="list-group-item clearfix">الصفحة الشخصية <i class="icon-user pull-right"></i></a>
-                                    <a href="payment_history.php" class="list-group-item clearfix">المشتريات <i class="icon-credit-cards pull-right"></i></a>
-                                    <a href="logout.php" class="list-group-item clearfix">تسجيل الخروج <i class="icon-line2-logout pull-right"></i></a>
+                                    <a href="logout.php" class="list-group-item clearfix  " style="color: red">تسجيل الخروج <i class="icon-line2-logout pull-right"></i></a>
                                 </div>
                             </div>
 
