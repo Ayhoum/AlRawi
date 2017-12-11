@@ -296,20 +296,20 @@ include 'scripts/db_connection.php';
 
         <div class="container clearfix">
 
-            <div class="col_half">
-                Copyrights &copy; 2017 All Rights Reserved by Al Rawi Theorie.<br>
+            <div class="text-center">
+                Copyrights &copy; 2018 All Rights Reserved by Al Rawi Theorie.<br>
                 <div class="copyright-links"><a href="#">شروط الإستخدام</a> / <a href="#">سياسات الخصوصية</a></div>
             </div>
 
-            <div class="col_half col_last tright">
-                <div class="copyrights-menu copyright-links clearfix" style="direction: rtl">
-                    <a href="#">الصفحة الرئيسية</a>  -<a href="#">من نحن؟</a>-<a href="#">الأسئلة الأكثر شيوعاً</a>-  <a href="#">تواصل معنا</a>
-                </div>
+            <div class="text-center topmargin-sm">
+                Developed & Designed by <a href="www.el-semicolon.nl"> El-SemiColon; </a>
             </div>
 
         </div>
 
     </div><!-- #copyrights end -->
+
+
 
 </footer><!-- #footer end -->
 
