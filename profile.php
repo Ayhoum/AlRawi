@@ -110,13 +110,6 @@ include 'scripts/db_connection.php';
                 ============================================= -->
                 <div class="top-links">
                     <ul>
-                        <!--<li><a href="#">EN</a>-->
-                        <!--<ul>-->
-                        <!--<li><a href="#"><img src="images/icons/flags/french.png" alt="French"> FR</a></li>-->
-                        <!--<li><a href="#"><img src="images/icons/flags/italian.png" alt="Italian"> IT</a></li>-->
-                        <!--<li><a href="#"><img src="images/icons/flags/german.png" alt="German"> DE</a></li>-->
-                        <!--</ul>-->
-                        <!--</li>-->
                         <?php if(!isset($_SESSION['role'])) { ?>
                             <li><a href="#" class="button-red" style="color:#fff;">حسابي</a>
                                 <ul>
@@ -209,8 +202,8 @@ include 'scripts/db_connection.php';
 
                                     <ul class="tab-nav clearfix" style="display:inline-block;">
                                         <li><a href="#tab-feeds"><i class="icon-calendar"></i> الدروس الخاصة</a></li>
-                                        <li><a href="#tab-posts"><i class="icon-pencil2"></i> الامتحانات المسجلة</a></li>
-                                        <li><a href="#tab-connections"><i class="icon-note*"></i> الامتحانات المجانية</a></li>
+                                        <li><a href="#tab-posts"><i class="icon-euro"></i> الامتحانات المشتراة</a></li>
+                                        <li><a href="#tab-connections"><i class="icon-note"></i> الامتحانات المجانية</a></li>
                                     </ul>
 
                                     <div class="tab-container">
