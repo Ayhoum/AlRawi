@@ -194,8 +194,8 @@ $totalUsers = $countOthers + $countSucceeded;
 
 						<ul>
 							<li class="current"><a href="index.php"><div>الصفحة الرئيسية</div></a></li>
-							<li><a href="index.php"><div>خدماتنا</div></a></li>
-							<li><a href="#"><div>من نحن؟</div></a></li>
+							<li><a href="#content"><div>خدماتنا</div></a></li>
+							<li><a href="#pricing"><div>أسعارنا</div></a></li>
 							<!--<li><a href="#"><div>تسجيل الدخول</div></a></li>-->
 						</ul>
 
@@ -299,7 +299,7 @@ $totalUsers = $countOthers + $countSucceeded;
 
 				</div>
 
-                <section class="section pricing-section nomargin dark" style="background-color: white;">
+                <section id = "pricing" class="section pricing-section nomargin dark" style="background-color: white;">
                     <div class="container clearfix">
                         <h2 class="pricing-section--title center" style="color: #0f0e0f">أســعارنا</h2>
                         <div class="pricing pricing--karma">
