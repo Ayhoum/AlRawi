@@ -511,11 +511,11 @@ if (isset($_GET['exam_id'])) {
                             echo "<img class='quesImg center-block' src='dashboardAlrawi/examsImages/free/$picture'/>";
                             echo "
                             <fieldset id='group$i'>
-                                <label class='containerRadio'>لا
-                                  <input type='radio' class='selector$i' name='selector$i' value='لا'>
+                            <label class='containerRadio'>نعم
+                                  <input type='radio' class='selector$i' name='selector$i' value='نعم'>
                                   <span class='checkmark'></span>
                                 </label>
-                                <label class='containerRadio'>نعم
+                                <label class='containerRadio'>لا
                                   <input type='radio' class='selector$i' name='selector$i' value='لا'>
                                   <span class='checkmark'></span>
                                 </label>

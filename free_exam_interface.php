@@ -411,7 +411,7 @@ if (isset($_GET['exam_id'])) {
                         </div>
                     </div>
                 </div>
-                <form method="post" action="check_answers.php?id=<?php echo $setId; ?>" enctype="multipart/form-data">
+                <form method="post" action="free_check_answers.php?id=<?php echo $setId; ?>" enctype="multipart/form-data">
 
                     <div id='sStart' class='slideStart'>
                         <h3 style='direction: rtl;line-height: 2em;' class='text-center topmargin-sm'>
@@ -511,11 +511,11 @@ if (isset($_GET['exam_id'])) {
                             echo "<img class='quesImg center-block' src='dashboardAlrawi/examsImages/free/$picture'/>";
                             echo "
                             <fieldset id='group$i'>
-                                <label class='containerRadio'>لا
-                                  <input type='radio' class='selector$i' name='selector$i' value='لا'>
+                            <label class='containerRadio'>نعم
+                                  <input type='radio' class='selector$i' name='selector$i' value='نعم'>
                                   <span class='checkmark'></span>
                                 </label>
-                                <label class='containerRadio'>نعم
+                                <label class='containerRadio'>لا
                                   <input type='radio' class='selector$i' name='selector$i' value='لا'>
                                   <span class='checkmark'></span>
                                 </label>

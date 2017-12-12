@@ -121,6 +121,11 @@ if (isset($_POST['submit'])){
     <title>الامتـحــان | مراجعــة الاجابـات</title>
     <link rel="icon" href="images/1.png" type="image/x-icon">
 
+    <script>
+        var pri =0;
+        var sec =0;
+    </script>
+
 </head>
 <body style="background: #fde7e7">
 <div class="se-pre-con"><div class="pre-pre"></div></div>
@@ -166,13 +171,14 @@ if (isset($_POST['submit'])){
 
         <div class="container clearfix " style="direction: rtl">
 
+            <h2 class="text-center" id="result"></h2>
             <h4>الاسئلــة</h4>
 
     <?php
 
 
         // GET THE QUESTION FROM DB
-    $query = " SELECT * FROM `FREE_EXAM_QUESTION` WHERE `FREE_QUESTION_SET_ID` = '{$qId}'";
+    $query = " SELECT * FROM `EXAM_QUESTION` WHERE `QUESTION_SET_ID` = '{$qId}'";
     $result = mysqli_query($mysqli, $query);
     if (mysqli_num_rows($result) > 0) {
         $x = 1;
@@ -193,63 +199,84 @@ if (isset($_POST['submit'])){
 
 
     if ( ${'selector_' . $x} == $right_answer ){
+        if($x<=25){
+?>
+            <script>
+                pri++;
+            </script>
+
+            <?php
+        }else{
+?>
+                <script>
+                    sec++;
+                </script>
+        <?php
+        }
         ?>
         <div class="tabs side-tabs tabs-bordered clearfix" id="tab-5">
 
-            <ul class="tab-nav clearfix">
-                <li><a href="#">  <?php echo "السؤال رقم: " .$number ;?> <i class="fa fa-check" aria-hidden="true"></i> </a></li>
-            </ul>
+<!-- THIS IS A BULLSHIT -->
 
-            <div class="tab-container">
+<!--            <ul class="tab-nav clearfix">-->
+<!--                <li><a href="#">  --><?php //echo "السؤال رقم: " .$number ;?><!-- <i class="fa fa-check" aria-hidden="true"></i> </a></li>-->
+<!--            </ul>-->
 
-                <div class="tab-content clearfix" style="direction: rtl" id="tabs-17">
+            <div class="tab-container" style="background: rgba(50, 205, 50, 0.1);">
+
+                <div class="tab-content clearfix" style="direction: rtl"  >
 
                     <div class="fancy-title title-bottom-border">
-                        <h3>السؤال:  <span><?php    echo $question ; ?> </span> </h3>
+                        <h3>السؤال <?php echo $number ;?>:  <span><?php    echo $question ; ?> </span> </h3>
                     </div>
 
                     <div class="row" >
-                        <div class="col-sm-7">
-                            <img src="<?php echo $picture ?>" class="img-fluid img-thumbnail" >
+                        <div class="col-sm-6">
+                            <img src="dashboardAlrawi/examsImages/free/<?php echo $picture ?>" class="img-fluid img-thumbnail" >
 
                         </div>
 
-                        <div class="col-sm-5">
+                        <div class="col-sm-6">
                             <h4> الاجابات : </h4>
                             <?php
                             if ($type == "response"){
                                 ?>
 
 
-                                <p <?php if ($right_answer == "فرامل"){ echo "style= 'color: green'";} ?> >فرامل</p>
-                                <p <?php if ($right_answer == "رفع قدم عن الوقود"){ echo "style= 'color: green'";} ?>>رفع قدم عن الوقود</p>
-                                <p <?php if ($right_answer == "لا شئ"){ echo "style= 'color: green'";} ?>>لا شيء</p>
+                                <p <?php if ($right_answer == "فرامل"){ echo "style= 'color: green;margin-bottom: 10px;font-size:18px;'";}else{echo "style= 'margin-bottom: 10px;font-size:18px;'";} ?> >فرامل</p>
+                                <p <?php if ($right_answer == "رفع قدم عن الوقود"){ echo "style= 'color: green;margin-bottom: 10px;font-size:18px;'";}else{echo "style= 'margin-bottom: 10px;font-size:18px;'";} ?>>رفع قدم عن الوقود</p>
+                                <p <?php if ($right_answer == "لا شئ"){ echo "style= 'color: green;margin-bottom: 10px;font-size:18px;'";}else{echo "style= 'margin-bottom: 10px;font-size:18px;'";} ?>>لا شيء</p>
 
 
                                         <?php
-                            } elseif ($type == "yesNo"){
+                            }
+                            elseif ($type == "yesNo"){
+?>
+                                <p <?php if ($right_answer == "نعم"){ echo "style= 'color: green;margin-bottom: 10px;font-size:18px;'";}else{echo "style= 'margin-bottom: 10px;font-size:18px;'";} ?> >نعم</p>
+                                <p <?php if ($right_answer == "لا"){ echo "style= 'color: green;margin-bottom: 10px;font-size:18px;'";}else{echo "style= 'margin-bottom: 10px;font-size:18px;'";} ?>>لا</p>
 
-                                echo " الاجابة الأولى : نعم " . "<br>";
-                                echo " الاجابة االثانية : لا " . "<br>";
-
+                                <?php
                             } elseif ($type == "numInp"){
-                                echo " الاجابة الصحيحة : " . $right_answer. "<br>";
-
+                                ?>
+                                <p style= 'color: green;margin-bottom: 10px;font-size:18px;'><?php echo ${'selector_' . $x}; ?></p>
+<?php
                             }elseif ($type == "multiChoice"){
+?>
 
-
-                                echo " الاجابة الأولى : " . $right_answer. "<br>";
-                                echo " الاجابة االثانية : " . $second_answer. "<br>";
-
+                                <p style= 'color: green;margin-bottom: 10px;font-size:18px;'><?php echo $right_answer; ?></p>
+                                <p style= 'margin-bottom: 10px;font-size:18px;'><?php echo $second_answer; ?></p>
+<?php
                                 if ($third_answer != "0") {
-
-                                    echo " الاجابة الثالثة : " . $third_answer . "<br>";
+?>
+                                <p style= 'margin-bottom: 10px;font-size:18px;'><?php echo $third_answer; ?></p>
+  <?php
                                 }
 
                                 if ($forth_answer != "0"){
+?>
+                                <p style= 'margin-bottom: 10px;font-size:18px;'><?php echo $forth_answer; ?></p>
 
-                                    echo " الاجابة الرابعة : " . $forth_answer. "<br>";
-
+<?php
                                 }
 
                             }
@@ -259,9 +286,13 @@ if (isset($_POST['submit'])){
                             ?>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="line" style="margin: 10px 0;"></div>
 
-                        <p>السبب: <?php echo $reason ?></p>
+                    <div class="row">
+                        <div class="col-sm-12">
+                        <h4>السبب:</h4>
+                        <p style="font-size:18px;"><?php echo $reason ?></p>
+                        </div>
                     </div>
 
                 </div>
@@ -277,72 +308,81 @@ if (isset($_POST['submit'])){
         ?>
         <div class="tabs side-tabs tabs-bordered clearfix" id="tab-5">
 
-            <ul class="tab-nav clearfix">
-                <li><a href="#">  <?php echo "السؤال رقم: " .$number ;?> <i class="fa fa-times" aria-hidden="true"></i></a> </li>
-            </ul>
 
-            <div class="tab-container">
+<!-- THIS IS A BULLSHIT -->
 
-                <div class="tab-content clearfix" style="direction: rtl" id="tabs-17">
+<!--            <ul class="tab-nav clearfix">-->
+<!--                <li><a href="#">  --><?php //echo "السؤال رقم: " .$number ;?><!-- <i class="fa fa-check" aria-hidden="true"></i> </a></li>-->
+<!--            </ul>-->
+
+            <div class="tab-container" style="background: rgba(255, 0, 0, 0.2);">
+
+                <div class="tab-content clearfix" style="direction: rtl"  >
 
                     <div class="fancy-title title-bottom-border">
-                        <h3>السؤال:  <span><?php    echo $question ; ?> </span> </h3>
+                        <h3>السؤال <?php echo $number ;?>: <span><?php    echo $question ; ?> </span> </h3>
                     </div>
 
                     <div class="row" >
-                        <div class="col-sm-7">
-                            <img src="<?php echo $picture ?>" class="img-fluid img-thumbnail" >
+                        <div class="col-sm-6">
+                            <img src="dashboardAlrawi/examsImages/free/<?php echo $picture ?>" class="img-fluid img-thumbnail" >
 
                         </div>
 
-                        <div class="col-sm-5">
+                        <div class="col-sm-6">
                             <h4> الاجابات : </h4>
+
                             <?php
                             if ($type == "response"){
                                 ?>
 
 
-                                <p <?php if ( ${'selector_' . $x} == "فرامل"){ echo "style= 'color: red'";} elseif ($right_answer == 'فرامل'){ echo "style='color: green;'";} ?> >فرامل</p>
-                                <p <?php if ( ${'selector_' . $x} == "رفع قدم عن الوقود"){ echo "style= 'color: red'";} elseif ($right_answer == 'رفع قدم عن الوقود'){ echo "style='color: green;'";} ?>>رفع قدم عن الوقود</p>
-                                <p <?php if ( ${'selector_' . $x} == "لا شئ"){ echo "style= 'color: red'";} elseif ($right_answer == 'لا شئ'){ echo "style='color: green;'";} ?>>لا شيء</p>
+                                <p <?php if ( ${'selector_' . $x} == "فرامل"){ echo "style= 'color: red;margin-bottom: 10px;font-size:18px;'";} elseif ($right_answer == 'فرامل'){ echo "style='color: green;margin-bottom: 10px;font-size:18px;'";}else{echo "style= 'margin-bottom: 10px;font-size:18px;'";} ?> >فرامل</p>
+                                <p <?php if ( ${'selector_' . $x} == "رفع قدم عن الوقود"){ echo "style= 'color: red;margin-bottom: 10px;font-size:18px;'";} elseif ($right_answer == 'رفع قدم عن الوقود'){ echo "style='color: green;margin-bottom: 10px;font-size:18px;'";}else{echo "style= 'margin-bottom: 10px;font-size:18px;'";} ?>>رفع قدم عن الوقود</p>
+                                <p <?php if ( ${'selector_' . $x} == "لا شئ"){ echo "style= 'color: red;margin-bottom: 10px;font-size:18px;'";} elseif ($right_answer == 'لا شئ'){ echo "style='color: green;margin-bottom: 10px;font-size:18px;'";}else{echo "style= 'margin-bottom: 10px;font-size:18px;'";} ?>>لا شيء</p>
 
 
                                 <?php
                             } elseif ($type == "yesNo"){
+?>
+                                <p <?php if ( ${'selector_' . $x} == "نعم"){ echo "style= 'color: red;margin-bottom: 10px;font-size:18px;'";} elseif ($right_answer == 'نعم'){ echo "style='color: green;margin-bottom: 10px;font-size:18px;'";}else{echo "style= 'margin-bottom: 10px;font-size:18px;'";} ?> >نعم</p>
+                                <p <?php if ( ${'selector_' . $x} == "لا"){ echo "style= 'color: red;margin-bottom: 10px;font-size:18px;'";} elseif ($right_answer == 'لا'){ echo "style='color: green;margin-bottom: 10px;font-size:18px;'";}else{echo "style= 'margin-bottom: 10px;font-size:18px;'";} ?>>لا</p>
 
-                                echo " الاجابة الأولى : نعم " . "<br>";
-                                echo " الاجابة االثانية : لا " . "<br>";
-
+<?php
                             } elseif ($type == "numInp"){
-                                echo " الاجابة الصحيحة : " . $right_answer. "<br>";
+                                ?>
+                                <p style= 'color: green;margin-bottom: 10px;font-size:18px;'><?php echo $right_answer; ?></p>
+                                <p style= 'color: red;margin-bottom: 10px;font-size:18px;'><?php echo ${'selector_' . $x}; ?></p>
 
+                                <?php
                             }elseif ($type == "multiChoice"){
 
-
-                                echo " الاجابة الأولى : " . $right_answer. "<br>";
-                                echo " الاجابة االثانية : " . $second_answer. "<br>";
-
+?>
+                                <p style= 'color: green;margin-bottom: 10px;font-size:18px;'><?php echo $right_answer; ?></p>
+                                <p <?php if ( ${'selector_' . $x} == $second_answer){ echo "style= 'color: red;margin-bottom: 10px;font-size:18px;'";}else{echo "style= 'margin-bottom: 10px;font-size:18px;'";} ?>><?php echo $second_answer; ?></p>
+<?php
                                 if ($third_answer != "0") {
-
-                                    echo " الاجابة الثالثة : " . $third_answer . "<br>";
+?>
+                                    <p <?php if ( ${'selector_' . $x} == $third_answer){ echo "style= 'color: red;margin-bottom: 10px;font-size:18px;'";}else{echo "style= 'margin-bottom: 10px;font-size:18px;'";} ?>><?php echo $third_answer; ?></p>
+                             <?php
                                 }
-
                                 if ($forth_answer != "0"){
-
-                                    echo " الاجابة الرابعة : " . $forth_answer. "<br>";
-
+?>
+                                    <p <?php if ( ${'selector_' . $x} == $forth_answer){ echo "style= 'color: red;margin-bottom: 10px;font-size:18px;'";}else{echo "style= 'margin-bottom: 10px;font-size:18px;'";} ?>><?php echo $forth_answer; ?></p>
+<?php
                                 }
-
                             }
-
-
 
                             ?>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="line" style="margin: 10px 0;"></div>
 
-                        <p>السبب: <?php echo $reason ?></p>
+                    <div class="row">
+                        <div class="col-sm-12">
+                        <h4>السبب:</h4>
+                        <p style="font-size:18px;"><?php echo $reason ?></p>
+                        </div>
                     </div>
 
                 </div>
@@ -531,6 +571,19 @@ if (isset($_POST['submit'])){
 // Animate loader off screen
         $(".pre-pre").fadeOut("slow");
     });
+
+    alert(pri);
+    alert(sec);
+    jQuery("#result").hide();
+
+    if(pri>12 && sec>34 ){
+        jQuery("#result").show();
+    jQuery("#result").text("ناجح");
+    }else{
+        jQuery("#result").show();
+    jQuery("#result").text("راسب");
+    }
+
 </script>
 
 </body>
