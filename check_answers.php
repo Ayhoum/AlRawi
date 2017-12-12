@@ -11,6 +11,34 @@ if (!isset($_SESSION['username'])){
     header("Location: login.php");
 }
 include 'scripts/db_connection.php';
+
+
+if (isset($_GET['id'])){
+
+    $qId = $_GET['id'];
+
+}else{
+    header("Location: profile.php");
+}
+if (isset($_POST['submit'])){
+
+    for ($i = 1; $i <= 65; $i++){
+
+        if(!empty($_POST['selector'.$i]))
+        {
+
+            ${'selector_' . $i} = $_POST['selector'.$i];
+
+        } else {
+
+            ${'selector_' . $i} = "0";
+
+        }
+    }
+}else{
+    header("Location: profile.php");
+}
+
 ?>
 
 <!DOCTYPE html >
@@ -94,7 +122,11 @@ include 'scripts/db_connection.php';
     <link rel="icon" href="images/1.png" type="image/x-icon">
 
 </head>
-<body>
+<body style="background: #fde7e7">
+<div class="se-pre-con"><div class="pre-pre"></div></div>
+
+<div id="wrapper" class="clearfix">
+
 <!-- Header
    ============================================= -->
 <header id="header">
@@ -137,35 +169,6 @@ include 'scripts/db_connection.php';
             <h4>الاسئلــة</h4>
 
     <?php
-    if (isset($_GET['id'])){
-
-    $qId = $_GET['id'];
-
-    $beginValue  = (($qId -1) * 65) + 1;
-
-
-
-
-    if (isset($_POST['submit'])){
-
-        for ($i = 1; $i <= 65; $i++){
-
-            if(!empty($_POST['selector'.$i]))
-            {
-
-                ${'selector_' . $i} = $_POST['selector'.$i];
-
-            } else {
-
-                ${'selector_' . $i} = "0";
-
-            }
-
-
-
-        }
-
-
 
 
         // GET THE QUESTION FROM DB
@@ -363,9 +366,7 @@ include 'scripts/db_connection.php';
 
             }
 
-    }
 
-            }
             ?>
 
 
@@ -376,71 +377,134 @@ include 'scripts/db_connection.php';
         </div>
     </div>
 </section>
-<!---->
-<!---->
-<!---->
-<!--<footer id="footer" style="background-color: #F5F5F5;border-top: 2px solid rgba(0,0,0,0.06);">-->
-<!---->
-<!--    <div class="container" style="border-bottom: 1px solid rgba(0,0,0,0.06);">-->
-<!---->
-<!--        <!-- Footer Widgets-->
-<!--        ============================================= -->-->
-<!--        <div class="footer-widgets-wrap clearfix">-->
-<!---->
-<!--            <div class="col_full ">-->
-<!---->
-<!--                <div class="widget clear-bottommargin-sm clearfix">-->
-<!---->
-<!--                    <div class="row">-->
-<!---->
-<!--                        <div class="col-md-6 bottommargin-sm text-center">-->
-<!--                            <div class="footer-big-contacts">-->
-<!--                                <span>Call Us:</span>-->
-<!--                                +(31) 6 12345678-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!---->
-<!--                        <div class="col-md-6 bottommargin-sm text-center">-->
-<!--                            <div class="footer-big-contacts">-->
-<!--                                <span>Send an Email:</span>-->
-<!--                                info@alrawitheorie.nl-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!---->
-<!--                    </div>-->
-<!---->
-<!--                </div>-->
-<!---->
-<!--            </div>-->
-<!---->
-<!--        </div><!-- .footer-widgets-wrap end -->-->
-<!---->
-<!--    </div>-->
-<!---->
-<!--    <!-- Copyrights-->
-<!--    ============================================= -->-->
-<!--    <div id="copyrights" class="nobg">-->
-<!---->
-<!--        <div class="container clearfix">-->
-<!---->
-<!--            <div class="text-center">-->
-<!--                Copyrights &copy; 2018 All Rights Reserved by Al Rawi Theorie.<br>-->
-<!--                <div class="copyright-links"><a href="#">شروط الإستخدام</a> / <a href="#">سياسات الخصوصية</a></div>-->
-<!--            </div>-->
-<!---->
-<!--            <div class="text-center topmargin-sm">-->
-<!--                Developed & Designed by <a href="www.el-semicolon.nl"> El-SemiColon; </a>-->
-<!--            </div>-->
-<!---->
-<!--        </div>-->
-<!---->
-<!--    </div><!-- #copyrights end -->-->
-<!---->
-<!---->
-<!---->
-<!--</footer><!-- #footer end -->-->
-<!---->
-<!---->
+
+<footer id="footer" style="background-color: #F5F5F5;border-top: 2px solid rgba(0,0,0,0.06);">
+
+    <div class="container" style="border-bottom: 1px solid rgba(0,0,0,0.06);">
+
+        <!-- Footer Widgets
+        ============================================= -->
+        <div class="footer-widgets-wrap clearfix">
+
+            <div class="col_full">
+
+                <div class="widget clearfix">
+
+                    <div class="widget-subscribe-form-result"></div>
+                    <form id="widget-subscribe-form" action="#" role="form" method="post" class="nobottommargin row clearfix">
+                        <div class="col-md-9">
+                            <input type="email" id="widget-subscribe-form-email" name="widget-subscribe-form-email" class="sm-form-control required email" placeholder="أدخل بريدك الإلكتروني ليصلك كل جديد حول موقعنا">
+                        </div>
+                        <div class="col-md-3">
+                            <button class="button button-rounded nomargin center btn-block" type="submit">اشترك معنا</button>
+                        </div>
+                    </form>
+
+                    <div class="line line-sm"></div>
+
+                    <div class="row">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col_full col_last">
+
+                <div class="widget clear-bottommargin-sm clearfix">
+
+                    <div class="row">
+
+                        <div class="col-md-6 bottommargin-sm text-center">
+                            <div class="footer-big-contacts">
+                                <span>Call Us:</span>
+                                +(31) 6 12345678
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 bottommargin-sm text-center">
+                            <div class="footer-big-contacts">
+                                <span>Send an Email:</span>
+                                info@alrawitheorie.nl
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="widget subscribe-widget clearfix">
+                    <div class="row">
+
+                        <div class="col-md-2 clearfix bottommargin-sm">
+                            <a href="https://ar-ar.facebook.com/Alrawi1rijbewijs/" class="social-icon si-dark si-colored si-facebook nobottommargin" style="margin-right: 10px;">
+                                <i class="icon-facebook"></i>
+                                <i class="icon-facebook"></i>
+                            </a>
+                            <a href="https://ar-ar.facebook.com/Alrawi1rijbewijs/"><small style="display: block; margin-top: 3px;"><strong>Like us</strong><br>on Facebook</small></a>
+                        </div>
+
+                        <div class="col-md-2 clearfix bottommargin-sm">
+                            <a href="https://www.youtube.com/channel/UCCofuIotSiIzzARX3nz4KSw" class="social-icon si-dark si-colored si-youtube nobottommargin" style="margin-right: 10px;">
+                                <i class="icon-youtube"></i>
+                                <i class="icon-youtube"></i>
+                            </a>
+                            <a href="https://www.youtube.com/channel/UCCofuIotSiIzzARX3nz4KSw"><small style="display: block; margin-top: 3px;"><strong>Subscribe</strong><br>on YouTube</small></a>
+                        </div>
+                        <div class="col-md-2 clearfix bottommargin-sm">
+                            <a href="#" class="social-icon si-dark si-colored si-twitter nobottommargin" style="margin-right: 10px;">
+                                <i class="icon-twitter"></i>
+                                <i class="icon-twitter"></i>
+                            </a>
+                            <a href="#"><small style="display: block; margin-top: 3px;"><strong>Follow us</strong><br>on Twitter</small></a>
+                        </div>
+                        <div class="col-md-2 clearfix bottommargin-sm">
+                            <a href="#" class="social-icon si-dark si-colored si-instagram nobottommargin" style="margin-right: 10px;">
+                                <i class="icon-instagram"></i>
+                                <i class="icon-instagram"></i>
+                            </a>
+                            <a href="#"><small style="display: block; margin-top: 3px;"><strong>Follow us</strong><br>on Instagram</small></a>
+                        </div>
+                        <div class="col-md-4 clearfix bottommargin-sm">
+                            <a href="#" class="social-icon si-dark si-colored si-instagram nobottommargin" style="margin-right: 10px;">
+
+                            </a>
+                            <a href="#"><small style="display: block; margin-top: 3px;"><strong>Secured</strong><br></small></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div><!-- .footer-widgets-wrap end -->
+
+    </div>
+
+    <!-- Copyrights
+    ============================================= -->
+    <div id="copyrights" class="nobg">
+
+        <div class="container clearfix">
+
+            <div class="text-center">
+                Copyrights &copy; 2018 All Rights Reserved by Al Rawi Theorie.<br>
+                <div class="copyright-links"><a href="#">شروط الإستخدام</a> / <a href="#">سياسات الخصوصية</a></div>
+            </div>
+
+            <div class="text-center topmargin-sm">
+                Developed & Designed by <a href="www.el-semicolon.nl"> El-SemiColon; </a>
+            </div>
+
+        </div>
+
+    </div><!-- #copyrights end -->
+
+
+
+</footer><!-- #footer end -->
+</div>
 
 <!-- Go To Top
 ============================================= -->
@@ -455,7 +519,19 @@ include 'scripts/db_connection.php';
 ============================================= -->
 <script type="text/javascript" src="js/functions.js"></script>
 
+<script>
+    //paste this code under the head tag or in a separate js file.
+    // Wait for window load
+    $(window).load(function() {
+// Animate loader off screen
+        $(".se-pre-con").fadeOut("slow");
+    });
 
+    $(window).load(function() {
+// Animate loader off screen
+        $(".pre-pre").fadeOut("slow");
+    });
+</script>
 
 </body>
 
