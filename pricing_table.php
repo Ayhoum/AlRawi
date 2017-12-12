@@ -424,7 +424,7 @@ $totalUsers = $countOthers + $countSucceeded;
                 </div>
 
                 <div class="text-center topmargin-sm">
-                    Developed & Designed by <a href="www.el-semicolon.nl"> El-SemiColon; </a>
+                    Developed & Designed by <a href="http://www.el-semicolon.nl"> El-SemiColon; </a>
                 </div>
 
             </div>
