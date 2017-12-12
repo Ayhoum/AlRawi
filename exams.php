@@ -280,9 +280,18 @@ if (mysqli_num_rows($result1) > 0) {
 
                                             <?php
                                         }
-                                    }
+                                    } else {
 
                                     ?>
+
+                                        <div class="fancy-title title-border-color">
+                                            <h2> ليس هناك أي فحوص مضافة حاليا <span>سنقوم باضافة المزيد من الامتحانات قريبا </span></h2>
+                                        </div>
+
+                                        <div class="divider"><i class="icon-circle"></i></div>
+
+
+                                    <?php }?>
                                 </div>
 
                             </div>
