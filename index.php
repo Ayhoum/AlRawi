@@ -207,7 +207,6 @@ $totalUsers = $countOthers + $countSucceeded;
 							<li class="current"><a href="index.php"><div>الصفحة الرئيسية</div></a></li>
 							<li><a href="#content"><div>خدماتنا</div></a></li>
 							<li><a href="#pricing"><div>أسعارنا</div></a></li>
-							<!--<li><a href="#"><div>تسجيل الدخول</div></a></li>-->
 						</ul>
 
 					</nav><!-- #primary-menu end -->
@@ -357,61 +356,58 @@ $totalUsers = $countOthers + $countSucceeded;
 							<h3>قم بحجز إمتحانك النظري مع مترجم هنا</h3>
 							<h5>لرخصة القيادة فئة (ب) في هولندا</h5>
 							<div id="medical-form-result" data-notify-type="success" data-notify-msg="<i class=icon-ok-sign></i> Message Sent Successfully!"></div>
-							<form class="nobottommargin" id="template-medical-form" name="template-medical-form" action="demos/medical/include/appointment.php" method="post">
+							<form class="nobottommargin" id="template-medical-form" name="template-medical-form" action="scripts/reserveExam.php" method="post">
 								<div class="col_half">
-									<label for="template-medical-name">الاسم الأول:</label>
-									<input type="text" id="template-medical-name" name="template-medical-name" class="form-control not-dark required pull-right" value="">
+									<label for="first-name">الاسم الأول:</label>
+									<input type="text" id="first-name" name="first-name" class="form-control not-dark required pull-right" value="">
 								</div>
 								<div class="col_half col_last">
-									<label for="template-medical-name">الاسم الأخير (الكنية):</label>
-									<input type="text" id="template-medical-name" name="template-medical-name" class="form-control not-dark required pull-right" value="">
+									<label for="last-name">الاسم الأخير (الكنية):</label>
+									<input type="text" id="last-name" name="last-name" class="form-control not-dark required pull-right" value="">
 								</div>
 								<div class="col_half">
-									<label for="template-medical-name">رقم الخدمة الوطني (BSN):</label>
-									<input type="text" id="template-medical-name" name="template-medical-name" class="form-control not-dark required pull-right" value="">
+									<label for="bsn">رقم الخدمة الوطني (BSN):</label>
+									<input type="text" id="bsn" name="bsn" class="form-control not-dark required pull-right" value="" maxlength="9" minlength="9">
 								</div>
 								<div class="col_half col_last">
-									<label for="template-medical-dob">تاريخ الميلاد:</label>
-									<input type="text" id="template-medical-dob" name="template-medical-dob" class="form-control not-dark required pull-right" value="">
+									<label for="dob">تاريخ الميلاد:</label>
+									<input type="text" id="dob" name="dob" class="form-control not-dark required pull-right" value="">
 								</div>
 								<div class="col_two_third">
-									<label for="template-medical-dob">اسم الشارع:</label>
-									<input type="text" id="template-medical-dob" name="template-medical-dob" class="form-control not-dark required pull-right" value="">
+									<label for="str-name">اسم الشارع:</label>
+									<input type="text" id="str-name" name="str-name" class="form-control not-dark required pull-right" value="">
 								</div>
 								<div class="col_one_third col_last">
-									<label for="template-medical-phone">رقم المنزل:</label>
-									<input type="text" id="template-medical-phone" name="template-medical-phone" class="form-control not-dark required pull-right" value="">
+									<label for="house-num">رقم المنزل:</label>
+									<input type="text" id="house-num" name="house-num" class="form-control not-dark required pull-right" value="">
 								</div>
 								<div class="col_one_third">
-									<label for="template-medical-phone">الرمز البريدي (Postcode):</label>
-									<input type="text" id="template-medical-phone" name="template-medical-phone" class="form-control not-dark required pull-right" value="">
+									<label for="postcode">الرمز البريدي (Postcode):</label>
+									<input type="text" id="postcode" name="postcode" class="form-control not-dark required pull-right" value="">
 								</div>
 								<div class="col_two_third col_last">
-									<label for="template-medical-dob">اسم المدينة:</label>
-									<input type="text" id="template-medical-dob" name="template-medical-dob" class="form-control not-dark required pull-right" value="">
+									<label for="city-name">اسم المدينة:</label>
+									<input type="text" id="city-name" name="city-name" class="form-control not-dark required pull-right" value="">
 								</div>
 								<div class="clear"></div>
 								<div class="col_two_third">
-									<label for="template-medical-email">البريد الالكتروني:</label>
-									<input type="email" id="template-medical-email" name="template-medical-email" class="form-control not-dark required pull-right" value="">
+									<label for="email">البريد الالكتروني:</label>
+									<input type="email" id="email" name="email" class="form-control not-dark required pull-right" value="">
 								</div>
 								<div class="col_one_third col_last">
-									<label for="template-medical-email">رقم الهاتف:</label>
-									<input type="text" id="template-medical-email" name="template-medical-email" class="form-control not-dark required pull-right" value="">
+									<label for="phone">رقم الهاتف:</label>
+									<input type="text" id="phone" name="phone" class="form-control not-dark required pull-right" value="">
 								</div>
 								<div class="col_half">
-									<label for="template-medical-email">مكان التقديم الذي ترغب به:</label>
-									<input type="text" id="template-medical-email" name="template-medical-email" class="form-control not-dark required pull-right" value="">
+									<label for="place">مكان التقديم الذي ترغب به:</label>
+									<input type="text" id="place" name="place" class="form-control not-dark required pull-right" value="">
 								</div>
 								<div class="col_half col_last">
-									<label for="template-medical-email">تاريخ ووقت التقديم الذي ترغب به:</label>
-									<input type="text" id="template-medical-email" name="template-medical-email" class="form-control not-dark required pull-right" value="">
+									<label for="dateAndTime">تاريخ ووقت التقديم الذي ترغب به:</label>
+									<input type="text" id="dateAndTime" name="dateAndTime" class="form-control not-dark required pull-right" value="">
 								</div>
 								<div class="clear"></div>
 								<div class="clear"></div>
-								<div class="col_full hidden">
-									<input type="text" name="template-medical-botcheck" value="" />
-								</div>
 								<div class="col_full topmargin-sm nobottommargin">
 									<button class="button button-rounded button-white button-light nomargin pull-right" type="submit" value="submit">تأكيد الحجز</button>
 								</div>
@@ -654,17 +650,17 @@ $totalUsers = $countOthers + $countSucceeded;
 
 						<div class="widget clearfix">
 
-							<div class="widget-subscribe-form-result"></div>
-							<form id="widget-subscribe-form" action="#" role="form" method="post" class="nobottommargin row clearfix">
-								<div class="col-md-9">
-									<input type="email" id="widget-subscribe-form-email" name="widget-subscribe-form-email" class="sm-form-control required email" placeholder="أدخل بريدك الإلكتروني ليصلك كل جديد حول موقعنا">
-								</div>
-								<div class="col-md-3">
-									<button class="button button-rounded nomargin center btn-block" type="submit">اشترك معنا</button>
-								</div>
-							</form>
-
-							<div class="line line-sm"></div>
+<!--							<div class="widget-subscribe-form-result"></div>-->
+<!--							<form id="widget-subscribe-form" action="#" role="form" method="post" class="nobottommargin row clearfix">-->
+<!--								<div class="col-md-9">-->
+<!--									<input type="email" id="widget-subscribe-form-email" name="widget-subscribe-form-email" class="sm-form-control required email" placeholder="أدخل بريدك الإلكتروني ليصلك كل جديد حول موقعنا">-->
+<!--								</div>-->
+<!--								<div class="col-md-3">-->
+<!--									<button class="button button-rounded nomargin center btn-block" type="submit">اشترك معنا</button>-->
+<!--								</div>-->
+<!--							</form>-->
+<!---->
+<!--							<div class="line line-sm"></div>-->
 
 							<div class="row">
 <!--								<div class="clear-bottommargin-sm clearfix">-->
@@ -864,7 +860,33 @@ $(window).load(function() {
 // Animate loader off screen
     $(".pre-pre").fadeOut("slow");
 });
-</script>
 
+</script>
+<script>
+    $(document).ready(function(){
+        // Add smooth scrolling to all links
+        $("a").on('click', function(event) {
+
+            // Make sure this.hash has a value before overriding default behavior
+            if (this.hash !== "") {
+                // Prevent default anchor click behavior
+                event.preventDefault();
+
+                // Store hash
+                var hash = this.hash;
+
+                // Using jQuery's animate() method to add smooth page scroll
+                // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+                $('html, body').animate({
+                    scrollTop: $(hash).offset().top
+                }, 700, function(){
+
+                    // Add hash (#) to URL when done scrolling (default click behavior)
+                    window.location.hash = hash;
+                });
+            } // End if
+        });
+    });
+</script>
 </body>
 </html>
