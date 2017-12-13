@@ -516,7 +516,7 @@ include 'scripts/db_connection.php';
                     <div class="widget subscribe-widget clearfix">
                         <div class="row">
 
-                            <div class="col-md-2 clearfix bottommargin-sm">
+                            <div class="col-md-4 clearfix bottommargin-sm">
                                 <a href="https://ar-ar.facebook.com/Alrawi1rijbewijs/" class="social-icon si-dark si-colored si-facebook nobottommargin" style="margin-right: 10px;">
                                     <i class="icon-facebook"></i>
                                     <i class="icon-facebook"></i>
@@ -524,26 +524,12 @@ include 'scripts/db_connection.php';
                                 <a href="https://ar-ar.facebook.com/Alrawi1rijbewijs/"><small style="display: block; margin-top: 3px;"><strong>Like us</strong><br>on Facebook</small></a>
                             </div>
 
-                            <div class="col-md-2 clearfix bottommargin-sm">
+                            <div class="col-md-4 clearfix bottommargin-sm">
                                 <a href="https://www.youtube.com/channel/UCCofuIotSiIzzARX3nz4KSw" class="social-icon si-dark si-colored si-youtube nobottommargin" style="margin-right: 10px;">
                                     <i class="icon-youtube"></i>
                                     <i class="icon-youtube"></i>
                                 </a>
                                 <a href="https://www.youtube.com/channel/UCCofuIotSiIzzARX3nz4KSw"><small style="display: block; margin-top: 3px;"><strong>Subscribe</strong><br>on YouTube</small></a>
-                            </div>
-                            <div class="col-md-2 clearfix bottommargin-sm">
-                                <a href="#" class="social-icon si-dark si-colored si-twitter nobottommargin" style="margin-right: 10px;">
-                                    <i class="icon-twitter"></i>
-                                    <i class="icon-twitter"></i>
-                                </a>
-                                <a href="#"><small style="display: block; margin-top: 3px;"><strong>Follow us</strong><br>on Twitter</small></a>
-                            </div>
-                            <div class="col-md-2 clearfix bottommargin-sm">
-                                <a href="#" class="social-icon si-dark si-colored si-instagram nobottommargin" style="margin-right: 10px;">
-                                    <i class="icon-instagram"></i>
-                                    <i class="icon-instagram"></i>
-                                </a>
-                                <a href="#"><small style="display: block; margin-top: 3px;"><strong>Follow us</strong><br>on Instagram</small></a>
                             </div>
                             <div class="col-md-4 clearfix bottommargin-sm">
                                 <a href="#" class="social-icon si-dark si-colored si-instagram nobottommargin" style="margin-right: 10px;">
@@ -553,7 +539,6 @@ include 'scripts/db_connection.php';
                             </div>
                         </div>
                     </div>
-
                 </div>
 
             </div><!-- .footer-widgets-wrap end -->

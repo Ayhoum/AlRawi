@@ -62,19 +62,336 @@ if(isset($_POST['submit'])){
 
 
     $mail             = new PHPMailer(); // defaults to using php "mail()"
+    $mail->CharSet = 'UTF-8';
+    $mail->IsHTML(true);
 
-    $body             = "A new session has been applied form a student login to your dashboard to check it !";
+    $body             = "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">
+<html xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\">
+<head>
+	<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />
+	<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>
+	<title>Portfolio - Responsive Email Template</title>
+	<style type=\"text/css\">
+		/* ----- Custom Font Import ----- */
+		/*@import url(https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic&subset=latin,latin-ext);*/
+		@import url(https://fontlibrary.org/face/droid-arabic-kufi);
+
+		/* ----- Text Styles ----- */
+		table{
+			font-family: 'DroidArabicKufiRegular';
+			-webkit-font-smoothing: antialiased;
+			-moz-font-smoothing: antialiased;
+			font-smoothing: antialiased;
+		}
+
+		@media only screen and (max-width: 700px){
+			/* ----- Base styles ----- */
+			.full-width-container{
+				padding: 0 !important;
+			}
+
+			.container{
+				width: 100% !important;
+			}
+
+			/* ----- Header ----- */
+			.header td{
+				padding: 30px 15px 30px 15px !important;
+			}
+
+			/* ----- Projects list ----- */
+			.projects-list{
+				display: block !important;
+			}
+
+			.projects-list tr{
+				display: block !important;
+			}
+
+			.projects-list td{
+				display: block !important;
+			}
+
+			.projects-list tbody{
+				display: block !important;
+			}
+
+			.projects-list img{
+				margin: 0 auto 25px auto;
+			}
+
+			/* ----- Half block ----- */
+			.half-block{
+				display: block !important;
+			}
+
+			.half-block tr{
+				display: block !important;
+			}
+
+			.half-block td{
+				display: block !important;
+			}
+
+			.half-block__image{
+				width: 100% !important;
+				background-size: cover;
+			}
+
+			.half-block__content{
+				width: 100% !important;
+				box-sizing: border-box;
+				padding: 25px 15px 25px 15px !important;
+			}
+
+			/* ----- Hero subheader ----- */
+			.hero-subheader__title{
+				padding: 80px 15px 15px 15px !important;
+				font-size: 35px !important;
+			}
+
+			.hero-subheader__content{
+				padding: 0 15px 90px 15px !important;
+			}
+
+			/* ----- Title block ----- */
+			.title-block{
+				padding: 0 15px 0 15px;
+			}
+
+			/* ----- Paragraph block ----- */
+			.paragraph-block__content{
+				padding: 25px 15px 18px 15px !important;
+			}
+
+			/* ----- Info bullets ----- */
+			.info-bullets{
+				display: block !important;
+			}
+
+			.info-bullets tr{
+				display: block !important;
+			}
+
+			.info-bullets td{
+				display: block !important;
+			}
+
+			.info-bullets tbody{
+				display: block;
+			}
+
+			.info-bullets__icon{
+				text-align: center;
+				padding: 0 0 15px 0 !important;
+			}
+
+			.info-bullets__content{
+				text-align: center;
+			}
+
+			.info-bullets__block{
+				padding: 25px !important;
+			}
+
+			/* ----- CTA block ----- */
+			.cta-block__title{
+				padding: 35px 15px 0 15px !important;
+			}
+
+			.cta-block__content{
+				padding: 20px 15px 27px 15px !important;
+			}
+
+			.cta-block__button{
+				padding: 0 15px 0 15px !important;
+			}
+		}
+	</style>
+
+	<!--[if gte mso 9]><xml>
+	<o:OfficeDocumentSettings>
+		<o:AllowPNG/>
+		<o:PixelsPerInch>96</o:PixelsPerInch>
+	</o:OfficeDocumentSettings>
+</xml><![endif]-->
+</head>
+
+<body style=\"padding: 0; margin: 0;\" bgcolor=\"#eeeeee\">
+
+<!-- / Full width container -->
+<table class=\"full-width-container\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" height=\"100%\" width=\"100%\" bgcolor=\"#eeeeee\" style=\"width: 100%; height: 100%; padding: 30px 0 30px 0;\">
+	<tr>
+		<td align=\"center\" valign=\"top\">
+			<!-- / 700px container -->
+			<table class=\"container\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"700\" bgcolor=\"#ffffff\" style=\"width: 700px;\">
+				<tr>
+					<td align=\"center\" valign=\"top\">
+						<!-- / Header -->
+						<table class=\"container header\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"620\" style=\"width: 620px;\">
+							<tr>
+								<td class=\"info-bullets__block\" style=\"padding: 30px 30px 15px 30px;\" align=\"center\">
+									<table class=\"container\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" align=\"center\">
+										<tr>
+											<td align=\"center\" width=\"60\" height=\"2\" style=\" width: 60px; height: 2px; font-size: 1px;\"><img src=\"http://shop.alrawitheorie.nl/images/2.png\"></td>
+										</tr>
+									</table>
+								</td>
+
+							</tr>
+						</table>
+						<!-- /// Header -->
+
+						<!-- / Hero subheader -->
+						<table class=\"container hero-subheader\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"620\" style=\"width: 620px;\">
+							<tr>
+								<td class=\"hero-subheader__title\" style=\"direction:rtl;font-size: 43px; font-weight: bold; padding: 80px 0 15px 0;\" align=\"center\">أهلاً وسهلا بكم!</td>
+							</tr>
+
+							<tr>
+								<td class=\"hero-subheader__content\" style=\"direction:rtl;font-size: 16px; line-height: 27px; color: #969696; padding: 0 60px 90px 0;\" align=\"right\">طلب جديد من $username لإجراء جلسة خاصة.
+								<br>يرجى تسجيل الدخول للوحة التحكم للإطلاع على التفاصيل والموافقة على الجلسة
+								</td>
+							</tr>
+						</table>
+						<!-- /// Hero subheader -->
 
 
-    $address1= "semsemea.a@hotmail.com";
 
-    $address3="aylosa@outlook.com";
+						<!-- / Divider -->
+						<table class=\"container\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" style=\"padding-top: 25px;\" align=\"center\">
+							<tr>
+								<td align=\"center\">
+									<table class=\"container\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"620\" align=\"center\" style=\"border-bottom: solid 1px #eeeeee; width: 620px;\">
+										<tr>
+											<td align=\"center\">&nbsp;</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</table>
+						<!-- /// Divider -->
+
+						<!-- / Info Bullets -->
+						<table class=\"container info-bullets\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" align=\"center\">
+							<tr>
+								<td align=\"center\">
+									<table class=\"container\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"620\" align=\"center\" style=\"width: 620px;\">
+										<tr>
+											<td class=\"info-bullets__block\" style=\"padding: 30px 30px 15px 30px;\" align=\"center\">
+												<table class=\"container\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" align=\"center\">
+													<tr>
+														<td class=\"info-bullets__icon\" style=\"padding: 0 15px 0 0;\">
+															<img src=\"https://cdn1.iconfinder.com/data/icons/material-communication/20/email-32.png\">
+														</td>
+
+														<td class=\"info-bullets__content\" style=\"color: #969696; font-size: 16px;\">info@alrawitheorie.nl</td>
+													</tr>
+												</table>
+											</td>
+										</tr><tr>
+											<td class=\"info-bullets__block\" style=\"padding: 30px 30px 15px 30px;\" align=\"center\">
+												<table class=\"container\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" align=\"center\">
+													<tr>
+														<td class=\"info-bullets__icon\" style=\"padding: 0 15px 0 0;\">
+															<img src=\"https://cdn1.iconfinder.com/data/icons/material-communication/18/phone-32.png\">
+														</td>
+
+														<td class=\"info-bullets__content\" style=\"color: #969696; font-size: 16px;\">(541) 754-3010</td>
+													</tr>
+												</table>
+											</td>
+
+										</tr>
+
+										<tr>
+											<td class=\"info-bullets__block\" style=\"padding: 30px;\" align=\"center\">
+												<table class=\"container\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" align=\"center\">
+													<tr>
+														<td class=\"info-bullets__icon\" style=\"padding: 0 15px 0 0;\">
+															<img src=\"https://cdn2.iconfinder.com/data/icons/finance-solid-icons-vol-3/48/106-32.png\">
+														</td>
+
+														<td class=\"info-bullets__content\" style=\"color: #969696; font-size: 16px;\">Huizen, The Netherlands</td>
+													</tr>
+												</table>
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</table>
+						<!-- /// Info Bullets -->
+
+						<!-- / Social nav -->
+						<table class=\"container\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" align=\"center\">
+							<tr>
+								<td align=\"center\">
+									<table class=\"container\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"620\" align=\"center\" style=\"border-top: 1px solid #eeeeee; width: 620px;\">
+										<tr>
+											<td align=\"center\" style=\"padding: 30px 0 30px 0;\">
+												<a href=\"https://ar-ar.facebook.com/Alrawi1rijbewijs/\">
+													<img src=\"https://cdn2.iconfinder.com/data/icons/social-media-2151/512/1_Media_social_website_facebook-48.png\" border=\"0\">
+												</a>
+											</td>
+
+											<td align=\"center\" style=\"padding: 30px 0 30px 0;\">
+												<a href=\"https://www.youtube.com/channel/UCCofuIotSiIzzARX3nz4KSw\">
+													<img src=\"https://cdn2.iconfinder.com/data/icons/social-media-2151/512/11_Media_social_website_youtube-48.png\" border=\"0\">
+												</a>
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</table>
+						<!-- /// Social nav -->
+
+						<!-- / Footer -->
+						<table class=\"container\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" align=\"center\">
+							<tr>
+								<td align=\"center\">
+									<table class=\"container\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"620\" align=\"center\" style=\"border-top: 1px solid #eeeeee; width: 620px;\">
+										<tr>
+											<td style=\"text-align: center; padding: 50px 0 10px 0;\">
+												<a href=\"#\" style=\"font-size: 28px; text-decoration: none; color: #d5d5d5;\">Al Rawi Theorie</a>
+											</td>
+										</tr>
+
+										<tr>
+											<td align=\"middle\">
+												<table width=\"60\" height=\"2\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"width: 60px; height: 2px;\">
+													<tr>
+														<td align=\"middle\" width=\"60\" height=\"2\" style=\" width: 60px; height: 2px; font-size: 1px;\"><img src=\"http://shop.alrawitheorie.nl/images/1.png\"></td>
+													</tr>
+												</table>
+											</td>
+										</tr>
+
+										<tr>
+											<td style=\"color: #d5d5d5; text-align: center; font-size: 15px; padding: 10px 0 60px 0; line-height: 22px;\">Copyright &copy; 2018 <a href=\"http://www.alrawitheorie.nl/\" target=\"_blank\" style=\"text-decoration: none; border-bottom: 1px solid #d5d5d5; color: #d5d5d5;\">Al Rawi Theorie</a>. <br />All rights reserved.</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</table>
+						<!-- /// Footer -->
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+</body>
+</html>";
+
+
+    $address1= "alrawitheorie@gmail.com";
+
 
     $mail->AddAddress($address1);
 
-    $mail->AddBcc($address3);
-
-    $mail->Subject    = "New Session";
+    $mail->Subject    = "New Private Session";
 
     $mail->MsgHTML($body);
 
@@ -105,7 +422,7 @@ if(isset($_POST['submit'])){
 
 
     <!-- Date & Time Picker CSS -->
-    <link rel="stylesheet" href="demos/travel/css/datepicker.css" type="text/css" />
+    <link rel="stylesheet" href="css/datepicker.css" type="text/css" />
     <link rel="stylesheet" href="css/components/timepicker.css" type="text/css" />
     <link rel="stylesheet" href="css/components/daterangepicker.css" type="text/css" />
 
@@ -210,7 +527,7 @@ if(isset($_POST['submit'])){
                             <li><a href="#" class="button-red" style="color:#fff;"><?php echo $_SESSION['username']; ?></a>
                                 <ul>
                                     <?php if($_SESSION['role'] == "MainAdmin"){?>
-                                        <li><a href="adminAlrawi/dashboard.php" dir="rtl">لوحة التحكم <i class="icon-wrench"></i></a></li>
+                                        <li><a href="dashboardAlrawi/index.php" dir="rtl">لوحة التحكم <i class="icon-wrench"></i></a></li>
                                     <?php } else { ?>
                                         <li><a href="profile.php" dir="rtl">الملف الشخصي <i class="icon-user"></i></a></li>
                                     <?php } ?>
@@ -255,7 +572,7 @@ if(isset($_POST['submit'])){
                 <nav id="primary-menu" class="style-3">
 
                     <ul>
-                        <li class="current"><a href="#"><div>الصفحة الرئيسية</div></a></li>
+                        <li class="current"><a href="index.php"><div>الصفحة الرئيسية</div></a></li>
                     </ul>
 
                 </nav><!-- #primary-menu end -->
@@ -278,8 +595,8 @@ if(isset($_POST['submit'])){
                     <div class="input-daterange travel-date-group bottommargin-sm">
                         <div class="row">
                             <h2 class="text-center">اختر تاريخ وموعد الجلسة مع الاستاذ حسام الراوي</h2>
-                            <h3 class="text-center" style="direction: rtl; color: red"> تكلفة الجلسة لمدة ساعة 5.00 € </h3>
-                            <h5 class="text-center" >بعد الانتهاء من حجز الموعد سوف يتم الرد عليك من قبل الاستاذ حسام بقبول او عدم قبول موعد الجلسة , في حال قبول الموعد سوف يتم ارسال طلب الدفع اليك ويمكنك الدفع من خلال تسجيل الدخول الى صفحتك الشخصية</h5>
+                            <h3 class="text-center" style="direction: rtl; color: red">تكلفة الجلسة 5.00 € لمدة ساعة</h3>
+                            <h5 class="text-center" >بعد الانتهاء من حجز الموعد سوف يتم الرد عليك من قبل الأستاذ حسام بقبول أو عدم قبول موعد الجلسة<br>في حال قبول الموعد سوف يتم إرسال طلب الدفع إليك حيث يمكنك الدفع من خلال تسجيل الدخول إلى صفحتك الشخصية</h5>
 
                             <div class="clear"></div>
                             <div class="col-sm-3"></div>
@@ -325,7 +642,7 @@ if(isset($_POST['submit'])){
 
         </div>
 
-    </section><!-- #content end -->
+
 
     <!-- Footer
             ============================================= -->
@@ -388,7 +705,7 @@ if(isset($_POST['submit'])){
                     <div class="widget subscribe-widget clearfix">
                         <div class="row">
 
-                            <div class="col-md-2 clearfix bottommargin-sm">
+                            <div class="col-md-4 clearfix bottommargin-sm">
                                 <a href="https://ar-ar.facebook.com/Alrawi1rijbewijs/" class="social-icon si-dark si-colored si-facebook nobottommargin" style="margin-right: 10px;">
                                     <i class="icon-facebook"></i>
                                     <i class="icon-facebook"></i>
@@ -396,26 +713,12 @@ if(isset($_POST['submit'])){
                                 <a href="https://ar-ar.facebook.com/Alrawi1rijbewijs/"><small style="display: block; margin-top: 3px;"><strong>Like us</strong><br>on Facebook</small></a>
                             </div>
 
-                            <div class="col-md-2 clearfix bottommargin-sm">
+                            <div class="col-md-4 clearfix bottommargin-sm">
                                 <a href="https://www.youtube.com/channel/UCCofuIotSiIzzARX3nz4KSw" class="social-icon si-dark si-colored si-youtube nobottommargin" style="margin-right: 10px;">
                                     <i class="icon-youtube"></i>
                                     <i class="icon-youtube"></i>
                                 </a>
                                 <a href="https://www.youtube.com/channel/UCCofuIotSiIzzARX3nz4KSw"><small style="display: block; margin-top: 3px;"><strong>Subscribe</strong><br>on YouTube</small></a>
-                            </div>
-                            <div class="col-md-2 clearfix bottommargin-sm">
-                                <a href="#" class="social-icon si-dark si-colored si-twitter nobottommargin" style="margin-right: 10px;">
-                                    <i class="icon-twitter"></i>
-                                    <i class="icon-twitter"></i>
-                                </a>
-                                <a href="#"><small style="display: block; margin-top: 3px;"><strong>Follow us</strong><br>on Twitter</small></a>
-                            </div>
-                            <div class="col-md-2 clearfix bottommargin-sm">
-                                <a href="#" class="social-icon si-dark si-colored si-instagram nobottommargin" style="margin-right: 10px;">
-                                    <i class="icon-instagram"></i>
-                                    <i class="icon-instagram"></i>
-                                </a>
-                                <a href="#"><small style="display: block; margin-top: 3px;"><strong>Follow us</strong><br>on Instagram</small></a>
                             </div>
                             <div class="col-md-4 clearfix bottommargin-sm">
                                 <a href="#" class="social-icon si-dark si-colored si-instagram nobottommargin" style="margin-right: 10px;">
@@ -425,7 +728,6 @@ if(isset($_POST['submit'])){
                             </div>
                         </div>
                     </div>
-
                 </div>
 
             </div><!-- .footer-widgets-wrap end -->
@@ -453,7 +755,7 @@ if(isset($_POST['submit'])){
 
 
     </footer><!-- #footer end -->
-
+    </section><!-- #content end -->
 </div><!-- #wrapper end -->
 
 <!-- Go To Top
@@ -513,7 +815,7 @@ if(isset($_POST['submit'])){
 
 <!-- Date & Time Picker JS -->
 <script type="text/javascript" src="js/components/moment.js"></script>
-<script type="text/javascript" src="demos/travel/js/datepicker.js"></script>
+<script type="text/javascript" src="scripts/datepicker.js"></script>
 <script type="text/javascript" src="js/components/timepicker.js"></script>
 
 <!-- Include Date Range Picker -->
