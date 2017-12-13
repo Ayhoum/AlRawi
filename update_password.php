@@ -35,4 +35,6 @@ if(isset($_POST['new_submit'])){
     }else{
         header("Location: forgot_password.php");
     }
+}else{
+    header("Location: forgot_password.php");
 }
