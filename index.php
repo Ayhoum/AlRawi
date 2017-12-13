@@ -170,7 +170,7 @@ $totalUsers = $countOthers + $countSucceeded;
                                 </li>
                             <?php } ?>
 
-                            <li><a href="" data-scrollto="#booking-appointment-form" data-offset="100" data-easing="easeInOutExpo" data-speed="1200" class="bgcolor" style="color:#fff;">احجز امتحانك</a></li>
+<!--                            <li><a href="" data-scrollto="#booking-appointment-form" data-offset="100" data-easing="easeInOutExpo" data-speed="1200" class="bgcolor" style="color:#fff;">احجز امتحانك</a></li>-->
 
 						</ul>
 					</div>
@@ -205,8 +205,10 @@ $totalUsers = $countOthers + $countSucceeded;
 
 						<ul>
 							<li class="current"><a href="index.php"><div>الصفحة الرئيسية</div></a></li>
-							<li><a href="#content"><div>خدماتنا</div></a></li>
-							<li><a href="#pricing"><div>أسعارنا</div></a></li>
+                            <li><a href="#pricing"><div>أسعارنا</div></a></li>
+                            <li><a href="#services"><div>خدماتنا</div></a></li>
+                            <li><a target="_blank" href="blog.php"><div>المدونة</div></a></li>
+                            <li><a target="_blank" href="https://www.theorie-leren.nl/shop/school/al-rawi-theorie.html"><div>المتجر</div></a></li>
 						</ul>
 
 					</nav><!-- #primary-menu end -->
@@ -251,13 +253,137 @@ $totalUsers = $countOthers + $countSucceeded;
 
 		<!-- Content
 		============================================= -->
-		<section id="content">
+        <div class="divider" id = "pricing"><i class="icon-circle"></i></div>
 
-			<div class="content-wrap" style="padding-bottom: 0 ">
+        <section id="content">
 
-				<div class="container clearfix">
+			<div class="content-wrap" style="padding-top: 0 ; padding-bottom: 0;">
 
-					<div class="col_one_third" style="margin-bottom: 0;">
+                <section class="section pricing-section nomargin dark" style="background-color: white;padding-top: 0;padding-bottom: 0;">
+                    <div class="container clearfix">
+                        <h2 class="pricing-section--title center" style="color: #0f0e0f">أســعارنا</h2>
+                        <div class="pricing pricing--karma">
+                            <div class="pricing--item">
+                                <h3 class="pricing--title text-center">البــاقة  الابتدائيــة</h3>
+                                <div class="pricing--price"><span class="pricing--currency">€</span>10<span class="pricing--period" style="direction: rtl"> أسبــوع </span></div>
+                                <ul class="pricing--feature-list">
+                                    <li class="pricing--feature">صلاحية الدخول لجميع الامتحانات </li>
+                                    <li class="pricing--feature">صالحة لمدة <b>اسبوع</b></li>
+
+                                </ul>
+                                <a class="pricing--link" href="payment_1.php"> <button class="pricing--action ">اخــتر البــاقة</button></a>
+                            </div>
+                            <div class="pricing--item pricing--item--featured">
+                                <h3 class="pricing--title text-center">البـاقة الأسـاسيــة</h3>
+                                <div class="pricing--price"><span class="pricing--currency">€</span>15<span class="pricing--period" style="direction: rtl"> أسبـــوعان  </span></div>
+                                <ul class="pricing--feature-list">
+                                    <li class="pricing--feature">صلاحية الدخول لجميع الامتحانات</li>
+                                    <li class="pricing--feature">صالحة لمدة <b>أسبوعين</b> </li>
+                                </ul>
+                                <a class="pricing--link" href="payment_2.php"> <button class="pricing--action ">اخــتر البــاقة</button></a>
+                            </div>
+
+                            <div class="pricing--item">
+                                <h3 class="pricing--title text-center">البــاقة المتقدمــة</h3>
+                                <div class="pricing--price"><span class="pricing--currency">€</span>25<span class="pricing--period" style="direction: rtl"> 4 أسـابيـع </span></div>
+                                <ul class="pricing--feature-list">
+                                    <li class="pricing--feature">صلاحية الدخول لجميع الامتحانات</li>
+                                    <li class="pricing--feature">صالحة لمدة <b>4 أسابيـع</b> </li>
+                                </ul>
+                                <a class="pricing--link" href="payment_4.php"> <button class="pricing--action ">اخــتر البــاقة</button></a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="divider" id="services"><i class="icon-circle"></i></div>
+
+                <!--                <div class="section nopadding common-height dark topmargin-sm" style="margin-bottom:0;">-->
+<!--					<div class="col-md-5" data-height-lg="597" data-height-md="614" data-height-sm="400" data-height-xs="300" data-height-xxs="200" style="background: url('demos/medical/images/section-bg.jpg'); background-size: cover;">-->
+<!--						<div>&nbsp;</div>-->
+<!--					</div>-->
+<!--					<div class="col-md-7 nopadding">-->
+<!--						<div class="bgcolor col-padding" id="booking-appointment-form">-->
+<!--							<h3>قم بحجز إمتحانك النظري مع مترجم هنا</h3>-->
+<!--							<h5>لرخصة القيادة فئة (ب) في هولندا</h5>-->
+<!--							<div id="medical-form-result" data-notify-type="success" data-notify-msg="<i class=icon-ok-sign></i> Message Sent Successfully!"></div>-->
+<!--							<form class="nobottommargin" id="template-medical-form" name="template-medical-form" action="scripts/reserveExam.php" method="post">-->
+<!--								<div class="col_half">-->
+<!--									<label for="first-name">الاسم الأول:</label>-->
+<!--									<input type="text" id="first-name" name="first-name" class="form-control not-dark required pull-right" value="">-->
+<!--								</div>-->
+<!--								<div class="col_half col_last">-->
+<!--									<label for="last-name">الاسم الأخير (الكنية):</label>-->
+<!--									<input type="text" id="last-name" name="last-name" class="form-control not-dark required pull-right" value="">-->
+<!--								</div>-->
+<!--								<div class="col_half">-->
+<!--									<label for="bsn">رقم الخدمة الوطني (BSN):</label>-->
+<!--									<input type="text" id="bsn" name="bsn" class="form-control not-dark required pull-right" value="" maxlength="9" minlength="9">-->
+<!--								</div>-->
+<!--								<div class="col_half col_last">-->
+<!--									<label for="dob">تاريخ الميلاد:</label>-->
+<!--									<input type="text" id="dob" name="dob" class="form-control not-dark required pull-right" value="">-->
+<!--								</div>-->
+<!--								<div class="col_two_third">-->
+<!--									<label for="str-name">اسم الشارع:</label>-->
+<!--									<input type="text" id="str-name" name="str-name" class="form-control not-dark required pull-right" value="">-->
+<!--								</div>-->
+<!--								<div class="col_one_third col_last">-->
+<!--									<label for="house-num">رقم المنزل:</label>-->
+<!--									<input type="text" id="house-num" name="house-num" class="form-control not-dark required pull-right" value="">-->
+<!--								</div>-->
+<!--								<div class="col_one_third">-->
+<!--									<label for="postcode">الرمز البريدي (Postcode):</label>-->
+<!--									<input type="text" id="postcode" name="postcode" class="form-control not-dark required pull-right" value="">-->
+<!--								</div>-->
+<!--								<div class="col_two_third col_last">-->
+<!--									<label for="city-name">اسم المدينة:</label>-->
+<!--									<input type="text" id="city-name" name="city-name" class="form-control not-dark required pull-right" value="">-->
+<!--								</div>-->
+<!--								<div class="clear"></div>-->
+<!--								<div class="col_two_third">-->
+<!--									<label for="email">البريد الالكتروني:</label>-->
+<!--									<input type="email" id="email" name="email" class="form-control not-dark required pull-right" value="">-->
+<!--								</div>-->
+<!--								<div class="col_one_third col_last">-->
+<!--									<label for="phone">رقم الهاتف:</label>-->
+<!--									<input type="text" id="phone" name="phone" class="form-control not-dark required pull-right" value="">-->
+<!--								</div>-->
+<!--								<div class="col_half">-->
+<!--									<label for="place">مكان التقديم الذي ترغب به:</label>-->
+<!--									<input type="text" id="place" name="place" class="form-control not-dark required pull-right" value="">-->
+<!--								</div>-->
+<!--								<div class="col_half col_last">-->
+<!--									<label for="dateAndTime">تاريخ ووقت التقديم الذي ترغب به:</label>-->
+<!--									<input type="text" id="dateAndTime" name="dateAndTime" class="form-control not-dark required pull-right" value="">-->
+<!--								</div>-->
+<!--                                <div class="col_half">-->
+<!--                                    <label for="dialect">اللهجة التي تتكلم بها*:</label>-->
+<!--                                    <input type="text" style="direction: rtl;" id="dialect" name="dialect" class="form-control not-dark required pull-right" value="">-->
+<!--                                </div>-->
+<!--                                <div class="col_full col_last">-->
+<!--                                    <label for="note">ملاحظات إضافية:</label>-->
+<!--                                    <textarea style="direction: rtl;" id="note" name="note" class="form-control not-dark pull-right" rows="4" cols="100"></textarea>-->
+<!--                                </div>-->
+<!--								<div class="clear"></div>-->
+<!--								<div class="clear"></div>-->
+<!--								<div class="col_full topmargin-sm nobottommargin">-->
+<!--									<button class="button button-rounded button-white button-light nomargin pull-right" type="submit" value="submit">تأكيد الحجز</button>-->
+<!--								</div>-->
+<!--                                <div class="col_full">-->
+<!--                                    <label for="dialect" class="topmargin-sm">*سنقوم بالمحاولة لإيجاد مترجم يتناسب مع اللهجة الخاصة بك</label>-->
+<!--                                </div>-->
+<!--								<div class="clear"></div>-->
+<!--							</form>-->
+<!---->
+<!--						</div>-->
+<!--					</div>-->
+<!--				</div>-->
+
+
+                <div class="container clearfix nobottommargin topmargin-sm">
+
+                    <div class="col_one_third" style="margin-bottom: 0;">
                         <div class="feature-box fbox-plain">
                             <div class="row">
                                 <div class="col_full" style="margin-bottom: 10px;">
@@ -277,10 +403,10 @@ $totalUsers = $countOthers + $countSucceeded;
                         <div class="feature-box fbox-plain">
                             <div class="row">
                                 <div class="col_full" style="margin-bottom: 10px;">
-                                <div class="fbox-icon center-block" data-animate="bounceIn" data-delay="200" style="position: inherit">
-                                    <i class="icon-line2-note"></i>
+                                    <div class="fbox-icon center-block" data-animate="bounceIn" data-delay="200" style="position: inherit">
+                                        <i class="icon-line2-note"></i>
+                                    </div>
                                 </div>
-                            </div>
                             </div>
                             <div class="col_full text-center" style="margin-bottom: 10px;">
                                 <h3 class="text-center">إمتحانات تجريبية</h3>
@@ -307,129 +433,10 @@ $totalUsers = $countOthers + $countSucceeded;
 
                     <div class="clear"></div>
 
-				</div>
+                </div>
+                <div class="divider"><i class="icon-circle"></i></div>
 
-                <section id = "pricing" class="section pricing-section nomargin dark" style="background-color: white;">
-                    <div class="container clearfix">
-                        <h2 class="pricing-section--title center" style="color: #0f0e0f">أســعارنا</h2>
-                        <div class="pricing pricing--karma">
-                            <div class="pricing--item">
-                                <h3 class="pricing--title text-center">البــاقة  الابتدائيــة</h3>
-                                <div class="pricing--price"><span class="pricing--currency">€</span>10<span class="pricing--period" style="direction: rtl"> أسبــوع </span></div>
-                                <ul class="pricing--feature-list">
-                                    <li class="pricing--feature">صلاحية الدخول لجميع الامتحانات </li>
-                                    <li class="pricing--feature">صالحة لمدة <b>اسبوع</b></li>
-
-                                </ul>
-                                <a class="pricing--link" href="payment_1.php"> <button class="pricing--action ">اخــتر البــاقة</button></a>
-                            </div>
-                            <div class="pricing--item pricing--item--featured">
-                                <h3 class="pricing--title text-center">البـاقة الأسـاسيــة</h3>
-                                <div class="pricing--price"><span class="pricing--currency">€</span>15<span class="pricing--period" style="direction: rtl"> أسبـــوعان  </span></div>
-                                <ul class="pricing--feature-list">
-                                    <li class="pricing--feature">صلاحية الدخول لجميع الامتحانات</li>
-                                    <li class="pricing--feature">صالحة لمدة <b>أسبوعين</b> </li>
-                                </ul>
-                                <a class="pricing--link" href="payment_2.php"> <button class="pricing--action ">اخــتر البــاقة</button></a>
-                            </div>
-
-                            <div class="pricing--item">
-                                <h3 class="pricing--title text-center">البــاقة المتقدمــة</h3>
-                                <div class="pricing--price"><span class="pricing--currency">€</span>25<span class="pricing--period"style="direction: rtl"> 4 أسـابيـع </span></div>
-                                <ul class="pricing--feature-list">
-                                    <li class="pricing--feature">صلاحية الدخول لجميع الامتحانات</li>
-                                    <li class="pricing--feature">صالحة لمدة <b>4 أسابيـع</b> </li>
-                                </ul>
-                                <a class="pricing--link" href="payment_4.php"> <button class="pricing--action ">اخــتر البــاقة</button></a>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-
-                <div class="section nopadding common-height dark topmargin-sm" style="margin-bottom:0;">
-					<div class="col-md-5" data-height-lg="597" data-height-md="614" data-height-sm="400" data-height-xs="300" data-height-xxs="200" style="background: url('demos/medical/images/section-bg.jpg'); background-size: cover;">
-						<div>&nbsp;</div>
-					</div>
-					<div class="col-md-7 nopadding">
-						<div class="bgcolor col-padding" id="booking-appointment-form">
-							<h3>قم بحجز إمتحانك النظري مع مترجم هنا</h3>
-							<h5>لرخصة القيادة فئة (ب) في هولندا</h5>
-							<div id="medical-form-result" data-notify-type="success" data-notify-msg="<i class=icon-ok-sign></i> Message Sent Successfully!"></div>
-							<form class="nobottommargin" id="template-medical-form" name="template-medical-form" action="scripts/reserveExam.php" method="post">
-								<div class="col_half">
-									<label for="first-name">الاسم الأول:</label>
-									<input type="text" id="first-name" name="first-name" class="form-control not-dark required pull-right" value="">
-								</div>
-								<div class="col_half col_last">
-									<label for="last-name">الاسم الأخير (الكنية):</label>
-									<input type="text" id="last-name" name="last-name" class="form-control not-dark required pull-right" value="">
-								</div>
-								<div class="col_half">
-									<label for="bsn">رقم الخدمة الوطني (BSN):</label>
-									<input type="text" id="bsn" name="bsn" class="form-control not-dark required pull-right" value="" maxlength="9" minlength="9">
-								</div>
-								<div class="col_half col_last">
-									<label for="dob">تاريخ الميلاد:</label>
-									<input type="text" id="dob" name="dob" class="form-control not-dark required pull-right" value="">
-								</div>
-								<div class="col_two_third">
-									<label for="str-name">اسم الشارع:</label>
-									<input type="text" id="str-name" name="str-name" class="form-control not-dark required pull-right" value="">
-								</div>
-								<div class="col_one_third col_last">
-									<label for="house-num">رقم المنزل:</label>
-									<input type="text" id="house-num" name="house-num" class="form-control not-dark required pull-right" value="">
-								</div>
-								<div class="col_one_third">
-									<label for="postcode">الرمز البريدي (Postcode):</label>
-									<input type="text" id="postcode" name="postcode" class="form-control not-dark required pull-right" value="">
-								</div>
-								<div class="col_two_third col_last">
-									<label for="city-name">اسم المدينة:</label>
-									<input type="text" id="city-name" name="city-name" class="form-control not-dark required pull-right" value="">
-								</div>
-								<div class="clear"></div>
-								<div class="col_two_third">
-									<label for="email">البريد الالكتروني:</label>
-									<input type="email" id="email" name="email" class="form-control not-dark required pull-right" value="">
-								</div>
-								<div class="col_one_third col_last">
-									<label for="phone">رقم الهاتف:</label>
-									<input type="text" id="phone" name="phone" class="form-control not-dark required pull-right" value="">
-								</div>
-								<div class="col_half">
-									<label for="place">مكان التقديم الذي ترغب به:</label>
-									<input type="text" id="place" name="place" class="form-control not-dark required pull-right" value="">
-								</div>
-								<div class="col_half col_last">
-									<label for="dateAndTime">تاريخ ووقت التقديم الذي ترغب به:</label>
-									<input type="text" id="dateAndTime" name="dateAndTime" class="form-control not-dark required pull-right" value="">
-								</div>
-                                <div class="col_half">
-                                    <label for="dialect">اللهجة التي تتكلم بها*:</label>
-                                    <input type="text" style="direction: rtl;" id="dialect" name="dialect" class="form-control not-dark required pull-right" value="">
-                                </div>
-                                <div class="col_full col_last">
-                                    <label for="note">ملاحظات إضافية:</label>
-                                    <textarea style="direction: rtl;" id="note" name="note" class="form-control not-dark pull-right" rows="4" cols="100"></textarea>
-                                </div>
-								<div class="clear"></div>
-								<div class="clear"></div>
-								<div class="col_full topmargin-sm nobottommargin">
-									<button class="button button-rounded button-white button-light nomargin pull-right" type="submit" value="submit">تأكيد الحجز</button>
-								</div>
-                                <div class="col_full">
-                                    <label for="dialect" class="topmargin-sm">*سنقوم بالمحاولة لإيجاد مترجم يتناسب مع اللهجة الخاصة بك</label>
-                                </div>
-								<div class="clear"></div>
-							</form>
-
-						</div>
-					</div>
-				</div>
-
-				<!--<div class="container clearfix">-->
+                <!--<div class="container clearfix">-->
 
 					<!--<div class="col_three_fifth">-->
 						<!--<div class="accordion accordion-lg clearfix">-->
@@ -499,7 +506,7 @@ $totalUsers = $countOthers + $countSucceeded;
                 }
                 ?>
 
-				<div class="section notopmargin" style="margin-bottom: 0">
+				<div class="section notopmargin" style="margin-bottom: 0;padding-bottom: 60px;padding-top: 0;background-color: #FFFFFF;">
 					<div class="container clearfix">
 
 						<div class="row">
@@ -756,7 +763,7 @@ $totalUsers = $countOthers + $countSucceeded;
                                         <i class="icon-facebook"></i>
                                         <i class="icon-facebook"></i>
                                     </a>
-                                    <a href="https://ar-ar.facebook.com/Alrawi1rijbewijs/"><small style="display: block; margin-top: 3px;"><strong>Like us</strong><br>on Facebook</small></a>
+                                    <a target="_blank" href="https://ar-ar.facebook.com/Alrawi1rijbewijs/"><small style="display: block; margin-top: 3px;"><strong>Like us</strong><br>on Facebook</small></a>
                                 </div>
 
                                 <div class="col-md-4 clearfix bottommargin-sm">
@@ -764,7 +771,7 @@ $totalUsers = $countOthers + $countSucceeded;
                                         <i class="icon-youtube"></i>
                                         <i class="icon-youtube"></i>
                                     </a>
-                                    <a href="https://www.youtube.com/channel/UCCofuIotSiIzzARX3nz4KSw"><small style="display: block; margin-top: 3px;"><strong>Subscribe</strong><br>on YouTube</small></a>
+                                    <a target="_blank" href="https://www.youtube.com/channel/UCCofuIotSiIzzARX3nz4KSw"><small style="display: block; margin-top: 3px;"><strong>Subscribe</strong><br>on YouTube</small></a>
                                 </div>
                                 <div class="col-md-4 clearfix bottommargin-sm">
                                     <a href="#" class="social-icon si-dark si-colored si-instagram nobottommargin" style="margin-right: 10px;">
