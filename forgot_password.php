@@ -28,18 +28,19 @@ if(isset($_POST['forgot_submit'])) {
 
     $mail             = new PHPMailer(); // defaults to using php "mail()"
     $mail->CharSet = 'UTF-8';
+    $mail->IsHTML(true);
+
     $body             = "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">
 <html xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\">
 	<head>
 		<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />
-		<link rel=\"stylesheet\" href=\"shop.alrawitheorie.nl/css/bootstrap.css\" type=\"text/css\"/>
-		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>
-		<link rel=\"stylesheet\" media=\"screen\" href=\"https://fontlibrary.org/face/droid-arabic-kufi\" type=\"text/css\"/>
-		<link href=\"https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css\" rel=\"stylesheet\" integrity=\"sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN\" crossorigin=\"anonymous\">
-		<title>Portfolio - Responsive Email Template</title>
+		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/><title>Portfolio - Responsive Email Template</title>
 		<style type=\"text/css\">
 			/* ----- Custom Font Import ----- */
 			@import url(https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic&subset=latin,latin-ext);
+			@import url(https://fontlibrary.org/face/droid-arabic-kufi);
+			@import url(https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css);
+			@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css);
 
 			/* ----- Text Styles ----- */
 			table{
@@ -196,7 +197,7 @@ if(isset($_POST['forgot_submit'])) {
 								<table class=\"container header\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"620\" style=\"width: 620px;\">
 									<tr>
 										<td class=\"text-center\" style=\"padding: 30px 0 30px 0; border-bottom: solid 1px #eeeeee;\" align=\"left\">
-											<img src=\"http://shop.alrawitheorie.nl/images/images/2.png\" alt=\"\"/>
+											<img src=\"http://shop.alrawitheorie.nl/images/2.png\" alt=\"\"/>
 										</td>
 									</tr>
 								</table>
@@ -204,15 +205,25 @@ if(isset($_POST['forgot_submit'])) {
 
 								<!-- / Hero subheader -->
 								<table class=\"container hero-subheader\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"620\" style=\"width: 620px;\">
-									<tr>
-										<td class=\"hero-subheader__title text-center\" style=\"font-size: 43px; font-weight: bold; padding: 80px 0 15px 0;font-family: 'DroidArabicKufiRegular';\" align=\"left\">إعادة تعيين كلمة المرور</td>
-									</tr>
+						<tr>
+							<td class=\"hero-subheader__title text-center\" style=\"font-size: 43px; font-weight: bold; padding: 80px 0 15px 0;font-family: 'DroidArabicKufiRegular';\" align=\"left\">إعادة تعيين كلمة المرور</td>
+						</tr>
 
-									<tr>
-										<td class=\"hero-subheader__content\" style=\"font-family: 'DroidArabicKufiRegular';direction:rtl;font-size: 16px; line-height: 27px; color: #969696; padding: 0 60px 90px 0;\" align=\"right\">الكود الخاص بك:<br>
-										$code</td>
-									</tr>
-								</table>
+						<tr>
+							<td class=\"hero-subheader__content\" style=\"font-family: 'DroidArabicKufiRegular';direction:rtl;font-size: 16px; line-height: 27px; color: #969696; padding: 0 60px 90px 0;\" align=\"right\">الكود الخاص بك:<br>
+							$code</td>
+						</tr>
+					</table>
+								<!--<table class=\"container hero-subheader\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"620\" style=\"width: 620px;\">-->
+									<!--<tr>-->
+										<!--<td class=\"hero-subheader__title text-center\" style=\"font-size: 43px; font-weight: bold; padding: 80px 0 15px 0;font-family: 'DroidArabicKufiRegular';\" align=\"left\">أهلاً وسهلاً بكم</td>-->
+									<!--</tr>-->
+
+									<!--<tr>-->
+										<!--<td class=\"hero-subheader__content\" style=\"font-family: 'DroidArabicKufiRegular';direction:rtl;font-size: 16px; line-height: 27px; color: #969696; padding: 0 60px 90px 0;\" align=\"right\">تم إنشاء حساب جديد بنجاح<br>-->
+										<!--يمكنك الآن تسجيل الدخول والمباشرة باستخدام خدمات موقعنا.</td>-->
+									<!--</tr>-->
+								<!--</table>-->
 								<!-- /// Hero subheader -->
 
 
