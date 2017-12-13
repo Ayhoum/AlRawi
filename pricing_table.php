@@ -152,7 +152,7 @@ $totalUsers = $countOthers + $countSucceeded;
                             <li><a href="#" class="button-red" style="color:#fff;"><?php echo $_SESSION['username']; ?></a>
                                 <ul>
                                     <?php if($_SESSION['role'] == "MainAdmin"){?>
-                                        <li><a href="adminAlrawi/dashboard.php" dir="rtl">لوحة التحكم <i class="icon-wrench"></i></a></li>
+                                        <li><a href="dashboardAlrawi/index.php" dir="rtl">لوحة التحكم <i class="icon-wrench"></i></a></li>
                                     <?php } else { ?>
                                         <li><a href="profile.php" dir="rtl">الملف الشخصي <i class="icon-user"></i></a></li>
                                     <?php } ?>
