@@ -202,101 +202,105 @@ include 'scripts/db_connection.php';
 
                                     <ul class="tab-nav clearfix" style="display:inline-block;">
                                         <li><a href="#tab-feeds"><i class="icon-calendar"></i> الدروس الخاصة</a></li>
-                                        <li><a href="#tab-posts"><i class="icon-euro"></i> الامتحانات المشتراة</a></li>
-                                        <li><a href="#tab-connections"><i class="icon-note"></i> الامتحانات المجانية</a></li>
+                                        <li><a href="#tab-posts"><i class="icon-euro"></i> الإمتحانات المشتراة</a></li>
+                                        <li><a href="#tab-connections"><i class="icon-note"></i> الإمتحانات المجانية</a></li>
                                     </ul>
 
                                     <div class="tab-container">
                                         <div class="tab-content clearfix" id="tab-feeds">
-
-                                            <p class="text-center ">يمكنك ايجاد جميع الدروس الخاصة في الجدول التالي مزودة بالتاريخ والوقت </p>
-
-                                            <div class="table-responsive">
-                                                <table class="table table-bordered table-striped ">
-                                                    <colgroup>
-                                                        <col class="col-xs-3">
-                                                        <col class="col-xs-3">
-                                                    </colgroup>
-                                                    <thead >
-                                                    <tr>
-                                                        <th class="text-center">التاريخ</th>
-                                                        <th class="text-center">الوقت</th>
-                                                        <th class="text-center">عنوان الجلسة</th>
-                                                        <th class="text-center">حالة الجلسة</th>
-
-                                                    </tr>
-                                                    </thead>
-
-                                                    <tbody>
-
-                                                    <?php
-
-                                                    if (isset($_SESSION['username'])) {
-                                                        $name = $_SESSION['username'];
-
-                                                        $query1 = "SELECT * FROM Users WHERE  Name ='{$name}' ";
-                                                        $result1 = mysqli_query($mysqli, $query1);
-
-                                                        if (mysqli_num_rows($result1) > 0) {
-                                                            while ($row = mysqli_fetch_assoc($result1)) {
-                                                                $user_id = $row['ID'];
-
-                                                                $query = "SELECT * FROM BOOKED_SESSION WHERE Users_ID ='{$user_id}' ORDER BY `ID` DESC ";
-                                                                $result = mysqli_query($mysqli,$query);
-                                                                While ($row = mysqli_fetch_assoc($result)){
-                                                                    $date    = $row['DATE'];
-                                                                    $time    = $row['TIME'];
-                                                                    $Subject = $row['SUBJECT'];
-                                                                    $status = $row['STATUS'];
-                                                                    $payment_status = $row['PAYMENT_STATUS'];
-
-
-                                                    ?>
-                                                    <tr>
-                                                        <td>
-                                                            <code><?php echo $date?> </code>
-                                                        </td>
-                                                        <td><?php echo $time ?> </td>
-                                                        <td><?php echo $Subject ?> </td>
-                                                        <td>
-                                                            <?php
-                                                                    if(date('Y-m-d') > $date){
-                                                                        echo "إنتهت الجلسة";
-                                                                    }elseif ($payment_status == "NOT PAID" && $status == "APPROVED"){
-                                                                ?>
-                                                                <div class="center">
-                                                                    <a href="payment_session.php" class="button button-rounded button-reveal button-large button-border "><i class="icon-cart"></i><span>ادفع الان</span></a>
-                                                                </div>
-                                                            <?php
-                                                            }elseif($status == "UNAPPROVED" && $payment_status == "NOT PAID"){
-
-                                                                echo "بانتظار الموافقة وتثبيت موعد الجلسة";
-
-                                                            }elseif ($status == "APPROVED" && $payment_status == "PAID"){
-                                                                echo "تم تثبيت موعد الجلسة";
-
-                                                            }?>
-                                                        </td>
-                                                    </tr>
-
-                                            <?php
-
-                                            }
-
-                                            }
-                                            }
-                                            }
-                                            ?>
-                                                    </tbody>
-                                                </table>
-
-                                                <div class="divider"><i class="icon-circle"></i></div>
-
-                                                <div class="center">
-                                                    <a href="private_session.php" class="button button-rounded button-reveal button-large button-border "><i class="icon-calendar"></i><span>احجز جلستك الخاصة الان</span></a>
-                                                </div>
-
+                                            <div class="fancy-title title-border-color">
+                                                <h3>هذه الخدمة <span>غير متاحة</span> حالياً</h3>
                                             </div>
+                                            <div class="fancy-title title-border-color">
+                                                <h3>سيتم إتاحتها بالوقت القريب</h3>
+                                            </div>
+
+<!--                                            <div class="table-responsive">-->
+<!--                                                <table class="table table-bordered table-striped ">-->
+<!--                                                    <colgroup>-->
+<!--                                                        <col class="col-xs-3">-->
+<!--                                                        <col class="col-xs-3">-->
+<!--                                                    </colgroup>-->
+<!--                                                    <thead >-->
+<!--                                                    <tr>-->
+<!--                                                        <th class="text-center">التاريخ</th>-->
+<!--                                                        <th class="text-center">الوقت</th>-->
+<!--                                                        <th class="text-center">عنوان الجلسة</th>-->
+<!--                                                        <th class="text-center">حالة الجلسة</th>-->
+<!---->
+<!--                                                    </tr>-->
+<!--                                                    </thead>-->
+<!---->
+<!--                                                    <tbody>-->
+<!---->
+<!--                                                    --><?php
+//
+//                                                    if (isset($_SESSION['username'])) {
+//                                                        $name = $_SESSION['username'];
+//
+//                                                        $query1 = "SELECT * FROM Users WHERE  Name ='{$name}' ";
+//                                                        $result1 = mysqli_query($mysqli, $query1);
+//
+//                                                        if (mysqli_num_rows($result1) > 0) {
+//                                                            while ($row = mysqli_fetch_assoc($result1)) {
+//                                                                $user_id = $row['ID'];
+//
+//                                                                $query = "SELECT * FROM BOOKED_SESSION WHERE Users_ID ='{$user_id}' ORDER BY `ID` DESC ";
+//                                                                $result = mysqli_query($mysqli,$query);
+//                                                                While ($row = mysqli_fetch_assoc($result)){
+//                                                                    $date    = $row['DATE'];
+//                                                                    $time    = $row['TIME'];
+//                                                                    $Subject = $row['SUBJECT'];
+//                                                                    $status = $row['STATUS'];
+//                                                                    $payment_status = $row['PAYMENT_STATUS'];
+//
+//
+//                                                    ?>
+<!--                                                    <tr>-->
+<!--                                                        <td>-->
+<!--                                                            <code>--><?php //echo $date?><!-- </code>-->
+<!--                                                        </td>-->
+<!--                                                        <td>--><?php //echo $time ?><!-- </td>-->
+<!--                                                        <td>--><?php //echo $Subject ?><!-- </td>-->
+<!--                                                        <td>-->
+<!--                                                            --><?php
+//                                                                    if(date('Y-m-d') > $date){
+//                                                                        echo "إنتهت الجلسة";
+//                                                                    }elseif ($payment_status == "NOT PAID" && $status == "APPROVED"){
+//                                                                ?>
+<!--                                                                <div class="center">-->
+<!--                                                                    <a href="payment_session.php" class="button button-rounded button-reveal button-large button-border "><i class="icon-cart"></i><span>ادفع الان</span></a>-->
+<!--                                                                </div>-->
+<!--                                                            --><?php
+//                                                            }elseif($status == "UNAPPROVED" && $payment_status == "NOT PAID"){
+//
+//                                                                echo "بانتظار الموافقة وتثبيت موعد الجلسة";
+//
+//                                                            }elseif ($status == "APPROVED" && $payment_status == "PAID"){
+//                                                                echo "تم تثبيت موعد الجلسة";
+//
+//                                                            }?>
+<!--                                                        </td>-->
+<!--                                                    </tr>-->
+<!---->
+<!--                                            --><?php
+//
+//                                            }
+//
+//                                            }
+//                                            }
+//                                            }
+//                                            ?>
+<!--                                                    </tbody>-->
+<!--                                                </table>-->
+<!---->
+<!--                                                <div class="divider"><i class="icon-circle"></i></div>-->
+<!---->
+<!--                                                <div class="center">-->
+<!--                                                    <a href="private_session.php" class="button button-rounded button-reveal button-large button-border "><i class="icon-calendar"></i><span>احجز جلستك الخاصة الان</span></a>-->
+<!--                                                </div>-->
+<!---->
+<!--                                            </div>-->
 
                                         </div>
                                         <div class="tab-content clearfix" id="tab-posts">
@@ -415,7 +419,7 @@ include 'scripts/db_connection.php';
                                                                 </div>
                                                                 <div class="team-desc team-desc-bg">
                                                                     <div class="team-title"><h4><?php echo $name; ?></h4><span> مجاني </span></div>
-                                                                    <a href="free_exam_interface.php?exam_id=<?php echo $id ?>" class="button button-xlarge button-dark button-rounded tright">إبدأ الإمتحان<i class="icon-circle-arrow-right"></i></a>
+                                                                    <a href="free_exam_interface.php?exam_id=<?php echo $id ?>" class="button button-xlarge button-dark button-rounded tright" style="padding: 0 22px;font-size: 18px;letter-spacing: 0;height: 52px;line-height: 52px;">إبدأ الإمتحان<i class="icon-circle-arrow-right"></i></a>
                                                                 </div>
                                                             </div>
                                                         </div>

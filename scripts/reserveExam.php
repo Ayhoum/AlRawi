@@ -35,6 +35,8 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
     $phone = $_POST['phone'];
 	$place = $_POST['place'];
     $dateAndTime = $_POST['dateAndTime'];
+    $dialect = $_POST['dialect'];
+    $note = $_POST['note'];
 
 
 	$subject = 'حجز إمتحان نظري مع مترجم';
@@ -58,8 +60,10 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
     $phone = isset($phone) ? "رقم الهاتف: $phone<br><br>" : '';
     $place = isset($place) ? "المكان المرغوب للتقديم: $place<br><br>" : '';
     $dateAndTime = isset($dateAndTime) ? "التاريخ المرغوب للتقديم: $dateAndTime<br><br>" : '';
+    $dialect = isset($dialect) ? "اللهجة: $dialect<br><br>" : '';
+    $note = isset($note) ? "الملاحظات الإضافية: $note<br><br>" : '';
 
-		$body = "$name $bsn $dob $strName $houseNum $postcode $cityName $email $phone $place $dateAndTime";
+		$body = "$name $bsn $dob $strName $houseNum $postcode $cityName $email $phone $place $dateAndTime $dialect $note";
 
 		// Uncomment the following Lines of Code if you want to Force reCaptcha Validation
 

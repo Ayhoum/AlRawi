@@ -406,6 +406,16 @@ $totalUsers = $countOthers + $countSucceeded;
 									<label for="dateAndTime">تاريخ ووقت التقديم الذي ترغب به:</label>
 									<input type="text" id="dateAndTime" name="dateAndTime" class="form-control not-dark required pull-right" value="">
 								</div>
+                                <div class="col_half">
+                                    <label for="dialect">اللهجة التي تتكلم بها:</label>
+                                    <input type="text" style="direction: rtl;" id="dialect" name="dialect" class="form-control not-dark required pull-right" value="">
+                                </div>
+                                <div class="clear"></div>
+
+                                <div class="col_full col_last">
+                                    <label for="note">ملاحظات إضافية:</label>
+                                    <textarea style="direction: rtl;" id="note" name="note" class="form-control not-dark required pull-right" rows="4" cols="100"></textarea>
+                                </div>
 								<div class="clear"></div>
 								<div class="clear"></div>
 								<div class="col_full topmargin-sm nobottommargin">
