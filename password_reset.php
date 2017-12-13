@@ -2,33 +2,27 @@
 session_start();
 ob_start();
 include 'scripts/db_connection.php';
-if(isset($_POST['login_submit'])) {
 
-    $email = $_POST['login_username'];
-    $email = mysqli_real_escape_string($mysqli, $email);
-    $pass = $_POST['login_password'];
-    $pass = mysqli_real_escape_string($mysqli, $pass);
-
+if(isset($_POST['code_submit'])){
+    $code = $_POST['forgot_code'];
+    $email = $_POST['forgot_username'];
 
     $query = "SELECT * From Users WHERE EMAIL = '{$email}' ";
-    $getHashAgent = mysqli_query($mysqli, $query);
-    if (mysqli_num_rows($getHashAgent) == 1) {
-        while ($row = mysqli_fetch_assoc($getHashAgent)) {
-            $hash = $row['PASSWORD'];
-            $name = $row['NAME'];
-            if ((password_verify($pass, $hash))) {
-                $role = "user";
-                $_SESSION['email'] = $email;
-                $_SESSION['username'] = $name;
-                $_SESSION['role'] = $role;
-                echo 'Welcome Agent';
-                header("Location: profile.php");
-            } else {
-                echo "Enter a Valid Data !! ";
-            }
+    $getAgent = mysqli_query($mysqli, $query);
+    if (mysqli_num_rows($getAgent) == 1) {
+        while ($row = mysqli_fetch_assoc($getAgent)) {
+            $id = $row['ID'];
         }
     }
+
+    $codeQuery = "SELECT * FROM PASSWORD_RESET WHERE ID = {$id} AND CODE = {$code}";
+    $getCode = mysqli_query($mysqli, $codeQuery);
+    if (mysqli_num_rows($getCode) != 1) {
+        echo "<script>alert('هذا الكود غير صالح!');</script>";
+        header("Location: insert_code.php");
+    }
 }
+
 ?>
 
 
@@ -82,25 +76,24 @@ if(isset($_POST['login_submit'])) {
 
                     <div class="panel panel-default divcenter noradius noborder" style="max-width: 400px;">
                         <div class="panel-body" style="padding: 40px;">
-                            <form id="login_form" name="login_form" class="nobottommargin" action="#" method="post">
-                                <h3 class="text-center">قم بتسجيل الدخول لحسابك</h3>
+                            <form id="login_form" name="forgot_form" class="nobottommargin" action="update_password.php?email=<?php echo $email;?>" method="post">
+                                <h3 class="text-center">قم باستعادة كلمة المرور</h3>
 
                                 <div class="col_full">
-                                    <label for="login_username">البريد الإلكتروني:</label>
-                                    <input type="email" id="login_username" name="login_username" value="" class="form-control not-dark" />
+                                    <label for="password_new">كلمة المرور الجديدة</label>
+                                    <input type="email" id="password_new" name="password_new" value="" class="form-control not-dark" />
                                 </div>
 
                                 <div class="col_full">
-                                    <label for="login_password">كلمة المرور:</label>
-                                    <input type="password" id="login_password" name="login_password" value="" class="form-control not-dark" />
+                                    <label for="password_new2">إعادة كلمة المرور الجديدة</label>
+                                    <input type="text" id="password_new2" name="password_new2" value="" class="form-control not-dark" />
                                 </div>
 
                                 <div class="col_full nobottommargin">
-                                    <button class="button button-3d button-black nomargin" style="width: 100%" id="login_submit" name="login_submit" value="login">تسجيل الدخول</button>
+                                    <button class="button button-3d button-black nomargin" style="width: 100%" id="new_submit" name="new_submit" value="Retrieve">استعادة</button>
                                 </div>
                                 <div class="col_full topmargin-sm nobottommargin">
-                                    <a href="forgot_password.php" class="fright text-center" style="width: 100%">نسيت كلمة المرور؟</a>
-                                    <a href="signup.php" class="fright text-center" style="width: 100%">قم بتسجيل حساب جديد</a>
+                                    <a href="login.php" class="fright text-center" style="width: 100%">تسجيل الدخول</a>
                                 </div>
                             </form>
                         </div>

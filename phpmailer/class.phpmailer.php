@@ -70,13 +70,13 @@ class PHPMailer
      * The From email address for the message.
      * @var string
      */
-    public $From = 'root@localhost';
+    public $From = 'info@alrawitheorie.nl';
 
     /**
      * The From name of the message.
      * @var string
      */
-    public $FromName = 'Root User';
+    public $FromName = 'Al Rawi Theorie';
 
     /**
      * The Sender email (Return-Path) of the message.

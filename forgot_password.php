@@ -1,82 +1,38 @@
 <?php
+session_start();
+ob_start();
 include 'scripts/db_connection.php';
 require_once 'phpmailer/class.phpmailer.php';
-if(isset($_POST['signup_submit'])) {
+if(isset($_POST['forgot_submit'])) {
+
+    $email = $_POST['forgot_username'];
+    $email = mysqli_real_escape_string($mysqli, $email);
 
 
-    $situation = "NEW";
-    $spent = 0;
-
-    $userName       = $_POST['signup_username'];
-    $userName       = mysqli_real_escape_string($mysqli,$userName);
-
-    $password   = $_POST['signup_password'];
-    $password   = mysqli_real_escape_string($mysqli,$password);
-
-    $fullName   = $_POST['signup_fullname'];
-    $fullName   = mysqli_real_escape_string($mysqli,$fullName);
-
-    $phone         = $_POST['signup_phone'];
-    $phone         = mysqli_real_escape_string($mysqli,$phone);
-
-    $birthday         = $_POST['signup_birthday'];
-    $birthday         = mysqli_real_escape_string($mysqli,$birthday);
-
-    $city        = $_POST['signup_city'];
-    $city         = mysqli_real_escape_string($mysqli,$city);
-    $date = date('Y-m-d');
-
-    $encCode = ['cost' => 11];
-    $encPassword = password_hash($password, PASSWORD_BCRYPT, $encCode);
+    $query = "SELECT * From Users WHERE EMAIL = '{$email}' ";
+    $getAgent = mysqli_query($mysqli, $query);
+    if (mysqli_num_rows($getAgent) == 1) {
+        while ($row = mysqli_fetch_assoc($getAgent)) {
+            $id = $row['ID'];
+        }
+    }
 
 
 
-    $query = "SELECT * From Users WHERE EMAIL = '{$userName}' ";
-    $getHashAgent = mysqli_query($mysqli, $query);
-    if (mysqli_num_rows($getHashAgent) == 1) {
+    $code = rand(10000,99999);
 
-        echo "<script>alert('هذا المستخدم مسجل مسبقا في موقعنا');</script>";
+    $codeQuery = "INSERT INTO PASSWORT_RESET(USER_ID,
+                                CODE) ";
+    $codeQuery .= "VALUES('{$id}',
+                    '{$code}') ";
 
-
-
-    } else{
-
+    $insertCode = mysqli_query($mysqli,$codeQuery);
 
 
 
-
-
-    //Sender
-
-    if(!empty($userName) && !empty($password) && !empty($phone) && !empty($birthday) && !empty($city)){
-        $query = "INSERT INTO Users(EMAIL,
-                                PASSWORD,
-                                NAME,
-                                PHONE,
-                                CITY,
-                                BD,
-                                SPENT,
-                                SITUATION,
-                                REG_DATE) ";
-        $query .= "VALUES('{$userName}',
-                    '{$encPassword}',
-                    '{$fullName}',
-                    '{$phone}',
-                    '{$city}',
-                    '{$birthday}',
-                    '{$spent}',
-                    '{$situation}',
-                    '{$date}') ";
-
-        $insertUser =  mysqli_query($mysqli, $query);
-        if (!$insertUser) {
-            die("Failed!" . mysqli_error($mysqli));
-        }else{
-
-
-                $mail             = new PHPMailer(); // defaults to using php "mail()"
-                $mail->CharSet = 'UTF-8';
-                $body             = "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">
+    $mail             = new PHPMailer(); // defaults to using php "mail()"
+    $mail->CharSet = 'UTF-8';
+    $body             = "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">
 <html xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\">
 	<head>
 		<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />
@@ -253,12 +209,12 @@ if(isset($_POST['signup_submit'])) {
 								<!-- / Hero subheader -->
 								<table class=\"container hero-subheader\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"620\" style=\"width: 620px;\">
 									<tr>
-										<td class=\"hero-subheader__title text-center\" style=\"font-size: 43px; font-weight: bold; padding: 80px 0 15px 0;font-family: 'DroidArabicKufiRegular';\" align=\"left\">أهلاً وسهلاً بكم</td>
+										<td class=\"hero-subheader__title text-center\" style=\"font-size: 43px; font-weight: bold; padding: 80px 0 15px 0;font-family: 'DroidArabicKufiRegular';\" align=\"left\">إعادة تعيين كلمة المرور</td>
 									</tr>
 
 									<tr>
-										<td class=\"hero-subheader__content\" style=\"font-family: 'DroidArabicKufiRegular';direction:rtl;font-size: 16px; line-height: 27px; color: #969696; padding: 0 60px 90px 0;\" align=\"right\">تم إنشاء حساب جديد بنجاح<br>
-										يمكنك الآن تسجيل الدخول والمباشرة باستخدام خدمات موقعنا.</td>
+										<td class=\"hero-subheader__content\" style=\"font-family: 'DroidArabicKufiRegular';direction:rtl;font-size: 16px; line-height: 27px; color: #969696; padding: 0 60px 90px 0;\" align=\"right\">الكود الخاص بك:<br>
+										$code</td>
 									</tr>
 								</table>
 								<!-- /// Hero subheader -->
@@ -370,24 +326,24 @@ if(isset($_POST['signup_submit'])) {
 </html>";
 
 
-                $address1= $userName;
-                $mail->AddAddress($address1);
+    $address1= $email;
+    $mail->AddAddress($address1);
 
-                $mail->Subject    = "New User!";
+    $mail->Subject    = "إستعادة كلمة المرور";
 
-                $mail->MsgHTML($body);
+    $mail->MsgHTML($body);
 
-                if(!$mail->Send()) {
-                    echo "Mailer Error: " . $mail->ErrorInfo;
-                }
-                header("Location: index.php");
-        }
+    if(!$mail->Send()) {
+        echo "Mailer Error: " . $mail->ErrorInfo;
     }
-}
+    header("Location: insert_code.php");
+
 }
 ?>
+
+
 <!DOCTYPE html>
-<html dir="rtl" lang="en-US">
+<html dir="ltr" lang="en-US">
 <head>
 
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
@@ -403,16 +359,13 @@ if(isset($_POST['signup_submit'])) {
     <link rel="stylesheet" href="css/animate.css" type="text/css" />
     <link rel="stylesheet" href="css/magnific-popup.css" type="text/css" />
     <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/droid-arabic-kufi" type="text/css"/>
-    <!-- Date & Time Picker CSS -->
-    <link rel="stylesheet" href="demos/travel/css/datepicker.css" type="text/css" />
-    <link rel="stylesheet" href="css/components/timepicker.css" type="text/css" />
-    <link rel="stylesheet" href="css/components/daterangepicker.css" type="text/css" />
+
     <link rel="stylesheet" href="css/responsive.css" type="text/css" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- Document Title
     ============================================= -->
-    <title>Al Rawi Theorie | Sign Up</title>
+    <title>Al Rawi Theorie | Log In</title>
 
 </head>
 
@@ -438,43 +391,20 @@ if(isset($_POST['signup_submit'])) {
                     </div>
 
                     <div class="panel panel-default divcenter noradius noborder" style="max-width: 400px;">
-                        <div class="panel-body travel-date-group" style="padding: 40px;">
-                            <form id="signup-form" name="signup-form" class="nobottommargin" action="#" method="post">
-                                <h3 class="text-center">قم بإنشاء حساب جديد</h3>
+                        <div class="panel-body" style="padding: 40px;">
+                            <form id="login_form" name="forgot_form" class="nobottommargin" action="forgot_password.php" method="post">
+                                <h3 class="text-center">قم باستعادة كلمة المرور</h3>
+
                                 <div class="col_full">
-                                    <label for="login-form-username">البريد الإلكتروني (اسم المستخدم):</label>
-                                    <input type="email" id="signup_username" name="signup_username" value="" class="form-control not-dark" />
-                                </div>
-
-                                <div class="col_half">
-                                    <label for="login-form-password">كلمة مرور جديدة:</label>
-                                    <input type="password" id="signup_password" name="signup_password" value="" class="form-control not-dark" />
-                                </div>
-
-                                <div class="col_half col_last">
-                                    <label for="login-form-password">إعادة كلمة المرور:</label>
-                                    <input type="password" id="signup_password_re" name="signup_password_re" value="" class="form-control not-dark" />
-                                </div>
-                                <div class="col_half">
-                                    <label for="login-form-username">الاسم الكامل:</label>
-                                    <input type="text" id="signup_fullname" name="signup_fullname" value="" class="form-control not-dark" />
-                                </div>
-                                <div class="col_half col_last">
-                                    <label for="login-form-username">رقم الهاتف:</label>
-                                    <input type="text" id="signup_phone" name="signup_phone" value="" class="form-control not-dark" />
-                                </div>
-
-                                <div class="col_half">
-                                    <label for="login-form-username">تاريخ الميلاد:</label>
-                                    <input type="text" value="" id="signup_birthday" name="signup_birthday" class="sm-form-control past-enabled" placeholder="DD/MM/YYYY">
-                                </div>
-                                <div class="col_half col_last">
-                                    <label for="login-form-username">المدينة:</label>
-                                    <input type="text" id="signup_city" name="signup_city" value="" class="form-control not-dark" />
+                                    <label for="forgot_username">البريد الإلكتروني:</label>
+                                    <input type="email" id="forgot_username" name="forgot_username" value="" class="form-control not-dark" />
                                 </div>
 
                                 <div class="col_full nobottommargin">
-                                    <button class="button button-3d button-black nomargin" style="width: 100%" id="signup_submit" name="signup_submit" value="signup">إنشاء الحساب</button>
+                                    <button class="button button-3d button-black nomargin" style="width: 100%" id="forgot_submit" name="forgot_submit" value="Retrieve">استعادة</button>
+                                </div>
+                                <div class="col_full topmargin-sm nobottommargin">
+                                    <a href="login.php" class="fright text-center" style="width: 100%">تسجيل الدخول</a>
                                 </div>
                             </form>
                         </div>
@@ -500,23 +430,10 @@ if(isset($_POST['signup_submit'])) {
 ============================================= -->
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/plugins.js"></script>
-<!-- Date & Time Picker JS -->
-<script type="text/javascript" src="js/components/moment.js"></script>
-<script type="text/javascript" src="demos/travel/js/datepicker.js"></script>
-<script type="text/javascript" src="js/components/timepicker.js"></script>
-<!-- Include Date Range Picker -->
-<script type="text/javascript" src="js/components/daterangepicker.js"></script>
+
 <!-- Footer Scripts
 ============================================= -->
 <script type="text/javascript" src="js/functions.js"></script>
 
-
-<script type="text/javascript">
-    $(function() {
-        $('.travel-date-group .past-enabled').datepicker({
-            autoclose: true
-        });
-    });
-</script>
 </body>
 </html>
