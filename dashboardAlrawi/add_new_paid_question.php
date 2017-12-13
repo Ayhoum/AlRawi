@@ -29,7 +29,10 @@ if (isset($_GET['id']) && ($_GET['qset'])) {
             $answer_2 = "0";
         }
         $newPicture = $_FILES['image']['name'];
-        $newPicture = date('Ymd') . date('Hms') . ".jpg";
+        $date = date('YmdHis');
+        $time=round(microtime(),8);
+        $time = $time * 100000000;
+        $newPicture = $date . $time . ".jpg";
         $newPicture_tmp = $_FILES['image']['tmp_name'];
         if (!empty($newPicture_tmp)) {
             move_uploaded_file($newPicture_tmp, "examsImages/paid/$newPicture");

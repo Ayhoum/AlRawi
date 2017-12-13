@@ -207,7 +207,6 @@ include 'scripts/db_connection.php';
                                     </ul>
 
                                     <div class="tab-container">
-
                                         <div class="tab-content clearfix" id="tab-feeds">
 
                                             <p class="text-center ">يمكنك ايجاد جميع الدروس الخاصة في الجدول التالي مزودة بالتاريخ والوقت </p>
@@ -348,14 +347,15 @@ include 'scripts/db_connection.php';
 
                                             ?>
                                             <div class="fancy-title title-border-color">
-                                                <h1>ليس هناك أي باقة مشتراة </span>حاليا<span></h1>
+                                                <h1>ليس هناك أي باقة مشتراة </span>حاليا<span> </h1>
                                             </div>
 
                                             <div class="divider"><i class="icon-circle"></i></div>
 
                                             <div class="center">
                                                 <a href="pricing_table.php" class="button button-rounded button-reveal button-large button-border ">
-                                                    <i class="icon-shopping-cart"></i><span>اشتري مزيدا من الفحوص</span></a>
+                                                    <i class="icon-shopping-cart"></i><span>
+                                                        اشتري مزيدا من الفحوص</span></a>
                                             </div>
 
                                         <?php
@@ -367,7 +367,7 @@ include 'scripts/db_connection.php';
                                                     ?>
 
                                                     <div class="fancy-title title-border-color">
-                                                        <h1>ليس هناك أي باقة مشتراة <span>حاليا</span></h1>
+                                                        <h1>لم يتم شراء أي إمتحانات <span>حتى الآن</span></h1>
                                                     </div>
 
                                                     <div class="divider"><i class="icon-circle"></i></div>
