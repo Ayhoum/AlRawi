@@ -260,7 +260,10 @@ include 'scripts/db_connection.php';
                                                         <td><?php echo $time ?> </td>
                                                         <td><?php echo $Subject ?> </td>
                                                         <td>
-                                                            <?php if ($payment_status == "NOT PAID" && $status == "APPROVED"){
+                                                            <?php
+                                                                    if(date('Y-m-d') > $date){
+                                                                        echo "إنتهت الجلسة";
+                                                                    }elseif ($payment_status == "NOT PAID" && $status == "APPROVED"){
                                                                 ?>
                                                                 <div class="center">
                                                                     <a href="payment_session.php" class="button button-rounded button-reveal button-large button-border "><i class="icon-cart"></i><span>ادفع الان</span></a>
@@ -268,7 +271,10 @@ include 'scripts/db_connection.php';
                                                             <?php
                                                             }elseif($status == "UNAPPROVED" && $payment_status == "NOT PAID"){
 
-                                                                    echo "بانتظار الموافقة وتثبيت موعد الجلسة";
+                                                                echo "بانتظار الموافقة وتثبيت موعد الجلسة";
+
+                                                            }elseif ($status == "APPROVED" && $payment_status == "PAID"){
+                                                                echo "تم تثبيت موعد الجلسة";
 
                                                             }?>
                                                         </td>
