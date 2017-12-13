@@ -15,10 +15,9 @@ if(isset($_POST['code_submit'])){
         }
     }
 
-    $codeQuery = "SELECT * FROM PASSWORD_RESET WHERE ID = {$id} AND CODE = {$code}";
+    $codeQuery = "SELECT * FROM PASSWORD_RESET WHERE USER_ID = '{$id}' AND CODE = '{$code}'";
     $getCode = mysqli_query($mysqli, $codeQuery);
     if (mysqli_num_rows($getCode) != 1) {
-        echo "<script>alert('هذا الكود غير صالح!');</script>";
         header("Location: insert_code.php");
     }
 }
@@ -49,7 +48,7 @@ if(isset($_POST['code_submit'])){
 
     <!-- Document Title
     ============================================= -->
-    <title>Al Rawi Theorie | Log In</title>
+    <title>Al Rawi Theorie</title>
 
 </head>
 
@@ -81,12 +80,12 @@ if(isset($_POST['code_submit'])){
 
                                 <div class="col_full">
                                     <label for="password_new">كلمة المرور الجديدة</label>
-                                    <input type="email" id="password_new" name="password_new" value="" class="form-control not-dark" />
+                                    <input type="password" id="password_new" name="password_new" value="" class="form-control not-dark" />
                                 </div>
 
                                 <div class="col_full">
                                     <label for="password_new2">إعادة كلمة المرور الجديدة</label>
-                                    <input type="text" id="password_new2" name="password_new2" value="" class="form-control not-dark" />
+                                    <input type="password" id="password_new2" name="password_new2" value="" class="form-control not-dark" />
                                 </div>
 
                                 <div class="col_full nobottommargin">

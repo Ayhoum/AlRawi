@@ -30,7 +30,7 @@ include 'scripts/db_connection.php';
 
     <!-- Document Title
     ============================================= -->
-    <title>Al Rawi Theorie | Log In</title>
+    <title>Al Rawi Theorie</title>
 
 </head>
 
@@ -57,7 +57,7 @@ include 'scripts/db_connection.php';
 
                     <div class="panel panel-default divcenter noradius noborder" style="max-width: 400px;">
                         <div class="panel-body" style="padding: 40px;">
-                            <form id="login_form" name="forgot_form" class="nobottommargin" action="password_reset.php" method="post">
+                            <form id="code_form" name="code_form" class="nobottommargin" action="password_reset.php" method="post">
                                 <h3 class="text-center">قم باستعادة كلمة المرور</h3>
 
                                 <div class="col_full">
@@ -72,7 +72,7 @@ include 'scripts/db_connection.php';
                                 </div>
 
                                 <div class="col_full nobottommargin">
-                                    <button class="button button-3d button-black nomargin" style="width: 100%" id="code_submit" name="code_submit" value="Retrieve">استعادة</button>
+                                    <button type="submit" class="button button-3d button-black nomargin" style="width: 100%" id="code_submit" name="code_submit">استعادة</button>
                                 </div>
                                 <div class="col_full topmargin-sm nobottommargin">
                                     <a href="login.php" class="fright text-center" style="width: 100%">تسجيل الدخول</a>

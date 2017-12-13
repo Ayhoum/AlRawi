@@ -21,11 +21,7 @@ if(isset($_POST['forgot_submit'])) {
 
     $code = rand(10000,99999);
 
-    $codeQuery = "INSERT INTO PASSWORT_RESET(USER_ID,
-                                CODE) ";
-    $codeQuery .= "VALUES('{$id}',
-                    '{$code}') ";
-
+    $codeQuery = "INSERT INTO PASSWORD_RESET (USER_ID, CODE) VALUES ('{$id}', '{$code}') ";
     $insertCode = mysqli_query($mysqli,$codeQuery);
 
 
