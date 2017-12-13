@@ -122,7 +122,7 @@ include 'scripts/db_connection.php';
                             <li><a href="#" class="button-red" style="color:#fff;"><?php echo $_SESSION['username']; ?></a>
                                 <ul>
                                     <?php if($_SESSION['role'] == "MainAdmin"){?>
-                                        <li><a href="adminAlrawi/dashboard.php" dir="rtl">لوحة التحكم <i class="icon-wrench"></i></a></li>
+                                        <li><a href="dashboardAlrawi/index.php" dir="rtl">لوحة التحكم <i class="icon-wrench"></i></a></li>
                                     <?php } else { ?>
                                         <li><a href="profile.php" dir="rtl">الملف الشخصي <i class="icon-user"></i></a></li>
                                     <?php } ?>
@@ -242,12 +242,13 @@ include 'scripts/db_connection.php';
                                                             while ($row = mysqli_fetch_assoc($result1)) {
                                                                 $user_id = $row['ID'];
 
-                                                                $query = "SELECT * FROM BOOKED_SESSION WHERE Users_ID ='{$user_id}' && STATUS = 'APPROVED' ORDER BY `ID` DESC ";
+                                                                $query = "SELECT * FROM BOOKED_SESSION WHERE Users_ID ='{$user_id}' ORDER BY `ID` DESC ";
                                                                 $result = mysqli_query($mysqli,$query);
                                                                 While ($row = mysqli_fetch_assoc($result)){
                                                                     $date    = $row['DATE'];
                                                                     $time    = $row['TIME'];
                                                                     $Subject = $row['SUBJECT'];
+                                                                    $status = $row['STATUS'];
                                                                     $payment_status = $row['PAYMENT_STATUS'];
 
 
@@ -259,13 +260,16 @@ include 'scripts/db_connection.php';
                                                         <td><?php echo $time ?> </td>
                                                         <td><?php echo $Subject ?> </td>
                                                         <td>
-                                                            <?php if ( $payment_status == "NOT PAID"){
+                                                            <?php if ($payment_status == "NOT PAID" && $status == "APPROVED"){
                                                                 ?>
                                                                 <div class="center">
                                                                     <a href="payment_session.php" class="button button-rounded button-reveal button-large button-border "><i class="icon-cart"></i><span>ادفع الان</span></a>
                                                                 </div>
-
                                                             <?php
+                                                            }elseif($status == "UNAPPROVED" && $payment_status == "NOT PAID"){
+
+                                                                    echo "بانتظار الموافقة وتثبيت موعد الجلسة";
+
                                                             }?>
                                                         </td>
                                                     </tr>
