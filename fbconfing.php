@@ -16,7 +16,7 @@ use Facebook\Exceptions\FacebookSDKException;
  */
 $appId         = '321305235019959'; //Facebook App ID
 $appSecret     = '5a22c44ded5fff945e3db34e4a93813e'; //Facebook App Secret
-$redirectURL   = 'shop.alrwaitheorie.nl/index.php'; //Callback URL
+$redirectURL   = 'http://shop.alrawitheorie.nl/login.php'; //Callback URL
 $fbPermissions = array('email');  //Optional permissions
 
 $fb = new Facebook(array(
