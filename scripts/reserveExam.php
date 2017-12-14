@@ -16,7 +16,8 @@ $message_success = 'قمنا باستلام طلب الحجز الخاص بك ب
 $recaptcha_secret = ''; // Your reCaptcha Secret
 
 $mail = new PHPMailer();
-
+$mail->CharSet = 'UTF-8';
+$mail->IsHTML(true);
 // If you intend you use SMTP, add your SMTP Code after this Line
 
 
@@ -395,7 +396,7 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 		$sendEmail = $mail->Send();
 
 		if( $sendEmail == true ):
-			echo '{ "alert": "success", "message": "' . $message_success . '" }';
+			echo $message_success;
 		else:
 			echo '{ "alert": "error", "message": "Email <strong>could not</strong> be sent due to some Unexpected Error. Please Try Again later.<br /><br /><strong>Reason:</strong><br />' . $mail->ErrorInfo . '" }';
 		endif;

@@ -298,7 +298,7 @@ $totalUsers = $countOthers + $countSucceeded;
 
                 <div class="divider" id="services"><i class="icon-circle"></i></div>
 
-                <!--                <div class="section nopadding common-height dark topmargin-sm" style="margin-bottom:0;">-->
+<!--                                <div class="section nopadding common-height dark topmargin-sm" style="margin-bottom:0;">-->
 <!--					<div class="col-md-5" data-height-lg="597" data-height-md="614" data-height-sm="400" data-height-xs="300" data-height-xxs="200" style="background: url('demos/medical/images/section-bg.jpg'); background-size: cover;">-->
 <!--						<div>&nbsp;</div>-->
 <!--					</div>-->
@@ -357,15 +357,16 @@ $totalUsers = $countOthers + $countSucceeded;
 <!--									<label for="dateAndTime">تاريخ ووقت التقديم الذي ترغب به:</label>-->
 <!--									<input type="text" id="dateAndTime" name="dateAndTime" class="form-control not-dark required pull-right" value="">-->
 <!--								</div>-->
-<!--                                <div class="col_half">-->
+<!--                                <div class="col_full col_last">-->
 <!--                                    <label for="dialect">اللهجة التي تتكلم بها*:</label>-->
 <!--                                    <input type="text" style="direction: rtl;" id="dialect" name="dialect" class="form-control not-dark required pull-right" value="">-->
 <!--                                </div>-->
-<!--                                <div class="col_full col_last">-->
+<!--                                <div class="clear"></div>-->
+<!--                                <div class="clear"></div>-->
+<!--                                <div class="col_full col_last topmargin-sm">-->
 <!--                                    <label for="note">ملاحظات إضافية:</label>-->
 <!--                                    <textarea style="direction: rtl;" id="note" name="note" class="form-control not-dark pull-right" rows="4" cols="100"></textarea>-->
 <!--                                </div>-->
-<!--								<div class="clear"></div>-->
 <!--								<div class="clear"></div>-->
 <!--								<div class="col_full topmargin-sm nobottommargin">-->
 <!--									<button class="button button-rounded button-white button-light nomargin pull-right" type="submit" value="submit">تأكيد الحجز</button>-->
