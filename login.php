@@ -57,38 +57,6 @@ if(isset($_POST['login_submit'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
 
-<!--    //FaceBook Button//-->
-
-    <div id="fb-root"></div>
-    <script>(function(d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s); js.id = id;
-            js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.11&appId=321305235019959';
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));</script>
-
-
-<!--     facebook SDK-->
-    <script>
-        window.fbAsyncInit = function() {
-            FB.init({
-                appId      : '321305235019959',
-                xfbml      : true,
-                version    : 'v2.11'
-            });
-            FB.AppEvents.logPageView();
-        };
-
-        (function(d, s, id){
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) {return;}
-            js = d.createElement(s); js.id = id;
-            js.src = "https://connect.facebook.net/en_US/sdk.js";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-    </script>
-
     <!-- Document Title
     ============================================= -->
     <title>Al Rawi Theorie | Log In</title>
@@ -136,14 +104,6 @@ if(isset($_POST['login_submit'])) {
                                     <button class="button button-3d button-black nomargin" style="width: 100%" id="login_submit" name="login_submit" value="login">تسجيل الدخول</button>
                                 </div>
 
-
-
-
-                                <!--                                FaceBook Button-->
-
-                                <div class="center-bloc topmargin-sm" >
-                                    <h6 style="direction: rtl">  أو سجــل الدخــول عن طريق حساب ال Facebook الخاص بـك</h6>
-                                    <div class="fb-login-button" data-width="100%" data-max-rows="1" data-size="large" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>                                </div>
 
 
                                 <div class="col_full topmargin-sm nobottommargin">
