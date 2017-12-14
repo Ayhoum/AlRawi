@@ -75,53 +75,53 @@ if(isset($accessToken)) {
         exit;
     }
 
-//    // Initialize User class
-//    $user = new User();
-//
-//    // Insert or update user data to the database
-//    $fbUserData = array(
-//        'oauth_provider'=> 'facebook',
-//        'oauth_uid'     => $fbUserProfile['id'],
-//        'first_name'    => $fbUserProfile['first_name'],
-//        'last_name'     => $fbUserProfile['last_name'],
-//        'email'         => $fbUserProfile['email'],
-//        'gender'        => $fbUserProfile['gender'],
-//        'locale'        => $fbUserProfile['locale'],
-//        'picture'       => $fbUserProfile['picture']['url'],
-//        'link'          => $fbUserProfile['link']
-//    );
-//    $userData = $user->checkUser($fbUserData);
-//
-//    // Put user data into session
-//    $_SESSION['userData'] = $userData;
-//
-//    // Get logout url
-//    $logoutURL = $helper->getLogoutUrl($accessToken, $redirectURL.'logout.php');
-//
-//    // Render facebook profile data
-//    if(!empty($userData)){
-//        $output  = '<h1>Facebook Profile Details </h1>';
-//        $output .= '<img src="'.$userData['picture'].'">';
-//        $output .= '<br/>Facebook ID : ' . $userData['oauth_uid'];
-//        $output .= '<br/>Name : ' . $userData['first_name'].' '.$userData['last_name'];
-//        $output .= '<br/>Email : ' . $userData['email'];
-//        $output .= '<br/>Gender : ' . $userData['gender'];
-//        $output .= '<br/>Locale : ' . $userData['locale'];
-//        $output .= '<br/>Logged in with : Facebook';
-//        $output .= '<br/><a href="'.$userData['link'].'" target="_blank">Click to Visit Facebook Page</a>';
-//        $output .= '<br/>Logout from <a href="'.$logoutURL.'">Facebook</a>';
-//    }else{
-//        $output = '<h3 style="color:red">Some problem occurred, please try again.</h3>';
-//    }
-//
-//}else{
-//    // Get login url
-//    $loginURL = $helper->getLoginUrl($redirectURL, $fbPermissions);
-//
-//    // Render facebook login button
-//    $output = '<a href="'.htmlspecialchars($loginURL).'"><img src="images/fblogin-btn.png"></a>';
-//}
+    // Initialize User class
+    $user = new User();
+
+    // Insert or update user data to the database
+    $fbUserData = array(
+        'oauth_provider'=> 'facebook',
+        'oauth_uid'     => $fbUserProfile['id'],
+        'first_name'    => $fbUserProfile['first_name'],
+        'last_name'     => $fbUserProfile['last_name'],
+        'email'         => $fbUserProfile['email'],
+        'gender'        => $fbUserProfile['gender'],
+        'locale'        => $fbUserProfile['locale'],
+        'picture'       => $fbUserProfile['picture']['url'],
+        'link'          => $fbUserProfile['link']
+    );
+    $userData = $user->checkUser($fbUserData);
+
+    // Put user data into session
+    $_SESSION['userData'] = $userData;
+
+    // Get logout url
+    $logoutURL = $helper->getLogoutUrl($accessToken, $redirectURL.'logout.php');
+
+    // Render facebook profile data
+    if(!empty($userData)){
+        $output  = '<h1>Facebook Profile Details </h1>';
+        $output .= '<img src="'.$userData['picture'].'">';
+        $output .= '<br/>Facebook ID : ' . $userData['oauth_uid'];
+        $output .= '<br/>Name : ' . $userData['first_name'].' '.$userData['last_name'];
+        $output .= '<br/>Email : ' . $userData['email'];
+        $output .= '<br/>Gender : ' . $userData['gender'];
+        $output .= '<br/>Locale : ' . $userData['locale'];
+        $output .= '<br/>Logged in with : Facebook';
+        $output .= '<br/><a href="'.$userData['link'].'" target="_blank">Click to Visit Facebook Page</a>';
+        $output .= '<br/>Logout from <a href="'.$logoutURL.'">Facebook</a>';
+    }else{
+        $output = '<h3 style="color:red">Some problem occurred, please try again.</h3>';
+    }
+
+}else{
+    // Get login url
+    $loginURL = $helper->getLoginUrl($redirectURL, $fbPermissions);
+
+    // Render facebook login button
+    $output = '<a href="'.htmlspecialchars($loginURL).'"><img src="images/fblogin-btn.png"></a>';
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -231,12 +231,6 @@ if(isset($accessToken)) {
                                     <div class="fb-login-button" data-width="100%" data-max-rows="1" data-size="large" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>                                </div>
 
 
-                                <div
-                                        class="fb-like"
-                                        data-share="true"
-                                        data-width="450"
-                                        data-show-faces="true">
-                                </div>
                                 <div class="col_full topmargin-sm nobottommargin">
                                     <a href="forgot_password.php" class="fright text-center" style="width: 100%">نسيت كلمة المرور؟</a>
                                     <a href="signup.php" class="fright text-center" style="width: 100%">قم بتسجيل حساب جديد</a>
