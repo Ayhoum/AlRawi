@@ -7,7 +7,9 @@ if (!isset($_SESSION['username'])) {
 }
 if (isset($_GET['exam_id'])) {
     $setId = $_GET['exam_id'];
-
+} else {
+    header('Location: profile.php');
+}
 
 
     ?>
@@ -46,9 +48,11 @@ if (isset($_GET['exam_id'])) {
 
         <style>
             body, html {
+                margin:0;
+                padding:0;
                 height: 100%;
                 background: #fff;
-                font-family: 'Lato', sans-serif;
+                font-family: 'DroidArabicKufiRegular';
             }
 
             .slide {
@@ -59,8 +63,8 @@ if (isset($_GET['exam_id'])) {
             }
 
             .quesImg {
-                width: 650px;
-                height: 431.6px;
+                width: 600px;
+                height: 398.4px;
             }
 
             footer {
@@ -145,6 +149,7 @@ if (isset($_GET['exam_id'])) {
             fieldset{
                 margin-top: 20px;
             }
+
         </style>
     </head>
 
@@ -361,11 +366,23 @@ if (isset($_GET['exam_id'])) {
 
                     </nav><!-- #primary-menu end -->
 
+
+
+
+
+
+
+
+
+
+
                 </div>
 
             </div>
 
         </header><!-- #header end -->
+
+
 
         <!-- Content
         ============================================= -->
@@ -376,6 +393,33 @@ if (isset($_GET['exam_id'])) {
             </div>
 
 
+
+
+
+
+
+
+
+
+
+
+
+<div class="col-sm-12" style="width:100%;height:100px;background: #eee;font-family: 'DroidArabicKufiRegular';">
+
+
+        <div id="showTime" type="button" class=" col-sm-10 text-center btn btn-default">المتبقي من الوقت:
+            <span style="direction: ltr;font-size: 25px;" id="count"></span>
+        </div>
+
+<!--        <div style="padding-top: 24px;padding-bottom: 24px;" id="resume" class="col-sm-2 text-center btn btn-default">-->
+<!--            <i class="fa fa-play" aria-hidden="true"></i>-->
+<!--        </div>-->
+<!---->
+<!--        <div style="padding-top: 24px;padding-bottom: 24px;" id="pause" class="col-sm-2 text-center btn btn-default">-->
+<!--            <i class="fa fa-pause" aria-hidden="true"></i>-->
+<!--        </div>-->
+
+</div>
             <div class="container">
                 <div class="col-md-12">
                     <div class="row">
@@ -384,23 +428,7 @@ if (isset($_GET['exam_id'])) {
                             <!--                            <button type="button" class="center-text btn btn-success topmargin-sm " id="resume"><i class="fa fa-play" aria-hidden="true"></i></button>-->
 
 
-                            <div class="btn-group topmargin-sm" id="timerDiv"
-                                 style="width: 100%;font-size: 20px;direction: rtl;font-family: 'DroidArabicKufiRegular';">
 
-                                <button id="showTime" type="button"
-                                        class="col-md-10 center-text btn btn-default bottommargin-sm">المتبقي من الوقت:
-                                    <div style="direction: ltr;font-size: 25px;" id="count"></div>
-                                </button>
-
-                                <button style="padding-top: 24px;padding-bottom: 24px;" type="button" id="resume"
-                                        class="col-md-2 center-text btn btn-success bottommargin-sm">
-                                    <i class="fa fa-play" aria-hidden="true"></i>
-                                </button>
-                                <button style="padding-top: 24px;padding-bottom: 24px;" type="button" id="pause"
-                                        class="col-md-2 center-text btn btn-danger bottommargin-sm">
-                                    <i class="fa fa-pause" aria-hidden="true"></i>
-                                </button>
-                            </div>
 
 
                             <!--                            <button type="button" id="timerDiv"-->
@@ -482,11 +510,14 @@ if (isset($_GET['exam_id'])) {
                         $picture = $row['PICTURE'];
                         $type = $row['TYPE'];
 
+
+
+
                         if ($type == "response") {
-                            echo "<div id='s$i' class='slide'>";
-//                        echo "<h2 style='direction: rtl;' class='text-center topmargin-sm'>السؤال رقم $i:</h2>";
-                            echo "<h2 style='direction:rtl;' class='text-center'>$question</h2>";
-                            echo "<img class='quesImg center-block' src='dashboardAlrawi/examsImages/free/$picture'/>";
+                            echo "<div id='s$i' class='slide col-md-12' style=''>";
+                            echo "<div class='row'>";
+                            echo "<div class='col-md-5'>";
+                            echo "<h4 style='direction:rtl;' class='text-center'>$question</h4>";
                             echo "
                             <fieldset id='group$i'>
                                 <label class='containerRadio'>فرامل
@@ -503,14 +534,18 @@ if (isset($_GET['exam_id'])) {
                                 </label>
                             </fieldset>";
                             echo"</div>";
+                            echo "<div class='col-md-7'>";
+                            echo "<img class='quesImg center-block' src='dashboardAlrawi/examsImages/free/$picture'/>";
+                            echo"</div>";
+                            echo"</div>";
+                            echo"</div>";
                             $i++;
                         } else if ($type == "yesNo") {
-                            echo "<div id='s$i' class='slide'>";
-//                        echo "<h2 style='direction: rtl;' class='text-center topmargin-sm'>السؤال رقم $i:</h2>";
-                            echo "<h2 style='direction: rtl;' class='text-center'>$question</h2>";
-                            echo "<img class='quesImg center-block' src='dashboardAlrawi/examsImages/free/$picture'/>";
+                            echo "<div id='s$i' class='slide col-md-12'>";
+                            echo "<div class='row'>";
+                            echo "<h4 style='direction: rtl;' class='text-center'>$question</h4>";
                             echo "
-                            <fieldset id='group$i'>
+                            <fieldset id='group$i' class='col-md-5'>
                             <label class='containerRadio'>نعم
                                   <input type='radio' class='selector$i' name='selector$i' value='نعم'>
                                   <span class='checkmark'></span>
@@ -520,26 +555,28 @@ if (isset($_GET['exam_id'])) {
                                   <span class='checkmark'></span>
                                 </label>
                             </fieldset>";
+                            echo "<img class='quesImg col-md-7' src='dashboardAlrawi/examsImages/free/$picture'/>";
+                            echo "</div>";
                             echo "</div>";
                             $i++;
                         } else if ($type == "numInp") {
-                            echo "<div id='s$i' class='slide'>";
-//                        echo "<h2 style='direction: rtl;' class='text-center topmargin-sm'>السؤال رقم $i:</h2>";
-                            echo "<h2 style='direction: rtl;' class='text-center'>$question</h2>";
-                            echo "<img class='quesImg center-block' src='dashboardAlrawi/examsImages/free/$picture'/>";
+                            echo "<div id='s$i' class='slide col-md-12'>";
+                            echo "<div class='row'>";
+                            echo "<h4 style='direction: rtl;' class='text-center'>$question</h4>";
                             echo "
-                        <fieldset id='group$i'>
+                        <fieldset id='group$i' class='col-md-5'>
                             <input type='text' class='selector$i' name='selector$i' placeholder='أدخل القيمة'><br>
                         </fieldset>";
+                            echo "<img class='quesImg center-block' src='dashboardAlrawi/examsImages/free/$picture'/>";
+                            echo "</div>";
                             echo "</div>";
                             $i++;
                         } else if ($type == "multiChoice") {
-                            echo "<div id='s$i' class='slide'>";
-//                        echo "<h2 style='direction: rtl;' class='text-center topmargin-sm'>السؤال رقم $i:</h2>";
-                            echo "<h2 style='direction: rtl;' class='text-center'>$question</h2>";
-                            echo "<img class='quesImg center-block' src='dashboardAlrawi/examsImages/free/$picture'/>";
+                            echo "<div id='s$i' class='slide col-md-12'>";
+                            echo "<div class='row'>";
+                            echo "<h4 style='direction: rtl;' class='text-center'>$question</h4>";
                             echo "
-                        <fieldset id='group$i'>";
+                        <fieldset id='group$i' class='col-md-5'>";
                             $answers = array($right, $second, $third, $fourth);
                             while (true) {
                                 $num = rand(0, 3);
@@ -564,6 +601,8 @@ if (isset($_GET['exam_id'])) {
                                 }
                             }
                             echo "</fieldset>";
+                            echo "<img class='quesImg col-md-7' src='dashboardAlrawi/examsImages/free/$picture'/>";
+                            echo "</div>";
                             echo "</div>";
                             $i++;
                         }
@@ -653,6 +692,7 @@ if (isset($_GET['exam_id'])) {
                 jQuery('#nxtBut').hide();
                 jQuery('.slideBetween').hide();
                 jQuery('.slideFinish').show();
+                jQuery('#submitBut').show();
                 jQuery('.forceFinish').hide();
             } else {
                 jQuery('#s' + tar).show();
@@ -669,7 +709,7 @@ if (isset($_GET['exam_id'])) {
         var startExam = function () {
             jQuery('#stopBut').show();
             jQuery('.slideStart').hide();
-            jQuery('#showTime').removeClass('col-md-10').addClass('col-md-12').show();
+            jQuery('#showTime').removeClass('col-sm-10').addClass('col-sm-12').show();
 
             tar = 1;
             document.title = "الإمتحان <?php echo $setId ?>" + " | " + "السؤال " + tar;
@@ -1067,7 +1107,7 @@ if (isset($_GET['exam_id'])) {
             jQuery('.flagBut').show();
             jQuery('#nxtBut').show();
             jQuery('#pause').show();
-            jQuery('#showTime').addClass('col-md-10').removeClass('col-md-12');
+            jQuery('#showTime').addClass('col-sm-10').removeClass('col-sm-12');
             $("#s26").show();
             tar=26;
             document.title = "الإمتحان <?php echo $setId ?>" + " | " + "السؤال " + tar;
@@ -1107,10 +1147,3 @@ if (isset($_GET['exam_id'])) {
 
     </body>
     </html>
-
-    <?php
-} else {
-    header('Location: profile.php');
-}
-
-?>
