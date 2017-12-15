@@ -1,6 +1,28 @@
 <?php
+
+ob_start();
+
+session_start();
+session_unset();
+
 include 'scripts/db_connection.php';
 require_once 'phpmailer/class.phpmailer.php';
+
+
+require_once 'include/Facebook/autoload.php';
+
+$fb = new Facebook\Facebook([
+    'app_id' => '1973832622891754', // Replace {app-id} with your app id
+    'app_secret' => '51a14598cbecc6b9a7897f3338fd167d',
+    'default_graph_version' => 'v2.2',
+]);
+
+$helper = $fb->getRedirectLoginHelper();
+
+$permissions = ['email']; // Optional permissions
+$loginUrl = $helper->getLoginUrl('http://shop.alrawitheorie.nl/fb-callback.php', $permissions);
+
+
 if(isset($_POST['signup_submit'])) {
 
 
@@ -470,6 +492,8 @@ if(isset($_POST['signup_submit'])) {
                         <div class="panel-body travel-date-group" style="padding: 40px;">
                             <form id="signup-form" name="signup-form" class="nobottommargin" action="#" method="post">
                                 <h3 class="text-center">قم بإنشاء حساب جديد</h3>
+
+
                                 <div class="col_full">
                                     <label for="login-form-username">البريد الإلكتروني (اسم المستخدم):</label>
                                     <input type="email" id="signup_username" name="signup_username" value="" class="form-control not-dark" />
@@ -505,6 +529,12 @@ if(isset($_POST['signup_submit'])) {
                                 <div class="col_full nobottommargin">
                                     <button class="button button-3d button-black nomargin" style="width: 100%" id="signup_submit" name="signup_submit" value="signup">إنشاء الحساب</button>
                                 </div>
+
+                                <div class="col_full topmargin-sm nobottommargin" >
+                                    <a  href="<?php echo htmlspecialchars($loginUrl) ?> " class="button button-border button-rounded button-blue"> سجـل الدخول عن طريق الفيس بوك<i class="icon-facebook"></i></a>
+                                    <!--                                --><?php //echo '<a href="' . . '">Log in with Facebook!</a>'; ?>
+                                </div>
+
                             </form>
                         </div>
                     </div>

@@ -4,6 +4,20 @@ ob_start();
    session_start();
    session_unset();
 
+require_once 'include/Facebook/autoload.php';
+
+$fb = new Facebook\Facebook([
+    'app_id' => '1973832622891754', // Replace {app-id} with your app id
+    'app_secret' => '51a14598cbecc6b9a7897f3338fd167d',
+    'default_graph_version' => 'v2.2',
+]);
+
+$helper = $fb->getRedirectLoginHelper();
+
+$permissions = ['email']; // Optional permissions
+$loginUrl = $helper->getLoginUrl('http://shop.alrawitheorie.nl/fb-callback.php', $permissions);
+
+
 include 'scripts/db_connection.php';
 if(isset($_POST['login_submit'])) {
 
@@ -102,6 +116,11 @@ if(isset($_POST['login_submit'])) {
 
                                 <div class="col_full nobottommargin">
                                     <button class="button button-3d button-black nomargin" style="width: 100%" id="login_submit" name="login_submit" value="login">تسجيل الدخول</button>
+                                </div>
+
+                                <div class="col_full topmargin-sm nobottommargin">
+                                <a href="<?php echo htmlspecialchars($loginUrl) ?> " class="button button-border button-rounded button-blue"><i class="icon-facebook"></i>سجـل الدخول عن طريق الفيس بوك</a>
+<!--                                --><?php //echo '<a href="' . . '">Log in with Facebook!</a>'; ?>
                                 </div>
 
 
