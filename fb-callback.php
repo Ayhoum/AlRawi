@@ -166,7 +166,9 @@ if (isset($accessToken)) {
 
         $insert_result = mysqli_query($mysqli, $insert_query);
 
+        $role = "user";
         $_SESSION['username'] = $name;
+        $_SESSION['role'] = $role;
 
         echo $_SESSION['username'];
 
