@@ -118,7 +118,7 @@ if (isset($_POST['submit'])){
 
     <!-- Document Title
     ============================================= -->
-    <title>الامتـحــان | مراجعــة الاجابـات</title>
+    <title>الامتـحــان | استـعـراض النتـيـجـة</title>
     <link rel="icon" href="images/1.png" type="image/x-icon">
 
     <script>
@@ -166,13 +166,84 @@ if (isset($_POST['submit'])){
     </header><!-- #header end -->
 
 
-    <section id="content" style="width: 100%" >
+    <section id="content" style="width: 100%;" >
         <div class="content-wrap">
 
             <div class="container clearfix " style="direction: rtl">
+<div class="center-block text-center">
+                <button class="btn btn-lg text-center" id="result" style="width: 50%;"></button>
+</div>
 
-                <h2 class="text-center" id="result"></h2>
-                <h4>الاسئلــة</h4>
+
+                <div class="col-md-12 topmargin-sm text-center">
+
+                    <?php
+                    // GET THE QUESTION FROM DB
+                    $query = " SELECT * FROM `FREE_EXAM_QUESTION` WHERE `FREE_QUESTION_SET_ID` = '{$qId}'";
+                    $result = mysqli_query($mysqli, $query);
+                    if (mysqli_num_rows($result) > 0) {
+                    $x = 1;
+
+
+                    while ($row = mysqli_fetch_assoc($result)) {
+
+                    $number          = $row['NUMBER'];
+                    $number = $number - ($qId - 1) * 65;
+                    $question        = $row['QUESTION'];
+                    $right_answer    = $row['RIGHT_ANSWER'];
+                    $second_answer   = $row['ANSWER_2'];
+                    $third_answer    = $row['ANSWER_3'];
+                    $forth_answer    = $row['ANSWER_4'];
+                    $picture         = $row['PICTURE'];
+                    $reason          = $row['REASON'];
+                    $type            = $row['TYPE'];
+
+
+                    if($x == 1 || ($x-1)%12==0){
+                        echo "<div class='row'>";
+                    }
+
+
+                    if ( ${'selector_' . $x} == $right_answer ){
+                    if($x<=25){
+                        ?>
+                        <script>
+                            pri++;
+                        </script>
+                    <?php
+                    }else{
+                    ?>
+                        <script>
+                            sec++;
+                        </script>
+                        <?php
+                    }?>
+                        <div class="col-md-1"><a><button class="btn btn-success"><?php echo $x; ?></button></a></div>
+<?php
+                        $x++;
+                    }  else{
+?>
+                        <div class="col-md-1"><a><button class="btn btn-danger"><?php echo $x; ?></button></a></div>
+                        <?php
+                        $x++;
+                    }
+
+
+                        if($x == 66 || ($x-1)%12==0){
+                            echo "</div>";
+                        }
+
+
+                    }
+
+                    }
+
+                    ?>
+
+
+                </div>
+
+
 
                 <?php
 
@@ -199,21 +270,8 @@ if (isset($_POST['submit'])){
 
 
                         if ( ${'selector_' . $x} == $right_answer ){
-                        if($x<=25){
-                            ?>
-                            <script>
-                                pri++;
-                            </script>
+                        ?>
 
-                        <?php
-                        }else{
-                        ?>
-                            <script>
-                                sec++;
-                            </script>
-                        <?php
-                        }
-                        ?>
                             <div class="tabs side-tabs tabs-bordered clearfix" id="tab-5">
 
                                 <!-- THIS IS A BULLSHIT -->
@@ -556,15 +614,15 @@ if (isset($_POST['submit'])){
         $(".pre-pre").fadeOut("slow");
     });
 
-    alert(pri);
-    alert(sec);
     jQuery("#result").hide();
 
     if(pri>12 && sec>34 ){
         jQuery("#result").show();
+        jQuery("#result").addClass('btn-success');
         jQuery("#result").text("ناجح");
     }else{
         jQuery("#result").show();
+        jQuery("#result").addClass('btn-danger');
         jQuery("#result").text("راسب");
     }
 
