@@ -3,9 +3,10 @@ session_start();
 ob_start();
 include '../scripts/db_connection.php';
 if(isset($_POST['create'])){
+    $invisible = "INVISIBLE";
     $examName = $_POST['exam_name'];
-    $query = "INSERT INTO QUESTION_SET(EXAM_NAME)";
-    $query .= "VALUES(  '{$examName}') ";
+    $query = "INSERT INTO QUESTION_SET(EXAM_NAME,STATUS)";
+    $query .= "VALUES(  '{$examName}', '{$invisible}') ";
     $result = mysqli_query($mysqli, $query);
 
     $lastId = mysqli_insert_id($mysqli);

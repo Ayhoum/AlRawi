@@ -260,7 +260,9 @@ $examsRows = mysqli_num_rows($exams_num_rows);
                                             while($row = mysqli_fetch_assoc($select_users)) {
                                                 echo "<div class='black-text message-content'>";
                                                 echo "<div>";
-                                                echo "<small class='right white-text'><i class='fa fa-check'></i></small>";
+                                                if($row['SITUATION'] == "TRAINING"){
+                                                    echo "<small class='right white-text'><i class='fa fa-check'></i></small>";
+                                                }
                                                 echo "<strong>" . $row['NAME'] . "</strong>";
                                                 echo "</div>";
                                                 echo "</div>";

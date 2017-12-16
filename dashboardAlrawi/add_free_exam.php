@@ -10,8 +10,9 @@ ob_start();
 include '../scripts/db_connection.php';
 if(isset($_POST['create'])){
     $examName = $_POST['exam_name'];
-    $query = "INSERT INTO FREE_QUESTION_SET(EXAM_NAME)";
-    $query .= "VALUES(  '{$examName}') ";
+    $invisible = "INVISIBLE";
+    $query = "INSERT INTO FREE_QUESTION_SET(EXAM_NAME,STATUS)";
+    $query .= "VALUES(  '{$examName}', '{$invisible}') ";
     $result = mysqli_query($mysqli, $query);
 
     $lastId = mysqli_insert_id($mysqli);

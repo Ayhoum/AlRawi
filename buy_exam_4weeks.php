@@ -27,7 +27,21 @@ if($status == "paid"){
 <?php
 if (isset($_SESSION['username'])){
     $name = $_SESSION['username'];
+    $query = "SELECT * From Users WHERE NAME = '{$name}' ";
+    $getAgent = mysqli_query($mysqli, $query);
+    if (mysqli_num_rows($getAgent) == 1) {
+        while ($row = mysqli_fetch_assoc($getAgent)) {
+            $id = $row['ID'];
+            $spent = $row['SPENT'];
+        }
 
+        if($status == "NEW"){
+            $spent += 25.29;
+            $updateQuery = "UPDATE Users SET SPENT = '{$spent}' WHERE ID = '{$id}'";
+            $run = mysqli_query($mysqli,$updateQuery);
+
+        }
+    }
     $query = "SELECT * FROM Users WHERE NAME = '{$name}'";
 
     $result = mysqli_query($mysqli,$query);
