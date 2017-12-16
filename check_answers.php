@@ -18,9 +18,9 @@ if (isset($_GET['id'])){
     $qId = $_GET['id'];
 
 }
-//else{
-//    header("Location: profile.php");
-//}
+else{
+    header("Location: profile.php");
+}
 if (isset($_POST['submit'])){
 
     for ($i = 1; $i <= 65; $i++){
@@ -36,9 +36,9 @@ if (isset($_POST['submit'])){
         }
     }
 }
-//else{
-//    header("Location: profile.php");
-//}
+else{
+    header("Location: profile.php");
+}
 
 ?>
 
