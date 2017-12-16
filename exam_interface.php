@@ -34,6 +34,7 @@ else {
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
     <style>
         body {
@@ -323,7 +324,7 @@ else {
                     <button type="button" class="btn btn-danger">3</button><br>
                 </h4>
                 <h4 class='text-center'>بمجرد بدء الإمتحان سيبدأ التوقيت التنازلي</h4>
-                <button type="button" onclick="startExam();" class="btn btn-success btn-lg center-block topmargin-sm"
+                <button type="button" onclick="startExam();" class="btn btn-success btn-lg center-block topmargin-sm bottommargin-sm"
                         style="font-family: 'DroidArabicKufiRegular';">إبدأ الإمتحان
                 </button>
             </div>
@@ -1042,20 +1043,23 @@ else {
     var timer = function () {
         var g = 100;
         var counterBack = setInterval(function(){
+
             g = g - 12.5;
             if (g > 0){
                 if(g <= 50 && g > 35){
                     jQuery('#progbg' + tar).removeClass('progress-bar-success').addClass('progress-bar-warning');
                 }else if(g<35){
                     jQuery('#progbg' + tar).removeClass('progress-bar-warning').addClass('progress-bar-danger');
+                }else if(g == 87.5){
+                    jQuery('#progbg' + tar).removeClass('progress-bar-danger').addClass('progress-bar-success');
+
                 }
                 jQuery('.progress-bar').css('width', g+'%');
             }else if(g == 0){
+                jQuery('.progress-bar').css('width', '0%');
                 setTimeout(function () {
                     jQuery('.progress-bar').css('width', '100%');
-                }, 300);
-                jQuery('.progress-bar').css('width', '0%');
-                jQuery('#progbg' + tar).removeClass('progress-bar-danger').addClass('progress-bar-success');
+                }, 400);
                 timer();
                 clearInterval(counterBack);
 
