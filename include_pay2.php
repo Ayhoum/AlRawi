@@ -16,7 +16,7 @@ try
      *
      * See: https://www.mollie.com/dashboard/settings/profiles
      */
-    require "../initialize.php";
+    require "initialize.php";
     /*
      * Generate a unique order id for this example. It is important to include this unique attribute
      * in the redirectUrl (below) so a proper return page can be shown to the customer.
@@ -37,9 +37,9 @@ try
      *   metadata      Custom metadata that is stored with the payment.
      */
     $payment = $mollie->payments->create(array(
-        "amount"       => 25.29,
-        "description"  => "إشتراك بالباقة المتقدمة لموقع AlrawiTheorie (لمدة 4 أسابيع)",
-        "redirectUrl"  => "{$protocol}://{$hostname}{$path}/buy_exam_4weeks.php?order_id={$order_id}",
+        "amount"       => 15.29,
+        "description"  => "إشتراك بالباقة الأساسية لموقع AlrawiTheorie (لمدة أسبوعين)",
+        "redirectUrl"  => "{$protocol}://{$hostname}{$path}/buy_exam_2weeks.php?order_id={$order_id}",
         "webhookUrl"   => "{$protocol}://{$hostname}{$path}/webhook-verification.php",
         "metadata"     => array(
             "order_id" => $order_id,
