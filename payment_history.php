@@ -138,7 +138,7 @@ include 'scripts/db_connection.php';
                             </li>
                         <?php } ?>
 
-                        <li><a href="" data-scrollto="#booking-appointment-form" data-offset="100" data-easing="easeInOutExpo" data-speed="1200" class="bgcolor" style="color:#fff;">احجز امتحانك</a></li>
+<!--                        <li><a href="" data-scrollto="#booking-appointment-form" data-offset="100" data-easing="easeInOutExpo" data-speed="1200" class="bgcolor" style="color:#fff;">احجز امتحانك</a></li>-->
 
                     </ul>
                 </div>
@@ -313,17 +313,7 @@ include 'scripts/db_connection.php';
 
                     <div class="widget clearfix">
 
-                        <div class="widget-subscribe-form-result"></div>
-                        <form id="widget-subscribe-form" action="#" role="form" method="post" class="nobottommargin row clearfix">
-                            <div class="col-md-9">
-                                <input type="email" id="widget-subscribe-form-email" name="widget-subscribe-form-email" class="sm-form-control required email" placeholder="أدخل بريدك الإلكتروني ليصلك كل جديد حول موقعنا">
-                            </div>
-                            <div class="col-md-3">
-                                <button class="button button-rounded nomargin center btn-block" type="submit">اشترك معنا</button>
-                            </div>
-                        </form>
-
-                        <div class="line line-sm"></div>
+                      
 
                         <div class="row">
                         </div>

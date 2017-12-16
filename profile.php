@@ -201,9 +201,9 @@ include 'scripts/db_connection.php';
                                 <div class="tabs tabs-alt clearfix" style="text-align: center;margin-top:10px;" id="tabs-profile">
 
                                     <ul class="tab-nav clearfix" style="display:inline-block;">
-                                        <li><a href="#tab-feeds"><i class="icon-calendar"></i> الدروس الخاصة</a></li>
                                         <li><a href="#tab-posts"><i class="icon-euro"></i> الإمتحانات المشتراة</a></li>
                                         <li><a href="#tab-connections"><i class="icon-note"></i> الإمتحانات المجانية</a></li>
+                                        <li><a href="#tab-feeds"><i class="icon-calendar"></i> الدروس الخاصة</a></li>
                                     </ul>
 
                                     <div class="tab-container">
@@ -482,17 +482,6 @@ include 'scripts/db_connection.php';
 
                     <div class="widget clearfix">
 
-                        <div class="widget-subscribe-form-result"></div>
-                        <form id="widget-subscribe-form" action="#" role="form" method="post" class="nobottommargin row clearfix">
-                            <div class="col-md-9">
-                                <input type="email" id="widget-subscribe-form-email" name="widget-subscribe-form-email" class="sm-form-control required email" placeholder="أدخل بريدك الإلكتروني ليصلك كل جديد حول موقعنا">
-                            </div>
-                            <div class="col-md-3">
-                                <button class="button button-rounded nomargin center btn-block" type="submit">اشترك معنا</button>
-                            </div>
-                        </form>
-
-                        <div class="line line-sm"></div>
 
                         <div class="row">
 
