@@ -19,33 +19,7 @@ $loginUrl = $helper->getLoginUrl('http://shop.alrawitheorie.nl/fb-callback.php',
 
 
 include 'scripts/db_connection.php';
-if(isset($_POST['login_submit'])) {
 
-    $email = $_POST['login_username'];
-    $email = mysqli_real_escape_string($mysqli, $email);
-    $pass = $_POST['login_password'];
-    $pass = mysqli_real_escape_string($mysqli, $pass);
-
-
-    $query = "SELECT * From Users WHERE EMAIL = '{$email}' ";
-    $getHashAgent = mysqli_query($mysqli, $query);
-    if (mysqli_num_rows($getHashAgent) == 1) {
-        while ($row = mysqli_fetch_assoc($getHashAgent)) {
-            $hash = $row['PASSWORD'];
-            $name = $row['NAME'];
-            if ((password_verify($pass, $hash))) {
-                $role = "user";
-                $_SESSION['email'] = $email;
-                $_SESSION['username'] = $name;
-                $_SESSION['role'] = $role;
-                echo 'Welcome Agent';
-                header("Location: profile.php");
-            } else {
-                echo "Enter a Valid Data !! ";
-            }
-        }
-    }
-}
 
 ?>
 
@@ -70,7 +44,39 @@ if(isset($_POST['login_submit'])) {
     <link rel="stylesheet" href="css/responsive.css" type="text/css" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+<?php
 
+if(isset($_POST['login_submit'])) {
+
+    $email = $_POST['login_username'];
+    $email = mysqli_real_escape_string($mysqli, $email);
+    $pass = $_POST['login_password'];
+    $pass = mysqli_real_escape_string($mysqli, $pass);
+
+
+    $query = "SELECT * From Users WHERE EMAIL = '{$email}' ";
+    $getHashAgent = mysqli_query($mysqli, $query);
+    if (mysqli_num_rows($getHashAgent) == 1) {
+        while ($row = mysqli_fetch_assoc($getHashAgent)) {
+            $hash = $row['PASSWORD'];
+            $name = $row['NAME'];
+            if ((password_verify($pass, $hash))) {
+                $role = "user";
+                $_SESSION['email'] = $email;
+                $_SESSION['username'] = $name;
+                $_SESSION['role'] = $role;
+                header("Location: profile.php");
+            } else {
+                header("Location: wrong_login.php");
+
+            }
+        }
+    }else {
+        header("Location: wrong_login.php");
+
+    }
+}
+?>
     <!-- Document Title
     ============================================= -->
     <title>Al Rawi Theorie | Log In</title>
@@ -168,6 +174,7 @@ if(isset($_POST['login_submit'])) {
 <script type="text/javascript" src="js/functions.js"></script>
 
 <script>
+
         if($(window).width() < 767) {
             jQuery('.button-blue').html('<i class="icon-facebook"></i>');
             jQuery('.button-blue').addClass('width_full');
@@ -175,6 +182,7 @@ if(isset($_POST['login_submit'])) {
             jQuery('.button-blue').html('<i class="icon-facebook"></i> سجـل الدخول عن طريق الفيس بوك');
 
         }
+
 </script>
 
 </body>

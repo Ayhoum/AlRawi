@@ -11,6 +11,25 @@ if (isset($_GET['exam_id'])) {
 else {
     header('Location: profile.php');
 }
+
+$user = $_SESSION['username'];
+$query = "SELECT * From Users WHERE NAME = '{$user}' ";
+$getAgent = mysqli_query($mysqli, $query);
+if (mysqli_num_rows($getAgent) == 1) {
+    while ($row = mysqli_fetch_assoc($getAgent)) {
+        $id = $row['ID'];
+        $status = $row['SITUATION'];
+    }
+
+    if($status == "NEW"){
+        $train = "TRAINING";
+        $updateQuery = "UPDATE Users SET SITUATION = '{$train}' WHERE ID = '{$id}'";
+        $run = mysqli_query($mysqli,$updateQuery);
+
+    }
+}
+
+
 ?>
 
 
