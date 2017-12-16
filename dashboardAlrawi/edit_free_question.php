@@ -96,6 +96,7 @@ while ($row = mysqli_fetch_assoc($select_question)) {
             <div class="panel-body  p-xl-3">
 
                 <form method="post" action="edit_free_question.php?qset=<?php echo $qset;?>&id=<?php echo $setId;?>" data-toggle="validator" enctype="multipart/form-data">
+
                     <div class="form-group row"><label>Question:</label>
                         <input type="text" name="question" style="direction: rtl;" value="<?php echo $question ?>" class="form-control" required>
                     </div>
@@ -106,13 +107,13 @@ while ($row = mysqli_fetch_assoc($select_question)) {
                         <input type="text" name="right_answer" style="direction: rtl;" value="<?php echo $right_ans ?>" class="form-control" required>
                     </div>
                     <div class="form-group row"><label>2ND Answer: </label>
-                        <input type="text" name="2nd_answer" style="direction: rtl;" value="<?php echo $ans_2 ?>" class="form-control">
+                        <input type="text" name="2nd_answer" style="direction: rtl;" value="<?php if($ans_2 != "0")echo $ans_2 ?>" class="form-control">
                     </div>
                     <div class="form-group row"><label>3RD Answer: </label>
-                        <input type="text" name="3rd_answer" style="direction: rtl;" value="<?php echo $ans_3 ?>" class="form-control">
+                        <input type="text" name="3rd_answer" style="direction: rtl;" value="<?php if($ans_3 != "0")echo $ans_3 ?>" class="form-control">
                     </div>
                     <div class="form-group row"><label>4TH Answer: </label>
-                        <input type="text" name="4th_answer" style="direction: rtl;" value="<?php echo $ans_4 ?>" class="form-control">
+                        <input type="text" name="4th_answer" style="direction: rtl;" value="<?php if($ans_4 != "0")echo $ans_4 ?>" class="form-control">
                     </div>
                     <div class="hr-line-dashed"></div>
 
@@ -145,7 +146,10 @@ while ($row = mysqli_fetch_assoc($select_question)) {
                         </div>
                     </div>
 
+
                     <div class="hr-line-dashed"></div>
+
+
 
                     <div class="form-group row"><label>Question Type : </label>
                         <select class="form-control m-b" style="direction: rtl;" name="type" required>
@@ -156,8 +160,6 @@ while ($row = mysqli_fetch_assoc($select_question)) {
                             <option value="advantage" <?php if ($type == "advantage" ){echo "selected"; }?>>أفضلية</option>
                         </select>
                     </div>
-
-
                     <div class="hr-line-dashed"></div>
 
                     <div class="form-group row">

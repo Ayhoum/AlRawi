@@ -286,14 +286,13 @@ if ($_SESSION['role'] != "MainAdmin") {
             columns: [
 
                 <?php
-                                $query = "SELECT * FROM QUESTION_SET";
+                                $query = "SELECT * FROM Users WHERE SITUATION = 'TRAINING' LIMIT 50";
                                 $select_exams_info = mysqli_query($mysqli, $query);
                                 while ($row = mysqli_fetch_assoc($select_exams_info)) {
                                     $id = $row['ID'];
-                                    $name = $row['EXAM_NAME'];
-
+                                    $name = $row['NAME'];
                                     $counter = 0;
-                                    $query = "SELECT * FROM PAID_EXAM WHERE QUESTION_SET_ID = $id";
+                                    $query = "SELECT * FROM PAID_EXAM WHERE Users_ID = $id";
                                     $select_exams = mysqli_query($mysqli, $query);
                                     while ($row = mysqli_fetch_assoc($select_exams)) {
                                         $counter++;

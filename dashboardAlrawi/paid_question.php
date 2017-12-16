@@ -239,5 +239,41 @@ if (isset($_GET['id']) && ($_GET['qset'])) {
     <!-- Custom FILES -->
     <script type="text/javascript" src="assets/js/custom.js"></script>
 
+
+
+
+    <script>
+        jQuery('.slide').hide();
+
+        function getType() {
+            var x = document.getElementById("type");
+            var i = x.selectedIndex;
+            if(x.options[i].value == "yesNo"){
+                jQuery('.slide').hide();
+                $('.yesOrNoSlide').show();
+            }else if(x.options[i].value == "response"){
+                jQuery('.slide').hide();
+                $('.responseSlide').show();
+            }else if(x.options[i].value == "numInp"){
+                jQuery('.slide').hide();
+                $('.numInpSlide').show();
+            }else if(x.options[i].value == "multiChoice2"){
+                jQuery('.slide').hide();
+                $('.multiChoice2Slide').show();
+            }else if(x.options[i].value == "multiChoice3"){
+                jQuery('.slide').hide();
+                $('.multiChoice3Slide').show();
+            }else if(x.options[i].value == "multiChoice4"){
+                jQuery('.slide').hide();
+                $('.multiChoice4Slide').show();
+            }else if(x.options[i].value == "advantage3"){
+                jQuery('.slide').hide();
+                $('.advantage3Slide').show();
+            }else if(x.options[i].value == "advantage4"){
+                jQuery('.slide').hide();
+                $('.advantage4Slide').show();
+            }
+        }
+    </script>
 </body>
 </html>

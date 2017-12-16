@@ -481,7 +481,7 @@ if (mysqli_num_rows($getAgent) == 1) {
                     echo "</div>";
                     echo "</div>";
                     $i++;
-                } else if ($type == "multiChoice" || $type == "advantage") {
+                } else if ($type == "multiChoice2" || $type == "multiChoice3" || $type == "multiChoice4" || $type == "advantage3" || $type == "advantage4") {
                     echo "<div id='s$i' class='slide col-md-12'>";
                     echo "<div class='row'>";
                     echo "<h4 style='direction:rtl;font-weight: 700;font-size: 20px;' class='text-center'>السؤال $i</h4>";

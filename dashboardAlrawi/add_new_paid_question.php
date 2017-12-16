@@ -13,12 +13,40 @@ if (isset($_GET['id']) && ($_GET['qset'])) {
 
 
         $question = $_POST['question'];
-        $right_ans = $_POST['right_answer'];
-        $answer_2 = $_POST['2nd_answer'];
-        $answer_3 = $_POST['3rd_answer'];
-        $answer_4 = $_POST['4th_answer'];
-        $reason = $_POST['reason'];
         $type = $_POST['type'];
+
+
+        if($type == "response"){
+            $right_ans = $_POST['response_right_answer'];
+        }else if($type == "yesNo"){
+            $right_ans = $_POST['yesno_right_answer'];
+        }else if($type == "numInp"){
+            $right_ans = $_POST['inp_right_answer'];
+        }else if($type == "multiChoice2"){
+            $right_ans = $_POST['multi2_right_answer'];
+            $answer_2  = $_POST['multi2_2nd_answer'];
+        }else if($type == "multiChoice3"){
+            $right_ans = $_POST['multi3_right_answer'];
+            $answer_2 = $_POST['multi3_2nd_answer'];
+            $answer_3 = $_POST['multi3_3rd_answer'];
+        }else if($type == "multiChoice4"){
+            $right_ans = $_POST['multi4_right_answer'];
+            $answer_2 = $_POST['multi4_2nd_answer'];
+            $answer_3 = $_POST['multi4_3rd_answer'];
+            $answer_4 = $_POST['multi4_4th_answer'];
+        }else if($type == "advantage3"){
+            $right_ans = $_POST['adv3_right_answer'];
+            $answer_2 = $_POST['adv3_2nd_answer'];
+            $answer_3 = $_POST['adv3_3rd_answer'];
+        }else if($type == "advantage4"){
+            $right_ans = $_POST['adv4_right_answer'];
+            $answer_2 = $_POST['adv4_2rd_answer'];
+            $answer_3 = $_POST['adv4_3rd_answer'];
+            $answer_4 = $_POST['adv4_4th_answer'];
+        }
+
+        $reason = $_POST['reason'];
+
         if(empty($answer_4)){
             $answer_4 = "0";
         }
@@ -65,25 +93,117 @@ if (isset($_GET['id']) && ($_GET['qset'])) {
     <div class="panel panel-card margin-b-30">
         <div class="panel-body  p-xl-3">
         <form method="post" action="add_new_paid_question.php?qset=<?php echo $qset;?>&id=<?php echo $setId;?>" data-toggle="validator" enctype="multipart/form-data">
+            <div class="form-group row"><label>Question Type : </label>
+                <select onchange="getType()" id="type" class="form-control m-b" style="direction: rtl;" name="type" required>
+                    <option value="" disabled selected>Select a question type</option>
+                    <option value="response">إستجابة</option>
+                    <option value="yesNo">نعم / لا</option>
+                    <option value="numInp">إدخال رقم</option>
+                    <option value="multiChoice2">اختيار من متعدد (2)</option>
+                    <option value="multiChoice3">اختيار من متعدد (3)</option>
+                    <option value="multiChoice4">اختيار من متعدد (4)</option>
+                    <option value="advantage3">أفضلية (3)</option>
+                    <option value="advantage4">أفضلية (4)</option>
+                </select>
+            </div>
+
             <div class="form-group row"><label>Question:</label>
                 <input type="text" name="question" style="direction: rtl;" placeholder="Enter the question" class="form-control" required>
             </div>
 
             <div class="hr-line-dashed"></div>
 
-            <div class="form-group row"><label>Right Answer: </label>
-                <input type="text" name="right_answer" style="direction: rtl;" placeholder="Type the right answer" class="form-control" required>
+
+            <div class="slide responseSlide" id="responseSlide">
+                <div class="form-group row"><label>Right Answer : </label>
+                    <select id="right_answer" class="form-control m-b" style="direction: rtl;" name="response_right_answer">
+                        <option value="" disabled selected>Select the answer</option>
+                        <option value="فرامل">فرامل</option>
+                        <option value="رفع قدم عن الوقود">رفع قدم عن الوقود</option>
+                        <option value="لا شئ">لا شئ</option>
+                    </select>
+                </div>
             </div>
-            <div class="form-group row"><label>2ND Answer: </label>
-                <input type="text" name="2nd_answer" style="direction: rtl;" placeholder="Type the 2nd answer" class="form-control">
+
+            <div class="slide yesOrNoSlide" id="yesOrNoSlide">
+                <div class="form-group row"><label>Right Answer : </label>
+                    <select id="yesno_right_answer" class="form-control m-b" style="direction: rtl;" name="yesno_right_answer">
+                        <option value="" disabled selected>Select the answer</option>
+                        <option value="نعم">نعم</option>
+                        <option value="لا">لا</option>
+                    </select>
+                </div>
             </div>
-            <div class="form-group row"><label>3RD Answer: </label>
-                <input type="text" name="3rd_answer" style="direction: rtl;" placeholder="Type the 3rd answer" class="form-control">
+
+            <div class="slide numInpSlide" id="numInpSlide">
+                <div class="form-group row"><label>Right Answer : </label>
+                    <input type="text" name="inp_right_answer" id="inp_right_answer" style="direction: rtl;" placeholder="Type the right answer" class="form-control">
+                </div>
             </div>
-            <div class="form-group row"><label>4TH Answer: </label>
-                <input type="text" name="4th_answer" style="direction: rtl;" placeholder="Type the 4th answer" class="form-control">
+
+            <div class="slide multiChoice2Slide" id="multiChoice2Slide">
+                <div class="form-group row"><label>Right Answer : </label>
+                    <input type="text" name="multi2_right_answer" style="direction: rtl;" placeholder="Type the right answer" class="form-control">
+                </div>
+                <div class="form-group row"><label>2d Answer : </label>
+                    <input type="text" name="multi2_2nd_answer" style="direction: rtl;" placeholder="Type the 2nd answer" class="form-control">
+                </div>
             </div>
-            <div class="hr-line-dashed"></div>
+
+            <div class="slide multiChoice3Slide" id="multiChoice3Slide">
+                <div class="form-group row"><label>Right Answer : </label>
+                    <input type="text" name="multi3_right_answer" style="direction: rtl;" placeholder="Type the right answer" class="form-control">
+                </div>
+                <div class="form-group row"><label>2nd Answer : </label>
+                    <input type="text" name="multi3_2nd_answer" style="direction: rtl;" placeholder="Type the 2nd answer" class="form-control">
+                </div>
+                <div class="form-group row"><label>3rd Answer : </label>
+                    <input type="text" name="multi3_3rd_answer" style="direction: rtl;" placeholder="Type the 3rd answer" class="form-control">
+                </div>
+            </div>
+
+            <div class="slide multiChoice4Slide" id="multiChoice4Slide">
+                <div class="form-group row"><label>Right Answer : </label>
+                    <input type="text" name="multi4_right_answer" style="direction: rtl;" placeholder="Type the right answer" class="form-control">
+                </div>
+                <div class="form-group row"><label>2nd Answer : </label>
+                    <input type="text" name="multi4_2nd_answer" style="direction: rtl;" placeholder="Type the 2nd answer" class="form-control">
+                </div>
+                <div class="form-group row"><label>3rd Answer : </label>
+                    <input type="text" name="multi4_3rd_answer" style="direction: rtl;" placeholder="Type the 3rd answer" class="form-control">
+                </div>
+                <div class="form-group row"><label>4th Answer : </label>
+                    <input type="text" name="multi4_4th_answer" style="direction: rtl;" placeholder="Type the 4th answer" class="form-control">
+                </div>
+            </div>
+
+            <div class="slide advantage3Slide" id="advantage3Slide">
+                <div class="form-group row"><label>Right Answer : </label>
+                    <input type="text" name="adv3_right_answer" style="direction: rtl;" placeholder="Type the right answer" class="form-control">
+                </div>
+                <div class="form-group row"><label>2nd Answer : </label>
+                    <input type="text" name="adv3_2nd_answer" style="direction: rtl;" placeholder="Type the 2nd answer" class="form-control">
+                </div>
+                <div class="form-group row"><label>3rd Answer : </label>
+                    <input type="text" name="adv3_3rd_answer" style="direction: rtl;" placeholder="Type the 3rd answer" class="form-control">
+                </div>
+            </div>
+
+            <div class="slide advantage4Slide" id="advantage4Slide">
+                <div class="form-group row"><label>Right Answer : </label>
+                    <input type="text" name="adv4_right_answer" style="direction: rtl;" placeholder="Type the right answer" class="form-control">
+                </div>
+                <div class="form-group row"><label>2nd Answer : </label>
+                    <input type="text" name="adv4_2nd_answer" style="direction: rtl;" placeholder="Type the 2nd answer" class="form-control">
+                </div>
+                <div class="form-group row"><label>3rd Answer : </label>
+                    <input type="text" name="adv4_3rd_answer" style="direction: rtl;" placeholder="Type the 3rd answer" class="form-control">
+                </div>
+                <div class="form-group row"><label>3rd Answer : </label>
+                    <input type="text" name="adv4_4th_answer" style="direction: rtl;" placeholder="Type the 4th answer" class="form-control">
+                </div>
+            </div>
+
 
             <div class="form-group row"><label>Reason: </label>
                 <input type="text" name="reason" style="direction: rtl;" placeholder="Type the Reason" class="form-control" required>
@@ -95,18 +215,8 @@ if (isset($_GET['id']) && ($_GET['qset'])) {
                 <img id="image" />
             </div>
 
-            <div class="hr-line-dashed"></div>
 
-            <div class="form-group row"><label>Question Type : </label>
-                <select class="form-control m-b" style="direction: rtl;" name="type" required>
-                    <option value="" disabled selected>Select a question type</option>
-                    <option value="response">إستجابة</option>
-                    <option value="yesNo">نعم / لا</option>
-                    <option value="numInp">إدخال رقم</option>
-                    <option value="multiChoice">اختيار من متعدد</option>
-                    <option value="advantage">أفضلية</option>
-                </select>
-            </div>
+
 
             <div class="hr-line-dashed"></div>
 
