@@ -305,7 +305,7 @@ else {
                 </div>
             </div>
         </div>
-        <form method="post" action="free_check_answers.php?id=<?php echo $setId; ?>" enctype="multipart/form-data">
+        <form method="post" action="check_answers.php?id=<?php echo $setId; ?>" enctype="multipart/form-data">
 
             <div id='sStart' class='slideStart'>
                 <h4 style='direction: rtl;line-height: 2em;' class='text-center topmargin-sm'>
@@ -404,8 +404,8 @@ else {
                             </fieldset>";
                     echo"</div>";
                     echo "<div class='col-md-7'>";
-                    if(file_exists('dashboardAlrawi/examsImages/free/'.$picture)){
-                        echo "<img class='quesImg center-block img-responsive' src='dashboardAlrawi/examsImages/free/$picture'/>";
+                    if(file_exists('dashboardAlrawi/examsImages/paid/'.$picture)){
+                        echo "<img class='quesImg center-block img-responsive' src='dashboardAlrawi/examsImages/paid/$picture'/>";
                     }
                     echo"</div>";
                     echo"</div>";
@@ -435,8 +435,8 @@ else {
                             </fieldset>";
                     echo"</div>";
                     echo "<div class='col-md-7'>";
-                    if(file_exists('dashboardAlrawi/examsImages/free/'.$picture)){
-                        echo "<img class='quesImg center-block img-responsive' src='dashboardAlrawi/examsImages/free/$picture'/>";
+                    if(file_exists('dashboardAlrawi/examsImages/paid/'.$picture)){
+                        echo "<img class='quesImg center-block img-responsive' src='dashboardAlrawi/examsImages/paid/$picture'/>";
                     }
                     echo "</div>";
                     echo "</div>";
@@ -455,8 +455,8 @@ else {
                         </fieldset>";
                     echo "</div>";
                     echo "<div class='col-md-7'>";
-                    if(file_exists('dashboardAlrawi/examsImages/free/'.$picture)){
-                        echo "<img class='quesImg center-block img-responsive' src='dashboardAlrawi/examsImages/free/$picture'/>";
+                    if(file_exists('dashboardAlrawi/examsImages/paid/'.$picture)){
+                        echo "<img class='quesImg center-block img-responsive' src='dashboardAlrawi/examsImages/paid/$picture'/>";
                     }
                     echo "</div>";
                     echo "</div>";
@@ -497,8 +497,8 @@ else {
                     echo "</fieldset>";
                     echo "</div>";
                     echo "<div class='col-md-7'>";
-                    if(file_exists('dashboardAlrawi/examsImages/free/'.$picture)){
-                        echo "<img class='quesImg center-block img-responsive' src='dashboardAlrawi/examsImages/free/$picture'/>";
+                    if(file_exists('dashboardAlrawi/examsImages/paid/'.$picture)){
+                        echo "<img class='quesImg center-block img-responsive' src='dashboardAlrawi/examsImages/paid/$picture'/>";
                     }
                     echo "</div>";
                     echo "</div>";

@@ -350,8 +350,11 @@ if (isset($_POST['submit'])){
 
                                         <div class="row" >
                                             <div class="col-sm-6">
-                                                <img src="dashboardAlrawi/examsImages/free/<?php echo $picture ?>" class="img-fluid img-thumbnail" >
-
+                                                <?php
+                                                if(file_exists('dashboardAlrawi/examsImages/free/'.$picture)){
+                                                    echo "<img class='img-fluid img-thumbnail' src='dashboardAlrawi/examsImages/paid/$picture'/>";
+                                                }
+                                                ?>
                                             </div>
 
                                             <div class="col-sm-6">
@@ -436,8 +439,11 @@ if (isset($_POST['submit'])){
 
                                         <div class="row" >
                                             <div class="col-sm-6">
-                                                <img src="dashboardAlrawi/examsImages/free/<?php echo $picture ?>" class="img-fluid img-thumbnail" >
-
+                                                <?php
+                                                if(file_exists('dashboardAlrawi/examsImages/free/'.$picture)){
+                                                    echo "<img class='img-fluid img-thumbnail' src='dashboardAlrawi/examsImages/paid/$picture'/>";
+                                                }
+                                                ?>
                                             </div>
 
                                             <div class="col-sm-6">
