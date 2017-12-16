@@ -75,7 +75,12 @@ if(isset($_POST['login_submit'])) {
     ============================================= -->
     <title>Al Rawi Theorie | Log In</title>
 
-
+<style>
+.width_full{
+    width: 100%;
+    text-align: center;
+}
+</style>
 </head>
 
 <body class="stretched" style="background: #fde7e7">
@@ -119,7 +124,7 @@ if(isset($_POST['login_submit'])) {
                                 </div>
 
                                 <div class="col_full topmargin-sm nobottommargin">
-                                <a href="<?php echo htmlspecialchars($loginUrl) ?>" class="button button-border button-rounded button-blue" style="direction: rtl"><i class="icon-facebook"></i> سجـل الدخول عن طريق الفيس بوك</a>
+                                <a href="<?php echo htmlspecialchars($loginUrl) ?>" class="button button-border button-rounded button-blue" style="direction: rtl"></a>
 <!--                                --><?php //echo '<a href="' . . '">Log in with Facebook!</a>'; ?>
                                 </div>
 
@@ -161,6 +166,16 @@ if(isset($_POST['login_submit'])) {
 <!-- Footer Scripts
 ============================================= -->
 <script type="text/javascript" src="js/functions.js"></script>
+
+<script>
+        if($(window).width() < 767) {
+            jQuery('.button-blue').html('<i class="icon-facebook"></i>');
+            jQuery('.button-blue').addClass('width_full');
+        }else{
+            jQuery('.button-blue').html('<i class="icon-facebook"></i> سجـل الدخول عن طريق الفيس بوك');
+
+        }
+</script>
 
 </body>
 </html>
