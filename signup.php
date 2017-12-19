@@ -530,8 +530,8 @@ if(isset($_POST['signup_submit'])) {
                                     <button class="button button-3d button-black nomargin" style="width: 100%" id="signup_submit" name="signup_submit" value="signup">إنشاء الحساب</button>
                                 </div>
 
-                                <div class="col_full topmargin-sm nobottommargin" >
-                                    <a  href="<?php echo htmlspecialchars($loginUrl) ?> " class="button button-border button-rounded button-blue"> سجـل الدخول عن طريق الفيس بوك<i class="icon-facebook"></i></a>
+                                <div class="col_full topmargin-sm nobottommargin">
+                                    <a href="<?php echo htmlspecialchars($loginUrl) ?>" class="button button-border button-rounded button-blue" style="direction: rtl"></a>
                                     <!--                                --><?php //echo '<a href="' . . '">Log in with Facebook!</a>'; ?>
                                 </div>
 
@@ -577,5 +577,18 @@ if(isset($_POST['signup_submit'])) {
         });
     });
 </script>
+
+<script>
+
+    if($(window).width() < 767) {
+        jQuery('.button-blue').html('<i class="icon-facebook"></i>');
+        jQuery('.button-blue').addClass('width_full');
+    }else{
+        jQuery('.button-blue').html('<i class="icon-facebook"></i> سجـل الدخول عن طريق الفيس بوك');
+
+    }
+
+</script>
+
 </body>
 </html>
