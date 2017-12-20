@@ -372,10 +372,7 @@ $totalUsers = $countOthers + $countSucceeded;
                                 <a href="https://www.youtube.com/channel/UCCofuIotSiIzzARX3nz4KSw"><small style="display: block; margin-top: 3px;"><strong>Subscribe</strong><br>on YouTube</small></a>
                             </div>
                             <div class="col-md-4 clearfix bottommargin-sm">
-                                <a href="#" class="social-icon si-dark si-colored si-instagram nobottommargin" style="margin-right: 10px;">
-
-                                </a>
-                                <a href="#"><small style="display: block; margin-top: 3px;"><strong>Secured</strong><br></small></a>
+                                <span id="siteseal"><script async type="text/javascript" src="https://seal.godaddy.com/getSeal?sealID=bS2dmJ42SXiBo81RyJN9genp1MWdffCftw7i4uOYRX2mh7vBMQkfmrRq2jue"></script></span>
                             </div>
                         </div>
                     </div>
