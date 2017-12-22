@@ -703,7 +703,7 @@ if (mysqli_num_rows($getAgent) == 1) {
 
 
             ?>
-                <button type="button" class="prev" id="prev">&#10094;</button>
+                <button type="button" class="prev" id="prev"></button>
 <!--                <a class="next" onclick="plusSlides();">&#10095;</a>-->
             </div>
             <button name="submit" style="bottom: 40px;width:80%;font-family: 'DroidArabicKufiRegular';"
@@ -1274,8 +1274,9 @@ if (mysqli_num_rows($getAgent) == 1) {
     //     showSlides();
     // }
 
-    jQuery('#prev').click(function () {
-        slideIndex++;
+    jQuery('.prev').click(function () {
+        // slideIndex++;
+        // alert(slideIndex);
         showSlides();
     });
 
