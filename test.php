@@ -214,6 +214,16 @@ if (mysqli_num_rows($getAgent) == 1) {
         min-width: 337.5px;
     }
     @media (max-width: 767px){
+        .nxtButSt{
+
+            margin-top: 15px;
+            width: 100%;
+        }
+        .prevButSt{
+
+            margin-top: 15px;
+            width: 100%;
+        }
         .dropdown-menu {
             min-width: 160px;
         }
@@ -231,6 +241,20 @@ if (mysqli_num_rows($getAgent) == 1) {
     @media (min-width: 768px) and (max-width: 991px) {
         #wihund{
             width: 100%;
+        }
+        .nxtButSt{
+            position: fixed;bottom: 40px;right:10px;
+        }
+        .prevButSt{
+            position: fixed;bottom: 40px;left:10px;
+        }
+    }
+    @media (min-width: 991px) {
+        .nxtButSt{
+            position: fixed;bottom: 40px;right:10px;
+        }
+        .prevButSt{
+            position: fixed;bottom: 40px;left:10px;
         }
     }
     .slick-slide{
@@ -570,16 +594,23 @@ if (mysqli_num_rows($getAgent) == 1) {
                         id="submitBut" class="btn-lg btn btn-success center center-block" value="Submit" type="submit">إستعراض النتيجة
                 </button>
 
-                <button type="button" id="nxtBut" class="tright button button-rounded button-reveal button-large button-yellow button-light nxt" style="position: fixed;bottom: 40px;right:10px;">
+                <div class="container" style="width: 100%">
+                    <div class="row" style="width: 100%">
+                        <div class="col-md-12">
+
+                <button type="button" id="nxtBut" class="tright button button-rounded button-reveal button-large button-yellow button-light nxt nxtButSt">
                     <i class="fa fa-arrow-right"></i>
                     <span style="font-family: 'DroidArabicKufiRegular';">السؤال التالي</span>
                 </button>
-
-                <button type="button" id="prevBut" class="button button-rounded button-reveal button-large button-teal prev" style="position: fixed;bottom: 40px;left:10px;">
+                        </div>
+                        <div class="col-md-12">
+                <button type="button" id="prevBut" class="button button-rounded button-reveal button-large button-teal prev prevButSt">
                     <i class="fa fa-arrow-left"></i>
                     <span style="font-family: 'DroidArabicKufiRegular';">السؤال السابق</span>
                 </button>
-
+                        </div>
+                    </div>
+                </div>
             </form>
         </div>
             </div>
@@ -904,7 +935,7 @@ if (mysqli_num_rows($getAgent) == 1) {
             initialSlide: 25,
             nextArrow:false,
             prevArrow:false,
-            autoplaySpeed: 4000
+            autoplaySpeed: 40000
         });
         $('.QuestionsSlideShow').slick('slickPlay');
 
@@ -949,6 +980,7 @@ if (mysqli_num_rows($getAgent) == 1) {
             jQuery('.stopSlide').show();
             jQuery('#submitBut').show();
             jQuery('#nxtBut').hide();
+            jQuery('#prevBut').hide();
             jQuery('#stopBut').hide();
             jQuery('#pause').hide();
             jQuery('#resume').hide();
