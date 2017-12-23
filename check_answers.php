@@ -537,8 +537,7 @@ else{
                                                     <p style= 'color: red;margin-bottom: 10px;font-size:18px;'><?php echo ${'selector_' . $x}; ?></p>
 
                                                     <?php
-                                                }elseif ($type == "multiChoice"){
-
+                                                }elseif ($type == "multiChoice3" || $type == "multiChoice4" || $type == "multiChoice2" || $type == "advantage3" || $type == "advantage"){
                                                     ?>
                                                     <p style= 'color: green;margin-bottom: 10px;font-size:18px;'><?php echo $right_answer; ?></p>
                                                     <p <?php if ( ${'selector_' . $x} == $second_answer){ echo "style= 'color: red;margin-bottom: 10px;font-size:18px;'";}else{echo "style= 'margin-bottom: 10px;font-size:18px;'";} ?>><?php echo $second_answer; ?></p>
