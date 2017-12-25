@@ -32,7 +32,6 @@ if (mysqli_num_rows($getAgent) == 1) {
 
 <html>
 <head>
-    <title>My Now Amazing Webpage</title>
 
     <link rel="stylesheet" type="text/css"
           href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css"/>
@@ -42,6 +41,7 @@ if (mysqli_num_rows($getAgent) == 1) {
     <meta name="author" content="El-SemiColon;"/>
     <link rel="stylesheet" href="style.css" type="text/css"/>
     <link rel="stylesheet" href="css/animate.css" type="text/css"/>
+    <link rel="icon" href="images/1.png" type="image/x-icon">
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="css/bootstrap.css" type="text/css"/>
@@ -301,8 +301,8 @@ if (mysqli_num_rows($getAgent) == 1) {
 
 </head>
 <body>
-<div class="se-pre-con">
-    <div class="pre-pre"></div>
+<div class="se-pre-con" id="pre1">
+    <div class="pre-pre" id="pre2"></div>
 </div>
 
 
@@ -782,8 +782,8 @@ if (mysqli_num_rows($getAgent) == 1) {
                                                href="http://www.el-semicolon.nl">El-SemiColon;</a></p>
 </footer>
 
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-<script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
 
 <script type="text/javascript">
@@ -909,7 +909,7 @@ if (mysqli_num_rows($getAgent) == 1) {
 
     jQuery('.showReason').click(function () {
         var whereR = $(this).attr('target');
-        jQuery('#reason' + whereR).fadeIn();
+        jQuery('#reason' + whereR).fadeIn('slow');
     });
 
 
@@ -1051,14 +1051,14 @@ if (mysqli_num_rows($getAgent) == 1) {
         jQuery('#pause').on('click', function () {
             CountDown.Pause();
             $('.QuestionsSlideShow').slick('slickPause');
-            jQuery('.showReason').fadeIn();
+            jQuery('.showReason').fadeIn('slow');
 
         });
         jQuery('#resume').on('click', function () {
             CountDown.Resume();
             $('.QuestionsSlideShow').slick('slickPlay');
-            jQuery('.showReason').fadeOut();
-            jQuery('.reasonRow').fadeOut();
+            jQuery('.showReason').fadeOut('slow');
+            jQuery('.reasonRow').fadeOut('slow');
 
 
         });
