@@ -138,6 +138,7 @@ $examsRows = mysqli_num_rows($exams_num_rows);
                                 <ul class="nav nav-second-level collapse">
                                     <!--                                    <li><a href="user_profile.html">profile</a></li>-->
                                     <li><a href="user_list.php">Users list</a></li>
+                                    <li><a href="free_packet.php">Give a free packet</a></li>
                                 </ul>
                             </li>
                             <li class="nav-heading"><span>FREE EXAMS</span></li>
@@ -157,11 +158,18 @@ $examsRows = mysqli_num_rows($exams_num_rows);
                                     <li><a href="paid_exams_stats.php"> Paid Exams Stats</a></li>
                                 </ul>
                             </li>
-                            <li class="nav-heading"><span>PRIVATE SESSIONS</span></li>
+                            <li class="nav-heading"><span>PRIVATE SESSIONS ISSUES</span></li>
                             <li>
                                 <a href="#"><i class="fa fa-dollar"></i> <span class="nav-label">Private Sessions</span><span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level collapse">
                                     <li><a href="manage_private_session.php">Manage Private Sessions</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-heading"><span>PAYMENTS ISSUES</span></li>
+                            <li>
+                                <a href="#"><i class="fa fa-dollar"></i> <span class="nav-label">Payments</span><span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level collapse">
+                                    <li><a href="control_payments.php">Control Payments</a></li>
                                 </ul>
                             </li>
 
@@ -278,8 +286,11 @@ $examsRows = mysqli_num_rows($exams_num_rows);
 
                                     <div class="panel white-text panel-card recent-activites" style="background-color: #009688 !important;">
                                         <!-- Start .panel -->
-                                        <div class="panel-heading" style="background-color: #009688 !important;">
+                                        <div class="panel-heading" style="background-color: #009688   !important;padding: 15px 20px 25px;">
                                             NUMBER OF USERS EACH MONTH
+                                            <div style="float: right;">
+                                                <a href="user_list.php"><button type="button" class="btn-warning btn-rounded" style="border: 0;padding: 8px 15px 8px 15px;">See All</button></a>
+                                            </div>
                                         </div>
                                         <div class="panel-body  p-xl-3">
 
@@ -295,6 +306,7 @@ $examsRows = mysqli_num_rows($exams_num_rows);
                                                         $usersNoThis = 0;
                                                         $query = "SELECT * FROM Users";
                                                         $select_users = mysqli_query($mysqli, $query);
+                                                        $allUsers = mysqli_num_rows($select_users);
                                                         while($row = mysqli_fetch_assoc($select_users)) {
                                                             if ($row['REG_DATE'] > $dateMin && $row['REG_DATE'] < $date) {
                                                                 $usersNoThis++;
@@ -388,9 +400,6 @@ $examsRows = mysqli_num_rows($exams_num_rows);
 
                                                 <div class='black-text message-content'>
                                                     <div>
-                                                        <?php
-                                                        $allUsers = $usersNoThis + $usersNoLast + $usersNo2 + $usersNo3 + $usersNo4;
-                                                        ?>
                                                         <strong>ALL</strong>
                                                         <small class="float-right"><b style="font-size:  20px;"><?php echo $allUsers; ?></b> <small><?php if($allUsers == 1){echo "User";}else{echo "Users";} ?></small></small>
                                                     </div>
@@ -406,7 +415,141 @@ $examsRows = mysqli_num_rows($exams_num_rows);
 
                                 </div>
                         </div>
+                        <div class="row">
+                            <div class="col-md-12">
 
+
+                                <div class="panel white-text panel-card recent-activites" style="background-color: #7986CB   !important;">
+                                    <!-- Start .panel -->
+                                    <div class="panel-heading" style="background-color: #7986CB   !important;padding: 15px 20px 25px;">
+                                        NUMBER OF PURCHASES EACH MONTH
+                                    <div style="float: right;">
+                                            <a href="control_payments.php"><button type="button" class="btn-warning btn-rounded" style="border: 0;padding: 8px 15px 8px 15px;">See All</button></a>
+                                    </div>
+                                    </div>
+                                    <div class="panel-body  p-xl-3">
+
+                                        <div class="margin-t-10">
+                                            <div class="card-block">
+
+                                                <div class='black-text message-content'>
+                                                    <div>
+
+                                                        <?php
+                                                        $date = date("Y-m-d", strtotime('last day of this month'));
+                                                        $dateMin = date("Y-m-d", strtotime('first day of this month'));
+                                                        $paymentsNoThis = 0;
+                                                        $query = "SELECT * FROM PAID_EXAM";
+                                                        $select_payments = mysqli_query($mysqli, $query);
+                                                        $allPayments = mysqli_num_rows($select_payments);
+                                                        while($row = mysqli_fetch_assoc($select_payments)) {
+                                                            if ($row['PAYMENT_DATE'] > $dateMin && $row['PAYMENT_DATE'] < $date) {
+                                                                $paymentsNoThis++;
+                                                            }
+                                                        }
+                                                        ?>
+                                                        <strong>THIS MONTH</strong>
+                                                        <small class="float-right"><b style="font-size:  20px;"><?php echo $paymentsNoThis; ?></b> <small><?php if($paymentsNoThis == 1){echo "Payment";}else{echo "Payments";} ?></small></small>
+                                                    </div>
+                                                </div>
+
+                                                <div class='black-text message-content'>
+                                                    <div>
+
+                                                        <?php
+                                                        $date = date("Y-m-d", strtotime('last day of last month'));
+                                                        $dateMin = date("Y-m-d", strtotime('first day of last month'));
+                                                        $paymentsNoLast = 0;
+                                                        $query = "SELECT * FROM PAID_EXAM";
+                                                        $select_payments = mysqli_query($mysqli, $query);
+                                                        while($row = mysqli_fetch_assoc($select_payments)) {
+                                                            if ($row['PAYMENT_DATE'] > $dateMin && $row['PAYMENT_DATE'] < $date) {
+                                                                $paymentsNoLast++;
+                                                            }
+                                                        }
+                                                        ?>
+                                                        <strong>LAST MONTH</strong>
+                                                        <small class="float-right"><b style="font-size:  20px;"><?php echo $paymentsNoLast; ?></b> <small><?php if($paymentsNoLast == 1){echo "Payment";}else{echo "Payments";} ?></small></small>
+                                                    </div>
+                                                </div>
+
+                                                <div class='black-text message-content'>
+                                                    <div>
+
+                                                        <?php
+                                                        $date = date("Y-m-d", strtotime('last day of -2 month'));
+                                                        $dateMin = date("Y-m-d", strtotime('first day of -2 month'));
+                                                        $paymentsNo2 = 0;
+                                                        $query = "SELECT * FROM PAID_EXAM";
+                                                        $select_payments = mysqli_query($mysqli, $query);
+                                                        while($row = mysqli_fetch_assoc($select_payments)) {
+                                                            if ($row['PAYMENT_DATE'] > $dateMin && $row['PAYMENT_DATE'] < $date) {
+                                                                $paymentsNo2++;
+                                                            }
+                                                        }
+                                                        ?>
+                                                        <strong>2 MONTHS AGO</strong>
+                                                        <small class="float-right"><b style="font-size:  20px;"><?php echo $paymentsNo2; ?></b> <small><?php if($paymentsNo2 == 1){echo "Payment";}else{echo "Payments";} ?></small></small>
+                                                    </div>
+                                                </div>
+
+                                                <div class='black-text message-content'>
+                                                    <div>
+                                                        <?php
+                                                        $date = date("Y-m-d", strtotime('last day of -3 month'));
+                                                        $dateMin = date("Y-m-d", strtotime('first day of -3 month'));
+                                                        $paymentsNo3 = 0;
+                                                        $query = "SELECT * FROM PAID_EXAM";
+                                                        $select_payments = mysqli_query($mysqli, $query);
+                                                        while($row = mysqli_fetch_assoc($select_payments)) {
+                                                            if ($row['PAYMENT_DATE'] > $dateMin && $row['PAYMENT_DATE'] < $date) {
+                                                                $paymentsNo3++;
+                                                            }
+                                                        }
+                                                        ?>
+                                                        <strong>3 MONTHS AGO</strong>
+                                                        <small class="float-right"><b style="font-size:  20px;"><?php echo $paymentsNo3; ?></b> <small><?php if($paymentsNo3 == 1){echo "Payment";}else{echo "Payments";} ?></small></small>
+                                                    </div>
+                                                </div>
+
+
+
+                                                <div class='black-text message-content'>
+                                                    <div>
+                                                        <?php
+                                                        $date = date("Y-m-d", strtotime('last day of -4 month'));
+                                                        $dateMin = date("Y-m-d", strtotime('first day of -4 month'));
+                                                        $paymentsNo4 = 0;
+                                                        $query = "SELECT * FROM PAID_EXAM";
+                                                        $select_payments = mysqli_query($mysqli, $query);
+                                                        while($row = mysqli_fetch_assoc($select_payments)) {
+                                                            if ($row['PAYMENT_DATE'] > $dateMin && $row['PAYMENT_DATE'] < $date) {
+                                                                $paymentsNo4++;
+                                                            }
+                                                        }
+                                                        ?>
+                                                        <strong>4 MONTHS AGO</strong>
+                                                        <small class="float-right"><b style="font-size:  20px;"><?php echo $paymentsNo4; ?></b> <small><?php if($paymentsNo4 == 1){echo "Payment";}else{echo "Payments";} ?></small></small>
+                                                    </div>
+                                                </div>
+
+                                                <div class='black-text message-content'>
+                                                    <div>
+                                                        <strong>ALL</strong>
+                                                        <small class="float-right"><b style="font-size:  20px;"><?php echo $allPayments; ?></b> <small><?php if($allPayments == 1){echo "Payment";}else{echo "Payments";} ?></small></small>
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div><!-- End .panel -->
+
+
+                            </div>
+                        </div>
 
                         <div class="row">
                             <div class="col-md-12">

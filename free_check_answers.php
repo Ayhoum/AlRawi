@@ -280,7 +280,7 @@ if (isset($_POST['submit'])) {
                         if (mysqli_num_rows($result) > 0) {
                             $x = 1;
                             $i = 1;
-                            $var = $x + 1;
+                            $var = $x - 1;
 
                             while ($row = mysqli_fetch_assoc($result)) {
 
@@ -294,8 +294,12 @@ if (isset($_POST['submit'])) {
                                 $picture = $row['PICTURE'];
                                 $reason = $row['REASON'];
                                 $type = $row['TYPE'];
-
-                                if ($x == 1 | $var % 12 == 0) {
+//echo "x = " . $x . "var = ";
+//echo $var ."<br>";
+                                if ($x == 1 || $var % 12 == 0) {
+                                    if ($x == 1) {
+                                        echo "<h3>أسئلة الإستجابة</h3>";
+                                    }
                                     echo "<div class='row text-center'>";
                                 }
 
@@ -323,15 +327,20 @@ if (isset($_POST['submit'])) {
                             <?php
                             }
 
-
-                            if ($x == 65 | ($var + 1) % 12 == 0) {
+                            if ($x == 25 || $x == 55) {
                                 echo "</div>";
-                            }
-
-                            if ($x == 25) {
-                                echo "</div>";
+                                if ($x == 25) {
+                                    echo "<h3>أسئلة قوانين السير</h3>";
+                                }
+                                if ($x == 55) {
+                                    echo "<h3>الأسئلة الإستنتاجية</h3>";
+                                }
                                 echo "<div class='row text-center'>";
                                 $var += 1;
+                            }
+
+                            if ($x == 65 || ($var + 1) == 26 || ($var + 1) == 13 || ($var + 1) == 25 || ($var + 1) == 38 || ($var + 1) == 50 || ($var + 1) == 56) {
+                                echo "</div>";
                             }
 
 
@@ -350,8 +359,11 @@ if (isset($_POST['submit'])) {
                                 <?php
                             }
                                 $x++;
+                                $var = $x;
                             } else {
                                 $x++;
+                                $var = $x;
+
                             }
 
 
@@ -399,7 +411,7 @@ if (isset($_POST['submit'])) {
                      aria-labelledby="modal<?php echo "$x"; ?>Title" aria-describedby="modal<?php echo "$x"; ?>Desc">
                     <div>
                         <h2 id="modal<?php echo "$x"; ?>Title" style='direction: rtl;'>السؤال <?php echo $number; ?>:
-                            <span><?php echo $question; ?> </span></h2>
+                            <br><span style="font-size: 25px;"><?php echo $question; ?> </span></h2>
                         <p id="modal<?php echo "$x"; ?>Desc">
                             <div class="row">
                                 <div class="col-sm-6">
@@ -496,118 +508,141 @@ if (isset($_POST['submit'])) {
             </div>
             <br>
             <button data-remodal-action="confirm" class="remodal-confirm" style="background: red">حسناً</button>
+
         </div>
+        <?php
+        $x++;
+        }  else{
+        ?>
 
-            <?php
-            $x++;
-            }  else{
-            ?>
+        <div data-remodal-id="<?php echo "modal$x"; ?>" role="dialog"
+             aria-labelledby="modal<?php echo "$x"; ?>Title"
+             aria-describedby="modal<?php echo "$x"; ?>Desc">
+            <div>
+                <h2 id="modal<?php echo "$x"; ?>Title" style='direction: rtl;'>السؤال <?php echo $number; ?>:
+                    <br><span style="font-size: 25px;"><?php echo $question; ?> </span></h2>
+                <p id="modal<?php echo "$x"; ?>Desc">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <?php
+                            if (file_exists('dashboardAlrawi/examsImages/free/' . $picture)) {
+                                echo "<img class='img-fluid img-thumbnail' src='dashboardAlrawi/examsImages/free/$picture'/>";
+                            }
+                            ?>
+                        </div>
 
-            <div data-remodal-id="<?php echo "modal$x"; ?>" role="dialog"
-                 aria-labelledby="modal<?php echo "$x"; ?>Title"
-                 aria-describedby="modal<?php echo "$x"; ?>Desc">
-                <div>
-                    <h2 id="modal<?php echo "$x"; ?>Title" style='direction: rtl;'>السؤال <?php echo $number; ?>:
-                        <span><?php echo $question; ?> </span></h2>
-                    <p id="modal<?php echo "$x"; ?>Desc">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <?php
-                                if (file_exists('dashboardAlrawi/examsImages/free/' . $picture)) {
-                                    echo "<img class='img-fluid img-thumbnail' src='dashboardAlrawi/examsImages/free/$picture'/>";
-                                }
-                                ?>
-                            </div>
-
-                            <div class="col-sm-6" style='direction: rtl;text-align: right;'>
-                                <h4> الإجابات: </h4>
-                                <?php
-                                if ($type == "response"){
-                                ?>
+                        <div class="col-sm-6" style='direction: rtl;text-align: right;'>
+                            <h4> الإجابات: </h4>
+                            <?php
+                            if ($type == "response"){
+                            ?>
 
 
-                    <p <?php if ($right_answer == "فرامل") {
+                <p <?php
+                if ($right_answer == "فرامل") {
+                    echo "style= 'color: green;margin-bottom: 10px;font-size:18px;'";
+                } else if (${'selector_' . $x} == "فرامل") {
+                    echo "style= 'color: red;font-weight: 700;margin-bottom: 10px;font-size:18px;'";
+                } else {
+                    echo "style= 'margin-bottom: 10px;font-size:18px;'";
+                } ?> >فرامل</p>
+                <p <?php if ($right_answer == "رفع قدم عن الوقود") {
+                    echo "style= 'color: green;margin-bottom: 10px;font-size:18px;'";
+                } else if (${'selector_' . $x} == "رفع قدم عن الوقود") {
+                    echo "style= 'color: red;font-weight: 700;margin-bottom: 10px;font-size:18px;'";
+                } else {
+                    echo "style= 'margin-bottom: 10px;font-size:18px;'";
+                } ?>>رفع قدم عن الوقود</p>
+                <p <?php if ($right_answer == "لا شئ") {
+                    echo "style= 'color: green;margin-bottom: 10px;font-size:18px;'";
+                } else if (${'selector_' . $x} == "لا شئ") {
+                    echo "style= 'color: red;font-weight: 700;margin-bottom: 10px;font-size:18px;'";
+                } else {
+                    echo "style= 'margin-bottom: 10px;font-size:18px;'";
+                } ?>>لا شيء</p>
+
+
+                <?php
+                }
+                elseif ($type == "yesNo") {
+                    ?>
+                    <p <?php if ($right_answer == "نعم") {
                         echo "style= 'color: green;margin-bottom: 10px;font-size:18px;'";
+                    } else if (${'selector_' . $x} == "نعم") {
+                        echo "style= 'color: red;font-weight: 700;margin-bottom: 10px;font-size:18px;'";
                     } else {
                         echo "style= 'margin-bottom: 10px;font-size:18px;'";
-                    } ?> >فرامل</p>
-                    <p <?php if ($right_answer == "رفع قدم عن الوقود") {
+                    } ?> >نعم</p>
+                    <p <?php if ($right_answer == "لا") {
                         echo "style= 'color: green;margin-bottom: 10px;font-size:18px;'";
+                    } else if (${'selector_' . $x} == "لا") {
+                        echo "style= 'color: red;font-weight: 700;margin-bottom: 10px;font-size:18px;'";
                     } else {
                         echo "style= 'margin-bottom: 10px;font-size:18px;'";
-                    } ?>>رفع قدم عن الوقود</p>
-                    <p <?php if ($right_answer == "لا شئ") {
-                        echo "style= 'color: green;margin-bottom: 10px;font-size:18px;'";
-                    } else {
-                        echo "style= 'margin-bottom: 10px;font-size:18px;'";
-                    } ?>>لا شيء</p>
-
+                    } ?>>لا</p>
 
                     <?php
-                    }
-                    elseif ($type == "yesNo") {
-                        ?>
-                        <p <?php if ($right_answer == "نعم") {
-                            echo "style= 'color: green;margin-bottom: 10px;font-size:18px;'";
-                        } else {
-                            echo "style= 'margin-bottom: 10px;font-size:18px;'";
-                        } ?> >نعم</p>
-                        <p <?php if ($right_answer == "لا") {
-                            echo "style= 'color: green;margin-bottom: 10px;font-size:18px;'";
-                        } else {
-                            echo "style= 'margin-bottom: 10px;font-size:18px;'";
-                        } ?>>لا</p>
-
-                        <?php
-                    } elseif ($type == "numInp") {
-                        ?>
-                        <p style='color: green;margin-bottom: 10px;font-size:18px;'><?php echo ${'selector_' . $x}; ?></p>
-                        <?php
-                    } elseif ($type == "multiChoice3" || $type == "multiChoice4" || $type == "multiChoice2" || $type == "advantage3" || $type == "advantage4") {
-                        ?>
-
-                        <p style='color: green;margin-bottom: 10px;font-size:18px;'><?php echo $right_answer; ?></p>
-                        <p style='margin-bottom: 10px;font-size:18px;'><?php echo $second_answer; ?></p>
-                        <?php
-                        if ($third_answer != "0") {
-                            ?>
-                            <p style='margin-bottom: 10px;font-size:18px;'><?php echo $third_answer; ?></p>
-                            <?php
-                        }
-
-                        if ($forth_answer != "0") {
-                            ?>
-                            <p style='margin-bottom: 10px;font-size:18px;'><?php echo $forth_answer; ?></p>
-
-                            <?php
-                        }
-
-                    }
-
-
+                } elseif ($type == "numInp") {
                     ?>
-                </div>
+                    <p style='color: green;margin-bottom: 10px;font-size:18px;'><?php echo $right_answer ?></p>
+                    <p style='color: red;margin-bottom: 10px;font-weight: 700;font-size:18px;'><?php echo ${'selector_' . $x}; ?></p>
+                    <?php
+                } elseif ($type == "multiChoice3" || $type == "multiChoice4" || $type == "multiChoice2" || $type == "advantage3" || $type == "advantage4") {
+                    ?>
+
+                    <p style='color: green;margin-bottom: 10px;font-size:18px;'><?php echo $right_answer; ?></p>
+                    <p <?php if (${'selector_' . $x} == $second_answer) {
+                        echo "style= 'color: red;font-weight: 700;margin-bottom: 10px;font-size:18px;'";
+                    } else {
+                        echo "style= 'margin-bottom: 10px;font-size:18px;'";
+                    } ?>><?php echo $second_answer; ?></p>
+                    <?php
+                    if ($third_answer != "0") {
+                        ?>
+                        <p <?php if (${'selector_' . $x} == $third_answer) {
+                            echo "style= 'color: red;font-weight: 700;margin-bottom: 10px;font-size:18px;'";
+                        } else {
+                            echo "style= 'margin-bottom: 10px;font-size:18px;'";
+                        } ?>><?php echo $third_answer; ?></p>
+                        <?php
+                    }
+
+                    if ($forth_answer != "0") {
+                        ?>
+                        <p <?php if (${'selector_' . $x} == $forth_answer) {
+                            echo "style= 'color: red;font-weight: 700;margin-bottom: 10px;font-size:18px;'";
+                        } else {
+                            echo "style= 'margin-bottom: 10px;font-size:18px;'";
+                        } ?>><?php echo $forth_answer; ?></p>
+
+                        <?php
+                    }
+
+                }
+
+
+                ?>
             </div>
-
-            </p>
-            <div class="line" style="margin: 10px 0;"></div>
-            <a class="text-center center-block showReason butreas<?php echo $x; ?>"
-               target="<?php echo $x; ?>">
-                <button class="remodal-confirm">إظهار السبب</button>
-            </a>
-
-            <div class="row reasonRow" id="reason<?php echo $x; ?>">
-                <div class="col-sm-12">
-                    <p class="text-center topmargin-sm"
-                       style="font-size:18px;"><?php echo $reason ?></p>
-                </div>
-            </div>
-
         </div>
-        <br>
-        <button data-remodal-action="confirm" class="remodal-confirm" style="background: red">حسناً</button>
-    </div>
 
+        </p>
+        <div class="line" style="margin: 10px 0;"></div>
+        <a class="text-center center-block showReason butreas<?php echo $x; ?>"
+           target="<?php echo $x; ?>">
+            <button class="remodal-confirm">إظهار السبب</button>
+        </a>
+
+        <div class="row reasonRow" id="reason<?php echo $x; ?>">
+            <div class="col-sm-12">
+                <p class="text-center topmargin-sm"
+                   style="font-size:18px;"><?php echo $reason ?></p>
+            </div>
+        </div>
+
+</div>
+<br>
+<button data-remodal-action="confirm" class="remodal-confirm" style="background: red">حسناً</button>
+</div>
 
 
 <?php
@@ -627,13 +662,12 @@ $x++;
 
 ?>
 
-
-</div>
 </div>
 
 <div class="center">
     <a href="profile.php" class="button button-rounded button-reveal button-large button-border "><i
                 class="icon-user"></i><span>اذهب الى الصفحة الشخصية</span></a>
+</div>
 </div>
 </section>
 

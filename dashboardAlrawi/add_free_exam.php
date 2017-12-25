@@ -125,6 +125,7 @@ if(isset($_POST['create'])){
                         <ul class="nav nav-second-level collapse">
                             <!--                                    <li><a href="user_profile.html">profile</a></li>-->
                             <li><a href="user_list.php">Users list</a></li>
+                            <li><a href="free_packet.php">Give a free packet</a></li>
                         </ul>
                     </li>
                     <li class="nav-heading"><span>FREE EXAMS</span></li>
@@ -144,11 +145,18 @@ if(isset($_POST['create'])){
                             <li><a href="paid_exams_stats.php"> Paid Exams Stats</a></li>
                         </ul>
                     </li>
-                    <li class="nav-heading"><span>PRIVATE SESSIONS</span></li>
+                    <li class="nav-heading"><span>PRIVATE SESSIONS ISSUES</span></li>
                     <li>
                         <a href="#"><i class="fa fa-dollar"></i> <span class="nav-label">Private Sessions</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse">
                             <li><a href="manage_private_session.php">Manage Private Sessions</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-heading"><span>PAYMENTS ISSUES</span></li>
+                    <li>
+                        <a href="#"><i class="fa fa-dollar"></i> <span class="nav-label">Payments</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a href="control_payments.php">Control Payments</a></li>
                         </ul>
                     </li>
 

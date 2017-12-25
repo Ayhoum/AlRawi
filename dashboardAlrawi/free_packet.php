@@ -1,21 +1,58 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: Ayham
+ * Date: 25/12/2017
+ * Time: 4:44 م
+ */
+
 session_start();
 ob_start();
 include '../scripts/db_connection.php';
-if($_SESSION['role'] != "MainAdmin"){
-    header("Location: ../index.php");
+if (isset($_POST['submit'])) {
+    $user = $_POST['user'];
+    $amount = $_POST['amount'];
+
+    if($amount == "week"){
+        date_default_timezone_set('Europe/Amsterdam');
+        $start_date = date('Y-m-d H:i:s ', time());
+
+        $end_date = date("Y-m-d H:i:s ", strtotime('+1 week'));
+    }else if($amount == "week2"){
+        date_default_timezone_set('Europe/Amsterdam');
+        $start_date = date('Y-m-d H:i:s ', time());
+
+        $end_date = date("Y-m-d H:i:s ", strtotime('+2 weeks'));
+    }else if($amount == "week4"){
+        date_default_timezone_set('Europe/Amsterdam');
+        $start_date = date('Y-m-d H:i:s ', time());
+
+        $end_date = date("Y-m-d H:i:s ", strtotime('+4 weeks'));
+    }
+
+    $query = "INSERT INTO PAID_EXAM (Users_ID, PAYMENT_DATE, END_DATE )";
+    $query .= "VALUES ('{$user}',
+                             '{$start_date}',
+                             '{$end_date}')";
+
+    $result = mysqli_query($mysqli,$query);
+
+
+    if (!$result) {
+        die("Failed to create a new exam" . mysqli_error($mysqli));
+    } else {
+        header("Location: control_payments.php");
+    }
 }
-if (isset($_GET['id']) && ($_GET['qset'])) {
-    $qset = $_GET['qset'];
-    $setId = $_GET['id'];
-}
+
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Paid Exam Question</title>
+    <title>Al-Rawi Admin Dashboard</title>
     <meta name="keywords" content="HTML5,CSS3,Admin Template"/>
     <meta name="description" content=""/>
     <meta name="Author" content="Psd2allconversion [www.psd2allconversion.com]"/>
@@ -39,7 +76,7 @@ if (isset($_GET['id']) && ($_GET['qset'])) {
     <link href="assets/plugins/widget/widget.css" rel="stylesheet">
     <link href="assets/plugins/calendar/fullcalendar.min.css" rel="stylesheet">
     <link href="assets/plugins/ui/jquery-ui.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="assets/plugins/toastr/toastr.min.css"/>
     <!-- THEME CSS -->
     <link href="assets/css/style.css" rel="stylesheet" type="text/css"/>
     <link href="assets/css/theme/dark.css" rel="stylesheet" type="text/css"/>
@@ -49,7 +86,6 @@ if (isset($_GET['id']) && ($_GET['qset'])) {
 </head>
 <body>
 
-<!-- wrapper -->
 <div id="wrapper">
     <!-- BEGIN HEADER -->
     <div class="page-header navbar fixed-top">
@@ -57,7 +93,7 @@ if (isset($_GET['id']) && ($_GET['qset'])) {
         <div class="page-header-inner ">
             <!-- BEGIN LOGO -->
             <div class="page-logo">
-                <a href="../index.php">
+                <a href="index.php">
                     <img src="assets/images/logo.png" alt="absolute admin" class="img-fluid logo-default"/> </a>
 
             </div>
@@ -66,7 +102,6 @@ if (isset($_GET['id']) && ($_GET['qset'])) {
                             class="fa fa-bars"></i></a>
             </div>
 
-
             <!-- END LOGO -->
 
             <!-- BEGIN TOP NAVIGATION MENU -->
@@ -74,7 +109,8 @@ if (isset($_GET['id']) && ($_GET['qset'])) {
                 <ul class="nav navbar-nav float-right">
                     <!-- BEGIN USER LOGIN DROPDOWN -->
                     <li class="dropdown dropdown-user">
-                        <a href="javascript:" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true" aria-expanded="false">
+                        <a href="javascript:" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
+                           data-close-others="true" aria-expanded="false">
                             <img alt="" class="rounded-circle" src="assets/images/avtar-3.jpg">
                         </a>
                         <div class="dropdown-menu dropdown-menu-default">
@@ -84,7 +120,8 @@ if (isset($_GET['id']) && ($_GET['qset'])) {
                     </li>
                     <!-- END USER LOGIN DROPDOWN -->
                 </ul>
-            </div>            <!-- END TOP NAVIGATION MENU -->
+            </div>
+            <!-- END TOP NAVIGATION MENU -->
         </div>
         <!-- END HEADER INNER -->
     </div>
@@ -95,6 +132,7 @@ if (isset($_GET['id']) && ($_GET['qset'])) {
 
     <!-- BEGIN CONTAINER -->
     <div class="page-container">
+
         <aside class="sidebar">
             <nav class="sidebar-nav">
                 <ul class="metismenu" id="menu">
@@ -156,41 +194,60 @@ if (isset($_GET['id']) && ($_GET['qset'])) {
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="page-title">
-                            <h4 class="float-left">Exam
-                                <?php
-                                $setId1 = $setId - ($qset - 1) * 65;
-                                echo $qset . ' - Question ' . $setId1; ?>
-                            </h4>
+                            <h4 class="float-left">Give a Free Packet</h4>
                         </div>
                     </div>
                 </div><!-- end .page title-->
-
                 <div class="row">
-                    <!-- Start .panel -->
+                    <div class="col-md-12">
+                        <div class="panel panel-card margin-b-30">
+                            <!-- Start .panel -->
+                            <div class="panel-body  p-xl-3">
+                                <form method="post" action="free_packet.php" class="form-horizontal"
+                                      data-toggle="validator">
+                                    <div class="form-group row">
+                                        <label class="col-sm-12 form-control-label">Select User
+                                            Name</label></div>
+                                    <div class="form-group row">
+                                        <div class="col-md-12">
+                                            <select id="user" class="form-control m-b"
+                                                    style="direction: rtl;" name="user" required>
+                                                <option value="" disabled selected>Select a user</option>
+                                                <?php
+                                                $query = "SELECT * FROM Users";
+                                                $select_users = mysqli_query($mysqli, $query);
+                                                while($row = mysqli_fetch_assoc($select_users)) {
+                                                    $name       = $row['NAME'];
+                                                    $id         = $row['ID'];
+                                                    echo "<option value='$id'>$name</option>";
+                                                }
+                                                ?>
+                                            </select></div>
+                                    </div>
+                                    <div class="form-group row"><label class="col-sm-12 form-control-label">Select Amount</label></div>
 
+                                    <div class="form-group row">
+                                        <div class="col-md-12">
+                                            <select id="amount" class="form-control m-b"
+                                                    style="direction: rtl;" name="amount" required>
+                                                <option value="" disabled selected>Select an amount</option>
+                                                <option value="week">أسبوع</option>
+                                                <option value="week2">أسبوعين</option>
+                                                <option value="week4">4 أسابيع</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="hr-line-dashed"></div>
+                                    <div class="form-group row">
+                                        <div class="col-sm-8 col-sm-offset-0">
+                                            <input name="submit" class="btn btn-primary" type="submit" value="Submit">
+                                        </div>
+                                    </div>
+                                </form>
 
-                    <?php
-                    if(isset($_GET['source'])){
-                        $source = $_GET['source'];
-                    }else{
-                        $source = '';
-                    }
-                    switch($source){
-                        case 'add':
-                            include "add_new_paid_question.php";
-                            break;
-                        case 'edit':
-                            include "edit_paid_question.php";
-                            break;
-                        case 'hidden':
-                            echo "It is our code! ;;;";
-                            break;
-                        default:
-                            include "manage_paid_exams.php";
-                            break;
-                    }
-
-                    ?>
+                            </div>
+                        </div>
+                    </div>
 
 
                 </div>
@@ -198,13 +255,14 @@ if (isset($_GET['id']) && ($_GET['qset'])) {
                 <div class="footer">
                     <?php
                     $query = "SELECT * FROM Website";
-                    $getWeb = mysqli_query($mysqli,$query);
-                    while ($row = mysqli_fetch_assoc($getWeb)){
+                    $getWeb = mysqli_query($mysqli, $query);
+                    while ($row = mysqli_fetch_assoc($getWeb)) {
                         $website = $row['DevWeb'];
                     }
                     ?>
                     <div>
-                        <strong>Copyright</strong> <a target="_blank" href="<?php echo $website;?>">El-Semicolon;</a> © <?php echo date('Y') ;?>
+                        <strong>Copyright</strong> <a target="_blank" href="<?php echo $website; ?>">El-Semicolon;</a>
+                        © <?php echo date('Y'); ?>
                     </div>
                 </div>
             </div>
@@ -231,6 +289,7 @@ if (isset($_GET['id']) && ($_GET['qset'])) {
 
     <script type="text/javascript" src="assets/plugins/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="assets/plugins/metis-menu/metisMenu.min.js"></script>
+
     <script type="text/javascript" src="assets/plugins/bootstrap/js/tether.min.js"></script>
     <script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="assets/plugins/slim-scroll/jquery.slimscroll.min.js"></script>
@@ -240,52 +299,19 @@ if (isset($_GET['id']) && ($_GET['qset'])) {
     <script src="assets/plugins/calendar/moment.min.js"></script>
     <script src="assets/plugins/calendar/fullcalendar.min.js"></script>
     <script src="assets/plugins/ui/jquery-ui.js"></script>
-
-
+    <script src="assets/plugins/map/jquery-jvectormap-1.2.2.min.js"></script>
+    <script src="assets/plugins/map/jquery-jvectormap-world-mill-en.js"></script>
+    <script src="assets/plugins/morris_chart/morris.js"></script>
+    <script src="assets/plugins/morris_chart/raphael-2.1.0.min.js"></script>
     <!-- PAGE LEVEL FILES -->
     <script src="assets/plugins/data-tables/jquery.dataTables.js"></script>
     <script src="assets/plugins/data-tables/dataTables.tableTools.js"></script>
-    <script src="assets/plugins/data-tables/dataTables.bootstrap.js"></script>
+    <script src="assets/plugins/data-tables/dataTables.bootstrap4.min.js"></script>
     <script src="assets/plugins/data-tables/dataTables.responsive.js"></script>
     <script src="assets/plugins/data-tables/tables-data.js"></script>
     <!-- Custom FILES -->
     <script type="text/javascript" src="assets/js/custom.js"></script>
-
-
-
-
-    <script>
-        jQuery('.slide').hide();
-
-        function getType() {
-            var x = document.getElementById("type");
-            var i = x.selectedIndex;
-            if(x.options[i].value == "yesNo"){
-                jQuery('.slide').hide();
-                $('.yesOrNoSlide').show();
-            }else if(x.options[i].value == "response"){
-                jQuery('.slide').hide();
-                $('.responseSlide').show();
-            }else if(x.options[i].value == "numInp"){
-                jQuery('.slide').hide();
-                $('.numInpSlide').show();
-            }else if(x.options[i].value == "multiChoice2"){
-                jQuery('.slide').hide();
-                $('.multiChoice2Slide').show();
-            }else if(x.options[i].value == "multiChoice3"){
-                jQuery('.slide').hide();
-                $('.multiChoice3Slide').show();
-            }else if(x.options[i].value == "multiChoice4"){
-                jQuery('.slide').hide();
-                $('.multiChoice4Slide').show();
-            }else if(x.options[i].value == "advantage3"){
-                jQuery('.slide').hide();
-                $('.advantage3Slide').show();
-            }else if(x.options[i].value == "advantage4"){
-                jQuery('.slide').hide();
-                $('.advantage4Slide').show();
-            }
-        }
-    </script>
+    <script src="assets/plugins/toastr/toastr.min.js"></script>
+    <script type="text/javascript" src="assets/js/index.js"></script>
 </body>
 </html>

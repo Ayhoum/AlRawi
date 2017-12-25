@@ -47,7 +47,6 @@ if (isset($_POST['submit'])) {
         }
         if (file_exists("examsImages/paid/$oldPicture")) {
             unlink("examsImages/paid/$oldPicture");
-            echo "<script>alert('Done');</script>";
         }
     } elseif (empty($newPicture_tmp)) {
         $query = "SELECT * FROM EXAM_QUESTION WHERE NUMBER = $setId";
@@ -156,12 +155,16 @@ while ($row = mysqli_fetch_assoc($select_question)) {
                     <div class="hr-line-dashed"></div>
 
                     <div class="form-group row"><label>Question Type : </label>
-                        <select class="form-control m-b" style="direction: rtl;" name="type" required>
+                        <select id="type" class="form-control m-b" style="direction: rtl;" name="type" required>
+                            <option value="" disabled selected>Select a question type</option>
                             <option value="response" <?php if ($type == "response" ){echo "selected"; }?>>إستجابة</option>
                             <option value="yesNo" <?php if ($type == "yesNo" ){echo "selected"; }?>>نعم / لا</option>
                             <option value="numInp" <?php if ($type == "numInp" ){echo "selected"; }?>>إدخال رقم</option>
-                            <option value="multiChoice" <?php if ($type == "multiChoice" ){echo "selected"; }?>>اختيار من متعدد</option>
-                            <option value="advantage" <?php if ($type == "advantage" ){echo "selected"; }?>>أفضلية</option>
+                            <option value="multiChoice2" <?php if ($type == "multiChoice2" ){echo "selected"; }?>>اختيار من متعدد (2)</option>
+                            <option value="multiChoice3" <?php if ($type == "multiChoice3" ){echo "selected"; }?>>اختيار من متعدد (3)</option>
+                            <option value="multiChoice4" <?php if ($type == "multiChoice4" ){echo "selected"; }?>>اختيار من متعدد (4)</option>
+                            <option value="advantage3" <?php if ($type == "advantage3" ){echo "selected"; }?>>أفضلية (3)</option>
+                            <option value="advantage4" <?php if ($type == "advantage4" ){echo "selected"; }?>>أفضلية (4)</option>
                         </select>
                     </div>
 
