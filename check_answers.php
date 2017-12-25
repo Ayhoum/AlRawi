@@ -247,9 +247,9 @@ if (isset($_POST['submit'])) {
                 <nav id="primary-menu" class="style-3">
 
                     <ul>
-                        <li class="current text-center"><a class="text-center" href="index.php">
-                                <div>الصفحة الرئيسية</div>
-                            </a></li>
+                        <li class="current"><a href="index.php"><div>الصفحة الرئيسية</div></a></li>
+                        <li><a target="_blank" href="blog.php"><div>المدونة</div></a></li>
+                        <li><a target="_blank" href="https://www.theorie-leren.nl/shop/school/al-rawi-theorie.html"><div>فحوص الإنجليزي والهولندي</div></a></li>
                     </ul>
 
                 </nav><!-- #primary-menu end -->
@@ -689,7 +689,7 @@ $x++;
                         <div class="col-md-6 bottommargin-sm text-center">
                             <div class="footer-big-contacts">
                                 <span>Call Us:</span>
-                                +(31) 6 12345678
+                                +31-687460636
                             </div>
                         </div>
 
@@ -756,7 +756,7 @@ $x++;
             </div>
 
             <div class="text-center topmargin-sm">
-                Developed & Designed by <a href="http://www.el-semicolon.nl"> El-SemiColon; </a>
+                Developed & Designed by <a href="http://www.el-semicolon.nl"> El-SemiColon; <img src="http://el-semicolon.nl/style/images/logo.png" style="width: 64px;height: 64px;"/></a>
             </div>
 
         </div>

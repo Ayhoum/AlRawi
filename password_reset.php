@@ -99,7 +99,7 @@ if(isset($_POST['code_submit'])){
                     </div>
 
                     <div class="row center"><small>Copyrights &copy; All Rights Reserved by Alrawi Theorie Wbsite</small></div>
-                    <div class="row center"><small>Developed by <a target="_blank" href="http://www.el-semicolon.nl">El-Semicolon</a></small></div>
+                    <div class="row center"><small>Developed by <a target="_blank" href="http://www.el-semicolon.nl">El-Semicolon; <img src="http://el-semicolon.nl/style/images/logo.png" style="width: 64px;height: 64px;"/></a></small></div>
 
                 </div>
             </div>

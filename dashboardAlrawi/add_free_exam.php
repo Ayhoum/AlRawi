@@ -73,8 +73,8 @@ if(isset($_POST['create'])){
         <div class="page-header-inner ">
             <!-- BEGIN LOGO -->
             <div class="page-logo">
-                <a href="index.php">
-                    <img src="assets/images/logo.png" alt="absolute admin" class="img-fluid logo-default"/> </a>
+                <a href="../index.php">
+                    <img src="../images/adminLogo.png" alt="absolute admin" class="img-fluid logo-default"/> </a>
 
             </div><div class="menu-toggler sidebar-toggler">
                 <a href="javascript:" class="navbar-minimalize minimalize-styl-2  float-left "><i class="fa fa-bars"></i></a>

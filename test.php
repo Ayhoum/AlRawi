@@ -632,7 +632,7 @@ if (mysqli_num_rows($getAgent) == 1) {
 
     <footer class="hidden-sm hidden-xs">
         <p>© 2017 Alrawi Theorie | Developed by <a target="_blank" style="color:#000; text-decoration:none;"
-                                                   href="http://www.el-semicolon.nl">El-SemiColon;</a></p>
+                                                   href="http://www.el-semicolon.nl">El-SemiColon; <img src="http://el-semicolon.nl/style/images/logo.png" style="width: 64px;height: 64px;"/></a></p>
     </footer>
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>

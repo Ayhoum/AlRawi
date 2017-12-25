@@ -93,8 +93,8 @@ if (isset($_POST['submit'])) {
         <div class="page-header-inner ">
             <!-- BEGIN LOGO -->
             <div class="page-logo">
-                <a href="index.php">
-                    <img src="assets/images/logo.png" alt="absolute admin" class="img-fluid logo-default"/> </a>
+                <a href="../index.php">
+                    <img src="../images/adminLogo.png" alt="absolute admin" class="img-fluid logo-default"/> </a>
 
             </div>
             <div class="menu-toggler sidebar-toggler">
@@ -261,7 +261,7 @@ if (isset($_POST['submit'])) {
                     }
                     ?>
                     <div>
-                        <strong>Copyright</strong> <a target="_blank" href="<?php echo $website; ?>">El-Semicolon;</a>
+                        <strong>Copyright</strong> <a target="_blank" href="<?php echo $website; ?>">El-Semicolon;  </a>
                         © <?php echo date('Y'); ?>
                     </div>
                 </div>

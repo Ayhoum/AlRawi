@@ -100,7 +100,7 @@ if(isset($_POST['signIn'])) {
             }
             ?>
             <div>
-                <strong>Copyright</strong> <a target="_blank" href="<?php echo $website;?>">El-Semicolon;</a> © <?php echo date('Y') ;?>
+                <strong>Copyright</strong> <a target="_blank" href="<?php echo $website;?>">El-Semicolon;  </a> © <?php echo date('Y') ;?>
             </div>
         </div>
     </body>

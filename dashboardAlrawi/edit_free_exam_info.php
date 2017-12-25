@@ -64,8 +64,8 @@ if(isset($_POST['update'])){
         <div class="page-header-inner ">
             <!-- BEGIN LOGO -->
             <div class="page-logo">
-                <a href="index.php">
-                    <img src="assets/images/logo.png" alt="absolute admin" class="img-fluid logo-default"/> </a>
+                <a href="../index.php">
+                    <img src="../images/adminLogo.png" alt="absolute admin" class="img-fluid logo-default"/> </a>
 
             </div><div class="menu-toggler sidebar-toggler">
                 <a href="javascript:" class="navbar-minimalize minimalize-styl-2  float-left "><i class="fa fa-bars"></i></a>
@@ -212,7 +212,7 @@ if(isset($_POST['update'])){
                 }
                 ?>
                 <div>
-                    <strong>Copyright</strong> <a target="_blank" href="<?php echo $website;?>">El-Semicolon;</a> © <?php echo date('Y') ;?>
+                    <strong>Copyright</strong> <a target="_blank" href="<?php echo $website;?>">El-Semicolon;  </a> © <?php echo date('Y') ;?>
                 </div>
             </div>
         </div>

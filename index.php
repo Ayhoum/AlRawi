@@ -53,6 +53,8 @@ $totalUsers = $countOthers + $countSucceeded;
 	<link rel="stylesheet" href="demos/medical/css/medical-icons.css" type="text/css" />
 	<link rel="stylesheet" href="css/animate.css" type="text/css" />
 	<link rel="stylesheet" href="css/magnific-popup.css" type="text/css" />
+    <link rel="stylesheet" href="css/remodal.css">
+    <link rel="stylesheet" href="css/remodal-default-theme.css">
 
 	<link rel="stylesheet" href="demos/medical/fonts.css" type="text/css" />
 
@@ -109,6 +111,7 @@ $totalUsers = $countOthers + $countSucceeded;
 
 <!--<body class="stretched" data-loader-html="<div id='css3-spinner-svg-pulse-wrapper'><svg id='css3-spinner-svg-pulse' version='1.2' height='210' width='550' xmlns='http://www.w3.org/2000/svg' viewport='0 0 60 60' xmlns:xlink='http://www.w3.org/1999/xlink'><path id='css3-spinner-pulse' stroke='#DE6262' fill='none' stroke-width='2' stroke-linejoin='round' d='M0,90L250,90Q257,60 262,87T267,95 270,88 273,92t6,35 7,-60T290,127 297,107s2,-11 10,-10 1,1 8,-10T319,95c6,4 8,-6 10,-17s2,10 9,11h210' /></svg></div>">-->
 <body style="background: #fde7e7">
+<div class="remodal-bg">
 <div class="se-pre-con"><div class="pre-pre"></div></div>
 
 
@@ -129,7 +132,7 @@ $totalUsers = $countOthers + $countSucceeded;
 					<div class="top-links">
 						<ul>
 							<!--<li><a href="#"><i class="icon-time"></i> Timings</a></li>-->
-							<li><a href="#"><i class="icon-phone3"></i> +31-1234567890</a></li>
+							<li><a href="#"><i class="icon-phone3"></i> +31-687460636</a></li>
 							<li><a href="#" class="nott"><i class="icon-envelope2"></i> info@alrawitheorie.nl</a></li>
 						</ul>
 					</div><!-- .top-links end -->
@@ -208,7 +211,7 @@ $totalUsers = $countOthers + $countSucceeded;
                             <li><a href="#pricing"><div>أسعارنا</div></a></li>
                             <li><a href="#services"><div>خدماتنا</div></a></li>
                             <li><a target="_blank" href="blog.php"><div>المدونة</div></a></li>
-                            <li><a target="_blank" href="https://www.theorie-leren.nl/shop/school/al-rawi-theorie.html"><div>المتجر</div></a></li>
+                            <li><a target="_blank" href="https://www.theorie-leren.nl/shop/school/al-rawi-theorie.html"><div>فحوص الإنجليزي والهولندي</div></a></li>
 						</ul>
 
 					</nav><!-- #primary-menu end -->
@@ -248,8 +251,23 @@ $totalUsers = $countOthers + $countSucceeded;
 
 				</div>
 			</div>
-
 		</section><!-- #slider end -->
+
+
+        <div class="remodal" data-remodal-id="modal">
+            <button data-remodal-action="close" class="remodal-close"></button>
+            <h1>يرجى القراءة</h1>
+            <p style="direction: rtl">
+                عزيزنا الزائر،<br><br>
+                بدخولك إلى الموقع واستخدام خدماتنا فأنت تصرح بالموافقة على أنه لن يتم من قبلك أي تسريب للأسئلة الموجودة في موقعنا، أو نشرها بشكل غير قانوني، إذ أن أي إجراء من هذا القبيل سيعرض صاحبه آسفين للملاحقة القانونية.<br>نرجو لكم وللجميع الفائدة من خدماتنا
+                <br><br><br>فريق عمل الموقع.
+            </p>
+            <br>
+            <button data-remodal-action="cancel" class="remodal-cancel">إلغاء</button>
+            <button data-remodal-action="confirm" class="remodal-confirm">حسناً</button>
+        </div>
+
+
 
 		<!-- Content
 		============================================= -->
@@ -669,17 +687,7 @@ $totalUsers = $countOthers + $countSucceeded;
 
 						<div class="widget clearfix">
 
-<!--							<div class="widget-subscribe-form-result"></div>-->
-<!--							<form id="widget-subscribe-form" action="#" role="form" method="post" class="nobottommargin row clearfix">-->
-<!--								<div class="col-md-9">-->
-<!--									<input type="email" id="widget-subscribe-form-email" name="widget-subscribe-form-email" class="sm-form-control required email" placeholder="أدخل بريدك الإلكتروني ليصلك كل جديد حول موقعنا">-->
-<!--								</div>-->
-<!--								<div class="col-md-3">-->
-<!--									<button class="button button-rounded nomargin center btn-block" type="submit">اشترك معنا</button>-->
-<!--								</div>-->
-<!--							</form>-->
-<!---->
-<!--							<div class="line line-sm"></div>-->
+
 
 							<div class="row">
 <!--								<div class="clear-bottommargin-sm clearfix">-->
@@ -740,7 +748,7 @@ $totalUsers = $countOthers + $countSucceeded;
 								<div class="col-md-6 bottommargin-sm text-center">
 									<div class="footer-big-contacts">
 										<span>Call Us:</span>
-										+(31) 6 12345678
+										+31-687460636
 									</div>
 								</div>
 
@@ -780,51 +788,6 @@ $totalUsers = $countOthers + $countSucceeded;
                             </div>
                         </div>
 
-
-
-<!--                        <div class="widget subscribe-widget clearfix">-->
-<!--                            <div class="row">-->
-<!---->
-<!--                                <div class="col-md-2 clearfix bottommargin-sm">-->
-<!--                                    <a href="https://ar-ar.facebook.com/Alrawi1rijbewijs/" class="social-icon si-dark si-colored si-facebook nobottommargin" style="margin-right: 10px;">-->
-<!--                                        <i class="icon-facebook"></i>-->
-<!--                                        <i class="icon-facebook"></i>-->
-<!--                                    </a>-->
-<!--                                    <a href="https://ar-ar.facebook.com/Alrawi1rijbewijs/"><small style="display: block; margin-top: 3px;"><strong>Like us</strong><br>on Facebook</small></a>-->
-<!--                                </div>-->
-<!---->
-<!--                                <div class="col-md-2 clearfix bottommargin-sm">-->
-<!--                                    <a href="https://www.youtube.com/channel/UCCofuIotSiIzzARX3nz4KSw" class="social-icon si-dark si-colored si-youtube nobottommargin" style="margin-right: 10px;">-->
-<!--                                        <i class="icon-youtube"></i>-->
-<!--                                        <i class="icon-youtube"></i>-->
-<!--                                    </a>-->
-<!--                                    <a href="https://www.youtube.com/channel/UCCofuIotSiIzzARX3nz4KSw"><small style="display: block; margin-top: 3px;"><strong>Subscribe</strong><br>on YouTube</small></a>-->
-<!--                                </div>-->
-<!--                                <div class="col-md-2 clearfix bottommargin-sm">-->
-<!--                                    <a href="#" class="social-icon si-dark si-colored si-twitter nobottommargin" style="margin-right: 10px;">-->
-<!--                                        <i class="icon-twitter"></i>-->
-<!--                                        <i class="icon-twitter"></i>-->
-<!--                                    </a>-->
-<!--                                    <a href="#"><small style="display: block; margin-top: 3px;"><strong>Follow us</strong><br>on Twitter</small></a>-->
-<!--                                </div>-->
-<!--                                <div class="col-md-2 clearfix bottommargin-sm">-->
-<!--                                    <a href="#" class="social-icon si-dark si-colored si-instagram nobottommargin" style="margin-right: 10px;">-->
-<!--                                        <i class="icon-instagram"></i>-->
-<!--                                        <i class="icon-instagram"></i>-->
-<!--                                    </a>-->
-<!--                                    <a href="#"><small style="display: block; margin-top: 3px;"><strong>Follow us</strong><br>on Instagram</small></a>-->
-<!--                                </div>-->
-<!--                                <div class="col-md-4 clearfix bottommargin-sm">-->
-<!--                                    <a href="#" class="social-icon si-dark si-colored si-instagram nobottommargin" style="margin-right: 10px;">-->
-<!---->
-<!--                                    </a>-->
-<!--                                    <a href="#"><small style="display: block; margin-top: 3px;"><strong>Secured</strong><br></small></a>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-
-
-
                     </div>
 
 					</div>
@@ -841,11 +804,11 @@ $totalUsers = $countOthers + $countSucceeded;
 
                     <div class="text-center">
                         Copyrights &copy; 2018 All Rights Reserved by Al Rawi Theorie.<br>
-                        <div class="copyright-links"><a href="#">شروط الإستخدام</a> / <a href="#">سياسات الخصوصية</a></div>
+                        <div class="copyright-links"><a href="terms_and_conditions.php">شروط الإستخدام</a> / <a href="terms_and_conditions.php">سياسات الخصوصية</a></div>
                     </div>
 
                     <div class="text-center topmargin-sm">
-                        Developed & Designed by <a href="http://www.el-semicolon.nl"> El-SemiColon; </a>
+                        Developed & Designed by <a target="_blank" href="http://www.el-semicolon.nl"> El-SemiColon; <img src="http://el-semicolon.nl/style/images/logo.png" style="width: 64px;height: 64px;"/></a>
                     </div>
 
                 </div>
@@ -862,10 +825,14 @@ $totalUsers = $countOthers + $countSucceeded;
 	============================================= -->
 	<div id="gotoTop" class="icon-angle-up"></div>
 
+
+
+
 	<!-- External JavaScripts
 	============================================= -->
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/plugins.js"></script>
+    <script src="js/remodal.js"></script>
 
 	<!-- Footer Scripts
 	============================================= -->
@@ -896,7 +863,20 @@ $totalUsers = $countOthers + $countSucceeded;
 <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>-->
 <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
 <script>
-//paste this code under the head tag or in a separate js file.
+
+    var inst = $('[data-remodal-id=modal]').remodal({
+        closeOnOutsideClick:false
+    });
+    inst.open();
+    $(document).on('confirmation', '.remodal', function () {
+        console.log('Confirmation button is clicked');
+    });
+
+    $(document).on('cancellation', '.remodal', function () {
+        inst.open();
+    });
+
+    //paste this code under the head tag or in a separate js file.
 // Wait for window load
 $(window).load(function() {
 // Animate loader off screen
@@ -935,5 +915,8 @@ $(window).load(function() {
         });
     });
 </script>
+</div>
+
+
 </body>
 </html>

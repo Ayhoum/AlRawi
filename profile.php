@@ -97,7 +97,7 @@ include 'scripts/db_connection.php';
                 <div class="top-links">
                     <ul>
                         <!--<li><a href="#"><i class="icon-time"></i> Timings</a></li>-->
-                        <li><a href="#"><i class="icon-phone3"></i> +31-1234567890</a></li>
+                        <li><a href="#"><i class="icon-phone3"></i> +31-687460636</a></li>
                         <li><a href="#" class="nott"><i class="icon-envelope2"></i> info@alrawitheorie.nl</a></li>
                     </ul>
                 </div><!-- .top-links end -->
@@ -164,6 +164,8 @@ include 'scripts/db_connection.php';
 
                     <ul>
                         <li class="current"><a href="index.php"><div>الصفحة الرئيسية</div></a></li>
+                        <li><a target="_blank" href="blog.php"><div>المدونة</div></a></li>
+                        <li><a target="_blank" href="https://www.theorie-leren.nl/shop/school/al-rawi-theorie.html"><div>فحوص الإنجليزي والهولندي</div></a></li>
                     </ul>
 
                 </nav><!-- #primary-menu end -->
@@ -500,7 +502,7 @@ include 'scripts/db_connection.php';
                             <div class="col-md-6 bottommargin-sm text-center">
                                 <div class="footer-big-contacts">
                                     <span>Call Us:</span>
-                                    +(31) 6 12345678
+                                    +31-687460636
                                 </div>
                             </div>
 
@@ -557,7 +559,7 @@ include 'scripts/db_connection.php';
                 </div>
 
                 <div class="text-center topmargin-sm">
-                    Developed & Designed by <a href="http://www.el-semicolon.nl"> El-SemiColon; </a>
+                    Developed & Designed by <a target="_blank" href="http://www.el-semicolon.nl"> El-SemiColon; <img src="http://el-semicolon.nl/style/images/logo.png" style="width: 64px;height: 64px;"/></a>
                 </div>
 
             </div>

@@ -33,7 +33,6 @@ if (!isset($_SESSION['username'])){
 
 
     <!-- Date & Time Picker CSS -->
-    <link rel="stylesheet" href="demos/travel/css/datepicker.css" type="text/css" />
     <link rel="stylesheet" href="css/components/timepicker.css" type="text/css" />
     <link rel="stylesheet" href="css/components/daterangepicker.css" type="text/css" />
 
@@ -113,7 +112,7 @@ if (!isset($_SESSION['username'])){
                 <div class="top-links">
                     <ul>
                         <!--<li><a href="#"><i class="icon-time"></i> Timings</a></li>-->
-                        <li><a href="#"><i class="icon-phone3"></i> +31-1234567890</a></li>
+                        <li><a href="#"><i class="icon-phone3"></i> +31-687460636</a></li>
                         <li><a href="#" class="nott"><i class="icon-envelope2"></i> info@alrawitheorie.nl</a></li>
                     </ul>
                 </div><!-- .top-links end -->
@@ -147,7 +146,7 @@ if (!isset($_SESSION['username'])){
                             </li>
                         <?php } ?>
 
-                        <li><a href="" data-scrollto="#booking-appointment-form" data-offset="100" data-easing="easeInOutExpo" data-speed="1200" class="bgcolor" style="color:#fff;">احجز امتحانك</a></li>
+<!--                        <li><a href="" data-scrollto="#booking-appointment-form" data-offset="100" data-easing="easeInOutExpo" data-speed="1200" class="bgcolor" style="color:#fff;">احجز امتحانك</a></li>-->
 
                     </ul>
                 </div>
@@ -182,7 +181,8 @@ if (!isset($_SESSION['username'])){
 
                     <ul>
                         <li class="current"><a href="index.php"><div>الصفحة الرئيسية</div></a></li>
-                    </ul>
+                        <li><a target="_blank" href="blog.php"><div>المدونة</div></a></li>
+                        <li><a target="_blank" href="https://www.theorie-leren.nl/shop/school/al-rawi-theorie.html"><div>فحوص الإنجليزي والهولندي</div></a></li>                    </ul>
 
                 </nav><!-- #primary-menu end -->
 
@@ -239,18 +239,6 @@ if (!isset($_SESSION['username'])){
 
                     <div class="widget clearfix">
 
-                        <div class="widget-subscribe-form-result"></div>
-                        <form id="widget-subscribe-form" action="#" role="form" method="post" class="nobottommargin row clearfix">
-                            <div class="col-md-9">
-                                <input type="email" id="widget-subscribe-form-email" name="widget-subscribe-form-email" class="sm-form-control required email" placeholder="أدخل بريدك الإلكتروني ليصلك كل جديد حول موقعنا">
-                            </div>
-                            <div class="col-md-3">
-                                <button class="button button-rounded nomargin center btn-block" type="submit">اشترك معنا</button>
-                            </div>
-                        </form>
-
-                        <div class="line line-sm"></div>
-
                         <div class="row">
                         </div>
 
@@ -267,7 +255,7 @@ if (!isset($_SESSION['username'])){
                             <div class="col-md-6 bottommargin-sm text-center">
                                 <div class="footer-big-contacts">
                                     <span>Call Us:</span>
-                                    +(31) 6 12345678
+                                    +31-687460636
                                 </div>
                             </div>
 
@@ -302,10 +290,7 @@ if (!isset($_SESSION['username'])){
                                 <a href="https://www.youtube.com/channel/UCCofuIotSiIzzARX3nz4KSw"><small style="display: block; margin-top: 3px;"><strong>Subscribe</strong><br>on YouTube</small></a>
                             </div>
                             <div class="col-md-4 clearfix bottommargin-sm">
-                                <a href="#" class="social-icon si-dark si-colored si-instagram nobottommargin" style="margin-right: 10px;">
-
-                                </a>
-                                <a href="#"><small style="display: block; margin-top: 3px;"><strong>Secured</strong><br></small></a>
+                                <span id="siteseal"><script async type="text/javascript" src="https://seal.godaddy.com/getSeal?sealID=bS2dmJ42SXiBo81RyJN9genp1MWdffCftw7i4uOYRX2mh7vBMQkfmrRq2jue"></script></span>
                             </div>
                         </div>
                     </div>
@@ -327,7 +312,7 @@ if (!isset($_SESSION['username'])){
                 </div>
 
                 <div class="text-center topmargin-sm">
-                    Developed & Designed by <a href="http://www.el-semicolon.nl"> El-SemiColon; </a>
+                    Developed & Designed by <a target="_blank" href="http://www.el-semicolon.nl"> El-SemiColon; <img src="http://el-semicolon.nl/style/images/logo.png" style="width: 64px;height: 64px;"/> </a>
                 </div>
 
             </div>
