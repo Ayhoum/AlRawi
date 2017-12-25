@@ -613,7 +613,7 @@
 }
 
 .pricing--karma .pricing--item--featured .pricing--price::after {
-	background: url('http://tympanus.net/Development/PricingTablesInspiration/img/stamp.png');
+	background: url('images/stamp.png');
 	background-size: cover;
 	content: '';
 	position: absolute;

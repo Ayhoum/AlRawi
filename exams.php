@@ -427,7 +427,7 @@ if (mysqli_num_rows($result1) > 0) {
                                     </div>
 
                                     <div class="text-center topmargin-sm">
-                                        Developed & Designed by <a target="_blank" href="http://www.el-semicolon.nl"> El-SemiColon; <img src="http://el-semicolon.nl/style/images/logo.png" style="width: 64px;height: 64px;"/></a>
+                                        Developed & Designed by <a target="_blank" href="http://www.el-semicolon.nl"> El-SemiColon; <img src="images/logoES.png" style="width: 64px;height: 64px;"/></a>
                                     </div>
 
                                 </div>
