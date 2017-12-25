@@ -392,7 +392,7 @@ $totalUsers = $countOthers + $countSucceeded;
 
                 <div class="text-center">
                     Copyrights &copy; 2018 All Rights Reserved by Al Rawi Theorie.<br>
-                    <div class="copyright-links"><a href="#">شروط الإستخدام</a> / <a href="#">سياسات الخصوصية</a></div>
+                    <div class="copyright-links"><a href="terms_and_conditions.php">شروط الإستخدام</a> / <a href="terms_and_conditions.php">سياسات الخصوصية</a></div>
                 </div>
 
                 <div class="text-center topmargin-sm">
