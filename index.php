@@ -143,40 +143,40 @@ $totalUsers = $countOthers + $countSucceeded;
 
 					<!-- Top Links
 					============================================= -->
-					<div class="top-links">
-						<ul>
-							<!--<li><a href="#">EN</a>-->
-								<!--<ul>-->
-									<!--<li><a href="#"><img src="images/icons/flags/french.png" alt="French"> FR</a></li>-->
-									<!--<li><a href="#"><img src="images/icons/flags/italian.png" alt="Italian"> IT</a></li>-->
-									<!--<li><a href="#"><img src="images/icons/flags/german.png" alt="German"> DE</a></li>-->
-								<!--</ul>-->
-							<!--</li>-->
-                            <?php if(!isset($_SESSION['role'])) { ?>
-							<li><a href="#" class="button-red" style="color:#fff;">حسابي</a>
-								<ul>
-								<li><a href="login.php" dir="rtl">تسجيل الدخول <i class="icon-line2-login"></i></a></li>
-									<li><a href="signup.php" dir="rtl">حساب جديد! <i class="icon-line2-pencil"></i></a></li>
-								</ul>
-							</li>
-                            <?php }
-                            else { ?>
-                                <li><a href="#" class="button-red" style="color:#fff;"><?php echo $_SESSION['username']; ?></a>
-                                    <ul>
-                                        <?php if($_SESSION['role'] == "MainAdmin"){?>
-                                        <li><a href="dashboardAlrawi/index.php" dir="rtl">لوحة التحكم <i class="icon-wrench"></i></a></li>
-                                        <?php } else { ?>
-                                        <li><a href="profile.php" dir="rtl">الملف الشخصي <i class="icon-user"></i></a></li>
-                                        <?php } ?>
-                                        <li><a href="logout.php" dir="rtl">تسجيل الخروج <i class="icon-line2-logout"></i></a></li>
-                                    </ul>
-                                </li>
-                            <?php } ?>
-
-<!--                            <li><a href="" data-scrollto="#booking-appointment-form" data-offset="100" data-easing="easeInOutExpo" data-speed="1200" class="bgcolor" style="color:#fff;">احجز امتحانك</a></li>-->
-
-						</ul>
-					</div>
+<!--					<div class="top-links">-->
+<!--						<ul>-->
+<!--							<!--<li><a href="#">EN</a>-->-->
+<!--								<!--<ul>-->-->
+<!--									<!--<li><a href="#"><img src="images/icons/flags/french.png" alt="French"> FR</a></li>-->-->
+<!--									<!--<li><a href="#"><img src="images/icons/flags/italian.png" alt="Italian"> IT</a></li>-->-->
+<!--									<!--<li><a href="#"><img src="images/icons/flags/german.png" alt="German"> DE</a></li>-->-->
+<!--								<!--</ul>-->-->
+<!--							<!--</li>-->-->
+<!--                            --><?php //if(!isset($_SESSION['role'])) { ?>
+<!--							<li><a href="#" class="button-red" style="color:#fff;">حسابي</a>-->
+<!--								<ul>-->
+<!--								<li><a href="login.php" dir="rtl">تسجيل الدخول <i class="icon-line2-login"></i></a></li>-->
+<!--									<li><a href="signup.php" dir="rtl">حساب جديد! <i class="icon-line2-pencil"></i></a></li>-->
+<!--								</ul>-->
+<!--							</li>-->
+<!--                            --><?php //}
+//                            else { ?>
+<!--                                <li><a href="#" class="button-red" style="color:#fff;">--><?php //echo $_SESSION['username']; ?><!--</a>-->
+<!--                                    <ul>-->
+<!--                                        --><?php //if($_SESSION['role'] == "MainAdmin"){?>
+<!--                                        <li><a href="dashboardAlrawi/index.php" dir="rtl">لوحة التحكم <i class="icon-wrench"></i></a></li>-->
+<!--                                        --><?php //} else { ?>
+<!--                                        <li><a href="profile.php" dir="rtl">الملف الشخصي <i class="icon-user"></i></a></li>-->
+<!--                                        --><?php //} ?>
+<!--                                        <li><a href="logout.php" dir="rtl">تسجيل الخروج <i class="icon-line2-logout"></i></a></li>-->
+<!--                                    </ul>-->
+<!--                                </li>-->
+<!--                            --><?php //} ?>
+<!---->
+<!--<!--                            <li><a href="" data-scrollto="#booking-appointment-form" data-offset="100" data-easing="easeInOutExpo" data-speed="1200" class="bgcolor" style="color:#fff;">احجز امتحانك</a></li>-->-->
+<!---->
+<!--						</ul>-->
+<!--					</div>-->
 					<!-- .top-links end -->
 
 				</div>
