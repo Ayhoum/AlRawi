@@ -145,13 +145,13 @@ $totalUsers = $countOthers + $countSucceeded;
 					============================================= -->
 <!--					<div class="top-links">-->
 <!--						<ul>-->
-<!--							<!--<li><a href="#">EN</a>-->-->
-<!--								<!--<ul>-->-->
-<!--									<!--<li><a href="#"><img src="images/icons/flags/french.png" alt="French"> FR</a></li>-->-->
-<!--									<!--<li><a href="#"><img src="images/icons/flags/italian.png" alt="Italian"> IT</a></li>-->-->
-<!--									<!--<li><a href="#"><img src="images/icons/flags/german.png" alt="German"> DE</a></li>-->-->
-<!--								<!--</ul>-->-->
-<!--							<!--</li>-->-->
+<!--							<!--<li><a href="#">EN</a>-->
+<!--								<!--<ul>-->
+<!--									<!--<li><a href="#"><img src="images/icons/flags/french.png" alt="French"> FR</a></li>-->
+<!--									<!--<li><a href="#"><img src="images/icons/flags/italian.png" alt="Italian"> IT</a></li>-->
+<!--									<!--<li><a href="#"><img src="images/icons/flags/german.png" alt="German"> DE</a></li>-->
+<!--								<!--</ul>-->
+<!--							<!--</li>-->
 <!--                            --><?php //if(!isset($_SESSION['role'])) { ?>
 <!--							<li><a href="#" class="button-red" style="color:#fff;">حسابي</a>-->
 <!--								<ul>-->
@@ -173,7 +173,7 @@ $totalUsers = $countOthers + $countSucceeded;
 <!--                                </li>-->
 <!--                            --><?php //} ?>
 <!---->
-<!--<!--                            <li><a href="" data-scrollto="#booking-appointment-form" data-offset="100" data-easing="easeInOutExpo" data-speed="1200" class="bgcolor" style="color:#fff;">احجز امتحانك</a></li>-->-->
+<!--<!--                            <li><a href="" data-scrollto="#booking-appointment-form" data-offset="100" data-easing="easeInOutExpo" data-speed="1200" class="bgcolor" style="color:#fff;">احجز امتحانك</a></li>-->
 <!---->
 <!--						</ul>-->
 <!--					</div>-->
