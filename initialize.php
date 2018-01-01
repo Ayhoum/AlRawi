@@ -11,4 +11,4 @@ require_once "scripts/src/Mollie/API/Autoloader.php";
  * See: https://www.mollie.com/dashboard/settings/profiles
  */
 $mollie = new Mollie_API_Client;
-$mollie->setApiKey("live_Nat9hdJRQyaVPB9PhAHrnc3FtPePBy");
+$mollie->setApiKey("live_eqrfQpkDsEkaUdUvutpHqvWkHbWRVR");
