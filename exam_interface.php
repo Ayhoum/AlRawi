@@ -913,7 +913,7 @@ if (mysqli_num_rows($getAgent) == 1) {
     });
 
 
-    var time = 6;
+    var time = 18;
     var $bar,
         $slick,
         tick,
