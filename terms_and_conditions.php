@@ -121,7 +121,7 @@ ob_start();
                 <div class="top-links">
                     <ul>
                         <!--<li><a href="#"><i class="icon-time"></i> Timings</a></li>-->
-                        <li><a href="#"><i class="icon-phone3"></i> +31-687460636</a></li>
+                        <li><a href="#">WhatsApp: +31-687460636</a></li>
                         <li><a href="#" class="nott"><i class="icon-envelope2"></i> info@alrawitheorie.nl</a></li>
                     </ul>
                 </div><!-- .top-links end -->
@@ -283,8 +283,9 @@ ob_start();
 
                             <div class="col-md-6 bottommargin-sm text-center">
                                 <div class="footer-big-contacts">
-                                    <span>Call Us:</span>
+                                    <span>WhatsApp:</span>
                                     +31-687460636
+                                    <span>سنسعى للرد خلال 24 ساعة</span>
                                 </div>
                             </div>
 
@@ -304,13 +305,13 @@ ob_start();
                         <div class="row">
 
                             <div class="col-md-4 clearfix bottommargin-sm">
-                                <a href="https://ar-ar.facebook.com/Alrawi1rijbewijs/"
+                                <a target="_blank" href="https://ar-ar.facebook.com/Alrawi1rijbewijs/"
                                    class="social-icon si-dark si-colored si-facebook nobottommargin"
                                    style="margin-right: 10px;">
                                     <i class="icon-facebook"></i>
                                     <i class="icon-facebook"></i>
                                 </a>
-                                <a href="https://ar-ar.facebook.com/Alrawi1rijbewijs/">
+                                <a target="_blank" href="https://ar-ar.facebook.com/Alrawi1rijbewijs/">
                                     <small style="display: block; margin-top: 3px;"><strong>Like us</strong><br>on
                                         Facebook
                                     </small>
@@ -318,13 +319,13 @@ ob_start();
                             </div>
 
                             <div class="col-md-4 clearfix bottommargin-sm">
-                                <a href="https://www.youtube.com/channel/UCCofuIotSiIzzARX3nz4KSw"
+                                <a target="_blank" href="https://www.youtube.com/channel/UCCofuIotSiIzzARX3nz4KSw"
                                    class="social-icon si-dark si-colored si-youtube nobottommargin"
                                    style="margin-right: 10px;">
                                     <i class="icon-youtube"></i>
                                     <i class="icon-youtube"></i>
                                 </a>
-                                <a href="https://www.youtube.com/channel/UCCofuIotSiIzzARX3nz4KSw">
+                                <a target="_blank" href="https://www.youtube.com/channel/UCCofuIotSiIzzARX3nz4KSw">
                                     <small style="display: block; margin-top: 3px;"><strong>Subscribe</strong><br>on
                                         YouTube
                                     </small>

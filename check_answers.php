@@ -688,8 +688,9 @@ $x++;
 
                         <div class="col-md-6 bottommargin-sm text-center">
                             <div class="footer-big-contacts">
-                                <span>Call Us:</span>
+                                <span>WhatsApp:</span>
                                 +31-687460636
+                                <span>سنسعى للرد خلال 24 ساعة</span>
                             </div>
                         </div>
 
@@ -708,26 +709,26 @@ $x++;
                     <div class="row">
 
                         <div class="col-md-4 clearfix bottommargin-sm">
-                            <a href="https://ar-ar.facebook.com/Alrawi1rijbewijs/"
+                            <a target="_blank" href="https://ar-ar.facebook.com/Alrawi1rijbewijs/"
                                class="social-icon si-dark si-colored si-facebook nobottommargin"
                                style="margin-right: 10px;">
                                 <i class="icon-facebook"></i>
                                 <i class="icon-facebook"></i>
                             </a>
-                            <a href="https://ar-ar.facebook.com/Alrawi1rijbewijs/">
+                            <a target="_blank" href="https://ar-ar.facebook.com/Alrawi1rijbewijs/">
                                 <small style="display: block; margin-top: 3px;"><strong>Like us</strong><br>on Facebook
                                 </small>
                             </a>
                         </div>
 
                         <div class="col-md-4 clearfix bottommargin-sm">
-                            <a href="https://www.youtube.com/channel/UCCofuIotSiIzzARX3nz4KSw"
+                            <a target="_blank" href="https://www.youtube.com/channel/UCCofuIotSiIzzARX3nz4KSw"
                                class="social-icon si-dark si-colored si-youtube nobottommargin"
                                style="margin-right: 10px;">
                                 <i class="icon-youtube"></i>
                                 <i class="icon-youtube"></i>
                             </a>
-                            <a href="https://www.youtube.com/channel/UCCofuIotSiIzzARX3nz4KSw">
+                            <a target="_blank" href="https://www.youtube.com/channel/UCCofuIotSiIzzARX3nz4KSw">
                                 <small style="display: block; margin-top: 3px;"><strong>Subscribe</strong><br>on YouTube
                                 </small>
                             </a>
