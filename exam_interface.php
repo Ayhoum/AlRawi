@@ -275,7 +275,7 @@ if (mysqli_num_rows($getAgent) == 1) {
             .prevButSt {
                 position: fixed;
                 bottom: 40px;
-                left: 10px;
+                right: 200px;
             }
         }
 
@@ -289,7 +289,7 @@ if (mysqli_num_rows($getAgent) == 1) {
             .prevButSt {
                 position: fixed;
                 bottom: 40px;
-                left: 10px;
+                right: 200px;
             }
         }
 
@@ -641,7 +641,7 @@ if (mysqli_num_rows($getAgent) == 1) {
                                 </label>
                             </fieldset>";
                                 echo "
-                            <a class='showReason' target='$i'><button style='width: 100%;' type='button' class='btn btn-info btn-reason' id='showreas$i'>إظهار التلميح</button></a>
+                            <a class='showReason' target='$i'><button style='width: 100%;' type='button' class='btn btn-info btn-reason' id='showreas$i'>إظهار السبب</button></a>
 ";
                                 echo "</div>";
                                 echo "<div class='col-md-7'>";
@@ -668,7 +668,7 @@ if (mysqli_num_rows($getAgent) == 1) {
                             <input type='text' class='selector$i' name='selector$i' placeholder='أدخل القيمة'><br>
                         </fieldset>";
                                 echo "
-                    <a class='showReason' target='$i'><button style='width: 100%;' type='button' class='btn btn-info btn-reason' id='showreas$i'>إظهار التلميح</button></a>
+                    <a class='showReason' target='$i'><button style='width: 100%;' type='button' class='btn btn-info btn-reason' id='showreas$i'>إظهار السبب</button></a>
 ";
                                 echo "</div>";
                                 echo "<div class='col-md-7'>";
@@ -717,7 +717,7 @@ if (mysqli_num_rows($getAgent) == 1) {
                                 }
                                 echo "</fieldset>";
                                 echo "
-                    <a class='showReason' target='$i'><button style='width: 100%;' type='button' class='btn btn-info btn-reason' id='showreas$i'>إظهار التلميح</button></a>
+                    <a class='showReason' target='$i'><button style='width: 100%;' type='button' class='btn btn-info btn-reason' id='showreas$i'>إظهار السبب</button></a>
 ";
                                 echo "</div>";
                                 echo "<div class='col-md-7'>";
