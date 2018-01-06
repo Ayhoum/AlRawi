@@ -594,7 +594,7 @@ if (mysqli_num_rows($getAgent) == 1) {
                             if ($type == "response") {
                                 echo "<div id='s$i' class='slide col-md-12' style=''>";
                                 echo "<div class='row'>";
-                                echo "<h4 style='direction:rtl;font-weight: 700;font-size: 20px;' class='text-center'>السؤال $i</h4>";
+                                echo "<h4 style='direction:rtl;font-weight: 700;font-size: 20px;' class='text-center'>الإمتحان $setId - السؤال $i</h4>";
                                 echo "<hr>";
                                 echo "<div class='col-md-5'>";
                                 echo "<h4 style='direction:rtl;font-weight: 700;line-height: 1.5em;' class='text-center'>$question</h4>";
@@ -625,7 +625,7 @@ if (mysqli_num_rows($getAgent) == 1) {
                             } else if ($type == "yesNo") {
                                 echo "<div id='s$i' class='slide col-md-12'>";
                                 echo "<div class='row'>";
-                                echo "<h4 style='direction:rtl;font-weight: 700;font-size: 20px;' class='text-center'>السؤال $i</h4>";
+                                echo "<h4 style='direction:rtl;font-weight: 700;font-size: 20px;' class='text-center'>الإمتحان $setId - السؤال $i</h4>";
                                 echo "<hr>";
                                 echo "<div class='col-md-5'>";
                                 echo "<h4 style='direction: rtl; font-weight: 700;line-height: 1.5em;' class='text-center'>$question</h4>";
@@ -659,7 +659,7 @@ if (mysqli_num_rows($getAgent) == 1) {
                             } else if ($type == "numInp") {
                                 echo "<div id='s$i' class='slide col-md-12'>";
                                 echo "<div class='row'>";
-                                echo "<h4 style='direction:rtl;font-weight: 700;font-size: 20px;' class='text-center'>السؤال $i</h4>";
+                                echo "<h4 style='direction:rtl;font-weight: 700;font-size: 20px;' class='text-center'>الإمتحان $setId - السؤال $i</h4>";
                                 echo "<hr>";
                                 echo "<div class='col-md-5'>";
                                 echo "<h4 style='direction: rtl; font-weight: 700;line-height: 1.5em;' class='text-center'>$question</h4>";
@@ -686,7 +686,7 @@ if (mysqli_num_rows($getAgent) == 1) {
                             } else if ($type == "multiChoice2" || $type == "multiChoice3" || $type == "multiChoice4" || $type == "advantage3" || $type == "advantage4") {
                                 echo "<div id='s$i' class='slide col-md-12'>";
                                 echo "<div class='row'>";
-                                echo "<h4 style='direction:rtl;font-weight: 700;font-size: 20px;' class='text-center'>السؤال $i</h4>";
+                                echo "<h4 style='direction:rtl;font-weight: 700;font-size: 20px;' class='text-center'>الإمتحان $setId - السؤال $i</h4>";
                                 echo "<hr>";
                                 echo "<div class='col-md-5'>";
                                 echo "<h4 style='direction: rtl; font-weight: 700;line-height: 1.5em;' class='text-center'>$question</h4>";
