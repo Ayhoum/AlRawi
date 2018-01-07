@@ -3,12 +3,51 @@ session_start();
 ob_start();
 include '../scripts/db_connection.php';
 $date = date('Y-m-d');
-if($_SESSION['role'] != "MainAdmin" || !isset($_GET['id'])){
+if($_SESSION['role'] != "MainAdmin"){
     header("Location: ../index.php");
+}
+if(!isset($_GET['id'])){
+    header("Location: user_list.php");
 }
 if (isset($_GET['id'])){
     $id = $_GET['id'];
+
+    if(isset($_GET['give_free_packet'])){
+
+        $the_free_packet = $_GET['give_free_packet'];
+
+        if($the_free_packet == "1week"){
+            date_default_timezone_set('Europe/Amsterdam');
+            $start_date = date('Y-m-d H:i:s ', time());
+
+            $end_date = date("Y-m-d H:i:s ", strtotime('+1 week'));
+        }else if($the_free_packet == "2week"){
+            date_default_timezone_set('Europe/Amsterdam');
+            $start_date = date('Y-m-d H:i:s ', time());
+
+            $end_date = date("Y-m-d H:i:s ", strtotime('+2 weeks'));
+        }else if($the_free_packet == "4week"){
+            date_default_timezone_set('Europe/Amsterdam');
+            $start_date = date('Y-m-d H:i:s ', time());
+
+            $end_date = date("Y-m-d H:i:s ", strtotime('+4 weeks'));
+        }
+        $query = "INSERT INTO PAID_EXAM (Users_ID, PAYMENT_DATE, END_DATE )";
+        $query .= "VALUES ('{$id}',
+                             '{$start_date}',
+                             '{$end_date}')";
+
+        $result = mysqli_query($mysqli,$query);
+        if(!$result){
+            die("Failed!" . mysqli_error($mysqli));
+        }
+        header("Location: user_info.php?id=$id");
+    }
 }
+
+
+
+
 
 $query = "SELECT * FROM Users WHERE ID = $id";
 $select_users = mysqli_query($mysqli, $query);
@@ -257,6 +296,50 @@ while($row = mysqli_fetch_assoc($select_users)){
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <?php
+                                                $activeQuery = "SELECT * FROM PAID_EXAM WHERE Users_ID = '{$id}'";
+                                                $active = mysqli_query($mysqli,$activeQuery);
+                                                    if(mysqli_num_rows($active) > 0){
+                                                        while($row = mysqli_fetch_assoc($active)){
+                                                            $until = $row['END_DATE'];
+                                                            ?>
+                                                            <div class="sale-state-box" style="background-color:rgb(255, 152, 0);box-shadow: 3px 4px 5px rgba(0,0,0,0.2);">
+                                                                <h3><?php echo $until?></h3>
+                                                                <span>Active Until</span>
+                                                            </div>
+                                            <?php
+                                                        }
+                                                    }else{
+                                                        ?>
+                                                        <div class="sale-state-box" style="background-color:rgb(244, 66, 66);box-shadow: 3px 4px 5px rgba(0,0,0,0.2);">
+                                                            <h3>No Active Packet</h3>
+                                                        </div>
+                                            <?php
+
+                                                }
+                                            ?>
+
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <a href="user_info.php?id=<?php echo $id; ?>&give_free_packet=1week"><div class="sale-state-box" style="background-color: #6ea563;box-shadow: 3px 4px 5px rgba(0,0,0,0.2);">
+                                                <h3>1 Week Free</h3>
+                                            </div></a>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <a href="user_info.php?id=<?php echo $id; ?>&give_free_packet=2week"><div class="sale-state-box" style="background-color: #6ea563;box-shadow: 3px 4px 5px rgba(0,0,0,0.2);">
+                                                <h3>2 Week Free</h3>
+                                                </div></a>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <a href="user_info.php?id=<?php echo $id; ?>&give_free_packet=4week"><div class="sale-state-box" style="background-color: #6ea563;box-shadow: 3px 4px 5px rgba(0,0,0,0.2);">
+                                                <h3>4 Week Free</h3>
+                                                </div></a>
+                                        </div>
+                                    </div>
                                     </div>
 
 
@@ -270,8 +353,6 @@ while($row = mysqli_fetch_assoc($select_users)){
                     </div>
 
                 </div>
-
-
 
 
 
