@@ -414,7 +414,7 @@ if (isset($_POST['submit'])) {
                             <br><span style="font-size: 25px;"><?php echo $question; ?> </span></h2>
                         <p id="modal<?php echo "$x"; ?>Desc">
                             <div class="row">
-                                <div class="col-sm-6">
+                                <div class="col-sm-8">
                                     <?php
                                     if (file_exists('dashboardAlrawi/examsImages/paid/' . $picture)) {
                                         echo "<img class='img-fluid img-thumbnail' src='dashboardAlrawi/examsImages/paid/$picture'/>";
@@ -422,7 +422,7 @@ if (isset($_POST['submit'])) {
                                     ?>
                                 </div>
 
-                                <div class="col-sm-6" style='direction: rtl;text-align: right;'>
+                                <div class="col-sm-4" style='direction: rtl;text-align: right;'>
                                     <h4> الإجابات: </h4>
                                     <?php
                                     if ($type == "response"){
@@ -430,19 +430,19 @@ if (isset($_POST['submit'])) {
 
 
                         <p <?php if ($right_answer == "فرامل") {
-                            echo "style= 'color: green;margin-bottom: 10px;font-size:18px;'";
+                            echo "style= 'color: white;background:green;margin-bottom: 10px;font-size:18px;padding: 10px;'";
                         } else {
-                            echo "style= 'margin-bottom: 10px;font-size:18px;'";
+                            echo "style= 'margin-bottom: 10px;font-size:18px;padding: 10px;'";
                         } ?> >فرامل</p>
                         <p <?php if ($right_answer == "رفع قدم عن الوقود") {
-                            echo "style= 'color: green;margin-bottom: 10px;font-size:18px;'";
+                            echo "style= 'color: white;background:green;margin-bottom: 10px;font-size:18px;padding: 10px;'";
                         } else {
-                            echo "style= 'margin-bottom: 10px;font-size:18px;'";
+                            echo "style= 'margin-bottom: 10px;font-size:18px;padding: 10px;'";
                         } ?>>رفع قدم عن الوقود</p>
                         <p <?php if ($right_answer == "لا شئ") {
-                            echo "style= 'color: green;margin-bottom: 10px;font-size:18px;'";
+                            echo "style= 'color: white;background:green;margin-bottom: 10px;font-size:18px;padding: 10px;'";
                         } else {
-                            echo "style= 'margin-bottom: 10px;font-size:18px;'";
+                            echo "style= 'margin-bottom: 10px;font-size:18px;padding: 10px;'";
                         } ?>>لا شيء</p>
 
 
@@ -451,14 +451,14 @@ if (isset($_POST['submit'])) {
                         elseif ($type == "yesNo") {
                             ?>
                             <p <?php if ($right_answer == "نعم") {
-                                echo "style= 'color: green;margin-bottom: 10px;font-size:18px;'";
+                                echo "style= 'color: white;background:green;margin-bottom: 10px;font-size:18px;padding: 10px;'";
                             } else {
-                                echo "style= 'margin-bottom: 10px;font-size:18px;'";
+                                echo "style= 'margin-bottom: 10px;font-size:18px;padding: 10px;'";
                             } ?> >نعم</p>
                             <p <?php if ($right_answer == "لا") {
-                                echo "style= 'color: green;margin-bottom: 10px;font-size:18px;'";
+                                echo "style= 'color: white;background:green;margin-bottom: 10px;font-size:18px;padding: 10px;'";
                             } else {
-                                echo "style= 'margin-bottom: 10px;font-size:18px;'";
+                                echo "style= 'margin-bottom: 10px;font-size:18px;padding: 10px;'";
                             } ?>>لا</p>
 
                             <?php
@@ -469,18 +469,18 @@ if (isset($_POST['submit'])) {
                         } elseif ($type == "multiChoice3" || $type == "multiChoice4" || $type == "multiChoice2" || $type == "advantage3" || $type == "advantage") {
                             ?>
 
-                            <p style='color: green;margin-bottom: 10px;font-size:18px;'><?php echo $right_answer; ?></p>
-                            <p style='margin-bottom: 10px;font-size:18px;'><?php echo $second_answer; ?></p>
+                            <p style='color: white;background:green;margin-bottom: 10px;font-size:18px;padding: 10px;'><?php echo "- " . $right_answer; ?></p>
+                            <p style='margin-bottom: 10px;font-size:18px;padding: 10px;'><?php echo "- " . $second_answer; ?></p>
                             <?php
                             if ($third_answer != "0") {
                                 ?>
-                                <p style='margin-bottom: 10px;font-size:18px;'><?php echo $third_answer; ?></p>
+                                <p style='margin-bottom: 10px;font-size:18px;padding: 10px;'><?php echo "- " . $third_answer; ?></p>
                                 <?php
                             }
 
                             if ($forth_answer != "0") {
                                 ?>
-                                <p style='margin-bottom: 10px;font-size:18px;'><?php echo $forth_answer; ?></p>
+                                <p style='margin-bottom: 10px;font-size:18px;padding: 10px;'><?php echo "- " . $forth_answer; ?></p>
 
                                 <?php
                             }
@@ -523,7 +523,7 @@ if (isset($_POST['submit'])) {
                     <br><span style="font-size: 25px;"><?php echo $question; ?> </span></h2>
                 <p id="modal<?php echo "$x"; ?>Desc">
                     <div class="row">
-                        <div class="col-sm-6">
+                        <div class="col-sm-8">
                             <?php
                             if (file_exists('dashboardAlrawi/examsImages/paid/' . $picture)) {
                                 echo "<img class='img-fluid img-thumbnail' src='dashboardAlrawi/examsImages/paid/$picture'/>";
@@ -531,7 +531,7 @@ if (isset($_POST['submit'])) {
                             ?>
                         </div>
 
-                        <div class="col-sm-6" style='direction: rtl;text-align: right;'>
+                        <div class="col-sm-4" style='direction: rtl;text-align: right;'>
                             <h4> الإجابات: </h4>
                             <?php
                             if ($type == "response"){
@@ -540,25 +540,25 @@ if (isset($_POST['submit'])) {
 
                 <p <?php
                 if ($right_answer == "فرامل") {
-                    echo "style= 'color: green;margin-bottom: 10px;font-size:18px;'";
+                    echo "style= 'color: white;background:green;margin-bottom: 10px;font-size:18px;padding: 10px;'";
                 } else if (${'selector_' . $x} == "فرامل") {
-                    echo "style= 'color: red;font-weight: 700;margin-bottom: 10px;font-size:18px;'";
+                    echo "style= 'color: white;background:red;margin-bottom: 10px;font-size:18px;padding: 10px;'";
                 } else {
-                    echo "style= 'margin-bottom: 10px;font-size:18px;'";
+                    echo "style= 'margin-bottom: 10px;font-size:18px;padding: 10px;'";
                 } ?> >فرامل</p>
                 <p <?php if ($right_answer == "رفع قدم عن الوقود") {
-                    echo "style= 'color: green;margin-bottom: 10px;font-size:18px;'";
+                    echo "style= 'color: white;background:green;margin-bottom: 10px;font-size:18px;padding: 10px;'";
                 } else if (${'selector_' . $x} == "رفع قدم عن الوقود") {
-                    echo "style= 'color: red;font-weight: 700;margin-bottom: 10px;font-size:18px;'";
+                    echo "style= 'color: white;background:red;margin-bottom: 10px;font-size:18px;padding: 10px;'";
                 } else {
-                    echo "style= 'margin-bottom: 10px;font-size:18px;'";
+                    echo "style= 'margin-bottom: 10px;font-size:18px;padding: 10px;'";
                 } ?>>رفع قدم عن الوقود</p>
                 <p <?php if ($right_answer == "لا شئ") {
-                    echo "style= 'color: green;margin-bottom: 10px;font-size:18px;'";
+                    echo "style= 'color: white;background:green;margin-bottom: 10px;font-size:18px;padding: 10px;'";
                 } else if (${'selector_' . $x} == "لا شئ") {
-                    echo "style= 'color: red;font-weight: 700;margin-bottom: 10px;font-size:18px;'";
+                    echo "style= 'color: white;background:red;margin-bottom: 10px;font-size:18px;padding: 10px;'";
                 } else {
-                    echo "style= 'margin-bottom: 10px;font-size:18px;'";
+                    echo "style= 'margin-bottom: 10px;font-size:18px;padding: 10px;'";
                 } ?>>لا شيء</p>
 
 
@@ -567,53 +567,53 @@ if (isset($_POST['submit'])) {
                 elseif ($type == "yesNo") {
                     ?>
                     <p <?php if ($right_answer == "نعم") {
-                        echo "style= 'color: green;margin-bottom: 10px;font-size:18px;'";
+                        echo "style= 'color: white;background:green;margin-bottom: 10px;font-size:18px;padding: 10px;'";
                     } else if (${'selector_' . $x} == "نعم") {
-                        echo "style= 'color: red;font-weight: 700;margin-bottom: 10px;font-size:18px;'";
+                        echo "style= 'color: white;background:red;margin-bottom: 10px;font-size:18px;padding: 10px;'";
                     } else {
-                        echo "style= 'margin-bottom: 10px;font-size:18px;'";
+                        echo "style= 'margin-bottom: 10px;font-size:18px;padding: 10px;'";
                     } ?> >نعم</p>
                     <p <?php if ($right_answer == "لا") {
-                        echo "style= 'color: green;margin-bottom: 10px;font-size:18px;'";
+                        echo "style= 'color: white;background:green;margin-bottom: 10px;font-size:18px;padding: 10px;'";
                     } else if (${'selector_' . $x} == "لا") {
-                        echo "style= 'color: red;font-weight: 700;margin-bottom: 10px;font-size:18px;'";
+                        echo "style= 'color: white;background:red;margin-bottom: 10px;font-size:18px;padding: 10px;'";
                     } else {
-                        echo "style= 'margin-bottom: 10px;font-size:18px;'";
+                        echo "style= 'margin-bottom: 10px;font-size:18px;padding: 10px;'";
                     } ?>>لا</p>
 
                     <?php
                 } elseif ($type == "numInp") {
                     ?>
-                    <p style='color: green;margin-bottom: 10px;font-size:18px;'><?php echo $right_answer ?></p>
-                    <p style='color: red;margin-bottom: 10px;font-weight: 700;font-size:18px;'><?php echo ${'selector_' . $x}; ?></p>
+                    <p style='color: white;background:green;margin-bottom: 10px;font-size:18px;padding: 10px;'><?php echo $right_answer ?></p>
+                    <p style='color: white;background:red;margin-bottom: 10px;font-size:18px;padding: 10px;'><?php echo ${'selector_' . $x}; ?></p>
                     <?php
                 } elseif ($type == "multiChoice3" || $type == "multiChoice4" || $type == "multiChoice2" || $type == "advantage3" || $type == "advantage4") {
                     ?>
 
-                    <p style='color: green;margin-bottom: 10px;font-size:18px;'><?php echo $right_answer; ?></p>
+                    <p style='color: white;background:green;margin-bottom: 10px;font-size:18px;padding: 10px;'><?php echo "- " . $right_answer; ?></p>
                     <p <?php if (${'selector_' . $x} == $second_answer) {
-                        echo "style= 'color: red;font-weight: 700;margin-bottom: 10px;font-size:18px;'";
+                        echo "style= 'color: white;background:red;margin-bottom: 10px;font-size:18px;padding: 10px;'";
                     } else {
-                        echo "style= 'margin-bottom: 10px;font-size:18px;'";
-                    } ?>><?php echo $second_answer; ?></p>
+                        echo "style= 'margin-bottom: 10px;font-size:18px;padding: 10px;'";
+                    } ?>><?php echo "- " . $second_answer; ?></p>
                     <?php
                     if ($third_answer != "0") {
                         ?>
                         <p <?php if (${'selector_' . $x} == $third_answer) {
-                            echo "style= 'color: red;font-weight: 700;margin-bottom: 10px;font-size:18px;'";
+                            echo "style= 'color: white;background:red;margin-bottom: 10px;font-size:18px;padding: 10px;'";
                         } else {
-                            echo "style= 'margin-bottom: 10px;font-size:18px;'";
-                        } ?>><?php echo $third_answer; ?></p>
+                            echo "style= 'margin-bottom: 10px;font-size:18px;padding: 10px;'";
+                        } ?>><?php echo "- " . $third_answer; ?></p>
                         <?php
                     }
 
                     if ($forth_answer != "0") {
                         ?>
                         <p <?php if (${'selector_' . $x} == $forth_answer) {
-                            echo "style= 'color: red;font-weight: 700;margin-bottom: 10px;font-size:18px;'";
+                            echo "style= 'color: white;background:red;margin-bottom: 10px;font-size:18px;padding: 10px;'";
                         } else {
-                            echo "style= 'margin-bottom: 10px;font-size:18px;'";
-                        } ?>><?php echo $forth_answer; ?></p>
+                            echo "style= 'margin-bottom: 10px;font-size:18px;padding: 10px;'";
+                        } ?>><?php echo "- " . $forth_answer; ?></p>
 
                         <?php
                     }

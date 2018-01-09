@@ -42,7 +42,8 @@ if (mysqli_num_rows($getAgent) == 1) {
     <link rel="stylesheet" href="style.css" type="text/css"/>
     <link rel="stylesheet" href="css/animate.css" type="text/css"/>
     <link rel="icon" href="images/1.png" type="image/x-icon">
-
+    <link rel="stylesheet" href="css/remodal.css">
+    <link rel="stylesheet" href="css/remodal-default-theme.css">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="css/bootstrap.css" type="text/css"/>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
@@ -79,6 +80,16 @@ if (mysqli_num_rows($getAgent) == 1) {
             background: url(images/preloader@2x.gif) center no-repeat;
         }
 
+        .pre-pre-txt {
+            position: fixed;
+            left: 0;
+            top: 150px;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            text-align: center;
+        }
+
         body {
             font-family: 'DroidArabicKufiRegular';
         }
@@ -101,10 +112,7 @@ if (mysqli_num_rows($getAgent) == 1) {
             margin-left: -80px;
         }
 
-        /*.quesImg {*/
-        /*width: 600px;*/
-        /*height: 398.4px;*/
-        /*}*/
+
         footer {
             background-color: #1ABC9C;
             position: fixed;
@@ -259,6 +267,9 @@ if (mysqli_num_rows($getAgent) == 1) {
             #wihund {
                 width: 100%;
             }
+            .quesImg{
+                margin-top: 10px;
+            }
         }
 
         @media (min-width: 768px) and (max-width: 991px) {
@@ -277,6 +288,9 @@ if (mysqli_num_rows($getAgent) == 1) {
                 bottom: 40px;
                 right: 200px;
             }
+            .quesImg{
+                margin-top: 10px;
+            }
         }
 
         @media (min-width: 991px) {
@@ -291,6 +305,10 @@ if (mysqli_num_rows($getAgent) == 1) {
                 bottom: 40px;
                 right: 200px;
             }
+            .quesImg {
+                width: 730px;
+                height: 484.7px;
+            }
         }
 
         .slick-slide {
@@ -302,6 +320,7 @@ if (mysqli_num_rows($getAgent) == 1) {
 </head>
 <body>
 <div class="se-pre-con" id="pre1">
+    <h2 class="pre-pre-txt">يرجى الإنتظار ريثما يتم إعداد الإمتحان</h2>
     <div class="pre-pre" id="pre2"></div>
 </div>
 
@@ -594,9 +613,8 @@ if (mysqli_num_rows($getAgent) == 1) {
                             if ($type == "response") {
                                 echo "<div id='s$i' class='slide col-md-12' style=''>";
                                 echo "<div class='row'>";
+                                echo "<div class='col-md-4'>";
                                 echo "<h4 style='direction:rtl;font-weight: 700;font-size: 20px;' class='text-center'>الإمتحان $setId - السؤال $i</h4>";
-                                echo "<hr>";
-                                echo "<div class='col-md-5'>";
                                 echo "<h4 style='direction:rtl;font-weight: 700;line-height: 1.5em;' class='text-center'>$question</h4>";
                                 echo "
                             <fieldset id='group$i'>
@@ -613,21 +631,41 @@ if (mysqli_num_rows($getAgent) == 1) {
                                   <span class='checkmark'></span>
                                 </label>
                             </fieldset>";
+                                echo "
+                            <div class='slider-progress' id='progressBar'>
+                                <div class='progress'></div>
+                            </div>
+                            ";
+                                echo "
+                            <a class='showReason' target='$i'><button style='width: 100%;margin-top:10px;' type='button' class='btn btn-info btn-reason' id='showreas$i'>إظهار السبب</button></a>
+";
                                 echo "</div>";
-                                echo "<div class='col-md-7'>";
+                                echo "<div class='col-md-8'>";
                                 if (file_exists('dashboardAlrawi/examsImages/paid/' . $picture)) {
                                     echo "<img class='quesImg center-block img-responsive' src='dashboardAlrawi/examsImages/paid/$picture'/>";
                                 }
                                 echo "</div>";
+                                echo "</div>";
+                                echo "<div class='row reasonRow' id='reason$i'>";
+                                echo "
+                                <div class='remodal' data-remodal-id='modal$i'>
+                                    <button data-remodal-action='close' class='remodal-close'></button>
+                                    <h1>السبب</h1>
+                                    <p style='direction: rtl'>
+                                    $reason
+                                    </p>
+                                    <br>
+                                    <button data-remodal-action='confirm' class='remodal-confirm'>حسناً</button>
+                                </div>
+                                ";
                                 echo "</div>";
                                 echo "</div>";
                                 $i++;
                             } else if ($type == "yesNo") {
                                 echo "<div id='s$i' class='slide col-md-12'>";
                                 echo "<div class='row'>";
+                                echo "<div class='col-md-4'>";
                                 echo "<h4 style='direction:rtl;font-weight: 700;font-size: 20px;' class='text-center'>الإمتحان $setId - السؤال $i</h4>";
-                                echo "<hr>";
-                                echo "<div class='col-md-5'>";
                                 echo "<h4 style='direction: rtl; font-weight: 700;line-height: 1.5em;' class='text-center'>$question</h4>";
                                 echo "
                             <fieldset id='group$i'>
@@ -644,24 +682,32 @@ if (mysqli_num_rows($getAgent) == 1) {
                             <a class='showReason' target='$i'><button style='width: 100%;' type='button' class='btn btn-info btn-reason' id='showreas$i'>إظهار السبب</button></a>
 ";
                                 echo "</div>";
-                                echo "<div class='col-md-7'>";
+                                echo "<div class='col-md-8'>";
                                 if (file_exists('dashboardAlrawi/examsImages/paid/' . $picture)) {
                                     echo "<img class='quesImg center-block img-responsive' src='dashboardAlrawi/examsImages/paid/$picture'/>";
                                 }
                                 echo "</div>";
                                 echo "</div>";
                                 echo "<div class='row reasonRow' id='reason$i'>";
-                                echo "<hr>";
-                                echo "<h4 style='direction:rtl;font-weight: 700;font-size: 20px;line-height: 1.5em;' class='text-center'>$reason</h4>";
+                                echo "
+                                <div class='remodal' data-remodal-id='modal$i'>
+                                    <button data-remodal-action='close' class='remodal-close'></button>
+                                    <h1>السبب</h1>
+                                    <p style='direction: rtl'>
+                                    $reason
+                                    </p>
+                                    <br>
+                                    <button data-remodal-action='confirm' class='remodal-confirm'>حسناً</button>
+                                </div>
+                                ";
                                 echo "</div>";
                                 echo "</div>";
                                 $i++;
                             } else if ($type == "numInp") {
                                 echo "<div id='s$i' class='slide col-md-12'>";
                                 echo "<div class='row'>";
+                                echo "<div class='col-md-4'>";
                                 echo "<h4 style='direction:rtl;font-weight: 700;font-size: 20px;' class='text-center'>الإمتحان $setId - السؤال $i</h4>";
-                                echo "<hr>";
-                                echo "<div class='col-md-5'>";
                                 echo "<h4 style='direction: rtl; font-weight: 700;line-height: 1.5em;' class='text-center'>$question</h4>";
                                 echo "
                         <fieldset id='group$i'>
@@ -671,24 +717,32 @@ if (mysqli_num_rows($getAgent) == 1) {
                     <a class='showReason' target='$i'><button style='width: 100%;' type='button' class='btn btn-info btn-reason' id='showreas$i'>إظهار السبب</button></a>
 ";
                                 echo "</div>";
-                                echo "<div class='col-md-7'>";
+                                echo "<div class='col-md-8'>";
                                 if (file_exists('dashboardAlrawi/examsImages/paid/' . $picture)) {
                                     echo "<img class='quesImg center-block img-responsive' src='dashboardAlrawi/examsImages/paid/$picture'/>";
                                 }
                                 echo "</div>";
                                 echo "</div>";
                                 echo "<div class='row reasonRow' id='reason$i'>";
-                                echo "<hr>";
-                                echo "<h4 style='direction:rtl;font-weight: 700;font-size: 20px;line-height: 1.5em;' class='text-center'>$reason</h4>";
+                                echo "
+                                <div class='remodal' data-remodal-id='modal$i'>
+                                    <button data-remodal-action='close' class='remodal-close'></button>
+                                    <h1>السبب</h1>
+                                    <p style='direction: rtl'>
+                                    $reason
+                                    </p>
+                                    <br>
+                                    <button data-remodal-action='confirm' class='remodal-confirm'>حسناً</button>
+                                </div>
+                                ";
                                 echo "</div>";
                                 echo "</div>";
                                 $i++;
                             } else if ($type == "multiChoice2" || $type == "multiChoice3" || $type == "multiChoice4" || $type == "advantage3" || $type == "advantage4") {
                                 echo "<div id='s$i' class='slide col-md-12'>";
                                 echo "<div class='row'>";
+                                echo "<div class='col-md-4'>";
                                 echo "<h4 style='direction:rtl;font-weight: 700;font-size: 20px;' class='text-center'>الإمتحان $setId - السؤال $i</h4>";
-                                echo "<hr>";
-                                echo "<div class='col-md-5'>";
                                 echo "<h4 style='direction: rtl; font-weight: 700;line-height: 1.5em;' class='text-center'>$question</h4>";
                                 echo "
                         <fieldset id='group$i'>";
@@ -720,15 +774,24 @@ if (mysqli_num_rows($getAgent) == 1) {
                     <a class='showReason' target='$i'><button style='width: 100%;' type='button' class='btn btn-info btn-reason' id='showreas$i'>إظهار السبب</button></a>
 ";
                                 echo "</div>";
-                                echo "<div class='col-md-7'>";
+                                echo "<div class='col-md-8'>";
                                 if (file_exists('dashboardAlrawi/examsImages/paid/' . $picture)) {
                                     echo "<img class='quesImg center-block img-responsive' src='dashboardAlrawi/examsImages/paid/$picture'/>";
                                 }
                                 echo "</div>";
                                 echo "</div>";
                                 echo "<div class='row reasonRow' id='reason$i'>";
-                                echo "<hr>";
-                                echo "<h4 style='direction:rtl;font-weight: 700;font-size: 20px;line-height: 1.5em;' class='text-center'>$reason</h4>";
+                                echo "
+                                <div class='remodal' data-remodal-id='modal$i'>
+                                    <button data-remodal-action='close' class='remodal-close'></button>
+                                    <h1>السبب</h1>
+                                    <p style='direction: rtl'>
+                                    $reason
+                                    </p>
+                                    <br>
+                                    <button data-remodal-action='confirm' class='remodal-confirm'>حسناً</button>
+                                </div>
+                                ";
                                 echo "</div>";
                                 echo "</div>";
                                 $i++;
@@ -739,9 +802,6 @@ if (mysqli_num_rows($getAgent) == 1) {
 
                         ?>
 
-                    </div>
-                    <div class="slider-progress" id="progressBar">
-                        <div class="progress"></div>
                     </div>
                     <button name="submit" style="bottom: 40px;width:80%;font-family: 'DroidArabicKufiRegular';"
                             id="submitBut" class="btn-lg btn btn-success center center-block" value="Submit"
@@ -776,7 +836,6 @@ if (mysqli_num_rows($getAgent) == 1) {
     <!--        <button class="print">Print</button>-->
 </section>
 
-
 <footer class="hidden-sm hidden-xs">
     <p>© 2017 Alrawi Theorie | Developed by <a target="_blank" style="color:#000; text-decoration:none;"
                                                href="http://www.el-semicolon.nl">El-SemiColon;</a></p>
@@ -785,7 +844,22 @@ if (mysqli_num_rows($getAgent) == 1) {
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+<script src="js/remodal.js"></script>
+<script>
+    jQuery('.showReason').click(function () {
+        var whereR = $(this).attr('target');
+        jQuery('#reason' + whereR).fadeIn('slow');
 
+
+    var inst = $('[data-remodal-id=modal' +whereR+ ']').remodal({
+        closeOnOutsideClick:true
+    });
+    inst.open();
+    $(document).on('confirmation', '.remodal', function () {
+        console.log('Confirmation button is clicked');
+    });
+    });
+</script>
 <script type="text/javascript">
 
     jQuery(function () {
@@ -820,11 +894,10 @@ if (mysqli_num_rows($getAgent) == 1) {
             nextArrow: false,
             prevArrow: false,
             fade: true,
-            autoplaySpeed: 8000
+            autoplaySpeed: 250000
         });
-
     });
-
+    var responsePause = 0;
     var finished = 0;
     var continued = 0;
     var continuedF = 0;
@@ -967,6 +1040,7 @@ if (mysqli_num_rows($getAgent) == 1) {
         jQuery('.slideStart').hide();
         jQuery('#showTime').removeClass('col-sm-10').addClass('col-sm-12').show();
         // $('.QuestionsSlideShow').slick('slickPlay');
+        $('.QuestionsSlideShow').slick('slickPause');
 
         startProgressbar();
 
@@ -982,7 +1056,7 @@ if (mysqli_num_rows($getAgent) == 1) {
             var EndTime = (new Date()).getTime() + TimeOut;
 
             var GuiTimer = $('#count');
-            var GuiPause = $('#pause').hide();
+            var GuiPause = $('#pause').show();
             var GuiResume = $('#resume').hide();
 
             var Running = true;
@@ -1052,15 +1126,18 @@ if (mysqli_num_rows($getAgent) == 1) {
             CountDown.Pause();
             $('.QuestionsSlideShow').slick('slickPause');
             jQuery('.showReason').fadeIn('slow');
-
+            resetProgressbar();
+            responsePause = 1;
+            //jQuery('#progressBar').hide();
         });
         jQuery('#resume').on('click', function () {
             CountDown.Resume();
             $('.QuestionsSlideShow').slick('slickPlay');
             jQuery('.showReason').fadeOut('slow');
             jQuery('.reasonRow').fadeOut('slow');
-
-
+            startProgressbar();
+            responsePause = 0;
+            //jQuery('#progressBar').show();
         });
 
         // ms
@@ -1073,12 +1150,18 @@ if (mysqli_num_rows($getAgent) == 1) {
         continued = 1;
         continuedF = 1;
         continuedBar = 1;
+        if(responsePause == 1){
+            $('.QuestionsSlideShow').slick('slickPause');
+            jQuery('#resume').show();
+        }else{
+            $('.QuestionsSlideShow').slick('slickPlay');
+            jQuery('#pause').show();
+        }
         $(".slideBetween ").hide();
         jQuery('.navBut').show();
         jQuery('.flagBut').show();
         jQuery('#nxtBut').show();
         jQuery('#prevBut').show();
-        jQuery('#pause').show();
         // $('.QuestionsSlideShow').slick('slickPause');
 
         $('.QuestionsSlideShow').slick('unslick');
@@ -1099,7 +1182,11 @@ if (mysqli_num_rows($getAgent) == 1) {
         $('.QuestionsSlideShow').slick('slickPlay');
 
         jQuery('.slide').show();
-
+        if(responsePause == 1){
+            $('.QuestionsSlideShow').slick('slickPause');
+        }else{
+            $('.QuestionsSlideShow').slick('slickPlay');
+        }
 
     };
     // $('.QuestionsSlideShow').slick({
@@ -1116,8 +1203,10 @@ if (mysqli_num_rows($getAgent) == 1) {
 
     $('.nxt').click(function () {
         $('.QuestionsSlideShow').slick('slickNext');
-        startProgressbar();
-
+        var currentSlide = $('.QuestionsSlideShow').slick('slickCurrentSlide');
+        if((currentSlide < 25) && (responsePause == 0)){
+            startProgressbar();
+        }
     });
     $('.prev').click(function () {
         $('.QuestionsSlideShow').slick('slickPrev');
