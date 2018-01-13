@@ -60,6 +60,9 @@ if (mysqli_num_rows($getAgent) == 1) {
     <!--    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />-->
 
     <style>
+        .button.button-reveal.button-large{
+            padding: 0 28px;
+        }
         .se-pre-con {
             position: fixed;
             left: 0;
@@ -241,13 +244,11 @@ if (mysqli_num_rows($getAgent) == 1) {
 
         @media (max-width: 767px) {
             .nxtButSt {
-
                 margin-top: 15px;
                 width: 100%;
             }
 
             .prevButSt {
-
                 margin-top: 15px;
                 width: 100%;
             }
@@ -277,34 +278,34 @@ if (mysqli_num_rows($getAgent) == 1) {
                 width: 100%;
             }
 
-            .nxtButSt {
-                position: fixed;
-                bottom: 40px;
-                right: 10px;
-            }
+            /*.nxtButSt {*/
+                /*position: fixed;*/
+                /*bottom: 40px;*/
+                /*right: 10px;*/
+            /*}*/
 
-            .prevButSt {
-                position: fixed;
-                bottom: 40px;
-                right: 200px;
-            }
+            /*.prevButSt {*/
+                /*position: fixed;*/
+                /*bottom: 40px;*/
+                /*right: 200px;*/
+            /*}*/
             .quesImg{
                 margin-top: 10px;
             }
         }
 
         @media (min-width: 991px) {
-            .nxtButSt {
-                position: fixed;
-                bottom: 40px;
-                right: 10px;
-            }
+            /*.nxtButSt {*/
+                /*position: fixed;*/
+                /*bottom: 40px;*/
+                /*right: 10px;*/
+            /*}*/
 
-            .prevButSt {
-                position: fixed;
-                bottom: 40px;
-                right: 200px;
-            }
+            /*.prevButSt {*/
+                /*position: fixed;*/
+                /*bottom: 40px;*/
+                /*right: 200px;*/
+            /*}*/
             .quesImg {
                 width: 730px;
                 height: 484.7px;
@@ -635,6 +636,23 @@ if (mysqli_num_rows($getAgent) == 1) {
                             <div class='slider-progress' id='progressBar'>
                                 <div class='progress'></div>
                             </div>
+                            <div class='row text-center' style='width: 100%; margin-top: 20px;'>
+                            <div class='col-xs-6'>
+                                <button type='button' id='prevBut'
+                                        class='button button-rounded button-reveal tleft button-large button-teal prev prevButSt'>
+                                    <i class='fa fa-arrow-left'></i>
+                                    <span style='font-family: DroidArabicKufiRegular;'>السؤال السابق</span>
+                                </button>
+                            </div>
+                            <div class='col-xs-6'>
+
+                                <button type='button' id='nxtBut'
+                                        class='button button-rounded tright button-reveal button-large button-yellow button-light nxt nxtButSt'>
+                                    <i class='fa fa-arrow-right'></i>
+                                    <span style='font-family: DroidArabicKufiRegular;'>السؤال التالي</span>
+                                </button>
+                            </div>
+                        </div>
                             ";
                                 echo "
                             <a class='showReason' target='$i'><button style='width: 100%;margin-top:10px;' type='button' class='btn btn-info btn-reason' id='showreas$i'>إظهار السبب</button></a>
@@ -677,7 +695,24 @@ if (mysqli_num_rows($getAgent) == 1) {
                                   <input type='radio' class='selector$i' name='selector$i' value='لا'>
                                   <span class='checkmark'></span>
                                 </label>
-                            </fieldset>";
+                            </fieldset>
+                            <div class='row text-center' style='width: 100%; margin-top: 20px;'>
+                            <div class='col-xs-6'>
+                                <button type='button' id='prevBut'
+                                        class='button button-rounded button-reveal tleft button-large button-teal prev prevButSt'>
+                                    <i class='fa fa-arrow-left'></i>
+                                    <span style='font-family: DroidArabicKufiRegular;'>السؤال السابق</span>
+                                </button>
+                            </div>
+                            <div class='col-xs-6'>
+
+                                <button type='button' id='nxtBut'
+                                        class='button button-rounded tright button-reveal button-large button-yellow button-light nxt nxtButSt'>
+                                    <i class='fa fa-arrow-right'></i>
+                                    <span style='font-family: DroidArabicKufiRegular;'>السؤال التالي</span>
+                                </button>
+                            </div>
+                        </div>";
                                 echo "
                             <a class='showReason' target='$i'><button style='width: 100%;' type='button' class='btn btn-info btn-reason' id='showreas$i'>إظهار السبب</button></a>
 ";
@@ -711,8 +746,25 @@ if (mysqli_num_rows($getAgent) == 1) {
                                 echo "<h4 style='direction: rtl; font-weight: 700;line-height: 1.5em;' class='text-center'>$question</h4>";
                                 echo "
                         <fieldset id='group$i'>
-                            <input type='text' class='selector$i' name='selector$i' placeholder='أدخل القيمة'><br>
-                        </fieldset>";
+                            <input type='text' class='selector$i' name='selector$i' placeholder='أدخل القيمة' autocomplete='off'><br>
+                        </fieldset>
+                        <div class='row text-center' style='width: 100%; margin-top: 20px;'>
+                            <div class='col-xs-6'>
+                                <button type='button' id='prevBut'
+                                        class='button button-rounded button-reveal tleft button-large button-teal prev prevButSt'>
+                                    <i class='fa fa-arrow-left'></i>
+                                    <span style='font-family: DroidArabicKufiRegular;'>السؤال السابق</span>
+                                </button>
+                            </div>
+                            <div class='col-xs-6'>
+
+                                <button type='button' id='nxtBut'
+                                        class='button button-rounded tright button-reveal button-large button-yellow button-light nxt nxtButSt'>
+                                    <i class='fa fa-arrow-right'></i>
+                                    <span style='font-family: DroidArabicKufiRegular;'>السؤال التالي</span>
+                                </button>
+                            </div>
+                        </div>";
                                 echo "
                     <a class='showReason' target='$i'><button style='width: 100%;' type='button' class='btn btn-info btn-reason' id='showreas$i'>إظهار السبب</button></a>
 ";
@@ -769,7 +821,24 @@ if (mysqli_num_rows($getAgent) == 1) {
                                         break;
                                     }
                                 }
-                                echo "</fieldset>";
+                                echo "</fieldset>
+<div class='row text-center' style='width: 100%; margin-top: 20px;'>
+                            <div class='col-xs-6'>
+                                <button type='button' id='prevBut'
+                                        class='button button-rounded button-reveal tleft button-large button-teal prev prevButSt'>
+                                    <i class='fa fa-arrow-left'></i>
+                                    <span style='font-family: DroidArabicKufiRegular;'>السؤال السابق</span>
+                                </button>
+                            </div>
+                            <div class='col-xs-6'>
+
+                                <button type='button' id='nxtBut'
+                                        class='button button-rounded tright button-reveal button-large button-yellow button-light nxt nxtButSt'>
+                                    <i class='fa fa-arrow-right'></i>
+                                    <span style='font-family: DroidArabicKufiRegular;'>السؤال التالي</span>
+                                </button>
+                            </div>
+                        </div>";
                                 echo "
                     <a class='showReason' target='$i'><button style='width: 100%;' type='button' class='btn btn-info btn-reason' id='showreas$i'>إظهار السبب</button></a>
 ";
@@ -809,23 +878,23 @@ if (mysqli_num_rows($getAgent) == 1) {
                     </button>
 
                     <div class="container" style="width: 100%">
-                        <div class="row" style="width: 100%">
-                            <div class="col-md-12">
-
-                                <button type="button" id="nxtBut"
-                                        class="tright button button-rounded button-reveal button-large button-yellow button-light nxt nxtButSt">
-                                    <i class="fa fa-arrow-right"></i>
-                                    <span style="font-family: 'DroidArabicKufiRegular';">السؤال التالي</span>
-                                </button>
-                            </div>
-                            <div class="col-md-12">
-                                <button type="button" id="prevBut"
-                                        class="button button-rounded button-reveal button-large button-teal prev prevButSt">
-                                    <i class="fa fa-arrow-left"></i>
-                                    <span style="font-family: 'DroidArabicKufiRegular';">السؤال السابق</span>
-                                </button>
-                            </div>
-                        </div>
+<!--                        <div class="row" style="width: 100%">-->
+<!--                            <div class="col-md-12">-->
+<!---->
+<!--                                <button type="button" id="nxtBut"-->
+<!--                                        class="tright button button-rounded button-reveal button-large button-yellow button-light nxt nxtButSt">-->
+<!--                                    <i class="fa fa-arrow-right"></i>-->
+<!--                                    <span style="font-family: 'DroidArabicKufiRegular';">السؤال التالي</span>-->
+<!--                                </button>-->
+<!--                            </div>-->
+<!--                            <div class="col-md-12">-->
+<!--                                <button type="button" id="prevBut"-->
+<!--                                        class="button button-rounded button-reveal button-large button-teal prev prevButSt">-->
+<!--                                    <i class="fa fa-arrow-left"></i>-->
+<!--                                    <span style="font-family: 'DroidArabicKufiRegular';">السؤال السابق</span>-->
+<!--                                </button>-->
+<!--                            </div>-->
+<!--                        </div>-->
                     </div>
                 </form>
             </div>
@@ -865,8 +934,8 @@ if (mysqli_num_rows($getAgent) == 1) {
     jQuery(function () {
         document.title = "بداية الإمتحان";
         jQuery('.slide').hide();
-        jQuery('#nxtBut').hide();
-        jQuery('#prevBut').hide();
+        jQuery('.nxtButSt').hide();
+        jQuery('.prevButSt').hide();
         jQuery('.navBut').hide();
         jQuery('.flagBut').hide();
         jQuery('.slideBetween').hide();
@@ -915,8 +984,8 @@ if (mysqli_num_rows($getAgent) == 1) {
         if (i == 25) {
             $('.QuestionsSlideShow').slick('slickPause');
             jQuery('.slide').hide();
-            jQuery('#nxtBut').hide();
-            jQuery('#prevBut').hide();
+            jQuery('.nxtButSt').hide();
+            jQuery('.prevButSt').hide();
             jQuery('#progressBar').hide();
             jQuery('.slideBetween').show();
         }
@@ -924,8 +993,8 @@ if (mysqli_num_rows($getAgent) == 1) {
             finished = 1;
             $('.QuestionsSlideShow').slick('slickPause');
             jQuery('.slide').hide();
-            jQuery('#nxtBut').hide();
-            jQuery('#prevBut').hide();
+            jQuery('.nxtButSt').hide();
+            jQuery('.prevButSt').hide();
             jQuery('.slideFinish').show();
             jQuery('#submitBut').show();
         }
@@ -935,9 +1004,9 @@ if (mysqli_num_rows($getAgent) == 1) {
         var counter = slick.slideCount - 1;
         // $status1.text(j + '/' + counter);
         if (j > 26 && finished == 0) {
-            jQuery('#prevBut').show();
+            jQuery('.prevButSt').show();
         } else {
-            jQuery('#prevBut').hide();
+            jQuery('.prevButSt').hide();
         }
         if (continued == 1) {
             continued = 0;
@@ -1035,7 +1104,7 @@ if (mysqli_num_rows($getAgent) == 1) {
     var startExam = function () {
         jQuery('#progressBar').show();
         jQuery('.slide').show();
-        jQuery('#nxtBut').show();
+        jQuery('.nxtButSt').show();
         jQuery('#stopBut').show();
         jQuery('.slideStart').hide();
         jQuery('#showTime').removeClass('col-sm-10').addClass('col-sm-12').show();
@@ -1082,7 +1151,7 @@ if (mysqli_num_rows($getAgent) == 1) {
                     jQuery('.slide').hide();
                     jQuery('.navBut').hide();
                     jQuery('.flagBut').hide();
-                    jQuery('#nxtBut').hide();
+                    jQuery('.nxtButSt').hide();
                     jQuery('.slideBetween').hide();
                     jQuery('.slideFinish').hide();
                     jQuery('.forceFinish').show();
@@ -1160,8 +1229,8 @@ if (mysqli_num_rows($getAgent) == 1) {
         $(".slideBetween ").hide();
         jQuery('.navBut').show();
         jQuery('.flagBut').show();
-        jQuery('#nxtBut').show();
-        jQuery('#prevBut').show();
+        jQuery('.nxtButSt').show();
+        jQuery('.prevButSt').show();
         // $('.QuestionsSlideShow').slick('slickPause');
 
         $('.QuestionsSlideShow').slick('unslick');
@@ -1227,8 +1296,8 @@ if (mysqli_num_rows($getAgent) == 1) {
             jQuery('.slideStart').hide();
             jQuery('.stopSlide').show();
             jQuery('#submitBut').show();
-            jQuery('#nxtBut').hide();
-            jQuery('#prevBut').hide();
+            jQuery('.nxtButSt').hide();
+            jQuery('.prevButSt').hide();
             jQuery('#stopBut').hide();
             jQuery('#pause').hide();
             jQuery('#resume').hide();
