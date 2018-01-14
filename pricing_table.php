@@ -231,7 +231,7 @@ $totalUsers = $countOthers + $countSucceeded;
                                     <li class="pricing--feature">صالحة لمدة <b>اسبوع</b></li>
 
                                 </ul>
-                                <a class="pricing--link" href="temp.php"> <button class="pricing--action ">اخــتر البــاقة</button></a>
+                                <a class="pricing--link" href="payment_1.php"> <button class="pricing--action ">اخــتر البــاقة</button></a>
                             </div>
                             <div class="pricing--item pricing--item--featured">
                                 <h3 class="pricing--title text-center">البـاقة الأسـاسيــة</h3>
@@ -240,7 +240,7 @@ $totalUsers = $countOthers + $countSucceeded;
                                     <li class="pricing--feature">صلاحية الدخول لجميع الامتحانات</li>
                                     <li class="pricing--feature">صالحة لمدة <b>أسبوعين</b> </li>
                                 </ul>
-                                <a class="pricing--link" href="temp.php"> <button class="pricing--action ">اخــتر البــاقة</button></a>
+                                <a class="pricing--link" href="payment_2.php"> <button class="pricing--action ">اخــتر البــاقة</button></a>
                             </div>
 
                             <div class="pricing--item">
@@ -250,7 +250,7 @@ $totalUsers = $countOthers + $countSucceeded;
                                     <li class="pricing--feature">صلاحية الدخول لجميع الامتحانات</li>
                                     <li class="pricing--feature">صالحة لمدة <b>4 أسابيـع</b> </li>
                                 </ul>
-                                <a class="pricing--link" href="temp.php"> <button class="pricing--action ">اخــتر البــاقة</button></a>
+                                <a class="pricing--link" href="payment_4.php"> <button class="pricing--action ">اخــتر البــاقة</button></a>
                             </div>
 
                         </div>

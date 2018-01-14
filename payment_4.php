@@ -4,8 +4,8 @@ ob_start();
 if (!isset($_SESSION['username'])){
     header("Location: login.php");
 }else{
-//    include 'include_pay4.php';
-    header("Location: temp.php");
+    include 'include_pay4.php';
+//    header("Location: temp.php");
 
 }
 
