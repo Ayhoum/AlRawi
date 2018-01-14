@@ -225,7 +225,7 @@ $totalUsers = $countOthers + $countSucceeded;
                         <div class="pricing pricing--karma">
                             <div class="pricing--item">
                                 <h3 class="pricing--title text-center">البــاقة  الابتدائيــة</h3>
-                                <div class="pricing--price"><span class="pricing--currency">€</span>10<span class="pricing--period" style="direction: rtl"> أسبــوع </span></div>
+                                <div class="pricing--price"><span class="pricing--currency">€</span>10.29<span class="pricing--period" style="direction: rtl"> أسبــوع </span></div>
                                 <ul class="pricing--feature-list">
                                     <li class="pricing--feature">صلاحية الدخول لجميع الامتحانات </li>
                                     <li class="pricing--feature">صالحة لمدة <b>اسبوع</b></li>
@@ -235,7 +235,7 @@ $totalUsers = $countOthers + $countSucceeded;
                             </div>
                             <div class="pricing--item pricing--item--featured">
                                 <h3 class="pricing--title text-center">البـاقة الأسـاسيــة</h3>
-                                <div class="pricing--price"><span class="pricing--currency">€</span>15<span class="pricing--period" style="direction: rtl"> أسبـــوعان  </span></div>
+                                <div class="pricing--price"><span class="pricing--currency">€</span>15.29<span class="pricing--period" style="direction: rtl"> أسبـــوعان  </span></div>
                                 <ul class="pricing--feature-list">
                                     <li class="pricing--feature">صلاحية الدخول لجميع الامتحانات</li>
                                     <li class="pricing--feature">صالحة لمدة <b>أسبوعين</b> </li>
@@ -245,7 +245,7 @@ $totalUsers = $countOthers + $countSucceeded;
 
                             <div class="pricing--item">
                                 <h3 class="pricing--title text-center">البــاقة المتقدمــة</h3>
-                                <div class="pricing--price"><span class="pricing--currency">€</span>25<span class="pricing--period"style="direction: rtl"> 4 أسـابيـع </span></div>
+                                <div class="pricing--price"><span class="pricing--currency">€</span>25.29<span class="pricing--period"style="direction: rtl"> 4 أسـابيـع </span></div>
                                 <ul class="pricing--feature-list">
                                     <li class="pricing--feature">صلاحية الدخول لجميع الامتحانات</li>
                                     <li class="pricing--feature">صالحة لمدة <b>4 أسابيـع</b> </li>
