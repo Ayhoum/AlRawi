@@ -252,8 +252,19 @@ $totalUsers = $countOthers + $countSucceeded;
                                 </ul>
                                 <a class="pricing--link" href="payment_4.php"> <button class="pricing--action ">اخــتر البــاقة</button></a>
                             </div>
+                            <div class="pricing--item">
+                                <h3 class="pricing--title text-center">الامتــحانات باللغتين الانكليزية والهولندية</h3>
+<!--                                <div class="pricing--price"><span class="pricing--currency">€</span>25<span style="font-size: 14px;">.29</span><span class="pricing--period"style="direction: rtl"> 4 أسـابيـع </span></div>-->
+                                <ul class="pricing--feature-list">
+<!--                                    <li class="pricing--feature">الولوج الى الموقع المخصص للغتين الانكليزية والهولندية</li>-->
+<!--                                   <li class="pricing--feature">صالحة لمدة <b>4 أسابيـع</b> </li>-->
+                                </ul>
+                                <a class="pricing--link" href="https://www.theorie-leren.nl/shop/school/al-rawi-theorie.html"> <button class="pricing--action ">اخــتر البــاقة</button></a>
+                            </div>
 
                         </div>
+
+
 
                     </div>
 
