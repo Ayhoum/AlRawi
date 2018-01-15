@@ -532,22 +532,27 @@ if (mysqli_num_rows($getAgent) == 1) {
 
                     <div id='sStart' class='slideStart'>
                         <h4 style='direction: rtl;line-height: 2em;' class='text-center topmargin-sm'>
-                            الإمتحان سيستمر لمدة 30 دقيقة كحد أقصى، وهو مكون من:<br>
-                            25 سؤال إستجابة كل واحد منها مدته 8 ثواني<br>
-                            و 40 سؤال ولديك 26 دقيقة و 40 ثانية لأجلها
+                            المدة القصوى للإمتحان هي 30 دقيقة<br>والإمتحان مؤلف من قسمين:
                         </h4>
                         <h4 style='direction: rtl;line-height: 2em;' class='text-center topmargin-sm'>
-                            يمكنك التنقل بين الأسئلة من خلال القائمة في الزاوية اليمنى في الأعلى، والتي ستظهر بالشكل
-                            التالي:
-                            <br>
-                            الأسئلة التي تم الإجابة عليها:
+                            القسم الأول: هو عبارة عن 25 سؤال استجابة ومدتها 4 دقائق تقريباً حيث سيكون لكل سؤال 8 ثواني تقريباً
+                        </h4>
+                        <h4 style='direction: rtl;line-height: 2em;' class='text-center topmargin-sm'>
+                            أما القسم الثاني فهو مؤلف من 40 سؤال مدتها 26 دقيقة تقريباً حيث سيكون لكل سؤال 40 ثانية تقريباً
+                        </h4>
+                        <h4 style='direction: rtl;line-height: 2em;' class='text-center topmargin-sm'>
+                            تستطيع إيقاف الإمتحان بأي وقت تريد وتستطيع وضع علم على السؤال الغير مفهوم كي تعود إليه لاحقاً وتستطيع التوقف عند أي سؤال لتعرف إجابتك إن كانت صحيحة أم خاطئة وإظهار السبب لماذا كانت خاطئة ولماذا كانت صحيحة
+                        </h4>
+                        <h4 style='direction: rtl;line-height: 2em;' class='text-center topmargin-sm'>
+                            في الزاوية اليمين العليا ستشاهد العلم وبجانبه مربعات صغيرة إذا ضغطت عليها ستشاهد ملخص عن إمتحانك<br>
+                            حيث ستظهر الأسئلة التي قمت بالإجابة عليها بلون أخضر:
                             <button type="button" class="btn btn-success">1</button>
                             <br>
-                            أما الأسئلة التي لم تجب عنها:
-                            <button type="button" class="btn btn-info">2</button>
+                            والأسئلة التي قمت بتأشيرها بلون أحمر:
+                            <button type="button" class="btn btn-danger">2</button>
                             <br>
-                            والأسئلة التي قمت بتعليمها:
-                            <button type="button" class="btn btn-danger">3</button>
+                            والأسئلة التي لم تجب عنها بلون أزرق:
+                            <button type="button" class="btn btn-info">3</button>
                             <br>
                         </h4>
                         <h4 class='text-center'>بمجرد بدء الإمتحان سيبدأ التوقيت التنازلي</h4>
