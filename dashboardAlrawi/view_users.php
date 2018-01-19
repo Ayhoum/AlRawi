@@ -54,7 +54,7 @@ include '../scripts/db_connection.php';
                 <tbody>
 
                 <?php
-                $query = "SELECT * FROM Users";
+                $query = "SELECT * FROM Users ORDER BY ID DESC";
                 $select_users = mysqli_query($mysqli, $query);
                 while($row = mysqli_fetch_assoc($select_users)) {
                     $id      = $row['ID'];
