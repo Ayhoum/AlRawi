@@ -26,7 +26,7 @@ include '../scripts/db_connection.php';
     </div>
     <div class="panel-body  p-xl-3">
         <div class="table-responsive">
-            <table id="basic-datatables" class="table table-bordered">
+            <table id="responsive-datatables" class="table table-bordered">
                 <thead>
                 <tr>
                     <th>ID</th>
