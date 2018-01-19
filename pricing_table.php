@@ -211,66 +211,120 @@ $totalUsers = $countOthers + $countSucceeded;
     <!-- Content
 		============================================= -->
 
-<!--    <section id="content" style="width: 100%;">-->
+    <section id="content" style="width: 100%;">
 
-<!--            <div class="container clearfix ">-->
+            <div class="container clearfix ">
 
 
 
 <!--    <div class="divider"><i class="icon-circle"></i></div>-->
 
-                <section class="content section pricing-section nomargin dark" style="background-color: white;width: 100%;">
-                    <div class="container clearfix">
-                        <h2 class="pricing-section--title center" style="color: #0f0e0f">إشتر إحدى الباقات التالية</h2>
-                        <div class="pricing pricing--karma">
-                            <div class="pricing--item">
-                                <h3 class="pricing--title text-center">البــاقة  الابتدائيــة</h3>
-                                <div class="pricing--price"><span class="pricing--currency">€</span>10<span style="font-size: 14px;">.29</span><span class="pricing--period" style="direction: rtl"> أسبــوع </span></div>
-                                <ul class="pricing--feature-list">
-                                    <li class="pricing--feature">صلاحية الدخول لجميع الامتحانات </li>
-                                    <li class="pricing--feature">صالحة لمدة <b>اسبوع</b></li>
 
-                                </ul>
-                                <a class="pricing--link" href="payment_1.php"> <button class="pricing--action ">اخــتر البــاقة</button></a>
-                            </div>
-                            <div class="pricing--item pricing--item--featured">
-                                <h3 class="pricing--title text-center">البـاقة الأسـاسيــة</h3>
-                                <div class="pricing--price"><span class="pricing--currency">€</span>15<span style="font-size: 14px;">.29</span><span class="pricing--period" style="direction: rtl"> أسبـــوعان  </span></div>
-                                <ul class="pricing--feature-list">
-                                    <li class="pricing--feature">صلاحية الدخول لجميع الامتحانات</li>
-                                    <li class="pricing--feature">صالحة لمدة <b>أسبوعين</b> </li>
-                                </ul>
-                                <a class="pricing--link" href="payment_2.php"> <button class="pricing--action ">اخــتر البــاقة</button></a>
-                            </div>
+    <div class="fancy-title title-dotted-border title-center topmargin-lg">
+        <h2 class="pricing-section--title center" style="color: #0f0e0f">إشتر إحدى الباقات التالية</h2>
+    </div>
 
-                            <div class="pricing--item">
-                                <h3 class="pricing--title text-center">البــاقة المتقدمــة</h3>
-                                <div class="pricing--price"><span class="pricing--currency">€</span>25<span style="font-size: 14px;">.29</span><span class="pricing--period"style="direction: rtl"> 4 أسـابيـع </span></div>
-                                <ul class="pricing--feature-list">
-                                    <li class="pricing--feature">صلاحية الدخول لجميع الامتحانات</li>
-                                    <li class="pricing--feature">صالحة لمدة <b>4 أسابيـع</b> </li>
-                                </ul>
-                                <a class="pricing--link" href="payment_4.php"> <button class="pricing--action ">اخــتر البــاقة</button></a>
-                            </div>
-                            <div class="pricing--item">
-                                <h3 class="pricing--title text-center">الامتــحانات باللغتين الانكليزية والهولندية</h3>
-<!--                                <div class="pricing--price"><span class="pricing--currency">€</span>25<span style="font-size: 14px;">.29</span><span class="pricing--period"style="direction: rtl"> 4 أسـابيـع </span></div>-->
-                                <ul class="pricing--feature-list">
-<!--                                    <li class="pricing--feature">الولوج الى الموقع المخصص للغتين الانكليزية والهولندية</li>-->
-<!--                                   <li class="pricing--feature">صالحة لمدة <b>4 أسابيـع</b> </li>-->
-                                </ul>
-                                <a class="pricing--link" href="https://www.theorie-leren.nl/shop/school/al-rawi-theorie.html"> <button class="pricing--action ">اخــتر البــاقة</button></a>
-                            </div>
+    <div class="pricing bottommargin clearfix">
 
-                        </div>
+        <div class="col-md-3">
+
+            <div class="pricing-box">
+                <div class="pricing-title">
+                    <h3 class="text-center">البــاقة  الابتدائيــة</h3>
+                </div>
+                <div class="pricing-price">
+                    <span class="price-unit">€</span>10<span style="font-size: 14px;">.29</span>
+                </div>
+                <div class="pricing-features">
+                    <ul>
+                        <li> صلاحية الدخول لجميع<strong> الامتحانات العربيـة</strong></li>
+                        <li>صالحة لمدة<strong> أسبـوع واحـد</strong></li>
+                    </ul>
+                </div>
+                <div class="pricing-action">
+                    <a href="payment_1.php" class="btn btn-danger btn-block btn-lg">اخـتر البـاقة</a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+        <div class="pricing-box best-price">
+            <div class="pricing-title ">
+                <h3 class="text-center">البـاقة الأسـاسيــة</h3>
+                <span> الأكثــر مبيــعاً</span>
+            </div>
+            <div class="pricing-price">
+                <span class="price-unit">€</span>15<span style="font-size: 14px;">.29</span>
+            </div>
+            <div class="pricing-features">
+                <ul>
+                    <li> صلاحية الدخول لجميع<strong> الامتحانات العربيـة</strong></li>
+                    <li>صالحة لمدة<strong> أسبـوعـان </strong></li>
+                </ul>
+            </div>
+            <div class="pricing-action">
+                <a href="payment_2.php" class="btn btn-danger btn-block btn-lg">اخـتر البـاقة</a>
+            </div>
+        </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="pricing-box">
+                <div class="pricing-title">
+                    <h3 class="text-center">البــاقة المتقدمــة</h3>
+                </div>
+                <div class="pricing-price">
+                    <span class="price-unit">€</span>25<span style="font-size: 14px;">.29</span>
+                </div>
+                <div class="pricing-features">
+                    <ul>
+                        <li> صلاحية الدخول لجميع<strong> الامتحانات العربيـة</strong></li>
+                        <li>صالحة لمدة<strong>4 أسـابـيع</strong></li>
+                    </ul>
+                </div>
+                <div class="pricing-action">
+                    <a href="payment_4.php" class="btn btn-danger btn-block btn-lg">اخـتر البـاقة</a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="pricing-box">
+                <div class="pricing-title">
+                    <h3 class="text-center">الباقـة الانكليزية والهولندية</h3>
+                </div>
+                <div class="pricing-price">
+                    <span class="price-unit">بحسـب الباقـة</span>
+                </div>
+                <div class="pricing-features">
+                    <ul>
+                        <li> صلاحية الدخول لجميع الامتحانات<strong> الانكليـزية</strong></li>
+                        <li> صلاحية الدخول لجميع الامتحانات<strong> الهولنديـة</strong></li>
+                    </ul>
+                </div>
+                <div class="pricing-action">
+                    <a href="https://www.theorie-leren.nl/shop/school/al-rawi-theorie.html" class="btn btn-danger btn-block btn-lg">اخـتر البـاقة</a>
+                </div>
+            </div>
+
+        </div>
 
 
 
-                    </div>
+    </div>
 
-                </section>
+            </div>
+    </section>
 
-    <div class="center">
+
+
+    <div class="center bottommargin-lg">
         <a href="profile.php" class="button button-rounded button-reveal button-large button-border "><i class="icon-user"></i><span>العودة إلى الصفحة الشخصية</span></a>
     </div>
 
