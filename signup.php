@@ -490,40 +490,40 @@ if(isset($_POST['signup_submit'])) {
 
                     <div class="panel panel-default divcenter noradius noborder" style="max-width: 400px;">
                         <div class="panel-body travel-date-group" style="padding: 40px;">
-                            <form id="signup-form" name="signup-form" class="nobottommargin" action="#" method="post">
+                            <form id="signup-form" name="signup-form" class="nobottommargin" action="#" method="post" autocomplete="off">
                                 <h3 class="text-center">قم بإنشاء حساب جديد</h3>
 
 
                                 <div class="col_full">
-                                    <label for="login-form-username">البريد الإلكتروني (اسم المستخدم):</label>
-                                    <input type="email" id="signup_username" name="signup_username" value="" class="form-control not-dark" />
+                                    <label for="login-form-username">البريد الإلكتروني (اسم المستخدم):*</label>
+                                    <input type="email" id="signup_username" name="signup_username" value="" class="form-control not-dark" autocomplete="off" required />
                                 </div>
 
                                 <div class="col_half">
-                                    <label for="login-form-password">كلمة مرور جديدة:</label>
-                                    <input type="password" id="signup_password" name="signup_password" value="" class="form-control not-dark" />
+                                    <label for="login-form-password">كلمة مرور جديدة:*</label>
+                                    <input type="password" autocomplete="off" id="signup_password" name="signup_password" value="" class="form-control not-dark" required />
                                 </div>
 
                                 <div class="col_half col_last">
-                                    <label for="login-form-password">إعادة كلمة المرور:</label>
-                                    <input type="password" id="signup_password_re" name="signup_password_re" value="" class="form-control not-dark" />
+                                    <label for="login-form-password">إعادة كلمة المرور:*</label>
+                                    <input type="password" autocomplete="off" id="signup_password_re" name="signup_password_re" value="" class="form-control not-dark" required/>
                                 </div>
                                 <div class="col_half">
-                                    <label for="login-form-username">الاسم الكامل:</label>
-                                    <input type="text" id="signup_fullname" name="signup_fullname" value="" class="form-control not-dark" />
+                                    <label for="login-form-username">الاسم الكامل:*</label>
+                                    <input type="text" autocomplete="off" id="signup_fullname" name="signup_fullname" value="" class="form-control not-dark" required/>
                                 </div>
                                 <div class="col_half col_last">
                                     <label for="login-form-username">رقم الهاتف:</label>
-                                    <input type="text" id="signup_phone" name="signup_phone" value="" class="form-control not-dark" />
+                                    <input type="text" autocomplete="off" id="signup_phone" name="signup_phone" value="" class="form-control not-dark" />
                                 </div>
 
                                 <div class="col_half">
                                     <label for="login-form-username">تاريخ الميلاد:</label>
-                                    <input type="text" value="" id="signup_birthday" name="signup_birthday" class="sm-form-control past-enabled" placeholder="DD/MM/YYYY">
+                                    <input type="text" autocomplete="off" value="" id="signup_birthday" name="signup_birthday" class="sm-form-control past-enabled" placeholder="DD/MM/YYYY">
                                 </div>
                                 <div class="col_half col_last">
                                     <label for="login-form-username">المدينة:</label>
-                                    <input type="text" id="signup_city" name="signup_city" value="" class="form-control not-dark" />
+                                    <input type="text" autocomplete="off" id="signup_city" name="signup_city" value="" class="form-control not-dark" />
                                 </div>
 
                                 <div class="col_full nobottommargin">
