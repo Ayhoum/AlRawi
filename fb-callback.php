@@ -158,21 +158,23 @@ if (isset($accessToken)) {
 
     } else{
 
-        $insert_query  = "INSERT INTO `Users` (`NAME` ,`EMAIL`, `SPENT`, `SITUATION`, `REG_DATE`)";
+//        $insert_query  = "INSERT INTO `Users` (`NAME` ,`EMAIL`, `SPENT`, `SITUATION`, `REG_DATE`)";
+//
+//        $insert_query .= " VALUES ('{$name}','{$email}', '0', 'NEW', '{$date}')";
+//
+//        echo $insert_query;
+//
+//        $insert_result = mysqli_query($mysqli, $insert_query);
+//
+//        $role = "user";
+//        $_SESSION['username'] = $name;
+//        $_SESSION['role'] = $role;
+//
+//        echo $_SESSION['username'];
+//
+//        header("Location: profile.php");
 
-        $insert_query .= " VALUES ('{$name}','{$email}', '0', 'NEW', '{$date}')";
-
-        echo $insert_query;
-
-        $insert_result = mysqli_query($mysqli, $insert_query);
-
-        $role = "user";
-        $_SESSION['username'] = $name;
-        $_SESSION['role'] = $role;
-
-        echo $_SESSION['username'];
-
-        header("Location: profile.php");
+        header("Location: facebook_error.php");
 
     }
 

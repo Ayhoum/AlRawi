@@ -530,10 +530,10 @@ if(isset($_POST['signup_submit'])) {
                                     <button class="button button-3d button-black nomargin" style="width: 100%" id="signup_submit" name="signup_submit" value="signup">إنشاء الحساب</button>
                                 </div>
 
-                                <div class="col_full topmargin-sm nobottommargin">
-                                    <a href="<?php echo htmlspecialchars($loginUrl) ?>" class="button button-border button-rounded button-blue" style="direction: rtl"></a>
-                                    <!--                                --><?php //echo '<a href="' . . '">Log in with Facebook!</a>'; ?>
-                                </div>
+<!--                                <div class="col_full topmargin-sm nobottommargin">-->
+<!--                                    <a href="--><?php //echo htmlspecialchars($loginUrl) ?><!--" class="button button-border button-rounded button-blue" style="direction: rtl"></a>-->
+<!--                                    <!--                                --><?php ////echo '<a href="' . . '">Log in with Facebook!</a>'; ?>
+<!--                                </div>-->
 
                             </form>
                         </div>
