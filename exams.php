@@ -8,13 +8,13 @@ if (!isset($_SESSION['username'])){
 
 
 $name = $_SESSION['username'];
-$query1 = "SELECT * FROM Users WHERE  Name ='{$name}' ";
+$query1 = "SELECT * FROM Users WHERE  NAME ='{$name}' ";
 $result1 = mysqli_query($mysqli, $query1);
 
 if (mysqli_num_rows($result1) > 0) {
     while ($row = mysqli_fetch_assoc($result1)) {
         $user_id = $row['ID'];
-
+    }
         $query2 = "SELECT * FROM  `PAID_EXAM` WHERE Users_ID = '{$user_id}' ORDER BY  `PAYMENT_ID` DESC LIMIT 1";
         $result2 = mysqli_query($mysqli, $query2);
 
@@ -27,17 +27,17 @@ if (mysqli_num_rows($result1) > 0) {
 
                 $today_date = date_default_timezone_set('Europe/Amsterdam');
                 $today_date = date('Y-m-d H:i:s ', time());
-
+            }
                 if ($end_date < $today_date) {
                     $update_query = "UPDATE `PAID_EXAM` SET `STATUS` = 'NOT ACTIVE' WHERE `PAYMENT_ID` = '{$payment_id}'";
                     $result_update = mysqli_query($mysqli, $update_query);
                     header("Location: pricing_table.php");
                 }
-            }
+
         }else{
             header("Location: pricing_table.php");
         }
-    }
+
 
 }
                     ?>

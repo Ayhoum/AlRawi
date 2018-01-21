@@ -314,13 +314,13 @@ include 'scripts/db_connection.php';
                                                 <?php
                                                 if (isset($_SESSION['username'])) {
                                                 $name = $_SESSION['username'];
-                                                $query1 = "SELECT * FROM Users WHERE  Name ='{$name}' ";
+                                                $query1 = "SELECT * FROM Users WHERE NAME ='{$name}' ";
                                                 $result1 = mysqli_query($mysqli, $query1);
                                                 if (mysqli_num_rows($result1) > 0) {
                                                 while ($row = mysqli_fetch_assoc($result1)) {
                                                 $user_id = $row['ID'];
-
-                                                $query2 = "SELECT * FROM  `PAID_EXAM` WHERE Users_ID = '{$user_id}' ORDER BY  `PAYMENT_ID` DESC LIMIT 1";
+                                                }
+                                                $query2 = "SELECT * FROM `PAID_EXAM` WHERE Users_ID = '{$user_id}' ORDER BY `PAYMENT_ID` DESC LIMIT 1";
                                                 $result2 = mysqli_query($mysqli, $query2);
 
                                                 if (mysqli_num_rows($result2) > 0) {
@@ -332,7 +332,7 @@ include 'scripts/db_connection.php';
 
                                                 $today_date = date_default_timezone_set('Europe/Amsterdam');
                                                 $today_date = date('Y-m-d H:i:s ', time());
-
+                                                }
                                                 if ($end_date >= $today_date) {
                                                 ?>
                                                 <div class="fancy-title title-border-color ">
@@ -367,7 +367,7 @@ include 'scripts/db_connection.php';
                                         <?php
                                                 }
 
-                                                }
+
 
                                                 } else {
                                                     ?>
@@ -387,7 +387,7 @@ include 'scripts/db_connection.php';
 
                                                 }
 
-                                                }
+
 
                                                 }
 
