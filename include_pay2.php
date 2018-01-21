@@ -37,8 +37,8 @@ try
      *   metadata      Custom metadata that is stored with the payment.
      */
     $payment = $mollie->payments->create(array(
-        "amount"       => 15.29,
-        "description"  => "إشتراك بالباقة الأساسية لموقع AlrawiTheorie (لمدة أسبوعين)",
+        "amount"       => 15.35,
+        "description"  => "إشتراك بالباقة الأساسية لموقع AlrawiTheorie (لمدة 35 يوماً)",
         "redirectUrl"  => "{$protocol}://{$hostname}{$path}/buy_exam_2weeks.php?order_id={$order_id}",
         "webhookUrl"   => "{$protocol}://{$hostname}{$path}/webhook-verification.php",
         "metadata"     => array(

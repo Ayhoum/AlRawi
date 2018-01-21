@@ -20,17 +20,17 @@ if (isset($_GET['id'])){
             date_default_timezone_set('Europe/Amsterdam');
             $start_date = date('Y-m-d H:i:s ', time());
 
-            $end_date = date("Y-m-d H:i:s ", strtotime('+1 week'));
+            $end_date = date("Y-m-d H:i:s ", strtotime('+20 days'));
         }else if($the_free_packet == "2week"){
             date_default_timezone_set('Europe/Amsterdam');
             $start_date = date('Y-m-d H:i:s ', time());
 
-            $end_date = date("Y-m-d H:i:s ", strtotime('+2 weeks'));
+            $end_date = date("Y-m-d H:i:s ", strtotime('+35 days'));
         }else if($the_free_packet == "4week"){
             date_default_timezone_set('Europe/Amsterdam');
             $start_date = date('Y-m-d H:i:s ', time());
 
-            $end_date = date("Y-m-d H:i:s ", strtotime('+4 weeks'));
+            $end_date = date("Y-m-d H:i:s ", strtotime('+60 days'));
         }
         $query = "INSERT INTO PAID_EXAM (Users_ID, PAYMENT_DATE, END_DATE )";
         $query .= "VALUES ('{$id}',
@@ -326,17 +326,17 @@ while($row = mysqli_fetch_assoc($select_users)){
                                     <div class="row">
                                         <div class="col-md-4">
                                             <a href="user_info.php?id=<?php echo $id; ?>&give_free_packet=1week"><div class="sale-state-box" style="background-color: #6ea563;box-shadow: 3px 4px 5px rgba(0,0,0,0.2);">
-                                                <h3>1 Week Free</h3>
+                                                <h3>20 days Free</h3>
                                             </div></a>
                                         </div>
                                         <div class="col-md-4">
                                             <a href="user_info.php?id=<?php echo $id; ?>&give_free_packet=2week"><div class="sale-state-box" style="background-color: #6ea563;box-shadow: 3px 4px 5px rgba(0,0,0,0.2);">
-                                                <h3>2 Week Free</h3>
+                                                <h3>35 days Free</h3>
                                                 </div></a>
                                         </div>
                                         <div class="col-md-4">
                                             <a href="user_info.php?id=<?php echo $id; ?>&give_free_packet=4week"><div class="sale-state-box" style="background-color: #6ea563;box-shadow: 3px 4px 5px rgba(0,0,0,0.2);">
-                                                <h3>4 Week Free</h3>
+                                                <h3>60 days Free</h3>
                                                 </div></a>
                                         </div>
                                     </div>

@@ -54,7 +54,7 @@ if (isset($_SESSION['username'])){
             date_default_timezone_set('Europe/Amsterdam');
             $start_date = date('Y-m-d H:i:s ', time());
 
-            $end_date = date("Y-m-d H:i:s ", strtotime('+1 week'));
+            $end_date = date("Y-m-d H:i:s ", strtotime('+20 days'));
 
             $query1 = "INSERT INTO PAID_EXAM (Users_ID, PAYMENT_DATE, END_DATE )";
             $query1 .= "VALUES ('{$id}',

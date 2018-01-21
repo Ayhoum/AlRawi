@@ -17,17 +17,17 @@ if (isset($_POST['submit'])) {
         date_default_timezone_set('Europe/Amsterdam');
         $start_date = date('Y-m-d H:i:s ', time());
 
-        $end_date = date("Y-m-d H:i:s ", strtotime('+1 week'));
+        $end_date = date("Y-m-d H:i:s ", strtotime('+20 days'));
     }else if($amount == "week2"){
         date_default_timezone_set('Europe/Amsterdam');
         $start_date = date('Y-m-d H:i:s ', time());
 
-        $end_date = date("Y-m-d H:i:s ", strtotime('+2 weeks'));
+        $end_date = date("Y-m-d H:i:s ", strtotime('+35 days'));
     }else if($amount == "week4"){
         date_default_timezone_set('Europe/Amsterdam');
         $start_date = date('Y-m-d H:i:s ', time());
 
-        $end_date = date("Y-m-d H:i:s ", strtotime('+4 weeks'));
+        $end_date = date("Y-m-d H:i:s ", strtotime('+60 days'));
     }
 
     $query = "INSERT INTO PAID_EXAM (Users_ID, PAYMENT_DATE, END_DATE )";
@@ -231,9 +231,9 @@ if (isset($_POST['submit'])) {
                                             <select id="amount" class="form-control m-b"
                                                     style="direction: rtl;" name="amount" required>
                                                 <option value="" disabled selected>Select an amount</option>
-                                                <option value="week">أسبوع</option>
-                                                <option value="week2">أسبوعين</option>
-                                                <option value="week4">4 أسابيع</option>
+                                                <option value="week">20 يوم</option>
+                                                <option value="week2">35 يوم</option>
+                                                <option value="week4">60 يوم</option>
                                             </select>
                                         </div>
                                     </div>

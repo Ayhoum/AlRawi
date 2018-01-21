@@ -233,12 +233,12 @@ $totalUsers = $countOthers + $countSucceeded;
                     <h3 class="text-center">البــاقة  الابتدائيــة</h3>
                 </div>
                 <div class="pricing-price">
-                    <span class="price-unit">€</span>10<span style="font-size: 14px;">.29</span>
+                    <span class="price-unit">€</span>10<span style="font-size: 14px;">.35</span>
                 </div>
                 <div class="pricing-features">
                     <ul>
                         <li> صلاحية الدخول لجميع<strong> الامتحانات العربيـة</strong></li>
-                        <li>صالحة لمدة<strong> أسبـوع واحـد</strong></li>
+                        <li>صالحة لمدة<strong> 20 يوماً </strong></li>
                     </ul>
                 </div>
                 <div class="pricing-action">
@@ -256,12 +256,12 @@ $totalUsers = $countOthers + $countSucceeded;
                 <span> الأكثــر مبيــعاً</span>
             </div>
             <div class="pricing-price">
-                <span class="price-unit">€</span>15<span style="font-size: 14px;">.29</span>
+                <span class="price-unit">€</span>15<span style="font-size: 14px;">.35</span>
             </div>
             <div class="pricing-features">
                 <ul>
                     <li> صلاحية الدخول لجميع<strong> الامتحانات العربيـة</strong></li>
-                    <li>صالحة لمدة<strong> أسبـوعـان </strong></li>
+                    <li>صالحة لمدة<strong> 35 يوماً </strong></li>
                 </ul>
             </div>
             <div class="pricing-action">
@@ -278,12 +278,12 @@ $totalUsers = $countOthers + $countSucceeded;
                     <h3 class="text-center">البــاقة المتقدمــة</h3>
                 </div>
                 <div class="pricing-price">
-                    <span class="price-unit">€</span>25<span style="font-size: 14px;">.29</span>
+                    <span class="price-unit">€</span>25<span style="font-size: 14px;">.35</span>
                 </div>
                 <div class="pricing-features">
                     <ul>
                         <li> صلاحية الدخول لجميع<strong> الامتحانات العربيـة</strong></li>
-                        <li>صالحة لمدة<strong>4 أسـابـيع</strong></li>
+                        <li>صالحة لمدة<strong> 60 يوماً </strong></li>
                     </ul>
                 </div>
                 <div class="pricing-action">

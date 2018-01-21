@@ -283,101 +283,100 @@ $totalUsers = $countOthers + $countSucceeded;
                     <h2 class="pricing-section--title center" style="color: #0f0e0f">أسعــارنـا</h2>
                 </div>
 
-                <div  class="pricing bottommargin clearfix">
+                    <div class="pricing bottommargin clearfix">
 
-                    <div class="col-md-3">
+                        <div class="col-md-3">
 
-                        <div class="pricing-box">
-                            <div class="pricing-title">
-                                <h3 class="text-center">البــاقة  الابتدائيــة</h3>
+                            <div class="pricing-box">
+                                <div class="pricing-title">
+                                    <h3 class="text-center">البــاقة  الابتدائيــة</h3>
+                                </div>
+                                <div class="pricing-price">
+                                    <span class="price-unit">€</span>10<span style="font-size: 14px;">.35</span>
+                                </div>
+                                <div class="pricing-features">
+                                    <ul>
+                                        <li> صلاحية الدخول لجميع<strong> الامتحانات العربيـة</strong></li>
+                                        <li>صالحة لمدة<strong> 20 يوماً </strong></li>
+                                    </ul>
+                                </div>
+                                <div class="pricing-action">
+                                    <a href="payment_1.php" class="btn btn-danger btn-block btn-lg">اخـتر البـاقة</a>
+                                </div>
                             </div>
-                            <div class="pricing-price">
-                                <span class="price-unit">€</span>10<span style="font-size: 14px;">.29</span>
-                            </div>
-                            <div class="pricing-features">
-                                <ul>
-                                    <li> صلاحية الدخول لجميع<strong> الامتحانات العربيـة</strong></li>
-                                    <li>صالحة لمدة<strong> أسبـوع واحـد</strong></li>
-                                </ul>
-                            </div>
-                            <div class="pricing-action">
-                                <a href="payment_1.php" class="btn btn-danger btn-block btn-lg">اخـتر البـاقة</a>
-                            </div>
+
                         </div>
 
-                    </div>
+                        <div class="col-md-3">
 
-                    <div class="col-md-3">
+                            <div class="pricing-box best-price">
+                                <div class="pricing-title ">
+                                    <h3 class="text-center">البـاقة الأسـاسيــة</h3>
+                                    <span> الأكثــر مبيــعاً</span>
+                                </div>
+                                <div class="pricing-price">
+                                    <span class="price-unit">€</span>15<span style="font-size: 14px;">.35</span>
+                                </div>
+                                <div class="pricing-features">
+                                    <ul>
+                                        <li> صلاحية الدخول لجميع<strong> الامتحانات العربيـة</strong></li>
+                                        <li>صالحة لمدة<strong> 35 يوماً </strong></li>
+                                    </ul>
+                                </div>
+                                <div class="pricing-action">
+                                    <a href="payment_2.php" class="btn btn-danger btn-block btn-lg">اخـتر البـاقة</a>
+                                </div>
+                            </div>
 
-                        <div class="pricing-box best-price">
-                            <div class="pricing-title ">
-                                <h3 class="text-center">البـاقة الأسـاسيــة</h3>
-                                <span> الأكثــر مبيــعاً</span>
-                            </div>
-                            <div class="pricing-price">
-                                <span class="price-unit">€</span>15<span style="font-size: 14px;">.29</span>
-                            </div>
-                            <div class="pricing-features">
-                                <ul>
-                                    <li> صلاحية الدخول لجميع<strong> الامتحانات العربيـة</strong></li>
-                                    <li>صالحة لمدة<strong> أسبـوعـان </strong></li>
-                                </ul>
-                            </div>
-                            <div class="pricing-action">
-                                <a href="payment_2.php" class="btn btn-danger btn-block btn-lg">اخـتر البـاقة</a>
-                            </div>
                         </div>
 
-                    </div>
+                        <div class="col-md-3">
 
-                    <div class="col-md-3">
+                            <div class="pricing-box">
+                                <div class="pricing-title">
+                                    <h3 class="text-center">البــاقة المتقدمــة</h3>
+                                </div>
+                                <div class="pricing-price">
+                                    <span class="price-unit">€</span>25<span style="font-size: 14px;">.35</span>
+                                </div>
+                                <div class="pricing-features">
+                                    <ul>
+                                        <li> صلاحية الدخول لجميع<strong> الامتحانات العربيـة</strong></li>
+                                        <li>صالحة لمدة<strong> 60 يوماً </strong></li>
+                                    </ul>
+                                </div>
+                                <div class="pricing-action">
+                                    <a href="payment_4.php" class="btn btn-danger btn-block btn-lg">اخـتر البـاقة</a>
+                                </div>
+                            </div>
 
-                        <div class="pricing-box">
-                            <div class="pricing-title">
-                                <h3 class="text-center">البــاقة المتقدمــة</h3>
-                            </div>
-                            <div class="pricing-price">
-                                <span class="price-unit">€</span>25<span style="font-size: 14px;">.29</span>
-                            </div>
-                            <div class="pricing-features">
-                                <ul>
-                                    <li> صلاحية الدخول لجميع<strong> الامتحانات العربيـة</strong></li>
-                                    <li>صالحة لمدة<strong>4 أسـابـيع</strong></li>
-                                </ul>
-                            </div>
-                            <div class="pricing-action">
-                                <a href="payment_4.php" class="btn btn-danger btn-block btn-lg">اخـتر البـاقة</a>
-                            </div>
                         </div>
 
-                    </div>
+                        <div class="col-md-3">
 
-                    <div class="col-md-3">
+                            <div class="pricing-box">
+                                <div class="pricing-title">
+                                    <h3 class="text-center">الباقـة الانكليزية والهولندية</h3>
+                                </div>
+                                <div class="pricing-price">
+                                    <span class="price-unit">بحسـب الباقـة</span>
+                                </div>
+                                <div class="pricing-features">
+                                    <ul>
+                                        <li> صلاحية الدخول لجميع الامتحانات<strong> الانكليـزية</strong></li>
+                                        <li> صلاحية الدخول لجميع الامتحانات<strong> الهولنديـة</strong></li>
+                                    </ul>
+                                </div>
+                                <div class="pricing-action">
+                                    <a href="https://www.theorie-leren.nl/shop/school/al-rawi-theorie.html" class="btn btn-danger btn-block btn-lg">اخـتر البـاقة</a>
+                                </div>
+                            </div>
 
-                        <div class="pricing-box">
-                            <div class="pricing-title">
-                                <h3 class="text-center">الباقـة الانكليزية والهولندية</h3>
-                            </div>
-                            <div class="pricing-price">
-                                <span class="price-unit">بحسـب الباقـة</span>
-                            </div>
-                            <div class="pricing-features">
-                                <ul>
-                                    <li> صلاحية الدخول لجميع الامتحانات<strong> الانكليـزية</strong></li>
-                                    <li> صلاحية الدخول لجميع الامتحانات<strong> الهولنديـة</strong></li>
-                                </ul>
-                            </div>
-                            <div class="pricing-action">
-                                <a href="https://www.theorie-leren.nl/shop/school/al-rawi-theorie.html" class="btn btn-danger btn-block btn-lg">اخـتر البـاقة</a>
-                            </div>
                         </div>
 
+
+
                     </div>
-
-
-
-                </div>
-
                 </div>
             </div>
         </section>
