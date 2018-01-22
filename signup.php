@@ -336,9 +336,7 @@ if(isset($_POST['signup_submit'])) {
 													</tr>
 												</table>
 											</td>
-
 										</tr>
-
 										<tr>
 											<td class=\"info-bullets__block\" style=\"padding: 30px;\" align=\"center\">
 												<table class=\"container\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" align=\"center\">
