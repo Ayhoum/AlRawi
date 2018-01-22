@@ -46,7 +46,7 @@ if (isset($_SESSION['username'])){
     if (mysqli_num_rows($result) > 0 ){
         while ($row = mysqli_fetch_assoc($result)) {
             $id = $row['ID'];
-
+        }
 
             date_default_timezone_set('Europe/Amsterdam');
             $start_date = date('Y-m-d H:i:s ', time());
@@ -59,7 +59,7 @@ if (isset($_SESSION['username'])){
                              '{$end_date}')";
 
             $result1 = mysqli_query($mysqli,$query1);
-        }
+
 
         header("Location: profile.php");
     }

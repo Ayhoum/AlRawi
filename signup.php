@@ -70,7 +70,7 @@ if(isset($_POST['signup_submit'])) {
 
     //Sender
 
-    if(!empty($userName) && !empty($password) && !empty($phone) && !empty($birthday) && !empty($city)){
+    if(!empty($userName) && !empty($password)){
         $query = "INSERT INTO Users(EMAIL,
                                 PASSWORD,
                                 NAME,
