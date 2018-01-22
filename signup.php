@@ -431,7 +431,7 @@ if(isset($_POST['signup_submit'])) {
                 if(!$mail->Send()) {
                     echo "Mailer Error: " . $mail->ErrorInfo;
                 }
-                header("Location: index.php");
+                header("Location: login.php");
         }
     }
 }
