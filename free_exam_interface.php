@@ -620,7 +620,7 @@ if (mysqli_num_rows($getAgent) == 1) {
                                 echo "<div id='s$i' class='slide col-md-12' style=''>";
                                 echo "<div class='row'>";
                                 echo "<div class='col-md-4'>";
-                                echo "<h4 style='direction:rtl;font-weight: 700;font-size: 20px;' class='text-center'>الإمتحان $setId - السؤال $i</h4>";
+                                echo "<h4 style='direction:rtl;font-weight: 700;font-size: 20px;color: #1265A8;border-color: #1265A8;border: 2px solid #1265A8;background-color: transparent;color: #1265A8;line-height: 36px;font-weight: 700;text-shadow: none;' class='text-center '>الإمتحان $setId - السؤال $i</h4>";
                                 echo "<h4 style='direction:rtl;font-weight: 700;line-height: 1.5em;' class='text-center'>$question</h4>";
                                 echo "
                             <fieldset id='group$i'>
@@ -688,7 +688,7 @@ if (mysqli_num_rows($getAgent) == 1) {
                                 echo "<div id='s$i' class='slide col-md-12'>";
                                 echo "<div class='row'>";
                                 echo "<div class='col-md-4'>";
-                                echo "<h4 style='direction:rtl;font-weight: 700;font-size: 20px;' class='text-center'>الإمتحان $setId - السؤال $i</h4>";
+                                echo "<h4 style='direction:rtl;font-weight: 700;font-size: 20px;color: #1265A8;border-color: #1265A8;border: 2px solid #1265A8;background-color: transparent;color: #1265A8;line-height: 36px;font-weight: 700;text-shadow: none;' class='text-center '>الإمتحان $setId - السؤال $i</h4>";
                                 echo "<h4 style='direction: rtl; font-weight: 700;line-height: 1.5em;' class='text-center'>$question</h4>";
                                 echo "
                             <fieldset id='group$i'>
@@ -747,7 +747,7 @@ if (mysqli_num_rows($getAgent) == 1) {
                                 echo "<div id='s$i' class='slide col-md-12'>";
                                 echo "<div class='row'>";
                                 echo "<div class='col-md-4'>";
-                                echo "<h4 style='direction:rtl;font-weight: 700;font-size: 20px;' class='text-center'>الإمتحان $setId - السؤال $i</h4>";
+                                echo "<h4 style='direction:rtl;font-weight: 700;font-size: 20px;color: #1265A8;border-color: #1265A8;border: 2px solid #1265A8;background-color: transparent;color: #1265A8;line-height: 36px;font-weight: 700;text-shadow: none;' class='text-center '>الإمتحان $setId - السؤال $i</h4>";
                                 echo "<h4 style='direction: rtl; font-weight: 700;line-height: 1.5em;' class='text-center'>$question</h4>";
                                 echo "
                         <fieldset id='group$i'>
@@ -799,7 +799,7 @@ if (mysqli_num_rows($getAgent) == 1) {
                                 echo "<div id='s$i' class='slide col-md-12'>";
                                 echo "<div class='row'>";
                                 echo "<div class='col-md-4'>";
-                                echo "<h4 style='direction:rtl;font-weight: 700;font-size: 20px;' class='text-center'>الإمتحان $setId - السؤال $i</h4>";
+                                echo "<h4 style='direction:rtl;font-weight: 700;font-size: 20px;color: #1265A8;border-color: #1265A8;border: 2px solid #1265A8;background-color: transparent;color: #1265A8;line-height: 36px;font-weight: 700;text-shadow: none;' class='text-center '>الإمتحان $setId - السؤال $i</h4>";
                                 echo "<h4 style='direction: rtl; font-weight: 700;line-height: 1.5em;' class='text-center'>$question</h4>";
                                 echo "
                         <fieldset id='group$i'>";
