@@ -332,7 +332,7 @@ if(isset($_POST['signup_submit'])) {
 															<img src=\"https://cdn1.iconfinder.com/data/icons/material-communication/18/phone-32.png\">
 														</td>
 
-														<td class=\"info-bullets__content\" style=\"color: #969696; font-size: 16px;\">(541) 754-3010</td>
+														<td class=\"info-bullets__content\" style=\"color: #969696; font-size: 16px;\">06-87460636</td>
 													</tr>
 												</table>
 											</td>
