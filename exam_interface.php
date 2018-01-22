@@ -1010,7 +1010,9 @@ if (mysqli_num_rows($getAgent) == 1) {
         // $status1.text(j + '/' + counter);
         if (j > 26 && finished == 0) {
             jQuery('.prevButSt').show();
-        } else {
+        } else if(j<26 && j>1) {
+            jQuery('.prevButSt').show();
+        }else{
             jQuery('.prevButSt').hide();
         }
         if (continued == 1) {

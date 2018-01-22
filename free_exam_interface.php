@@ -1010,7 +1010,9 @@ if (mysqli_num_rows($getAgent) == 1) {
         // $status1.text(j + '/' + counter);
         if (j > 26 && finished == 0) {
             jQuery('.prevButSt').show();
-        } else {
+        } else if(j<26 && j>1) {
+            jQuery('.prevButSt').show();
+        }else{
             jQuery('.prevButSt').hide();
         }
         if (continued == 1) {
@@ -1110,6 +1112,7 @@ if (mysqli_num_rows($getAgent) == 1) {
         jQuery('#progressBar').show();
         jQuery('.slide').show();
         jQuery('.nxtButSt').show();
+        // jQuery('.prevButSt').show();
         jQuery('#stopBut').show();
         jQuery('.slideStart').hide();
         jQuery('#showTime').removeClass('col-sm-10').addClass('col-sm-12').show();
