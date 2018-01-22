@@ -63,7 +63,7 @@ session_start();
                         <div class="panel-body" style="padding: 40px;">
                                 <h4 class="text-center" style="color: red; direction: rtl">عذراً، لزيـادة الأمان في الموقع فإن خدمة التسجيل عن طريق الفيس بوك متوقفة حالياً</h4>
                                 <h5 class="text-center">منصة فيس بوك تواجه عدة مشاكل بعملية التنسيق مع عمليات التسجيل في المواقع</h5>
-                                <h5 class="text-center" style="direction: rtl">لذلك يرجى تسجيل حساب جديد عن طريق الايميل!</h5>
+                                <h5 class="text-center" style="direction: rtl">لذلك يرجى تسجيل حساب جديد عن طريق الايميل! ومراسلتنا في حال كان لديكم باقات مشتراة</h5>
                             <div class="col_full nobottommargin">
                                     <a href="signup.php"><button class="button button-3d button-black nomargin" style="width: 100%" id="login_submit" name="login_submit">تسجيل حسـاب جديد</button></a>
                             </div>

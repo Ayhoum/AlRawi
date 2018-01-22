@@ -130,7 +130,7 @@ if(isset($_POST['login_submit'])) {
                                 </div>
 
                                 <div class="col_full topmargin-sm nobottommargin">
-                                <a href="<?php echo htmlspecialchars($loginUrl) ?>" class="button button-border button-rounded button-blue" style="direction: rtl"></a>
+                                <a href="facebook_error.php" class="button button-border button-rounded button-blue" style="direction: rtl"></a>
 <!--                                --><?php //echo '<a href="' . . '">Log in with Facebook!</a>'; ?>
                                 </div>
 
