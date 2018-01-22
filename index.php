@@ -1,33 +1,7 @@
 <?php
-
 session_start();
 ob_start();
 include 'scripts/db_connection.php';
-
-$countSucceeded = 0;
-$countOthers = 0;
-
-$queryV = "SELECT * FROM Website";
-$select_visitors = mysqli_query($mysqli, $queryV);
-while($row = mysqli_fetch_assoc($select_visitors)) {
-    $visits = $row['VISITS'];
-}
-
-$visits++;
-
-$queryVU = "UPDATE Website SET VISITS=$visits";
-$update_visitors = mysqli_query($mysqli, $queryVU);
-
-$query = "SELECT * FROM Users ORDER BY ID DESC";
-$select_users = mysqli_query($mysqli, $query);
-while($row = mysqli_fetch_assoc($select_users)) {
-    if ($row['SITUATION'] == "SUCCEEDED") {
-        $countSucceeded++;
-    } else {
-        $countOthers++;
-    }
-}
-$totalUsers = $countOthers + $countSucceeded;
 
 ?>
 <!DOCTYPE html>
@@ -233,7 +207,10 @@ $totalUsers = $countOthers + $countSucceeded;
 							<div class="emphasis-title">
 								<h1>
 									<span class="text-rotater nocolor" data-separator="|" data-rotate="fadeIn" data-speed="6000">
-										<span class="t-rotate t700 font-body opm-large-word">Al Rawi Theorie|طريقك إلى النجاح|أفضل الخدمات التعليمية|من البداية حتى التفوق</span>
+										<span class="t-rotate t700 font-body opm-large-word">
+                                            Al Rawi Theorie|
+                                            طريقك إلى النجاح|أفضل الخدمات التعليمية
+                                            |من البداية حتى التفوق</span>
 									</span>
 								</h1>
 							</div>
@@ -256,7 +233,7 @@ $totalUsers = $countOthers + $countSucceeded;
             <button data-remodal-action="close" class="remodal-close"></button>
             <h1>يرجى القراءة</h1>
             <p style="direction: rtl">
-                عزيزي الزائر هذا الموقع يدفع رواتب شهرية لموظفيه وبإستخدامك الغير قانوني للموقع سوف تسبب لنا أضرار مادية فإذا أردت لنا الإستمرار فساعدنا على عدم نشر محتوى هذا الموقع وتصوير محتوياته
+                عزيزي الزائر هذا الموقع يدفع رواتب شهرية لموظفيه وباستخدامك الغير قانوني للموقع سوف تتسبب لنا بأضرار مادية فإذا أردت لنا الإستمرار فساعدنا على عدم نشر محتوى هذا الموقع وتصوير محتوياته
                 <br><br>ملاحظة: إدارة الموقع على استعداد تام لتقديم الباقات مجاناً للأشخاص الذين ليس لديهم قدرة شرائية. فقط راسلنا وسنقوم بكل سرور بمساعدتك
                 <br><br>ملاحظة: إدارة الموقع لها كافة الصلاحيات بملاحقة النشر والتوزيع الغير قانوني وذلك من خلال وضع حماية على المحتويات والصور الموجودة في الموقع
                 <br><br>
@@ -272,17 +249,34 @@ $totalUsers = $countOthers + $countSucceeded;
 		============================================= -->
         <section id="content">
 
-			<div class="content-wrap" style="padding-top: 0 ; padding-bottom: 0;">
+
+            <?php if(!isset($_SESSION['role'])) { ?>
+            <div class="fancy-title title-dotted-border title-center topmargin-sm">
+                <h2 class="pricing-section--title center" style="color: #0f0e0f"></h2>
+            </div>
+            <div class="row">
+                <div class="col-md-6 text-center">
+                    <a href="login.php" class="button button-desc button-3d button-rounded button-green center">تسجيل الدخول<span></span></a>
+                </div>
+                <div class="col-md-6 text-center">
+                    <a href="signup.php" class="button button-desc button-3d button-rounded button-red center">حساب جديد<span></span></a>
+                </div>
+            </div>
+            <?php }?>
+
+
+            <div class="content-wrap" style="padding-top: 0 ; padding-bottom: 0;">
 
 
                 <div id = "pricing" class="container">
 
 
-
-                <div class="fancy-title title-dotted-border title-center topmargin-lg">
+                <div class="fancy-title title-dotted-border title-center topmargin-sm">
                     <h2 class="pricing-section--title center" style="color: #0f0e0f">أسعــارنـا</h2>
                 </div>
-
+                    <div class="button-red text-center col_full">
+                        <p style="color: white;font-weight: 800;padding: 5px;">بعد إتمام عملية الدفع يرجى الإنتظار وعدم إغلاق الصفحة ريثما يتم تحويلكم تلقائياً لموقعنا</p>
+                    </div>
                     <div class="pricing bottommargin clearfix">
 
                         <div class="col-md-3">
@@ -368,7 +362,7 @@ $totalUsers = $countOthers + $countSucceeded;
                                     </ul>
                                 </div>
                                 <div class="pricing-action">
-                                    <a href="https://www.theorie-leren.nl/shop/school/al-rawi-theorie.html" class="btn btn-danger btn-block btn-lg">اخـتر البـاقة</a>
+                                    <a href="https://www.theorie-leren.nl/shop/school/al-rawi-theorie.html" target="_blank  " class="btn btn-danger btn-block btn-lg">اخـتر البـاقة</a>
                                 </div>
                             </div>
 
@@ -377,15 +371,13 @@ $totalUsers = $countOthers + $countSucceeded;
 
 
                     </div>
+
                 </div>
             </div>
         </section>
 
 
 
-        <div class="center bottommargin-lg">
-            <a href="profile.php" class="button button-rounded button-reveal button-large button-border "><i class="icon-user"></i><span>العودة إلى الصفحة الشخصية</span></a>
-        </div>
 
 
         <div class="divider" id="services"><i class="icon-circle"></i></div>
@@ -591,70 +583,6 @@ $totalUsers = $countOthers + $countSucceeded;
 
 				<!--</div>-->
 
-                <?php
-                $queryV = "SELECT * FROM Website";
-                $select_visitors = mysqli_query($mysqli, $queryV);
-                while($row = mysqli_fetch_assoc($select_visitors)) {
-                    $num_visits = $row['VISITS'];
-                }
-                ?>
-
-				<div class="section notopmargin" style="margin-bottom: 0;padding-bottom: 60px;padding-top: 0;background-color: #FFFFFF;">
-					<div class="container clearfix">
-
-						<div class="row">
-
-							<div class="col-md-4 col-sm-6">
-								<div class="feature-box fbox-outline fbox-dark fbox-effect clearfix">
-                                    <div class="row">
-                                        <div class="col_full" style="margin-bottom: 10px;">
-                                            <div class="fbox-icon center-block" style="position: inherit">
-                                              <a href="#"><i class="icon-eye-open i-alt"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col_full text-center" style="margin-bottom: 10px;">
-                                         <div class="counter counter-small"><span data-from="0" data-to="<?php echo $num_visits; ?>" data-refresh-interval="13" data-speed="3000"></span>+</div>
-									    <h5 class="nomargin color text-center">زيارة للموقع</h5>
-                                    </div>
-								</div>
-							</div>
-
-                            <div class="col-md-4 col-sm-6">
-                                <div class="feature-box fbox-outline fbox-dark fbox-effect clearfix">
-                                    <div class="row">
-                                        <div class="col_full" style="margin-bottom: 10px;">
-                                            <div class="fbox-icon center-block" style="position: inherit">
-                                                <a href="#"><i class="icon-users i-alt"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col_full text-center" style="margin-bottom: 10px;">
-                                        <div class="counter counter-small"><span data-from="0" data-to="<?php echo $totalUsers; ?>" data-refresh-interval="250" data-speed="1000"></span>+</div>
-                                        <h5 class="nomargin color text-center">مستخدم للموقع</h5>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-4 col-sm-6">
-                                <div class="feature-box fbox-outline fbox-dark fbox-effect clearfix">
-                                    <div class="row">
-                                        <div class="col_full" style="margin-bottom: 10px;">
-                                            <div class="fbox-icon center-block" style="position: inherit">
-                                                <a href="#"><i class="icon-flag-checkered i-alt"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col_full text-center" style="margin-bottom: 10px;">
-                                        <div class="counter counter-small"><span data-from="0" data-to="<?php echo $countSucceeded; ?>" data-refresh-interval="50" data-speed="1000"></span>+</div>
-                                        <h5 class="nomargin color text-center">ناجح!</h5>
-                                    </div>
-                                </div>
-                            </div>
-
-					</div>
-				</div>
-
 				<!--<div class="container clearfix">-->
 					<!--<div class="heading-block center nobottomborder">-->
 						<!--<h3>Meet our Team of Specialists<span>.</span></h3>-->
@@ -739,7 +667,6 @@ $totalUsers = $countOthers + $countSucceeded;
 
 				<!--</div>-->
 
-			</div>
 
 		</section><!-- #content end -->
 
