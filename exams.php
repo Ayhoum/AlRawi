@@ -7,8 +7,8 @@ if (!isset($_SESSION['username'])){
 }
 
 
-$name = $_SESSION['username'];
-$query1 = "SELECT * FROM Users WHERE  NAME ='{$name}' ";
+$name = $_SESSION['email'];
+$query1 = "SELECT * FROM Users WHERE  EMAIL ='{$name}' ";
 $result1 = mysqli_query($mysqli, $query1);
 
 if (mysqli_num_rows($result1) > 0) {
@@ -193,9 +193,9 @@ if (mysqli_num_rows($result1) > 0) {
                                                 </li>
                                             <?php } ?>
 
-                                            <li><a href="" data-scrollto="#booking-appointment-form" data-offset="100"
-                                                   data-easing="easeInOutExpo" data-speed="1200" class="bgcolor"
-                                                   style="color:#fff;">احجز امتحانك</a></li>
+<!--                                            <li><a href="" data-scrollto="#booking-appointment-form" data-offset="100"-->
+<!--                                                   data-easing="easeInOutExpo" data-speed="1200" class="bgcolor"-->
+<!--                                                   style="color:#fff;">احجز امتحانك</a></li>-->
 
                                         </ul>
                                     </div>
