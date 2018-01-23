@@ -410,7 +410,7 @@ if (isset($_POST['submit'])) {
                 <div data-remodal-id="<?php echo "modal$x"; ?>" role="dialog"
                      aria-labelledby="modal<?php echo "$x"; ?>Title" aria-describedby="modal<?php echo "$x"; ?>Desc">
                     <div>
-                        <h2 id="modal<?php echo "$x"; ?>Title" style='direction: rtl;'>السؤال <?php echo $number; ?>:
+                        <h2 id="modal<?php echo "$x"; ?>Title" style='direction: rtl;'>الإمتحان <?php echo $qId;?> - السؤال <?php echo $number; ?>:
                             <br><span style="font-size: 25px;"><?php echo $question; ?> </span></h2>
                         <p id="modal<?php echo "$x"; ?>Desc">
                             <div class="row">
@@ -519,7 +519,7 @@ if (isset($_POST['submit'])) {
              aria-labelledby="modal<?php echo "$x"; ?>Title"
              aria-describedby="modal<?php echo "$x"; ?>Desc">
             <div>
-                <h2 id="modal<?php echo "$x"; ?>Title" style='direction: rtl;'>السؤال <?php echo $number; ?>:
+                <h2 id="modal<?php echo "$x"; ?>Title" style='direction: rtl;'>الإمتحان <?php echo $qId;?> - السؤال <?php echo $number; ?>:
                     <br><span style="font-size: 25px;"><?php echo $question; ?> </span></h2>
                 <p id="modal<?php echo "$x"; ?>Desc">
                     <div class="row">
