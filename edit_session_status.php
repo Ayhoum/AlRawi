@@ -25,10 +25,10 @@ $status = database_read($_GET["order_id"]);
 if($status == "paid"){
 ?>
 <?php
-if (isset($_SESSION['username'])){
-    $name = $_SESSION['username'];
+if (isset($_SESSION['email'])){
+    $name = $_SESSION['email'];
 
-    $query = "SELECT * FROM Users WHERE NAME = '{$name}'";
+    $query = "SELECT * FROM Users WHERE EMAIL = '{$name}'";
 
     $result = mysqli_query($mysqli,$query);
     if (mysqli_num_rows($result) > 0 ){

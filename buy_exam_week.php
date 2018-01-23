@@ -25,11 +25,11 @@ $status = database_read($_GET["order_id"]);
 
 if($status == "paid"){
 
-if (isset($_SESSION['username'])){
+if (isset($_SESSION['email'])){
 
 
-    $name = $_SESSION['username'];
-    $spentQuery = "SELECT * From Users WHERE NAME = '{$name}' ";
+    $name = $_SESSION['email'];
+    $spentQuery = "SELECT * From Users WHERE EMAIL = '{$name}' ";
     $updateAgent = mysqli_query($mysqli, $spentQuery);
     if (mysqli_num_rows($updateAgent) == 1) {
         while ($row = mysqli_fetch_assoc($updateAgent)) {
@@ -43,7 +43,7 @@ if (isset($_SESSION['username'])){
 
 
 
-    $query = "SELECT * FROM Users WHERE NAME = '{$name}'";
+    $query = "SELECT * FROM Users WHERE EMAIL = '{$name}'";
 
     $result = mysqli_query($mysqli,$query);
     if (mysqli_num_rows($result) > 0 ){

@@ -12,8 +12,8 @@ if (isset($_GET['exam_id'])) {
 }
 
 
-$user = $_SESSION['username'];
-$query = "SELECT * From Users WHERE NAME = '{$user}' ";
+$user = $_SESSION['email'];
+$query = "SELECT * From Users WHERE EMAIL = '{$user}' ";
 $getAgent = mysqli_query($mysqli, $query);
 if (mysqli_num_rows($getAgent) == 1) {
     while ($row = mysqli_fetch_assoc($getAgent)) {

@@ -15,10 +15,10 @@ if (!isset($_SESSION['username'])){
 ?>
 
 <?php
-if (isset($_SESSION['username'])){
+if (isset($_SESSION['email'])){
 
-    $username = $_SESSION['username'];
-    $query1  = "SELECT * FROM Users WHERE NAME = '{$username}'";
+    $username = $_SESSION['email'];
+    $query1  = "SELECT * FROM Users WHERE EMAIL = '{$username}'";
     $result1 = mysqli_query($mysqli, $query1);
     if (mysqli_num_rows($result1) > 0 ) {
 
