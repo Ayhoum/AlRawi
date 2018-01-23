@@ -240,10 +240,10 @@ include 'scripts/db_connection.php';
 
                                                     <?php
 
-                                                    if (isset($_SESSION['username'])) {
-                                                        $name = $_SESSION['username'];
+                                                    if (isset($_SESSION['email'])) {
+                                                        $name = $_SESSION['email'];
 
-                                                        $query1 = "SELECT * FROM Users WHERE  Name ='{$name}' ";
+                                                        $query1 = "SELECT * FROM Users WHERE EMAIL ='{$name}' ";
                                                         $result1 = mysqli_query($mysqli, $query1);
 
                                                         if (mysqli_num_rows($result1) > 0) {
