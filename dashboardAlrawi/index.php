@@ -158,6 +158,13 @@ $examsRows = mysqli_num_rows($exams_num_rows);
                                     <li><a href="paid_exams_stats.php"> Paid Exams Stats</a></li>
                                 </ul>
                             </li>
+                            <li class="nav-heading"><span>SEARCH QUESTION</span></li>
+                            <li>
+                                <a href="#"><i class="fa fa-search"></i> <span class="nav-label">Search</span><span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level collapse">
+                                    <li><a href="search_question.php">Search Question</a></li>
+                                </ul>
+                            </li>
                             <li class="nav-heading"><span>PRIVATE SESSIONS ISSUES</span></li>
                             <li>
                                 <a href="#"><i class="fa fa-dollar"></i> <span class="nav-label">Private Sessions</span><span class="fa arrow"></span></a>
@@ -172,7 +179,6 @@ $examsRows = mysqli_num_rows($exams_num_rows);
                                     <li><a href="control_payments.php">Control Payments</a></li>
                                 </ul>
                             </li>
-
                         </ul>
                         <!-- END SIDEBAR MENU -->
                     </nav>

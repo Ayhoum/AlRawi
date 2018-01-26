@@ -120,6 +120,13 @@ include '../scripts/db_connection.php';
                             <li><a href="paid_exams_stats.php"> Paid Exams Stats</a></li>
                         </ul>
                     </li>
+                    <li class="nav-heading"><span>SEARCH QUESTION</span></li>
+                    <li>
+                        <a href="#"><i class="fa fa-search"></i> <span class="nav-label">Search</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a href="search_question.php">Search Question</a></li>
+                        </ul>
+                    </li>
                     <li class="nav-heading"><span>PRIVATE SESSIONS ISSUES</span></li>
                     <li>
                         <a href="#"><i class="fa fa-dollar"></i> <span class="nav-label">Private Sessions</span><span class="fa arrow"></span></a>
