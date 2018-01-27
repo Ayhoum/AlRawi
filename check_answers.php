@@ -21,18 +21,19 @@ if (isset($_GET['id'])) {
     header("Location: profile.php");
 }
 if (isset($_POST['submit'])) {
+    $arr = array();
 
     for ($i = 1; $i <= 65; $i++) {
-
         if (!empty($_POST['selector' . $i])) {
             ${'selector_' . $i} = $_POST['selector' . $i];
-
+            $value = ${'selector_' . $i};
         } else {
-
             ${'selector_' . $i} = "0";
-
+            $value = ${'selector_' . $i};
         }
+        array_push( $arr, $value );
     }
+    $_SESSION['answers'] = $arr;
 } else {
     header("Location: profile.php");
 }
@@ -271,7 +272,6 @@ if (isset($_POST['submit'])) {
 
                 <div class="container topmargin-sm" style="width: 100% !important;">
                     <div class="remodal-bg">
-
 
                         <?php
                         // GET THE QUESTION FROM DB
@@ -667,6 +667,8 @@ $x++;
 <div class="center">
     <a href="profile.php" class="button button-rounded button-reveal button-large button-border "><i
                 class="icon-user"></i><span>اذهب الى الصفحة الشخصية</span></a>
+    <a href="continue_exam.php?exam_id=<?php echo $qId;?>" class="button button-rounded button-reveal button-green button-large button-border "><i
+                class="icon-reply"></i><span>متابعة الإمتحان</span></a>
 </div>
 </div>
 </section>
@@ -757,7 +759,7 @@ $x++;
             </div>
 
             <div class="text-center topmargin-sm">
-                Developed & Designed by <a href="http://www.el-semicolon.nl"> El-SemiColon; <img src="images/logoES.png" style="width: 64px;height: 64px;"/></a>
+                Developed & Designed by <a target="_blank" href="http://www.el-semicolon.nl"> El-SemiColon; <img src="images/logoES.png" style="width: 64px;height: 64px;"/></a>
             </div>
 
         </div>
@@ -766,7 +768,6 @@ $x++;
 
 
 </footer><!-- #footer end -->
-</body>
 
 
 <!-- Go To Top

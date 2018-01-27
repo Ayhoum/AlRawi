@@ -20,32 +20,15 @@ if (mysqli_num_rows($getAgent) == 1) {
         $id = $row['ID'];
         $status = $row['SITUATION'];
     }
-    $checkQuery = "SELECT * FROM PAID_EXAM WHERE Users_ID = '{$id}' AND STATUS = 'ACTIVE' ORDER BY PAYMENT_ID DESC LIMIT 1";
-    $getPayment = mysqli_query($mysqli, $checkQuery);
-    if (mysqli_num_rows($getPayment) == 1) {
-        while ($row = mysqli_fetch_assoc($getPayment)) {
-            $payid = $row['PAYMENT_ID'];
-            $end_date = $row['END_DATE'];
-        }
-        $today_date = date_default_timezone_set('Europe/Amsterdam');
-        $today_date = date('Y-m-d H:i:s ', time());
-
-        if ($end_date < $today_date) {
-            $update_query = "UPDATE `PAID_EXAM` SET `STATUS` = 'NOT ACTIVE' WHERE `PAYMENT_ID` = '{$payid}'";
-            $result_update = mysqli_query($mysqli, $update_query);
-            header("Location: pricing_table.php");
-        }
-
-
-        }
 
     if ($status == "NEW") {
         $train = "TRAINING";
         $updateQuery = "UPDATE Users SET SITUATION = '{$train}' WHERE ID = '{$id}'";
         $run = mysqli_query($mysqli, $updateQuery);
+
     }
 }
-
+$arr = $_SESSION['answers'];
 ?>
 
 <html>
@@ -297,15 +280,15 @@ if (mysqli_num_rows($getAgent) == 1) {
             }
 
             /*.nxtButSt {*/
-                /*position: fixed;*/
-                /*bottom: 40px;*/
-                /*right: 10px;*/
+            /*position: fixed;*/
+            /*bottom: 40px;*/
+            /*right: 10px;*/
             /*}*/
 
             /*.prevButSt {*/
-                /*position: fixed;*/
-                /*bottom: 40px;*/
-                /*right: 200px;*/
+            /*position: fixed;*/
+            /*bottom: 40px;*/
+            /*right: 200px;*/
             /*}*/
             .quesImg{
                 margin-top: 10px;
@@ -314,15 +297,15 @@ if (mysqli_num_rows($getAgent) == 1) {
 
         @media (min-width: 991px) {
             /*.nxtButSt {*/
-                /*position: fixed;*/
-                /*bottom: 40px;*/
-                /*right: 10px;*/
+            /*position: fixed;*/
+            /*bottom: 40px;*/
+            /*right: 10px;*/
             /*}*/
 
             /*.prevButSt {*/
-                /*position: fixed;*/
-                /*bottom: 40px;*/
-                /*right: 200px;*/
+            /*position: fixed;*/
+            /*bottom: 40px;*/
+            /*right: 200px;*/
             /*}*/
             .quesImg {
                 width: 730px;
@@ -371,13 +354,13 @@ if (mysqli_num_rows($getAgent) == 1) {
                     <a href="#" style="color:#fff;">
                         <button onclick="stopExam()"
                                 class="button button-rounded button-reveal button-small button-red"><i
-                                    class="fa fa-times"></i><span>إيقاف الإمتحان</span></button>
+                                class="fa fa-times"></i><span>إيقاف الإمتحان</span></button>
                     </a>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="text-center"><a onclick="flagQuestion();" class="flagBut" href="#"><i
-                                class="fa fa-flag fa-2x" aria-hidden="true"></i></a></li>
+                            class="fa fa-flag fa-2x" aria-hidden="true"></i></a></li>
                 <li class="dropdown text-center navBut">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-th fa-2x"
                                                                                   aria-hidden="true"></i></a>
@@ -544,12 +527,10 @@ if (mysqli_num_rows($getAgent) == 1) {
                 <!--                    <span class="pagingInfo"></span>-->
                 <!--                    <span class="pagingInfo1"></span>-->
 
-
-                <form method="post" action="check_answers.php?id=<?php echo $setId; ?>"
+                <form method="post" action="free_check_answers.php?id=<?php echo $setId; ?>"
                       enctype="multipart/form-data">
 
                     <div id='sStart' class='slideStart'>
-
                         <h4 style='direction: rtl;line-height: 2em;' class='text-center topmargin-sm'>
                             المدة القصوى للإمتحان هي 30 دقيقة<br>والإمتحان مؤلف من قسمين:
                         </h4>
@@ -619,7 +600,7 @@ if (mysqli_num_rows($getAgent) == 1) {
 
                         <?php
                         //                $setId = 1;
-                        $query = "SELECT * FROM EXAM_QUESTION WHERE QUESTION_SET_ID = $setId";
+                        $query = "SELECT * FROM FREE_EXAM_QUESTION WHERE FREE_QUESTION_SET_ID = $setId";
                         $selectQuestions = mysqli_query($mysqli, $query);
                         $i = 1;
                         while ($row = mysqli_fetch_assoc($selectQuestions)) {
@@ -632,7 +613,6 @@ if (mysqli_num_rows($getAgent) == 1) {
                             $picture = $row['PICTURE'];
                             $type = $row['TYPE'];
 
-
                             echo "<div>";
 
                             if ($type == "response") {
@@ -641,21 +621,22 @@ if (mysqli_num_rows($getAgent) == 1) {
                                 echo "<div class='col-md-4'>";
                                 echo "<h4 style='direction:rtl;font-weight: 700;font-size: 20px;color: #1265A8;border-color: #1265A8;border: 2px solid #1265A8;background-color: transparent;color: #1265A8;line-height: 36px;font-weight: 700;text-shadow: none;' class='text-center '>الإمتحان $setId - السؤال $i</h4>";
                                 echo "<h4 style='direction:rtl;font-weight: 700;line-height: 1.5em;' class='text-center'>$question</h4>";
-                                echo "
-                            <fieldset id='group$i'>
-                                <label class='containerRadio'>فرامل
-                                  <input type='radio' class='selector$i' name='selector$i' value='فرامل'>
-                                  <span class='checkmark'></span>
-                                </label>
-                                <label class='containerRadio'>رفع قدم عن الوقود
-                                  <input type='radio' class='selector$i' name='selector$i' value='رفع قدم عن الوقود'>
-                                  <span class='checkmark'></span>
-                                </label>
-                                <label class='containerRadio'>لا شئ
-                                  <input type='radio' class='selector$i' name='selector$i' value='لا شئ'>
-                                  <span class='checkmark'></span>
-                                </label>
-                            </fieldset>";
+                                ?>
+                                <fieldset id='group<?php echo $i;?>'>
+                                    <label class='containerRadio'>فرامل
+                                        <input type='radio' class='selector<?php echo $i;?>' name='selector<?php echo $i;?>' value='فرامل' <?php if($arr[$i-1] == 'فرامل'){echo "checked";}?>>
+                                        <span class='checkmark'></span>
+                                    </label>
+                                    <label class='containerRadio'>رفع قدم عن الوقود
+                                        <input type='radio' class='selector<?php echo $i;?>' name='selector<?php echo $i;?>' value='رفع قدم عن الوقود' <?php if($arr[$i-1] == 'رفع قدم عن الوقود'){echo "checked";}?>>
+                                        <span class='checkmark'></span>
+                                    </label>
+                                    <label class='containerRadio'>لا شئ
+                                        <input type='radio' class='selector<?php echo $i;?>' name='selector<?php echo $i;?>' value='لا شئ' <?php if($arr[$i-1] == 'لا شئ'){echo "checked";}?>>
+                                        <span class='checkmark'></span>
+                                    </label>
+                                </fieldset>
+                                <?php
                                 echo "
                             <div class='slider-progress' id='progressBar'>
                                 <div class='progress'></div>
@@ -683,8 +664,8 @@ if (mysqli_num_rows($getAgent) == 1) {
 ";
                                 echo "</div>";
                                 echo "<div class='col-md-8'>";
-                                if (file_exists('dashboardAlrawi/examsImages/paid/' . $picture)) {
-                                    echo "<img class='quesImg center-block img-responsive' src='dashboardAlrawi/examsImages/paid/$picture'/>";
+                                if (file_exists('dashboardAlrawi/examsImages/free/' . $picture)) {
+                                    echo "<img class='quesImg center-block img-responsive' src='dashboardAlrawi/examsImages/free/$picture'/>";
                                 }
                                 echo "</div>";
                                 echo "</div>";
@@ -709,17 +690,19 @@ if (mysqli_num_rows($getAgent) == 1) {
                                 echo "<div class='col-md-4'>";
                                 echo "<h4 style='direction:rtl;font-weight: 700;font-size: 20px;color: #1265A8;border-color: #1265A8;border: 2px solid #1265A8;background-color: transparent;color: #1265A8;line-height: 36px;font-weight: 700;text-shadow: none;' class='text-center '>الإمتحان $setId - السؤال $i</h4>";
                                 echo "<h4 style='direction: rtl; font-weight: 700;line-height: 1.5em;' class='text-center'>$question</h4>";
-                                echo "
-                            <fieldset id='group$i'>
+                                ?>
+                            <fieldset id='group<?php echo $i;?>'>
                             <label class='containerRadio'>نعم
-                                  <input type='radio' class='selector$i' name='selector$i' value='نعم'>
+                                  <input type='radio' class='selector<?php echo $i;?>' name='selector<?php echo $i;?>' value='نعم' <?php if($arr[$i-1] == 'نعم'){echo "checked";}?>>
                                   <span class='checkmark'></span>
                                 </label>
                                 <label class='containerRadio'>لا
-                                  <input type='radio' class='selector$i' name='selector$i' value='لا'>
+                                  <input type='radio' class='selector<?php echo $i;?>' name='selector<?php echo $i;?>' value='لا' <?php if($arr[$i-1] == 'لا'){echo "checked";}?>>
                                   <span class='checkmark'></span>
                                 </label>
                             </fieldset>
+                        <?php
+                            echo "
                             <div class='row text-center' style='width: 100%; margin-top: 20px;'>
                             <div class='col-xs-6'>
                                 <button type='button' id='prevBut'
@@ -742,8 +725,8 @@ if (mysqli_num_rows($getAgent) == 1) {
 ";
                                 echo "</div>";
                                 echo "<div class='col-md-8'>";
-                                if (file_exists('dashboardAlrawi/examsImages/paid/' . $picture)) {
-                                    echo "<img class='quesImg center-block img-responsive' src='dashboardAlrawi/examsImages/paid/$picture'/>";
+                                if (file_exists('dashboardAlrawi/examsImages/free/' . $picture)) {
+                                    echo "<img class='quesImg center-block img-responsive' src='dashboardAlrawi/examsImages/free/$picture'/>";
                                 }
                                 echo "</div>";
                                 echo "</div>";
@@ -768,10 +751,15 @@ if (mysqli_num_rows($getAgent) == 1) {
                                 echo "<div class='col-md-4'>";
                                 echo "<h4 style='direction:rtl;font-weight: 700;font-size: 20px;color: #1265A8;border-color: #1265A8;border: 2px solid #1265A8;background-color: transparent;color: #1265A8;line-height: 36px;font-weight: 700;text-shadow: none;' class='text-center '>الإمتحان $setId - السؤال $i</h4>";
                                 echo "<h4 style='direction: rtl; font-weight: 700;line-height: 1.5em;' class='text-center'>$question</h4>";
+                                ?>
+
+                                <fieldset id='group<?php echo $i;?>'>
+                                    <input type='text' class='selector<?php echo $i;?>' name='selector<?php echo $i;?>' placeholder='أدخل القيمة' <?php if($arr[$i-1] != '0'){echo "value = " . $arr[$i-1];}?> autocomplete='off'><br>
+                                </fieldset>
+
+                                <?php
                                 echo "
-                        <fieldset id='group$i'>
-                            <input type='text' class='selector$i' name='selector$i' placeholder='أدخل القيمة' autocomplete='off'><br>
-                        </fieldset>
+                      
                         <div class='row text-center' style='width: 100%; margin-top: 20px;'>
                             <div class='col-xs-6'>
                                 <button type='button' id='prevBut'
@@ -794,8 +782,8 @@ if (mysqli_num_rows($getAgent) == 1) {
 ";
                                 echo "</div>";
                                 echo "<div class='col-md-8'>";
-                                if (file_exists('dashboardAlrawi/examsImages/paid/' . $picture)) {
-                                    echo "<img class='quesImg center-block img-responsive' src='dashboardAlrawi/examsImages/paid/$picture'/>";
+                                if (file_exists('dashboardAlrawi/examsImages/free/' . $picture)) {
+                                    echo "<img class='quesImg center-block img-responsive' src='dashboardAlrawi/examsImages/free/$picture'/>";
                                 }
                                 echo "</div>";
                                 echo "</div>";
@@ -826,13 +814,14 @@ if (mysqli_num_rows($getAgent) == 1) {
                                 while (true) {
                                     $num = rand(0, 3);
                                     if ($answers[$num] != "0") {
+?>
 
-                                        echo "
-                                    <label class='containerRadio'>$answers[$num]
-                                        <input type='radio' class='selector$i' name='selector$i' value='$answers[$num]'>
+                                    <label class='containerRadio'><?php echo $answers[$num];?>
+                                        <input type='radio' class='selector<?php echo $i;?>' name='selector<?php echo $i;?>' value='<?php echo $answers[$num];?>' <?php if($arr[$i-1] == $answers[$num]){echo "checked";}?>>
                                         <span class='checkmark'></span>
                                     </label>
-                                    ";
+
+                                        <?php
                                         $answers[$num] = "0";
                                     }
                                     $toggle = 0;
@@ -868,8 +857,8 @@ if (mysqli_num_rows($getAgent) == 1) {
 ";
                                 echo "</div>";
                                 echo "<div class='col-md-8'>";
-                                if (file_exists('dashboardAlrawi/examsImages/paid/' . $picture)) {
-                                    echo "<img class='quesImg center-block img-responsive' src='dashboardAlrawi/examsImages/paid/$picture'/>";
+                                if (file_exists('dashboardAlrawi/examsImages/free/' . $picture)) {
+                                    echo "<img class='quesImg center-block img-responsive' src='dashboardAlrawi/examsImages/free/$picture'/>";
                                 }
                                 echo "</div>";
                                 echo "</div>";
@@ -902,23 +891,23 @@ if (mysqli_num_rows($getAgent) == 1) {
                     </button>
 
                     <div class="container" style="width: 100%">
-<!--                        <div class="row" style="width: 100%">-->
-<!--                            <div class="col-md-12">-->
-<!---->
-<!--                                <button type="button" id="nxtBut"-->
-<!--                                        class="tright button button-rounded button-reveal button-large button-yellow button-light nxt nxtButSt">-->
-<!--                                    <i class="fa fa-arrow-right"></i>-->
-<!--                                    <span style="font-family: 'DroidArabicKufiRegular';">السؤال التالي</span>-->
-<!--                                </button>-->
-<!--                            </div>-->
-<!--                            <div class="col-md-12">-->
-<!--                                <button type="button" id="prevBut"-->
-<!--                                        class="button button-rounded button-reveal button-large button-teal prev prevButSt">-->
-<!--                                    <i class="fa fa-arrow-left"></i>-->
-<!--                                    <span style="font-family: 'DroidArabicKufiRegular';">السؤال السابق</span>-->
-<!--                                </button>-->
-<!--                            </div>-->
-<!--                        </div>-->
+                        <!--                        <div class="row" style="width: 100%">-->
+                        <!--                            <div class="col-md-12">-->
+                        <!---->
+                        <!--                                <button type="button" id="nxtBut"-->
+                        <!--                                        class="tright button button-rounded button-reveal button-large button-yellow button-light nxt nxtButSt">-->
+                        <!--                                    <i class="fa fa-arrow-right"></i>-->
+                        <!--                                    <span style="font-family: 'DroidArabicKufiRegular';">السؤال التالي</span>-->
+                        <!--                                </button>-->
+                        <!--                            </div>-->
+                        <!--                            <div class="col-md-12">-->
+                        <!--                                <button type="button" id="prevBut"-->
+                        <!--                                        class="button button-rounded button-reveal button-large button-teal prev prevButSt">-->
+                        <!--                                    <i class="fa fa-arrow-left"></i>-->
+                        <!--                                    <span style="font-family: 'DroidArabicKufiRegular';">السؤال السابق</span>-->
+                        <!--                                </button>-->
+                        <!--                            </div>-->
+                        <!--                        </div>-->
                     </div>
                 </form>
             </div>
@@ -944,13 +933,13 @@ if (mysqli_num_rows($getAgent) == 1) {
         jQuery('#reason' + whereR).fadeIn('slow');
 
 
-    var inst = $('[data-remodal-id=modal' +whereR+ ']').remodal({
-        closeOnOutsideClick:true
-    });
-    inst.open();
-    $(document).on('confirmation', '.remodal', function () {
-        console.log('Confirmation button is clicked');
-    });
+        var inst = $('[data-remodal-id=modal' +whereR+ ']').remodal({
+            closeOnOutsideClick:true
+        });
+        inst.open();
+        $(document).on('confirmation', '.remodal', function () {
+            console.log('Confirmation button is clicked');
+        });
     });
 </script>
 <script type="text/javascript">
@@ -1131,6 +1120,7 @@ if (mysqli_num_rows($getAgent) == 1) {
         jQuery('#progressBar').show();
         jQuery('.slide').show();
         jQuery('.nxtButSt').show();
+        // jQuery('.prevButSt').show();
         jQuery('#stopBut').show();
         jQuery('.slideStart').hide();
         jQuery('#showTime').removeClass('col-sm-10').addClass('col-sm-12').show();
@@ -1363,4 +1353,5 @@ if (mysqli_num_rows($getAgent) == 1) {
     });
 </script>
 </body>
+<?php $_SESSION['answers'] = null; ?>
 </html>

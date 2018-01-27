@@ -5,7 +5,9 @@ if (!isset($_SESSION['username'])){
     header("Location: login.php");
 }
 include 'scripts/db_connection.php';
-
+if(isset($_SESSION['answers'])){
+    $_SESSION['answers'] = null;
+}
 ?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en-US">
@@ -201,7 +203,6 @@ include 'scripts/db_connection.php';
                             <div class="col-md-12 ">
 
                                 <div class="tabs tabs-alt clearfix" style="text-align: center;margin-top:10px;" id="tabs-profile">
-
                                     <ul class="tab-nav clearfix" style="display:inline-block;">
                                         <li><a href="#tab-posts"><i class="icon-euro"></i> الإمتحانات المشتراة</a></li>
                                         <li><a href="#tab-connections"><i class="icon-note"></i> الإمتحانات المجانية</a></li>
