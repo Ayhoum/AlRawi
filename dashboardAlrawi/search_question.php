@@ -153,7 +153,7 @@ include '../scripts/db_connection.php';
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="page-title">
-                            <h4 class="float-left">Edit Free Exam</h4>
+                            <h4 class="float-left">Search a question</h4>
                         </div>
                     </div>
                 </div><!-- end .page title-->
@@ -190,10 +190,6 @@ include '../scripts/db_connection.php';
 
                 </div>
 
-
-
-
-
                 <div class="row">
                     <div class="col-md-12">
                         <div class="panel panel-card margin-b-30">
@@ -209,13 +205,14 @@ include '../scripts/db_connection.php';
                                 }
                                 $selectQuestions = mysqli_query($mysqli,$quesQuery);
                                 while($row = mysqli_fetch_assoc($selectQuestions)){
-                                    $questionTitle = $row['QUESTION'];
+                                    $questionExam = $row['QUESTION_SET_ID'];
 
+                                    $questionTitle = $row['QUESTION'];
                                     ?>
                                     <div class="panel-heading" style="text-align: right;">
-<?php echo $questionTitle; ?>
+                                        <?php echo $questionTitle; ?>
                                     </div>
-<?php
+                            <?php
                                 }
                             }
                             ?>
