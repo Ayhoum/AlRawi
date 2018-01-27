@@ -206,12 +206,19 @@ include '../scripts/db_connection.php';
                                 $selectQuestions = mysqli_query($mysqli,$quesQuery);
                                 while($row = mysqli_fetch_assoc($selectQuestions)){
                                     $questionExam = $row['QUESTION_SET_ID'];
-
+                                    $qID = $row['NUMBER'] ;
+                                    $convertedId = $qID - ($questionExam - 1) * 65;
                                     $questionTitle = $row['QUESTION'];
                                     ?>
                                     <div class="panel-heading" style="text-align: right;">
+                                        <div class="text-center btn-success" style="font-size: 22px;padding: 5px;"><?php echo 'إمتحان ' . $questionExam;?>
+                                            <?php echo ' - ';?>
+                                            <?php echo 'السؤال ' . $convertedId;?></div>
+                                        <div style="font-size: 20px;padding: 5px;">
                                         <?php echo $questionTitle; ?>
+                                        </div>
                                     </div>
+                                    <hr>
                             <?php
                                 }
                             }
