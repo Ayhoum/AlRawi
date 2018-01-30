@@ -28,7 +28,16 @@ if (mysqli_num_rows($getAgent) == 1) {
 
     }
 }
-$arr = $_SESSION['answers'];
+if(isset($_SESSION['answers'])){
+    $arr = $_SESSION['answers'];
+}else{
+    header('Location: profile.php');
+}
+if(isset($_SESSION['answersOrder'])) {
+    $order = $_SESSION['answersOrder'];
+}else{
+    header('Location: profile.php');
+}
 ?>
 
 <html>
@@ -625,15 +634,15 @@ $arr = $_SESSION['answers'];
                                 <fieldset id='group<?php echo $i;?>'>
                                     <label class='containerRadio'>فرامل
                                         <input type='radio' class='selector<?php echo $i;?>' name='selector<?php echo $i;?>' value='فرامل' <?php if($arr[$i-1] == 'فرامل'){echo "checked";}?>>
-                                        <span class='checkmark'></span>
+                                        <span class='checkmark text-center'>A</span>
                                     </label>
                                     <label class='containerRadio'>رفع قدم عن الوقود
                                         <input type='radio' class='selector<?php echo $i;?>' name='selector<?php echo $i;?>' value='رفع قدم عن الوقود' <?php if($arr[$i-1] == 'رفع قدم عن الوقود'){echo "checked";}?>>
-                                        <span class='checkmark'></span>
+                                        <span class='checkmark text-center'>B</span>
                                     </label>
                                     <label class='containerRadio'>لا شئ
                                         <input type='radio' class='selector<?php echo $i;?>' name='selector<?php echo $i;?>' value='لا شئ' <?php if($arr[$i-1] == 'لا شئ'){echo "checked";}?>>
-                                        <span class='checkmark'></span>
+                                        <span class='checkmark text-center'>C</span>
                                     </label>
                                 </fieldset>
                                 <?php
@@ -694,11 +703,11 @@ $arr = $_SESSION['answers'];
                             <fieldset id='group<?php echo $i;?>'>
                             <label class='containerRadio'>نعم
                                   <input type='radio' class='selector<?php echo $i;?>' name='selector<?php echo $i;?>' value='نعم' <?php if($arr[$i-1] == 'نعم'){echo "checked";}?>>
-                                  <span class='checkmark'></span>
+                                  <span class='checkmark text-center'>A</span>
                                 </label>
                                 <label class='containerRadio'>لا
                                   <input type='radio' class='selector<?php echo $i;?>' name='selector<?php echo $i;?>' value='لا' <?php if($arr[$i-1] == 'لا'){echo "checked";}?>>
-                                  <span class='checkmark'></span>
+                                  <span class='checkmark text-center'>B</span>
                                 </label>
                             </fieldset>
                         <?php
@@ -810,28 +819,25 @@ $arr = $_SESSION['answers'];
                                 echo "<h4 style='direction: rtl; font-weight: 700;line-height: 1.5em;' class='text-center'>$question</h4>";
                                 echo "
                         <fieldset id='group$i'>";
-                                $answers = array($right, $second, $third, $fourth);
-                                while (true) {
-                                    $num = rand(0, 3);
-                                    if ($answers[$num] != "0") {
-?>
-
-                                    <label class='containerRadio'><?php echo $answers[$num];?>
-                                        <input type='radio' class='selector<?php echo $i;?>' name='selector<?php echo $i;?>' value='<?php echo $answers[$num];?>' <?php if($arr[$i-1] == $answers[$num]){echo "checked";}?>>
-                                        <span class='checkmark'></span>
+                                $answers = $order[$i];
+                                $k = 0;
+                                $char = 'A';
+                                for($index = 0 ; $index < 4; $index++){
+                                    if(!empty($answers[$index])){
+                                        ?>
+                                    <label class='containerRadio'><?php echo $answers[$index]; ?>
+                                        <input type='radio' class='selector<?php echo $i; ?>' name='selector<?php echo $i; ?>' value='<?php echo $answers[$index];?>' <?php if($arr[$i-1] == $answers[$index]){echo "checked";}?>>
+                                        <span class='checkmark text-center'><?php echo $char; ?></span>
                                     </label>
-
-                                        <?php
-                                        $answers[$num] = "0";
+                                    <?php
+                                        $k++;
                                     }
-                                    $toggle = 0;
-                                    for ($j = 0; $j < 4; $j++) {
-                                        if ($answers[$j] == "0") {
-                                            $toggle++;
-                                        }
-                                    }
-                                    if ($toggle == 4) {
-                                        break;
+                                    if($k == 1){
+                                        $char = 'B';
+                                    }else if($k == 2){
+                                        $char = 'C';
+                                    }else if($k == 3){
+                                        $char = 'D';
                                     }
                                 }
                                 echo "</fieldset>

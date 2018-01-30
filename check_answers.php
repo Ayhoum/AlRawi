@@ -14,7 +14,7 @@ include 'scripts/db_connection.php';
 
 
 if (isset($_GET['id'])) {
-
+    $arrOrder = $_SESSION['answersOrder'];
     $qId = $_GET['id'];
 
 } else {
@@ -269,11 +269,11 @@ if (isset($_POST['submit'])) {
                 <div class="center-block text-center">
                     <button class="btn btn-lg text-center" id="result" style="width: 50%;"></button>
                 </div>
-
                 <div class="container topmargin-sm" style="width: 100% !important;">
                     <div class="remodal-bg">
 
                         <?php
+
                         // GET THE QUESTION FROM DB
                         $query = " SELECT * FROM `EXAM_QUESTION` WHERE `QUESTION_SET_ID` = '{$qId}'";
                         $result = mysqli_query($mysqli, $query);
@@ -427,39 +427,66 @@ if (isset($_POST['submit'])) {
                                     <?php
                                     if ($type == "response"){
                                     ?>
+                                    <table style="width:100%">
+                                        <tr <?php if ($right_answer == "فرامل") {
+                                            echo "style= 'color: white;background:green;margin-bottom: 10px;font-size:18px;padding: 10px;'";
+                                        } else {
+                                            echo "style= 'margin-bottom: 10px;font-size:18px;padding: 10px;'";
+                                        } ?>>
+                                            <td class="col-xs-2"><div style="width: 100%;font-weight:800;font-size: 20px;" class="text-center">A</div></td>
+                                            <td><p style='margin-bottom: 0;font-size:18px;padding: 10px;'>فرامل</p></td>
+                        </tr>
+                        </table>
 
+                        <table style="width:100%">
+                            <tr <?php if ($right_answer == "رفع قدم عن الوقود") {
+                                echo "style= 'color: white;background:green;margin-bottom: 10px;font-size:18px;padding: 10px;'";
+                            } else {
+                                echo "style= 'margin-bottom: 10px;font-size:18px;padding: 10px;'";
+                            } ?>>
+                                <td class="col-xs-2"><div style="width: 100%;font-weight:800;font-size: 20px;" class="text-center">B</div></td>
+                                <td><p style='margin-bottom: 0;font-size:18px;padding: 10px;'>رفع قدم عن الوقود</p></td>
+                            </tr>
+                        </table>
 
-                        <p <?php if ($right_answer == "فرامل") {
-                            echo "style= 'color: white;background:green;margin-bottom: 10px;font-size:18px;padding: 10px;'";
-                        } else {
-                            echo "style= 'margin-bottom: 10px;font-size:18px;padding: 10px;'";
-                        } ?> >فرامل</p>
-                        <p <?php if ($right_answer == "رفع قدم عن الوقود") {
-                            echo "style= 'color: white;background:green;margin-bottom: 10px;font-size:18px;padding: 10px;'";
-                        } else {
-                            echo "style= 'margin-bottom: 10px;font-size:18px;padding: 10px;'";
-                        } ?>>رفع قدم عن الوقود</p>
-                        <p <?php if ($right_answer == "لا شئ") {
-                            echo "style= 'color: white;background:green;margin-bottom: 10px;font-size:18px;padding: 10px;'";
-                        } else {
-                            echo "style= 'margin-bottom: 10px;font-size:18px;padding: 10px;'";
-                        } ?>>لا شيء</p>
-
+                        <table style="width:100%">
+                            <tr <?php if ($right_answer == "لا شئ") {
+                                echo "style= 'color: white;background:green;margin-bottom: 10px;font-size:18px;padding: 10px;'";
+                            } else {
+                                echo "style= 'margin-bottom: 10px;font-size:18px;padding: 10px;'";
+                            } ?>>
+                                <td class="col-xs-2"><div style="width: 100%;font-weight:800;font-size: 20px;" class="text-center">C</div></td>
+                                <td><p style='margin-bottom: 0;font-size:18px;padding: 10px;'>لا شيء</p></td>
+                            </tr>
+                        </table>
 
                         <?php
                         }
                         elseif ($type == "yesNo") {
                             ?>
-                            <p <?php if ($right_answer == "نعم") {
-                                echo "style= 'color: white;background:green;margin-bottom: 10px;font-size:18px;padding: 10px;'";
-                            } else {
-                                echo "style= 'margin-bottom: 10px;font-size:18px;padding: 10px;'";
-                            } ?> >نعم</p>
-                            <p <?php if ($right_answer == "لا") {
-                                echo "style= 'color: white;background:green;margin-bottom: 10px;font-size:18px;padding: 10px;'";
-                            } else {
-                                echo "style= 'margin-bottom: 10px;font-size:18px;padding: 10px;'";
-                            } ?>>لا</p>
+
+
+                            <table style="width:100%">
+                                <tr <?php if ($right_answer == "نعم") {
+                                    echo "style= 'color: white;background:green;margin-bottom: 0;font-size:18px;padding: 10px;'";
+                                } else {
+                                    echo "style= 'margin-bottom: 0;font-size:18px;padding: 10px;'";
+                                } ?>>
+                                    <td class="col-xs-2"><div style="width: 100%;font-weight:800;font-size: 20px;" class="text-center">A</div></td>
+                                    <td><p style='margin-bottom: 0;font-size:18px;padding: 10px;'>نعم</td>
+                                </tr>
+                            </table>
+
+                            <table style="width:100%">
+                                <tr <?php if ($right_answer == "لا") {
+                                    echo "style= 'color: white;background:green;margin-bottom: 0;font-size:18px;padding: 10px;'";
+                                } else {
+                                    echo "style= 'margin-bottom: 0;font-size:18px;padding: 10px;'";
+                                } ?>>
+                                    <td class="col-xs-2"><div style="width: 100%;font-weight:800;font-size: 20px;" class="text-center">B</div></td>
+                                    <td><p style='margin-bottom: 0;font-size:18px;padding: 10px;'>لا</td>
+                                </tr>
+                            </table>
 
                             <?php
                         } elseif ($type == "numInp") {
@@ -467,28 +494,46 @@ if (isset($_POST['submit'])) {
                             <p style='color: green;margin-bottom: 10px;font-size:18px;'><?php echo ${'selector_' . $x}; ?></p>
                             <?php
                         } elseif ($type == "multiChoice3" || $type == "multiChoice4" || $type == "multiChoice2" || $type == "advantage3" || $type == "advantage") {
+
+
+                            for($j = 0; $j<4; $j++){
+                                if($j == 0){
+                                    $char = 'A';
+                                }else if($j == 1){
+                                    $char = 'B';
+                                }else if($j == 2){
+                                    $char = 'C';
+                                }else if($j == 3){
+                                    $char = 'D';
+                                }
+                                if(!empty($arrOrder[$x][$j])){
+
+                                    if($arrOrder[$x][$j] == $right_answer){
+                                        ?>
+                                        <table style="width:100%">
+                                            <tr style="color: white;background:green;">
+                                                <td class="col-xs-2"><div style="width: 100%;font-weight:800;font-size: 20px;" class="text-center"><?php echo $char; ?></div></td>
+                                                <td><p style='margin-bottom: 0;font-size:18px;padding: 10px;'><?php echo $arrOrder[$x][$j]; ?></p></td>
+                                            </tr>
+                                        </table>
+                                        <?php
+                                    }else{
+                                        ?>
+                                        <table style="width:100%">
+                                            <tr>
+                                                <td class="col-xs-2"><div style="width: 100%;font-weight:800;font-size: 20px;" class="text-center"><?php echo $char; ?></div></td>
+                                                <td><p style='margin-bottom: 0;font-size:18px;padding: 10px;'><?php echo $arrOrder[$x][$j]; ?></p></td>
+                                            </tr>
+                                        </table>
+                                        <?php
+                                    }
+
+                                }
+
+                            }
                             ?>
 
-                            <p style='color: white;background:green;margin-bottom: 10px;font-size:18px;padding: 10px;'><?php echo "- " . $right_answer; ?></p>
-                            <p style='margin-bottom: 10px;font-size:18px;padding: 10px;'><?php echo "- " . $second_answer; ?></p>
-                            <?php
-                            if ($third_answer != "0") {
-                                ?>
-                                <p style='margin-bottom: 10px;font-size:18px;padding: 10px;'><?php echo "- " . $third_answer; ?></p>
-                                <?php
-                            }
-
-                            if ($forth_answer != "0") {
-                                ?>
-                                <p style='margin-bottom: 10px;font-size:18px;padding: 10px;'><?php echo "- " . $forth_answer; ?></p>
-
-                                <?php
-                            }
-
-                        }
-
-
-                        ?>
+                        <?php } ?>
                     </div>
                 </div>
 
@@ -538,48 +583,77 @@ if (isset($_POST['submit'])) {
                             ?>
 
 
-                <p <?php
-                if ($right_answer == "فرامل") {
-                    echo "style= 'color: white;background:green;margin-bottom: 10px;font-size:18px;padding: 10px;'";
-                } else if (${'selector_' . $x} == "فرامل") {
-                    echo "style= 'color: white;background:red;margin-bottom: 10px;font-size:18px;padding: 10px;'";
-                } else {
-                    echo "style= 'margin-bottom: 10px;font-size:18px;padding: 10px;'";
-                } ?> >فرامل</p>
-                <p <?php if ($right_answer == "رفع قدم عن الوقود") {
-                    echo "style= 'color: white;background:green;margin-bottom: 10px;font-size:18px;padding: 10px;'";
-                } else if (${'selector_' . $x} == "رفع قدم عن الوقود") {
-                    echo "style= 'color: white;background:red;margin-bottom: 10px;font-size:18px;padding: 10px;'";
-                } else {
-                    echo "style= 'margin-bottom: 10px;font-size:18px;padding: 10px;'";
-                } ?>>رفع قدم عن الوقود</p>
-                <p <?php if ($right_answer == "لا شئ") {
-                    echo "style= 'color: white;background:green;margin-bottom: 10px;font-size:18px;padding: 10px;'";
-                } else if (${'selector_' . $x} == "لا شئ") {
-                    echo "style= 'color: white;background:red;margin-bottom: 10px;font-size:18px;padding: 10px;'";
-                } else {
-                    echo "style= 'margin-bottom: 10px;font-size:18px;padding: 10px;'";
-                } ?>>لا شيء</p>
+                            <table style="width:100%">
+                                <tr <?php if ($right_answer == "فرامل") {
+                                    echo "style= 'color: white;background:green;margin-bottom: 10px;font-size:18px;padding: 10px;'";
+                                } else if (${'selector_' . $x} == "فرامل") {
+                                    echo "style= 'color: white;background:red;margin-bottom: 10px;font-size:18px;padding: 10px;'";
+                                } else {
+                                    echo "style= 'margin-bottom: 10px;font-size:18px;padding: 10px;'";
+                                } ?>>
+                                    <td class="col-xs-2"><div style="width: 100%;font-weight:800;font-size: 20px;" class="text-center">A</div></td>
+                                    <td><p style='margin-bottom: 0;font-size:18px;padding: 10px;'>فرامل</p></td>
+                </tr>
+                </table>
 
+                <table style="width:100%">
+                    <tr <?php if ($right_answer == "رفع قدم عن الوقود") {
+                        echo "style= 'color: white;background:green;margin-bottom: 10px;font-size:18px;padding: 10px;'";
+                    } else if (${'selector_' . $x} == "رفع قدم عن الوقود") {
+                        echo "style= 'color: white;background:red;margin-bottom: 10px;font-size:18px;padding: 10px;'";
+                    } else {
+                        echo "style= 'margin-bottom: 10px;font-size:18px;padding: 10px;'";
+                    } ?>>
+                        <td class="col-xs-2"><div style="width: 100%;font-weight:800;font-size: 20px;" class="text-center">B</div></td>
+                        <td><p style='margin-bottom: 0;font-size:18px;padding: 10px;'>رفع قدم عن الوقود</p></td>
+                    </tr>
+                </table>
+
+                <table style="width:100%">
+                    <tr <?php if ($right_answer == "لا شئ") {
+                        echo "style= 'color: white;background:green;margin-bottom: 10px;font-size:18px;padding: 10px;'";
+                    } else if (${'selector_' . $x} == "لا شئ") {
+                        echo "style= 'color: white;background:red;margin-bottom: 10px;font-size:18px;padding: 10px;'";
+                    } else {
+                        echo "style= 'margin-bottom: 10px;font-size:18px;padding: 10px;'";
+                    } ?>>
+                        <td class="col-xs-2"><div style="width: 100%;font-weight:800;font-size: 20px;" class="text-center">C</div></td>
+                        <td><p style='margin-bottom: 0;font-size:18px;padding: 10px;'>لا شيء</p></td>
+                    </tr>
+                </table>
 
                 <?php
                 }
                 elseif ($type == "yesNo") {
                     ?>
-                    <p <?php if ($right_answer == "نعم") {
-                        echo "style= 'color: white;background:green;margin-bottom: 10px;font-size:18px;padding: 10px;'";
-                    } else if (${'selector_' . $x} == "نعم") {
-                        echo "style= 'color: white;background:red;margin-bottom: 10px;font-size:18px;padding: 10px;'";
-                    } else {
-                        echo "style= 'margin-bottom: 10px;font-size:18px;padding: 10px;'";
-                    } ?> >نعم</p>
-                    <p <?php if ($right_answer == "لا") {
-                        echo "style= 'color: white;background:green;margin-bottom: 10px;font-size:18px;padding: 10px;'";
-                    } else if (${'selector_' . $x} == "لا") {
-                        echo "style= 'color: white;background:red;margin-bottom: 10px;font-size:18px;padding: 10px;'";
-                    } else {
-                        echo "style= 'margin-bottom: 10px;font-size:18px;padding: 10px;'";
-                    } ?>>لا</p>
+
+                    <table style="width:100%">
+                        <tr <?php if ($right_answer == "نعم") {
+                            echo "style= 'color: white;background:green;margin-bottom: 0;font-size:18px;padding: 10px;'";
+                        } else if (${'selector_' . $x} == "نعم") {
+                            echo "style= 'color: white;background:red;margin-bottom: 0;font-size:18px;padding: 10px;'";
+                        } else {
+                            echo "style= 'margin-bottom: 0;font-size:18px;padding: 10px;'";
+                        } ?>>
+                            <td class="col-xs-2"><div style="width: 100%;font-weight:800;font-size: 20px;" class="text-center">A</div></td>
+                            <td><p style='margin-bottom: 0;font-size:18px;padding: 10px;'>نعم</p></td>
+                        </tr>
+                    </table>
+
+                    <table style="width:100%">
+                        <tr <?php if ($right_answer == "لا") {
+                            echo "style= 'color: white;background:green;margin-bottom: 0;font-size:18px;padding: 10px;'";
+                        } else if (${'selector_' . $x} == "لا") {
+                            echo "style= 'color: white;background:red;margin-bottom: 0;font-size:18px;padding: 10px;'";
+                        } else {
+                            echo "style= 'margin-bottom: 0;font-size:18px;padding: 10px;'";
+                        } ?>>
+                            <td class="col-xs-2"><div style="width: 100%;font-weight:800;font-size: 20px;" class="text-center">B</div></td>
+                            <td><p style='margin-bottom: 0;font-size:18px;padding: 10px;'>لا</p></td>
+                        </tr>
+                    </table>
+
+
 
                     <?php
                 } elseif ($type == "numInp") {
@@ -588,39 +662,56 @@ if (isset($_POST['submit'])) {
                     <p style='color: white;background:red;margin-bottom: 10px;font-size:18px;padding: 10px;'><?php echo ${'selector_' . $x}; ?></p>
                     <?php
                 } elseif ($type == "multiChoice3" || $type == "multiChoice4" || $type == "multiChoice2" || $type == "advantage3" || $type == "advantage4") {
-                    ?>
 
-                    <p style='color: white;background:green;margin-bottom: 10px;font-size:18px;padding: 10px;'><?php echo "- " . $right_answer; ?></p>
-                    <p <?php if (${'selector_' . $x} == $second_answer) {
-                        echo "style= 'color: white;background:red;margin-bottom: 10px;font-size:18px;padding: 10px;'";
-                    } else {
-                        echo "style= 'margin-bottom: 10px;font-size:18px;padding: 10px;'";
-                    } ?>><?php echo "- " . $second_answer; ?></p>
-                    <?php
-                    if ($third_answer != "0") {
-                        ?>
-                        <p <?php if (${'selector_' . $x} == $third_answer) {
-                            echo "style= 'color: white;background:red;margin-bottom: 10px;font-size:18px;padding: 10px;'";
-                        } else {
-                            echo "style= 'margin-bottom: 10px;font-size:18px;padding: 10px;'";
-                        } ?>><?php echo "- " . $third_answer; ?></p>
-                        <?php
+                    for($j = 0; $j<4; $j++){
+                        if($j == 0){
+                            $char = 'A';
+                        }else if($j == 1){
+                            $char = 'B';
+                        }else if($j == 2){
+                            $char = 'C';
+                        }else if($j == 3){
+                            $char = 'D';
+                        }
+                        if(!empty($arrOrder[$x][$j])){
+
+                            if($arrOrder[$x][$j] == $right_answer){
+                                ?>
+                                <table style="width:100%">
+                                    <tr style="color: white;background:green;">
+                                        <td class="col-xs-2"><div style="width: 100%;font-weight:800;font-size: 20px;" class="text-center"><?php echo $char; ?></div></td>
+                                        <td><p style='margin-bottom: 0;font-size:18px;padding: 10px;'><?php echo $arrOrder[$x][$j]; ?></p></td>
+                                    </tr>
+                                </table>
+
+
+                                <?php
+                            }else if($arrOrder[$x][$j] == ${'selector_' . $x}){
+                                ?>
+                                <table style="width:100%">
+                                    <tr style="color: white;background:red;">
+                                        <td class="col-xs-2"><div style="width: 100%;font-weight:800;font-size: 20px;" class="text-center"><?php echo $char; ?></div></td>
+                                        <td><p style='margin-bottom: 0;font-size:18px;padding: 10px;'><?php echo $arrOrder[$x][$j]; ?></p></td>
+                                    </tr>
+                                </table>
+
+
+                                <?php
+                            }else{
+                                ?>
+                                <table style="width:100%">
+                                    <tr>
+                                        <td class="col-xs-2"><div style="width: 100%;font-weight:800;font-size: 20px;" class="text-center"><?php echo $char; ?></div></td>
+                                        <td><p style='margin-bottom: 0;font-size:18px;padding: 10px;'><?php echo $arrOrder[$x][$j]; ?></p></td>
+                                    </tr>
+                                </table>
+                                <?php
+                            }
+
+                        }
+
                     }
-
-                    if ($forth_answer != "0") {
-                        ?>
-                        <p <?php if (${'selector_' . $x} == $forth_answer) {
-                            echo "style= 'color: white;background:red;margin-bottom: 10px;font-size:18px;padding: 10px;'";
-                        } else {
-                            echo "style= 'margin-bottom: 10px;font-size:18px;padding: 10px;'";
-                        } ?>><?php echo "- " . $forth_answer; ?></p>
-
-                        <?php
-                    }
-
                 }
-
-
                 ?>
             </div>
         </div>
@@ -667,7 +758,7 @@ $x++;
 <div class="center">
     <a href="profile.php" class="button button-rounded button-reveal button-large button-border "><i
                 class="icon-user"></i><span>اذهب الى الصفحة الشخصية</span></a>
-    <a href="continue_exam.php?exam_id=<?php echo $qId;?>" class="button button-rounded button-reveal button-green button-large button-border "><i
+    <a href="continue_exam.php?exam_id=<?php echo $qId;?>" class="button button-rounded button-green button-reveal button-large button-border "><i
                 class="icon-reply"></i><span>متابعة الإمتحان</span></a>
 </div>
 </div>

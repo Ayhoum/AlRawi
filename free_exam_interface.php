@@ -11,6 +11,7 @@ if (isset($_GET['exam_id'])) {
     header('Location: profile.php');
 }
 
+$arrOrder = array(array());
 
 $user = $_SESSION['email'];
 $query = "SELECT * From Users WHERE EMAIL = '{$user}' ";
@@ -626,15 +627,15 @@ if (mysqli_num_rows($getAgent) == 1) {
                             <fieldset id='group$i'>
                                 <label class='containerRadio'>فرامل
                                   <input type='radio' class='selector$i' name='selector$i' value='فرامل'>
-                                  <span class='checkmark'></span>
+                                  <span class='checkmark text-center'>A</span>
                                 </label>
                                 <label class='containerRadio'>رفع قدم عن الوقود
                                   <input type='radio' class='selector$i' name='selector$i' value='رفع قدم عن الوقود'>
-                                  <span class='checkmark'></span>
+                                  <span class='checkmark text-center'>B</span>
                                 </label>
                                 <label class='containerRadio'>لا شئ
                                   <input type='radio' class='selector$i' name='selector$i' value='لا شئ'>
-                                  <span class='checkmark'></span>
+                                  <span class='checkmark text-center'>C</span>
                                 </label>
                             </fieldset>";
                                 echo "
@@ -694,11 +695,11 @@ if (mysqli_num_rows($getAgent) == 1) {
                             <fieldset id='group$i'>
                             <label class='containerRadio'>نعم
                                   <input type='radio' class='selector$i' name='selector$i' value='نعم'>
-                                  <span class='checkmark'></span>
+                                  <span class='checkmark text-center'>A</span>
                                 </label>
                                 <label class='containerRadio'>لا
                                   <input type='radio' class='selector$i' name='selector$i' value='لا'>
-                                  <span class='checkmark'></span>
+                                  <span class='checkmark text-center'>B</span>
                                 </label>
                             </fieldset>
                             <div class='row text-center' style='width: 100%; margin-top: 20px;'>
@@ -804,28 +805,39 @@ if (mysqli_num_rows($getAgent) == 1) {
                                 echo "
                         <fieldset id='group$i'>";
                                 $answers = array($right, $second, $third, $fourth);
+                                $k = 0;
+                                $char = 'A';
                                 while (true) {
-                                    $num = rand(0, 3);
-                                    if ($answers[$num] != "0") {
+                                        $num = rand(0, 3);
+                                        if ($answers[$num] != "0") {
+                                            $arrOrder[$i][$k] = $answers[$num];
+                                            echo "
 
-                                        echo "
                                     <label class='containerRadio'>$answers[$num]
                                         <input type='radio' class='selector$i' name='selector$i' value='$answers[$num]'>
-                                        <span class='checkmark'></span>
+                                        <span class='checkmark text-center'>$char</span>
                                     </label>
                                     ";
-                                        $answers[$num] = "0";
-                                    }
-                                    $toggle = 0;
-                                    for ($j = 0; $j < 4; $j++) {
-                                        if ($answers[$j] == "0") {
-                                            $toggle++;
+                                            $answers[$num] = "0";
+                                            $k++;
+                                        }
+                                        $toggle = 0;
+                                        for ($j = 0; $j < 4; $j++) {
+                                            if ($answers[$j] == "0") {
+                                                $toggle++;
+                                            }
+                                        }
+                                        if ($toggle == 4) {
+                                            break;
+                                        }
+                                        if($k == 1){
+                                            $char = 'B';
+                                        }else if($k == 2){
+                                            $char = 'C';
+                                        }else if($k == 3){
+                                            $char = 'D';
                                         }
                                     }
-                                    if ($toggle == 4) {
-                                        break;
-                                    }
-                                }
                                 echo "</fieldset>
 <div class='row text-center' style='width: 100%; margin-top: 20px;'>
                             <div class='col-xs-6'>
@@ -873,6 +885,7 @@ if (mysqli_num_rows($getAgent) == 1) {
                             echo "</div>";
                         }
 
+                        $_SESSION['answersOrder'] = $arrOrder;
 
                         ?>
 
@@ -909,7 +922,6 @@ if (mysqli_num_rows($getAgent) == 1) {
     <!--        <button class="prev">Back</button>-->
     <!--        <button class="print">Print</button>-->
 </section>
-
 <footer class="hidden-sm hidden-xs">
     <p>© 2017 Alrawi Theorie | Developed by <a target="_blank" style="color:#000; text-decoration:none;"
                                                href="http://www.el-semicolon.nl">El-SemiColon;</a></p>

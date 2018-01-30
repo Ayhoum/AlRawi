@@ -11,6 +11,7 @@ if (isset($_GET['exam_id'])) {
     header('Location: profile.php');
 }
 
+$arrOrder = array(array());
 
 $user = $_SESSION['email'];
 $query = "SELECT * From Users WHERE EMAIL = '{$user}' ";
@@ -20,32 +21,14 @@ if (mysqli_num_rows($getAgent) == 1) {
         $id = $row['ID'];
         $status = $row['SITUATION'];
     }
-    $checkQuery = "SELECT * FROM PAID_EXAM WHERE Users_ID = '{$id}' AND STATUS = 'ACTIVE' ORDER BY PAYMENT_ID DESC LIMIT 1";
-    $getPayment = mysqli_query($mysqli, $checkQuery);
-    if (mysqli_num_rows($getPayment) == 1) {
-        while ($row = mysqli_fetch_assoc($getPayment)) {
-            $payid = $row['PAYMENT_ID'];
-            $end_date = $row['END_DATE'];
-        }
-        $today_date = date_default_timezone_set('Europe/Amsterdam');
-        $today_date = date('Y-m-d H:i:s ', time());
-
-        if ($end_date < $today_date) {
-            $update_query = "UPDATE `PAID_EXAM` SET `STATUS` = 'NOT ACTIVE' WHERE `PAYMENT_ID` = '{$payid}'";
-            $result_update = mysqli_query($mysqli, $update_query);
-            header("Location: pricing_table.php");
-        }
-
-
-        }
 
     if ($status == "NEW") {
         $train = "TRAINING";
         $updateQuery = "UPDATE Users SET SITUATION = '{$train}' WHERE ID = '{$id}'";
         $run = mysqli_query($mysqli, $updateQuery);
+
     }
 }
-
 ?>
 
 <html>
@@ -297,15 +280,15 @@ if (mysqli_num_rows($getAgent) == 1) {
             }
 
             /*.nxtButSt {*/
-                /*position: fixed;*/
-                /*bottom: 40px;*/
-                /*right: 10px;*/
+            /*position: fixed;*/
+            /*bottom: 40px;*/
+            /*right: 10px;*/
             /*}*/
 
             /*.prevButSt {*/
-                /*position: fixed;*/
-                /*bottom: 40px;*/
-                /*right: 200px;*/
+            /*position: fixed;*/
+            /*bottom: 40px;*/
+            /*right: 200px;*/
             /*}*/
             .quesImg{
                 margin-top: 10px;
@@ -314,15 +297,15 @@ if (mysqli_num_rows($getAgent) == 1) {
 
         @media (min-width: 991px) {
             /*.nxtButSt {*/
-                /*position: fixed;*/
-                /*bottom: 40px;*/
-                /*right: 10px;*/
+            /*position: fixed;*/
+            /*bottom: 40px;*/
+            /*right: 10px;*/
             /*}*/
 
             /*.prevButSt {*/
-                /*position: fixed;*/
-                /*bottom: 40px;*/
-                /*right: 200px;*/
+            /*position: fixed;*/
+            /*bottom: 40px;*/
+            /*right: 200px;*/
             /*}*/
             .quesImg {
                 width: 730px;
@@ -549,7 +532,6 @@ if (mysqli_num_rows($getAgent) == 1) {
                       enctype="multipart/form-data">
 
                     <div id='sStart' class='slideStart'>
-
                         <h4 style='direction: rtl;line-height: 2em;' class='text-center topmargin-sm'>
                             المدة القصوى للإمتحان هي 30 دقيقة<br>والإمتحان مؤلف من قسمين:
                         </h4>
@@ -645,15 +627,15 @@ if (mysqli_num_rows($getAgent) == 1) {
                             <fieldset id='group$i'>
                                 <label class='containerRadio'>فرامل
                                   <input type='radio' class='selector$i' name='selector$i' value='فرامل'>
-                                  <span class='checkmark'></span>
+                                  <span class='checkmark text-center'>A</span>
                                 </label>
                                 <label class='containerRadio'>رفع قدم عن الوقود
                                   <input type='radio' class='selector$i' name='selector$i' value='رفع قدم عن الوقود'>
-                                  <span class='checkmark'></span>
+                                  <span class='checkmark text-center'>B</span>
                                 </label>
                                 <label class='containerRadio'>لا شئ
                                   <input type='radio' class='selector$i' name='selector$i' value='لا شئ'>
-                                  <span class='checkmark'></span>
+                                  <span class='checkmark text-center'>C</span>
                                 </label>
                             </fieldset>";
                                 echo "
@@ -713,11 +695,11 @@ if (mysqli_num_rows($getAgent) == 1) {
                             <fieldset id='group$i'>
                             <label class='containerRadio'>نعم
                                   <input type='radio' class='selector$i' name='selector$i' value='نعم'>
-                                  <span class='checkmark'></span>
+                                  <span class='checkmark text-center'>A</span>
                                 </label>
                                 <label class='containerRadio'>لا
                                   <input type='radio' class='selector$i' name='selector$i' value='لا'>
-                                  <span class='checkmark'></span>
+                                  <span class='checkmark text-center'>B</span>
                                 </label>
                             </fieldset>
                             <div class='row text-center' style='width: 100%; margin-top: 20px;'>
@@ -823,17 +805,21 @@ if (mysqli_num_rows($getAgent) == 1) {
                                 echo "
                         <fieldset id='group$i'>";
                                 $answers = array($right, $second, $third, $fourth);
+                                $k = 0;
+                                $char = 'A';
                                 while (true) {
                                     $num = rand(0, 3);
                                     if ($answers[$num] != "0") {
-
+                                        $arrOrder[$i][$k] = $answers[$num];
                                         echo "
+
                                     <label class='containerRadio'>$answers[$num]
                                         <input type='radio' class='selector$i' name='selector$i' value='$answers[$num]'>
-                                        <span class='checkmark'></span>
+                                        <span class='checkmark text-center'>$char</span>
                                     </label>
                                     ";
                                         $answers[$num] = "0";
+                                        $k++;
                                     }
                                     $toggle = 0;
                                     for ($j = 0; $j < 4; $j++) {
@@ -843,6 +829,13 @@ if (mysqli_num_rows($getAgent) == 1) {
                                     }
                                     if ($toggle == 4) {
                                         break;
+                                    }
+                                    if($k == 1){
+                                        $char = 'B';
+                                    }else if($k == 2){
+                                        $char = 'C';
+                                    }else if($k == 3){
+                                        $char = 'D';
                                     }
                                 }
                                 echo "</fieldset>
@@ -892,6 +885,7 @@ if (mysqli_num_rows($getAgent) == 1) {
                             echo "</div>";
                         }
 
+                        $_SESSION['answersOrder'] = $arrOrder;
 
                         ?>
 
@@ -902,23 +896,23 @@ if (mysqli_num_rows($getAgent) == 1) {
                     </button>
 
                     <div class="container" style="width: 100%">
-<!--                        <div class="row" style="width: 100%">-->
-<!--                            <div class="col-md-12">-->
-<!---->
-<!--                                <button type="button" id="nxtBut"-->
-<!--                                        class="tright button button-rounded button-reveal button-large button-yellow button-light nxt nxtButSt">-->
-<!--                                    <i class="fa fa-arrow-right"></i>-->
-<!--                                    <span style="font-family: 'DroidArabicKufiRegular';">السؤال التالي</span>-->
-<!--                                </button>-->
-<!--                            </div>-->
-<!--                            <div class="col-md-12">-->
-<!--                                <button type="button" id="prevBut"-->
-<!--                                        class="button button-rounded button-reveal button-large button-teal prev prevButSt">-->
-<!--                                    <i class="fa fa-arrow-left"></i>-->
-<!--                                    <span style="font-family: 'DroidArabicKufiRegular';">السؤال السابق</span>-->
-<!--                                </button>-->
-<!--                            </div>-->
-<!--                        </div>-->
+                        <!--                        <div class="row" style="width: 100%">-->
+                        <!--                            <div class="col-md-12">-->
+                        <!---->
+                        <!--                                <button type="button" id="nxtBut"-->
+                        <!--                                        class="tright button button-rounded button-reveal button-large button-yellow button-light nxt nxtButSt">-->
+                        <!--                                    <i class="fa fa-arrow-right"></i>-->
+                        <!--                                    <span style="font-family: 'DroidArabicKufiRegular';">السؤال التالي</span>-->
+                        <!--                                </button>-->
+                        <!--                            </div>-->
+                        <!--                            <div class="col-md-12">-->
+                        <!--                                <button type="button" id="prevBut"-->
+                        <!--                                        class="button button-rounded button-reveal button-large button-teal prev prevButSt">-->
+                        <!--                                    <i class="fa fa-arrow-left"></i>-->
+                        <!--                                    <span style="font-family: 'DroidArabicKufiRegular';">السؤال السابق</span>-->
+                        <!--                                </button>-->
+                        <!--                            </div>-->
+                        <!--                        </div>-->
                     </div>
                 </form>
             </div>
@@ -928,7 +922,6 @@ if (mysqli_num_rows($getAgent) == 1) {
     <!--        <button class="prev">Back</button>-->
     <!--        <button class="print">Print</button>-->
 </section>
-
 <footer class="hidden-sm hidden-xs">
     <p>© 2017 Alrawi Theorie | Developed by <a target="_blank" style="color:#000; text-decoration:none;"
                                                href="http://www.el-semicolon.nl">El-SemiColon;</a></p>
@@ -944,13 +937,13 @@ if (mysqli_num_rows($getAgent) == 1) {
         jQuery('#reason' + whereR).fadeIn('slow');
 
 
-    var inst = $('[data-remodal-id=modal' +whereR+ ']').remodal({
-        closeOnOutsideClick:true
-    });
-    inst.open();
-    $(document).on('confirmation', '.remodal', function () {
-        console.log('Confirmation button is clicked');
-    });
+        var inst = $('[data-remodal-id=modal' +whereR+ ']').remodal({
+            closeOnOutsideClick:true
+        });
+        inst.open();
+        $(document).on('confirmation', '.remodal', function () {
+            console.log('Confirmation button is clicked');
+        });
     });
 </script>
 <script type="text/javascript">
@@ -1131,6 +1124,7 @@ if (mysqli_num_rows($getAgent) == 1) {
         jQuery('#progressBar').show();
         jQuery('.slide').show();
         jQuery('.nxtButSt').show();
+        // jQuery('.prevButSt').show();
         jQuery('#stopBut').show();
         jQuery('.slideStart').hide();
         jQuery('#showTime').removeClass('col-sm-10').addClass('col-sm-12').show();

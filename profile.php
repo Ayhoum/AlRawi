@@ -8,6 +8,9 @@ include 'scripts/db_connection.php';
 if(isset($_SESSION['answers'])){
     $_SESSION['answers'] = null;
 }
+if(isset($_SESSION['answersOrder'])){
+    $_SESSION['answersOrder'] = null;
+}
 ?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en-US">
@@ -201,7 +204,6 @@ if(isset($_SESSION['answers'])){
                         <div class="row clearfix">
 
                             <div class="col-md-12 ">
-
                                 <div class="tabs tabs-alt clearfix" style="text-align: center;margin-top:10px;" id="tabs-profile">
                                     <ul class="tab-nav clearfix" style="display:inline-block;">
                                         <li><a href="#tab-posts"><i class="icon-euro"></i> الإمتحانات المشتراة</a></li>

@@ -1,70 +1,18 @@
-<style>
-    .containerRadio {
-        direction: rtl;
-        display: block;
-        position: relative;
-        padding-right: 35px;
-        padding-bottom: 10px;
-        margin-bottom: 10px;
-        cursor: pointer;
-        font-size: 18px;
-        font-weight: 500;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-        border-bottom: 1px solid #ccc;
-        width: 100%;
-    }
+$checkQuery = "SELECT * FROM PAID_EXAM WHERE Users_ID = '{$id}' AND STATUS = 'ACTIVE' ORDER BY PAYMENT_ID DESC LIMIT 1";
+$getPayment = mysqli_query($mysqli, $checkQuery);
+if (mysqli_num_rows($getPayment) == 1) {
+while ($row = mysqli_fetch_assoc($getPayment)) {
+$payid = $row['PAYMENT_ID'];
+$end_date = $row['END_DATE'];
+}
+$today_date = date_default_timezone_set('Europe/Amsterdam');
+$today_date = date('Y-m-d H:i:s ', time());
 
-    /* Hide the browser's default radio button */
+if ($end_date < $today_date) {
+$update_query = "UPDATE `PAID_EXAM` SET `STATUS` = 'NOT ACTIVE' WHERE `PAYMENT_ID` = '{$payid}'";
+$result_update = mysqli_query($mysqli, $update_query);
+header("Location: pricing_table.php");
+}
 
-    .containerRadio input {
-        position: absolute;
-        opacity: 0;
-    }
 
-    /* Create a custom radio button */
-    .checkmark {
-        position: absolute;
-        top: 0;
-        right: 0;
-        height: 25px;
-        width: 25px;
-        background-color: #eee;
-        border-radius: 50%;
-    }
-
-    /* On mouse-over, add a grey background color */
-
-    .containerRadio:hover input ~ .checkmark {
-        background-color: #ccc;
-    }
-
-    /* When the radio button is checked, add a blue background */
-    .containerRadio input:checked ~ .checkmark {
-        background-color: #13c934;
-    }
-
-    /* Create the indicator (the dot/circle - hidden when not checked) */
-
-    /* Show the indicator (dot/circle) when checked */
-    .containerRadio input:checked ~ .checkmark:after {
-        display: block;
-    }
-</style>
-<fieldset id='group$i' style="width: 50%">
-    <label class='containerRadio'>فرامل
-        <input type='radio' class='selector$i' name='selector$i' value='فرامل' >
-        <span class='checkmark'></span>
-    </label>
-    <label class='containerRadio'>رفع قدم عن الوقود
-        <input type='radio' class='selector$i' name='selector$i' value='رفع قدم عن الوقود'>
-        <span class='checkmark'></span>
-    </label>
-    <label class='containerRadio'>لا شئ
-        <input type='radio' class='selector$i' name='selector$i' value='لا شئ' checked>
-        <span class='checkmark'></span>
-    </label>
-</fieldset>
-
+}
