@@ -16,6 +16,8 @@ ob_start();
 if (!isset($_SESSION['username'])){
     header("Location: login.php");
 }
+
+$_SESSION['period'] = null;
 ?>
 
 <!DOCTYPE html>

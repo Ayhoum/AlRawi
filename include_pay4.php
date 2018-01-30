@@ -8,6 +8,8 @@
 /*
  * Example 1 - How to prepare a new payment with the Mollie API.
  */
+include 'scripts/db_connection.php';
+
 try
 {
 
@@ -36,9 +38,18 @@ try
      *   webhookUrl    Webhook location, used to report when the payment changes state.
      *   metadata      Custom metadata that is stored with the payment.
      */
+    $_SESSION['period']= "60";
+    $query = "SELECT * FROM `PRICES` WHERE Period = '60 DAYS'";
+    $getAmount = mysqli_query($mysqli,$query);
+    if (mysqli_num_rows($getAmount) == 1) {
+        while ($row = mysqli_fetch_assoc($getAmount)) {
+            $eur = $row['AmountEur'];
+            $cen = $row['AmountCen'];
+        }
+    }
     $payment = $mollie->payments->create(array(
-        "amount"       => 25.35,
-        "description"  => "إشتراك بالباقة المتقدمة لموقع AlrawiTheorie (لمدة 60 يوماً)",
+        "amount"       => $eur . "." . $cen,
+        "description"  => "Alrawi Theorie (60 days)",
         "redirectUrl"  => "{$protocol}://{$hostname}{$path}/buy_exam_4weeks.php?order_id={$order_id}",
         "webhookUrl"   => "{$protocol}://{$hostname}{$path}/webhook-verification.php",
         "metadata"     => array(
