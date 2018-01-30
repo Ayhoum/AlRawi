@@ -1,18 +1,28 @@
-$checkQuery = "SELECT * FROM PAID_EXAM WHERE Users_ID = '{$id}' AND STATUS = 'ACTIVE' ORDER BY PAYMENT_ID DESC LIMIT 1";
-$getPayment = mysqli_query($mysqli, $checkQuery);
-if (mysqli_num_rows($getPayment) == 1) {
-while ($row = mysqli_fetch_assoc($getPayment)) {
-$payid = $row['PAYMENT_ID'];
-$end_date = $row['END_DATE'];
-}
-$today_date = date_default_timezone_set('Europe/Amsterdam');
-$today_date = date('Y-m-d H:i:s ', time());
+<?php
+require_once 'scripts/src/Mollie/API/Autoloader.php';
 
-if ($end_date < $today_date) {
-$update_query = "UPDATE `PAID_EXAM` SET `STATUS` = 'NOT ACTIVE' WHERE `PAYMENT_ID` = '{$payid}'";
-$result_update = mysqli_query($mysqli, $update_query);
-header("Location: pricing_table.php");
-}
+$mollie = new Mollie_API_Client;
+$mollie->setApiKey('test_dHar4XY7LxsDOtmnkVtjNVWXLSlXsM');
 
+$payment    = $mollie->payments->get($_POST["id"]);
 
+/*
+* The order ID saved in the payment can be used to load the order and update it's
+* status
+*/
+$order_id = $payment->metadata->order_id;
+
+if ($payment->isPaid())
+{
+/*
+* At this point you'd probably want to start the process of delivering the product
+* to the customer.
+*/
 }
+elseif (! $payment->isOpen())
+{
+/*
+* The payment isn't paid and isn't open anymore. We can assume it was aborted.
+*/
+}
+?>
