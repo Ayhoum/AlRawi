@@ -2,7 +2,12 @@
 session_start();
 ob_start();
 include 'scripts/db_connection.php';
-
+if(isset($_SESSION['answers'])){
+    $_SESSION['answers'] = null;
+}
+if(isset($_SESSION['answersOrder'])){
+    $_SESSION['answersOrder'] = null;
+}
 ?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en-US">
@@ -387,8 +392,7 @@ $link = "profile.php";
 
 
                     </div>
-
-                    <div class="text-center center-block"><a href="free_exam_interface.php?exam_id=1"><button style="width: 50%" class="button button-dirtygreen button-rounded center-block text-center">إجراء فحص تجريبي</button></a></div>
+                    <div class="text-center center-block"><a href="free_exam_interface.php?exam_id=1" class="button button-desc button-dark button-rounded"><div>إجراء إمتحان تجريبي</div><span style="direction: rtl;text-align: center">مجاني!</span></a></div>
 
                 </div>
             </div>
