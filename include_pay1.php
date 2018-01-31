@@ -18,24 +18,26 @@ try
      *   metadata      Custom metadata that is stored with the payment.
      */
 
-    $periodPass = "20";
-    $query = "SELECT * FROM `PRICES` WHERE Period = '20 DAYS'";
+    $query = "SELECT * FROM `PRICES` WHERE Period = 'FPAKKET'";
     $getAmount = mysqli_query($mysqli,$query);
     if (mysqli_num_rows($getAmount) == 1) {
         while ($row = mysqli_fetch_assoc($getAmount)) {
             $eur = $row['AmountEur'];
             $cen = $row['AmountCen'];
+            $periodPass = $row['TimeTxt'];
         }
     }
     $payment = $mollie->payments->create(array(
         "amount"       => $eur . "." . $cen,
-        "description"  => "Alrawi Theorie (20 days)",
+        "description"  => "Alrawi Theorie ($periodPass)",
         "redirectUrl"  => "{$protocol}://{$hostname}{$path}/profile.php",
         "webhookUrl"   => "{$protocol}://{$hostname}{$path}/webhook-verification.php",
         "metadata"     => array(
             "order_id" => $order_id,
             "user_id"  => $userID,
             "period"  => $periodPass,
+            "eur"  => $eur,
+            "cen"  => $cen,
         ),
     ));
 

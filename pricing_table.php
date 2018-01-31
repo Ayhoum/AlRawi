@@ -229,13 +229,22 @@ while($row = mysqli_fetch_assoc($select_users)) {
                 <div class="pricing-title">
                     <h3 class="text-center">البــاقة  الابتدائيــة</h3>
                 </div>
+                <?php
+                $query = "SELECT * FROM PRICES WHERE Period = 'FPAKKET'";
+                $select_price1 = mysqli_query($mysqli, $query);
+                while($row = mysqli_fetch_assoc($select_price1)) {
+                    $eur = $row['AmountEur'];
+                    $cen = $row['AmountCen'];
+                    $txt = $row['Text'];
+                }
+                ?>
                 <div class="pricing-price">
-                    <span class="price-unit">€</span>10<span style="font-size: 14px;">.35</span>
+                    <span class="price-unit">€</span><?php echo $eur; ?><span style="font-size: 14px;">.<?php echo $cen; ?></span>
                 </div>
                 <div class="pricing-features">
                     <ul>
                         <li> صلاحية الدخول لجميع<strong> الامتحانات العربيـة</strong></li>
-                        <li>صالحة لمدة<strong> 20 يوماً </strong></li>
+                        <li>صالحة لمدة<strong> <?php echo $txt; ?> </strong></li>
                     </ul>
                 </div>
                 <div class="pricing-action">
@@ -246,19 +255,27 @@ while($row = mysqli_fetch_assoc($select_users)) {
         </div>
 
         <div class="col-md-3">
-
         <div class="pricing-box best-price">
             <div class="pricing-title ">
                 <h3 class="text-center">البـاقة الأسـاسيــة</h3>
                 <span> الأكثــر مبيــعاً</span>
             </div>
+            <?php
+            $query = "SELECT * FROM PRICES WHERE Period = 'SPAKKET'";
+            $select_price1 = mysqli_query($mysqli, $query);
+            while($row = mysqli_fetch_assoc($select_price1)) {
+                $eur = $row['AmountEur'];
+                $cen = $row['AmountCen'];
+                $txt = $row['Text'];
+            }
+            ?>
             <div class="pricing-price">
-                <span class="price-unit">€</span>15<span style="font-size: 14px;">.35</span>
+                <span class="price-unit">€</span><?php echo $eur; ?><span style="font-size: 14px;">.<?php echo $cen; ?></span>
             </div>
             <div class="pricing-features">
                 <ul>
                     <li> صلاحية الدخول لجميع<strong> الامتحانات العربيـة</strong></li>
-                    <li>صالحة لمدة<strong> 35 يوماً </strong></li>
+                    <li>صالحة لمدة<strong> <?php echo $txt; ?> </strong></li>
                 </ul>
             </div>
             <div class="pricing-action">
@@ -274,13 +291,22 @@ while($row = mysqli_fetch_assoc($select_users)) {
                 <div class="pricing-title">
                     <h3 class="text-center">البــاقة المتقدمــة</h3>
                 </div>
+                <?php
+                $query = "SELECT * FROM PRICES WHERE Period = 'TPAKKET'";
+                $select_price1 = mysqli_query($mysqli, $query);
+                while($row = mysqli_fetch_assoc($select_price1)) {
+                    $eur = $row['AmountEur'];
+                    $cen = $row['AmountCen'];
+                    $txt = $row['Text'];
+                }
+                ?>
                 <div class="pricing-price">
-                    <span class="price-unit">€</span>25<span style="font-size: 14px;">.35</span>
+                    <span class="price-unit">€</span><?php echo $eur; ?><span style="font-size: 14px;">.<?php echo $cen; ?></span>
                 </div>
                 <div class="pricing-features">
                     <ul>
                         <li> صلاحية الدخول لجميع<strong> الامتحانات العربيـة</strong></li>
-                        <li>صالحة لمدة<strong> 60 يوماً </strong></li>
+                        <li>صالحة لمدة<strong> <?php echo $txt; ?> </strong></li>
                     </ul>
                 </div>
                 <div class="pricing-action">

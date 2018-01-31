@@ -15,6 +15,8 @@ try
 	$order_id = $payment->metadata->order_id;
     $userID = $payment->metadata->user_id;
     $periodPass = $payment->metadata->period;
+    $eur = $payment->metadata->eur;
+    $cen = $payment->metadata->cen;
 
     database_write($order_id, $payment->status, $mysqli, $userID);
 
@@ -28,13 +30,7 @@ try
         if (mysqli_num_rows($updateAgent) == 1) {
             while ($row = mysqli_fetch_assoc($updateAgent)) {
                 $spent = $row['SPENT'];
-                if($periodPass == '20'){
-                    $spent = $spent + 10.35;
-                }elseif($periodPass == '35'){
-                    $spent = $spent + 15.35;
-                }elseif ($periodPass == '60'){
-                    $spent = $spent + 25.35;
-                }
+                $spent = $spent + $eur.$cen;
                 $updateQuery = "UPDATE Users SET SPENT = '{$spent}' WHERE ID = '{$userID}'";
                 $run = mysqli_query($mysqli,$updateQuery);
             }
@@ -43,13 +39,8 @@ try
 
         date_default_timezone_set('Europe/Amsterdam');
         $start_date = date('Y-m-d H:i:s ', time());
-        if($periodPass == '20'){
-            $end_date = date("Y-m-d H:i:s ", strtotime('+20 days'));
-        }elseif($periodPass == '35'){
-            $end_date = date("Y-m-d H:i:s ", strtotime('+35 days'));
-        }elseif ($periodPass == '60'){
-            $end_date = date("Y-m-d H:i:s ", strtotime('+60 days'));
-        }
+        $end_date = date("Y-m-d H:i:s ", strtotime('+' . $periodPass));
+
 
         $query1 = "INSERT INTO PAID_EXAM (Users_ID, PAYMENT_DATE, END_DATE, STATUS )";
         $query1 .= "VALUES ('{$userID}',
