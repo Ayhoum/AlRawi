@@ -357,6 +357,92 @@ if(isset($_SESSION['answersOrder'])) {
                         <div id="wihund" class="col-md-offset-1 col-xs-10 col-md-offset-1"
                              style="padding-left: 0;padding-right: 0;">
                             <div class="row text-center" style="margin-right: 0;margin-left: 0;">
+                                <div class="col-xs-2"><a class="showSingle" target="1">
+                                        <button class="btn btn-info" id="but1" style="margin-top:10px;">1</button>
+                                    </a></div>
+                                <div class="col-xs-2"><a class="showSingle" target="2">
+                                        <button class="btn btn-info" id="but2" style="margin-top:10px;">2</button>
+                                    </a></div>
+                                <div class="col-xs-2"><a class="showSingle" target="3">
+                                        <button class="btn btn-info" id="but3" style="margin-top:10px;">3</button>
+                                    </a></div>
+                                <div class="col-xs-2"><a class="showSingle" target="4">
+                                        <button class="btn btn-info" id="but4" style="margin-top:10px;">4</button>
+                                    </a></div>
+                                <div class="col-xs-2"><a class="showSingle" target="5">
+                                        <button class="btn btn-info" id="but5" style="margin-top:10px;">5</button>
+                                    </a></div>
+                                <div class="col-xs-2"><a class="showSingle" target="6">
+                                        <button class="btn btn-info" id="but6" style="margin-top:10px;">6</button>
+                                    </a></div>
+                            </div>
+                            <div class="row text-center" style="margin-right: 0;margin-left: 0;">
+                                <div class="col-xs-2"><a class="showSingle" target="7">
+                                        <button class="btn btn-info" id="but7" style="margin-top:10px;">7</button>
+                                    </a></div>
+                                <div class="col-xs-2"><a class="showSingle" target="8">
+                                        <button class="btn btn-info" id="but8" style="margin-top:10px;">8</button>
+                                    </a></div>
+                                <div class="col-xs-2"><a class="showSingle" target="9">
+                                        <button class="btn btn-info" id="but9" style="margin-top:10px;">9</button>
+                                    </a></div>
+                                <div class="col-xs-2"><a class="showSingle" target="10">
+                                        <button class="btn btn-info" id="but10" style="margin-top:10px;">10</button>
+                                    </a></div>
+                                <div class="col-xs-2"><a class="showSingle" target="11">
+                                        <button class="btn btn-info" id="but11" style="margin-top:10px;">11</button>
+                                    </a></div>
+                                <div class="col-xs-2"><a class="showSingle" target="12">
+                                        <button class="btn btn-info" id="but12" style="margin-top:10px;">12</button>
+                                    </a></div>
+                            </div>
+                            <div class="row text-center" style="margin-right: 0;margin-left: 0;">
+                                <div class="col-xs-2"><a class="showSingle" target="13">
+                                        <button class="btn btn-info" id="but13" style="margin-top:10px;">13</button>
+                                    </a></div>
+                                <div class="col-xs-2"><a class="showSingle" target="14">
+                                        <button class="btn btn-info" id="but14" style="margin-top:10px;">14</button>
+                                    </a></div>
+                                <div class="col-xs-2"><a class="showSingle" target="15">
+                                        <button class="btn btn-info" id="but15" style="margin-top:10px;">15</button>
+                                    </a></div>
+                                <div class="col-xs-2"><a class="showSingle" target="16">
+                                        <button class="btn btn-info" id="but16" style="margin-top:10px;">16</button>
+                                    </a></div>
+                                <div class="col-xs-2"><a class="showSingle" target="17">
+                                        <button class="btn btn-info" id="but17" style="margin-top:10px;">17</button>
+                                    </a></div>
+                                <div class="col-xs-2"><a class="showSingle" target="18">
+                                        <button class="btn btn-info" id="but18" style="margin-top:10px;">18</button>
+                                    </a></div>
+                            </div>
+                            <div class="row text-center" style="margin-right: 0;margin-left: 0;">
+                                <div class="col-xs-2"><a class="showSingle" target="19">
+                                        <button class="btn btn-info" id="but19" style="margin-top:10px;">19</button>
+                                    </a></div>
+                                <div class="col-xs-2"><a class="showSingle" target="20">
+                                        <button class="btn btn-info" id="but20" style="margin-top:10px;">20</button>
+                                    </a></div>
+                                <div class="col-xs-2"><a class="showSingle" target="21">
+                                        <button class="btn btn-info" id="but21" style="margin-top:10px;">21</button>
+                                    </a></div>
+                                <div class="col-xs-2"><a class="showSingle" target="22">
+                                        <button class="btn btn-info" id="but22" style="margin-top:10px;">22</button>
+                                    </a></div>
+                                <div class="col-xs-2"><a class="showSingle" target="23">
+                                        <button class="btn btn-info" id="but23" style="margin-top:10px;">23</button>
+                                    </a></div>
+                                <div class="col-xs-2"><a class="showSingle" target="24">
+                                        <button class="btn btn-info" id="but24" style="margin-top:10px;">24</button>
+                                    </a></div>
+                            </div>
+                            <div class="row text-center" style="margin-right: 0;margin-left: 0;">
+                                <div class="col-xs-12"><a class="showSingle" target="25">
+                                        <button class="btn btn-info" id="but25" style="margin-top:10px;">25</button>
+                                    </a></div>
+                            </div>
+                            <li class="divider"></li>
+                            <div class="row text-center" style="margin-right: 0;margin-left: 0;">
                                 <div class="col-xs-2"><a class="showSingle" target="26">
                                         <button class="btn btn-info" id="but26" style="margin-top:10px;">26</button>
                                     </a></div>
@@ -376,7 +462,6 @@ if(isset($_SESSION['answersOrder'])) {
                                         <button class="btn btn-info" id="but31" style="margin-top:10px;">31</button>
                                     </a></div>
                             </div>
-                            <li class="divider"></li>
                             <div class="row text-center" style="margin-right: 0;margin-left: 0;">
                                 <div class="col-xs-2"><a class="showSingle" target="32">
                                         <button class="btn btn-info" id="but32" style="margin-top:10px;">32</button>
@@ -397,7 +482,6 @@ if(isset($_SESSION['answersOrder'])) {
                                         <button class="btn btn-info" id="but37" style="margin-top:10px;">37</button>
                                     </a></div>
                             </div>
-                            <li class="divider"></li>
                             <div class="row text-center" style="margin-right: 0;margin-left: 0;">
                                 <div class="col-xs-2"><a class="showSingle" target="38">
                                         <button class="btn btn-info" id="but38" style="margin-top:10px;">38</button>
@@ -418,7 +502,6 @@ if(isset($_SESSION['answersOrder'])) {
                                         <button class="btn btn-info" id="but43" style="margin-top:10px;">43</button>
                                     </a></div>
                             </div>
-                            <li class="divider"></li>
                             <div class="row text-center" style="margin-right: 0;margin-left: 0;">
                                 <div class="col-xs-2"><a class="showSingle" target="44">
                                         <button class="btn btn-info" id="but44" style="margin-top:10px;">44</button>
@@ -439,7 +522,6 @@ if(isset($_SESSION['answersOrder'])) {
                                         <button class="btn btn-info" id="but49" style="margin-top:10px;">49</button>
                                     </a></div>
                             </div>
-                            <li class="divider"></li>
                             <div class="row text-center" style="margin-right: 0;margin-left: 0;">
                                 <div class="col-xs-2"><a class="showSingle" target="50">
                                         <button class="btn btn-info" id="but50" style="margin-top:10px;">50</button>
@@ -460,7 +542,6 @@ if(isset($_SESSION['answersOrder'])) {
                                         <button class="btn btn-info" id="but55" style="margin-top:10px;">55</button>
                                     </a></div>
                             </div>
-                            <li class="divider"></li>
                             <div class="row text-center" style="margin-right: 0;margin-left: 0;">
                                 <div class="col-xs-2"><a class="showSingle" target="56">
                                         <button class="btn btn-info" id="but56" style="margin-top:10px;">56</button>
@@ -481,7 +562,6 @@ if(isset($_SESSION['answersOrder'])) {
                                         <button class="btn btn-info" id="but61" style="margin-top:10px;">61</button>
                                     </a></div>
                             </div>
-                            <li class="divider"></li>
                             <div class="row text-center" style="margin-right: 0;margin-left: 0;">
                                 <div class="col-xs-3"><a class="showSingle" target="62">
                                         <button class="btn btn-info" id="but62" style="margin-top:10px;">62</button>
@@ -496,7 +576,6 @@ if(isset($_SESSION['answersOrder'])) {
                                         <button class="btn btn-info" id="but65" style="margin-top:10px;">65</button>
                                     </a></div>
                             </div>
-                            <li class="divider"></li>
 
                         </div>
                     </ul>
@@ -1106,6 +1185,7 @@ if(isset($_SESSION['answersOrder'])) {
         jQuery('#progressBar').show();
         jQuery('.slide').show();
         jQuery('.nxtButSt').show();
+        jQuery('.navBut').show();
         // jQuery('.prevButSt').show();
         jQuery('#stopBut').show();
         jQuery('.slideStart').hide();
