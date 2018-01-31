@@ -20,7 +20,7 @@ try
 
 	if ($payment->isPaid() == TRUE)
 	{
-        $query = "INSERT INTO PAYMENTS (order_id, user_id, status, website_status) VALUES ('{$order_id}', '{$userID}','FULLY DONE','NOT_GIVEN')";
+        $query = "INSERT INTO PAYMENTS (order_id, user_id, status, website_status) VALUES ('{$order_id}', '{$userID}','FULLY DONE','GIVEN')";
         $insertPayment =  mysqli_query($mysqli, $query);
 
         $spentQuery = "SELECT * From Users WHERE ID = '{$userID}' ";
