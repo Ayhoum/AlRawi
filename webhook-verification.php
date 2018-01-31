@@ -30,7 +30,7 @@ try
         if (mysqli_num_rows($updateAgent) == 1) {
             while ($row = mysqli_fetch_assoc($updateAgent)) {
                 $spent = $row['SPENT'];
-                $spent = $spent + $eur.$cen;
+                $spent = $spent + $eur + ($cen/100);
                 $updateQuery = "UPDATE Users SET SPENT = '{$spent}' WHERE ID = '{$userID}'";
                 $run = mysqli_query($mysqli,$updateQuery);
             }

@@ -2,6 +2,27 @@
 session_start();
 ob_start();
 include '../scripts/db_connection.php';
+
+if(isset($_POST['update'])){
+    for($i=1;$i<4;$i++){
+        $eurAmount = $_POST['eur_amount'.$i];
+        $cenAmount = $_POST['cen_amount'.$i];
+        $text = $_POST['text'.$i];
+        $timeTxt = $_POST['timeTxt'.$i];
+        $period = $_POST['period'.$i];
+        $fullPeriod = $timeTxt . " " . $period;
+
+        $query  = "UPDATE PRICES SET 
+                    AmountEur = '{$eurAmount}', 
+                    AmountCen = '{$cenAmount}', 
+                    Text = '{$text}',
+                    TimeTxt = '{$fullPeriod}'
+                    WHERE ID = $i";
+        $result = mysqli_query($mysqli, $query);
+    }
+        header("Location: edit_prices.php");
+}
+
 ?>
 
 
@@ -154,11 +175,10 @@ include '../scripts/db_connection.php';
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="page-title">
-                            <h4 class="float-left">Search a question</h4>
+                            <h4 class="float-left">Edit Packets Prices</h4>
                         </div>
                     </div>
                 </div><!-- end .page title-->
-
 
 
 
@@ -167,70 +187,67 @@ include '../scripts/db_connection.php';
                         <div class="panel panel-card margin-b-30">
                             <!-- Start .panel -->
                             <div class="panel-heading">
-                                Search a question
+                                Edit Packets Price
                             </div>
                             <div class="panel-body  p-xl-3">
-                                <form method="post" action="search_question.php" class="form-horizontal" data-toggle="validator">
-                                    <div class="form-group row"><label class="col-sm-4 form-control-label">Question keyword</label>
-                                        <div class="col-sm-10">
-                                            <input name="ques_title" type="text" class="form-control" required><br>
-                                            <input type="radio" name="exam_sort" value="free"/> Free
-                                            <input type="radio" name="exam_sort" value="paid"/> Paid
+                                <form method="post" action="edit_prices.php" class="form-horizontal" data-toggle="validator">
+                                    <?php
+                                    $query = "SELECT * FROM PRICES";
+                                    $getName = mysqli_query($mysqli,$query);
+                                    while ($row = mysqli_fetch_assoc($getName)){
+                                        $ID = $row['ID'];
+                                        $AmountEur = $row['AmountEur'];
+                                        $AmountCen = $row['AmountCen'];
+                                        $Text = $row['Text'];
+                                        $TimeTxt = $row['TimeTxt'];
+                                        $TimeTxt = preg_replace("/[^0-9,.]/", "", $TimeTxt)
+
+                                    ?>
+                                        <div class="form-group row"><label class="col-sm-12 text-center form-control-label" style="font-size: 20px">Packet <?php echo $ID ?></label>
+                                            <div class="col-sm-12">
+                                                <div class="row">
+                                                <label class="col-md-4 text-center">Euros</label>
+                                                <input name="eur_amount<?php echo $ID ?>" value="<?php echo $AmountEur?>" type="text" class="form-control col-md-7" required>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-4 text-center">Cents</label>
+                                                    <input name="cen_amount<?php echo $ID ?>" value="<?php echo $AmountCen?>" type="text" class="form-control col-md-7" required>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-4 text-center">Text</label>
+                                                    <input name="text<?php echo $ID ?>" style="direction: rtl" value="<?php echo $Text?>" type="text" class="form-control col-md-7" required>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-4 text-center">Period</label>
+                                                    <input name="timeTxt<?php echo $ID ?>" value="<?php echo $TimeTxt?>" type="text" class="form-control col-md-7" required>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-md-4 text-center">Days/Hours</label>
+                                                    <select name="period<?php echo $ID ?>" class="col-md-7" required>
+                                                        <option value="" disabled selected>--Select--</option>
+                                                        <option value="hours">Hour/Hours</option>
+                                                        <option value="days">Day/Days</option>
+                                                    </select>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
+                                        <hr>
+                                    <?php
+                                    }
+                                    ?>
+
+
                                     <div class="hr-line-dashed"></div>
                                     <div class="form-group row">
                                         <div class="col-sm-8 col-sm-offset-0">
-                                            <input name= "search" class="btn btn-primary" type="submit" value="Search">
+                                            <input name= "update" class="btn btn-primary" type="submit" value="Update">
                                         </div>
                                     </div>
                                 </form>
                             </div>
                         </div>
                     </div>
-
                 </div>
-
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="panel panel-card margin-b-30">
-                            <!-- Start .panel -->
-                            <?php
-                            if(isset($_POST['search'])){
-                                $quesName = $_POST['ques_title'];
-                                $examSort = $_POST['exam_sort'];
-                                if($examSort = 'paid'){
-                                    $quesQuery = "SELECT * FROM EXAM_QUESTION WHERE QUESTION LIKE '%{$quesName}%' ";
-                                }else{
-                                    $quesQuery = "SELECT * FROM FREE_EXAM_QUESTION WHERE QUESTION LIKE '%{$quesName}%' ";
-                                }
-                                $selectQuestions = mysqli_query($mysqli,$quesQuery);
-                                while($row = mysqli_fetch_assoc($selectQuestions)){
-                                    $questionExam = $row['QUESTION_SET_ID'];
-                                    $qID = $row['NUMBER'] ;
-                                    $convertedId = $qID - ($questionExam - 1) * 65;
-                                    $questionTitle = $row['QUESTION'];
-                                    ?>
-                                    <div class="panel-heading" style="text-align: right;">
-                                        <div class="text-center btn-success" style="font-size: 22px;padding: 5px;"><?php echo 'إمتحان ' . $questionExam;?>
-                                            <?php echo ' - ';?>
-                                            <?php echo 'السؤال ' . $convertedId;?></div>
-                                        <div style="font-size: 20px;padding: 5px;">
-                                        <?php echo $questionTitle; ?>
-                                        </div>
-                                    </div>
-                                    <hr>
-                            <?php
-                                }
-                            }
-                            ?>
-                        </div>
-                    </div>
-
-                </div>
-
-
-
 
 
             </div>

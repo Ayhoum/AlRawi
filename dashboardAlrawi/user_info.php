@@ -199,6 +199,7 @@ while($row = mysqli_fetch_assoc($select_users)){
                         <a href="#"><i class="fa fa-dollar"></i> <span class="nav-label">Payments</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse">
                             <li><a href="control_payments.php">Control Payments</a></li>
+                            <li><a href="edit_prices.php">Edit Prices</a></li>
                         </ul>
                     </li>
 
