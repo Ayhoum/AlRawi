@@ -270,6 +270,22 @@ include 'scripts/db_connection.php';
 
                 <div id = "pricing" class="container">
 
+<?php
+if(isset($_SESSION['email'])){
+$email = $_SESSION['email'];
+$query = "SELECT * FROM Users WHERE EMAIL = '{$email}'";
+$select_users = mysqli_query($mysqli, $query);
+while($row = mysqli_fetch_assoc($select_users)) {
+    $userID = $row['ID'];
+}
+$link1 = "payment_1.php?user_id=$userID";
+$link2 = "payment_2.php?user_id=$userID";
+$link4 = "payment_4.php?user_id=$userID";
+}else{
+$link = "profile.php";
+}
+?>
+
 
                 <div class="fancy-title title-dotted-border title-center topmargin-sm">
                     <h2 class="pricing-section--title center" style="color: #0f0e0f">أسعــارنـا</h2>
@@ -295,7 +311,7 @@ include 'scripts/db_connection.php';
                                     </ul>
                                 </div>
                                 <div class="pricing-action">
-                                    <a href="payment_1.php" class="btn btn-danger btn-block btn-lg">اخـتر البـاقة</a>
+                                    <a href="<?php if(isset($_SESSION['email'])) {echo $link1;}else{echo $link;}?>" class="btn btn-danger btn-block btn-lg">اخـتر البـاقة</a>
                                 </div>
                             </div>
 
@@ -318,7 +334,7 @@ include 'scripts/db_connection.php';
                                     </ul>
                                 </div>
                                 <div class="pricing-action">
-                                    <a href="payment_2.php" class="btn btn-danger btn-block btn-lg">اخـتر البـاقة</a>
+                                    <a href="<?php if(isset($_SESSION['email'])) {echo $link2;}else{echo $link;}?>" class="btn btn-danger btn-block btn-lg">اخـتر البـاقة</a>
                                 </div>
                             </div>
 
@@ -340,7 +356,7 @@ include 'scripts/db_connection.php';
                                     </ul>
                                 </div>
                                 <div class="pricing-action">
-                                    <a href="payment_4.php" class="btn btn-danger btn-block btn-lg">اخـتر البـاقة</a>
+                                    <a href="<?php if(isset($_SESSION['email'])) {echo $link4;}else{echo $link;}?>" class="btn btn-danger btn-block btn-lg">اخـتر البـاقة</a>
                                 </div>
                             </div>
 
