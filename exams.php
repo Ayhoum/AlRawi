@@ -248,7 +248,7 @@ if (mysqli_num_rows($result1) > 0) {
                         ============================================= -->
                         <section id="content">
 
-                            <div class="content-wrap" style="padding-bottom: 0 ">
+                            <div class="content-wrap" style="padding-bottom: 0;width: 100%;">
 
                                 <div class="container clearfix">
 
