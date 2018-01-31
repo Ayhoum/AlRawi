@@ -7,9 +7,6 @@
  */
 session_start();
 ob_start();
-if (!isset($_SESSION['username'])) {
-    header("Location: login.php");
-}
 include 'scripts/db_connection.php';
 
 
@@ -756,8 +753,10 @@ $x++;
 </div>
 
 <div class="center">
+<?php if (isset($_SESSION['email'])){ ?>
     <a href="profile.php" class="button button-rounded button-reveal button-large button-border "><i
                 class="icon-user"></i><span>اذهب الى الصفحة الشخصية</span></a>
+    <?php } ?>
 <a href="continue_free_exam.php?exam_id=<?php echo $qId;?>" class="button button-rounded button-green button-reveal button-large button-border "><i
                 class="icon-reply"></i><span>متابعة الإمتحان</span></a>
 </div>

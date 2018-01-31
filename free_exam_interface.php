@@ -2,9 +2,6 @@
 session_start();
 ob_start();
 include 'scripts/db_connection.php';
-if (!isset($_SESSION['username'])) {
-    header("Location: login.php");
-}
 if (isset($_GET['exam_id'])) {
     $setId = $_GET['exam_id'];
 } else {
@@ -12,23 +9,6 @@ if (isset($_GET['exam_id'])) {
 }
 
 $arrOrder = array(array());
-
-$user = $_SESSION['email'];
-$query = "SELECT * From Users WHERE EMAIL = '{$user}' ";
-$getAgent = mysqli_query($mysqli, $query);
-if (mysqli_num_rows($getAgent) == 1) {
-    while ($row = mysqli_fetch_assoc($getAgent)) {
-        $id = $row['ID'];
-        $status = $row['SITUATION'];
-    }
-
-    if ($status == "NEW") {
-        $train = "TRAINING";
-        $updateQuery = "UPDATE Users SET SITUATION = '{$train}' WHERE ID = '{$id}'";
-        $run = mysqli_query($mysqli, $updateQuery);
-
-    }
-}
 ?>
 
 <html>

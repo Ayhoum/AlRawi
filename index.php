@@ -388,6 +388,8 @@ $link = "profile.php";
 
                     </div>
 
+                    <div class="text-center center-block"><a href="free_exam_interface.php?exam_id=1"><button style="width: 50%" class="button button-dirtygreen button-rounded center-block text-center">إجراء فحص تجريبي</button></a></div>
+
                 </div>
             </div>
         </section>
