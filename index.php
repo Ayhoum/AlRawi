@@ -295,9 +295,7 @@ $link = "profile.php";
                 <div class="fancy-title title-dotted-border title-center topmargin-sm">
                     <h2 class="pricing-section--title center" style="color: #0f0e0f">أسعــارنـا</h2>
                 </div>
-                    <div class="button-red text-center col_full">
-                        <p style="color: white;font-weight: 800;padding: 5px;">بعد إتمام عملية الدفع يرجى الإنتظار وعدم إغلاق الصفحة ريثما يتم تحويلكم تلقائياً لموقعنا</p>
-                    </div>
+
                     <div class="pricing bottommargin clearfix">
 
                         <div class="col-md-3">
