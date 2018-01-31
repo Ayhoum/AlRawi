@@ -8,17 +8,12 @@ if (!isset($_SESSION['username'])){
 }
 $countSucceeded = 0;
 $countOthers = 0;
-
-$query = "SELECT * FROM Users ORDER BY ID DESC";
+$email = $_SESSION['email'];
+$query = "SELECT * FROM Users WHERE EMAIL = '{$email}'";
 $select_users = mysqli_query($mysqli, $query);
 while($row = mysqli_fetch_assoc($select_users)) {
-    if ($row['SITUATION'] == "SUCCEEDED") {
-        $countSucceeded++;
-    } else {
-        $countOthers++;
-    }
+    $userID = $row['ID'];
 }
-$totalUsers = $countOthers + $countSucceeded;
 
 ?>
 <!DOCTYPE html>
@@ -244,7 +239,7 @@ $totalUsers = $countOthers + $countSucceeded;
                     </ul>
                 </div>
                 <div class="pricing-action">
-                    <a href="payment_1.php" class="btn btn-danger btn-block btn-lg">اخـتر البـاقة</a>
+                    <a href="payment_1.php?user_id=<?php echo $userID;?>" class="btn btn-danger btn-block btn-lg">اخـتر البـاقة</a>
                 </div>
             </div>
 
@@ -267,7 +262,7 @@ $totalUsers = $countOthers + $countSucceeded;
                 </ul>
             </div>
             <div class="pricing-action">
-                <a href="payment_2.php" class="btn btn-danger btn-block btn-lg">اخـتر البـاقة</a>
+                <a href="payment_2.php?user_id=<?php echo $userID;?>" class="btn btn-danger btn-block btn-lg">اخـتر البـاقة</a>
             </div>
         </div>
 
@@ -289,7 +284,7 @@ $totalUsers = $countOthers + $countSucceeded;
                     </ul>
                 </div>
                 <div class="pricing-action">
-                    <a href="payment_4.php" class="btn btn-danger btn-block btn-lg">اخـتر البـاقة</a>
+                    <a href="payment_4.php?user_id=<?php echo $userID;?>" class="btn btn-danger btn-block btn-lg">اخـتر البـاقة</a>
                 </div>
             </div>
 

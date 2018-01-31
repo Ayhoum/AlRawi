@@ -1,193 +1,83 @@
 <?php
-/*
- * Example 2 - How to verify Mollie API Payments in a webhook.
- */
 
-if (!isset($_SESSION['username'])){
+session_start();
+ob_start();
+include 'scripts/db_connection.php';
+if (!isset($_SESSION['email'])) {
     header("Location: login.php");
-
 }
 
 try
 {
-	/*
-	 * Initialize the Mollie API library with your API key.
-	 *
-	 * See: https://www.mollie.com/dashboard/settings/profiles
-	 */
 	require "initialize.php";
 
-	/*
-	 * Retrieve the payment's current state.
-	 */
 	$payment  = $mollie->payments->get($_POST["id"]);
 	$order_id = $payment->metadata->order_id;
+    $userID = $payment->metadata->user_id;
+    $periodPass = $payment->metadata->period;
 
-	/*
-	 * Update the order in the database.
-	 */
-	database_write($order_id, $payment->status);
+    database_write($order_id, $payment->status, $mysqli, $userID);
 
 	if ($payment->isPaid() == TRUE)
 	{
+        $query = "INSERT INTO PAYMENTS (order_id, user_id, status, website_status) VALUES ('{$order_id}', '{$userID}','FULLY DONE','NOT_GIVEN')";
+        $insertPayment =  mysqli_query($mysqli, $query);
 
-	    if($_SESSION['period'] == '20'){
-
-            if (isset($_SESSION['email'])){
-
-
-                $name = $_SESSION['email'];
-                $spentQuery = "SELECT * From Users WHERE EMAIL = '{$name}' ";
-                $updateAgent = mysqli_query($mysqli, $spentQuery);
-                if (mysqli_num_rows($updateAgent) == 1) {
-                    while ($row = mysqli_fetch_assoc($updateAgent)) {
-                        $id = $row['ID'];
-                        $spent = $row['SPENT'];
-                    }
+        $spentQuery = "SELECT * From Users WHERE ID = '{$userID}' ";
+        $updateAgent = mysqli_query($mysqli, $spentQuery);
+        if (mysqli_num_rows($updateAgent) == 1) {
+            while ($row = mysqli_fetch_assoc($updateAgent)) {
+                $spent = $row['SPENT'];
+                if($periodPass == '20'){
+                    $spent = $spent + 10.35;
+                }elseif($periodPass == '35'){
+                    $spent = $spent + 15.35;
+                }elseif ($periodPass == '60'){
+                    $spent = $spent + 25.35;
                 }
-                $spent += 10.29;
-                $updateQuery = "UPDATE Users SET SPENT = '{$spent}' WHERE ID = '{$id}'";
+                $updateQuery = "UPDATE Users SET SPENT = '{$spent}' WHERE ID = '{$userID}'";
                 $run = mysqli_query($mysqli,$updateQuery);
-
-
-
-                $query = "SELECT * FROM Users WHERE EMAIL = '{$name}'";
-
-                $result = mysqli_query($mysqli,$query);
-                if (mysqli_num_rows($result) > 0 ){
-                    while ($row = mysqli_fetch_assoc($result)) {
-                        $id = $row['ID'];
-                    }
-                    date_default_timezone_set('Europe/Amsterdam');
-                    $start_date = date('Y-m-d H:i:s ', time());
-
-                    $end_date = date("Y-m-d H:i:s ", strtotime('+20 days'));
-
-                    $query1 = "INSERT INTO PAID_EXAM (Users_ID, PAYMENT_DATE, END_DATE )";
-                    $query1 .= "VALUES ('{$id}',
-                             '{$start_date}',
-                             '{$end_date}')";
-                    $result1 = mysqli_query($mysqli,$query1);
-                    header("Location: profile.php");
-                }
-            } else {
-                header("Location:login.php");
             }
-
-        }elseif ($_SESSION['period'] == '35'){
-
-            if (isset($_SESSION['email'])){
-
-
-                $name = $_SESSION['email'];
-                $spentQuery = "SELECT * From Users WHERE EMAIL = '{$name}' ";
-                $updateAgent = mysqli_query($mysqli, $spentQuery);
-                if (mysqli_num_rows($updateAgent) == 1) {
-                    while ($row = mysqli_fetch_assoc($updateAgent)) {
-                        $id = $row['ID'];
-                        $spent = $row['SPENT'];
-                    }
-                }
-                $spent += 10.29;
-                $updateQuery = "UPDATE Users SET SPENT = '{$spent}' WHERE ID = '{$id}'";
-                $run = mysqli_query($mysqli,$updateQuery);
-
-
-
-                $query = "SELECT * FROM Users WHERE EMAIL = '{$name}'";
-
-                $result = mysqli_query($mysqli,$query);
-                if (mysqli_num_rows($result) > 0 ){
-                    while ($row = mysqli_fetch_assoc($result)) {
-                        $id = $row['ID'];
-                    }
-                    date_default_timezone_set('Europe/Amsterdam');
-                    $start_date = date('Y-m-d H:i:s ', time());
-
-                    $end_date = date("Y-m-d H:i:s ", strtotime('+35 days'));
-
-                    $query1 = "INSERT INTO PAID_EXAM (Users_ID, PAYMENT_DATE, END_DATE )";
-                    $query1 .= "VALUES ('{$id}',
-                             '{$start_date}',
-                             '{$end_date}')";
-                    $result1 = mysqli_query($mysqli,$query1);
-                    header("Location: profile.php");
-                }
-            } else {
-                header("Location:login.php");
-            }
-
-        }elseif ($_SESSION['period'] == '60'){
-
-            if (isset($_SESSION['email'])){
-
-
-                $name = $_SESSION['email'];
-                $spentQuery = "SELECT * From Users WHERE EMAIL = '{$name}' ";
-                $updateAgent = mysqli_query($mysqli, $spentQuery);
-                if (mysqli_num_rows($updateAgent) == 1) {
-                    while ($row = mysqli_fetch_assoc($updateAgent)) {
-                        $id = $row['ID'];
-                        $spent = $row['SPENT'];
-                    }
-                }
-                $spent += 10.29;
-                $updateQuery = "UPDATE Users SET SPENT = '{$spent}' WHERE ID = '{$id}'";
-                $run = mysqli_query($mysqli,$updateQuery);
-
-
-
-                $query = "SELECT * FROM Users WHERE EMAIL = '{$name}'";
-
-                $result = mysqli_query($mysqli,$query);
-                if (mysqli_num_rows($result) > 0 ){
-                    while ($row = mysqli_fetch_assoc($result)) {
-                        $id = $row['ID'];
-                    }
-                    date_default_timezone_set('Europe/Amsterdam');
-                    $start_date = date('Y-m-d H:i:s ', time());
-
-                    $end_date = date("Y-m-d H:i:s ", strtotime('+60 days'));
-
-                    $query1 = "INSERT INTO PAID_EXAM (Users_ID, PAYMENT_DATE, END_DATE )";
-                    $query1 .= "VALUES ('{$id}',
-                             '{$start_date}',
-                             '{$end_date}')";
-                    $result1 = mysqli_query($mysqli,$query1);
-                    header("Location: profile.php");
-                }
-            } else {
-                header("Location:login.php");
-            }
-
         }
 
-		/*
-		 * At this point you'd probably want to start the process of delivering the product to the customer.
-		 */
+
+        date_default_timezone_set('Europe/Amsterdam');
+        $start_date = date('Y-m-d H:i:s ', time());
+        if($periodPass == '20'){
+            $end_date = date("Y-m-d H:i:s ", strtotime('+20 days'));
+        }elseif($periodPass == '35'){
+            $end_date = date("Y-m-d H:i:s ", strtotime('+35 days'));
+        }elseif ($periodPass == '60'){
+            $end_date = date("Y-m-d H:i:s ", strtotime('+60 days'));
+        }
+
+        $query1 = "INSERT INTO PAID_EXAM (Users_ID, PAYMENT_DATE, END_DATE, STATUS )";
+        $query1 .= "VALUES ('{$userID}',
+                             '{$start_date}',
+                             '{$end_date}',
+                             'ACTIVE')";
+        $result1 = mysqli_query($mysqli,$query1);
 	}
 	elseif ($payment->isOpen() == FALSE)
 	{
-        header("Location: payment_failure.php");
+        $query = "INSERT INTO PAYMENTS (order_id, user_id, status, website_status) VALUES ('{$order_id}', '{$userID}','FULLY FAIL','NOT_GIVEN')";
+        $insertPayment =  mysqli_query($mysqli, $query);
+        if (!$insertPayment) {
+            die("Failed!" . mysqli_error($mysqli));
+        }
 
-        /*
-         * The payment isn't paid and isn't open anymore. We can assume it was aborted.
-         */
 	}
 }
 catch (Mollie_API_Exception $e)
 {
-	echo "API call failed: " . htmlspecialchars($e->getMessage());
+    echo "API call failed: " . htmlspecialchars($e->getMessage());
 }
 
-
-/*
- * NOTE: This example uses a text file as a database. Please use a real database like MySQL in production code.
- */
-function database_write ($order_id, $status)
+function database_write ($order_id, $status,$mysqli, $userID)
 {
-	$order_id = intval($order_id);
-	$database = dirname(__FILE__) . "/orders/order-{$order_id}.txt";
-
-	file_put_contents($database, $status);
+    $query = "INSERT INTO PAYMENTS (order_id, user_id, status, website_status) VALUES ('{$order_id}', '{$userID}', '{$status}','NOT_GIVEN')";
+    $insertPayment =  mysqli_query($mysqli, $query);
+    if (!$insertPayment) {
+        die("Failed!" . mysqli_error($mysqli));
+    }
 }

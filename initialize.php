@@ -1,7 +1,6 @@
 <?php
 if (!isset($_SESSION['username'])){
     header("Location: login.php");
-
 }
 
 require_once "scripts/src/Mollie/API/Autoloader.php";
