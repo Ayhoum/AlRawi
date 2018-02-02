@@ -75,14 +75,14 @@ if(isset($_POST['code_submit'])){
 
                     <div class="panel panel-default divcenter noradius noborder" style="max-width: 400px;">
                         <div class="panel-body" style="padding: 40px;">
-                                <h4 class="text-center">في حال كنت مسجل في موقعنا سيتم إرسال بريد إلكتروني مرفق برابط لاستعادة كلمة المرور</h4>
+                            <h4 class="text-center">الرابط الذي اتبعته يبدو أن صلاحيته قد انتهت يرجى طلب إستعادة كلمة المرور مرة أخرى</h4>
 
-                                <div class="col_full nobottommargin">
-                                    <a href="index.php"><button type="button" class="button button-3d button-black nomargin" style="width: 100%" id="new_submit" name="new_submit" value="Retrieve">الصفحة الرئيسية</button></a>
-                                </div>
-                                <div class="col_full topmargin-sm nobottommargin">
-                                    <a href="login.php" class="fright text-center" style="width: 100%">تسجيل الدخول</a>
-                                </div>
+                            <div class="col_full nobottommargin">
+                                <a href="index.php"><button type="button" class="button button-3d button-black nomargin" style="width: 100%" id="new_submit" name="new_submit" value="Retrieve">الصفحة الرئيسية</button></a>
+                            </div>
+                            <div class="col_full topmargin-sm nobottommargin">
+                                <a href="forgot_password.php" class="fright text-center" style="width: 100%">إستعادة كلمة المرور</a>
+                            </div>
                         </div>
                     </div>
 

@@ -17,9 +17,12 @@ if(isset($_POST['forgot_submit'])) {
         }
     }
 
-
+echo $id;
+echo $email;
 
     $code = rand(10000,99999);
+
+    $link = "https://www.alrawitheorie.nl/update_password.php?code=" . $code . "&email=" . $email;
 
     $codeQuery = "INSERT INTO PASSWORD_RESET (USER_ID, CODE) VALUES ('{$id}', '{$code}') ";
     $insertCode = mysqli_query($mysqli,$codeQuery);
@@ -206,7 +209,7 @@ if(isset($_POST['forgot_submit'])) {
 								<td class=\"info-bullets__block\" style=\"padding: 30px 30px 15px 30px;\" align=\"center\">
 									<table class=\"container\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" align=\"center\">
 										<tr>
-											<td align=\"center\" width=\"60\" height=\"2\" style=\" width: 60px; height: 2px; font-size: 1px;\"><img src=\"http://shop.alrawitheorie.nl/images/2.png\"></td>
+											<td align=\"center\" width=\"60\" height=\"2\" style=\" width: 60px; height: 2px; font-size: 1px;\"><img src=\"https://www.alrawitheorie.nl/images/2.png\"></td>
 										</tr>
 									</table>
 								</td>
@@ -222,8 +225,8 @@ if(isset($_POST['forgot_submit'])) {
 							</tr>
 
 							<tr>
-								<td class=\"hero-subheader__content\" style=\"direction:rtl;font-size: 16px; line-height: 27px; color: #969696; padding: 0 60px 90px 0;\" align=\"right\">الكود الخاص بك:<br>
-								$code
+								<td class=\"hero-subheader__content\" style=\"direction:rtl;font-size: 16px; line-height: 27px; color: #969696; padding: 0 60px 90px 0;\" align=\"right\">لاستعادة كلمة المرور:<br>
+								<a href='$link'>إضغط هنا</a>
 								</td>
 							</tr>
 						</table>
@@ -267,7 +270,7 @@ if(isset($_POST['forgot_submit'])) {
 															<img src=\"https://cdn1.iconfinder.com/data/icons/material-communication/18/phone-32.png\">
 														</td>
 
-														<td class=\"info-bullets__content\" style=\"color: #969696; font-size: 16px;\">(541) 754-3010</td>
+														<td class=\"info-bullets__content\" style=\"color: #969696; font-size: 16px;\">06-87460636</td>
 													</tr>
 												</table>
 											</td>
@@ -332,7 +335,7 @@ if(isset($_POST['forgot_submit'])) {
 											<td align=\"middle\">
 												<table width=\"60\" height=\"2\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"width: 60px; height: 2px;\">
 													<tr>
-														<td align=\"middle\" width=\"60\" height=\"2\" style=\" width: 60px; height: 2px; font-size: 1px;\"><img src=\"http://shop.alrawitheorie.nl/images/1.png\"></td>
+														<td align=\"middle\" width=\"60\" height=\"2\" style=\" width: 60px; height: 2px; font-size: 1px;\"><img src=\"https://www.alrawitheorie.nl/images/1.png\"></td>
 													</tr>
 												</table>
 											</td>
@@ -367,7 +370,7 @@ if(isset($_POST['forgot_submit'])) {
     if(!$mail->Send()) {
         echo "Mailer Error: " . $mail->ErrorInfo;
     }
-    header("Location: insert_code.php");
+    header("Location: password_reset.php");
 
 }
 ?>
