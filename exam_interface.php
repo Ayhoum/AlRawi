@@ -1091,7 +1091,6 @@ if (mysqli_num_rows($getAgent) == 1) {
     });
 
 
-    var time = 18;
     var $bar,
         $slick,
         tick,
@@ -1104,11 +1103,11 @@ if (mysqli_num_rows($getAgent) == 1) {
     function startProgressbar() {
         resetProgressbar();
         percentTime = 0;
-        tick = setInterval(interval, 6);
+        tick = setInterval(interval, 100);
     }
 
     function interval() {
-        percentTime += 1 / (time + 0.01);
+        percentTime += 1.01;
         $bar.css({
             width: percentTime + "%"
         });

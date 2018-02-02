@@ -1054,7 +1054,6 @@ $arrOrder = array(array());
     });
 
 
-    var time = 18;
     var $bar,
         $slick,
         tick,
@@ -1067,11 +1066,11 @@ $arrOrder = array(array());
     function startProgressbar() {
         resetProgressbar();
         percentTime = 0;
-        tick = setInterval(interval, 6);
+        tick = setInterval(interval, 100);
     }
 
     function interval() {
-        percentTime += 1 / (time + 0.01);
+        percentTime += 1.01;
         $bar.css({
             width: percentTime + "%"
         });
