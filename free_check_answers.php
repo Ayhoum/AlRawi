@@ -269,6 +269,9 @@ if (isset($_POST['submit'])) {
                 <div class="container topmargin-sm" style="width: 100% !important;">
                     <div class="remodal-bg">
 
+<?php
+    $from = $_COOKIE['question'];
+?>
                         <?php
 
                         // GET THE QUESTION FROM DB
@@ -757,7 +760,7 @@ $x++;
     <a href="profile.php" class="button button-rounded button-reveal button-large button-border "><i
                 class="icon-user"></i><span>اذهب الى الصفحة الشخصية</span></a>
     <?php } ?>
-<a href="continue_free_exam.php?exam_id=<?php echo $qId;?>" class="button button-rounded button-green button-reveal button-large button-border "><i
+<a href="continue_free_exam.php?exam_id=<?php echo $qId;?>&from=<?php echo $from;?>" class="button button-rounded button-green button-reveal button-large button-border "><i
                 class="icon-reply"></i><span>متابعة الإمتحان</span></a>
 </div>
 </div>

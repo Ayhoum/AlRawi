@@ -11,6 +11,9 @@ if(isset($_SESSION['answers'])){
 if(isset($_SESSION['answersOrder'])){
     $_SESSION['answersOrder'] = null;
 }
+if(isset($_COOKIE['question'])){
+    $_COOKIE['question'] = null;
+}
 ?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en-US">

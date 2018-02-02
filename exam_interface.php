@@ -2,9 +2,6 @@
 session_start();
 ob_start();
 include 'scripts/db_connection.php';
-if (!isset($_SESSION['username'])) {
-    header("Location: login.php");
-}
 if (isset($_GET['exam_id'])) {
     $setId = $_GET['exam_id'];
 } else {
@@ -12,40 +9,6 @@ if (isset($_GET['exam_id'])) {
 }
 
 $arrOrder = array(array());
-
-$user = $_SESSION['email'];
-$query = "SELECT * From Users WHERE EMAIL = '{$user}' ";
-$getAgent = mysqli_query($mysqli, $query);
-if (mysqli_num_rows($getAgent) == 1) {
-    while ($row = mysqli_fetch_assoc($getAgent)) {
-        $id = $row['ID'];
-        $status = $row['SITUATION'];
-    }
-    $checkQuery = "SELECT * FROM PAID_EXAM WHERE Users_ID = '{$id}' AND STATUS = 'ACTIVE' ORDER BY PAYMENT_ID DESC LIMIT 1";
-    $getPayment = mysqli_query($mysqli, $checkQuery);
-    if (mysqli_num_rows($getPayment) == 1) {
-        while ($row = mysqli_fetch_assoc($getPayment)) {
-            $payid = $row['PAYMENT_ID'];
-            $end_date = $row['END_DATE'];
-        }
-        $today_date = date_default_timezone_set('Europe/Amsterdam');
-        $today_date = date('Y-m-d H:i:s ', time());
-
-        if ($end_date < $today_date) {
-            $update_query = "UPDATE `PAID_EXAM` SET `STATUS` = 'NOT ACTIVE' WHERE `PAYMENT_ID` = '{$payid}'";
-            $result_update = mysqli_query($mysqli, $update_query);
-            header("Location: pricing_table.php");
-        }
-
-
-    }
-    if ($status == "NEW") {
-        $train = "TRAINING";
-        $updateQuery = "UPDATE Users SET SITUATION = '{$train}' WHERE ID = '{$id}'";
-        $run = mysqli_query($mysqli, $updateQuery);
-
-    }
-}
 ?>
 
 <html>
@@ -1317,10 +1280,18 @@ if (mysqli_num_rows($getAgent) == 1) {
         $('.QuestionsSlideShow').slick('slickPrev');
     });
 
+    function setCookie(c_name, value, expirehours) {
+
+        var exdate = new Date();
+        exdate.setHours(exdate.getHours() + expirehours);
+        document.cookie = c_name + "=" + value + ";path=/" + ((expirehours ==null) ? "" : ";expires=" + exdate.toGMTString());
+    }
+
     var stopExam = function () {
         if (confirm('هل أنت متأكد من إيقاف الإمتحان؟')) {
             clearTimeout(startExam);
             $('.QuestionsSlideShow').slick('slickPause');
+            setCookie('question', $('.QuestionsSlideShow').slick('slickCurrentSlide'), 1);
             cancelled = 1;
             document.title = "إيقاف الإمتحان";
             jQuery('.slide').hide();

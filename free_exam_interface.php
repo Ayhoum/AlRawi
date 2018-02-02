@@ -1280,10 +1280,18 @@ $arrOrder = array(array());
         $('.QuestionsSlideShow').slick('slickPrev');
     });
 
+    function setCookie(c_name, value, expirehours) {
+
+        var exdate = new Date();
+        exdate.setHours(exdate.getHours() + expirehours);
+        document.cookie = c_name + "=" + value + ";path=/" + ((expirehours ==null) ? "" : ";expires=" + exdate.toGMTString());
+    }
+
     var stopExam = function () {
         if (confirm('هل أنت متأكد من إيقاف الإمتحان؟')) {
             clearTimeout(startExam);
             $('.QuestionsSlideShow').slick('slickPause');
+            setCookie('question', $('.QuestionsSlideShow').slick('slickCurrentSlide'), 1);
             cancelled = 1;
             document.title = "إيقاف الإمتحان";
             jQuery('.slide').hide();
