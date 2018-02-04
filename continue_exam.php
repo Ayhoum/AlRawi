@@ -7,6 +7,61 @@ if (isset($_GET['exam_id'])) {
 } else {
     header('Location: profile.php');
 }
+
+if(!isset($_SESSION['username'])){
+    header("Location: login.php");
+}
+
+$email = $_SESSION['email'];
+$query1 = "SELECT * FROM Users WHERE EMAIL = '{$email}' ";
+$result1 = mysqli_query($mysqli, $query1);
+if (mysqli_num_rows($result1) > 0) {
+    while ($row = mysqli_fetch_assoc($result1)) {
+        $user_id = $row['ID'];
+        $statusUser = $row['ACTIVE_STATUS'];
+    }
+    if($statusUser == 0){
+        header("Location: force_logout.php");
+    }
+}
+
+
+$name = $_SESSION['email'];
+$query1 = "SELECT * FROM Users WHERE EMAIL ='{$name}' ";
+$result1 = mysqli_query($mysqli, $query1);
+if (mysqli_num_rows($result1) > 0) {
+    while ($row = mysqli_fetch_assoc($result1)) {
+        $user_id = $row['ID'];
+
+    }
+
+    $query2 = "SELECT * FROM  `PAID_EXAM` WHERE Users_ID = '{$user_id}' AND STATUS = 'ACTIVE' ORDER BY  `PAYMENT_ID` DESC LIMIT 1";
+    $result2 = mysqli_query($mysqli, $query2);
+
+    if (mysqli_num_rows($result2) > 0) {
+        while ($row = mysqli_fetch_assoc($result2)) {
+            $payment_id = $row ['PAYMENT_ID'];
+            $user_id = $row['Users_ID'];
+            $status = $row['STATUS'];
+            $end_date = $row['END_DATE'];
+
+            $today_date = date_default_timezone_set('Europe/Amsterdam');
+            $today_date = date('Y-m-d H:i:s ', time());
+        }
+        if ($end_date < $today_date) {
+            $update_query = "UPDATE `PAID_EXAM` SET `STATUS` = 'NOT ACTIVE' WHERE `PAYMENT_ID` = '{$payment_id}'";
+            $result_update = mysqli_query($mysqli, $update_query);
+            header("Location: pricing_table.php");
+        }
+
+    }else{
+        header("Location: pricing_table.php");
+    }
+
+
+}
+
+
 if(isset($_SESSION['answers'])){
     $arr = $_SESSION['answers'];
 }else{
