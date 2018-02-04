@@ -1,3 +1,4 @@
+
 <?php
 
 ob_start();
@@ -23,6 +24,234 @@ $permissions = ['email']; // Optional permissions
 $loginUrl = $helper->getLoginUrl('https://www.alrawitheorie.nl/fb-callback.php', $permissions);
 
 
+?>
+
+<!DOCTYPE html>
+<html dir="rtl" lang="en-US">
+<head>
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="SemiColonWeb" />
+
+    <!-- Stylesheets
+    ============================================= -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <link rel="stylesheet" href="css/dark.css" type="text/css" />
+    <link rel="stylesheet" href="css/font-icons.css" type="text/css" />
+    <link rel="stylesheet" href="css/animate.css" type="text/css" />
+    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css" />
+    <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/droid-arabic-kufi" type="text/css"/>
+    <!-- Date & Time Picker CSS -->
+    <link rel="stylesheet" href="css/datepicker.css" type="text/css" />
+    <link rel="stylesheet" href="css/components/timepicker.css" type="text/css" />
+    <link rel="stylesheet" href="css/components/daterangepicker.css" type="text/css" />
+    <link rel="stylesheet" href="css/responsive.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="css/remodal.css">
+    <link rel="stylesheet" href="css/remodal-default-theme.css">
+    <!-- Document Title
+    ============================================= -->
+    <title>Al Rawi Theorie | Sign Up</title>
+    <style>
+
+        .no-js #loader { display: none;  }
+        .js #loader { display: block; position: absolute; left: 100px; top: 0; }
+        .se-pre-con {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background: url(images/2.png) center no-repeat #fff2f2;
+        }
+
+        .pre-pre {
+            position: fixed;
+            left: 0;
+            top: 150px;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background: url(images/preloader@2x.gif) center no-repeat;
+        }
+    </style>
+</head>
+
+<body class="stretched" style="background: #fde7e7">
+<div class="se-pre-con"><div class="pre-pre"></div></div>
+
+<!-- Document Wrapper
+============================================= -->
+<div id="wrapper" class="clearfix">
+
+    <!-- Content
+    ============================================= -->
+    <section id="content">
+
+        <div class="content-wrap nopadding">
+
+            <div class="section nopadding nomargin" style="width: 100%; height: 100%; position: absolute; left: 0; top: 0; background: #fde7e7;"></div>
+
+            <div class="section nobg full-screen nopadding nomargin">
+                <div class="container vertical-middle divcenter clearfix">
+
+                    <div class="row center">
+                        <a href="index.php"><img src="images/2.png" alt="Al Rawi Logo"></a>
+                    </div>
+
+                    <div class="panel panel-default divcenter noradius noborder" style="max-width: 400px;">
+                        <div class="panel-body travel-date-group" style="padding: 40px;">
+                            <form id="signup-form" name="signup-form" class="nobottommargin" action="#" method="post" autocomplete="off">
+                                <h3 class="text-center">قم بإنشاء حساب جديد</h3>
+                                <div class="col_full">
+                                    <label for="login-form-username">البريد الإلكتروني (اسم المستخدم):*</label>
+                                    <input type="email" id="signup_username" name="signup_username" value="" class="form-control not-dark" autocomplete="off" required />
+                                </div>
+
+                                <div class="col_half">
+                                    <label for="login-form-password">كلمة مرور جديدة:*</label>
+                                    <input type="password" autocomplete="off" id="signup_password" name="signup_password" value="" class="form-control not-dark" required />
+                                </div>
+
+                                <div class="col_half col_last">
+                                    <label for="login-form-password">إعادة كلمة المرور:*</label>
+                                    <input type="password" autocomplete="off" id="signup_password_re" name="signup_password_re" value="" class="form-control not-dark" required/>
+                                </div>
+                                <div class="col_half">
+                                    <label for="login-form-username">الاسم الكامل:*</label>
+                                    <input type="text" autocomplete="off" id="signup_fullname" name="signup_fullname" value="" class="form-control not-dark" required/>
+                                </div>
+                                <div class="col_half col_last">
+                                    <label for="login-form-username">رقم الهاتف:</label>
+                                    <input type="text" autocomplete="off" id="signup_phone" name="signup_phone" value="" class="form-control not-dark" />
+                                </div>
+
+                                <div class="col_half">
+                                    <label for="login-form-username">تاريخ الميلاد:</label>
+                                    <input type="text" autocomplete="off" value="" id="signup_birthday" name="signup_birthday" class="sm-form-control past-enabled" placeholder="DD/MM/YYYY">
+                                </div>
+                                <div class="col_half col_last">
+                                    <label for="login-form-username">المدينة:</label>
+                                    <input type="text" autocomplete="off" id="signup_city" name="signup_city" value="" class="form-control not-dark" />
+                                </div>
+
+                                <div class="col_full nobottommargin">
+                                    <button class="button button-3d button-black nomargin" style="width: 100%" id="signup_submit" name="signup_submit" value="signup">إنشاء الحساب</button>
+                                </div>
+
+<!--                                <div class="col_full topmargin-sm nobottommargin">-->
+<!--                                    <a href="--><?php //echo htmlspecialchars($loginUrl) ?><!--" class="button button-border button-rounded button-blue" style="direction: rtl"></a>-->
+<!--                                    <!--                                --><?php ////echo '<a href="' . . '">Log in with Facebook!</a>'; ?>
+<!--                                </div>-->
+
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="row center"><small>Copyrights &copy; All Rights Reserved by Alrawi Theorie Wbsite</small></div>
+                    <div class="row center"><small>Developed by <a target="_blank" href="http://www.el-semicolon.nl">El-Semicolon; <img src="images/logoES.png" style="width: 64px;height: 64px;"/></a></small></div>
+
+                </div>
+            </div>
+        </div>
+
+    </section><!-- #content end -->
+
+</div><!-- #wrapper end -->
+<div class="remodal" data-remodal-id="modal">
+    <button data-remodal-action="close" class="remodal-close"></button>
+    <h2 style="text-align: center">حدث خطأ أثناء التسجيل</h2>
+    <p style="direction: rtl">
+        هذا الحساب مسجل لدينا بالفعل!
+    </p>
+    <br>
+    <button data-remodal-action="confirm" class="remodal-confirm">حسناً</button>
+</div>
+
+<div class="remodal" data-remodal-id="modal2">
+    <button data-remodal-action="close" class="remodal-close"></button>
+    <h2 style="text-align: center">حدث خطأ أثناء التسجيل</h2>
+    <p style="direction: rtl">
+        كلمتي المرور غير متطابقتين
+    </p>
+    <br>
+    <button data-remodal-action="confirm" class="remodal-confirm">حسناً</button>
+</div>
+<!-- Go To Top
+============================================= -->
+<div id="gotoTop" class="icon-angle-up"></div>
+
+<!-- External JavaScripts
+============================================= -->
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/plugins.js"></script>
+<!-- Date & Time Picker JS -->
+<script type="text/javascript" src="js/components/moment.js"></script>
+<script type="text/javascript" src="scripts/datepicker.js"></script>
+<script type="text/javascript" src="js/components/timepicker.js"></script>
+<!-- Include Date Range Picker -->
+<script type="text/javascript" src="js/components/daterangepicker.js"></script>
+<!-- Footer Scripts
+============================================= -->
+<script type="text/javascript" src="js/functions.js"></script>
+<script src="js/remodal.js"></script>
+<script>
+    var inst;
+    var openModal = function () {
+        inst = $('[data-remodal-id=modal]').remodal({
+            closeOnOutsideClick:false
+        });
+        inst.open();
+        $(document).on('confirmation', '.remodal', function () {
+            console.log('Confirmation button is clicked');
+        });
+    };
+
+
+    var inst2;
+    var openModal2 = function () {
+        inst2 = $('[data-remodal-id=modal2]').remodal({
+            closeOnOutsideClick:false
+        });
+        inst2.open();
+        $(document).on('confirmation', '.remodal', function () {
+            console.log('Confirmation button is clicked');
+        });
+    };
+
+</script>
+
+<script>
+    $(window).load(function() {
+// Animate loader off screen
+        $(".se-pre-con").fadeOut("slow");
+    });
+</script>
+<script type="text/javascript">
+    $(function() {
+        $('.travel-date-group .past-enabled').datepicker({
+            autoclose: true
+        });
+    });
+</script>
+
+<script>
+
+    if($(window).width() < 767) {
+        jQuery('.button-blue').html('<i class="icon-facebook"></i>');
+        jQuery('.button-blue').addClass('width_full');
+    }else{
+        jQuery('.button-blue').html('<i class="icon-facebook"></i> سجـل الدخول عن طريق الفيس بوك');
+
+    }
+
+</script>
+
+</body>
+<?php
 if(isset($_POST['signup_submit'])) {
 
 
@@ -34,6 +263,9 @@ if(isset($_POST['signup_submit'])) {
 
     $password   = $_POST['signup_password'];
     $password   = mysqli_real_escape_string($mysqli,$password);
+
+    $passwordre   = $_POST['signup_password_re'];
+    $passwordre   = mysqli_real_escape_string($mysqli,$passwordre);
 
     $fullName   = $_POST['signup_fullname'];
     $fullName   = mysqli_real_escape_string($mysqli,$fullName);
@@ -55,23 +287,25 @@ if(isset($_POST['signup_submit'])) {
 
     $query = "SELECT * From Users WHERE EMAIL = '{$userName}' ";
     $getHashAgent = mysqli_query($mysqli, $query);
-    if (mysqli_num_rows($getHashAgent) == 1) {
+    if (mysqli_num_rows($getHashAgent) > 0) {
+        ?>
+        <script>
+            openModal();
+        </script>
 
-        echo "<script>alert('هذا المستخدم مسجل مسبقا في موقعنا');</script>";
+        <?php
 
+    }elseif ($passwordre != $password){
+    ?>
+        <script>
+            openModal2();
+        </script>
+    <?php
+    }else{
 
-
-    } else{
-
-
-
-
-
-
-    //Sender
-
-    if(!empty($userName) && !empty($password)){
-        $query = "INSERT INTO Users(EMAIL,
+        //Sender
+        if(!empty($userName) && !empty($password) && !empty($passwordre)){
+            $query = "INSERT INTO Users(EMAIL,
                                 PASSWORD,
                                 NAME,
                                 PHONE,
@@ -80,7 +314,7 @@ if(isset($_POST['signup_submit'])) {
                                 SPENT,
                                 SITUATION,
                                 REG_DATE) ";
-        $query .= "VALUES('{$userName}',
+            $query .= "VALUES('{$userName}',
                     '{$encPassword}',
                     '{$fullName}',
                     '{$phone}',
@@ -90,17 +324,17 @@ if(isset($_POST['signup_submit'])) {
                     '{$situation}',
                     '{$date}') ";
 
-        $insertUser =  mysqli_query($mysqli, $query);
-        if (!$insertUser) {
-            die("Failed!" . mysqli_error($mysqli));
-        }else{
+            $insertUser =  mysqli_query($mysqli, $query);
+            if (!$insertUser) {
+                die("Failed!" . mysqli_error($mysqli));
+            }else{
 
 
                 $mail             = new PHPMailer(); // defaults to using php "mail()"
                 $mail->CharSet = 'UTF-8';
-            $mail->IsHTML(true);
+                $mail->IsHTML(true);
 
-            $body             = "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">
+                $body             = "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">
 <html xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\">
 <head>
 	<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />
@@ -430,163 +664,9 @@ if(isset($_POST['signup_submit'])) {
                     echo "Mailer Error: " . $mail->ErrorInfo;
                 }
                 header("Location: login.php");
+            }
         }
     }
 }
-}
 ?>
-<!DOCTYPE html>
-<html dir="rtl" lang="en-US">
-<head>
-
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="author" content="SemiColonWeb" />
-
-    <!-- Stylesheets
-    ============================================= -->
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
-    <link rel="stylesheet" href="style.css" type="text/css" />
-    <link rel="stylesheet" href="css/dark.css" type="text/css" />
-    <link rel="stylesheet" href="css/font-icons.css" type="text/css" />
-    <link rel="stylesheet" href="css/animate.css" type="text/css" />
-    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css" />
-    <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/droid-arabic-kufi" type="text/css"/>
-    <!-- Date & Time Picker CSS -->
-    <link rel="stylesheet" href="demos/travel/css/datepicker.css" type="text/css" />
-    <link rel="stylesheet" href="css/components/timepicker.css" type="text/css" />
-    <link rel="stylesheet" href="css/components/daterangepicker.css" type="text/css" />
-    <link rel="stylesheet" href="css/responsive.css" type="text/css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <!-- Document Title
-    ============================================= -->
-    <title>Al Rawi Theorie | Sign Up</title>
-
-</head>
-
-<body class="stretched" style="background: #fde7e7">
-
-<!-- Document Wrapper
-============================================= -->
-<div id="wrapper" class="clearfix">
-
-    <!-- Content
-    ============================================= -->
-    <section id="content">
-
-        <div class="content-wrap nopadding">
-
-            <div class="section nopadding nomargin" style="width: 100%; height: 100%; position: absolute; left: 0; top: 0; background: #fde7e7;"></div>
-
-            <div class="section nobg full-screen nopadding nomargin">
-                <div class="container vertical-middle divcenter clearfix">
-
-                    <div class="row center">
-                        <a href="index.php"><img src="images/2.png" alt="Al Rawi Logo"></a>
-                    </div>
-
-                    <div class="panel panel-default divcenter noradius noborder" style="max-width: 400px;">
-                        <div class="panel-body travel-date-group" style="padding: 40px;">
-                            <form id="signup-form" name="signup-form" class="nobottommargin" action="#" method="post" autocomplete="off">
-                                <h3 class="text-center">قم بإنشاء حساب جديد</h3>
-
-
-                                <div class="col_full">
-                                    <label for="login-form-username">البريد الإلكتروني (اسم المستخدم):*</label>
-                                    <input type="email" id="signup_username" name="signup_username" value="" class="form-control not-dark" autocomplete="off" required />
-                                </div>
-
-                                <div class="col_half">
-                                    <label for="login-form-password">كلمة مرور جديدة:*</label>
-                                    <input type="password" autocomplete="off" id="signup_password" name="signup_password" value="" class="form-control not-dark" required />
-                                </div>
-
-                                <div class="col_half col_last">
-                                    <label for="login-form-password">إعادة كلمة المرور:*</label>
-                                    <input type="password" autocomplete="off" id="signup_password_re" name="signup_password_re" value="" class="form-control not-dark" required/>
-                                </div>
-                                <div class="col_half">
-                                    <label for="login-form-username">الاسم الكامل:*</label>
-                                    <input type="text" autocomplete="off" id="signup_fullname" name="signup_fullname" value="" class="form-control not-dark" required/>
-                                </div>
-                                <div class="col_half col_last">
-                                    <label for="login-form-username">رقم الهاتف:</label>
-                                    <input type="text" autocomplete="off" id="signup_phone" name="signup_phone" value="" class="form-control not-dark" />
-                                </div>
-
-                                <div class="col_half">
-                                    <label for="login-form-username">تاريخ الميلاد:</label>
-                                    <input type="text" autocomplete="off" value="" id="signup_birthday" name="signup_birthday" class="sm-form-control past-enabled" placeholder="DD/MM/YYYY">
-                                </div>
-                                <div class="col_half col_last">
-                                    <label for="login-form-username">المدينة:</label>
-                                    <input type="text" autocomplete="off" id="signup_city" name="signup_city" value="" class="form-control not-dark" />
-                                </div>
-
-                                <div class="col_full nobottommargin">
-                                    <button class="button button-3d button-black nomargin" style="width: 100%" id="signup_submit" name="signup_submit" value="signup">إنشاء الحساب</button>
-                                </div>
-
-<!--                                <div class="col_full topmargin-sm nobottommargin">-->
-<!--                                    <a href="--><?php //echo htmlspecialchars($loginUrl) ?><!--" class="button button-border button-rounded button-blue" style="direction: rtl"></a>-->
-<!--                                    <!--                                --><?php ////echo '<a href="' . . '">Log in with Facebook!</a>'; ?>
-<!--                                </div>-->
-
-                            </form>
-                        </div>
-                    </div>
-
-                    <div class="row center"><small>Copyrights &copy; All Rights Reserved by Alrawi Theorie Wbsite</small></div>
-                    <div class="row center"><small>Developed by <a target="_blank" href="http://www.el-semicolon.nl">El-Semicolon; <img src="images/logoES.png" style="width: 64px;height: 64px;"/></a></small></div>
-
-                </div>
-            </div>
-
-        </div>
-
-    </section><!-- #content end -->
-
-</div><!-- #wrapper end -->
-
-<!-- Go To Top
-============================================= -->
-<div id="gotoTop" class="icon-angle-up"></div>
-
-<!-- External JavaScripts
-============================================= -->
-<script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="js/plugins.js"></script>
-<!-- Date & Time Picker JS -->
-<script type="text/javascript" src="js/components/moment.js"></script>
-<script type="text/javascript" src="demos/travel/js/datepicker.js"></script>
-<script type="text/javascript" src="js/components/timepicker.js"></script>
-<!-- Include Date Range Picker -->
-<script type="text/javascript" src="js/components/daterangepicker.js"></script>
-<!-- Footer Scripts
-============================================= -->
-<script type="text/javascript" src="js/functions.js"></script>
-
-
-<script type="text/javascript">
-    $(function() {
-        $('.travel-date-group .past-enabled').datepicker({
-            autoclose: true
-        });
-    });
-</script>
-
-<script>
-
-    if($(window).width() < 767) {
-        jQuery('.button-blue').html('<i class="icon-facebook"></i>');
-        jQuery('.button-blue').addClass('width_full');
-    }else{
-        jQuery('.button-blue').html('<i class="icon-facebook"></i> سجـل الدخول عن طريق الفيس بوك');
-
-    }
-
-</script>
-
-</body>
 </html>
