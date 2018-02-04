@@ -678,15 +678,17 @@ $onlinePRows = mysqli_num_rows($onlineP_num_rows);
 
 
        <script>
-
+           var hold = 0;
            setInterval(function(){
                LoadChat();
-           }, 500);
+           }, 1500);
            function LoadChat(){
                $.post('handle_online.php',function(response){
 
+                   if(response != hold){
+                    hold = response;
                    $('#onlineUsers').html(response);
-
+                   }
                });
            }
        </script>
