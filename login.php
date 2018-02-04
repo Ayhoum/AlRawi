@@ -1,21 +1,22 @@
 <?php
+session_start();
 ob_start();
-
-   session_start();
-   session_unset();
-
-require_once 'include/Facebook/autoload.php';
-
-$fb = new Facebook\Facebook([
-    'app_id' => '1973832622891754', // Replace {app-id} with your app id
-    'app_secret' => '51a14598cbecc6b9a7897f3338fd167d',
-    'default_graph_version' => 'v2.2',
-]);
-
-$helper = $fb->getRedirectLoginHelper();
-
-$permissions = ['email']; // Optional permissions
-$loginUrl = $helper->getLoginUrl('https://www.alrawitheorie.nl/fb-callback.php', $permissions);
+if(isset($_SESSION['email'])){
+    header("Location: profile.php");
+}
+   //
+//require_once 'include/Facebook/autoload.php';
+//
+//$fb = new Facebook\Facebook([
+//    'app_id' => '1973832622891754', // Replace {app-id} with your app id
+//    'app_secret' => '51a14598cbecc6b9a7897f3338fd167d',
+//    'default_graph_version' => 'v2.2',
+//]);
+//
+//$helper = $fb->getRedirectLoginHelper();
+//
+//$permissions = ['email']; // Optional permissions
+//$loginUrl = $helper->getLoginUrl('https://www.alrawitheorie.nl/fb-callback.php', $permissions);
 
 
 include 'scripts/db_connection.php';
@@ -40,43 +41,34 @@ include 'scripts/db_connection.php';
     <link rel="stylesheet" href="css/animate.css" type="text/css" />
     <link rel="stylesheet" href="css/magnific-popup.css" type="text/css" />
     <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/droid-arabic-kufi" type="text/css"/>
-
+    <link rel="stylesheet" href="css/remodal.css">
+    <link rel="stylesheet" href="css/remodal-default-theme.css">
     <link rel="stylesheet" href="css/responsive.css" type="text/css" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
 
-<?php
-
-if(isset($_POST['login_submit'])) {
-
-    $email = $_POST['login_username'];
-    $email = mysqli_real_escape_string($mysqli, $email);
-    $pass = $_POST['login_password'];
-    $pass = mysqli_real_escape_string($mysqli, $pass);
-
-
-    $query = "SELECT * From Users WHERE EMAIL = '{$email}' ";
-    $getHashAgent = mysqli_query($mysqli, $query);
-    if (mysqli_num_rows($getHashAgent) == 1) {
-        while ($row = mysqli_fetch_assoc($getHashAgent)) {
-            $hash = $row['PASSWORD'];
-            $name = $row['NAME'];
-            if ((password_verify($pass, $hash))) {
-                $role = "user";
-                $_SESSION['email'] = $email;
-                $_SESSION['username'] = $name;
-                $_SESSION['role'] = $role;
-                header("Location: profile.php");
-            } else {
-                header("Location: wrong_login.php");
-
-            }
+        .no-js #loader { display: none;  }
+        .js #loader { display: block; position: absolute; left: 100px; top: 0; }
+        .se-pre-con {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background: url(images/2.png) center no-repeat #fff2f2;
         }
-    }else {
-        header("Location: wrong_login.php");
 
-    }
-}
-?>
+        .pre-pre {
+            position: fixed;
+            left: 0;
+            top: 150px;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background: url(images/preloader@2x.gif) center no-repeat;
+        }
+    </style>
     <!-- Document Title
     ============================================= -->
     <title>Al Rawi Theorie | Log In</title>
@@ -159,7 +151,15 @@ if(isset($_POST['login_submit'])) {
     </section><!-- #content end -->
 
 </div><!-- #wrapper end -->
-
+<div class="remodal" data-remodal-id="modal">
+    <button data-remodal-action="close" class="remodal-close"></button>
+    <h2 style="text-align: center">حدث خطأ أثناء تسجيل الدخول</h2>
+    <p style="direction: rtl">
+        يرجى تسجيل الخروج من باقي الأجهزة قبل تسجيل الدخول مرة أخرى!
+    </p>
+    <br>
+    <button data-remodal-action="confirm" class="remodal-confirm">حسناً</button>
+</div>
 <!-- Go To Top
 ============================================= -->
 <div id="gotoTop" class="icon-angle-up"></div>
@@ -184,6 +184,70 @@ if(isset($_POST['login_submit'])) {
         }
 
 </script>
+<script src="js/remodal.js"></script>
 
+<script>
+    var inst;
+    var openModal = function () {
+        inst = $('[data-remodal-id=modal]').remodal({
+            closeOnOutsideClick:false
+        });
+        inst.open();
+        $(document).on('confirmation', '.remodal', function () {
+            console.log('Confirmation button is clicked');
+        });
+    };
+
+</script>
 </body>
+<?php
+
+if(isset($_POST['login_submit'])) {
+
+    $email = $_POST['login_username'];
+    $email = mysqli_real_escape_string($mysqli, $email);
+    $pass = $_POST['login_password'];
+    $pass = mysqli_real_escape_string($mysqli, $pass);
+
+
+    $query = "SELECT * From Users WHERE EMAIL = '{$email}' ";
+    $getHashAgent = mysqli_query($mysqli, $query);
+    if (mysqli_num_rows($getHashAgent) == 1) {
+        while ($row = mysqli_fetch_assoc($getHashAgent)) {
+            $hash = $row['PASSWORD'];
+            $name = $row['NAME'];
+            $id = $row['ID'];
+            $status = $row['ACTIVE_STATUS'];
+            if ((password_verify($pass, $hash))) {
+                if($status == 1){
+                    ?>
+                    <script>
+                        <?php
+                        $queryUpdate = "UPDATE Users SET ACTIVE_STATUS = '0' WHERE ID = '{$id}'";
+                        $updateStatue = mysqli_query($mysqli,$queryUpdate);
+                        ?>
+                        openModal();
+                    </script>
+                    <?php
+                }else{
+                    $role = "user";
+                    $_SESSION['email'] = $email;
+                    $_SESSION['username'] = $name;
+                    $_SESSION['role'] = $role;
+                    $queryUpdate = "UPDATE Users SET ACTIVE_STATUS = '1' WHERE ID = '{$id}'";
+                    $updateStatue = mysqli_query($mysqli,$queryUpdate);
+
+                    header("Location: profile.php");
+                }
+            } else {
+                header("Location: wrong_login.php");
+
+            }
+        }
+    }else {
+        header("Location: wrong_login.php");
+
+    }
+}
+?>
 </html>

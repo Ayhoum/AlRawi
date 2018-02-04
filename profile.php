@@ -3,6 +3,8 @@ session_start();
 ob_start();
 if (!isset($_SESSION['username'])){
     header("Location: login.php");
+}else{
+    $email = $_SESSION['email'];
 }
 include 'scripts/db_connection.php';
 if(isset($_SESSION['answers'])){
@@ -14,7 +16,20 @@ if(isset($_SESSION['answersOrder'])){
 if(isset($_COOKIE['question'])){
     $_COOKIE['question'] = null;
 }
+
+$query1 = "SELECT * FROM Users WHERE EMAIL = '{$email}' ";
+$result1 = mysqli_query($mysqli, $query1);
+if (mysqli_num_rows($result1) > 0) {
+    while ($row = mysqli_fetch_assoc($result1)) {
+        $user_id = $row['ID'];
+        $statusUser = $row['ACTIVE_STATUS'];
+    }
+}
+if($statusUser == 0){
+    header("Location: force_logout.php");
+}
 ?>
+
 <!DOCTYPE html>
 <html dir="ltr" lang="en-US">
 <head>
@@ -627,6 +642,11 @@ if(isset($_COOKIE['question'])){
     $(window).load(function() {
 // Animate loader off screen
         $(".pre-pre").fadeOut("slow");
+    });
+
+    $(window).unload(function() {
+// Animate loader off screen
+        alert('Hi');
     });
 </script>
 
