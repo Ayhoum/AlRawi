@@ -109,12 +109,12 @@ include 'scripts/db_connection.php';
 
                                 <div class="col_full">
                                     <label for="login_username">البريد الإلكتروني:</label>
-                                    <input type="email" id="login_username" name="login_username" value="" class="form-control not-dark" />
+                                    <input type="email" id="login_username" name="login_username" value="" class="form-control not-dark" required/>
                                 </div>
 
                                 <div class="col_full">
                                     <label for="login_password">كلمة المرور:</label>
-                                    <input type="password" id="login_password" name="login_password" value="" class="form-control not-dark" />
+                                    <input type="password" id="login_password" name="login_password" value="" class="form-control not-dark" required/>
                                 </div>
 
                                 <div class="col_full nobottommargin">
@@ -160,6 +160,16 @@ include 'scripts/db_connection.php';
     <br>
     <button data-remodal-action="confirm" class="remodal-confirm">حسناً</button>
 </div>
+
+<div class="remodal" data-remodal-id="modal2">
+    <button data-remodal-action="close" class="remodal-close"></button>
+    <h2 style="text-align: center">يرجى الإنتباه</h2>
+    <p style="direction: rtl">
+        قام أحدهم بتسجيل الدخول باستخدام حسابكم الخاص<br>يرجى تسجيل الدخول مرة أخرى
+    </p>
+    <br>
+    <button data-remodal-action="confirm" class="remodal-confirm">حسناً</button>
+</div>
 <!-- Go To Top
 ============================================= -->
 <div id="gotoTop" class="icon-angle-up"></div>
@@ -198,10 +208,27 @@ include 'scripts/db_connection.php';
         });
     };
 
+
+    var inst2;
+    var openModal2 = function () {
+        inst2 = $('[data-remodal-id=modal2]').remodal({
+            closeOnOutsideClick:false
+        });
+        inst2.open();
+        $(document).on('confirmation', '.remodal', function () {
+            console.log('Confirmation button is clicked');
+        });
+    };
 </script>
 </body>
 <?php
-
+if(isset($_GET['reason'])){
+    ?>
+<script>
+    openModal2();
+</script>
+<?php
+}
 if(isset($_POST['login_submit'])) {
 
     $email = $_POST['login_username'];

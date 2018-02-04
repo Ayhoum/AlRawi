@@ -18,5 +18,5 @@ $queryUpdate = "UPDATE Users SET ACTIVE_STATUS = '0' WHERE ID = '{$user_id}'";
 $updateStatue = mysqli_query($mysqli,$queryUpdate);
 
 session_destroy();
-header("Location: login.php");
+header("Location: login.php?reason=anotherUser");
 ?>
