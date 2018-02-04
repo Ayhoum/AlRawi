@@ -41,7 +41,17 @@ $paidRows = mysqli_num_rows($paid_num_rows);
 $examsQuery = "SELECT * FROM QUESTION_SET";
 $exams_num_rows = mysqli_query($mysqli, $examsQuery);
 $examsRows = mysqli_num_rows($exams_num_rows);
+
+
+$onlineQuery = "SELECT * FROM Users WHERE ACTIVE_STATUS = 1";
+$online_num_rows = mysqli_query($mysqli, $onlineQuery);
+$onlineRows = mysqli_num_rows($online_num_rows);
+
+$onlinePQuery = "SELECT * FROM Users WHERE ACTIVE_STATUS = 1 AND SPENT > 0";
+$onlineP_num_rows = mysqli_query($mysqli, $onlinePQuery);
+$onlinePRows = mysqli_num_rows($onlineP_num_rows);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -254,6 +264,33 @@ $examsRows = mysqli_num_rows($exams_num_rows);
                                 </div>
                             </div>
 
+                            <div class="col-md-6 col-lg-6">
+                                <div class="card white-text clearfix" style="background-color: #2A094A !important;">
+
+                                    <div class="card-content clearfix">
+                                        <i class="fa fa-users background-icon"></i>
+                                        <p class="card-stats-title right card-title  wdt-lable">ONLINE USERS</p>
+                                        <h4 class="right panel-middle margin-b-0 wdt-lable" id="onlineUsers"></h4>
+
+                                        <div class="clearfix"></div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-lg-6">
+                                <div class="card white-text clearfix" style="background-color: #9B0F28 !important;">
+
+                                    <div class="card-content clearfix">
+                                        <i class="fa fa-check-circle background-icon"></i>
+                                        <p class="card-stats-title right card-title  wdt-lable">ONLINE AND PURCHASED</p>
+                                        <h4 class="right panel-middle margin-b-0 wdt-lable"><?php echo $onlinePRows ?></h4>
+
+                                        <div class="clearfix"></div>
+                                    </div>
+
+                                </div>
+                            </div>
                         </div>
 
                         <div class="row">
@@ -639,6 +676,20 @@ $examsRows = mysqli_num_rows($exams_num_rows);
             <script src="assets/plugins/toastr/toastr.min.js"></script>
         <script type="text/javascript" src="assets/js/index.js"></script>
 
+
+       <script>
+
+           setInterval(function(){
+               LoadChat();
+           }, 500);
+           function LoadChat(){
+               $.post('handle_online.php',function(response){
+
+                   $('#onlineUsers').html(response);
+
+               });
+           }
+       </script>
 
        <script>
            var newUsers = <?php echo round($newPer, 1); ?>;

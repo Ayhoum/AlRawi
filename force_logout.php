@@ -1,8 +1,8 @@
 <?php
-include 'scripts/db_connection.php';
-
 session_start();
 ob_start();
+include 'scripts/db_connection.php';
+
 if (isset($_SESSION['username'])) {
     $email = $_SESSION['email'];
     $query = "SELECT * FROM Users WHERE EMAIL = '{$email}' ";
