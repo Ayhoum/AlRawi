@@ -155,11 +155,14 @@ include 'scripts/db_connection.php';
     <button data-remodal-action="close" class="remodal-close"></button>
     <h2 style="text-align: center">حدث خطأ أثناء تسجيل الدخول</h2>
     <p style="direction: rtl">
-        يرجى تسجيل الخروج من باقي الأجهزة قبل تسجيل الدخول مرة أخرى!
+        يبدو أنه لم يتم تسجيل الخروج بشكل صحيح المرة الماضية أو أنه لم يتم تسجيل الخروج من أجهزة أخرى<br>
+        <b>تم تسجيل الخروج من جميع الأجهزة المرتبطة بهذا الحساب الآن</b><br>
+        يمكنكم إعادة تسجيل الدخول
     </p>
     <br>
     <button data-remodal-action="confirm" class="remodal-confirm">حسناً</button>
 </div>
+
 
 <div class="remodal" data-remodal-id="modal2">
     <button data-remodal-action="close" class="remodal-close"></button>
