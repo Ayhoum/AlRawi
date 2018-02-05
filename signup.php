@@ -148,7 +148,7 @@ $loginUrl = $helper->getLoginUrl('https://www.alrawitheorie.nl/fb-callback.php',
 <!--                                </div>-->
 
                                 <div class="col_full topmargin-sm nobottommargin">
-                                    <a href="login.php" class="fright text-center" style="width: 100%">لديك حساب بالفعل؟ قم بتسجيل الدخول</a>
+                                    <a href="login.php" class="fright text-center" style="width: 100%">لديك حساب مسبقاً؟ قم بتسجيل الدخول</a>
                                 </div>
                             </form>
                         </div>
