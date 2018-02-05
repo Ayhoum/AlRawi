@@ -147,6 +147,9 @@ $loginUrl = $helper->getLoginUrl('https://www.alrawitheorie.nl/fb-callback.php',
 <!--                                    <!--                                --><?php ////echo '<a href="' . . '">Log in with Facebook!</a>'; ?>
 <!--                                </div>-->
 
+                                <div class="col_full topmargin-sm nobottommargin">
+                                    <a href="login.php" class="fright text-center" style="width: 100%">لديك حساب بالفعل؟ قم بتسجيل الدخول</a>
+                                </div>
                             </form>
                         </div>
                     </div>
