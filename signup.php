@@ -155,7 +155,7 @@ $loginUrl = $helper->getLoginUrl('https://www.alrawitheorie.nl/fb-callback.php',
                     </div>
 
                     <div class="row center"><small>Copyrights &copy; All Rights Reserved by Alrawi Theorie Wbsite</small></div>
-                    <div class="row center"><small>Developed by <a target="_blank" href="http://www.el-semicolon.nl">El-Semicolon; <img src="images/logoES.png" style="width: 64px;height: 64px;"/></a></small></div>
+                    <div class="row center" style="direction: ltr"><small>Developed by <a target="_blank" href="http://www.el-semicolon.nl">El-Semicolon; <img src="images/logoES.png" style="width: 64px;height: 64px;"/></a></small></div>
 
                 </div>
             </div>
