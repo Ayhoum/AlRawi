@@ -547,7 +547,7 @@ if (isset($_POST['submit'])) {
                 <div class="row reasonRow" id="reason<?php echo $x; ?>">
                     <div class="col-sm-12">
                         <p class="text-center topmargin-sm"
-                           style="font-size:18px;"><?php echo $reason ?></p>
+                           style="font-size:18px;direction: rtl;"><?php echo $reason ?></p>
                     </div>
                 </div>
             </div>
@@ -726,7 +726,7 @@ if (isset($_POST['submit'])) {
         <div class="row reasonRow" id="reason<?php echo $x; ?>">
             <div class="col-sm-12">
                 <p class="text-center topmargin-sm"
-                   style="font-size:18px;"><?php echo $reason ?></p>
+                   style="font-size:18px;direction: rtl;"><?php echo $reason ?></p>
             </div>
         </div>
 
