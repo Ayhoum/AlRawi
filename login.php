@@ -269,6 +269,9 @@ if(isset($_POST['login_submit'])) {
                                     $updateStatue = mysqli_query($mysqli,$queryUpdate);
                                 }
 
+                                $queryUpdate = "UPDATE Users SET ACCOUNT_STATUS = 'BLOCKED' WHERE ID = '{$id}'";
+                                $updateStatue = mysqli_query($mysqli,$queryUpdate);
+
                                 $queryDelete = "DELETE FROM `SUS_USERS` WHERE USER_ID = '{$id}'";
                                 $runDelete = mysqli_query($mysqli,$queryDelete);
                             }
