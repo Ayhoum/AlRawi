@@ -17,17 +17,17 @@ if(isset($_COOKIE['question'])){
     $_COOKIE['question'] = null;
 }
 
-$query1 = "SELECT * FROM Users WHERE EMAIL = '{$email}' ";
-$result1 = mysqli_query($mysqli, $query1);
-if (mysqli_num_rows($result1) > 0) {
-    while ($row = mysqli_fetch_assoc($result1)) {
-        $user_id = $row['ID'];
-        $statusUser = $row['ACTIVE_STATUS'];
-    }
-}
-if($statusUser == 0){
-    header("Location: force_logout.php");
-}
+//$query1 = "SELECT * FROM Users WHERE EMAIL = '{$email}' ";
+//$result1 = mysqli_query($mysqli, $query1);
+//if (mysqli_num_rows($result1) > 0) {
+//    while ($row = mysqli_fetch_assoc($result1)) {
+//        $user_id = $row['ID'];
+//        $statusUser = $row['ACTIVE_STATUS'];
+//    }
+//}
+//if($statusUser == 0){
+//    header("Location: force_logout.php");
+//}
 ?>
 
 <!DOCTYPE html>

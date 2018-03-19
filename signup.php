@@ -131,7 +131,7 @@ $loginUrl = $helper->getLoginUrl('https://www.alrawitheorie.nl/fb-callback.php',
 
                                 <div class="col_half">
                                     <label for="login-form-username">تاريخ الميلاد:</label>
-                                    <input type="text" autocomplete="off" value="" id="signup_birthday" name="signup_birthday" class="sm-form-control past-enabled" placeholder="DD/MM/YYYY">
+                                    <input type="text" autocomplete="off" style="background: #fff;cursor: text;" value="" id="signup_birthday" readonly name="signup_birthday" class="sm-form-control past-enabled" placeholder="DD/MM/YYYY">
                                 </div>
                                 <div class="col_half col_last">
                                     <label for="login-form-username">المدينة:</label>

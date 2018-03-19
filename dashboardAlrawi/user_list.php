@@ -101,6 +101,8 @@ include '../scripts/db_connection.php';
                                     <!--                                    <li><a href="user_profile.html">profile</a></li>-->
                                     <li><a href="user_list.php">Users list</a></li>
                                     <li><a href="free_packet.php">Give a free packet</a></li>
+                                    <li><a href="ba_users.php">Suspicious Users</a></li>
+
                                 </ul>
                             </li>
                             <li class="nav-heading"><span>FREE EXAMS</span></li>

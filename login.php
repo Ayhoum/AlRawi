@@ -155,24 +155,13 @@ include 'scripts/db_connection.php';
     <button data-remodal-action="close" class="remodal-close"></button>
     <h2 style="text-align: center">حدث خطأ أثناء تسجيل الدخول</h2>
     <p style="direction: rtl">
-        يبدو أنه لم يتم تسجيل الخروج بشكل صحيح المرة الماضية أو أنه لم يتم تسجيل الخروج من أجهزة أخرى<br>
-        <b>تم تسجيل الخروج من جميع الأجهزة المرتبطة بهذا الحساب الآن</b><br>
-        يمكنكم إعادة تسجيل الدخول
+        لقد تم حظر حسابكم مع الأسف<br>وذلك نتيجة لاشتباهنا بأنه يتم استخدام الحساب الواحد من قبل أكثر من شخص<br>يرجى التواصل مع إدارة الموقع لحل المشكلة
     </p>
     <br>
     <button data-remodal-action="confirm" class="remodal-confirm">حسناً</button>
 </div>
 
 
-<div class="remodal" data-remodal-id="modal2">
-    <button data-remodal-action="close" class="remodal-close"></button>
-    <h2 style="text-align: center">يرجى الإنتباه</h2>
-    <p style="direction: rtl">
-        قام أحدهم بتسجيل الدخول باستخدام حسابكم الخاص<br>يرجى تسجيل الدخول مرة أخرى
-    </p>
-    <br>
-    <button data-remodal-action="confirm" class="remodal-confirm">حسناً</button>
-</div>
 <!-- Go To Top
 ============================================= -->
 <div id="gotoTop" class="icon-angle-up"></div>
@@ -224,14 +213,9 @@ include 'scripts/db_connection.php';
     };
 </script>
 </body>
+
 <?php
-if(isset($_GET['reason'])){
-    ?>
-<script>
-    openModal2();
-</script>
-<?php
-}
+
 if(isset($_POST['login_submit'])) {
 
     $email = $_POST['login_username'];
@@ -248,17 +232,59 @@ if(isset($_POST['login_submit'])) {
             $name = $row['NAME'];
             $id = $row['ID'];
             $status = $row['ACTIVE_STATUS'];
+            $accountStat = $row['ACCOUNT_STATUS'];
+            if($accountStat == "ACTIVE"){
             if ((password_verify($pass, $hash))) {
                 if($status == 1){
-                    ?>
-                    <script>
-                        <?php
-                        $queryUpdate = "UPDATE Users SET ACTIVE_STATUS = '0' WHERE ID = '{$id}'";
-                        $updateStatue = mysqli_query($mysqli,$queryUpdate);
-                        ?>
-                        openModal();
-                    </script>
-                    <?php
+                    $role = "user";
+                    $_SESSION['email'] = $email;
+                    $_SESSION['username'] = $name;
+                    $_SESSION['role'] = $role;
+
+                    $queryUpdate = "UPDATE Users SET ACTIVE_STATUS = '0' WHERE ID = '{$id}'";
+                    $updateStatue = mysqli_query($mysqli,$queryUpdate);
+
+                    $selectQuery = "SELECT * FROM `SUS_USERS` WHERE USER_ID = '{$id}'";
+                    $runSelect = mysqli_query($mysqli,$selectQuery);
+                    if(mysqli_num_rows($runSelect) > 0){
+                        while($row= mysqli_fetch_assoc($runSelect)){
+                            $Rid = $row['ID'];
+                            $times = $row['TIMES'];
+                            $time = $row['TIME'];
+                            $times++;
+                        }
+
+                        date_default_timezone_set('Europe/Amsterdam');
+                        if(date('Y-m-d H:i:s') < date("Y-m-d H:i:s", strtotime($time.'+30 minutes'))){
+                            $now = date('Y-m-d H:i:s');
+                            $queryUpdate = "UPDATE SUS_USERS SET TIMES = '{$times}',TIME ='{$now}' WHERE ID = '{$Rid}'";
+                            $updateStatue = mysqli_query($mysqli,$queryUpdate);
+                            if($times > 2){
+
+                                $selectB = "SELECT * FROM BUSERS WHERE USER_ID = '{$id}'";
+                                $runSelectB = mysqli_query($mysqli,$selectB);
+
+                                if(mysqli_num_rows($runSelectB) == 0){
+                                    $queryUpdate = "INSERT INTO `BUSERS`(`USER_ID`) VALUES ('{$id}')";
+                                    $updateStatue = mysqli_query($mysqli,$queryUpdate);
+                                }
+
+                                $queryDelete = "DELETE FROM `SUS_USERS` WHERE USER_ID = '{$id}'";
+                                $runDelete = mysqli_query($mysqli,$queryDelete);
+                            }
+                        }
+
+                    }else{
+                        date_default_timezone_set('Europe/Amsterdam');
+                        $now = date('Y-m-d H:i:s');
+                        $queryInsert = "INSERT INTO `SUS_USERS`(`USER_ID`,`TIME`) VALUES ('{$id}','{$now}')";
+                        $runInsert = mysqli_query($mysqli,$queryInsert);
+                    }
+
+
+
+                    header("Location: profile.php");
+
                 }else{
                     $role = "user";
                     $_SESSION['email'] = $email;
@@ -272,6 +298,11 @@ if(isset($_POST['login_submit'])) {
             } else {
                 header("Location: wrong_login.php");
 
+            }
+            }else{
+                ?>
+<script>openModal();</script>
+            <?php
             }
         }
     }else {
