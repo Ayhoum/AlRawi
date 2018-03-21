@@ -255,7 +255,7 @@ if(isset($_POST['login_submit'])) {
                         }
 
                         date_default_timezone_set('Europe/Amsterdam');
-                        if(date('Y-m-d H:i:s') < date("Y-m-d H:i:s", strtotime($time.'+30 minutes'))){
+                        if(date('Y-m-d H:i:s') < date("Y-m-d H:i:s", strtotime($time.'+1 hour'))){
                             $now = date('Y-m-d H:i:s');
                             $queryUpdate = "UPDATE SUS_USERS SET TIMES = '{$times}',TIME ='{$now}' WHERE ID = '{$Rid}'";
                             $updateStatue = mysqli_query($mysqli,$queryUpdate);
