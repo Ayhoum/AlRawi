@@ -126,6 +126,8 @@ if(isset($_POST['update'])){
                         <ul class="nav nav-second-level collapse">
                             <li><a href="add_free_exam.php">New Exam</a></li>
                             <li><a href="free_exams.php"> Manage Free Exams</a></li>
+                            <li style="background: #C35462;"><a href="add_free_exam_trucks.php">New <b style="color: #2A094A;">Trucks</b> Exam</a></li>
+                            <li style="background: #C35462;"><a href="free_exams_trucks.php"> Manage Free <b style="color: #2A094A;">Trucks</b> Exams</a></li>
                         </ul>
                     </li>
                     <li class="nav-heading"><span>PAID EXAMS</span></li>

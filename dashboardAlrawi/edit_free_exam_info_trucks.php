@@ -3,12 +3,29 @@ session_start();
 ob_start();
 include '../scripts/db_connection.php';
 
+if (isset($_GET['id'])) {
+    $setId = $_GET['id'];
+}
+
+if(isset($_POST['update'])){
+    $examName = $_POST['exam_name'];
+    $query  = "UPDATE FREE_QUESTION_SET_TRUCK SET EXAM_NAME = '{$examName}' WHERE ID = $setId";
+    $result = mysqli_query($mysqli, $query);
+    if (!$result) {
+        die("Failed to update a new exam". mysqli_error($mysqli));
+    } else {
+        header("Location: free_exams_trucks.php");
+    }
+}
+
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>Users Block/Activate</title>
+    <title>Al-Rawi Admin Dashboard</title>
     <meta name="keywords" content="HTML5,CSS3,Admin Template" />
     <meta name="description" content="" />
     <meta name="Author" content="Psd2allconversion [www.psd2allconversion.com]" />
@@ -30,7 +47,7 @@ include '../scripts/db_connection.php';
     <link href="assets/plugins/widget/widget.css" rel="stylesheet">
     <link href="assets/plugins/calendar/fullcalendar.min.css" rel="stylesheet">
     <link href="assets/plugins/ui/jquery-ui.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="assets/plugins/toastr/toastr.min.css"/>
     <!-- THEME CSS -->
     <link href="assets/css/style.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/theme/dark.css" rel="stylesheet" type="text/css" />
@@ -40,7 +57,6 @@ include '../scripts/db_connection.php';
 </head>
 <body>
 
-<!-- wrapper -->
 <div id="wrapper">
     <!-- BEGIN HEADER -->
     <div class="page-header navbar fixed-top">
@@ -54,7 +70,6 @@ include '../scripts/db_connection.php';
             </div><div class="menu-toggler sidebar-toggler">
                 <a href="javascript:" class="navbar-minimalize minimalize-styl-2  float-left "><i class="fa fa-bars"></i></a>
             </div>
-
 
             <!-- END LOGO -->
 
@@ -73,7 +88,8 @@ include '../scripts/db_connection.php';
                     </li>
                     <!-- END USER LOGIN DROPDOWN -->
                 </ul>
-            </div>                    <!-- END TOP NAVIGATION MENU -->
+            </div>
+            <!-- END TOP NAVIGATION MENU -->
         </div>
         <!-- END HEADER INNER -->
     </div>
@@ -101,6 +117,7 @@ include '../scripts/db_connection.php';
                             <!--                                    <li><a href="user_profile.html">profile</a></li>-->
                             <li><a href="user_list.php">Users list</a></li>
                             <li><a href="free_packet.php">Give a free packet</a></li>
+                            <li><a href="ba_users.php">Suspicious Users</a></li>
                         </ul>
                     </li>
                     <li class="nav-heading"><span>FREE EXAMS</span></li>
@@ -156,42 +173,64 @@ include '../scripts/db_connection.php';
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="page-title">
-                            <h4 class="float-left">Users Block/Activate </h4>
+                            <h4 class="float-left">Edit Free Exam <b style="color: #2A094A;">Trucks</b></h4>
                         </div>
                     </div>
                 </div><!-- end .page title-->
+
                 <?php
-                if(isset($_GET['source'])){
-                    $source = $_GET['source'];
-                }else{
-                    $source = '';
-                }
-                switch($source){
-                    default:
-                        include "view_ba_users.php";
-                        break;
+                $query = "SELECT * FROM FREE_QUESTION_SET_TRUCK WHERE ID = $setId";
+                $getName = mysqli_query($mysqli,$query);
+                while ($row = mysqli_fetch_assoc($getName)){
+                    $name = $row['EXAM_NAME'];
                 }
                 ?>
-            </div>
-        </div>
-        <div class="clearfix"></div>
-        <div class="footer">
-            <?php
-            $query = "SELECT * FROM Website";
-            $getWeb = mysqli_query($mysqli,$query);
-            while ($row = mysqli_fetch_assoc($getWeb)){
-                $website = $row['DevWeb'];
-            }
-            ?>
-            <div>
-                <strong>Copyright</strong> <a target="_blank" href="<?php echo $website;?>">El-Semicolon;  </a> © <?php echo date('Y') ;?>
-            </div>
-        </div>
-    </div>
-    <!-- END CONTENT BODY -->
-</div>
-<!-- END CONTAINER -->
 
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-card margin-b-30">
+                            <!-- Start .panel -->
+                            <div class="panel-heading">
+                                Update Exam Name <b style="color: #2A094A;">Trucks</b>
+                            </div>
+                            <div class="panel-body  p-xl-3">
+                                <form method="post" action="edit_free_exam_info_trucks.php?id=<?php echo $setId;?>" class="form-horizontal" data-toggle="validator">
+                                    <div class="form-group row"><label class="col-sm-4 form-control-label">Exam's Name</label>
+                                        <div class="col-sm-10">
+                                            <input name="exam_name" value="<?php echo $name;?>" type="text" class="form-control" required></div>
+                                    </div>
+                                    <div class="hr-line-dashed"></div>
+                                    <div class="form-group row">
+                                        <div class="col-sm-8 col-sm-offset-0">
+                                            <input name= "update" class="btn btn-primary" type="submit" value="Update">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="clearfix"></div>
+            <div class="footer">
+                <?php
+                $query = "SELECT * FROM Website";
+                $getWeb = mysqli_query($mysqli,$query);
+                while ($row = mysqli_fetch_assoc($getWeb)){
+                    $website = $row['DevWeb'];
+                }
+                ?>
+                <div>
+                    <strong>Copyright</strong> <a target="_blank" href="<?php echo $website;?>">El-Semicolon;  </a> © <?php echo date('Y') ;?>
+                </div>
+            </div>
+        </div>
+        <!-- END CONTENT BODY -->
+    </div>
+    <!-- END CONTAINER -->
+</div>
 <!-- /wrapper -->
 
 
@@ -211,6 +250,7 @@ include '../scripts/db_connection.php';
 
 <script type="text/javascript" src="assets/plugins/jquery/jquery.min.js"></script>
 <script type="text/javascript" src="assets/plugins/metis-menu/metisMenu.min.js"></script>
+
 <script type="text/javascript" src="assets/plugins/bootstrap/js/tether.min.js"></script>
 <script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="assets/plugins/slim-scroll/jquery.slimscroll.min.js"></script>
@@ -222,46 +262,17 @@ include '../scripts/db_connection.php';
 <script src="assets/plugins/ui/jquery-ui.js"></script>
 <script src="assets/plugins/map/jquery-jvectormap-1.2.2.min.js"></script>
 <script src="assets/plugins/map/jquery-jvectormap-world-mill-en.js"></script>
-
+<script src="assets/plugins/morris_chart/morris.js"></script>
+<script src="assets/plugins/morris_chart/raphael-2.1.0.min.js"></script>
 <!-- PAGE LEVEL FILES -->
 <script src="assets/plugins/data-tables/jquery.dataTables.js"></script>
 <script src="assets/plugins/data-tables/dataTables.tableTools.js"></script>
-<script src="assets/plugins/data-tables/dataTables.bootstrap.js"></script>
+<script src="assets/plugins/data-tables/dataTables.bootstrap4.min.js"></script>
 <script src="assets/plugins/data-tables/dataTables.responsive.js"></script>
 <script src="assets/plugins/data-tables/tables-data.js"></script>
-<script src="http://maps.google.com/maps/api/js?sensor=true"></script>
-
 <!-- Custom FILES -->
 <script type="text/javascript" src="assets/js/custom.js"></script>
-
+<script src="assets/plugins/toastr/toastr.min.js"></script>
+<script type="text/javascript" src="assets/js/index.js"></script>
 </body>
 </html>
-<?php
-if(isset($_GET['block'])){
-
-    $the_user_id = $_GET['block'];
-    $query = "UPDATE Users SET ACCOUNT_STATUS = 'BLOCKED' WHERE ID = {$the_user_id}";
-    $user_query = mysqli_query($mysqli, $query);
-    if(!$user_query){
-        die("Failed!" . mysqli_error($mysqli));
-    }
-    header("Location: ba_users.php");
-}
-
-if(isset($_GET['active'])){
-
-    $the_user_id = $_GET['active'];
-    $query = "UPDATE Users SET ACCOUNT_STATUS = 'ACTIVE' WHERE ID = {$the_user_id}";
-    $user_query = mysqli_query($mysqli, $query);
-    if(!$user_query){
-        die("Failed!" . mysqli_error($mysqli));
-    }
-
-    $query = "DELETE FROM `BUSERS` WHERE USER_ID = {$the_user_id}";
-    $user_query = mysqli_query($mysqli, $query);
-    if(!$user_query){
-        die("Failed!" . mysqli_error($mysqli));
-    }
-    header("Location: ba_users.php");
-}
-?>

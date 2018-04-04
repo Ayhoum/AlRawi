@@ -2,38 +2,47 @@
 session_start();
 ob_start();
 include '../scripts/db_connection.php';
-
+if($_SESSION['role'] != "MainAdmin"){
+    header("Location: ../index.php");
+}
+if (isset($_GET['id']) && ($_GET['qset'])) {
+    $qset = $_GET['qset'];
+    $setId = $_GET['id'];
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <title>Users Block/Activate</title>
-    <meta name="keywords" content="HTML5,CSS3,Admin Template" />
-    <meta name="description" content="" />
-    <meta name="Author" content="Psd2allconversion [www.psd2allconversion.com]" />
+    <meta charset="utf-8"/>
+    <title>Free Exam Question</title>
+    <meta name="keywords" content="HTML5,CSS3,Admin Template"/>
+    <meta name="description" content=""/>
+    <meta name="Author" content="Psd2allconversion [www.psd2allconversion.com]"/>
 
     <!-- mobile settings -->
-    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
-    <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0"/>
+    <!--[if IE]>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
 
     <!-- WEB FONTS : use %7C instead of | (pipe) -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400%7CRaleway:300,400,500,600,700%7CLato:300,400,400italic,600,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400%7CRaleway:300,400,500,600,700%7CLato:300,400,400italic,600,700"
+          rel="stylesheet" type="text/css"/>
 
     <!-- CORE CSS -->
-    <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="assets/plugins/metis-menu/metisMenu.min.css" rel="stylesheet" type="text/css" />
-    <link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-    <link href="assets/plugins/simple-line-icons-master/css/simple-line-icons.css" rel="stylesheet" type="text/css" />
-    <link href="assets/plugins/animate/animate.css" rel="stylesheet" type="text/css" />
+    <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/plugins/metis-menu/metisMenu.min.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/plugins/simple-line-icons-master/css/simple-line-icons.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/plugins/animate/animate.css" rel="stylesheet" type="text/css"/>
     <link href="assets/plugins/c3/c3.min.css" rel="stylesheet">
     <link href="assets/plugins/widget/widget.css" rel="stylesheet">
     <link href="assets/plugins/calendar/fullcalendar.min.css" rel="stylesheet">
     <link href="assets/plugins/ui/jquery-ui.css" rel="stylesheet">
 
     <!-- THEME CSS -->
-    <link href="assets/css/style.css" rel="stylesheet" type="text/css" />
-    <link href="assets/css/theme/dark.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/css/theme/dark.css" rel="stylesheet" type="text/css"/>
 
     <!-- PAGE LEVEL SCRIPTS -->
 
@@ -51,10 +60,11 @@ include '../scripts/db_connection.php';
                 <a href="../index.php">
                     <img src="../images/adminLogo.png" alt="absolute admin" class="img-fluid logo-default"/> </a>
 
-            </div><div class="menu-toggler sidebar-toggler">
-                <a href="javascript:" class="navbar-minimalize minimalize-styl-2  float-left "><i class="fa fa-bars"></i></a>
             </div>
-
+            <div class="menu-toggler sidebar-toggler">
+                <a href="javascript:" class="navbar-minimalize minimalize-styl-2  float-left "><i
+                        class="fa fa-bars"></i></a>
+            </div>
 
             <!-- END LOGO -->
 
@@ -73,18 +83,18 @@ include '../scripts/db_connection.php';
                     </li>
                     <!-- END USER LOGIN DROPDOWN -->
                 </ul>
-            </div>                    <!-- END TOP NAVIGATION MENU -->
+            </div>
+            <!-- END TOP NAVIGATION MENU -->
         </div>
         <!-- END HEADER INNER -->
     </div>
     <!-- END HEADER -->
     <!-- BEGIN HEADER & CONTENT dropdown-divider -->
-    <div class="clearfix"> </div>
+    <div class="clearfix"></div>
     <!-- END HEADER & CONTENT dropdown-divider -->
 
     <!-- BEGIN CONTAINER -->
     <div class="page-container">
-
         <aside class="sidebar">
             <nav class="sidebar-nav">
                 <ul class="metismenu" id="menu">
@@ -101,6 +111,8 @@ include '../scripts/db_connection.php';
                             <!--                                    <li><a href="user_profile.html">profile</a></li>-->
                             <li><a href="user_list.php">Users list</a></li>
                             <li><a href="free_packet.php">Give a free packet</a></li>
+                            <li><a href="ba_users.php">Suspicious Users</a></li>
+
                         </ul>
                     </li>
                     <li class="nav-heading"><span>FREE EXAMS</span></li>
@@ -156,112 +168,130 @@ include '../scripts/db_connection.php';
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="page-title">
-                            <h4 class="float-left">Users Block/Activate </h4>
+                            <h4 class="float-left">Exam <b style="color: #2A094A;">Trucks</b> <?php
+                                $setId1 = $setId - ($qset - 1) * 65;
+                                echo $qset . ' - Question ' . $setId1; ?></h4>
                         </div>
                     </div>
                 </div><!-- end .page title-->
-                <?php
-                if(isset($_GET['source'])){
-                    $source = $_GET['source'];
-                }else{
-                    $source = '';
-                }
-                switch($source){
-                    default:
-                        include "view_ba_users.php";
-                        break;
-                }
-                ?>
+
+                <div class="row">
+                    <!-- Start .panel -->
+
+
+                    <?php
+                    if(isset($_GET['source'])){
+                        $source = $_GET['source'];
+                    }else{
+                        $source = '';
+                    }
+                    switch($source){
+                        case 'add':
+                            include "add_new_free_question_trucks.php";
+                            break;
+                        case 'edit':
+                            include "edit_free_question_trucks.php";
+                            break;
+                        case 'hidden':
+                            echo "It is our code! ;;;";
+                            break;
+                        default:
+                            include "manage_free_exams.php";
+                            break;
+                    }
+
+                    ?>
+
+
+                </div>
+                <div class="clearfix"></div>
+                <div class="footer">
+                    <?php
+                    $query = "SELECT * FROM Website";
+                    $getWeb = mysqli_query($mysqli,$query);
+                    while ($row = mysqli_fetch_assoc($getWeb)){
+                        $website = $row['DevWeb'];
+                    }
+                    ?>
+                    <div>
+                        <strong>Copyright</strong> <a target="_blank" href="<?php echo $website;?>">El-Semicolon;  </a> © <?php echo date('Y') ;?>
+                    </div>
+                </div>
             </div>
+            <!-- END CONTENT BODY -->
         </div>
-        <div class="clearfix"></div>
-        <div class="footer">
-            <?php
-            $query = "SELECT * FROM Website";
-            $getWeb = mysqli_query($mysqli,$query);
-            while ($row = mysqli_fetch_assoc($getWeb)){
-                $website = $row['DevWeb'];
-            }
-            ?>
-            <div>
-                <strong>Copyright</strong> <a target="_blank" href="<?php echo $website;?>">El-Semicolon;  </a> © <?php echo date('Y') ;?>
-            </div>
+        <!-- END CONTAINER -->
+    </div>
+    <!-- /wrapper -->
+
+
+    <!-- SCROLL TO TOP -->
+    <a href="#" id="toTop"></a>
+
+
+    <!-- PRELOADER -->
+    <div id="preloader">
+        <div class="inner">
+            <span class="loader"></span>
         </div>
-    </div>
-    <!-- END CONTENT BODY -->
-</div>
-<!-- END CONTAINER -->
-
-<!-- /wrapper -->
+    </div><!-- /PRELOADER -->
 
 
-<!-- SCROLL TO TOP -->
-<a href="#" id="toTop"></a>
+    <!-- JAVASCRIPT FILES -->
+
+    <script type="text/javascript" src="assets/plugins/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/metis-menu/metisMenu.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/bootstrap/js/tether.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/slim-scroll/jquery.slimscroll.min.js"></script>
+    <script src="assets/plugins/c3/d3.v3.min.js" charset="utf-8"></script>
+    <script src="assets/plugins/c3/c3.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="assets/plugins/calendar/moment.min.js"></script>
+    <script src="assets/plugins/calendar/fullcalendar.min.js"></script>
+    <script src="assets/plugins/ui/jquery-ui.js"></script>
 
 
-<!-- PRELOADER -->
-<div id="preloader">
-    <div class="inner">
-        <span class="loader"></span>
-    </div>
-</div><!-- /PRELOADER -->
+    <!-- PAGE LEVEL FILES -->
+    <script src="assets/plugins/data-tables/jquery.dataTables.js"></script>
+    <script src="assets/plugins/data-tables/dataTables.tableTools.js"></script>
+    <script src="assets/plugins/data-tables/dataTables.bootstrap.js"></script>
+    <script src="assets/plugins/data-tables/dataTables.responsive.js"></script>
+    <script src="assets/plugins/data-tables/tables-data.js"></script>
+    <!-- Custom FILES -->
+    <script type="text/javascript" src="assets/js/custom.js"></script>
+<script>
+    jQuery('.slide').hide();
 
-
-<!-- JAVASCRIPT FILES -->
-
-<script type="text/javascript" src="assets/plugins/jquery/jquery.min.js"></script>
-<script type="text/javascript" src="assets/plugins/metis-menu/metisMenu.min.js"></script>
-<script type="text/javascript" src="assets/plugins/bootstrap/js/tether.min.js"></script>
-<script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="assets/plugins/slim-scroll/jquery.slimscroll.min.js"></script>
-<script src="assets/plugins/c3/d3.v3.min.js" charset="utf-8"></script>
-<script src="assets/plugins/c3/c3.min.js"></script>
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script src="assets/plugins/calendar/moment.min.js"></script>
-<script src="assets/plugins/calendar/fullcalendar.min.js"></script>
-<script src="assets/plugins/ui/jquery-ui.js"></script>
-<script src="assets/plugins/map/jquery-jvectormap-1.2.2.min.js"></script>
-<script src="assets/plugins/map/jquery-jvectormap-world-mill-en.js"></script>
-
-<!-- PAGE LEVEL FILES -->
-<script src="assets/plugins/data-tables/jquery.dataTables.js"></script>
-<script src="assets/plugins/data-tables/dataTables.tableTools.js"></script>
-<script src="assets/plugins/data-tables/dataTables.bootstrap.js"></script>
-<script src="assets/plugins/data-tables/dataTables.responsive.js"></script>
-<script src="assets/plugins/data-tables/tables-data.js"></script>
-<script src="http://maps.google.com/maps/api/js?sensor=true"></script>
-
-<!-- Custom FILES -->
-<script type="text/javascript" src="assets/js/custom.js"></script>
-
+    function getType() {
+        var x = document.getElementById("type");
+        var i = x.selectedIndex;
+        if(x.options[i].value == "yesNo"){
+            jQuery('.slide').hide();
+            $('.yesOrNoSlide').show();
+        }else if(x.options[i].value == "response"){
+            jQuery('.slide').hide();
+            $('.responseSlide').show();
+        }else if(x.options[i].value == "numInp"){
+            jQuery('.slide').hide();
+            $('.numInpSlide').show();
+        }else if(x.options[i].value == "multiChoice2"){
+            jQuery('.slide').hide();
+            $('.multiChoice2Slide').show();
+        }else if(x.options[i].value == "multiChoice3"){
+            jQuery('.slide').hide();
+            $('.multiChoice3Slide').show();
+        }else if(x.options[i].value == "multiChoice4"){
+            jQuery('.slide').hide();
+            $('.multiChoice4Slide').show();
+        }else if(x.options[i].value == "advantage3"){
+            jQuery('.slide').hide();
+            $('.advantage3Slide').show();
+        }else if(x.options[i].value == "advantage4"){
+            jQuery('.slide').hide();
+            $('.advantage4Slide').show();
+        }
+    }
+    </script>
 </body>
 </html>
-<?php
-if(isset($_GET['block'])){
-
-    $the_user_id = $_GET['block'];
-    $query = "UPDATE Users SET ACCOUNT_STATUS = 'BLOCKED' WHERE ID = {$the_user_id}";
-    $user_query = mysqli_query($mysqli, $query);
-    if(!$user_query){
-        die("Failed!" . mysqli_error($mysqli));
-    }
-    header("Location: ba_users.php");
-}
-
-if(isset($_GET['active'])){
-
-    $the_user_id = $_GET['active'];
-    $query = "UPDATE Users SET ACCOUNT_STATUS = 'ACTIVE' WHERE ID = {$the_user_id}";
-    $user_query = mysqli_query($mysqli, $query);
-    if(!$user_query){
-        die("Failed!" . mysqli_error($mysqli));
-    }
-
-    $query = "DELETE FROM `BUSERS` WHERE USER_ID = {$the_user_id}";
-    $user_query = mysqli_query($mysqli, $query);
-    if(!$user_query){
-        die("Failed!" . mysqli_error($mysqli));
-    }
-    header("Location: ba_users.php");
-}
-?>
