@@ -16,7 +16,7 @@ if(isset($_POST['create'])){
     $result = mysqli_query($mysqli, $query);
 
     $lastId = mysqli_insert_id($mysqli);
-    $beginValue  = (($lastId -1) * 65) + 1;
+    $beginValue  = (($lastId -1) * 50) + 1;
     $query  = "UPDATE `FREE_QUESTION_SET_TRUCK` SET `BEGIN_ID`='{$beginValue}' WHERE `ID` = '{$lastId}' ";
     $result = mysqli_query($mysqli, $query);
 

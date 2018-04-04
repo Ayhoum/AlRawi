@@ -169,7 +169,7 @@ if (isset($_GET['id']) && ($_GET['qset'])) {
                     <div class="col-sm-12">
                         <div class="page-title">
                             <h4 class="float-left">Exam <b style="color: #2A094A;">Trucks</b> <?php
-                                $setId1 = $setId - ($qset - 1) * 65;
+                                $setId1 = $setId - ($qset - 1) * 50;
                                 echo $qset . ' - Question ' . $setId1; ?></h4>
                         </div>
                     </div>
