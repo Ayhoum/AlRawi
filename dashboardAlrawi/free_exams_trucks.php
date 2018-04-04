@@ -203,7 +203,7 @@ if ($_SESSION['role'] != "MainAdmin") {
                                     <td class="text-center"><?php echo $name;?></td>
                                     <td class="text-center"><?php echo $status;?></td>
                                     <?php
-                                    $query = "SELECT * FROM FREE_EXAM_QUESTION_TRUCK";
+                                    $query = "SELECT * FROM FREE_EXAM_QUESTION_TRUCK WHERE	FREE_QUESTION_SET_TRUCK_ID = $id";
                                     $select_ques = mysqli_query($mysqli, $query);
                                     $numRow = mysqli_num_rows($select_ques);
                                     ?>

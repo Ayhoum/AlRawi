@@ -23,7 +23,7 @@ if(isset($_POST['create'])){
     if (!$result) {
         die("Failed to create a new exam". mysqli_error($mysqli));
     } else {
-        header("Location: manage_free_exams.php?id=$lastId");
+        header("Location: manage_free_exams_trucks.php?id=$lastId");
     }
 }
 
