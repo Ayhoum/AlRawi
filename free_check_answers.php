@@ -270,7 +270,11 @@ if (isset($_POST['submit'])) {
                     <div class="remodal-bg">
 
 <?php
+if(isset($_COOKIE['question'])){
     $from = $_COOKIE['question'];
+}else{
+    $from = 0;
+}
 ?>
                         <?php
 

@@ -20,7 +20,7 @@ if (isset($_GET['id'])) {
 if (isset($_POST['submit'])) {
     $arr = array();
 
-    for ($i = 1; $i <= 65; $i++) {
+    for ($i = 1; $i <= 50; $i++) {
         if (!empty($_POST['selector' . $i])) {
             ${'selector_' . $i} = $_POST['selector' . $i];
             $value = ${'selector_' . $i};
@@ -270,12 +270,16 @@ if (isset($_POST['submit'])) {
                     <div class="remodal-bg">
 
 <?php
+if(isset($_COOKIE['question'])){
     $from = $_COOKIE['question'];
+}else{
+    $from = 0;
+}
 ?>
                         <?php
 
                         // GET THE QUESTION FROM DB
-                        $query = " SELECT * FROM `FREE_EXAM_QUESTION_TRUCK` WHERE `FREE_QUESTION_SET_TRUCK_ID` = '{$qId}'";
+                        $query = " SELECT * FROM `FREE_EXAM_QUESTION_TRUCK` WHERE `FREE_QUESTION_SET_TRUCK_ID` = '{$qId}' ORDER BY NUMBER ASC ";
                         $result = mysqli_query($mysqli, $query);
                         if (mysqli_num_rows($result) > 0) {
                             $x = 1;
@@ -285,7 +289,8 @@ if (isset($_POST['submit'])) {
                             while ($row = mysqli_fetch_assoc($result)) {
 
                                 $number = $row['NUMBER'];
-                                $number = $number - ($qId - 1) * 65;
+                                $number = $number - ($qId - 1) * 50;
+                                //echo $number . "<br>";
                                 $question = $row['QUESTION'];
                                 $right_answer = $row['RIGHT_ANSWER'];
                                 $second_answer = $row['ANSWER_2'];
@@ -298,7 +303,7 @@ if (isset($_POST['submit'])) {
 //echo $var ."<br>";
                                 if ($x == 1 || $var % 12 == 0) {
                                     if ($x == 1) {
-                                        echo "<h3>أسئلة الإستجابة</h3>";
+                                        echo "<h3>القسم الأول</h3>";
                                     }
                                     echo "<div class='row text-center'>";
                                 }
@@ -327,19 +332,16 @@ if (isset($_POST['submit'])) {
                             <?php
                             }
 
-                            if ($x == 25 || $x == 55) {
+                            if ($x == 25) {
                                 echo "</div>";
                                 if ($x == 25) {
-                                    echo "<h3>أسئلة قوانين السير</h3>";
-                                }
-                                if ($x == 55) {
-                                    echo "<h3>الأسئلة الإستنتاجية</h3>";
+                                    echo "<h3>القسم الثاني</h3>";
                                 }
                                 echo "<div class='row text-center'>";
                                 $var += 1;
                             }
 
-                            if ($x == 65 || ($var + 1) == 26 || ($var + 1) == 13 || ($var + 1) == 25 || ($var + 1) == 38 || ($var + 1) == 50 || ($var + 1) == 56) {
+                            if ($x == 50 || ($var + 1) == 26 || ($var + 1) == 13 || ($var + 1) == 25 || ($var + 1) == 38 || ($var + 1) == 50) {
                                 echo "</div>";
                             }
 
@@ -383,7 +385,7 @@ if (isset($_POST['submit'])) {
 
 
                 // GET THE QUESTION FROM DB
-                $query = " SELECT * FROM `FREE_EXAM_QUESTION_TRUCK` WHERE `FREE_QUESTION_SET_TRUCK_ID` = '{$qId}'";
+                $query = " SELECT * FROM `FREE_EXAM_QUESTION_TRUCK` WHERE `FREE_QUESTION_SET_TRUCK_ID` = '{$qId}' ORDER BY NUMBER ASC ";
                 $result = mysqli_query($mysqli, $query);
                 if (mysqli_num_rows($result) > 0) {
                 $x = 1;
@@ -392,7 +394,7 @@ if (isset($_POST['submit'])) {
                 while ($row = mysqli_fetch_assoc($result)) {
 
                 $number = $row['NUMBER'];
-                $number = $number - ($qId - 1) * 65;
+                $number = $number - ($qId - 1) * 50;
                 $question = $row['QUESTION'];
                 $right_answer = $row['RIGHT_ANSWER'];
                 $second_answer = $row['ANSWER_2'];
@@ -401,7 +403,6 @@ if (isset($_POST['submit'])) {
                 $picture = $row['PICTURE'];
                 $reason = $row['REASON'];
                 $type = $row['TYPE'];
-
 
                 if (${'selector_' . $x} == $right_answer){
                 ?>
@@ -901,7 +902,7 @@ $x++;
 
     jQuery("#result").hide();
 
-    if (pri > 12 && sec > 34) {
+    if (pri > 19 && sec > 19) {
         jQuery("#result").show();
         jQuery("#result").addClass('btn-success');
         jQuery("#result").text("ناجح");
@@ -944,7 +945,7 @@ $x++;
     });
 
     var num = 1;
-    while (num <= 65) {
+    while (num <= 50) {
         // alert('[data-remodal-id=modal'+num+']');
         $('[data-remodal-id=modal' + num + ']').remodal({
             modifier: 'with-red-theme'

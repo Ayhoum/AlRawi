@@ -181,30 +181,6 @@ $arrOrder = array(array());
             margin-top: 20px;
         }
 
-        /* progress bar */
-        .slider-progress {
-            width: 100%;
-            height: 10px;
-            background: #eee;
-        }
-
-        .slider-progress .progress {
-            width: 0%;
-            height: 10px;
-            /*background: #000;*/
-        }
-
-        .bg-green {
-            background: #28a745;
-        }
-
-        .bg-yellow {
-            background: #ffc107;
-        }
-
-        .bg-red {
-            background: #dc3545;
-        }
 
         .col-xs-2 {
             padding-right: 0;
@@ -337,6 +313,9 @@ $arrOrder = array(array());
                                     class="fa fa-times"></i><span>إيقاف الإمتحان</span></button>
                     </a>
                 </li>
+<!--                <li>-->
+<!--                    <span id="controlTimer"></span>-->
+<!--                </li>-->
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="text-center"><a onclick="flagQuestion();" class="flagBut" href="#"><i
@@ -348,147 +327,81 @@ $arrOrder = array(array());
                         <div id="wihund" class="col-md-offset-1 col-xs-10 col-md-offset-1"
                              style="padding-left: 0;padding-right: 0;">
                             <div class="row text-center" style="margin-right: 0;margin-left: 0;">
-                                <div class="col-xs-2"><a class="showSingle" target="26">
-                                        <button class="btn btn-info" id="but26" style="margin-top:10px;">26</button>
-                                    </a></div>
-                                <div class="col-xs-2"><a class="showSingle" target="27">
-                                        <button class="btn btn-info" id="but27" style="margin-top:10px;">27</button>
-                                    </a></div>
-                                <div class="col-xs-2"><a class="showSingle" target="28">
-                                        <button class="btn btn-info" id="but28" style="margin-top:10px;">28</button>
-                                    </a></div>
-                                <div class="col-xs-2"><a class="showSingle" target="29">
-                                        <button class="btn btn-info" id="but29" style="margin-top:10px;">29</button>
-                                    </a></div>
-                                <div class="col-xs-2"><a class="showSingle" target="30">
-                                        <button class="btn btn-info" id="but30" style="margin-top:10px;">30</button>
-                                    </a></div>
-                                <div class="col-xs-2"><a class="showSingle" target="31">
-                                        <button class="btn btn-info" id="but31" style="margin-top:10px;">31</button>
-                                    </a></div>
+                                <div class="col-xs-2"><a class="showSingle" target="1"><button class="btn btn-info" id="but1" style="margin-top:10px;">1</button></a></div>
+                                <div class="col-xs-2"><a class="showSingle" target="2"><button class="btn btn-info" id="but2" style="margin-top:10px;">2</button></a></div>
+                                <div class="col-xs-2"><a class="showSingle" target="3"><button class="btn btn-info" id="but3" style="margin-top:10px;">3</button></a></div>
+                                <div class="col-xs-2"><a class="showSingle" target="4"><button class="btn btn-info" id="but4" style="margin-top:10px;">4</button></a></div>
+                                <div class="col-xs-2"><a class="showSingle" target="5"><button class="btn btn-info" id="but5" style="margin-top:10px;">5</button></a></div>
+                                <div class="col-xs-2"><a class="showSingle" target="6"><button class="btn btn-info" id="but6" style="margin-top:10px;">6</button></a></div>
                             </div>
                             <li class="divider"></li>
                             <div class="row text-center" style="margin-right: 0;margin-left: 0;">
-                                <div class="col-xs-2"><a class="showSingle" target="32">
-                                        <button class="btn btn-info" id="but32" style="margin-top:10px;">32</button>
-                                    </a></div>
-                                <div class="col-xs-2"><a class="showSingle" target="33">
-                                        <button class="btn btn-info" id="but33" style="margin-top:10px;">33</button>
-                                    </a></div>
-                                <div class="col-xs-2"><a class="showSingle" target="34">
-                                        <button class="btn btn-info" id="but34" style="margin-top:10px;">34</button>
-                                    </a></div>
-                                <div class="col-xs-2"><a class="showSingle" target="35">
-                                        <button class="btn btn-info" id="but35" style="margin-top:10px;">35</button>
-                                    </a></div>
-                                <div class="col-xs-2"><a class="showSingle" target="36">
-                                        <button class="btn btn-info" id="but36" style="margin-top:10px;">36</button>
-                                    </a></div>
-                                <div class="col-xs-2"><a class="showSingle" target="37">
-                                        <button class="btn btn-info" id="but37" style="margin-top:10px;">37</button>
-                                    </a></div>
+                                <div class="col-xs-2"><a class="showSingle" target="7"><button class="btn btn-info" id="but7" style="margin-top:10px;">7</button></a></div>
+                                <div class="col-xs-2"><a class="showSingle" target="8"><button class="btn btn-info" id="but8" style="margin-top:10px;">8</button></a></div>
+                                <div class="col-xs-2"><a class="showSingle" target="9"><button class="btn btn-info" id="but9" style="margin-top:10px;">9</button></a></div>
+                                <div class="col-xs-2"><a class="showSingle" target="10"><button class="btn btn-info" id="but10" style="margin-top:10px;">10</button></a></div>
+                                <div class="col-xs-2"><a class="showSingle" target="11"><button class="btn btn-info" id="but11" style="margin-top:10px;">11</button></a></div>
+                                <div class="col-xs-2"><a class="showSingle" target="12"><button class="btn btn-info" id="but12" style="margin-top:10px;">12</button></a></div>
                             </div>
                             <li class="divider"></li>
                             <div class="row text-center" style="margin-right: 0;margin-left: 0;">
-                                <div class="col-xs-2"><a class="showSingle" target="38">
-                                        <button class="btn btn-info" id="but38" style="margin-top:10px;">38</button>
-                                    </a></div>
-                                <div class="col-xs-2"><a class="showSingle" target="39">
-                                        <button class="btn btn-info" id="but39" style="margin-top:10px;">39</button>
-                                    </a></div>
-                                <div class="col-xs-2"><a class="showSingle" target="40">
-                                        <button class="btn btn-info" id="but40" style="margin-top:10px;">40</button>
-                                    </a></div>
-                                <div class="col-xs-2"><a class="showSingle" target="41">
-                                        <button class="btn btn-info" id="but41" style="margin-top:10px;">41</button>
-                                    </a></div>
-                                <div class="col-xs-2"><a class="showSingle" target="42">
-                                        <button class="btn btn-info" id="but42" style="margin-top:10px;">42</button>
-                                    </a></div>
-                                <div class="col-xs-2"><a class="showSingle" target="43">
-                                        <button class="btn btn-info" id="but43" style="margin-top:10px;">43</button>
-                                    </a></div>
+                                <div class="col-xs-2"><a class="showSingle" target="13"><button class="btn btn-info" id="but13" style="margin-top:10px;">13</button></a></div>
+                                <div class="col-xs-2"><a class="showSingle" target="14"><button class="btn btn-info" id="but14" style="margin-top:10px;">14</button></a></div>
+                                <div class="col-xs-2"><a class="showSingle" target="15"><button class="btn btn-info" id="but15" style="margin-top:10px;">15</button></a></div>
+                                <div class="col-xs-2"><a class="showSingle" target="16"><button class="btn btn-info" id="but16" style="margin-top:10px;">16</button></a></div>
+                                <div class="col-xs-2"><a class="showSingle" target="17"><button class="btn btn-info" id="but17" style="margin-top:10px;">17</button></a></div>
+                                <div class="col-xs-2"><a class="showSingle" target="18"><button class="btn btn-info" id="but18" style="margin-top:10px;">18</button></a></div>
                             </div>
                             <li class="divider"></li>
                             <div class="row text-center" style="margin-right: 0;margin-left: 0;">
-                                <div class="col-xs-2"><a class="showSingle" target="44">
-                                        <button class="btn btn-info" id="but44" style="margin-top:10px;">44</button>
-                                    </a></div>
-                                <div class="col-xs-2"><a class="showSingle" target="45">
-                                        <button class="btn btn-info" id="but45" style="margin-top:10px;">45</button>
-                                    </a></div>
-                                <div class="col-xs-2"><a class="showSingle" target="46">
-                                        <button class="btn btn-info" id="but46" style="margin-top:10px;">46</button>
-                                    </a></div>
-                                <div class="col-xs-2"><a class="showSingle" target="47">
-                                        <button class="btn btn-info" id="but47" style="margin-top:10px;">47</button>
-                                    </a></div>
-                                <div class="col-xs-2"><a class="showSingle" target="48">
-                                        <button class="btn btn-info" id="but48" style="margin-top:10px;">48</button>
-                                    </a></div>
-                                <div class="col-xs-2"><a class="showSingle" target="49">
-                                        <button class="btn btn-info" id="but49" style="margin-top:10px;">49</button>
-                                    </a></div>
+                                <div class="col-xs-2"><a class="showSingle" target="19"><button class="btn btn-info" id="but19" style="margin-top:10px;">19</button></a></div>
+                                <div class="col-xs-2"><a class="showSingle" target="20"><button class="btn btn-info" id="but20" style="margin-top:10px;">20</button></a></div>
+                                <div class="col-xs-2"><a class="showSingle" target="21"><button class="btn btn-info" id="but21" style="margin-top:10px;">21</button></a></div>
+                                <div class="col-xs-2"><a class="showSingle" target="22"><button class="btn btn-info" id="but22" style="margin-top:10px;">22</button></a></div>
+                                <div class="col-xs-2"><a class="showSingle" target="23"><button class="btn btn-info" id="but23" style="margin-top:10px;">23</button></a></div>
+                                <div class="col-xs-2"><a class="showSingle" target="24"><button class="btn btn-info" id="but24" style="margin-top:10px;">24</button></a></div>
                             </div>
                             <li class="divider"></li>
                             <div class="row text-center" style="margin-right: 0;margin-left: 0;">
-                                <div class="col-xs-2"><a class="showSingle" target="50">
-                                        <button class="btn btn-info" id="but50" style="margin-top:10px;">50</button>
-                                    </a></div>
-                                <div class="col-xs-2"><a class="showSingle" target="51">
-                                        <button class="btn btn-info" id="but51" style="margin-top:10px;">51</button>
-                                    </a></div>
-                                <div class="col-xs-2"><a class="showSingle" target="52">
-                                        <button class="btn btn-info" id="but52" style="margin-top:10px;">52</button>
-                                    </a></div>
-                                <div class="col-xs-2"><a class="showSingle" target="53">
-                                        <button class="btn btn-info" id="but53" style="margin-top:10px;">53</button>
-                                    </a></div>
-                                <div class="col-xs-2"><a class="showSingle" target="54">
-                                        <button class="btn btn-info" id="but54" style="margin-top:10px;">54</button>
-                                    </a></div>
-                                <div class="col-xs-2"><a class="showSingle" target="55">
-                                        <button class="btn btn-info" id="but55" style="margin-top:10px;">55</button>
-                                    </a></div>
+                                <div class="col-xs-2"><a class="showSingle" target="25"><button class="btn btn-info" id="but25" style="margin-top:10px;">25</button></a></div>
+                                <div class="col-xs-2"><a class="showSingle" target="26"><button class="btn btn-info" id="but26" style="margin-top:10px;">26</button></a></div>
+                                <div class="col-xs-2"><a class="showSingle" target="27"><button class="btn btn-info" id="but27" style="margin-top:10px;">27</button></a></div>
+                                <div class="col-xs-2"><a class="showSingle" target="28"><button class="btn btn-info" id="but28" style="margin-top:10px;">28</button></a></div>
+                                <div class="col-xs-2"><a class="showSingle" target="29"><button class="btn btn-info" id="but29" style="margin-top:10px;">29</button></a></div>
+                                <div class="col-xs-2"><a class="showSingle" target="30"><button class="btn btn-info" id="but30" style="margin-top:10px;">30</button></a></div>
                             </div>
                             <li class="divider"></li>
                             <div class="row text-center" style="margin-right: 0;margin-left: 0;">
-                                <div class="col-xs-2"><a class="showSingle" target="56">
-                                        <button class="btn btn-info" id="but56" style="margin-top:10px;">56</button>
-                                    </a></div>
-                                <div class="col-xs-2"><a class="showSingle" target="57">
-                                        <button class="btn btn-info" id="but57" style="margin-top:10px;">57</button>
-                                    </a></div>
-                                <div class="col-xs-2"><a class="showSingle" target="58">
-                                        <button class="btn btn-info" id="but58" style="margin-top:10px;">58</button>
-                                    </a></div>
-                                <div class="col-xs-2"><a class="showSingle" target="59">
-                                        <button class="btn btn-info" id="but59" style="margin-top:10px;">59</button>
-                                    </a></div>
-                                <div class="col-xs-2"><a class="showSingle" target="60">
-                                        <button class="btn btn-info" id="but60" style="margin-top:10px;">60</button>
-                                    </a></div>
-                                <div class="col-xs-2"><a class="showSingle" target="61">
-                                        <button class="btn btn-info" id="but61" style="margin-top:10px;">61</button>
-                                    </a></div>
+                                <div class="col-xs-2"><a class="showSingle" target="31"><button class="btn btn-info" id="but31" style="margin-top:10px;">31</button></a></div>
+                                <div class="col-xs-2"><a class="showSingle" target="32"><button class="btn btn-info" id="but32" style="margin-top:10px;">32</button></a></div>
+                                <div class="col-xs-2"><a class="showSingle" target="33"><button class="btn btn-info" id="but33" style="margin-top:10px;">33</button></a></div>
+                                <div class="col-xs-2"><a class="showSingle" target="34"><button class="btn btn-info" id="but34" style="margin-top:10px;">34</button></a></div>
+                                <div class="col-xs-2"><a class="showSingle" target="35"><button class="btn btn-info" id="but35" style="margin-top:10px;">35</button></a></div>
+                                <div class="col-xs-2"><a class="showSingle" target="36"><button class="btn btn-info" id="but36" style="margin-top:10px;">36</button></a></div>
                             </div>
                             <li class="divider"></li>
                             <div class="row text-center" style="margin-right: 0;margin-left: 0;">
-                                <div class="col-xs-3"><a class="showSingle" target="62">
-                                        <button class="btn btn-info" id="but62" style="margin-top:10px;">62</button>
-                                    </a></div>
-                                <div class="col-xs-3"><a class="showSingle" target="63">
-                                        <button class="btn btn-info" id="but63" style="margin-top:10px;">63</button>
-                                    </a></div>
-                                <div class="col-xs-3"><a class="showSingle" target="64">
-                                        <button class="btn btn-info" id="but64" style="margin-top:10px;">64</button>
-                                    </a></div>
-                                <div class="col-xs-3"><a class="showSingle" target="65">
-                                        <button class="btn btn-info" id="but65" style="margin-top:10px;">65</button>
-                                    </a></div>
+                                <div class="col-xs-2"><a class="showSingle" target="37"><button class="btn btn-info" id="but37" style="margin-top:10px;">37</button></a></div>
+                                <div class="col-xs-2"><a class="showSingle" target="38"><button class="btn btn-info" id="but38" style="margin-top:10px;">38</button></a></div>
+                                <div class="col-xs-2"><a class="showSingle" target="39"><button class="btn btn-info" id="but39" style="margin-top:10px;">39</button></a></div>
+                                <div class="col-xs-2"><a class="showSingle" target="40"><button class="btn btn-info" id="but40" style="margin-top:10px;">40</button></a></div>
+                                <div class="col-xs-2"><a class="showSingle" target="41"><button class="btn btn-info" id="but41" style="margin-top:10px;">41</button></a></div>
+                                <div class="col-xs-2"><a class="showSingle" target="42"><button class="btn btn-info" id="but42" style="margin-top:10px;">42</button></a></div>
                             </div>
                             <li class="divider"></li>
-
+                            <div class="row text-center" style="margin-right: 0;margin-left: 0;">
+                                <div class="col-xs-2"><a class="showSingle" target="43"><button class="btn btn-info" id="but43" style="margin-top:10px;">43</button></a></div>
+                                <div class="col-xs-2"><a class="showSingle" target="44"><button class="btn btn-info" id="but44" style="margin-top:10px;">44</button></a></div>
+                                <div class="col-xs-2"><a class="showSingle" target="45"><button class="btn btn-info" id="but45" style="margin-top:10px;">45</button></a></div>
+                                <div class="col-xs-2"><a class="showSingle" target="46"><button class="btn btn-info" id="but46" style="margin-top:10px;">46</button></a></div>
+                                <div class="col-xs-2"><a class="showSingle" target="47"><button class="btn btn-info" id="but47" style="margin-top:10px;">47</button></a></div>
+                                <div class="col-xs-2"><a class="showSingle" target="48"><button class="btn btn-info" id="but48" style="margin-top:10px;">48</button></a></div>
+                            </div>
+                            <li class="divider"></li>
+                            <div class="row text-center" style="margin-right: 0;margin-left: 0;">
+                                <div class="col-xs-offset-3 col-xs-2"><a class="showSingle" target="49"><button class="btn btn-info" id="but49" style="margin-top:10px;">49</button></a></div>
+                                <div class="col-xs-offset-3 col-xs-2"><a class="showSingle" target="50"><button class="btn btn-info" id="but50" style="margin-top:10px;">50</button></a></div></div>
+                            <li class="divider"></li>
                         </div>
                     </ul>
                 </li>
@@ -513,13 +426,8 @@ $arrOrder = array(array());
 
                     <div id='sStart' class='slideStart'>
                         <h4 style='direction: rtl;line-height: 2em;' class='text-center topmargin-sm'>
-                            المدة القصوى للإمتحان هي 30 دقيقة<br>والإمتحان مؤلف من قسمين:
-                        </h4>
-                        <h4 style='direction: rtl;line-height: 2em;' class='text-center topmargin-sm'>
-                            القسم الأول: هو عبارة عن 25 سؤال استجابة ومدتها 4 دقائق تقريباً حيث سيكون لكل سؤال 8 ثواني تقريباً
-                        </h4>
-                        <h4 style='direction: rtl;line-height: 2em;' class='text-center topmargin-sm'>
-                            أما القسم الثاني فهو مؤلف من 40 سؤال مدتها 26 دقيقة تقريباً حيث سيكون لكل سؤال 40 ثانية تقريباً
+                            المدة القصوى للإمتحان هي 75 دقيقة<br><br>
+                            الإمتحان مؤلف من قسمين كلّ منهما مؤلف من 25 سؤال بمجموع 50 سؤال
                         </h4>
                         <h4 style='direction: rtl;line-height: 2em;' class='text-center topmargin-sm'>
                             تستطيع إيقاف الإمتحان بأي وقت تريد وتستطيع وضع علم على السؤال الغير مفهوم كي تعود إليه لاحقاً وتستطيع التوقف عند أي سؤال لتعرف إجابتك إن كانت صحيحة أم خاطئة وإظهار السبب لماذا كانت خاطئة ولماذا كانت صحيحة
@@ -545,7 +453,7 @@ $arrOrder = array(array());
 
 
                     <div id='sBetween' class='slideBetween'>
-                        <h3 style='direction: rtl;' class='text-center topmargin-sm'>انتهت أسئلة الإستجابة</h3>
+                        <h3 style='direction: rtl;' class='text-center topmargin-sm'>انتهى القسم الأول من الأسئلة</h3>
                         <h4 style='direction: rtl;' class='text-center topmargin-sm'>بعد الضغط على الزر بالأسفل سيتم
                             استكمال الإمتحان مباشرة</h4><br>
                         <h4 style='direction: rtl;' class='text-center topmargin-sm'>عند إجابتك على أحد الأسئلة يمكنك
@@ -558,6 +466,7 @@ $arrOrder = array(array());
 
                     <div id='sFinish' class='slideFinish'>
                         <h3 style='direction: rtl;' class='text-center topmargin-sm'>انتهت جميع الأسئلة</h3>
+                        <h4 style='direction: rtl;' class='text-center topmargin-sm'>منذ بداية 2018 أصبح ممكناً تقديم فحص الشاحنات مع مترجم <br> وهناك حاليا كورسات للتدريس بالعربي <br> لمزيد من المعلومات يرجى التواصل معنا على الرقم 0685338583</h4>
                         <h4 style='direction: rtl;' class='text-center topmargin-sm'>يمكنك العودة إلى بعض الأسئلة قبل
                             الضغط على زر إنهاء الإمتحان في الأسفل</h4>
                         <!--                    <button type="button" onclick="continueExam();" class="btn btn-warning btn-lg center-block" style="width: 40%;">متابعة الإمتحان</button>-->
@@ -565,6 +474,7 @@ $arrOrder = array(array());
 
                     <div id='forceFinish' class='forceFinish'>
                         <h3 style='direction: rtl;' class='text-center topmargin-sm'>إنتهى الوقت مع الأسف</h3>
+                        <h4 style='direction: rtl;' class='text-center topmargin-sm'>منذ بداية 2018 أصبح ممكناً تقديم فحص الشاحنات مع مترجم <br> وهناك حاليا كورسات للتدريس بالعربي <br> لمزيد من المعلومات يرجى التواصل معنا على الرقم 0685338583</h4>
                         <h4 style='direction: rtl;' class='text-center topmargin-sm'>إضغط على الزر أدناه لمعرفة نتيجة
                             الأسئلة التي أجبت عليها</h4>
                         <!--                    <button type="button" onclick="continueExam();" class="btn btn-warning btn-lg center-block" style="width: 40%;">متابعة الإمتحان</button>-->
@@ -572,6 +482,7 @@ $arrOrder = array(array());
 
                     <div id='stopSlide' class='stopSlide'>
                         <h3 style='direction: rtl;' class='text-center topmargin-sm'>لقد قمت بإيقاف الإمتحان</h3>
+                        <h4 style='direction: rtl;' class='text-center topmargin-sm'>منذ بداية 2018 أصبح ممكناً تقديم فحص الشاحنات مع مترجم <br> وهناك حاليا كورسات للتدريس بالعربي <br> لمزيد من المعلومات يرجى التواصل معنا على الرقم 0685338583</h4>
                         <h4 style='direction: rtl;' class='text-center topmargin-sm'>إضغط على الزر أدناه لمعرفة نتيجة
                             الأسئلة التي أجبت عليها</h4>
                         <!--                    <button type="button" onclick="continueExam();" class="btn btn-warning btn-lg center-block" style="width: 40%;">متابعة الإمتحان</button>-->
@@ -581,10 +492,11 @@ $arrOrder = array(array());
 
                         <?php
                         //                $setId = 1;
-                        $query = "SELECT * FROM FREE_EXAM_QUESTION_TRUCK WHERE FREE_QUESTION_SET_TRUCK_ID = $setId";
+                        $query = "SELECT * FROM FREE_EXAM_QUESTION_TRUCK WHERE FREE_QUESTION_SET_TRUCK_ID = $setId ORDER BY NUMBER ASC";
                         $selectQuestions = mysqli_query($mysqli, $query);
                         $i = 1;
                         while ($row = mysqli_fetch_assoc($selectQuestions)) {
+                            $numberNum = $row['NUMBER'];
                             $question = $row['QUESTION'];
                             $right = $row['RIGHT_ANSWER'];
                             $second = $row['ANSWER_2'];
@@ -596,7 +508,6 @@ $arrOrder = array(array());
 
 
                             echo "<div>";
-
                             if ($type == "response") {
                                 echo "<div id='s$i' class='slide col-md-12' style=''>";
                                 echo "<div class='row'>";
@@ -619,9 +530,6 @@ $arrOrder = array(array());
                                 </label>
                             </fieldset>";
                                 echo "
-                            <div class='slider-progress' id='progressBar'>
-                                <div class='progress'></div>
-                            </div>
                             <div class='row text-center' style='width: 100%; margin-top: 20px;'>
                             <div class='col-xs-6'>
                                 <button type='button' id='prevBut'
@@ -862,6 +770,7 @@ $arrOrder = array(array());
                                 echo "</div>";
                                 $i++;
                             }
+
                             echo "</div>";
                         }
 
@@ -944,10 +853,9 @@ $arrOrder = array(array());
         jQuery('#submitBut').hide();
         jQuery('#pause').hide();
         jQuery('#resume').hide();
-        // jQuery('#showTime').hide();
+        //jQuery('#showTime').hide();
         jQuery('#stopBut').hide();
         jQuery('.stopSlide').hide();
-        jQuery('#progressBar').hide();
         // document.getElementById('heightAdj').style.height= '0px';
         $('.QuestionsSlideShow').slick({
             infinite: false,
@@ -966,27 +874,24 @@ $arrOrder = array(array());
     var responsePause = 0;
     var finished = 0;
     var continued = 0;
-    var continuedF = 0;
     var continuedBar = 0;
     var flagQuestion;
     var i;
     var j;
-    // var $status = $('.pagingInfo');
-    // var $status1 = $('.pagingInfo1');
+
+
+
     var $slickElement = $('.QuestionsSlideShow');
     $slickElement.on('init reInit beforeChange', function (event, slick, currentSlide, nextSlide) {
         i = (currentSlide ? currentSlide : 0) + 1;
-        var counter = slick.slideCount - 1;
-        // $status.text(i + '/' + counter);
         if (i == 25) {
             $('.QuestionsSlideShow').slick('slickPause');
             jQuery('.slide').hide();
             jQuery('.nxtButSt').hide();
             jQuery('.prevButSt').hide();
-            jQuery('#progressBar').hide();
             jQuery('.slideBetween').show();
         }
-        if (j == 65) {
+        if (j == 50) {
             finished = 1;
             $('.QuestionsSlideShow').slick('slickPause');
             jQuery('.slide').hide();
@@ -996,10 +901,9 @@ $arrOrder = array(array());
             jQuery('#submitBut').show();
         }
     });
+
     $slickElement.on('init reInit afterChange', function (event, slick, currentSlide, nextSlide) {
         j = (currentSlide ? currentSlide : 0) + 1;
-        var counter = slick.slideCount - 1;
-        // $status1.text(j + '/' + counter);
         if (j > 26 && finished == 0) {
             jQuery('.prevButSt').show();
         } else if(j<26 && j>1) {
@@ -1014,20 +918,12 @@ $arrOrder = array(array());
             });
         }
         flagQuestion = function () {
-            if (continuedF == 1 && j == 1) {
-                continuedF = 0;
-                if (jQuery('#but26').hasClass('btn-info')) {
-                    jQuery('#but26').removeClass('btn-info').addClass('btn-danger');
-                } else {
-                    jQuery('#but26').removeClass('btn-success').addClass('btn-danger');
-                }
-            } else {
-                if (jQuery('#but' + j).hasClass('btn-info')) {
+
+            if (jQuery('#but' + j).hasClass('btn-info')) {
                     jQuery('#but' + j).removeClass('btn-info').addClass('btn-danger');
                 } else {
                     jQuery('#but' + j).removeClass('btn-success').addClass('btn-danger');
                 }
-            }
 
         };
         jQuery('.selector' + j).change(function () {
@@ -1039,10 +935,11 @@ $arrOrder = array(array());
     jQuery('.showSingle').click(function () {
         // jQuery('.slide').hide();
         jQuery('.slideFinish').hide();
+        //jQuery('#submitBut').hide();
         jQuery('.slide').show();
         var where = $(this).attr('target') - 1;
         $('.QuestionsSlideShow').slick('slickGoTo', where);
-        $('.QuestionsSlideShow').slick('slickPlay');
+        $('.QuestionsSlideShow').slick('slickPause');
         jQuery('.selector' + $(this).attr('target')).change(function () {
             jQuery('#but' + $(this).attr('target')).attr('class', 'btn btn-success');
         });
@@ -1054,63 +951,24 @@ $arrOrder = array(array());
     });
 
 
-    var $bar,
-        $slick,
-        tick,
-        percentTime;
+    var $slick;
 
     $slick = $('.QuestionsSlideShow');
 
-    $bar = $('.progress');
 
-    function startProgressbar() {
-        resetProgressbar();
-        percentTime = 0;
-        tick = setInterval(interval, 100);
-    }
-
-    function interval() {
-        percentTime += 1.01;
-        $bar.css({
-            width: percentTime + "%"
-        });
-
-        if (percentTime >= 100) {
-            if (continuedBar == 0) {
-                $slick.slick('slickNext');
-            }
-            startProgressbar();
-        } else if (percentTime > 80 && percentTime < 100) {
-            $('.progress').addClass('bg-red');
-            $('.progress').removeClass('bg-yellow');
-        } else if (percentTime <= 80 && percentTime > 60) {
-            $('.progress').addClass('bg-yellow');
-            $('.progress').removeClass('bg-green');
-        }
-    }
-
-    function resetProgressbar() {
-        $('.progress').addClass('bg-green');
-        $('.progress').removeClass('bg-red');
-        $bar.css({
-            width: 0 + '%'
-        });
-        clearTimeout(tick);
-    }
 
 
     var startExam = function () {
-        jQuery('#progressBar').show();
         jQuery('.slide').show();
         jQuery('.nxtButSt').show();
-        // jQuery('.prevButSt').show();
+        jQuery('.navBut').show();
         jQuery('#stopBut').show();
         jQuery('.slideStart').hide();
+        jQuery('.flagBut').show();
         jQuery('#showTime').removeClass('col-sm-10').addClass('col-sm-12').show();
-        // $('.QuestionsSlideShow').slick('slickPlay');
+        // $('.QuestionsSlideShow').slick('slickPause');
         $('.QuestionsSlideShow').slick('slickPause');
 
-        startProgressbar();
 
         //document.title = "الإمتحان <?php //echo $setId ?>//" + " | " + "السؤال " + tar;
 
@@ -1144,20 +1002,30 @@ $arrOrder = array(array());
                 // Update Gui
                 var Time = new Date();
                 Time.setTime(EndTime - CurrentTime);
+                //$('#controlTimer').html(EndTime - CurrentTime);
+                var Hours = Time.getHours();
+                Hours--;
                 var Minutes = Time.getMinutes();
                 var Seconds = Time.getSeconds();
-                if (Minutes == 0 && Seconds == 0) {
+                //alert(EndTime + ' - ' + CurrentTime + ' - ' + (EndTime - CurrentTime));
+                //alert(Hours + ' - ' + Minutes + ' - ' + Seconds);
+
+                if (Minutes == 0 && Seconds == 0 && Hours == 0) {
                     jQuery('.slide').hide();
-                    jQuery('.navBut').hide();
                     jQuery('.flagBut').hide();
                     jQuery('.nxtButSt').hide();
+                    jQuery('.prevButSt').hide();
+                    jQuery('.navBut').hide();
                     jQuery('.slideBetween').hide();
                     jQuery('.slideFinish').hide();
+                    $(".slideBetween ").hide();
                     jQuery('.forceFinish').show();
                     jQuery('#submitBut').show();
                 } else {
                     GuiTimer.html(
-                        (Minutes < 10 ? '0' : '') + Minutes
+                        (Hours < 10 ? '0' : '') + Hours
+                        + ':'
+                        + (Minutes < 10 ? '0' : '') + Minutes
                         + ':'
                         + (Seconds < 10 ? '0' : '') + Seconds);
                 }
@@ -1194,43 +1062,36 @@ $arrOrder = array(array());
             CountDown.Pause();
             $('.QuestionsSlideShow').slick('slickPause');
             jQuery('.showReason').fadeIn('slow');
-            resetProgressbar();
             responsePause = 1;
-            //jQuery('#progressBar').hide();
         });
         jQuery('#resume').on('click', function () {
             CountDown.Resume();
-            $('.QuestionsSlideShow').slick('slickPlay');
+            $('.QuestionsSlideShow').slick('slickPause');
             jQuery('.showReason').fadeOut('slow');
             jQuery('.reasonRow').fadeOut('slow');
-            startProgressbar();
             responsePause = 0;
-            //jQuery('#progressBar').show();
         });
 
         // ms
-        CountDown.Start(1801000);
+        CountDown.Start(4501000);
 
     };
 
-
     var continueExam = function () {
         continued = 1;
-        continuedF = 1;
         continuedBar = 1;
         if(responsePause == 1){
             $('.QuestionsSlideShow').slick('slickPause');
             jQuery('#resume').show();
         }else{
-            $('.QuestionsSlideShow').slick('slickPlay');
+            $('.QuestionsSlideShow').slick('slickPause');
             jQuery('#pause').show();
         }
         $(".slideBetween ").hide();
-        jQuery('.navBut').show();
         jQuery('.flagBut').show();
         jQuery('.nxtButSt').show();
         jQuery('.prevButSt').show();
-        // $('.QuestionsSlideShow').slick('slickPause');
+        $('.QuestionsSlideShow').slick('slickPause');
 
         $('.QuestionsSlideShow').slick('unslick');
 
@@ -1245,15 +1106,15 @@ $arrOrder = array(array());
             initialSlide: 25,
             nextArrow: false,
             prevArrow: false,
-            autoplaySpeed: 40000
+            autoplaySpeed: 250000
         });
-        $('.QuestionsSlideShow').slick('slickPlay');
+        $('.QuestionsSlideShow').slick('slickPause');
 
         jQuery('.slide').show();
         if(responsePause == 1){
             $('.QuestionsSlideShow').slick('slickPause');
         }else{
-            $('.QuestionsSlideShow').slick('slickPlay');
+            $('.QuestionsSlideShow').slick('slickPause');
         }
 
     };
@@ -1270,11 +1131,19 @@ $arrOrder = array(array());
 
 
     $('.nxt').click(function () {
-        $('.QuestionsSlideShow').slick('slickNext');
+        //alert($('.QuestionsSlideShow').slick('slickCurrentSlide'));
         var currentSlide = $('.QuestionsSlideShow').slick('slickCurrentSlide');
-        if((currentSlide < 25) && (responsePause == 0)){
-            startProgressbar();
+        if(currentSlide == 49){
+            jQuery('.slide').hide();
+            jQuery('.flagBut').show();
+            jQuery('.nxtButSt').hide();
+            jQuery('.prevButSt').hide();
+            jQuery('.navBut').show();
+            jQuery('.slideFinish').show();
+            jQuery('#submitBut').show();
         }
+        $('.QuestionsSlideShow').slick('slickNext');
+
     });
     $('.prev').click(function () {
         $('.QuestionsSlideShow').slick('slickPrev');
@@ -1286,7 +1155,6 @@ $arrOrder = array(array());
         exdate.setHours(exdate.getHours() + expirehours);
         document.cookie = c_name + "=" + value + ";path=/" + ((expirehours ==null) ? "" : ";expires=" + exdate.toGMTString());
     }
-
     var stopExam = function () {
         if (confirm('هل أنت متأكد من إيقاف الإمتحان؟')) {
             clearTimeout(startExam);
@@ -1309,12 +1177,8 @@ $arrOrder = array(array());
             jQuery('#pause').hide();
             jQuery('#resume').hide();
             jQuery('#showTime').hide();
-            jQuery('#progressBar').hide();
-
-
         }
     };
-
 </script>
 <script>
     //paste this code under the head tag or in a separate js file.
