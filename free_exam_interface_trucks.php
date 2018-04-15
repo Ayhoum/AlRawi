@@ -465,24 +465,24 @@ $arrOrder = array(array());
                     </div>
 
                     <div id='sFinish' class='slideFinish'>
+                        <h4 style='direction: rtl;' class='text-center topmargin-sm'>منذ بداية 2018 أصبح ممكناً تقديم فحص الشاحنات مع مترجم <br><br> وهناك حاليا كورسات للتدريس بالعربي <br><br> لمزيد من المعلومات يرجى التواصل معنا على الرقم 0685338583</h4>
                         <h3 style='direction: rtl;' class='text-center topmargin-sm'>انتهت جميع الأسئلة</h3>
-                        <h4 style='direction: rtl;' class='text-center topmargin-sm'>منذ بداية 2018 أصبح ممكناً تقديم فحص الشاحنات مع مترجم <br> وهناك حاليا كورسات للتدريس بالعربي <br> لمزيد من المعلومات يرجى التواصل معنا على الرقم 0685338583</h4>
                         <h4 style='direction: rtl;' class='text-center topmargin-sm'>يمكنك العودة إلى بعض الأسئلة قبل
                             الضغط على زر إنهاء الإمتحان في الأسفل</h4>
                         <!--                    <button type="button" onclick="continueExam();" class="btn btn-warning btn-lg center-block" style="width: 40%;">متابعة الإمتحان</button>-->
                     </div>
 
                     <div id='forceFinish' class='forceFinish'>
+                        <h4 style='direction: rtl;' class='text-center topmargin-sm'>منذ بداية 2018 أصبح ممكناً تقديم فحص الشاحنات مع مترجم <br><br> وهناك حاليا كورسات للتدريس بالعربي <br><br> لمزيد من المعلومات يرجى التواصل معنا على الرقم 0685338583</h4>
                         <h3 style='direction: rtl;' class='text-center topmargin-sm'>إنتهى الوقت مع الأسف</h3>
-                        <h4 style='direction: rtl;' class='text-center topmargin-sm'>منذ بداية 2018 أصبح ممكناً تقديم فحص الشاحنات مع مترجم <br> وهناك حاليا كورسات للتدريس بالعربي <br> لمزيد من المعلومات يرجى التواصل معنا على الرقم 0685338583</h4>
                         <h4 style='direction: rtl;' class='text-center topmargin-sm'>إضغط على الزر أدناه لمعرفة نتيجة
                             الأسئلة التي أجبت عليها</h4>
                         <!--                    <button type="button" onclick="continueExam();" class="btn btn-warning btn-lg center-block" style="width: 40%;">متابعة الإمتحان</button>-->
                     </div>
 
                     <div id='stopSlide' class='stopSlide'>
+                        <h4 style='direction: rtl;' class='text-center topmargin-sm'>منذ بداية 2018 أصبح ممكناً تقديم فحص الشاحنات مع مترجم <br><br> وهناك حاليا كورسات للتدريس بالعربي <br><br> لمزيد من المعلومات يرجى التواصل معنا على الرقم 0685338583</h4>
                         <h3 style='direction: rtl;' class='text-center topmargin-sm'>لقد قمت بإيقاف الإمتحان</h3>
-                        <h4 style='direction: rtl;' class='text-center topmargin-sm'>منذ بداية 2018 أصبح ممكناً تقديم فحص الشاحنات مع مترجم <br> وهناك حاليا كورسات للتدريس بالعربي <br> لمزيد من المعلومات يرجى التواصل معنا على الرقم 0685338583</h4>
                         <h4 style='direction: rtl;' class='text-center topmargin-sm'>إضغط على الزر أدناه لمعرفة نتيجة
                             الأسئلة التي أجبت عليها</h4>
                         <!--                    <button type="button" onclick="continueExam();" class="btn btn-warning btn-lg center-block" style="width: 40%;">متابعة الإمتحان</button>-->

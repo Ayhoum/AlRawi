@@ -390,7 +390,22 @@ $link = "profile.php";
 
 
                     </div>
-                    <div class="text-center center-block"><a href="free_exam_interface.php?exam_id=1" class="button button-desc button-dark button-rounded"><div>إجراء إمتحان تجريبي</div><span style="direction: rtl;text-align: center">مجاني!</span></a></div>
+
+                    <div class="fancy-title title-dotted-border title-center topmargin-sm">
+                        <h2 class="pricing-section--title center" style="color: #0f0e0f">الإمـتـحانـات الـتـجـريـبـيـة</h2>
+                    </div>
+                    <div class="col-md-6">
+
+                        <div class="text-center center-block">
+                            <a href="free_exam_interface_trucks.php?exam_id=3" class="button button-desc button-amber button-border button-rounded"><div>إمتحان قيادة الشاحنات</div><span style="direction: rtl;text-align: center;">مجاني!</span></a>
+                        </div>
+
+                    </div>
+                    <div class="col-md-6">
+                        <div class="text-center center-block">
+                            <a href="free_exam_interface.php?exam_id=1" class="button button-desc button-purple button-border button-rounded"><div>إمتحان قيادة السيارات</div><span style="direction: rtl;text-align: center">مجاني!</span></a></div>
+                    </div>
+
 
                 </div>
             </div>
