@@ -296,6 +296,10 @@ $link = "profile.php";
                     <h2 class="pricing-section--title center" style="color: #0f0e0f">أسعــارنـا</h2>
                 </div>
 
+                    <div class="center-block text-center bottommargin" style="font-size: 16px;color: red; font-weight: 700">
+                        <span>كافة الباقات تحتوي الإمتحانات ذاتها أما الإختلاف فهو بمدة الإشتراك</span>
+                    </div>
+
                     <div class="pricing bottommargin clearfix">
 
                         <div class="col-md-3">
