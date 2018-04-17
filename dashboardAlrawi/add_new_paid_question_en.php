@@ -118,9 +118,9 @@ if (isset($_GET['id']) && ($_GET['qset'])) {
                 <div class="form-group row"><label>Right Answer : </label>
                     <select id="right_answer" class="form-control m-b" style="direction: rtl;" name="response_right_answer">
                         <option value="" disabled selected>Select the answer</option>
-                        <option value="فرامل">Break</option>
-                        <option value="رفع قدم عن الوقود">Release Gas</option>
-                        <option value="لا شئ">Nothing</option>
+                        <option value="Break">Break</option>
+                        <option value="Release Gas">Release Gas</option>
+                        <option value="Nothing">Nothing</option>
                     </select>
                 </div>
             </div>
@@ -129,8 +129,8 @@ if (isset($_GET['id']) && ($_GET['qset'])) {
                 <div class="form-group row"><label>Right Answer : </label>
                     <select id="yesno_right_answer" class="form-control m-b" style="direction: rtl;" name="yesno_right_answer">
                         <option value="" disabled selected>Select the answer</option>
-                        <option value="نعم">Yes</option>
-                        <option value="لا">No</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
                     </select>
                 </div>
             </div>

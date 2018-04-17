@@ -120,9 +120,9 @@ if (isset($_POST['submit'])) {
                     <div class="form-group row"><label>Right Answer : </label>
                         <select id="right_answer" class="form-control m-b" style="direction: rtl;" name="response_right_answer">
                             <option value="" disabled selected>Select the answer</option>
-                            <option value="فرامل">Remmen</option>
-                            <option value="رفع قدم عن الوقود">Gas los laten</option>
-                            <option value="لا شئ">Niets</option>
+                            <option value="Remmen">Remmen</option>
+                            <option value="Gas los laten">Gas los laten</option>
+                            <option value="Niets">Niets</option>
                         </select>
                     </div>
                 </div>
@@ -131,8 +131,8 @@ if (isset($_POST['submit'])) {
                     <div class="form-group row"><label>Right Answer : </label>
                         <select id="yesno_right_answer" class="form-control m-b" style="direction: rtl;" name="yesno_right_answer">
                             <option value="" disabled selected>Select the answer</option>
-                            <option value="نعم">Ja</option>
-                            <option value="لا">Nee</option>
+                            <option value="Ja">Ja</option>
+                            <option value="Nee">Nee</option>
                         </select>
                     </div>
                 </div>
