@@ -96,14 +96,14 @@ if (isset($_GET['id']) && ($_GET['qset'])) {
             <div class="form-group row"><label>Question Type : </label>
                 <select onchange="getType()" id="type" class="form-control m-b" style="direction: rtl;" name="type" required>
                     <option value="" disabled selected>Select a question type</option>
-                    <option value="response">إستجابة</option>
-                    <option value="yesNo">نعم / لا</option>
-                    <option value="numInp">إدخال رقم</option>
-                    <option value="multiChoice2">اختيار من متعدد (2)</option>
-                    <option value="multiChoice3">اختيار من متعدد (3)</option>
-                    <option value="multiChoice4">اختيار من متعدد (4)</option>
-                    <option value="advantage3">أفضلية (3)</option>
-                    <option value="advantage4">أفضلية (4)</option>
+                    <option value="response">Gevaarherkenning</option>
+                    <option value="yesNo">Ja / Nee</option>
+                    <option value="numInp">Nummer Invoeren</option>
+                    <option value="multiChoice2">Meerkeuze Vraag (2)</option>
+                    <option value="multiChoice3">Meerkeuze Vraag (3)</option>
+                    <option value="multiChoice4">Meerkeuze Vraag (4)</option>
+                    <option value="advantage3">Voorrang (3)</option>
+                    <option value="advantage4">Voorrang (4)</option>
                 </select>
             </div>
 
@@ -118,9 +118,9 @@ if (isset($_GET['id']) && ($_GET['qset'])) {
                 <div class="form-group row"><label>Right Answer : </label>
                     <select id="right_answer" class="form-control m-b" style="direction: rtl;" name="response_right_answer">
                         <option value="" disabled selected>Select the answer</option>
-                        <option value="فرامل">فرامل</option>
-                        <option value="رفع قدم عن الوقود">رفع قدم عن الوقود</option>
-                        <option value="لا شئ">لا شئ</option>
+                        <option value="فرامل">Remmen</option>
+                        <option value="رفع قدم عن الوقود">Gas los laten</option>
+                        <option value="لا شئ">Niets</option>
                     </select>
                 </div>
             </div>
@@ -129,8 +129,8 @@ if (isset($_GET['id']) && ($_GET['qset'])) {
                 <div class="form-group row"><label>Right Answer : </label>
                     <select id="yesno_right_answer" class="form-control m-b" style="direction: rtl;" name="yesno_right_answer">
                         <option value="" disabled selected>Select the answer</option>
-                        <option value="نعم">نعم</option>
-                        <option value="لا">لا</option>
+                        <option value="نعم">Ja</option>
+                        <option value="لا">Nee</option>
                     </select>
                 </div>
             </div>

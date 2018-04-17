@@ -157,14 +157,14 @@ while ($row = mysqli_fetch_assoc($select_question)) {
                     <div class="form-group row"><label>Question Type : </label>
                         <select id="type" class="form-control m-b" style="direction: rtl;" name="type" required>
                             <option value="" disabled selected>Select a question type</option>
-                            <option value="response" <?php if ($type == "response" ){echo "selected"; }?>>إستجابة</option>
-                            <option value="yesNo" <?php if ($type == "yesNo" ){echo "selected"; }?>>نعم / لا</option>
-                            <option value="numInp" <?php if ($type == "numInp" ){echo "selected"; }?>>إدخال رقم</option>
-                            <option value="multiChoice2" <?php if ($type == "multiChoice2" ){echo "selected"; }?>>اختيار من متعدد (2)</option>
-                            <option value="multiChoice3" <?php if ($type == "multiChoice3" ){echo "selected"; }?>>اختيار من متعدد (3)</option>
-                            <option value="multiChoice4" <?php if ($type == "multiChoice4" ){echo "selected"; }?>>اختيار من متعدد (4)</option>
-                            <option value="advantage3" <?php if ($type == "advantage3" ){echo "selected"; }?>>أفضلية (3)</option>
-                            <option value="advantage4" <?php if ($type == "advantage4" ){echo "selected"; }?>>أفضلية (4)</option>
+                            <option value="response" <?php if ($type == "response" ){echo "selected"; }?>>Gevaarherkenning</option>
+                            <option value="yesNo" <?php if ($type == "yesNo" ){echo "selected"; }?>>Ja / Nee</option>
+                            <option value="numInp" <?php if ($type == "numInp" ){echo "selected"; }?>>Nummer Invoeren</option>
+                            <option value="multiChoice2" <?php if ($type == "multiChoice2" ){echo "selected"; }?>>Meerkeuze Vraag (2)</option>
+                            <option value="multiChoice3" <?php if ($type == "multiChoice3" ){echo "selected"; }?>>Meerkeuze Vraag (3)</option>
+                            <option value="multiChoice4" <?php if ($type == "multiChoice4" ){echo "selected"; }?>>Meerkeuze Vraag (4)</option>
+                            <option value="advantage3" <?php if ($type == "advantage3" ){echo "selected"; }?>>Voorrang (3)</option>
+                            <option value="advantage4" <?php if ($type == "advantage4" ){echo "selected"; }?>>Voorrang (4)</option>
                         </select>
                     </div>
 

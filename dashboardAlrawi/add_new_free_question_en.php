@@ -98,14 +98,14 @@ if (isset($_POST['submit'])) {
                 <div class="form-group row"><label>Question Type : </label>
                     <select onchange="getType()" id="type" class="form-control m-b" style="direction: rtl;" name="type" required>
                         <option value="" disabled selected>Select a question type</option>
-                        <option value="response">إستجابة</option>
-                        <option value="yesNo">نعم / لا</option>
-                        <option value="numInp">إدخال رقم</option>
-                        <option value="multiChoice2">اختيار من متعدد (2)</option>
-                        <option value="multiChoice3">اختيار من متعدد (3)</option>
-                        <option value="multiChoice4">اختيار من متعدد (4)</option>
-                        <option value="advantage3">أفضلية (3)</option>
-                        <option value="advantage4">أفضلية (4)</option>
+                        <option value="response">Response</option>
+                        <option value="yesNo">Yes / No</option>
+                        <option value="numInp">Number Input</option>
+                        <option value="multiChoice2">Multiple Choice (2)</option>
+                        <option value="multiChoice3">Multiple Choice (3)</option>
+                        <option value="multiChoice4">Multiple Choice (4)</option>
+                        <option value="advantage3">Priorities (3)</option>
+                        <option value="advantage4">Priorities (4)</option>
                     </select>
                 </div>
 
@@ -120,9 +120,9 @@ if (isset($_POST['submit'])) {
                     <div class="form-group row"><label>Right Answer : </label>
                         <select id="right_answer" class="form-control m-b" style="direction: rtl;" name="response_right_answer">
                             <option value="" disabled selected>Select the answer</option>
-                            <option value="فرامل">فرامل</option>
-                            <option value="رفع قدم عن الوقود">رفع قدم عن الوقود</option>
-                            <option value="لا شئ">لا شئ</option>
+                            <option value="فرامل">Break</option>
+                            <option value="رفع قدم عن الوقود">Release Gas</option>
+                            <option value="لا شئ">Nothing</option>
                         </select>
                     </div>
                 </div>
@@ -131,8 +131,8 @@ if (isset($_POST['submit'])) {
                     <div class="form-group row"><label>Right Answer : </label>
                         <select id="yesno_right_answer" class="form-control m-b" style="direction: rtl;" name="yesno_right_answer">
                             <option value="" disabled selected>Select the answer</option>
-                            <option value="نعم">نعم</option>
-                            <option value="لا">لا</option>
+                            <option value="نعم">Yes</option>
+                            <option value="لا">No</option>
                         </select>
                     </div>
                 </div>
