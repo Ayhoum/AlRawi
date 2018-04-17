@@ -106,7 +106,7 @@ include '../scripts/db_connection.php';
                     </li>
                     <li class="nav-heading"><span>FREE EXAMS</span></li>
                     <li>
-                        <a href="#"><i class="fa fa-file-text-o"></i> <span class="nav-label">Free Exams</span><span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-file-text-o"></i> <span class="nav-label">Free Exams Arabic</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse">
                             <li><a href="add_free_exam.php">New Exam</a></li>
                             <li><a href="free_exams.php"> Manage Free Exams</a></li>
@@ -114,20 +114,54 @@ include '../scripts/db_connection.php';
                             <li style="background: #C35462;"><a href="free_exams_trucks.php"> Manage Free <b style="color: #2A094A;">Trucks</b> Exams</a></li>
                         </ul>
                     </li>
+                    <li>
+
+                        <a href="#"><i class="fa fa-file-text-o"></i> <span class="nav-label">Free Exams English</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a href="add_free_exam_en.php">New Exam EN</a></li>
+                            <li><a href="free_exams_en.php"> Manage Free Exams EN</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-file-text-o"></i> <span class="nav-label">Free Exams Dutch</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a href="add_free_exam_nl.php">New Exam NL</a></li>
+                            <li><a href="free_exams_nl.php"> Manage Free Exams NL</a></li>
+                        </ul>
+
+                    </li>
                     <li class="nav-heading"><span>PAID EXAMS</span></li>
                     <li>
-                        <a href="#"><i class="fa fa-dollar"></i> <span class="nav-label">Paid Exams</span><span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-dollar"></i> <span class="nav-label">Paid Exams Arabic</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse">
                             <li><a href="add_paid_exam.php">New Exam</a></li>
                             <li><a href="paid_exams.php"> Manage Paid Exams</a></li>
                             <li><a href="paid_exams_stats.php"> Paid Exams Stats</a></li>
                         </ul>
                     </li>
+                    <li>
+
+                        <a href="#"><i class="fa fa-dollar"></i> <span class="nav-label">Paid Exams English</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a href="add_paid_exam_en.php">New Exam EN</a></li>
+                            <li><a href="paid_exams_en.php"> Manage Free Exams EN</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-dollar"></i> <span class="nav-label">Paid Exams Dutch</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a href="add_paid_exam_nl.php">New Exam NL</a></li>
+                            <li><a href="paid_exams_nl.php"> Manage Free Exams NL</a></li>
+                        </ul>
+
+                    </li>
                     <li class="nav-heading"><span>SEARCH QUESTION</span></li>
                     <li>
                         <a href="#"><i class="fa fa-search"></i> <span class="nav-label">Search</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse">
-                            <li><a href="search_question.php">Search Question</a></li>
+                            <li><a href="search_question.php">Search Question Arabic</a></li>
+                            <li><a href="search_question_en.php">Search Question English</a></li>
+                            <li><a href="search_question_nl.php">Search Question Dutch</a></li>
                         </ul>
                     </li>
                     <li class="nav-heading"><span>PRIVATE SESSIONS ISSUES</span></li>
@@ -145,11 +179,9 @@ include '../scripts/db_connection.php';
                             <li><a href="edit_prices.php">Edit Prices</a></li>
                         </ul>
                     </li>
-
                 </ul>
                 <!-- END SIDEBAR MENU -->
-            </nav>
-            <!-- END SIDEBAR -->
+            </nav>            <!-- END SIDEBAR -->
         </aside>
         <!-- BEGIN CONTENT BODY -->
         <div class="page-content-wrapper">

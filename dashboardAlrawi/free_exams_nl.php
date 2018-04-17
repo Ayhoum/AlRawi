@@ -1,7 +1,7 @@
 <?php
 session_start();
 ob_start();
-include '../scripts/db_connection.php';
+include '../nl/scripts/db_connection.php';
 //$date = date('Y-m-d');
 if ($_SESSION['role'] != "MainAdmin") {
     header("Location: ../index.php");
@@ -193,7 +193,7 @@ if ($_SESSION['role'] != "MainAdmin") {
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="page-title">
-                            <h4 class="float-left">Free Exams</h4>
+                            <h4 class="float-left">Free Exams Dutch</h4>
                         </div>
                     </div>
                 </div><!-- end .page title-->
@@ -203,95 +203,91 @@ if ($_SESSION['role'] != "MainAdmin") {
                             <thead>
                             <tr>
                                 <td class="text-center">
-                                    <a href="" class="desc">User Name</a>
+                                    <a href="" class="desc">ID</a>
                                 </td>
                                 <td class="text-center">
-                                    <a href="">Date</a>
-                                </td>
-                                <td class="text-center">
-                                    <a href="">Time</a>
+                                    <a href="">Exam Name</a>
                                 </td>
                                 <td class="text-center">
                                     <a href="">Status</a>
                                 </td>
                                 <td class="text-center">
-                                    <a href=""> Payment Status</a>
+                                    <a href="">Number of Question</a>
                                 </td>
-                                <td class="text-center">Actions</td>
+                                <td class="text-center">Action</td>
                             </tr>
                             </thead>
                             <tbody>
                             <?php
-                            $query = "SELECT * FROM BOOKED_SESSION";
-                            $select_sessions = mysqli_query($mysqli, $query);
+                            $query = "SELECT * FROM FREE_QUESTION_SET";
+                            $select_exams = mysqli_query($mysqli_nl, $query);
 
-                            while ($row = mysqli_fetch_assoc($select_sessions)) {
+                            while ($row = mysqli_fetch_assoc($select_exams)) {
                                 $id = $row['ID'];
-                                $date = $row['DATE'];
-                                $time = $row['TIME'];
-                                $subject = $row['SUBJECT'];
+                                $name = $row['EXAM_NAME'];
+                                $begin = $row['BEGIN_ID'];
                                 $status = $row['STATUS'];
-                                $payment_status = $row['PAYMENT_STATUS'];
-                                $user = $row['Users_ID'];
-                                $queryUser = "SELECT * FROM Users WHERE	ID = $user";
-                                $select_user = mysqli_query($mysqli, $queryUser);
-                                while ($row = mysqli_fetch_assoc($select_user)) {
-                                    $userName = $row['NAME'];
-
-                            ?>
-                            <tr>
-                            <td class="text-center"><?php echo $userName;?></td>
-                            <td class="text-center"><?php echo $date;?></td>
-                            <td class="text-center"><?php echo $time;?></td>
-                            <td class="text-center"><?php echo $status;?></td>
-                                <td class="text-center"><?php echo $payment_status;?></td>
-                                <td class="text-center">
-                                <a href="manage_private_session.php?change_to_approved=<?php echo $id ?>" data-toggle="tooltip" title="" class="btn btn-success" data-original-title="View"><i class="fa fa-check"></i></a>
-
-                                <a href="manage_private_session.php?change_to_unapproved=<?php echo $id ?>" data-toggle="tooltip" title="" class="btn btn-danger" data-original-title="View"><i class="fa fa-times"></i></a>
-                            </td>
-
-
-                            </tr>
-                            <?php
-                                }
-
-                            }
-
+                                $beginValue = (($begin - 1));
                                 ?>
+                                <tr>
+                                    <td class="text-center"><?php echo $id;?></td>
+                                    <td class="text-center"><?php echo $name;?></td>
+                                    <td class="text-center"><?php echo $status;?></td>
+                                    <?php
+                                    $query = "SELECT * FROM FREE_EXAM_QUESTION WHERE	FREE_QUESTION_SET_ID = $id";
+                                    $select_ques = mysqli_query($mysqli_nl, $query);
+                                    $numRow = mysqli_num_rows($select_ques);
+                                    ?>
+                                    <td class="text-center"><?php echo $numRow; ?></td>
+                                    <td class="text-center">
+                                        <?php if($status == "VISIBLE"){?>
+                                            <a href="free_exams_nl.php?change_to_invisible=<?php echo $id ?>" data-toggle="tooltip" title="" class="btn btn-secondary" data-original-title="View"><i class="fa fa-eye-slash"></i></a>
+
+                                        <?php }else{ ?>
+                                            <a href="free_exams_nl.php?change_to_visible=<?php echo $id ?>" data-toggle="tooltip" title="" class="btn btn-success" data-original-title="View"><i class="fa fa-eye"></i></a>
+
+                                        <?php } ?>
+                                        <a href="edit_free_exam_info_nl.php?id=<?php echo $id; ?>"  data-toggle="tooltip" title="" class="btn btn-warning" data-original-title="Delete"><i class="fa fa-cog fa-spin"></i></a>
+
+                                        <a href="manage_free_exams_nl.php?id=<?php echo $id; ?>" data-toggle="tooltip" title="" class="btn btn-primary" data-original-title="Edit"><i class="fa fa-pencil"></i></a>
+                                    </td>
+                                </tr>
+                                <?php
+                            }
+                            ?>
                             </tbody>
                         </table>
                     </div>
-                </div>
+        </div>
 
                 <?php
 
-                if(isset($_GET['change_to_approved'])){
+                if(isset($_GET['change_to_visible'])){
 
-                    $the_session_id = $_GET['change_to_approved'];
-                    $query = "UPDATE BOOKED_SESSION SET STATUS = 'APPROVED' WHERE ID = {$the_session_id}";
-                    $session_query = mysqli_query($mysqli, $query);
-                    if(!$session_query){
-                        die("Failed!" . mysqli_error($mysqli));
+                    $the_exam_id = $_GET['change_to_visible'];
+                    $query = "UPDATE FREE_QUESTION_SET SET STATUS = 'VISIBLE' WHERE ID = {$the_exam_id}";
+                    $exam_query = mysqli_query($mysqli_nl, $query);
+                    if(!$exam_query){
+                        die("Failed!" . mysqli_error($mysqli_nl));
                     }
-                    header("Location: manage_private_session.php");
+                    header("Location: free_exams_nl.php");
                 }
 
-                if(isset($_GET['change_to_unapproved'])){
-                    $the_session_id = $_GET['change_to_unapproved'];
-                    $query = "UPDATE BOOKED_SESSION SET STATUS = 'UNAPPROVED' WHERE ID = {$the_session_id}";
-                    $session_query = mysqli_query($mysqli, $query);
-                    if(!$session_query){
-                        die("Failed!" . mysqli_error($mysqli));
+                if(isset($_GET['change_to_invisible'])){
+                    $the_exam_id = $_GET['change_to_invisible'];
+                    $query = "UPDATE FREE_QUESTION_SET SET STATUS = 'INVISIBLE' WHERE ID = {$the_exam_id}";
+                    $exam_query = mysqli_query($mysqli_nl, $query);
+                    if(!$exam_query){
+                        die("Failed!" . mysqli_error($mysqli_nl));
                     }
-                    header("Location: manage_private_session.php");
+                    header("Location: free_exams_nl.php");
                 }
                 ?>
                 <div class="clearfix"></div>
                 <div class="footer">
                     <?php
                     $query = "SELECT * FROM Website";
-                    $getWeb = mysqli_query($mysqli,$query);
+                    $getWeb = mysqli_query($mysqli_nl,$query);
                     while ($row = mysqli_fetch_assoc($getWeb)){
                         $website = $row['DevWeb'];
                     }
