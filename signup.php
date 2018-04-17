@@ -7,6 +7,8 @@ session_start();
 session_unset();
 
 include 'scripts/db_connection.php';
+include 'en/scripts/db_connection.php';
+include 'nl/scripts/db_connection.php';
 require_once 'phpmailer/class.phpmailer.php';
 
 
@@ -151,6 +153,9 @@ $loginUrl = $helper->getLoginUrl('https://www.alrawitheorie.nl/fb-callback.php',
                                     <a href="login.php" class="fright text-center" style="width: 100%">لديك حساب مسبقاً؟ قم بتسجيل الدخول</a>
                                 </div>
                             </form>
+
+
+
                         </div>
                     </div>
 
@@ -307,7 +312,7 @@ if(isset($_POST['signup_submit'])) {
     }else{
 
         //Sender
-        if(!empty($userName) && !empty($password) && !empty($passwordre)){
+        if(!empty($userName) && !empty($password) && !empty($passwordre)) {
             $query = "INSERT INTO Users(EMAIL,
                                 PASSWORD,
                                 NAME,
@@ -327,17 +332,24 @@ if(isset($_POST['signup_submit'])) {
                     '{$situation}',
                     '{$date}') ";
 
-            $insertUser =  mysqli_query($mysqli, $query);
+            $insertUser = mysqli_query($mysqli, $query);
             if (!$insertUser) {
                 die("Failed!" . mysqli_error($mysqli));
-            }else{
+            } else {
+                $insertUser =  mysqli_query($mysqli_en, $query);
+                if (!$insertUser) {
+                    die("FailedEN!" . mysqli_error($mysqli_en));
+                }else{
+                    $insertUser =  mysqli_query($mysqli_nl, $query);
+                    if (!$insertUser) {
+                        die("FailedNL!" . mysqli_error($mysqli_nl));
+                    }else{
 
-
-                $mail             = new PHPMailer(); // defaults to using php "mail()"
+                $mail = new PHPMailer(); // defaults to using php "mail()"
                 $mail->CharSet = 'UTF-8';
                 $mail->IsHTML(true);
 
-                $body             = "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">
+                $body = "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">
 <html xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\">
 <head>
 	<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />
@@ -656,18 +668,20 @@ if(isset($_POST['signup_submit'])) {
 </html>";
 
 
-                $address1= $userName;
+                $address1 = $userName;
                 $mail->AddAddress($address1);
 
-                $mail->Subject    = "New User!";
+                $mail->Subject = "New User!";
 
                 $mail->MsgHTML($body);
 
-                if(!$mail->Send()) {
+                if (!$mail->Send()) {
                     echo "Mailer Error: " . $mail->ErrorInfo;
                 }
                 header("Location: login.php");
             }
+        }
+        }
         }
     }
 }
