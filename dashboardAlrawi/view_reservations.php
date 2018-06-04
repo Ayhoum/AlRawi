@@ -92,7 +92,7 @@ function RGBToHSL($RGB) {
 $week = 0;
 $week2 = 0;
 $week4 = 0;
-$query = "SELECT COUNT(*), res_date FROM EXAM_RES GROUP BY MONTH (res_date), YEAR (res_date) ";
+$query = "SELECT COUNT(*), res_date FROM EXAM_RES WHERE `Estatus` = 'GIVEN' GROUP BY MONTH (res_date), YEAR (res_date) ";
 
 $select_payments = mysqli_query($mysqli, $query);
 while($row = mysqli_fetch_assoc($select_payments)) {
