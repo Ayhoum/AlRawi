@@ -8,7 +8,7 @@ include '../scripts/db_connection.php';
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>Users List</title>
+        <title>Reservations List</title>
         <meta name="keywords" content="HTML5,CSS3,Admin Template" />
         <meta name="description" content="" />
         <meta name="Author" content="Psd2allconversion [www.psd2allconversion.com]" />
@@ -189,13 +189,14 @@ include '../scripts/db_connection.php';
                             </li>
                         </ul>
                         <!-- END SIDEBAR MENU -->
-                    </nav>                <!-- BEGIN CONTENT BODY -->
+                    </nav>                </aside>
+                <!-- BEGIN CONTENT BODY -->
                 <div class="page-content-wrapper">
                     <div class="content-wrapper container">
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="page-title">
-                                        <h4 class="float-left">Users List </h4>
+                                        <h4 class="float-left">Reservations List </h4>
                                 </div>
                             </div>
                         </div><!-- end .page title-->
@@ -207,7 +208,7 @@ include '../scripts/db_connection.php';
                         }
                         switch($source){
                             default:
-                                include "view_users.php";
+                                include "view_res.php";
                                 break;
                         }
                         ?>

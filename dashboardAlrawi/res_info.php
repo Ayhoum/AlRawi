@@ -3,99 +3,86 @@ session_start();
 ob_start();
 include '../scripts/db_connection.php';
 $date = date('Y-m-d');
-if($_SESSION['role'] != "MainAdmin"){
+if ($_SESSION['role'] != "MainAdmin") {
     header("Location: ../index.php");
 }
-if(!isset($_GET['id'])){
-    header("Location: user_list.php");
-}
-if (isset($_GET['id'])){
+if (!isset($_GET['id'])) {
+    header("Location: exam_res_list.php");
+} else {
     $id = $_GET['id'];
+}
 
-    if(isset($_GET['give_free_packet'])){
 
-        $the_free_packet = $_GET['give_free_packet'];
+$query = "SELECT * FROM `EXAM_RES` WHERE `id` = '{$id}'";
 
-        if($the_free_packet == "1week"){
-            date_default_timezone_set('Europe/Amsterdam');
-            $start_date = date('Y-m-d H:i:s ', time());
+$select_res = mysqli_query($mysqli, $query);
+while ($row = mysqli_fetch_assoc($select_res)) {
+    $id = $row['id'];
+    $name = $row['first_name'] . ' ' . $row['last_name'];
+    $bsn = $row['bsn'];
+    $dob = $row['dob'];
+    $stName = $row['str_name'];
+    $houseNo = $row['house_num'];
+    $postcode = $row['postcode'];
+    $city_name = $row['city_name'];
+    $email = $row['email'];
+    $phone = $row['phone'];
+    $place = $row['place'];
+    $dateAndTime = $row['dateAndTime'];
+    $dialect = $row['dialect'];
+    $note = $row['note'];
+    $reserve_status = $row['reserve_status'];
+    $order_id = $row['order_id'];
+}
 
-            $end_date = date("Y-m-d H:i:s ", strtotime('+20 days'));
-        }else if($the_free_packet == "2week"){
-            date_default_timezone_set('Europe/Amsterdam');
-            $start_date = date('Y-m-d H:i:s ', time());
+if(isset($_GET['reserve'])){
 
-            $end_date = date("Y-m-d H:i:s ", strtotime('+35 days'));
-        }else if($the_free_packet == "4week"){
-            date_default_timezone_set('Europe/Amsterdam');
-            $start_date = date('Y-m-d H:i:s ', time());
+    $reserve = $_GET['reserve'];
 
-            $end_date = date("Y-m-d H:i:s ", strtotime('+60 days'));
-        }
-        $query = "INSERT INTO PAID_EXAM (Users_ID, PAYMENT_DATE, END_DATE )";
-        $query .= "VALUES ('{$id}',
-                             '{$start_date}',
-                             '{$end_date}')";
+    if($reserve == "1"){
 
-        $result = mysqli_query($mysqli,$query);
-        if(!$result){
-            die("Failed!" . mysqli_error($mysqli));
-        }
-        header("Location: user_info.php?id=$id");
+    $query = "UPDATE `EXAM_RES` SET `reserve_status` = 'Reserved' WHERE `id` = $id";
+    $result = mysqli_query($mysqli,$query);
+    if(!$result){
+        die("Failed!" . mysqli_error($mysqli));
     }
+    }
+    header("Location: res_info.php?id=$id");
 }
 
-
-
-
-
-$query = "SELECT * FROM Users WHERE ID = $id";
-$select_users = mysqli_query($mysqli, $query);
-while($row = mysqli_fetch_assoc($select_users)){
-    $id      = $row['ID'];
-    $email      = $row['EMAIL'];
-    $password      = $row['PASSWORD'];
-    $name       = $row['NAME'];
-    $phone       = $row['PHONE'];
-    $city       = $row['CITY'];
-    $bd         = $row['BD'];
-    $spent      = $row['SPENT'];
-    $situation  = $row['SITUATION'];
-    $reg        = $row['REG_DATE'];
-    $newDate = date("d/m/Y", strtotime($reg));
-
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <title>Absolute Admin</title>
-    <meta name="keywords" content="HTML5,CSS3,Admin Template" />
-    <meta name="description" content="" />
-    <meta name="Author" content="Psd2allconversion [www.psd2allconversion.com]" />
+    <meta name="keywords" content="HTML5,CSS3,Admin Template"/>
+    <meta name="description" content=""/>
+    <meta name="Author" content="Psd2allconversion [www.psd2allconversion.com]"/>
 
     <!-- mobile settings -->
-    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
-    <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0"/>
+    <!--[if IE]>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
 
     <!-- WEB FONTS : use %7C instead of | (pipe) -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400%7CRaleway:300,400,500,600,700%7CLato:300,400,400italic,600,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400%7CRaleway:300,400,500,600,700%7CLato:300,400,400italic,600,700"
+          rel="stylesheet" type="text/css"/>
 
     <!-- CORE CSS -->
-    <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="assets/plugins/metis-menu/metisMenu.min.css" rel="stylesheet" type="text/css" />
-    <link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-    <link href="assets/plugins/simple-line-icons-master/css/simple-line-icons.css" rel="stylesheet" type="text/css" />
-    <link href="assets/plugins/animate/animate.css" rel="stylesheet" type="text/css" />
+    <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/plugins/metis-menu/metisMenu.min.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/plugins/simple-line-icons-master/css/simple-line-icons.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/plugins/animate/animate.css" rel="stylesheet" type="text/css"/>
     <link href="assets/plugins/c3/c3.min.css" rel="stylesheet">
     <link href="assets/plugins/widget/widget.css" rel="stylesheet">
     <link href="assets/plugins/calendar/fullcalendar.min.css" rel="stylesheet">
     <link href="assets/plugins/ui/jquery-ui.css" rel="stylesheet">
 
     <!-- THEME CSS -->
-    <link href="assets/css/style.css" rel="stylesheet" type="text/css" />
-    <link href="assets/css/theme/dark.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/css/theme/dark.css" rel="stylesheet" type="text/css"/>
 
     <!-- PAGE LEVEL SCRIPTS -->
 
@@ -113,8 +100,10 @@ while($row = mysqli_fetch_assoc($select_users)){
                 <a href="../index.php">
                     <img src="../images/adminLogo.png" alt="absolute admin" class="img-fluid logo-default"/> </a>
 
-            </div><div class="menu-toggler sidebar-toggler">
-                <a href="javascript:" class="navbar-minimalize minimalize-styl-2  float-left "><i class="fa fa-bars"></i></a>
+            </div>
+            <div class="menu-toggler sidebar-toggler">
+                <a href="javascript:" class="navbar-minimalize minimalize-styl-2  float-left "><i
+                            class="fa fa-bars"></i></a>
             </div>
 
             <!-- END LOGO -->
@@ -124,7 +113,8 @@ while($row = mysqli_fetch_assoc($select_users)){
                 <ul class="nav navbar-nav float-right">
                     <!-- BEGIN USER LOGIN DROPDOWN -->
                     <li class="dropdown dropdown-user">
-                        <a href="javascript:" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true" aria-expanded="false">
+                        <a href="javascript:" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
+                           data-close-others="true" aria-expanded="false">
                             <img alt="" class="rounded-circle" src="assets/images/avtar-3.jpg">
                         </a>
                         <div class="dropdown-menu dropdown-menu-default">
@@ -140,7 +130,7 @@ while($row = mysqli_fetch_assoc($select_users)){
     </div>
     <!-- END HEADER -->
     <!-- BEGIN HEADER & CONTENT dropdown-divider -->
-    <div class="clearfix"> </div>
+    <div class="clearfix"></div>
     <!-- END HEADER & CONTENT dropdown-divider -->
 
     <!-- BEGIN CONTAINER -->
@@ -256,7 +246,7 @@ while($row = mysqli_fetch_assoc($select_users)){
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="page-title">
-                            <h4 class="float-left">Data Tables  </h4>
+                            <h4 class="float-left">Data Tables </h4>
                         </div>
                     </div>
                 </div><!-- end .page title-->
@@ -266,134 +256,149 @@ while($row = mysqli_fetch_assoc($select_users)){
                         <div class="panel panel-card recent-activites">
                             <!-- Start .panel -->
                             <div class="panel-heading">
-                                <?php echo $name?>'s Inormation:
+                                <?php echo $name ?>'s Inormation:
                             </div>
                             <div class="panel-body  p-xl-3">
 
 
                                 <div class="col-md-12">
-                                    <div class="row">
-                                    <div class="col-md-4">
-                                <div class="sale-state-box" style="background-color: #001d45;box-shadow: 3px 4px 5px rgba(0,0,0,0.2);">
-                                    <h3><?php echo $id;?></h3>
-                                    <span>ID</span>
-                                </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="sale-state-box" style="background-color: #001d45;box-shadow: 3px 4px 5px rgba(0,0,0,0.2);">
-                                    <h3><?php echo $email;?></h3>
-                                    <span>Email</span>
-                                </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="sale-state-box" style="background-color: #001d45;box-shadow: 3px 4px 5px rgba(0,0,0,0.2);">
-                                    <h3><?php echo $name;?></h3>
-                                    <span>Name</span>
-                                </div>
-                                    </div>
+                                    <div class="panel-heading">
+                                        Basic Info:
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="sale-state-box" style="background-color: #001d45;box-shadow: 3px 4px 5px rgba(0,0,0,0.2);">
-                                                <h3><?php echo $password?></h3>
-                                                <span>Hashed Password</span>
+                                        <div class="col-md-3">
+                                            <div class="sale-state-box"
+                                                 style="background-color: #001d45;box-shadow: 3px 4px 5px rgba(0,0,0,0.2);">
+                                                <h3><?php echo $order_id; ?></h3>
+                                                <span>Order ID</span>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="sale-state-box" style="background-color: #001d45;box-shadow: 3px 4px 5px rgba(0,0,0,0.2);">
-                                                <h3><?php echo $phone;?></h3>
-                                                <span>Phone</span>
+                                        <div class="col-md-3">
+                                            <div class="sale-state-box"
+                                                 style="background-color: #001d45;box-shadow: 3px 4px 5px rgba(0,0,0,0.2);">
+                                                <h3><?php echo $name; ?></h3>
+                                                <span>Name</span>
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
-                                            <div class="sale-state-box" style="background-color: #001d45;box-shadow: 3px 4px 5px rgba(0,0,0,0.2);">
-                                                <h3><?php echo $city;?></h3>
-                                                <span>City</span>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="sale-state-box" style="background-color: #001d45;box-shadow: 3px 4px 5px rgba(0,0,0,0.2);">
-                                                <h3><?php echo $bd;?></h3>
+                                        <div class="col-md-3">
+                                            <div class="sale-state-box"
+                                                 style="background-color: #001d45;box-shadow: 3px 4px 5px rgba(0,0,0,0.2);">
+                                                <h3><?php echo $dob; ?></h3>
                                                 <span>Birthday</span>
                                             </div>
                                         </div>
+                                        <div class="col-md-3">
+                                            <div class="sale-state-box"
+                                                 style="background-color: #001d45;box-shadow: 3px 4px 5px rgba(0,0,0,0.2);">
+                                                <h3><?php echo $bsn; ?></h3>
+                                                <span>BSN</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel-heading">
+                                        Contact Info:
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="sale-state-box" style="background-color: #001d45;box-shadow: 3px 4px 5px rgba(0,0,0,0.2);">
-                                                <h3><?php echo $spent;?></h3>
-                                                <span>Spent</span>
+                                        <div class="col-md-6">
+                                            <div class="sale-state-box"
+                                                 style="background-color: #001d45;box-shadow: 3px 4px 5px rgba(0,0,0,0.2);">
+                                                <h3><?php echo $email; ?></h3>
+                                                <span>Email</span>
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
-                                            <div class="sale-state-box" style="<?php if($situation == "SUCCEEDED") {
-                                                echo "background-color:rgb(255, 152, 0);";
-                                            }elseif($situation == "NEW"){
-                                                echo "background-color:rgb(244, 66, 66);";
-                                            }else{
-                                                echo "background-color:rgb(233, 30, 99);";
-                                            }?>box-shadow: 3px 4px 5px rgba(0,0,0,0.2);">
-                                                <h3><?php echo $situation;?></h3>
-                                                <span>Situation</span>
+                                        <div class="col-md-6">
+                                            <div class="sale-state-box"
+                                                 style="background-color: #001d45;box-shadow: 3px 4px 5px rgba(0,0,0,0.2);">
+                                                <h3><?php echo $phone; ?></h3>
+                                                <span>Phone</span>
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="sale-state-box"
+                                                 style="background-color: #001d45;box-shadow: 3px 4px 5px rgba(0,0,0,0.2);">
+                                                <h3><?php echo $stName; ?></h3>
+                                                <span>Street Name</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="sale-state-box"
+                                                 style="background-color: #001d45;box-shadow: 3px 4px 5px rgba(0,0,0,0.2);">
+                                                <h3><?php echo $houseNo; ?></h3>
+                                                <span>House Number</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="sale-state-box"
+                                                 style="background-color: #001d45;box-shadow: 3px 4px 5px rgba(0,0,0,0.2);">
+                                                <h3><?php echo $postcode; ?></h3>
+                                                <span>Post Code</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="sale-state-box"
+                                                 style="background-color: #001d45;box-shadow: 3px 4px 5px rgba(0,0,0,0.2);">
+                                                <h3><?php echo $city_name; ?></h3>
+                                                <span>City</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel-heading">
+                                        Exam Info:
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="sale-state-box"
+                                                 style="background-color: #001d45;box-shadow: 3px 4px 5px rgba(0,0,0,0.2);">
+                                                <h3><?php echo $place; ?></h3>
+                                                <span>Exam Place</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
                                             <div class="sale-state-box" style="background-color: #001d45;box-shadow: 3px 4px 5px rgba(0,0,0,0.2);">
-                                                <h3><?php echo $newDate;?></h3>
-                                                <span>Registration Date</span>
+                                                <h3><?php echo $dateAndTime; ?></h3>
+                                                <span>Exam Date</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="sale-state-box"
+                                                 style="background-color: #001d45;box-shadow: 3px 4px 5px rgba(0,0,0,0.2);">
+                                                <h3><?php echo $dialect; ?></h3>
+                                                <span>Dialect</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="sale-state-box" style="background-color: #001d45;box-shadow: 3px 4px 5px rgba(0,0,0,0.2);">
+                                                <h3><?php echo $note; ?></h3>
+                                                <span>Notes</span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <?php
-                                                $activeQuery = "SELECT * FROM PAID_EXAM WHERE Users_ID = '{$id}'";
-                                                $active = mysqli_query($mysqli,$activeQuery);
-                                                    if(mysqli_num_rows($active) > 0){
-                                                        while($row = mysqli_fetch_assoc($active)){
-                                                            $until = $row['END_DATE'];
-                                                            ?>
-                                                            <div class="sale-state-box" style="background-color:rgb(255, 152, 0);box-shadow: 3px 4px 5px rgba(0,0,0,0.2);">
-                                                                <h3><?php echo $until?></h3>
-                                                                <span>Active Until</span>
-                                                            </div>
-                                            <?php
-                                                        }
-                                                    }else{
-                                                        ?>
-                                                        <div class="sale-state-box" style="background-color:rgb(244, 66, 66);box-shadow: 3px 4px 5px rgba(0,0,0,0.2);">
-                                                            <h3>No Active Packet</h3>
-                                                        </div>
-                                            <?php
-
-                                                }
-                                            ?>
-
+                                            <div class="sale-state-box"
+                                                 style="<?php if($reserve_status == 'Not Reserved'){ ?>background-color: #ff0900;<?php }else{?> background-color: #a3d300;<?php } ?> box-shadow: 3px 4px 5px rgba(0,0,0,0.2);">
+                                                <h3><?php echo $reserve_status; ?></h3>
+                                            </div>
                                         </div>
                                     </div>
+                                    <hr style="margin-top: 60px;margin-bottom: 60px">
                                     <div class="row">
-                                        <div class="col-md-4">
-                                            <a href="user_info.php?id=<?php echo $id; ?>&give_free_packet=1week"><div class="sale-state-box" style="background-color: #6ea563;box-shadow: 3px 4px 5px rgba(0,0,0,0.2);">
-                                                <h3>20 days Free</h3>
-                                            </div></a>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <a href="user_info.php?id=<?php echo $id; ?>&give_free_packet=2week"><div class="sale-state-box" style="background-color: #6ea563;box-shadow: 3px 4px 5px rgba(0,0,0,0.2);">
-                                                <h3>35 days Free</h3>
+                                        <div class="col-md-3">
+                                            <a href="exam_res_list.php"><div class="sale-state-box" style="background-color: #00dbff;color:#000;box-shadow: 3px 4px 5px rgba(0,0,0,0.2);">
+                                                    <h3>Back to the list</h3>
                                                 </div></a>
                                         </div>
-                                        <div class="col-md-4">
-                                            <a href="user_info.php?id=<?php echo $id; ?>&give_free_packet=4week"><div class="sale-state-box" style="background-color: #6ea563;box-shadow: 3px 4px 5px rgba(0,0,0,0.2);">
-                                                <h3>60 days Free</h3>
+                                        <div class="offset-6 col-md-3">
+                                            <a href="res_info.php?id=<?php echo $id; ?>&reserve=1"><div class="sale-state-box" style="background-color: #6ea563;box-shadow: 3px 4px 5px rgba(0,0,0,0.2);">
+                                                    <h3>Reserved</h3>
                                                 </div></a>
                                         </div>
                                     </div>
-                                    </div>
-
-
-
+                                </div>
 
 
                             </div>
@@ -405,19 +410,19 @@ while($row = mysqli_fetch_assoc($select_users)){
                 </div>
 
 
-
             </div>
             <div class="clearfix"></div>
             <div class="footer">
                 <?php
                 $query = "SELECT * FROM Website";
-                $getWeb = mysqli_query($mysqli,$query);
-                while ($row = mysqli_fetch_assoc($getWeb)){
+                $getWeb = mysqli_query($mysqli, $query);
+                while ($row = mysqli_fetch_assoc($getWeb)) {
                     $website = $row['DevWeb'];
                 }
                 ?>
                 <div>
-                    <strong>Copyright</strong> <a target="_blank" href="<?php echo $website;?>">El-Semicolon;  </a> © <?php echo date('Y') ;?>
+                    <strong>Copyright</strong> <a target="_blank" href="<?php echo $website; ?>">El-Semicolon; </a>
+                    © <?php echo date('Y'); ?>
                 </div>
             </div>
         </div>

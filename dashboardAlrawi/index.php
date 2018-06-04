@@ -137,12 +137,8 @@ $onlinePRows = mysqli_num_rows($onlineP_num_rows);
                     <nav class="sidebar-nav">
                         <ul class="metismenu" id="menu">
                             <li class="active">
-                                <a href="index.php"><i class="icon-grid"></i> <span class="nav-label">Dashboard</span><span class="fa arrow"></span></a>
-                                <ul class="nav nav-second-level collapse in">
-                                    <li><a href="index.php">Home</a></li>
-                                </ul>
+                                <a href="index.php"><i class="icon-grid"></i> <span class="nav-label">Dashboard</span></a>
                             </li>
-                            <li class="nav-heading"><span>USERS ISSUES</span></li>
                             <li>
                                 <a href="#"><i class="fa fa-users"></i> <span class="nav-label">Users</span><span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level collapse">
@@ -152,8 +148,11 @@ $onlinePRows = mysqli_num_rows($onlineP_num_rows);
                                     <li><a href="ba_users.php">Suspicious Users</a></li>
                                 </ul>
                             </li>
-                            <li class="nav-heading"><span>FREE EXAMS</span></li>
                             <li>
+                                <a href="#"><i class="fa fa-file-text-o"></i> <span class="nav-label">Free Exams</span><span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level collapse">
+
+                                <li>
                                 <a href="#"><i class="fa fa-file-text-o"></i> <span class="nav-label">Free Exams Arabic</span><span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level collapse">
                                     <li><a href="add_free_exam.php">New Exam</a></li>
@@ -178,8 +177,12 @@ $onlinePRows = mysqli_num_rows($onlineP_num_rows);
                                 </ul>
 
                             </li>
-                            <li class="nav-heading"><span>PAID EXAMS</span></li>
+                                </ul>
+                            </li>
                             <li>
+                                <a href="#"><i class="fa  fa-dollar"></i> <span class="nav-label">Paid Exams</span><span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level collapse">
+                                    <li>
                                 <a href="#"><i class="fa fa-dollar"></i> <span class="nav-label">Paid Exams Arabic</span><span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level collapse">
                                     <li><a href="add_paid_exam.php">New Exam</a></li>
@@ -203,7 +206,8 @@ $onlinePRows = mysqli_num_rows($onlineP_num_rows);
                                 </ul>
 
                             </li>
-                            <li class="nav-heading"><span>SEARCH QUESTION</span></li>
+                                </ul>
+                            </li>
                             <li>
                                 <a href="#"><i class="fa fa-search"></i> <span class="nav-label">Search</span><span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level collapse">
@@ -212,19 +216,23 @@ $onlinePRows = mysqli_num_rows($onlineP_num_rows);
                                     <li><a href="search_question_nl.php">Search Question Dutch</a></li>
                                 </ul>
                             </li>
-                            <li class="nav-heading"><span>PRIVATE SESSIONS ISSUES</span></li>
                             <li>
-                                <a href="#"><i class="fa fa-dollar"></i> <span class="nav-label">Private Sessions</span><span class="fa arrow"></span></a>
+                                <a href="#"><i class="fa fa-user-secret"></i> <span class="nav-label">Private Sessions</span><span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level collapse">
                                     <li><a href="manage_private_session.php">Manage Private Sessions</a></li>
                                 </ul>
                             </li>
-                            <li class="nav-heading"><span>PAYMENTS ISSUES</span></li>
                             <li>
-                                <a href="#"><i class="fa fa-dollar"></i> <span class="nav-label">Payments</span><span class="fa arrow"></span></a>
+                                <a href="#"><i class="fa fa-shopping-cart"></i> <span class="nav-label">Payments</span><span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level collapse">
                                     <li><a href="control_payments.php">Control Payments</a></li>
                                     <li><a href="edit_prices.php">Edit Prices</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-check "></i> <span class="nav-label">Reservations</span><span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level collapse">
+                                    <li><a href="exam_res_list.php">Check Reservations</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -627,6 +635,143 @@ $onlinePRows = mysqli_num_rows($onlineP_num_rows);
 
                                     </div>
                                 </div><!-- End .panel -->
+
+
+
+
+
+
+
+                                <div class="panel white-text panel-card recent-activites" style="background-color: #001152   !important;">
+                                    <!-- Start .panel -->
+                                    <div class="panel-heading" style="background-color: #001152   !important;padding: 15px 20px 25px;">
+                                        NUMBER OF EXAM RESERVATIONS EACH MONTH
+                                        <div style="float: right;">
+                                            <a href="control_reservations.php"><button type="button" class="btn-warning btn-rounded" style="border: 0;padding: 8px 15px 8px 15px;">See All</button></a>
+                                        </div>
+                                    </div>
+                                    <div class="panel-body  p-xl-3">
+
+                                        <div class="margin-t-10">
+                                            <div class="card-block">
+
+                                                <div class='black-text message-content'>
+                                                    <div>
+
+                                                        <?php
+                                                        $date = date("Y-m-d", strtotime('last day of this month'));
+                                                        $dateMin = date("Y-m-d", strtotime('first day of this month'));
+                                                        $paymentsNoThis = 0;
+                                                        $query = "SELECT * FROM EXAM_RES";
+                                                        $select_payments = mysqli_query($mysqli, $query);
+                                                        $allPayments = mysqli_num_rows($select_payments);
+                                                        while($row = mysqli_fetch_assoc($select_payments)) {
+                                                            if ($row['res_date'] > $dateMin && $row['res_date'] < $date) {
+                                                                $paymentsNoThis++;
+                                                            }
+                                                        }
+                                                        ?>
+                                                        <strong>THIS MONTH</strong>
+                                                        <small class="float-right"><b style="font-size:  20px;"><?php echo $paymentsNoThis; ?></b> <small><?php if($paymentsNoThis == 1){echo "Student";}else{echo "Students";} ?></small></small>
+                                                    </div>
+                                                </div>
+
+                                                <div class='black-text message-content'>
+                                                    <div>
+
+                                                        <?php
+                                                        $date = date("Y-m-d", strtotime('last day of last month'));
+                                                        $dateMin = date("Y-m-d", strtotime('first day of last month'));
+                                                        $paymentsNoLast = 0;
+                                                        $query = "SELECT * FROM EXAM_RES";
+                                                        $select_payments = mysqli_query($mysqli, $query);
+                                                        while($row = mysqli_fetch_assoc($select_payments)) {
+                                                            if ($row['res_date'] > $dateMin && $row['res_date'] < $date) {
+                                                                $paymentsNoLast++;
+                                                            }
+                                                        }
+                                                        ?>
+                                                        <strong>LAST MONTH</strong>
+                                                        <small class="float-right"><b style="font-size:  20px;"><?php echo $paymentsNoLast; ?></b> <small><?php if($paymentsNoLast == 1){echo "Student";}else{echo "Students";} ?></small></small>
+                                                    </div>
+                                                </div>
+
+                                                <div class='black-text message-content'>
+                                                    <div>
+
+                                                        <?php
+                                                        $date = date("Y-m-d", strtotime('last day of -2 month'));
+                                                        $dateMin = date("Y-m-d", strtotime('first day of -2 month'));
+                                                        $paymentsNo2 = 0;
+                                                        $query = "SELECT * FROM EXAM_RES";
+                                                        $select_payments = mysqli_query($mysqli, $query);
+                                                        while($row = mysqli_fetch_assoc($select_payments)) {
+                                                            if ($row['res_date'] > $dateMin && $row['res_date'] < $date) {
+                                                                $paymentsNo2++;
+                                                            }
+                                                        }
+                                                        ?>
+                                                        <strong>2 MONTHS AGO</strong>
+                                                        <small class="float-right"><b style="font-size:  20px;"><?php echo $paymentsNo2; ?></b> <small><?php if($paymentsNo2 == 1){echo "Student";}else{echo "Students";} ?></small></small>
+                                                    </div>
+                                                </div>
+
+                                                <div class='black-text message-content'>
+                                                    <div>
+                                                        <?php
+                                                        $date = date("Y-m-d", strtotime('last day of -3 month'));
+                                                        $dateMin = date("Y-m-d", strtotime('first day of -3 month'));
+                                                        $paymentsNo3 = 0;
+                                                        $query = "SELECT * FROM EXAM_RES";
+                                                        $select_payments = mysqli_query($mysqli, $query);
+                                                        while($row = mysqli_fetch_assoc($select_payments)) {
+                                                            if ($row['res_date'] > $dateMin && $row['res_date'] < $date) {
+                                                                $paymentsNo3++;
+                                                            }
+                                                        }
+                                                        ?>
+                                                        <strong>3 MONTHS AGO</strong>
+                                                        <small class="float-right"><b style="font-size:  20px;"><?php echo $paymentsNo3; ?></b> <small><?php if($paymentsNo3 == 1){echo "Student";}else{echo "Students";} ?></small></small>
+                                                    </div>
+                                                </div>
+
+
+
+                                                <div class='black-text message-content'>
+                                                    <div>
+                                                        <?php
+                                                        $date = date("Y-m-d", strtotime('last day of -4 month'));
+                                                        $dateMin = date("Y-m-d", strtotime('first day of -4 month'));
+                                                        $paymentsNo4 = 0;
+                                                        $query = "SELECT * FROM EXAM_RES";
+                                                        $select_payments = mysqli_query($mysqli, $query);
+                                                        while($row = mysqli_fetch_assoc($select_payments)) {
+                                                            if ($row['res_date'] > $dateMin && $row['res_date'] < $date) {
+                                                                $paymentsNo4++;
+                                                            }
+                                                        }
+                                                        ?>
+                                                        <strong>4 MONTHS AGO</strong>
+                                                        <small class="float-right"><b style="font-size:  20px;"><?php echo $paymentsNo4; ?></b> <small><?php if($paymentsNo4 == 1){echo "Student";}else{echo "Students";} ?></small></small>
+                                                    </div>
+                                                </div>
+
+                                                <div class='black-text message-content'>
+                                                    <div>
+                                                        <strong>ALL</strong>
+                                                        <small class="float-right"><b style="font-size:  20px;"><?php echo $allPayments; ?></b> <small><?php if($allPayments == 1){echo "Student";}else{echo "Students";} ?></small></small>
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div><!-- End .panel -->
+
+
+
 
 
                             </div>
