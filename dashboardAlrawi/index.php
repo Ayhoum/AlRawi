@@ -662,7 +662,7 @@ $onlinePRows = mysqli_num_rows($onlineP_num_rows);
                                                         $date = date("Y-m-d", strtotime('last day of this month'));
                                                         $dateMin = date("Y-m-d", strtotime('first day of this month'));
                                                         $paymentsNoThis = 0;
-                                                        $query = "SELECT * FROM EXAM_RES";
+                                                        $query = "SELECT * FROM EXAM_RES WHERE `Estatus` = 'GIVEN'";
                                                         $select_payments = mysqli_query($mysqli, $query);
                                                         $allPayments = mysqli_num_rows($select_payments);
                                                         while($row = mysqli_fetch_assoc($select_payments)) {
@@ -683,7 +683,7 @@ $onlinePRows = mysqli_num_rows($onlineP_num_rows);
                                                         $date = date("Y-m-d", strtotime('last day of last month'));
                                                         $dateMin = date("Y-m-d", strtotime('first day of last month'));
                                                         $paymentsNoLast = 0;
-                                                        $query = "SELECT * FROM EXAM_RES";
+                                                        $query = "SELECT * FROM EXAM_RES WHERE `Estatus` = 'GIVEN'";
                                                         $select_payments = mysqli_query($mysqli, $query);
                                                         while($row = mysqli_fetch_assoc($select_payments)) {
                                                             if ($row['res_date'] > $dateMin && $row['res_date'] < $date) {
@@ -703,7 +703,7 @@ $onlinePRows = mysqli_num_rows($onlineP_num_rows);
                                                         $date = date("Y-m-d", strtotime('last day of -2 month'));
                                                         $dateMin = date("Y-m-d", strtotime('first day of -2 month'));
                                                         $paymentsNo2 = 0;
-                                                        $query = "SELECT * FROM EXAM_RES";
+                                                        $query = "SELECT * FROM EXAM_RES WHERE `Estatus` = 'GIVEN'";
                                                         $select_payments = mysqli_query($mysqli, $query);
                                                         while($row = mysqli_fetch_assoc($select_payments)) {
                                                             if ($row['res_date'] > $dateMin && $row['res_date'] < $date) {
@@ -722,7 +722,7 @@ $onlinePRows = mysqli_num_rows($onlineP_num_rows);
                                                         $date = date("Y-m-d", strtotime('last day of -3 month'));
                                                         $dateMin = date("Y-m-d", strtotime('first day of -3 month'));
                                                         $paymentsNo3 = 0;
-                                                        $query = "SELECT * FROM EXAM_RES";
+                                                        $query = "SELECT * FROM EXAM_RES WHERE `Estatus` = 'GIVEN'";
                                                         $select_payments = mysqli_query($mysqli, $query);
                                                         while($row = mysqli_fetch_assoc($select_payments)) {
                                                             if ($row['res_date'] > $dateMin && $row['res_date'] < $date) {
@@ -743,7 +743,7 @@ $onlinePRows = mysqli_num_rows($onlineP_num_rows);
                                                         $date = date("Y-m-d", strtotime('last day of -4 month'));
                                                         $dateMin = date("Y-m-d", strtotime('first day of -4 month'));
                                                         $paymentsNo4 = 0;
-                                                        $query = "SELECT * FROM EXAM_RES";
+                                                        $query = "SELECT * FROM EXAM_RES WHERE `Estatus` = 'GIVEN'";
                                                         $select_payments = mysqli_query($mysqli, $query);
                                                         while($row = mysqli_fetch_assoc($select_payments)) {
                                                             if ($row['res_date'] > $dateMin && $row['res_date'] < $date) {
