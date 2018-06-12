@@ -3,6 +3,16 @@ session_start();
 ob_start();
 include '../scripts/db_connection.php';
 
+$txt = "Login_".$_SERVER['REMOTE_ADDR'];
+
+date_default_timezone_set('Europe/Amsterdam');
+$dateStamp = date('Y-m-d H:i:s');
+$query = "INSERT INTO `ips`(`IP`,`timestamp`) VALUES ('{$txt}','{$dateStamp}')" ;
+$run = mysqli_query($mysqli,$query);
+
+
+
+
 
 if(isset($_POST['signIn'])) {
 
@@ -26,7 +36,7 @@ if(isset($_POST['signIn'])) {
         }
     }  else {
         echo "Enter a Valid Data !! ";
-        header("Location: https://www.google.com");
+        header("Location: wrong_login.php");
     }
 
 }
@@ -69,6 +79,7 @@ if(isset($_POST['signIn'])) {
     <body class="account">
         <div class="container">
             <div class="row">
+
                 <div class="account-col text-center">
                     <h1>Al-Rawi Theroie Admin Page</h1>
                     <h3>Log into your account</h3>

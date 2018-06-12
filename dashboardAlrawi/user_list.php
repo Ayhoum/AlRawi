@@ -189,7 +189,10 @@ include '../scripts/db_connection.php';
                             </li>
                         </ul>
                         <!-- END SIDEBAR MENU -->
-                    </nav>                <!-- BEGIN CONTENT BODY -->
+                    </nav>
+                    <!-- END SIDEBAR -->
+                </aside>
+                <!-- BEGIN CONTENT BODY -->
                 <div class="page-content-wrapper">
                     <div class="content-wrapper container">
                         <div class="row">
