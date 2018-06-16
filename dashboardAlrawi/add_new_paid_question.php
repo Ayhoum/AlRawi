@@ -225,7 +225,7 @@ if (isset($_GET['id']) && ($_GET['qset'])) {
             </div>
         </form>
             <div class="form-group row">
-                <a href="manage_free_exams.php?id=<?php echo $qset; ?>"><button class="btn btn-danger float-right m-t-n-xs"><strong>Back to manage exam</strong></button></a>
+                <a href="manage_paid_exams.php?id=<?php echo $qset; ?>"><button class="btn btn-danger float-right m-t-n-xs"><strong>Back to manage exam</strong></button></a>
             </div>
     </div>
     </div>

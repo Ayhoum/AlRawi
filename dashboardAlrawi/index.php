@@ -3,18 +3,22 @@ session_start();
 ob_start();
 include '../scripts/db_connection.php';
 
-$txt = "Index_".$_SERVER['REMOTE_ADDR'];
 
-date_default_timezone_set('Europe/Amsterdam');
-$dateStamp = date('Y-m-d H:i:s');
-$query = "INSERT INTO `ips`(`IP`,`timestamp`) VALUES ('{$txt}','{$dateStamp}')" ;
-$run = mysqli_query($mysqli,$query);
 
 
 $date = date('Y-m-d');
 if($_SESSION['role'] != "MainAdmin"){
     header("Location: ../index.php");
+}else{
+    $txt = "Index_".$_SERVER['REMOTE_ADDR'];
+
+    date_default_timezone_set('Europe/Amsterdam');
+    $dateStamp = date('Y-m-d H:i:s');
+    $query = "INSERT INTO `ips`(`IP`,`timestamp`) VALUES ('{$txt}','{$dateStamp}')" ;
+    $run = mysqli_query($mysqli,$query);
 }
+
+
 $countNew = 0;
 $countSucceeded = 0;
 $countTraining = 0;
