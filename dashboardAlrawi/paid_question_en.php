@@ -238,7 +238,7 @@ if (isset($_GET['id']) && ($_GET['qset'])) {
                             echo "It is our code! ;;;";
                             break;
                         default:
-                            include "manage_paid_exams_en.php";
+                            header("Location: manage_paid_exams_en.php?id=".$qset);
                             break;
                     }
 
