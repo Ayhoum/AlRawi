@@ -8,6 +8,8 @@ if($_SESSION['role'] != "MainAdmin"){
 if (isset($_GET['id']) && ($_GET['qset'])) {
     $qset = $_GET['qset'];
     $setId = $_GET['id'];
+}else{
+    header("Location: index.php");
 }
     if (isset($_POST['submit'])) {
 
@@ -225,7 +227,7 @@ if (isset($_GET['id']) && ($_GET['qset'])) {
             </div>
         </form>
             <div class="form-group row">
-                <a href="manage_free_exams_nl.php?id=<?php echo $qset; ?>"><button class="btn btn-danger float-right m-t-n-xs"><strong>Back to manage exam</strong></button></a>
+                <a href="manage_paid_exams_nl.php?id=<?php echo $qset; ?>"><button class="btn btn-danger float-right m-t-n-xs"><strong>Back to manage exam</strong></button></a>
             </div>
     </div>
     </div>

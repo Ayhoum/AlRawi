@@ -5,6 +5,8 @@ include '../en/scripts/db_connection.php';
 
 if (isset($_GET['id'])) {
     $setId = $_GET['id'];
+}else{
+    header("Location: index.php");
 }
 
 if ($_SESSION['role'] != "MainAdmin") {

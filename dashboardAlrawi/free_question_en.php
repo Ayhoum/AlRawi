@@ -8,6 +8,8 @@ if($_SESSION['role'] != "MainAdmin"){
 if (isset($_GET['id']) && ($_GET['qset'])) {
     $qset = $_GET['qset'];
     $setId = $_GET['id'];
+}else{
+    header("Location: index.php");
 }
 ?>
 
@@ -234,7 +236,7 @@ if (isset($_GET['id']) && ($_GET['qset'])) {
                             echo "It is our code! ;;;";
                             break;
                         default:
-                            include "manage_free_exams_en.php";
+                            header("Location: manage_free_exams_en.php?id=".$qset);
                             break;
                     }
 
