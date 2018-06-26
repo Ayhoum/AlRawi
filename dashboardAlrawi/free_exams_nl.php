@@ -200,7 +200,7 @@ if ($_SESSION['role'] != "MainAdmin") {
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="page-title">
-                            <h4 class="float-left">Free Exams Dutch</h4>
+                            <h4 class="float-left">Free Dutch Exams</h4>
                         </div>
                     </div>
                 </div><!-- end .page title-->

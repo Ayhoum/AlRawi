@@ -196,7 +196,7 @@ include '../nl/scripts/db_connection.php';
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="page-title">
-                            <h4 class="float-left">Search a question</h4>
+                            <h4 class="float-left">Search a Dutch question</h4>
                         </div>
                     </div>
                 </div><!-- end .page title-->

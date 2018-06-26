@@ -204,7 +204,7 @@ if ($_SESSION['role'] != "MainAdmin") {
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="page-title">
-                            <h4 class="float-left">Manage Paid Exams</h4>
+                            <h4 class="float-left">Manage Paid English Exams</h4>
                         </div>
                     </div>
                 </div><!-- end .page title-->

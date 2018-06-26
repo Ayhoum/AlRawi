@@ -215,7 +215,7 @@ if(isset($_POST['create'])){
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="page-title">
-                            <h4 class="float-left">Add New Paid Exam</h4>
+                            <h4 class="float-left">Add New Paid English Exam</h4>
                         </div>
                     </div>
                 </div><!-- end .page title-->

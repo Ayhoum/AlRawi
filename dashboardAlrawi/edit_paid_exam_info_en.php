@@ -213,7 +213,7 @@ if(isset($_POST['update'])){
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="page-title">
-                            <h4 class="float-left">Edit Paid Exam</h4>
+                            <h4 class="float-left">Edit Paid English Exam</h4>
                         </div>
                     </div>
                 </div><!-- end .page title-->
