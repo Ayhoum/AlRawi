@@ -208,14 +208,14 @@ $onlinePRows = mysqli_num_rows($onlineP_num_rows);
                                 <a href="#"><i class="fa fa-dollar"></i> <span class="nav-label">Paid Exams English</span><span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level collapse">
                                     <li><a href="add_paid_exam_en.php">New Exam EN</a></li>
-                                    <li><a href="paid_exams_en.php"> Manage Free Exams EN</a></li>
+                                    <li><a href="paid_exams_en.php"> Manage Paid Exams EN</a></li>
                                 </ul>
                             </li>
                             <li>
                                 <a href="#"><i class="fa fa-dollar"></i> <span class="nav-label">Paid Exams Dutch</span><span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level collapse">
                                     <li><a href="add_paid_exam_nl.php">New Exam NL</a></li>
-                                    <li><a href="paid_exams_nl.php"> Manage Free Exams NL</a></li>
+                                    <li><a href="paid_exams_nl.php"> Manage Paid Exams NL</a></li>
                                 </ul>
 
                             </li>

@@ -195,14 +195,14 @@ if (isset($_POST['submit'])) {
                                 <a href="#"><i class="fa fa-dollar"></i> <span class="nav-label">Paid Exams English</span><span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level collapse">
                                     <li><a href="add_paid_exam_en.php">New Exam EN</a></li>
-                                    <li><a href="paid_exams_en.php"> Manage Free Exams EN</a></li>
+                                    <li><a href="paid_exams_en.php"> Manage Paid Exams EN</a></li>
                                 </ul>
                             </li>
                             <li>
                                 <a href="#"><i class="fa fa-dollar"></i> <span class="nav-label">Paid Exams Dutch</span><span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level collapse">
                                     <li><a href="add_paid_exam_nl.php">New Exam NL</a></li>
-                                    <li><a href="paid_exams_nl.php"> Manage Free Exams NL</a></li>
+                                    <li><a href="paid_exams_nl.php"> Manage Paid Exams NL</a></li>
                                 </ul>
 
                             </li>

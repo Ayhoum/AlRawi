@@ -20,14 +20,14 @@ include '../scripts/db_connection.php';
                 <tr>
                     <th>ID</th>
                     <th>Exam Name</th>
-                    <th>Times Payed</th>
+                    <th>Times Paid</th>
                 </tr>
                 </thead>
                 <tfoot>
                 <tr>
                     <th>ID</th>
                     <th>Exam Name</th>
-                    <th>Times Payed</th>
+                    <th>Times Paid</th>
                 </tr>
                 </tfoot>
 
