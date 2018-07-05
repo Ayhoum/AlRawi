@@ -98,7 +98,7 @@ if (isset($_POST['submit'])) {
             <form method="post" action="add_new_free_question_nl.php?qset=<?php echo $qset;?>&id=<?php echo $setId;?>" data-toggle="validator" enctype="multipart/form-data">
 
                 <div class="form-group row"><label>Question Type : </label>
-                    <select onchange="getType()" id="type" class="form-control m-b" style="direction: rtl;" name="type" required>
+                    <select onchange="getType()" id="type" class="form-control m-b" style="direction: ltr;" name="type" required>
                         <option value="" disabled selected>Select a question type</option>
                         <option value="response">Gevaarherkenning</option>
                         <option value="yesNo">Ja / Nee</option>
@@ -112,7 +112,7 @@ if (isset($_POST['submit'])) {
                 </div>
 
                 <div class="form-group row"><label>Question:</label>
-                    <input type="text" name="question" style="direction: rtl;" placeholder="Enter the question" class="form-control" required>
+                    <input type="text" name="question" style="direction: ltr;" placeholder="Enter the question" class="form-control" required>
                 </div>
 
                 <div class="hr-line-dashed"></div>
@@ -120,7 +120,7 @@ if (isset($_POST['submit'])) {
 
                 <div class="slide responseSlide" id="responseSlide">
                     <div class="form-group row"><label>Right Answer : </label>
-                        <select id="right_answer" class="form-control m-b" style="direction: rtl;" name="response_right_answer">
+                        <select id="right_answer" class="form-control m-b" style="direction: ltr;" name="response_right_answer">
                             <option value="" disabled selected>Select the answer</option>
                             <option value="Remmen">Remmen</option>
                             <option value="Gas los laten">Gas los laten</option>
@@ -131,7 +131,7 @@ if (isset($_POST['submit'])) {
 
                 <div class="slide yesOrNoSlide" id="yesOrNoSlide">
                     <div class="form-group row"><label>Right Answer : </label>
-                        <select id="yesno_right_answer" class="form-control m-b" style="direction: rtl;" name="yesno_right_answer">
+                        <select id="yesno_right_answer" class="form-control m-b" style="direction: ltr;" name="yesno_right_answer">
                             <option value="" disabled selected>Select the answer</option>
                             <option value="Ja">Ja</option>
                             <option value="Nee">Nee</option>
@@ -141,76 +141,76 @@ if (isset($_POST['submit'])) {
 
                 <div class="slide numInpSlide" id="numInpSlide">
                     <div class="form-group row"><label>Right Answer : </label>
-                        <input type="text" name="inp_right_answer" id="inp_right_answer" style="direction: rtl;" placeholder="Type the right answer" class="form-control">
+                        <input type="text" name="inp_right_answer" id="inp_right_answer" style="direction: ltr;" placeholder="Type the right answer" class="form-control">
                     </div>
                 </div>
 
                 <div class="slide multiChoice2Slide" id="multiChoice2Slide">
                     <div class="form-group row"><label>Right Answer : </label>
-                        <input type="text" name="multi2_right_answer" style="direction: rtl;" placeholder="Type the right answer" class="form-control">
+                        <input type="text" name="multi2_right_answer" style="direction: ltr;" placeholder="Type the right answer" class="form-control">
                     </div>
                     <div class="form-group row"><label>2d Answer : </label>
-                        <input type="text" name="multi2_2nd_answer" style="direction: rtl;" placeholder="Type the 2nd answer" class="form-control">
+                        <input type="text" name="multi2_2nd_answer" style="direction: ltr;" placeholder="Type the 2nd answer" class="form-control">
                     </div>
                 </div>
 
                 <div class="slide multiChoice3Slide" id="multiChoice3Slide">
                     <div class="form-group row"><label>Right Answer : </label>
-                        <input type="text" name="multi3_right_answer" style="direction: rtl;" placeholder="Type the right answer" class="form-control">
+                        <input type="text" name="multi3_right_answer" style="direction: ltr;" placeholder="Type the right answer" class="form-control">
                     </div>
                     <div class="form-group row"><label>2nd Answer : </label>
-                        <input type="text" name="multi3_2nd_answer" style="direction: rtl;" placeholder="Type the 2nd answer" class="form-control">
+                        <input type="text" name="multi3_2nd_answer" style="direction: ltr;" placeholder="Type the 2nd answer" class="form-control">
                     </div>
                     <div class="form-group row"><label>3rd Answer : </label>
-                        <input type="text" name="multi3_3rd_answer" style="direction: rtl;" placeholder="Type the 3rd answer" class="form-control">
+                        <input type="text" name="multi3_3rd_answer" style="direction: ltr;" placeholder="Type the 3rd answer" class="form-control">
                     </div>
                 </div>
 
                 <div class="slide multiChoice4Slide" id="multiChoice4Slide">
                     <div class="form-group row"><label>Right Answer : </label>
-                        <input type="text" name="multi4_right_answer" style="direction: rtl;" placeholder="Type the right answer" class="form-control">
+                        <input type="text" name="multi4_right_answer" style="direction: ltr;" placeholder="Type the right answer" class="form-control">
                     </div>
                     <div class="form-group row"><label>2nd Answer : </label>
-                        <input type="text" name="multi4_2nd_answer" style="direction: rtl;" placeholder="Type the 2nd answer" class="form-control">
+                        <input type="text" name="multi4_2nd_answer" style="direction: ltr;" placeholder="Type the 2nd answer" class="form-control">
                     </div>
                     <div class="form-group row"><label>3rd Answer : </label>
-                        <input type="text" name="multi4_3rd_answer" style="direction: rtl;" placeholder="Type the 3rd answer" class="form-control">
+                        <input type="text" name="multi4_3rd_answer" style="direction: ltr;" placeholder="Type the 3rd answer" class="form-control">
                     </div>
                     <div class="form-group row"><label>4th Answer : </label>
-                        <input type="text" name="multi4_4th_answer" style="direction: rtl;" placeholder="Type the 4th answer" class="form-control">
+                        <input type="text" name="multi4_4th_answer" style="direction: ltr;" placeholder="Type the 4th answer" class="form-control">
                     </div>
                 </div>
 
                 <div class="slide advantage3Slide" id="advantage3Slide">
                     <div class="form-group row"><label>Right Answer : </label>
-                        <input type="text" name="adv3_right_answer" style="direction: rtl;" placeholder="Type the right answer" class="form-control">
+                        <input type="text" name="adv3_right_answer" style="direction: ltr;" placeholder="Type the right answer" class="form-control">
                     </div>
                     <div class="form-group row"><label>2nd Answer : </label>
-                        <input type="text" name="adv3_2nd_answer" style="direction: rtl;" placeholder="Type the 2nd answer" class="form-control">
+                        <input type="text" name="adv3_2nd_answer" style="direction: ltr;" placeholder="Type the 2nd answer" class="form-control">
                     </div>
                     <div class="form-group row"><label>3rd Answer : </label>
-                        <input type="text" name="adv3_3rd_answer" style="direction: rtl;" placeholder="Type the 3rd answer" class="form-control">
+                        <input type="text" name="adv3_3rd_answer" style="direction: ltr;" placeholder="Type the 3rd answer" class="form-control">
                     </div>
                 </div>
 
                 <div class="slide advantage4Slide" id="advantage4Slide">
                     <div class="form-group row"><label>Right Answer : </label>
-                        <input type="text" name="adv4_right_answer" style="direction: rtl;" placeholder="Type the right answer" class="form-control">
+                        <input type="text" name="adv4_right_answer" style="direction: ltr;" placeholder="Type the right answer" class="form-control">
                     </div>
                     <div class="form-group row"><label>2nd Answer : </label>
-                        <input type="text" name="adv4_2nd_answer" style="direction: rtl;" placeholder="Type the 2nd answer" class="form-control">
+                        <input type="text" name="adv4_2nd_answer" style="direction: ltr;" placeholder="Type the 2nd answer" class="form-control">
                     </div>
                     <div class="form-group row"><label>3rd Answer : </label>
-                        <input type="text" name="adv4_3rd_answer" style="direction: rtl;" placeholder="Type the 3rd answer" class="form-control">
+                        <input type="text" name="adv4_3rd_answer" style="direction: ltr;" placeholder="Type the 3rd answer" class="form-control">
                     </div>
                     <div class="form-group row"><label>3rd Answer : </label>
-                        <input type="text" name="adv4_4th_answer" style="direction: rtl;" placeholder="Type the 4th answer" class="form-control">
+                        <input type="text" name="adv4_4th_answer" style="direction: ltr;" placeholder="Type the 4th answer" class="form-control">
                     </div>
                 </div>
 
 
                 <div class="form-group row"><label>Reason: </label>
-                    <input type="text" name="reason" style="direction: rtl;" placeholder="Type the Reason" class="form-control" required>
+                    <input type="text" name="reason" style="direction: ltr;" placeholder="Type the Reason" class="form-control" required>
                 </div>
                 <div class="hr-line-dashed"></div>
 

@@ -104,29 +104,29 @@ while ($row = mysqli_fetch_assoc($select_question)) {
                 <form method="post" action="edit_paid_question_nl.php?qset=<?php echo $qset; ?>&id=<?php echo $setId; ?>"
                       data-toggle="validator" enctype="multipart/form-data">
                     <div class="form-group row"><label>Question:</label>
-                        <input type="text" name="question" style="direction: rtl;" value="<?php echo $question ?>" class="form-control"
+                        <input type="text" name="question" style="direction: ltr;" value="<?php echo $question ?>" class="form-control"
                                required>
                     </div>
 
                     <div class="hr-line-dashed"></div>
 
                     <div class="form-group row"><label>Right Answer: </label>
-                        <input type="text" name="right_answer" style="direction: rtl;" value="<?php echo $right_ans ?>" class="form-control"
+                        <input type="text" name="right_answer" style="direction: ltr;" value="<?php echo $right_ans ?>" class="form-control"
                                required>
                     </div>
                     <div class="form-group row"><label>2ND Answer: </label>
-                        <input type="text" name="2nd_answer" style="direction: rtl;" value="<?php if($ans_2 != "0")echo $ans_2 ?>" class="form-control">
+                        <input type="text" name="2nd_answer" style="direction: ltr;" value="<?php if($ans_2 != "0")echo $ans_2 ?>" class="form-control">
                     </div>
                     <div class="form-group row"><label>3RD Answer: </label>
-                        <input type="text" name="3rd_answer" style="direction: rtl;" value="<?php if($ans_3 != "0")echo $ans_3 ?>" class="form-control">
+                        <input type="text" name="3rd_answer" style="direction: ltr;" value="<?php if($ans_3 != "0")echo $ans_3 ?>" class="form-control">
                     </div>
                     <div class="form-group row"><label>4TH Answer: </label>
-                        <input type="text" name="4th_answer" style="direction: rtl;" value="<?php if($ans_4 != "0")echo $ans_4 ?>" class="form-control">
+                        <input type="text" name="4th_answer" style="direction: ltr;" value="<?php if($ans_4 != "0")echo $ans_4 ?>" class="form-control">
                     </div>
                     <div class="hr-line-dashed"></div>
 
                     <div class="form-group row"><label>Reason: </label>
-                        <input type="text" name="reason" style="direction: rtl;" value="<?php echo $reason ?>" class="form-control" required>
+                        <input type="text" name="reason" style="direction: ltr;" value="<?php echo $reason ?>" class="form-control" required>
                     </div>
                     <div class="hr-line-dashed"></div>
 
@@ -157,7 +157,7 @@ while ($row = mysqli_fetch_assoc($select_question)) {
                     <div class="hr-line-dashed"></div>
 
                     <div class="form-group row"><label>Question Type : </label>
-                        <select id="type" class="form-control m-b" style="direction: rtl;" name="type" required>
+                        <select id="type" class="form-control m-b" style="direction: ltr;" name="type" required>
                             <option value="" disabled selected>Select a question type</option>
                             <option value="response" <?php if ($type == "response" ){echo "selected"; }?>>Gevaarherkenning</option>
                             <option value="yesNo" <?php if ($type == "yesNo" ){echo "selected"; }?>>Ja / Nee</option>
