@@ -12,6 +12,16 @@ if(!isset($_GET['id'])){
 if (isset($_GET['id'])){
     $id = $_GET['id'];
 
+
+    if(isset($_GET['delete'])){
+        $deleteId = $_GET['delete'];
+
+        $queryDelete = "DELETE FROM `PAID_EXAM` WHERE `PAYMENT_ID` = '{$deleteId}'";
+        $run = mysqli_query($mysqli,$queryDelete);
+        header("Location: user_info.php?id=$id");
+    }
+
+
     if(isset($_GET['give_free_packet'])){
 
         $the_free_packet = $_GET['give_free_packet'];
@@ -353,13 +363,39 @@ while($row = mysqli_fetch_assoc($select_users)){
                                                 $active = mysqli_query($mysqli,$activeQuery);
                                                     if(mysqli_num_rows($active) > 0){
                                                         while($row = mysqli_fetch_assoc($active)){
+                                                            $paymentId = $row['PAYMENT_ID'];
                                                             $until = $row['END_DATE'];
-                                                            ?>
-                                                            <div class="sale-state-box" style="background-color:rgb(255, 152, 0);box-shadow: 3px 4px 5px rgba(0,0,0,0.2);">
-                                                                <h3><?php echo $until?></h3>
+                                                            $packStatus = $row['STATUS'];
+
+
+
+
+                                                            if($packStatus == 'ACTIVE'){
+                                                                $future = strtotime($until);
+                                                                $timeFromDB = strtotime("now");
+                                                                $timeLeft = $future-$timeFromDB;
+                                                                $daysLeft = round((($timeLeft/24)/60)/60);
+                                                                ?>
+
+                                                            <div class="sale-state-box" style="background-color:rgb(201,176,84);box-shadow: 3px 4px 5px rgba(0,0,0,0.2);">
+                                                                <h3><?php echo $daysLeft?></h3>
                                                                 <span>Active Until</span>
+                                                                <span style="float: right;margin-top: -30px;"><a href="user_info.php?id=<?php echo $id;?>&delete=<?php echo $paymentId;?>"><button class="btn btn-danger btn-circle"><i class="fa fa-trash"></i></button></a></span>
                                                             </div>
                                             <?php
+                                                            }else{
+                                                                $past = strtotime($until);
+                                                                $timeFromDB = strtotime("now");
+                                                                $daysPassed = $timeFromDB-$past;
+                                                                $daysPassed = round((($daysPassed/24)/60)/60);
+
+?>
+                                                                <div class="sale-state-box" style="background-color:rgb(255,41,73);box-shadow: 3px 4px 5px rgba(0,0,0,0.2);">
+                                                                    <h3><?php echo $daysPassed;?></h3>
+                                                                    <span>Days ago</span>
+                                                                </div>
+                                                                <?php
+                                                            }
                                                         }
                                                     }else{
                                                         ?>
