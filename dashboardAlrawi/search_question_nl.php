@@ -253,10 +253,10 @@ include '../nl/scripts/db_connection.php';
                                     $convertedId = $qID - ($questionExam - 1) * 65;
                                     $questionTitle = $row['QUESTION'];
                                     ?>
-                                    <div class="panel-heading" style="text-align: right;">
-                                        <div class="text-center btn-success" style="font-size: 22px;padding: 5px;"><?php echo 'إمتحان ' . $questionExam;?>
+                                    <div class="panel-heading">
+                                        <a href="paid_question_nl.php?source=edit&id=<?php echo $qID;?>&qset=<?php echo $questionExam;?>"><div class="text-center btn-success" style="font-size: 22px;padding: 5px;"><?php echo 'Examen ' . $questionExam;?>
                                             <?php echo ' - ';?>
-                                            <?php echo 'السؤال ' . $convertedId;?></div>
+                                                <?php echo 'Vraag ' . $convertedId;?></div></a>
                                         <div style="font-size: 20px;padding: 5px;">
                                         <?php echo $questionTitle; ?>
                                         </div>

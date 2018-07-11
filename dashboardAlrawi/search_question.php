@@ -254,9 +254,9 @@ include '../scripts/db_connection.php';
                                     $questionTitle = $row['QUESTION'];
                                     ?>
                                     <div class="panel-heading" style="text-align: right;">
-                                        <div class="text-center btn-success" style="font-size: 22px;padding: 5px;"><?php echo 'إمتحان ' . $questionExam;?>
+                                        <a href="paid_question.php?source=edit&id=<?php echo $qID;?>&qset=<?php echo $questionExam;?>"><div class="text-center btn-success" style="font-size: 22px;padding: 5px;"><?php echo 'إمتحان ' . $questionExam;?>
                                             <?php echo ' - ';?>
-                                            <?php echo 'السؤال ' . $convertedId;?></div>
+                                                <?php echo 'السؤال ' . $convertedId;?></div></a>
                                         <div style="font-size: 20px;padding: 5px;">
                                         <?php echo $questionTitle; ?>
                                         </div>
