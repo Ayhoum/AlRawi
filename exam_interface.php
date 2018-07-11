@@ -34,8 +34,14 @@ $result1 = mysqli_query($mysqli, $query1);
 if (mysqli_num_rows($result1) > 0) {
     while ($row = mysqli_fetch_assoc($result1)) {
         $user_id = $row['ID'];
+        $trainingSituation = $row['SITUATION'];
 
+        if($trainingSituation == "NEW"){
+            $queryTraining = "UPDATE `Users` SET `SITUATION`= 'TRAINING' WHERE `ID` = '{$user_id}'";
+            $resultTraining = mysqli_query($mysqli, $queryTraining);
+        }
     }
+
 
     $query2 = "SELECT * FROM  `PAID_EXAM` WHERE Users_ID = '{$user_id}' AND STATUS = 'ACTIVE' ORDER BY  `PAYMENT_ID` DESC LIMIT 1";
     $result2 = mysqli_query($mysqli, $query2);
