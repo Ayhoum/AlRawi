@@ -31,6 +31,7 @@ while ($row = mysqli_fetch_assoc($select_res)) {
     $dateAndTime = $row['dateAndTime'];
     $dialect = $row['dialect'];
     $note = $row['note'];
+    $res_date = $row['res_date'];
     $reserve_status = $row['reserve_status'];
     $order_id = $row['order_id'];
 }
@@ -266,7 +267,7 @@ if(isset($_GET['reserve'])){
                                         Basic Info:
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-3">
+                                        <div class="col-md-2">
                                             <div class="sale-state-box"
                                                  style="background-color: #001d45;box-shadow: 3px 4px 5px rgba(0,0,0,0.2);">
                                                 <h3><?php echo $order_id; ?></h3>
@@ -280,18 +281,25 @@ if(isset($_GET['reserve'])){
                                                 <span>Name</span>
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
+                                        <div class="col-md-2">
                                             <div class="sale-state-box"
                                                  style="background-color: #001d45;box-shadow: 3px 4px 5px rgba(0,0,0,0.2);">
                                                 <h3><?php echo $dob; ?></h3>
                                                 <span>Birthday</span>
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
+                                        <div class="col-md-2">
                                             <div class="sale-state-box"
                                                  style="background-color: #001d45;box-shadow: 3px 4px 5px rgba(0,0,0,0.2);">
                                                 <h3><?php echo $bsn; ?></h3>
                                                 <span>BSN</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="sale-state-box"
+                                                 style="background-color: #001d45;box-shadow: 3px 4px 5px rgba(0,0,0,0.2);">
+                                                <h3><?php echo date('Y-m-d',strtotime($res_date)); ?></h3>
+                                                <span>Date of Reservation</span>
                                             </div>
                                         </div>
                                     </div>
