@@ -208,7 +208,7 @@ if (isset($_GET['id']) && ($_GET['qset'])) {
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="page-title">
-                            <h4 class="float-left">Exam
+                            <h4 class="float-left">English - Exam
                                 <?php
                                 $setId1 = $setId - ($qset - 1) * 65;
                                 echo $qset . ' - Question ' . $setId1; ?>
