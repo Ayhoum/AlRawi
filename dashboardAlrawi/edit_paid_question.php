@@ -15,14 +15,20 @@ if (isset($_POST['submit'])) {
 
 //        $question_set_id = 1;
 //        $number = 4;
-
     $question1 = $_POST['question'];
+    $question1 = mysqli_escape_string($mysqli,$question1);
     $right_ans1 = $_POST['right_answer'];
+    $right_ans1 = mysqli_escape_string($mysqli,$right_ans1);
     $answer_2 = $_POST['2nd_answer'];
+    $answer_2 = mysqli_escape_string($mysqli,$answer_2);
     $answer_3 = $_POST['3rd_answer'];
+    $answer_3 = mysqli_escape_string($mysqli,$answer_3);
     $answer_4 = $_POST['4th_answer'];
+    $answer_4 = mysqli_escape_string($mysqli,$answer_4);
     $reason_1 = $_POST['reason'];
+    $reason_1 = mysqli_escape_string($mysqli,$reason_1);
     $type_1 = $_POST['type'];
+    $type_1 = mysqli_escape_string($mysqli,$type_1);
     if(empty($answer_4)){
         $answer_4 = "0";
     }

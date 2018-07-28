@@ -13,38 +13,61 @@ if (isset($_POST['submit'])) {
 
 
     $question = $_POST['question'];
+    $question = mysqli_escape_string($mysqli,$question);
     $type = $_POST['type'];
+    $type = mysqli_escape_string($mysqli,$type);
+
 
     if($type == "response"){
         $right_ans = $_POST['response_right_answer'];
+        $right_ans = mysqli_escape_string($mysqli,$right_ans);
     }else if($type == "yesNo"){
         $right_ans = $_POST['yesno_right_answer'];
+        $right_ans = mysqli_escape_string($mysqli,$right_ans);
     }else if($type == "numInp"){
         $right_ans = $_POST['inp_right_answer'];
+        $right_ans = mysqli_escape_string($mysqli,$right_ans);
     }else if($type == "multiChoice2"){
         $right_ans = $_POST['multi2_right_answer'];
+        $right_ans = mysqli_escape_string($mysqli,$right_ans);
         $answer_2  = $_POST['multi2_2nd_answer'];
+        $answer_2 = mysqli_escape_string($mysqli,$answer_2);
     }else if($type == "multiChoice3"){
         $right_ans = $_POST['multi3_right_answer'];
+        $right_ans = mysqli_escape_string($mysqli,$right_ans);
         $answer_2 = $_POST['multi3_2nd_answer'];
+        $answer_2 = mysqli_escape_string($mysqli,$answer_2);
         $answer_3 = $_POST['multi3_3rd_answer'];
+        $answer_3 = mysqli_escape_string($mysqli,$answer_3);
     }else if($type == "multiChoice4"){
         $right_ans = $_POST['multi4_right_answer'];
+        $right_ans = mysqli_escape_string($mysqli,$right_ans);
         $answer_2 = $_POST['multi4_2nd_answer'];
+        $answer_2 = mysqli_escape_string($mysqli,$answer_2);
         $answer_3 = $_POST['multi4_3rd_answer'];
+        $answer_3 = mysqli_escape_string($mysqli,$answer_3);
         $answer_4 = $_POST['multi4_4th_answer'];
+        $answer_4 = mysqli_escape_string($mysqli,$answer_4);
     }else if($type == "advantage3"){
         $right_ans = $_POST['adv3_right_answer'];
+        $right_ans = mysqli_escape_string($mysqli,$right_ans);
         $answer_2 = $_POST['adv3_2nd_answer'];
+        $answer_2 = mysqli_escape_string($mysqli,$answer_2);
         $answer_3 = $_POST['adv3_3rd_answer'];
+        $answer_3 = mysqli_escape_string($mysqli,$answer_3);
     }else if($type == "advantage4"){
         $right_ans = $_POST['adv4_right_answer'];
+        $right_ans = mysqli_escape_string($mysqli,$right_ans);
         $answer_2 = $_POST['adv4_2rd_answer'];
+        $answer_2 = mysqli_escape_string($mysqli,$answer_2);
         $answer_3 = $_POST['adv4_3rd_answer'];
+        $answer_3 = mysqli_escape_string($mysqli,$answer_3);
         $answer_4 = $_POST['adv4_4th_answer'];
+        $answer_4 = mysqli_escape_string($mysqli,$answer_4);
     }
 
     $reason = $_POST['reason'];
+    $reason = mysqli_escape_string($mysqli,$reason);
 
     if(empty($answer_4)){
         $answer_4 = "0";
